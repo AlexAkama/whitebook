@@ -50,6 +50,88 @@
 
 <section id="naming" class="container">
     <h1>Код и нейминг</h1>
+    <p class="no_mb">Переменные называются существительными</p>
+    <p class="no_mb">Нельзя назвать переменные глаголами или начинать с глагола</p>
+    <div class="code">
+        <p>private isBlocked; // очень плохо, начало с глагола</p>
+        <p>private blocked; // тоже плохо, т.е. тоже глагол</p>
+        <p>private block; // OK!</p>
+    </div>
+    <p>
+        Методы всегда следует называть с маленькой буквы (кроме конструкторов) и в названии должен быть глагол -
+        <span class="example">sendMail</span>,
+        <span class="example">getAge</span>,
+        <span class="example">calculateSalary</span> и т.п.
+    </p>
+    <p class="no_mb">
+        Если метод возвращает сложную структуру вроде Map, то в методе следует пояснить, что в ключах и в значениях,
+        если
+        это не очевидно:
+    </p>
+    <div class="code">
+        <p>public Map&lt;Integer, Integer&gt; getBalancesByAccountIds() {</p>
+        <p class="tab-1">...</p>
+        <p>}</p>
+    </div>
+    <p class="no-mb">Если метод печатает что-то на экран, можно начать его со слова <span class="example">print</span>:
+    </p>
+    <div class="code">
+        <p>public void printAge() {</p>
+        <p class="tab-1">System.out.println("My age is " + age);</p>
+        <p>}</p>
+    </div>
+    <p class="no_mb">Метод-геттер, возвращающий boolean принято называть с префиксом
+        <span class="example">is</span>
+        или
+        <span class="example">has</span>>.
+        Пример:</p>
+    <div class="code">
+        <p>boolean isAlive() {</p>
+        <p class="tab-1">...</p>
+        <p>}</p>
+    </div>
+    <p class="no_mb">Примеры неудачных названий методов:</p>
+    <div class="code no_mb">
+        <p>public Map&lt;Integer, Integer&gt; getMap() {</p>
+        <p class="tab-1">...</p>
+        <p>}</p>
+    </div>
+    <p>
+        Этот метод плохо называется, т.к. мы не получаем никакой смысловой информации что он делает и что возвращает. То
+        что он возвращает тип Map видно и так из типа возвращаемого значения. Но что в ключах, а что в значениях…
+        Непонятно
+    </p>
+    <p class="no_mb">Второй пример:</p>
+    <div class="code no_mb">
+        <p>public boolean checkBalance(int balance) {</p>
+        <p class="tab-1">...</p>
+        <p>}</p>
+    </div>
+    <p>
+        Слово check очень перегруженное. Из имени совершенно не ясно что делает проверка, и что будет если она не
+        пройдет.
+    </p>
+    <p class="no_mb">Более удачные имена:</p>
+    <div class="code">
+        <p>public boolean isBalancePositive(int balance) {</p>
+        <p>...</p>
+        <p>}</p>
+    </div>
+
+    <p>
+        Выбор понятного имени - довольно сложная задача, и иногда, если совершенно не получается придумать имя, то это
+        знак того что метод делает слишком много и его следует разбить на более мелкие части.
+    </p>
+    <p>
+        Посмотрите главу 2 в
+        <a href="clean_code_proglib.pdf">этой книжке</a>
+        - она вся про культуру именования
+    </p>
+    <p>
+        кому лень читать -
+        <a href="https://www.youtube.com/watch?v=5vsfYifNqzk">смотрите</a>
+    </p>
+
 </section>
 
 
