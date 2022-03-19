@@ -8,6 +8,7 @@
 
 body {
     font-size: 14px;
+    line-height: 18px;
 }
 
 footer {
@@ -104,7 +105,7 @@ p {
     margin-bottom: 14px;
 }
 
-.example{
+.example {
     color: rgb(182, 41, 212);
 }
 
