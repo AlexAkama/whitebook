@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SPRING</title>
+    <link rel="stylesheet" href="../../../css/style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>SPRING</h1>
+    <hr>
+    <table aria-label="Вопросы по Spring">
+        <tr><th id="spring"></th></tr>
+        <tr>
+            <td>1.</td>
+            <td> Что такое инверсия контроля (IoC) и внедрение зависимостей (DI)? Как они реализованы в Spring?
+                <p>Inversion of Control (IoC)</p>
+                <p>Dependency Injection (DI)</p>
+            </td>
+        </tr>
+        <tr>
+            <td>2.</td>
+            <td>Что такое IoC Container?</td>
+        </tr>
+        <tr>
+            <td>3.</td>
+            <td>Что такое Bean в Spring?</td>
+        </tr>
+        <tr>
+
+            <td>4.</td>
+            <td>Расскажите про аннотацию <span>@Bean</span></td>
+        </tr>
+        <tr>
+            <td>5.</td>
+            <td>Расскажите про аннотацию <span>@Component</span></td>
+        </tr>
+        <tr>
+            <td>6.</td>
+            <td>Чем отличаются аннотации <span>@Bean</span>
+                и <span>@Component</span>?
+            </td>
+        </tr>
+        <tr>
+            <td>7.</td>
+            <td>Расскажите про аннотации <span>@Service</span> и <span>@Repository</span>.
+                В&nbsp;чем&nbsp;различия?
+            </td>
+        </tr>
+        <tr>
+            <td>8.</td>
+            <td>Расскажите про аннотацию <span>@Autowired</span></td>
+        </tr>
+        <tr>
+            <td>9.</td>
+            <td>Расскажите про аннотацию <span>@Resource</span></td>
+        </tr>
+        <tr>
+            <td>10.</td>
+            <td>Расскажите про аннотацию <span>@Inject</span></td>
+        </tr>
+        <tr>
+            <td>11.</td>
+            <td>Расскажите про аннотацию <span>@Lookup</span></td>
+        </tr>
+        <tr>
+            <td>12.</td>
+            <td>Можно ли вставить бин в статическое поле? Почему?</td>
+        </tr>
+        <tr>
+            <td>13.</td>
+            <td>Расскажите про аннотации <span>@Primary</span> и <span>@Qualifier</span></td>
+        </tr>
+        <tr>
+            <td>14.</td>
+            <td>
+                Как заинжектить примитив?
+                <p>@Value</p>
+                <p>@Value with SpEL</p>
+                <p>@Value with Map</p>
+                <p>@Value with Constructor</p>
+                <p>@Value with Setter</p>
+            </td>
+        </tr>
+        <tr>
+            <td>15.</td>
+            <td>
+                Как заинжектить коллекцию?
+                <p>Array Injection</p>
+                <p>Collections Injection</p>
+                <p>Коллекции бинов одного типа</p>
+                <p>Использование @Qualifier</p>
+                <p>Упорядочивание элементов массивов / списков</p>
+            </td>
+        </tr>
+        <tr>
+
+            <td>16.</td>
+            <td>Расскажите про аннотацию <span>@Conditional</span></td>
+        </tr>
+        <tr>
+            <td>17.</td>
+            <td>Расскажите про аннотацию <span>@ComponentScan</span></td>
+        </tr>
+        <tr>
+            <td>18.</td>
+            <td>Расскажите про аннотацию <span>@Profile</span></td>
+        </tr>
+        <tr>
+            <td>19.</td>
+            <td>
+                Расскажите про <span>ApplicationContext</span> и <span>BeanFactory</span>,
+                чем отличаются? В каких случаях что стоит использовать?
+                <p>BeanFactory</p>
+                <p>ApplicationContext</p>
+                <p>ApplicationContext vs. BeanFactory</p>
+            </td>
+        </tr>
+        <tr>
+            <td>20.</td>
+            <td>
+                Расскажите про жизненный цикл бина, аннотации <span>@PostConstruct</span> и <span>@PreDestroy</span>
+                <div>
+                    Жизненный цикл бинов
+                    <ol>
+                        <li>Парсирование конфигурации и создание BeanDefinition</li>
+                        <li>Настройка созданных BeanDefinition</li>
+                        <li>Создание кастомных FactoryBean (только для XML-конфигурации)</li>
+                        <li>Создание экземпляров бинов</li>
+                        <li>Настройка созданных бинов</li>
+                        <li>Бины готовы к использованию</li>
+                        <li>Закрытие контекста</li>
+                    </ol>
+                </div>
+                <p>@PostConstruct</p>
+                <p>@PreDestroy</p>
+
+
+            </td>
+        </tr>
+        <tr>
+            <td>21.</td>
+            <td>
+                Расскажите про scope бинов. Какой scope используется по умолчанию? Что изменилось в пятом Spring?
+                <p>Singleton</p>
+                <p>Prototype</p>
+                <p>Request</p>
+                <p>Session</p>
+                <p>Application</p>
+                <p>Websocket</p>
+                <p>Custom thread scope</p>
+            </td>
+        </tr>
+        <tr>
+            <td>22.</td>
+            <td>Что такое АОП? Как реализовано в спринге?</td>
+        </tr>
+        <tr>
+            <td>23.</td>
+            <td>Как спринг работает с транзакциями? Расскажите про аннотацию <span>@Transactional</span></td>
+        </tr>
+        <tr>
+            <td>24.</td>
+            <td>
+                Расскажите про паттерн MVC, как он реализован в Spring?
+                <p>MVC (Model-View-Controller)</p>
+                <p>Spring Web MVC</p>
+            </td>
+        </tr>
+        <tr>
+            <td>25.</td>
+            <td>Что такое <span>ViewResolver</span>?</td>
+        </tr>
+        <tr>
+            <td>26.</td>
+            <td>Расскажите про шаблон проектирования Front Controller, как он реализован в Spring?</td>
+        </tr>
+        <tr>
+            <td>27.</td>
+            <td>
+                Чем отличаются <span>Model</span>, <span>ModelMap</span> и <span>ModelAndView</span>?
+                <p>Model</p>
+                <p>ModelMap</p>
+                <p>ModelAndView</p>
+            </td>
+        </tr>
+        <tr>
+            <td>28.</td>
+            <td>
+                Расскажите про аннотации <span>@Controller</span> и <span>@RestController</span>. Чем они отличаются?
+                Как вернуть ответ со своим статусом (например 213)?
+                <p>@Controller</p>
+                <p>@RestController</p>
+                <p>ResponseEntity</p>
+            </td>
+        </tr>
+        <tr>
+            <td>29.</td>
+            <td>
+                В чем разница между <span>Filters</span>, <span>Listeners</span> и <span>Interceptors</span>?
+                <p>Filter</p>
+                <p>Interceptor</p>
+                <p>Filter vs. Interceptor</p>
+                <p>Java Listener</p>
+            </td>
+        </tr>
+        <tr>
+            <td>30.</td>
+            <td>Можно ли передать в GET-запросе один и тот же параметр несколько раз? Как?</td>
+        </tr>
+        <tr>
+            <td>31.</td>
+            <td>Как работает <span>Spring Security</span>? Как сконфигурировать? Какие интерфейсы используются?</td>
+        </tr>
+        <tr>
+            <td>32.</td>
+            <td>Что такое <span>Spring Boot</span>? Какие у него преимущества? Как конфигурируется? Подробно</td>
+        </tr>
+        <tr>
+            <td>33.</td>
+            <td>Расскажите про нововведения Spring 5</td>
+        </tr>
+    </table>
+
+    <div class="back">
+        <a href="../../../" class="back-to-home">На главную</a>
+    </div>
+
+</div>
+
+</body>
+
+<footer>
+    <div class="footer__text">Алексей Маслов, 2021-2022</div>
+</footer>
+
+</html>
+
+
+
