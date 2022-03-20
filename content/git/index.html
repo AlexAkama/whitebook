@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GIT</title>
+    <link rel="stylesheet" href="../../css/style.css" class="css">
+</head>
+
+<body>
+
+<section class="container">
+    <h1 class="no_mb">GIT</h1>
+    <div class="after-h1">Система контроля версий</div>
+</section>
+
+<section class="container">
+    <h1>Общее</h1>
+    <hr>
+    <h2>РЕПОЗИТОРИИ</h2>
+    <p class="no_mb">Адреса репозиториев:</p>
+    <div class="code">git remote -v</div>
+    <p class="no_mb">Изменение адреса репозитория:</p>
+    <div class="code">git remote set-url &lt;имя_репозитория&gt; &lt;url_репозитория&gt;</div>
+    <hr>
+    <h2 class="no_mb">ВЕТКИ</h2>
+    <p>Основы ветвления и слияния</p>
+
+    <p class="no_mb">Создание ветки:</p>
+    <div class="code no_mb">
+        <p>git branch &lt;имя_ветки&gt;</p>
+        <p>git ckeckout &lt;имя_ветки&gt;</p>
+    </div>
+    <p class="no_mb">или кратко с ключом -b</p>
+    <div class="code">
+        <p>git ckeckout -b &lt;имя_ветки&gt; </p>
+    </div>
+    <p class="no_mb">Переключение на ветку:</p>
+    <div class="code">
+        <p>git ckeckout &lt;имя_ветки&gt;</p>
+    </div>
+    <p class="no_mb">Просмотр списка веток:</p>
+    <div class="code">
+        <p>git branch</p>
+    </div>
+    <p class="no_mb">Слияние:</p>
+    <p class="no_mb">ВАЖНО!!! Перед слиянием надо переключится туда куда надо слить данные</p>
+    <div class="code">
+        <p>git ckeckout &lt;имя_ветки_назначения&gt;</p>
+        <p>git merge &lt;имя_ветки&gt;</p>
+    </div>
+    <p class="no_mb">Удаление ветки:</p>
+    <div class="code">
+        <p>git branch -d &lt;имя_ветки&gt;</p>
+    </div>
+    <p class="no_mb">Переименование ветки</p>
+    <p class="no_mb">Сначала переименовываем локальную ветку, а затем выгружаем изменения на удаленный сервер,
+        удаляем старую ветку на сервере.</p>
+    <div class="code no_mb">
+        <p>git branch -m &lt;старое_название&gt; &lt;новое_название&gt;</p>
+        <p>git push &lt;имя_репозитория&gt; :&lt;старое_название&gt; &lt;новое_название&gt;</p>
+    </div>
+    <p>ВАЖНО!!! Во второй строчке стоит двоеточие перед старым именем ветки — это команда для удаления ветки на
+        сервере!!!</p>
+    <hr>
+    <h2>КОММИТЫ</h2>
+    <p class="no_mb">Добавить в</p>
+    <div class="code">
+        <p>git add &lt;имя|маска&gt; // git add . -Добавит все отслеживаемые файлы</p>
+    </div>
+    <p class="no_mb">Создать коммит</p>
+    <div class="code">
+        <p>git commit -m "&lt;текст_комментария&gt;"</p>
+    </div>
+    <p class="no_mb">Изменение последнего коммита</p>
+    <p class="no_mb">ВАЖНО! Коммит не должен быть запушен на удаленный репо (если нет, то ничего не сломается, но гемор
+        потом будет)</p>
+    <div class="code">
+        <p>git --amend - m "&lt;текст_комментария&gt;"</p>
+    </div>
+    <p class="no_mb">Записать в репозиторий (в основную ветку)</p>
+    <div class="code">
+        <p>git push</p>
+    </div>
+    <p class="no_mb">Записать в репозиторий в ветку</p>
+    <div class="code">
+        <p>git push &lt;имя_репозитория&gt; &lt;имя_ветки&gt; // git push origin dev</p>
+    </div>
+</section>
+
+<section class="container">
+    <h1>Отмена операций</h1>
+</section>
+
+<section class="container">
+    <h1>Как восстановить файл</h1>
+</section>
+
+</body>
+</html>
