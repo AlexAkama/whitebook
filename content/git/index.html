@@ -14,9 +14,18 @@
 <section class="container">
     <h1 class="no_mb">GIT</h1>
     <div class="after-h1">Система контроля версий</div>
+    <ul class="menu">
+        <li>Общее</li>
+        <li>Отмена операций</li>
+        <li>Как восстановить файл</li>
+    </ul>
+
+    <div class="back">
+        <a href="../../" class="back-to-home">На главную</a>
+    </div>
 </section>
 
-<section class="container">
+<section class="container" id="base">
     <h1>Общее</h1>
     <hr>
     <h2>РЕПОЗИТОРИИ</h2>
@@ -90,13 +99,73 @@
     </div>
 </section>
 
-<section class="container">
+<section class="container" id="cancel">
     <h1>Отмена операций</h1>
+    <hr>
+    <h2>Отмена коммита</h2>
+    <p class="no_mb">
+        Для отмены
+        <strong>последнего коммита</strong>, если изменения ещё
+        <strong>не опубликованы на сервер</strong> (не сделан git push) воспользоваться командой:
+    </p>
+    <div class="code no_mb">git reset --soft HEAD^</div>
+    <p class="no_mb">
+        При этом изменённый код удалён не будет (будет зелёным цветом в git status). Вы можете подправить код и
+        повторить коммит.
+    </p>
+    <p>
+        <strong>Это работает, если вы не опубликовали свои изменения</strong>. Если же вы уже опубликовали изменения, то
+        не остается ничего другого, как сделать коммит, который отменяет коммит.
+    </p>
+    <p class="no_mb">Пример:</p>
+    <p class="no_mb">--soft - отменит коммит, но сохранит изменения в файлах</p>
+    <p class="no_mb">--hard - отменит коммит и удалит изменения, сделанные коммитом.</p>
+    <p>git reset --soft HEAD~2 - отменит 2 последних коммита, сохранив изменения. Будут видны в git
+        status.</p>
+    <p class="no_mb">Для отмены опубликованного коммита:</p>
+    <div class="code no_mb">git revert &lt;хеш код&gt;</div>
+    <p>Хеш смотрим в <strong>git log</strong>.</p>
+    <hr>
+    <h2>Отмена отслеживания</h2>
+    <p class="no_mb">Отменить отслеживание файла:</p>
+    <div class="code no_mb">git rm --cached &lt;имя файла&gt;</div>
+    <p>Важно! Это так же поможет если надо убрать файл из индекса.</p>
+    <p class="no_mb">Отменить отслеживание папки:</p>
+    <div class="code">git rm --cached -r &lt;имя папки&gt;</div>
+    <hr>
+    <h2>Отмена изменения в файле</h2>
+    <div class="code">git checkout &lt;имя фала&gt;</div>
 </section>
 
-<section class="container">
-    <h1>Как восстановить файл</h1>
+<section class="container" id="recovery">
+    <h1 class="no_mb">Как восстановить файл</h1>
+    <p class="important">Ситуация: вы удалили файл и хотите его восстановить или сделали изменения в файле, которые
+        хотите
+        отменить. То есть необходимо вернуть файл в то состояние, в котором он находится в Git репозитории.</p>
+    <hr>
+    <h3>Восстановление удаленного файла или отмена изменений</h3>
+    <p class="no_mb">Если вы еще не добавили файл в индекс (<strong>не выполнили git add</strong>), то для
+        восстановления файла можно воспользоваться
+        командой (вместо myfile необходимо указать файл, который вы восстанавливаете):</p>
+    <div class="code">git checkout -- myfile</div>
+    <p>Просмотреть список удаленных файлов можно командой: git ls-files --deleted</p>
+    <hr>
+    <h3>Восстановление удаленного файла, если он уже добавлен в индекс (git add)</h3>
+    <p>
+        Если вы удалили файл и уже добавили его в индекс, <strong>выполнив git add</strong>, то сначала нужно удалить
+        его из индекса, а затем выполнить восстановление, как было показано выше. Для этого выполните команды:
+    </p>
+    <div class="code">
+        <p>git reset -- myfile</p>
+        <p>git checkout -- myfile</p>
+    </div>
+    <p><a href="https://pingvinus.ru/git/1580" target="_blank">источник</a></p>
 </section>
 
 </body>
+
+<footer>
+    <div class="footer__text">Алексей Маслов, 2021-2022</div>
+</footer>
+
 </html>
