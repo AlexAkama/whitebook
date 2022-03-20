@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IDEA</title>
+    <link rel="stylesheet" href="../../css/style.css" class="css">
+</head>
+
+<body>
+
+<section class="container">
+    <h1>IntelliJ IDEA</h1>
+    <ul class="menu">
+        <li><a href="#local_config">Настройка локальной yaml-конфигурации</a></li>
+        <li><a href="#plugins">Полезные плагины</a></li>
+    </ul>
+    <div class="back">
+        <a href="../../" class="back-to-home">На главную</a>
+    </div>
+</section>
+
+<section class="container" id="local_config">
+    <h1>Локальный YML</h1>
+    <p class="no_mb">
+        Для запуска проекта в IntelliJ Idea c другими параметрами (например для локальной БД)
+        можно использовать следующий способ:</p>
+    <p class="tab-1">Рядом с фалом <strong>application.yml</strong>
+        создаем файл <strong>application-local.yml</strong>
+    </p>
+    <p class="no_mb">Сначала будет прочитан первый файл, а потом второй.</p>
+    <p class="no_mb">Совпадающие значения будут перезаписаны.</p>
+    <p>Поэтому в локальном можно писать только, то что надо изменить./p>
+    <ul>
+        <li>Заходим в <strong>Run/Dedug Configurations</strong> (Run&nbsp;=>&nbsp;Edit Configurations...)</li>
+        <li>Закладка <strong>Configuration</strong></li>
+        <li>Поле <strong>Environment variables</strong>
+            пишем <strong>SPRING_PROFILES_ACTIVE=local</strong></li>
+        <li>Сохраняем, запускаем, радуемся</li>
+    </ul>
+    <p>Не забываем поставить <strong>application-local.yml в .gitignore</strong></p>
+</section>
+
+<section class="container" id="plugins">
+    <h1>Плагины</h1>
+    <p>Indent Rainbow</p>
+    <p>Rainbow Brackets (izhangzhihao)</p>
+    <p>Extra Icons (Jonathan Lermitage)</p>
+</section>
+
+</body>
+
+<footer>
+    <div class="footer__text">Алексей Маслов, 2021-2022</div>
+</footer>
+
+</html>

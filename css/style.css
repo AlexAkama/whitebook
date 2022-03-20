@@ -81,18 +81,9 @@ a:hover {
     text-decoration: underline;
 }
 
-.menu {
-    padding-left: 25px;
-}
-
-.menu a {
-    text-decoration: none;
-}
-
-.menu li {
-    font-size: 18px;
-    margin-top: 1em;
-    margin-bottom: 1em;
+ul {
+    padding-left: 20px;
+    margin-bottom: 14px;
 }
 
 td {
@@ -110,6 +101,20 @@ td p, td div {
 
 td div ol {
     margin-left: 40px;
+}
+
+.menu {
+    padding-left: 25px;
+}
+
+.menu a {
+    text-decoration: none;
+}
+
+.menu li {
+    font-size: 18px;
+    margin-top: 1em;
+    margin-bottom: 1em;
 }
 
 .back {
