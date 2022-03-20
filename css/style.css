@@ -159,17 +159,17 @@ p {
 
 .button--to-top {
     opacity: 0.5;
-    border: #00000077 solid 2px;
-    background-color: #00000020;
     position: absolute;
     right: 5px;
     bottom: 5px;
-    padding: 4px 8px;
+    padding: 0;
+    font-weight: bold;
+    border: 20px solid transparent;
+    border-bottom: 20px solid green;
 }
 
 .button--to-top:hover {
     opacity: 1;
-    background-color: #00a82d10;
 }
 
 .bold {
