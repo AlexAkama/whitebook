@@ -26,6 +26,8 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
+    max-width: 840px;
+    margin: 0 auto;
 }
 
 .footer__text {
