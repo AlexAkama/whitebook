@@ -164,11 +164,16 @@ p {
     position: absolute;
     right: 5px;
     bottom: 5px;
+    padding: 4px 8px;
 }
 
 .button--to-top:hover {
     opacity: 1;
     background-color: #00a82d10;
+}
+
+.bold {
+    font-weight: bold;
 }
 
 .important {
@@ -212,4 +217,16 @@ p {
 
 .tab-2 {
     padding-left: 30px;
+}
+
+.bad {
+    color: red;
+}
+
+.good {
+    color: green;
+}
+
+.bad span, .good span {
+    font-weight: bold;
 }
