@@ -109,6 +109,7 @@ p {
     font-weight: bold;
     padding-left: 10px;
     border-left: #00a82d solid 3px;
+    margin-bottom: 14px;
 }
 
 .example {
@@ -141,4 +142,8 @@ p {
 
 .tab-1 {
     padding-left: 15px;
+}
+
+.tab-2 {
+    padding-left: 30px;
 }

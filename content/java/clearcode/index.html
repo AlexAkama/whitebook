@@ -19,7 +19,7 @@
     <ul>
         <li><a href="#guide">GUIDE</a></li>
         <li><a href="#naming">Код и нейминг</a></li>
-        <li>Чистые функции</li>
+        <li><a href="#clear-function">Чистые функции</a></li>
         <li><a href="#dry">Не повторяйся</a></li>
         <li><a href="#boolean">Boolean в методах</a></li>
         <li><a href="#refactoring">Рефакторинг</a></li>
@@ -134,7 +134,63 @@
     </p>
 </section>
 
-<section class="container" id="clear-function"></section>
+<section class="container" id="clear-function">
+    <h1>Чистые функции</h1>
+    <p class="no_mb">В программировании есть понятие чистая функция.</p>
+    <p>Чистая функция это функция удовлетворяющая двум условиями:</p>
+    <div class="important">
+        <ul class="tab-1">
+            <li>При передаче одних и тех же аргументов, она всегда возвращает одно и то же значение. Независимо от
+                внешних
+                условий, времени и т.п.
+            </li>
+            <li>Функция не обладает побочными эффектами (не меняет глобальные переменные, не выводит или принимает текст
+                от
+                пользователя, с жесткого диска или из сети)
+            </li>
+        </ul>
+    </div>
+    <p class="no_mb">Например:</p>
+    <div class="code">
+        <p>class Foo {</p>
+        <p class="tab-1">private static int d = 1;</p>
+        <p class="tab-1">// чистая функция.</p>
+        <p class="tab-1">int pureFunction(int x) {</p>
+        <p class="tab-2">return x > 0 ? x * x : 0;</p>
+        <p class="tab-1">}</p>
+        <p class="tab-1">// не чистая (меняется d)</p>
+        <p class="tab-1">int impureFunction1(int x) {</p>
+        <p class="tab-2">d--;</p>
+        <p class="tab-2">return x > 0 ? x * x : 0;</p>
+        <p class="tab-1">}</p>
+        <p class="tab-1">// тоже не чистая: одинаковые аргументы необязательно </p>
+        <p class="tab-1">// приводят к одинаковому результату (это зависит от d)</p>
+        <p class="tab-1">int impureFunction(int x) {</p>
+        <p class="tab-2">return d > 0 ? x * x : 0;</p>
+        <p class="tab-1">}</p>
+        <p class="tab-1">// тоже не чистая: изменяется внешнее состояние - </p>
+        <p class="tab-1">// - текст вывелся на экран.</p>
+        <p class="tab-1">int anotherImpure(int x) {</p>
+        <p class="tab-2">System.out.println("Method was called");</p>
+        <p class="tab-2">return x;</p>
+        <p class="tab-1">}</p>
+        <p>}</p>
+    </div>
+    <p>
+        С чистыми функциями работать - одно удовольствие. Их очень легко тестировать, отлаживать в дебаггере, а также
+        переиспользовать. Их можно вызывать любое число раз не опасаясь последствий. В чисто-функциональных языках
+        программирования, например в haskel все функции чистые, а код, который работает с вводом-выводом вынесен в
+        отдельные изолированные участки кода (монады).
+    </p>
+    <p>
+        <a href="https://ru.wikipedia.org/wiki/%D0%A7%D0%B8%D1%81%D1%82%D0%BE%D1%82%D0%B0_%D1%84%D1%83%D0%BD%D0%BA%D1%86%D0%B8%D0%B8"
+           target="_blank">
+            Классическое описание
+        </a></p>
+    <p><a href="https://ru.hexlet.io/courses/programming-basics/lessons/pure/theory_unit" target="_blank">
+        Тут видео на эту тему
+    </a></p>
+</section>
 
 <section class="container" id="dry">
     <h1>DRY или "Не повторяйся"</h1>
