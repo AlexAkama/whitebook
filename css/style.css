@@ -105,6 +105,12 @@ p {
     margin-bottom: 14px;
 }
 
+.important {
+    font-weight: bold;
+    padding-left: 10px;
+    border-left: #00a82d solid 3px;
+}
+
 .example {
     color: rgb(182, 41, 212);
 }
