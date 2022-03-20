@@ -71,7 +71,8 @@ h2, h3 {
 .container {
     max-width: 840px;
     margin: 0 auto;
-    padding: 10px;
+    padding: 10px 10px 30px 10px;
+    position: relative;
 }
 
 a:link, a:visited {
@@ -105,6 +106,10 @@ td div ol {
     margin-left: 40px;
 }
 
+p {
+    margin-bottom: 14px;
+}
+
 .menu {
     padding-left: 25px;
 }
@@ -119,25 +124,51 @@ td div ol {
     margin-bottom: 1em;
 }
 
-.back {
+.back-panel {
     text-align: right;
-    margin-bottom: 30px;
+    margin-bottom: 14px;
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
 }
 
-.back-to-home {
+.button {
     cursor: pointer;
-    background-color: #00a82d;
-    border: none;
-    color: #ffffff !important;
     text-decoration: none !important;
     user-select: none;
-    padding: 10px 20px;
+    padding: 5px 20px;
     border-radius: 4px;
     display: inline;
 }
 
-p {
-    margin-bottom: 14px;
+.button--to-home {
+    background-color: #00a82d;
+    border: #00a82d solid 2px;
+    color: #ffffff !important;
+}
+
+.button--to-home:hover {
+    background-color: #00a82dCC;
+}
+
+.button--up {
+    background-color: #00a82d10;
+    color: #00a82d;
+    border: #00a82d solid 2px;
+}
+
+.button--to-top {
+    opacity: 0.5;
+    border: #00000077 solid 2px;
+    background-color: #00000020;
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+}
+
+.button--to-top:hover {
+    opacity: 1;
+    background-color: #00a82d10;
 }
 
 .important {
