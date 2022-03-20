@@ -11,6 +11,10 @@ body {
     line-height: 18px;
 }
 
+section {
+    box-shadow: 0 5px 5px -5px #00a82d;
+}
+
 footer {
     left: 0;
     bottom: 0;
@@ -88,6 +92,7 @@ td div ol {
 
 .back {
     text-align: right;
+    margin-bottom: 30px;
 }
 
 .back-to-home {
