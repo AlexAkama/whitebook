@@ -53,8 +53,11 @@ h1 {
 }
 
 h2 {
-    font-size: 18px;
     text-transform: uppercase;
+}
+
+h2, h3 {
+    font-size: 18px;
     margin-top: 1em;
     margin-bottom: 0.5em;
 }
@@ -69,13 +72,25 @@ h2 {
     padding: 10px;
 }
 
+a:link, a:visited {
+    color: inherit;
+}
+
+a:hover {
+    color: #00a82d;
+    text-decoration: underline;
+}
+
 .menu {
-    max-width: 400px;
     padding-left: 25px;
 }
 
+.menu a {
+    text-decoration: none;
+}
+
 .menu li {
-    font-size: 16px;
+    font-size: 18px;
     margin-top: 1em;
     margin-bottom: 1em;
 }
@@ -106,7 +121,8 @@ td div ol {
     cursor: pointer;
     background-color: #00a82d;
     border: none;
-    color: #ffffff;
+    color: #ffffff !important;
+    text-decoration: none !important;
     user-select: none;
     padding: 10px 20px;
     border-radius: 4px;
