@@ -21,7 +21,6 @@
         <li><a href="#null">Почему нельзя возвращать NULL?</a></li>
     </ul>
     <div class="back-panel">
-        <a href="../" class="button button--up">Назад</a>
         <a href="../../" class="button button--to-home">На главную</a>
     </div>
 </section>
@@ -147,7 +146,7 @@
         <li>
             <p class="bold">Преобразования: map / flatMap</p>
             <p class="no_mb">Для манипуляций значением Optional используйте метод map:</p>
-            <p class="good">opt.map(Account::getAddress).map(String::toUpperCase).orElse("default");</p>
+            <p class="good">opt.map(Account::getAddress).map(String::toUpperCase) .orElse("default");</p>
             <p class="no_mb">flatMap используется, если метод отображения возвращает Optional:</p>
             <p class="good no_mb">Optional&lt;String&gt; getAddress() {…}</p>
             <p class="good">opt.flatMap(Account::getAddress);</p>
