@@ -22,7 +22,7 @@
         <li><a href="#naming">Код и нейминг</a></li>
         <li>Чистые функции</li>
         <li>Не повторяйся</li>
-        <li>Boolean в методах</li>
+        <li><a href="#boolean">Boolean в методах</a></li>
         <li>Рефакторинг</li>
         <li>Комментарии</li>
     </ul>
@@ -31,7 +31,7 @@
     </div>
 </menu>
 
-<section id="guide" class="container">
+<section class="container" id="guide">
     <h1>Google Java Style Guide</h1>
     <p>Очень важно, чтобы код выглядел опрятно и в едином стиле, т.к. это залог успешного взаимодействия внутри и
         между командами разработчиков. Если вы хотите увидеть все правила разом, то прилагаю
@@ -48,7 +48,7 @@
     </p>
 </section>
 
-<section id="naming" class="container">
+<section class="container" id="naming">
     <h1>Код и нейминг</h1>
     <p class="no_mb">Переменные называются существительными</p>
     <p class="no_mb">Нельзя назвать переменные глаголами или начинать с глагола</p>
@@ -120,22 +120,40 @@
         <p class="tab-1">...</p>
         <p>}</p>
     </div>
-
     <p>
         Выбор понятного имени - довольно сложная задача, и иногда, если совершенно не получается придумать имя, то это
         знак того что метод делает слишком много и его следует разбить на более мелкие части.
     </p>
     <p>
         Посмотрите главу 2 в
-        <a href="clean_code_proglib.pdf">этой книжке</a>
+        <a href="clean_code_proglib.pdf" target="_blank">этой книжке</a>
         - она вся про культуру именования
     </p>
     <p>
         кому лень читать -
         <a href="https://www.youtube.com/watch?v=5vsfYifNqzk">смотрите</a>
     </p>
-
 </section>
+
+<section class="container" id="clear-function"></section>
+
+<section class="container" id="dry"></section>
+
+<section class="container" id="boolean">
+    <h1>Boolean в методах</h1>
+    <p class="no_mb">Если
+        <span class="example">boolean</span>
+        переменная передается в метод как аргумент - <strong>"... это зло!!!"</strong></p>
+    <p>Можно использовать на начале разработки, но потом обязательно <strong>рефакторить в ENUM</strong>.</p>
+    <p>Подробности
+        <a href="https://softwareengineering.stackexchange.com/questions/147977/is-it-wrong-to-use-a-boolean-parameter-to-determine-behavior"
+           target="_blank"> читайте тут </a>
+    </p>
+</section>
+
+<section class="container" id="refactoring"></section>
+
+<section class="container" id="comments"></section>
 
 
 </body>
