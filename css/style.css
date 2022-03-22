@@ -117,6 +117,10 @@ p {
     margin-bottom: 14px;
 }
 
+img {
+    max-width: 100%;
+}
+
 .menu {
     padding-left: 25px;
 }

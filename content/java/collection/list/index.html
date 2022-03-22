@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LIST</title>
+    <link rel="stylesheet" href="../../../../css/style.css">
+</head>
+
+<body>
+
+<section class="container">
+    <h1 class="no_mb">Списки</h1>
+    <div class="after-h1"></div>
+    <ul class="menu">
+        <li><a href="#base">Строение списков и основные операции</a></li>
+        <li><a href="#use">Что и когда использовать в коде</a></li>
+    </ul>
+    <div class="back-panel">
+        <a href=".." class="button button--up">Коллекции</a>
+        <a href="../../../../" class="button button--to-home">На главную</a>
+    </div>
+</section>
+
+<section class="container" id="base">
+    <h1>Строение списков и основные операции</h1>
+
+    <hr>
+    <h3>Внутреннее устройство</h3>
+    <p class="no_mb">В сердце <span class="bold">ArrayList</span> лежит массив:</p>
+    <div class="code no_mb">Object[] elementData;</div>
+    <p>Размер массива задаётся в конструкторе:
+        <span class="bold">new ArrayList(50)</span>.
+        Значение по умолчанию — пустой массив.</p>
+
+    <p>Структура <span class="bold">LinkedList</span> чуть сложнее. Каждый элемент оборачивается в класс:</p>
+    <div class="code no_mb">
+        <p>private static class Node {</p>
+        <p class="tab-1">E item;</p>
+        <p class="tab-1">Node next;</p>
+        <p class="tab-1">Node prev;</p>
+        <p>}</p>
+    </div>
+    <p>Т.е сам элемент списка + указатели на следующий и предыдущий элемент.</p>
+    <p class="no_mb">В объекте <span class="bold">LinkedList</span>
+        хранится ссылка на первый и последний элемент списка:</p>
+    <div class="code">
+        <p class="tab-1">Node first;</p>
+        <p class="tab-1">Node last;</p>
+    </div>
+
+    <hr>
+    <h3>Доступ по индексу: list.get(i) или list.set(i)</h3>
+    <p><span class="bold">ArrayList</span> просто обращается по индексу массива.</p>
+    <p><span class="bold">LinkedList</span> идёт долгим путём. Берёт элемент
+        <span class="bold">first</span> идёт по ссылкам, пока не дойдёт до i-го элемента. Затем либо
+        возвращает значение, либо обновляет.</p>
+    <p class="no_mb">Кажется, что второй подход гораздо дольше. И это правда!</p>
+    <p>Чтобы получить 5000-ый элемент в списке из 10к элементов ArrayList тратит 6 наносекунд, а LinkedList — 8750. Чем
+        больше элементов, тем больше разница.</p>
+
+    <hr>
+    <h3>Вставка в середину списка</h3>
+    <p class="bold">ArrayList</p>
+
+    <p>Допустим, для списка <span class="good bold">[X][X][X][X]</span> вызвали метод
+        <span class="bold">add(2, <span class="bad">[O]</span>)</span></p>
+    <p class="no_mb">Создаётся новый массив размером +1:</p>
+    <p class="bold">[_][_][_][_][_]</p>
+    <p class="no_mb"> Все элементы старого списка копируются туда так, чтобы образовалось свободное место для нового
+        элемента:</p>
+    <p class="good bold">[X][X][_][X][X]</p>
+    <p class="no_mb">Обновляем элемент:</p>
+    <p class="good bold">[X][X]<span class="bad">[O]</span>[X][X]</p>
+
+    <p class="bold">LinkedList</p>
+
+    <p>Рассмотрим тот же метод <span class="bold">add(2, <span class="bad">[O]</span>)</span>:</p>
+    <ul>
+        <li>Создаём элемент списка с двумя ссылками: <span class="bad bold">←[O]→</span></li>
+        <li>Идём до текущего элемента 2 и получаем ссылки на элементы 1 и 3</li>
+        <li>У элемента 1 обновляем ссылку на next, у 3 — на prev</li>
+    </ul>
+    <p>Само добавление простое, но перед ним нужно пройтись по списку. Это долго, поэтому LinkedList и здесь проигрывает
+        по скорости.</p>
+
+    <hr>
+    <h3>Заполнение списка</h3>
+    <div class="code">
+        <p>List&lt;Integer&gt; list = new ArrayList<>();</p>
+        <p>for (int i = 0; i < 50_000; i++) {</p>
+        <p class="tab-1">list.add()</p>
+        <p>}</p>
+    </div>
+    <div class="code">
+        <p>List&lt;Integer&gt; list = new LinkedList<>();</p>
+        <p>for (int i = 0; i < 50_000; i++) {</p>
+        <p class="tab-1">list.add()</p>
+        <p>}</p>
+    </div>
+    <p>Вопрос: какой код выполниться быстрее?</p>
+
+    <p class="bold">ArrayList</p>
+    <ul>
+        <li>Создаётся пустой массив</li>
+        <li>При первом add размер увеличивается до 10</li>
+        <li> При добавлении 11 элемента создаётся новый массив размером 15. Предыдущие элементы копируются, затем
+            добавляется новый
+        </li>
+        <li>И так далее: когда места не хватает, создаётся массив в 1.5 раза больше</li>
+    </ul>
+    <p class="bold">LinkedList</p>
+    <p>У текущего tail элемента обновляется ссылка next. Новый объект записывается как tail.</p>
+    <p class="bold">Что работает быстрее?</p>
+    <p>Интуиция подсказывает, что LinkedList, так как для ArrayList нужно часто переносить элементы в новый массив. На
+        самом деле операции копирования выполняются быстро, так как элементы лежат в памяти рядом, а у процессоров
+        хорошая поддержка этой операции.</p>
+    <p>Бенчмарки показывают, что до 100к элементов разницы нет, а потом побеждает ArrayList. А при миллионе элементов
+        ArrayList копируется реже и в итоге заполняется в два раза быстрее.</p>
+    <p> Внизу таблица JMH бенчмарков с моего компьютера. На других железках результаты могут отличаться.</p>
+    <p>
+        <img src="img/benchmark.png" alt="Таблица бенчмарков">
+    </p>
+
+    Ответ на вопрос: для 50к элементов время почти одинаковое.
+
+    <a href="#" class="button button--to-top"></a>
+</section>
+
+<section class="container" id="use">
+    <h1>Что и когда использовать в коде</h1>
+
+    <a href="#" class="button button--to-top"></a>
+</section>
+
+<footer>
+    <div class="footer__text">Алексей Маслов, 2021-2022</div>
+</footer>
+
+</body>
+
+</html>
