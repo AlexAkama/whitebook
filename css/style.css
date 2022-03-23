@@ -241,3 +241,38 @@ img {
 .bad span, .good span {
     font-weight: bold;
 }
+
+.schema {
+    border-spacing: 0 10px;
+}
+
+.schema td {
+    padding: 0 15px;
+    position: relative;
+    vertical-align: middle;
+}
+
+.schema .p0 {
+    padding: 0 5px;
+    font-size: smaller;
+    font-weight: bold;
+    color: #00a82d;
+}
+
+.schema td:not(:last-child) {
+    border-right: #00a82d solid 1px;
+}
+
+.schema td:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    border: #00a82d solid 1px;
+    height: 0;
+    width: 10px;
+}
+
+.schema .p0:before {
+    content: none;
+}
