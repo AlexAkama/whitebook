@@ -152,13 +152,13 @@ img {
     display: inline;
 }
 
-.button--to-home {
+.button--home {
     background-color: #00a82d;
     border: #00a82d solid 2px;
     color: #ffffff !important;
 }
 
-.button--to-home:hover {
+.button--home:hover {
     background-color: #00a82dCC;
 }
 
@@ -168,7 +168,7 @@ img {
     border: #00a82d solid 2px;
 }
 
-.button--to-top {
+.button--top {
     opacity: 0.5;
     position: absolute;
     right: 5px;
@@ -179,7 +179,7 @@ img {
     border-bottom: 20px solid green;
 }
 
-.button--to-top:hover {
+.button--top:hover {
     opacity: 1;
 }
 
@@ -268,7 +268,7 @@ img {
     position: absolute;
     top: 50%;
     left: 0;
-    border: #00a82d solid 1px;
+    border-top: #00a82d solid 2px;
     height: 0;
     width: 10px;
 }
