@@ -194,6 +194,11 @@ img {
     margin-bottom: 14px;
 }
 
+.flex {
+    display: flex;
+    justify-content: space-between;
+}
+
 .example {
     color: rgb(182, 41, 212);
 }

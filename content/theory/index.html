@@ -20,6 +20,7 @@
         <li><a href="#oop">Основы ОПП</a></li>
         <li><a href="#data"></a>Структуры данных</li>
         <li><a href="#bigo">Big O</a></li>
+        <li><a href="#solid">SOLID</a></li>
         <li><a href="#patterns">Паттерны проектирования</a></li>
         <li><a href="#regex">Регулярные выражения</a></li>
     </ul>
@@ -42,6 +43,17 @@
     <p></p>
     <p><strong>HTML</strong> (HyperText Markup Language) — язык гипертекстовой разметки</p>
     <p><strong>CSS</strong> (Cascading Style Sheets) — каскадные таблицы стилей</p>
+    <hr>
+    <p></p>
+    <p><strong>API</strong> (Application Programming Interface)</p>
+    <p><strong>REST</strong> (Representational State Transfer) - дословно: передача представительского состояния;<br>определенный набор правил взаимодействия API.</p>
+    <p class="no_mb"><strong>RESTful API</strong> - это API которое следует всем правилам REST.</p>
+    <p>Кратко: RESTful API позволяет делать CRUD операции над всеми бизнес-объектами в системе.</p>
+    <p><strong>CRUD</strong> - аббревиатура 4-х базовых операций, которые можно произвести с объектом.</p>
+    <p><strong>CLI</strong> (Command Line Interface) - набор команд для работы через терминал.</p>
+    <hr>
+    <h3>Микросервисы</h3>
+
     <a href="#" class="button button--top"></a>
 </section>
 
@@ -175,19 +187,76 @@
     <a href="#" class="button button--top"></a>
 </section>
 
+<section class="container" id="solid">
+    <h1 class="no_mb">SOLID</h1>
+    <p>Принципы ООП и проектирования</p>
+    <a href="#" class="button button--top"></a>
+
+    <p class="important no_mb">Принцип единой ответственности<br> Single Responsibility Principle</p>
+    <p>Для каждого класса должно быть определено единственное назначение. Все ресурсы необходимые для его осуществления
+        должны быть инкапсулированы в этот класс и подчинены только этой задаче.</p>
+
+    <p class="important no_mb">Принцип открытости/закрытости<br>Open-close Principle</p>
+    <p>Программные сущности должны быть открыты для расширения, но закрыты для модификации.</p>
+
+    <p class="important no_mb">Принцип подстановки Барбары Лисков<br>Liskov Substitution Principle</p>
+    <p>Производный класс должен быть взаимозаменяем с родительским.</p>
+
+    <p class="important no_mb">Принцип разделения интерфейса<br>Interface Segregation Principle</p>
+    <p>Много интерфейсов, специально предназначенных для клиентов, лучше, чем один интерфейс общего назначения.</p>
+
+    <p class="important no_mb">Принцип инверсии зависимостей<br>Dependency Inversion Principle</p>
+    <p>Зависимость на абстракции. Нет зависимости на что-то конкретное.</p>
+
+</section>
+
 <section class="container" id="patterns">
     <h1>Паттерны проектирования</h1>
     <p class="no_mb"><span class="bold">Паттерн</span> (шаблон) проектирования
         (рассматриваем только вариант для программирования).</p>
     <p>Способ организации программного кода, представляющего собой решение некоторой часто возникающей проблемы
         проектирования.</p>
-    <p>Паттерны проектирования:</p>
+    <p class="no_mb">Паттерны проектирования:</p>
     <ul>
-        <li>Порождающие (creational)</li>
-        <li>Структурные (structural)</li>
-        <li>Поведенческие (behavioral)</li>
+        <li><strong>Порождающие</strong>(creational) - удобное и безопасное создание новых объектов;</li>
+        <li><strong>Структурные</strong>(structural) - построение, удобной в поддержке, иерархии классов;</li>
+        <li><strong>Поведенческие</strong>(behavioral) - эффективное и безотказное взаимодействие;</li>
     </ul>
-
+    <hr>
+    <h3></h3>
+    <div class="flex" style="max-width: 500px;">
+        <div>
+            <p class="important">Порождающие</p>
+            <p>Фабричный метод</p>
+            <p>Абстрактная ф-ка</p>
+            <p>Строитель</p>
+            <p>Прототип</p>
+            <p>Одиночка</p>
+        </div>
+        <div>
+            <p class="important">Структурные</p>
+            <p>Адаптер</p>
+            <p>Мост</p>
+            <p>Компоновщик</p>
+            <p>Декоратор</p>
+            <p>Фасад</p>
+            <p>Легковес</p>
+            <p>Заместитель</p>
+        </div>
+        <div>
+            <p class="important">Поведенческие</p>
+            <p>Итератор</p>
+            <p>Посредник</p>
+            <p>Стратегия</p>
+            <p>Наблюдатель</p>
+            <p>Команда</p>
+            <p>Цепочка...</p>
+            <p>Снимок</p>
+            <p>Состояние</p>
+            <p>Шаблон</p>
+            <p>Посетитель</p>
+        </div>
+    </div>
     <hr>
     <h3>ПОРОЖДАЮЩИЕ</h3>
     <p class="bold no_mb">Паттерн Singleton (одиночка)</p>
