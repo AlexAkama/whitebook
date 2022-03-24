@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Core</title>
+    <link rel="stylesheet" href="../../../css/style.css">
+</head>
+
+<body>
+
+<section class="container">
+    <h1 class="no_mb">Java Core</h1>
+    <div class="after-h1">Основа основ...</div>
+    <ul class="menu">
+        <li><a href="#primitives">Примитивы</a></li>
+        <li><a href="#object">Object</a></li>
+        <li><a href="#h&e">HashCode и Equals</a></li>
+        <li><a href="#s&ds">Сеарилизация и Десериализация</a></li>
+        <li><a href="#convert">Преобразование и приведение</a></li>
+    </ul>
+    <div class="back-panel">
+        <a href="../" class="button button--up">Java</a>
+        <a href="../../../" class="button button--home">На главную</a>
+    </div>
+</section>
+
+<section class="container" id="primitives">
+    <h1>Примитивы</h1>
+    <table class="schema" aria-label="Primitives">
+        <tr>
+            <th id="primitives-table"></th>
+        </tr>
+        <tr>
+            <td rowspan="10">Object</td>
+            <td rowspan="8">Number</td>
+            <td class="p0">Numeric types</td>
+        </tr>
+        <tr>
+            <td>Byte</td>
+        </tr>
+        <tr>
+            <td>Short</td>
+        </tr>
+        <tr>
+            <td>Long</td>
+        </tr>
+        <tr>
+            <td>Integer</td>
+        </tr>
+        <tr>
+            <td class="p0">Floating-Point Types</td>
+        </tr>
+        <tr>
+            <td>Double</td>
+        <tr>
+            <td>Float</td>
+        </tr>
+        <tr>
+            <td>Character</td>
+        </tr>
+        <tr>
+            <td>Boolean</td>
+        </tr>
+    </table>
+    <a href="#" class="button button--top"></a>
+</section>
+
+<section class="container" id="object">
+    <h1>Object</h1>
+    <p class="bold">Методы</p>
+    <table class="tab-1 test" aria-label="object-methods">
+        <tr>
+            <th id="object-methods"></th>
+        </tr>
+        <tr>
+            <td class="bold">hashCode()</td>
+            <td class="tab-1" rowspan="3" style="vertical-align: middle;">Три часто используемых метода</td>
+        </tr>
+        <tr>
+            <td class="bold">equals()</td>
+        </tr>
+        <tr>
+            <td class="bold">toString()</td>
+        </tr>
+        <tr>
+            <td class="bold">notify()</td>
+            <td class="tab-1">пробуждает поток</td>
+        </tr>
+        <tr>
+            <td class="bold">notifyAll()</td>
+            <td class="tab-1">пробуждает все потоки на мониторе</td>
+        </tr>
+        <tr>
+            <td class="bold">wait()</td>
+            <td class="tab-1">останавливает поток (засыпает)</td>
+        </tr>
+        <tr>
+            <td class="bold">getClass()</td>
+            <td class="tab-1">объект с именем класса</td>
+        </tr>
+        <tr>
+            <td class="bold">clone()</td>
+            <td class="tab-1">копия</td>
+        </tr>
+        <tr>
+            <td class="bold">finalize()</td>
+            <td class="tab-1">вызывается непосредственно перед удалением объекта сборщиком мусора</td>
+        </tr>
+    </table>
+    <a href="#" class="button button--top"></a>
+</section>
+
+<section class="container" id="h&e">
+    <h1>HashCode & Equals</h1>
+    <p class="no_mb"><strong>HashCode</strong> - Общий контракт:</p>
+    <ul>
+        <li>одно и то же число каждый раз когда объект не меняется;</li>
+        <li>
+            если два объекта равны через вызов equals(),
+            то вызов у них hashCode() должен приводить к одному результату;
+        </li>
+        <li>если hashCode() у объектов разные, то объекты разные;</li>
+    </ul>
+    <p class="no_mb"><strong> Equals</strong> - Основные принципы:</p>
+    <ol>
+        <li>
+            <p class="no_mb">Рефлексивность</p>
+            <div class="code no_mb">
+                <p>x.equals(x) = true</p>
+            </div>
+        </li>
+        <li>
+            <p class="no_mb">Симметричность</p>
+            <div class="code no_mb">
+                <p>x.equals(y) = true</p>
+                <p>y.equals(x) = true</p>
+            </div>
+        </li>
+        <li>
+            <p class="no_mb">Транзитивность</p>
+            <div class="code no_mb">
+                <p>x.equals(y) = true</p>
+                <p>y.equals(z) = true</p>
+                <p>x.equals(z) = true</p>
+            </div>
+        </li>
+        <li>
+            <p class="no_mb">Постоянство</p>
+            <div class="code no_mb">
+                <p>Результат одно и то же число пока объект не изменится</p>
+            </div>
+        </li>
+        <li>
+            <p class="no_mb">Если объекта нет - ложь</p>
+            <div class="code no_mb">
+                <p>x.equals(null) = false</p>
+            </div>
+        </li>
+    </ol>
+    <a href="#" class="button button--top"></a>
+
+</section>
+
+<section class="container" id="s&ds">
+    <h1>Сеарилизация & Десериализация</h1>
+    <p class="no_mb"><strong>Сеарилизация</strong> - процесс преобразования объекта в поток байтов для хранения.</p>
+    <p><strong>Десереализация</strong> - процесс извлечения объекта из потока байтов.</p>
+    <p class="no_mb">
+        Объект должен реализовывать интерфейс
+        <strong>Serializable</strong>(интерфейс-маркер)
+        либо
+        <strong>Externalizable</strong>(переопределяем readObject()/writeObject())
+    </p>
+    <p>Поля класса, если они объекты, так же должны реализовывать данные интерфейсы</p>
+    <p class="important">Поля
+        <span class="example">transient</span>
+        и
+        <span class="example">static</span>
+        НЕ СЕРЕАЛИЗУЮТСЯ (не&nbsp;сохраняются)</p>
+    <p class="no_mb">Есть исключение:</p>
+    <p class="tab-1 bold">private static final long serialVersionUID</p>
+    <p class="no_mb">При десереализации:</p>
+    <table aria-label="deseralization">
+        <tr>
+            <th id="deseralization"></th>
+        </tr>
+        <tr>
+            <td class="tab-1">transient</td>
+            <td class="tab-1">- восстанавливаются значения по умолчанию, ссылочные -> null;</td>
+        </tr>
+        <tr>
+            <td class="tab-1">static</td>
+            <td class="tab-1">- восстанавливаются по умолчанию в случае отсутствия объекта в области видимости. Иначе
+                значения актуальные в данный момент;
+            </td>
+        </tr>
+    </table>
+    <p>Для записи объекта используется метод writeObject() класса ObjectOutputStream,
+        для чтения readObject() класса ObjectInputStream</p>
+    <p class="important">При десереализации данные заполняются из потока, конструктор не используется.</p>
+    <a href="#" class="button button--top"></a>
+</section>
+
+<section class="container" id="convert">
+    <h1>Преобразование и приведение примитивных&nbsp;типов</h1>
+    <p class="no_mb">2 типа преобразований:</p>
+    <ul>
+        <li><strong>Автоматическое</strong>(не явное) расширяющее преобразование;</li>
+        <li><strong>Приведение типов</strong>(явное) сужающее преобразование;</li>
+    </ul>
+    <a href="#" class="button button--top"></a>
+</section>
+
+<footer>
+    <div class="footer__text">Алексей Маслов, 2021-2022</div>
+</footer>
+
+</body>
+
+</html>
