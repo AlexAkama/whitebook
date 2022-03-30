@@ -96,6 +96,10 @@ ol, ul {
     margin-bottom: 14px;
 }
 
+li li {
+    list-style-type: "- ";
+}
+
 td {
     vertical-align: top;
     padding-bottom: 10px;
