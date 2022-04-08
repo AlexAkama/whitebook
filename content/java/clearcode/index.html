@@ -57,9 +57,9 @@
     </div>
     <p>
         Методы всегда следует называть с маленькой буквы (кроме конструкторов) и в названии должен быть глагол -
-        <span class="example">sendMail</span>,
-        <span class="example">getAge</span>,
-        <span class="example">calculateSalary</span> и т.п.
+        <span class="example--word">sendMail</span>,
+        <span class="example--word">getAge</span>,
+        <span class="example--word">calculateSalary</span> и т.п.
     </p>
     <p class="no_mb">
         Если метод возвращает сложную структуру вроде Map, то в методе следует пояснить, что в ключах и в значениях,
@@ -72,17 +72,17 @@
         <p>}</p>
     </div>
     <p class="no_mb">Если метод печатает что-то на экран, можно начать его со слова
-        <span class="example">print</span>:
+        <span class="example--word">print</span>:
     </p>
     <div class="code">
         <p>public void printAge() {</p>
         <p class="tab-1">System.out.println("My age is " + age);</p>
         <p>}</p>
     </div>
-    <p class="no_mb">Метод-геттер, возвращающий <span class="example">boolean</span> принято называть с префиксом
-        <span class="example">is</span>
+    <p class="no_mb">Метод-геттер, возвращающий <span class="example--word">boolean</span> принято называть с префиксом
+        <span class="example--word">is</span>
         или
-        <span class="example">has</span>.
+        <span class="example--word">has</span>.
         Пример:</p>
     <div class="code">
         <p>boolean isAlive() {</p>
@@ -108,7 +108,7 @@
     </div>
     <p>
         Слово
-        <span class="example">check</span>
+        <span class="example--word">check</span>
         очень перегруженное. Из имени совершенно не ясно что делает проверка, и что будет если она не
         пройдет.
     </p>
@@ -211,7 +211,7 @@
 <section class="container" id="boolean">
     <h1>Boolean в методах</h1>
     <p class="no_mb">Если
-        <span class="example">boolean</span>
+        <span class="example--word">boolean</span>
         переменная передается в метод как аргумент - <strong>"... это зло!!!"</strong></p>
     <p>Можно использовать на начале разработки, но потом обязательно <strong>рефакторить в ENUM</strong>.</p>
     <p>Подробности

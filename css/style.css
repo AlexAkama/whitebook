@@ -199,7 +199,11 @@ img {
     justify-content: space-between;
 }
 
-.example {
+.example{
+    font-size: smaller;
+}
+
+.example--word {
     color: rgb(182, 41, 212);
 }
 
@@ -309,7 +313,7 @@ img {
 }
 
 .navi-button:after {
-    font-size: xxx-large;
+    font-size: 48px;
     position: absolute;
     top: -2px;
 }
