@@ -125,15 +125,11 @@ img {
     max-width: 100%;
 }
 
-.menu {
-    padding-left: 25px;
-}
-
 .menu a {
     text-decoration: none;
 }
 
-.menu li {
+.menu li, .menu tr {
     font-size: 18px;
     margin-top: 1em;
     margin-bottom: 1em;
