@@ -281,3 +281,43 @@ img {
 .schema .p0:before {
     content: none;
 }
+
+.navi {
+    display: flex;
+    justify-content: space-between;
+    color: #00a82d;
+    padding: 30px 10px 10px;
+    font-size: large;
+}
+
+.navi-button {
+    opacity: 0.5;
+    right: 5px;
+    bottom: 5px;
+    padding: 0 30px;
+    font-weight: bold;
+    position: relative;
+    text-transform: uppercase;
+    line-height: 28px;
+}
+
+.navi-button:hover {
+    opacity: 1;
+    cursor: pointer;
+}
+
+.navi-button:after {
+    font-size: xxx-large;
+    position: absolute;
+    top: -2px;
+}
+
+.navi--prev:after {
+    content: '◀';
+    left: 0;
+}
+
+.navi--next:after {
+    content: '▶';
+    right: 0;
+}
