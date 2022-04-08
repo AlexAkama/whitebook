@@ -85,7 +85,7 @@ a:hover {
 }
 
 ol {
-    list-style-position: inside;
+    padding-left: 32px;
 }
 
 ul {
