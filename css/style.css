@@ -297,6 +297,7 @@ img {
     padding: 0 30px;
     font-weight: bold;
     position: relative;
+    text-decoration: none;
     text-transform: uppercase;
     line-height: 28px;
 }
@@ -304,6 +305,7 @@ img {
 .navi-button:hover {
     opacity: 1;
     cursor: pointer;
+    text-decoration: underline;
 }
 
 .navi-button:after {
