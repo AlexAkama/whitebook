@@ -59,7 +59,7 @@ h2 {
 }
 
 h2, h3 {
-    font-size: 18px;
+    font-size: 24px;
     margin-top: 1em;
     margin-bottom: 0.5em;
 }
@@ -125,6 +125,10 @@ img {
     max-width: 100%;
 }
 
+.image-box {
+    text-align: center;
+}
+
 .menu a {
     text-decoration: none;
 }
@@ -181,6 +185,26 @@ img {
     opacity: 1;
 }
 
+.link-to-source {
+    font-size: smaller;
+    text-decoration: none;
+    position: relative;
+    padding-left: 20px;
+}
+
+.link-to-source:before {
+    position: absolute;
+    top: 3px;
+    left: 0;
+    content: '';
+    width: 15px;
+    height: 15px;
+    background-image: url("img/book.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
 .bold {
     font-weight: bold;
 }
@@ -197,7 +221,7 @@ img {
     justify-content: space-between;
 }
 
-.example{
+.example {
     font-size: smaller;
     color: darkgrey;
 }
