@@ -96,6 +96,10 @@ ol, ul {
     margin-bottom: 14px;
 }
 
+li p {
+    margin-bottom: 0;
+}
+
 li li {
     list-style-type: "− ";
 }
@@ -252,6 +256,16 @@ img {
 
 .code p {
     margin: 0;
+}
+
+.code-word {
+    font-family: 'Monaco', 'Menlo', 'Consolas', 'Courier New', monospace;
+    padding: 0 4px;
+    color: rgb(51, 51, 51);
+    border-radius: 4px;
+    background-color: rgb(251, 250, 248);
+    border: 1px solid rgba(0, 0, 0, 0.14902);
+    white-space: nowrap;
 }
 
 .tab-1 {
