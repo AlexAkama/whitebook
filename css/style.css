@@ -321,7 +321,6 @@ img {
     opacity: 0.5;
     right: 5px;
     bottom: 5px;
-    padding: 0 30px;
     font-weight: bold;
     position: relative;
     text-decoration: none;
@@ -339,6 +338,15 @@ img {
     font-size: 48px;
     position: absolute;
     top: -2px;
+}
+
+.navi--prev {
+    padding-left: 30px;
+}
+
+.navi--next {
+    text-align: right;
+    padding-right: 30px;
 }
 
 .navi--prev:after {
