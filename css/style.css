@@ -133,6 +133,17 @@ img {
     text-align: center;
 }
 
+.update-time {
+    right: 10px;
+    top:0;
+    font-size: xx-small;
+    color: darkgrey;
+}
+
+.update-time:before {
+    content: 'Обновлено: ';
+}
+
 .menu a {
     text-decoration: none;
 }
