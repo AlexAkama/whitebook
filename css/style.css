@@ -223,6 +223,11 @@ img {
 .flex {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.min-w-150 {
+    min-width: 150px;
 }
 
 .example {
