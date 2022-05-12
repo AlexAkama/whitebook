@@ -138,6 +138,7 @@ img {
     top:0;
     font-size: xx-small;
     color: darkgrey;
+    white-space: nowrap;
 }
 
 .update-time:before {
@@ -235,6 +236,9 @@ img {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+}
+.min-w-75 {
+    min-width: 75px;
 }
 
 .min-w-150 {

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL COURSE</title>
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+
+<section class="container">
+    <h1 class="no_mb">JAVA SQL</h1>
+    <div class="after-h1">Записки по курсу
+        "SQL для начинающих: С нуля до сертификата Oracle "
+    </div>
+    <ul class="menu">
+        <li><a href="#chapter01">1. Введение в SQL</a></li>
+        <li><a href="#chapter02">2. Знакомство с SELECT</a></li>
+    </ul>
+    <div class="back-panel">
+        <a href="../../" class="button button--home">На главную</a>
+    </div>
+</section>
+
+<section class="container" id="chapter01">
+    <h1>Раздел 1. Введение&nbsp;в&nbsp;SQL <span class="update-time">15.05.2022 22:26</span></h1>
+    <p>
+        <strong>SQL (Structured Query Language)</strong>
+        - Язык структурированных запросов.
+    </p>
+    <p class="no_mb">
+        Один из инструментов работы с БД -
+        <strong>SQL Developer</strong>
+    </p>
+    <p>
+        <a class="link-to-source" href="https://www.oracle.com/tools/downloads/sqldev-downloads.html">скачать</a>
+    </p>
+    <p class="important">
+        БД - совокупность данных, которые хранятся по определенным правилам и используются для удовлетворения
+        информационных потребностей пользователей.
+    </p>
+    <p class="important">
+        Реляционная БД - это, где вся информация предоставляется в виде таблиц.
+    </p>
+    <p class="important no_mb">
+        Нормализация — это процесс организации данных в базе данных, включающий создание таблиц и установление отношений
+        между ними в соответствии с правилами, которые обеспечивают защиту данных и делают базу данных более гибкой,
+        устраняя избыточность и несогласованные зависимости.
+    </p>
+    <p>
+        <a class="link-to-source"
+           href="https://docs.microsoft.com/ru-ru/office/troubleshoot/access/database-normalization-description">
+            Источник
+        </a>
+    </p>
+
+    <p class="example">
+        Еще существуют, например, иерархические БД
+    </p>
+
+    <hr>
+    <h3>SQL КОМАНДЫ</h3>
+    <p class="no_mb"><strong>DML</strong> - Data Manipulation Language</p>
+    <p class="example">Предназначены для манипуляции данными</p>
+    <p class="no_mb"><strong>DDL</strong> - Data Definition Language</p>
+    <p class="example">Предназначены для определения структуры БД и работы с объектами (CRUD)</p>
+    <p class="no_mb"><strong>TCL</strong> - Transaction Control Language</p>
+    <p class="example">Предназначены для реализации и управления транзакциями</p>
+    <p class="no_mb"><strong>DCL</strong> - Data Control Language</p>
+    <p class="example">Предназначены определения доступа к данным</p>
+    <p>
+        <a class="link-to-source" href="https://info-comp.ru/what-is-ddl-dml-dcl-tcl">источник</a>
+    </p>
+    <div class="flex" style="max-width: 500px;">
+        <div class="min-w-75">
+            <p class="important">DML</p>
+            <p>SELECT</p>
+            <p>INSERT</p>
+            <p>UPDATE</p>
+            <p>DELETE</p>
+            <p>MERGE</p>
+        </div>
+        <div class="min-w-75">
+            <p class="important">DDL</p>
+            <p>CREATE</p>
+            <p>ALTER</p>
+            <p>DROP</p>
+            <p>RENAME</p>
+            <p>TRUNCATE</p>
+        </div>
+        <div class="min-w-75">
+            <p class="important">TCL</p>
+            <p>COMMIT</p>
+            <p>ROLLBACK</p>
+            <p>SAVEPOINT</p>
+        </div>
+        <div class="min-w-75">
+            <p class="important">DCL</p>
+            <p>GRANT</p>
+            <p>REVOKE</p>
+        </div>
+    </div>
+    <p class="example">Это далеко не все команды...</p>
+
+    <hr>
+    <h3>ТИПЫ ДАННЫХ</h3>
+    <p class="important">
+        Тип данных - это множество допустимых значений этих данных, а также совокупность операция над ними.
+    </p>
+
+    <a href="#" class="button button--top"></a>
+</section>
+
+<section class="container" id="chapter02">
+    <h1>Раздел 2. Знакомство&nbsp;с&nbsp;SELECT</h1>
+
+    <a href="#" class="button button--top"></a>
+</section>
+
+<footer>
+    <div class="footer__text">Алексей Маслов, 2021-2022</div>
+</footer>
+
+</body>
+
+</html>
