@@ -16,17 +16,17 @@
     <div class="after-h1">Записки по курсу
         "SQL для начинающих: С нуля до сертификата Oracle "
     </div>
-    <ul class="menu">
-        <li><a href="#chapter01">1. Введение в SQL</a></li>
-        <li><a href="#chapter02">2. Знакомство с SELECT</a></li>
-    </ul>
+    <ol class="menu">
+        <li><a href="#chapter01">Введение в SQL</a></li>
+        <li><a href="#chapter02">Знакомство с SELECT</a></li>
+    </ol>
     <div class="back-panel">
         <a href="../../" class="button button--home">На главную</a>
     </div>
 </section>
 
 <section class="container" id="chapter01">
-    <h1>Раздел 1. Введение&nbsp;в&nbsp;SQL <span class="update-time">15.05.2022 22:26</span></h1>
+    <h1>Раздел 1. Введение&nbsp;в&nbsp;SQL <span class="update-time">13.05.2022 12:43</span></h1>
     <p>
         <strong>SQL (Structured Query Language)</strong>
         - Язык структурированных запросов.
@@ -113,8 +113,39 @@
     <p class="important">
         Тип данных - это множество допустимых значений этих данных, а также совокупность операция над ними.
     </p>
-
+    <h4>Числовые типы</h4>
+    <p>INTEGER</p>
+    <p class="no_mb">NUMBER(p,s)</p>
+    <p class="example">
+        p(precision) - общее максимальное кол-во цифр
+        <br>s(scale) - сколько из общего отводится на дробную часть
+        <br>Важно! Кол-во на целую часть = p - s
+    </p>
+    <h4>Алфавитно-цифровые типы</h4>
+    <p class="no_mb">CHAR(length)</p>
+    <p class="example">Фиксированная длина</p>
+    <p class="no_mb">VARCHAR2(size)</p>
+    <p class="example">Переменная длинна</p>
     <a href="#" class="button button--top"></a>
+    <h4>Типы даты и времени</h4>
+    <p class="no_mb">DATE</p>
+    <p class="example">Содержит информацию о голе, месяце, дне, часе, минуте, секунде.</p>
+    <p class="no_mb">TIMESTAMP(f)</p>
+    <p class="example">Содержит информацию о голе, месяце, дне, часе, минуте, секунде,
+        <strong>долях секунды</strong> (f - кол-во десятичных знаков)
+    </p>
+    <h4>Тип NULL</h4>
+    <p class="no_mb"><strong>NULL</strong> - это отсутствие данных.</p>
+    <p class="example">0, пробел или строка 'null' - это не null. Они занимают место в памяти.
+        <br>Результат арифметических операций с null - всегда null.</p>
+    <hr>
+    <h3>Команда DESCRIBE</h3>
+    <p class="example"><strong>Data Dictionary</strong> - место где Oracle хранит данные о таблицах. Нужна для DDL.</p>
+    <div class="code no_mb bold">
+        <span class="example--word">DESC</span>RIBE SCHEMA.<span class="example--word">TABLE_NAME</span>
+    </div>
+    <p class="example">Вывод данных о структуре таблице (имя, тип)</p>.
+
 </section>
 
 <section class="container" id="chapter02">
