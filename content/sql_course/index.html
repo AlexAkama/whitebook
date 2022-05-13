@@ -150,6 +150,92 @@
 
 <section class="container" id="chapter02">
     <h1>Раздел 2. Знакомство&nbsp;с&nbsp;SELECT</h1>
+    <hr>
+    <h3>Фундаментальные концепции</h3>
+    <p><strong>PROJECTION</strong> - выбор столбцов из таблицы.</p>
+    <p><strong>SELECTION</strong> - выбор строк из таблицы.</p>
+    <p><strong>JOINING</strong> - объединение таблиц.</p>
+    <hr>
+    <h3>Команда SELECT</h3>
+    <div class="code bold">
+        <span class="example--word">SELECT * FROM&nbsp;table_name;</span>
+        <span class="example">//&nbsp;базовый синтаксис</span>
+    </div>
+    <div class="code bold">
+        <span class="example--word">SELECT column(s) FROM&nbsp;table_name;</span>
+        <span class="example">//&nbsp;projection</span>
+    </div>
+    <hr>
+    <h3>Оператор DISTINCT</h3>
+    <p>Выбор уникальных значений (сочетаний).</p>
+    <div class="code bold">
+        <span class="example--word">SELECT </span>
+        <span>DISTINCT </span>
+        <span class="example--word"> column(s) FROM&nbsp;table_name;</span>
+    </div>
+    <p class="important">Если столбцов несколько, то выводится уникальные сочетания.</p>
+    <hr>
+    <h3>Выражения в Select list</h3>
+    <p class="no_mb"><strong>Select list</strong> - это то что мы выбираем.</p>
+    <div class="code">
+        <span class="example--word bold">SELECT </span>
+        <span class="example--word">{Select list}</span>
+        <span class="example--word bold"> FROM&nbsp;table_name;</span>
+    </div>
+    <div class="code bold">
+        <span class="example--word">SELECT column(s), expression(s) FROM&nbsp;table_name;</span>
+    </div>
+    <p>Оператор конкатенации - ||</p>
+    <hr>
+    <h3>Alias (псевдоним)</h3>
+    <p><strong>Alias</strong>(псевдоним) - альтернативное имя для столбца или выражения.</p>
+    <div class="code bold">
+        <span class="example--word">SELECT column(s)</span>
+        <span>alias</span><span class="example--word">, expression(s) </span>
+        <span>alias</span><span class="example--word"> FROM&nbsp;table_name;</span>
+    </div>
+    <div class="code bold no_mb">
+        <span class="example--word">SELECT column(s)</span>
+        <span>AS alias</span><span class="example--word">, expression(s) </span>
+        <span>AS alias</span><span class="example--word"> FROM&nbsp;table_name;</span>
+    </div>
+    <p class="example">AS можно не использовать, но оно добавляет читаемость.</p>
+    <div class="code bold no_mb">
+        <span class="example--word">SELECT column(s)</span>
+        <span>"alias text"</span><span class="example--word">, expression(s) </span>
+        <span>"alias text"</span><span class="example--word"> FROM&nbsp;table_name;</span>
+    </div>
+    <p class="example">Если нужен alias с пробелами в тексе то использовать двойные кавычки.
+        <br>Кроме того, если нет кавычек alias будет отображен большими буквами.
+    </p>
+    <hr>
+    <h3>Таблица DUAL</h3>
+    <p>Служебная таблица с одним столбцом и одной строкой, и с фиктивными данными.</p>
+    <hr>
+    <h3>Оператор Q</h3>
+    <p class="no_mb">Если в тексте хочется использовать одинарную кавычку то ее надо экранировать другой.</p>
+    <p>Пример:
+        <span class="bold">'It's my life'</span>
+        - <span class="bad">не сработает</span>,
+        <span class="bold">'It''s my life'</span>
+        - <span class="good">сработает</span>.
+    </p>
+    <p class="no_mb">Кроме этого можно использовать оператор q (от Quote):</p>
+    <div class="code">
+        q'delimiter example text с кавычками delimiter'
+    </div>
+    <div class="code">
+        SELECT q'&lt;It' my life&gt;' FROM dual;
+    </div>
+    <hr>
+    <h3 class="no_mb">Шаблон SELECT</h3>
+    <p class="bold">после первого знакомства</p>
+    <div class="code bold">
+        <span class="example--word">SELECT *</span><span class="bad">|{</span><span>DISTINCT</span>
+        <span class="example--word">column(s)</span>&nbsp;<span>alias,</span>
+        <span class="example--word">expression(s)</span>&nbsp;<span>alias</span><span class="bad">}</span>
+        <span class="example--word">FROM&nbsp;table_name;</span>
+    </div>
 
     <a href="#" class="button button--top"></a>
 </section>
