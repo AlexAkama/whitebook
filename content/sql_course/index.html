@@ -20,6 +20,7 @@
         <li><a href="#chapter01">Введение в SQL</a></li>
         <li><a href="#chapter02">Знакомство с SELECT</a></li>
         <li><a href="#chapter03">Selection и операторы</a></li>
+        <li><a href="#chapter04">Функции</a></li>
     </ol>
     <div class="back-panel">
         <a href="../../" class="button button--home">На главную</a>
@@ -371,7 +372,89 @@
         <span class="bad">{</span>NULLS FIRST<span class="bad">|</span>LAST<span class="bad">}</span>
         <span class="example--word">;</span>
     </div>
-    <p class="example"><strong>numeric position</strong>  считается из select list'а</p>
+    <p class="example"><strong>numeric position</strong> считается из select list'а</p>
+
+    <a class="button--top" href="#"></a>
+</section>
+
+<section class="container" id="chapter04">
+    <h1>Функции</h1>
+    <hr>
+    <h3>Схема функций</h3>
+    <table class="schema" aria-label="sql функции">
+        <tr>
+            <th></th>
+        </tr>
+        <tr>
+            <td rowspan="6">Function</td>
+            <td rowspan="5">Single-row</td>
+            <td>Character</td>
+        </tr>
+        <tr>
+            <td>Numeric</td>
+        </tr>
+        <tr>
+            <td>Date</td>
+        </tr>
+        <tr>
+            <td>Conversion</td>
+        </tr>
+        <tr>
+            <td>General</td>
+        </tr>
+        <tr>
+            <td>Multiple-row</td>
+        </tr>
+    </table>
+    <hr>
+    <h2 class="no_mb">Character function</h2>
+    <p class="example">Функции которые работают с текстом</p>
+    <table class="schema" aria-label="Character function">
+        <tr>
+            <th></th>
+        </tr>
+        <tr>
+            <td rowspan="2">Character function</td>
+            <td>Case conversion function</td>
+        </tr>
+        <tr>
+            <td>Character manipulation function</td>
+        </tr>
+    </table>
+
+    <h3>Case conversion functions</h3>
+    <h4>Перевод в нижний регистр</h4>
+    <span class="code-word no_mb">LOWER(s)</span>
+    <span class="example">, где s - строка.</span>
+    <h4>Перевод в верхний регистр</h4>
+    <span class="code-word no_mb">UPPER(s)</span>
+    <span class="example">, где s - строка.</span>
+    <h4>Перевод в верхний регистр первой буквы</h4>
+    <span class="code-word no_mb">INITCAP(s)</span>
+    <span class="example">, где s - строка.</span>
+    <p class="example">Важно! Переводится первый символ каждого слова.</p>
+
+    <h3>Character manipulation function</h3>
+    <h4>Конкатенация</h4>
+    <span class="code-word">CONCAT(s,s)</span>
+    <span class="example">, где s - строка. Аналогичен оператору </span>
+    <span class="code-word">||</span>
+    <h4>Длина строки</h4>
+    <span class="code-word">LENGTH(s)</span>
+    <span class="example">, где s - строка.</span>
+    <p class="example">Важно! Считаются все символы, включая проблелы и т.п.</p>
+    <h4>Добавление символов (слева/справа)</h4>
+    <span class="code-word">LPAD(s, n, p)</span> и
+    <span class="code-word">RPAD(s, n, p)</span>
+    <span class="example">где&nbsp;s&nbsp;-&nbsp;строка, n&nbsp;-&nbsp;конечная длинна текста, p&nbsp;-&nbsp;текст для заполнения.</span>
+    <h4>Обрезка символов по краям</h4>
+    <span class="code-word">
+        <span class="example--word">TRIM(</span><span class="bad">{</span>trailing<span
+            class="bad">|</span>leading<span class="bad">|</span>both<span class="bad">}</span> char FROM
+        <span class="example--word">s)</span>
+    </span>
+    <p class="example no_mb">По умолчанию: тип удаления both, а символ для удаления - пробел.</p>
+    <p class="example"> Важно: удалять можно только один какой-то символ.</p>
 
     <a class="button--top" href="#"></a>
 </section>
