@@ -15,7 +15,7 @@ section {
     margin: 10px auto 20px;
     background-color: transparent;
     border: 1px solid #eff1f6;
-    box-shadow: 0 4px 24px rgba(51,51,51,.08);
+    box-shadow: 0 4px 24px rgba(51, 51, 51, .08);
 }
 
 footer {
@@ -289,6 +289,7 @@ img {
 
 .code-word {
     font-family: 'Monaco', 'Menlo', 'Consolas', 'Courier New', monospace;
+    font-weight: bold;
     padding: 0 4px;
     color: rgb(51, 51, 51);
     border-radius: 4px;
@@ -400,4 +401,24 @@ img {
 .navi--next:after {
     content: '▶';
     right: 0;
+}
+
+.list {
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.list,
+.list th,
+.list td {
+    border: 1px solid rgba(0, 0, 0, 0.14902);
+    padding: 10px;
+}
+
+.list td:first-child {
+    text-align: center;
+}
+
+.list td:nth-child(2) {
+    padding-left: 20px;
 }

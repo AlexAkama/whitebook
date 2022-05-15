@@ -252,6 +252,126 @@
         <span class="example--word">FROM&nbsp;table_name</span>
         <span>WHERE&nbsp;condition(s)</span><span class="example--word">;</span>
     </div>
+    <hr>
+    <h3>Операторы сравнения</h3>
+    <p>
+        <span class="code-word">=</span>
+        <span class="code-word">&gt;</span>
+        <span class="code-word">&lt;</span>
+        <span class="code-word">&gt;=</span>
+        <span class="code-word">&lt;=</span>
+        <span class="code-word">!=</span>
+        <span class="code-word">&lt;&gt;</span>
+    </p>
+    <p>
+        <span class="code-word">BETWEEN</span>
+        <span class="code-word">IN</span>
+    </p>
+    <p>
+        <span class="code-word">IS NULL</span>
+    </p>
+    <table aria-label="Like">
+        <tr>
+            <th></th>
+        </tr>
+        <tr>
+            <td><span class="code-word no_mb">LIKE</span></td>
+            <td class="example">
+                <p style="margin-top: 0;">Служебные символы могут быть заменены:</p>
+                <p class="no_mb" style="margin-top: 0;">% - на любое кол-во символов;</p>
+                <p class="no_mb" style="margin-top: 0;">_ - на один символ;</p>
+                <p>Для экранирования: ... LIKE 'St\_%' <strong>ESCAPE</strong> '\';</p>
+            </td>
+        </tr>
+    </table>
+    <hr>
+    <h3>Логические операторы</h3>
+    <p>
+        <span class="code-word">AND</span>
+        <span class="code-word">OR</span>
+        <span class="code-word">NOT</span>
+    </p>
+    <hr>
+    <h3>Приоритеты операторов</h3>
+    <table class="list" aria-label="Приоритеты операторов">
+        <thead>
+        <tr>
+            <th>Приоритет</th>
+            <th>Оператор</th>
+        </tr>
+        </thead>
+        <tr>
+            <td>1</td>
+            <td>
+                <span class="code-word">(</span>
+                <span class="code-word">)</span></td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td><span class="code-word">/</span>
+                <span class="code-word">*</span></td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td><span class="code-word">+</span>
+                <span class="code-word">-</span></td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td><span class="code-word">||</span></td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td><span class="code-word">=</span>
+                <span class="code-word">&gt;</span>
+                <span class="code-word">&lt;</span>
+                <span class="code-word">&gt;=</span>
+                <span class="code-word">&lt;=</span></td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td><span class="code-word">[NOT] LIKE</span>
+                <span class="code-word">IS [NOT] NULL</span>
+                <span class="code-word">[NOT] IN</span></td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td><span class="code-word">[NOT] BETWEEN</span></td>
+        </tr>
+        <tr>
+            <td>8</td>
+            <td><span class="code-word">!=</span>
+                <span class="code-word">&lt;&gt;</span></td>
+        </tr>
+        <tr>
+            <td>9</td>
+            <td><span class="code-word">NOT</span></td>
+        </tr>
+        <tr>
+            <td>10</td>
+            <td><span class="code-word">AND</span></td>
+        </tr>
+        <tr>
+            <td>11</td>
+            <td><span class="code-word">OR</span></td>
+        </tr>
+    </table>
+    <hr>
+    <h3>ORDER BY</h3>
+    <div class="code bold no_mb">
+        <span class="example--word">SELECT *</span><span class="bad">|{</span><span>DISTINCT</span>
+        <span class="example--word">column(s)</span>&nbsp;alias,
+        <span class="example--word">expression(s)</span>&nbsp;alias<span class="bad">}</span>
+        <span class="example--word">FROM&nbsp;table_name</span>
+        WHERE&nbsp;condition(s) ORDER&nbsp;BY&nbsp;<span class="bad">{</span><span
+            class="example--word">column(s)</span><span class="bad">|</span><span
+            class="example--word">expressions(s)</span><span class="bad">|</span><span
+            class="example--word">numeric position</span><span class="bad">}</span>
+        <span class="bad">{</span>ASC<span class="bad">|</span>DESC<span class="bad">}</span>
+        <span class="bad">{</span>NULLS FIRST<span class="bad">|</span>LAST<span class="bad">}</span>
+        <span class="example--word">;</span>
+    </div>
+    <p class="example"><strong>numeric position</strong>  считается из select list'а</p>
 
     <a class="button--top" href="#"></a>
 </section>
