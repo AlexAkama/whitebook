@@ -14,7 +14,7 @@
 <section class="container">
     <h1 class="no_mb">JAVA SQL</h1>
     <div class="after-h1">Записки по курсу
-        "SQL для начинающих: С нуля до сертификата Oracle "
+        "SQL для начинающих: С&nbsp;нуля до сертификата Oracle "
     </div>
     <ol class="menu">
         <li><a href="#chapter01">Введение в SQL</a></li>
@@ -378,7 +378,7 @@
 </section>
 
 <section class="container" id="chapter04">
-    <h1>Функции</h1>
+    <h1>Функции <span class="update-time">16.05.2022 15:35</span></h1>
     <hr>
     <h3>Схема функций</h3>
     <table class="schema" aria-label="sql функции">
@@ -388,10 +388,10 @@
         <tr>
             <td rowspan="6">Function</td>
             <td rowspan="5">Single-row</td>
-            <td>Character</td>
+            <td><a href="#character">Character</a></td>
         </tr>
         <tr>
-            <td>Numeric</td>
+            <td><a href="#numeric">Numeric</a></td>
         </tr>
         <tr>
             <td>Date</td>
@@ -407,7 +407,7 @@
         </tr>
     </table>
     <hr>
-    <h2 class="no_mb">Character function</h2>
+    <h2 class="no_mb" id="character">Character function</h2>
     <p class="example">Функции которые работают с текстом</p>
     <table class="schema" aria-label="Character function">
         <tr>
@@ -455,6 +455,34 @@
     </span>
     <p class="example no_mb">По умолчанию: тип удаления both, а символ для удаления - пробел.</p>
     <p class="example"> Важно: удалять можно только один какой-то символ.</p>
+    <h4>Поиск в строке</h4>
+    <span class="code-word" style="white-space: normal;">
+            <span class="example--word">INSTR(s, searchString</span><span>, startPosition, nth&nbsp;occurrence</span><span
+            class="example--word">)</span>
+    </span>
+    <p class="example no_mb">Где s - строка в которой ищем. searchString - искомый текст; startPosition - позиция с
+        которой начинается поиск; <span style="white-space: nowrap">n-ное</span> появление;</p>
+    <h4>Извлечение подстроки</h4>
+    <span class="code-word" style="white-space: normal;">
+            <span class="example--word">SUBSTR(s, startPosition</span><span>, n</span><span
+            class="example--word">)</span>
+    </span>
+    <p class="example no_mb">Где s - строка в которой ищем. startPosition - позиция с которой начинаем извлекать;
+        n&nbsp;-&nbsp;кол-во извлекаемых символов;</p>
+    <p class="example no_mb">Если startPosition&lt;0 то позиция считается с конца s.</p>
+    <p class="example">Важно: Если длина строки s меньше startPosition то функция вернет null.</p>
+    <h4>Замена подстроки</h4>
+    <span class="code-word" style="white-space: normal;">
+            <span class="example--word">REPLACE(s, searchString</span><span>, replacementString</span><span
+            class="example--word">)</span>
+    </span>
+    <p class="example no_mb">Где s - строка в которой производим замену. searchString - текст, который нужно заменить;
+        replacementString - текст, на который нужно заменить;</p>
+    <p class="example">Если replacementString не указан, то функция удалит searchString из s.</p>
+
+    <hr>
+    <h2 class="no_mb" id="numeric">Numeric functions</h2>
+    <p class="example">Функции которые работают с числами</p>
 
     <a class="button--top" href="#"></a>
 </section>
