@@ -49,6 +49,7 @@ h1 {
     font-weight: 400;
     line-height: 1.2;
     color: #00a82d;
+    position: relative;
 }
 
 .after-h1 {
@@ -147,6 +148,7 @@ img {
     font-size: xx-small;
     color: darkgrey;
     white-space: nowrap;
+    position: absolute;
 }
 
 .update-time:before {
