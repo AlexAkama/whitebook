@@ -397,7 +397,7 @@
             <td><a href="#date">Date</a></td>
         </tr>
         <tr>
-            <td>Conversion</td>
+            <td><a href="#conversion">Conversion</a></td>
         </tr>
         <tr>
             <td>General</td>
@@ -407,7 +407,7 @@
         </tr>
     </table>
     <hr>
-    <h2 class="no_mb" id="character">Character function</h2>
+    <h2 class="no_mb" id="character"><a href="#chapter04">Character function</a></h2>
     <p class="example">Функции которые работают с текстом</p>
     <table class="schema" aria-label="Character function">
         <tr>
@@ -481,7 +481,7 @@
     <p class="example">Если replacementString не указан, то функция удалит searchString из s.</p>
 
     <hr>
-    <h2 class="no_mb" id="numeric">Numeric functions</h2>
+    <h2 class="no_mb" id="numeric"><a href="#chapter04">Numeric functions</a></h2>
     <p class="example">Функции которые работают с числами</p>
     <h4>Округление</h4>
     <span class="code-word">
@@ -498,7 +498,7 @@
     <p class="example">Интересно: можно использовать дробные числа.</p>
 
     <hr>
-    <h2 class="no_mb" id="date">Date functions</h2>
+    <h2 class="no_mb" id="date"><a href="#chapter04">Date functions</a></h2>
     <p class="example">Функции для работы с датами</p>
 
     <p class="no_mb">При вычитании даты из даты получаем число <strong>кол-во дней</strong> между датами.</p>
@@ -510,7 +510,7 @@
     <p class="example">Возвращает текущее время db-server'а</p>
 
     <h4>Разница между датами</h4>
-    <span class="code-word example--word">MONTHS_BETWEEN(start_date, finish_date)</span>
+    <span class="code-word example--word" style="white-space: normal">MONTHS_BETWEEN(start_date, finish_date)</span>
     <p class="example no_mb">Возвращает дробное число, кол-во месяцев между датами.</p>
     <p class="example no_mb">Стандарт oracle месяц = 31 день.</p>
     <p class="example">Если первый аргумент больше второго - возвращает отрицательное число.</p>
@@ -525,6 +525,66 @@
     <p class="example no_mb">Где, date - дата, day_of_the_week - день недели.</p>
     <p class="example">Возвращает дату следующего указанного дня недели.</p>
 
+    <h4>Поиск последнего дня месяца</h4>
+    <span class="code-word example--word">LAST_DATE(date)</span>
+    <p class="example">Возвращает дату, последний день месяца в указанной дате.</p>
+
+    <h4>Округление даты</h4>
+    <span class="code-word">
+        <span class="example--word">ROUND(date</span><span>, date_precision_format</span><span
+            class="example--word">)</span>
+    </span>
+    <p class="example no_mb">Где, date - дата, date_precision_format - точность округления*.</p>
+
+    <h4>Отбрасывание даты</h4>
+    <span class="code-word">
+        <span class="example--word">TRUNC(date</span><span>, date_precision_format</span><span
+            class="example--word">)</span>
+    </span>
+    <p class="example no_mb">Где, date - дата, date_precision_format - точность округления*.</p>
+
+    <h4>Точность округления</h4>
+    <table class="list" style="min-width: 320px;" aria-label="date_precision_format">
+        <tr>
+            <th>Код</th>
+            <th>Граница</th>
+        </tr>
+        <tr>
+            <td>CC</td>
+            <td>век</td>
+        </tr>
+        <tr>
+            <td>YYYY</td>
+            <td>год</td>
+        </tr>
+        <tr>
+            <td>Q</td>
+            <td>четверть</td>
+        </tr>
+        <tr>
+            <td>MM</td>
+            <td>месяц</td>
+        </tr>
+        <tr>
+            <td>W</td>
+            <td>неделя</td>
+        </tr>
+        <tr>
+            <td>DD</td>
+            <td>день</td>
+        </tr>
+        <tr>
+            <td>HH</td>
+            <td>час</td>
+        </tr>
+        <tr>
+            <td>MI</td>
+            <td>минута</td>
+        </tr>
+    </table>
+
+    <h2 class="no_mb" id="conversion"><a href="#chapter04">Conversion functions</a></h2>
+    <p class="example">Функции конвертации данных из одного типа в другой</p>
 
     <a class="button--top" href="#"></a>
 </section>
