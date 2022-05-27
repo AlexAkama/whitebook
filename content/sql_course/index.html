@@ -394,7 +394,7 @@
             <td><a href="#numeric">Numeric</a></td>
         </tr>
         <tr>
-            <td>Date</td>
+            <td><a href="#date">Date</a></td>
         </tr>
         <tr>
             <td>Conversion</td>
@@ -424,28 +424,28 @@
 
     <h3>Case conversion functions</h3>
     <h4>Перевод в нижний регистр</h4>
-    <span class="code-word no_mb">LOWER(s)</span>
+    <span class="code-word example--word no_mb">LOWER(s)</span>
     <span class="example">, где s - строка.</span>
     <h4>Перевод в верхний регистр</h4>
-    <span class="code-word no_mb">UPPER(s)</span>
+    <span class="code-word example--word no_mb">UPPER(s)</span>
     <span class="example">, где s - строка.</span>
     <h4>Перевод в верхний регистр первой буквы</h4>
-    <span class="code-word no_mb">INITCAP(s)</span>
+    <span class="code-word example--word no_mb">INITCAP(s)</span>
     <span class="example">, где s - строка.</span>
     <p class="example">Важно! Переводится первый символ каждого слова.</p>
 
     <h3>Character manipulation function</h3>
     <h4>Конкатенация</h4>
-    <span class="code-word">CONCAT(s,s)</span>
+    <span class="code-word example--word">CONCAT(s,s)</span>
     <span class="example">, где s - строка. Аналогичен оператору </span>
     <span class="code-word">||</span>
     <h4>Длина строки</h4>
-    <span class="code-word">LENGTH(s)</span>
+    <span class="code-word example--word">LENGTH(s)</span>
     <span class="example">, где s - строка.</span>
     <p class="example">Важно! Считаются все символы, включая проблелы и т.п.</p>
     <h4>Добавление символов (слева/справа)</h4>
-    <span class="code-word">LPAD(s, n, p)</span> и
-    <span class="code-word">RPAD(s, n, p)</span>
+    <span class="code-word example--word">LPAD(s, n, p)</span> и
+    <span class="code-word example--word">RPAD(s, n, p)</span>
     <span class="example">где&nbsp;s&nbsp;-&nbsp;строка, n&nbsp;-&nbsp;конечная длинна текста, p&nbsp;-&nbsp;текст для заполнения.</span>
     <h4>Обрезка символов по краям</h4>
     <span class="code-word" style="white-space: normal;">
@@ -496,6 +496,20 @@
     <h4>Остаток от деления</h4>
     <span class="code-word"><span class="example--word">MOD(dividend, divisor)</span></span>
     <p class="example">Интересно: можно использовать дробные числа.</p>
+
+    <hr>
+    <h2 class="no_mb" id="date">Date functions</h2>
+    <p class="example">Функции для работы с датами</p>
+
+    <p class="no_mb">При вычитании даты из даты получаем число <strong>кол-во дней</strong> между датами.</p>
+    <p class="no_mb">Можно прибавлять/вычитать число в результате дата + число дней</p>
+    <p>Складывать/делить/умножать даты нельзя.</p>
+
+    <h4>Системное время</h4>
+    <span class="code-word example--word">SYSDATE</span>
+    <p class="example">Возвращает текущее время db-server'а</p>
+
+
 
     <a class="button--top" href="#"></a>
 </section>

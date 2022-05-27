@@ -300,6 +300,13 @@ img {
     white-space: nowrap;
 }
 
+.code.example--word,
+.code-word.example--word,
+.code .example--word,
+.code-word .example--word {
+    color: #00a82d;
+}
+
 .tab-1 {
     padding-left: 15px;
 }
