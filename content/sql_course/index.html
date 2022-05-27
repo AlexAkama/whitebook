@@ -509,6 +509,21 @@
     <span class="code-word example--word">SYSDATE</span>
     <p class="example">Возвращает текущее время db-server'а</p>
 
+    <h4>Разница между датами</h4>
+    <span class="code-word example--word">MONTHS_BETWEEN(start_date, finish_date)</span>
+    <p class="example no_mb">Возвращает дробное число, кол-во месяцев между датами.</p>
+    <p class="example no_mb">Стандарт oracle месяц = 31 день.</p>
+    <p class="example">Если первый аргумент больше второго - возвращает отрицательное число.</p>
+
+    <h4>Добавление к дате</h4>
+    <span class="code-word example--word">ADD_MONTHS(date, number_of_months)</span>
+    <p class="example no_mb">Добавление/вычитание кол-ва месяцев.</p>
+    <p class="example">Дробная часть в аргументе игнорируется, т.е. добавляются только целые месяцы.</p>
+
+    <h4>Поиск следующего дня недели</h4>
+    <span class="code-word example--word">NEXT_DAY(date, day_of_the_week)</span>
+    <p class="example no_mb">Где, date - дата, day_of_the_week - день недели.</p>
+    <p class="example">Возвращает дату следующего указанного дня недели.</p>
 
 
     <a class="button--top" href="#"></a>
