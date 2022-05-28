@@ -431,3 +431,24 @@ img {
 .list td:nth-child(2) {
     padding-left: 20px;
 }
+
+.list thead {
+    background: lightslategray;
+    color: white;
+}
+
+.list tr:nth-child(even) {
+    background: #eeeeee;
+}
+
+@media screen and (max-width: 680px){
+    .list {
+        font-size: 12px;
+    }
+    .list, .list th, .list td {
+        padding: 5px 1px;
+    }
+    .list td:nth-child(2) {
+        padding-left: 3px;
+    }
+}

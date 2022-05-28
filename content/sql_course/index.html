@@ -386,8 +386,8 @@
             <th></th>
         </tr>
         <tr>
-            <td rowspan="6">Function</td>
-            <td rowspan="5">Single-row</td>
+            <td rowspan="7">Function</td>
+            <td rowspan="6">Single-row</td>
             <td><a href="#character">Character</a></td>
         </tr>
         <tr>
@@ -400,7 +400,10 @@
             <td><a href="#conversion">Conversion</a></td>
         </tr>
         <tr>
-            <td>General</td>
+            <td><a href="#general">General</a></td>
+        </tr>
+        <tr>
+            <td><a href="#conditional">Conditional</a></td>
         </tr>
         <tr>
             <td>Multiple-row</td>
@@ -545,10 +548,10 @@
 
     <h4>Точность округления</h4>
     <table class="list" style="min-width: 320px;" aria-label="date_precision_format">
-        <tr>
-            <th>Код</th>
-            <th>Граница</th>
-        </tr>
+        <thead>
+        <th>Код</th>
+        <th>Граница</th>
+        </thead>
         <tr>
             <td>CC</td>
             <td>век</td>
@@ -583,8 +586,321 @@
         </tr>
     </table>
 
+    <hr>
     <h2 class="no_mb" id="conversion"><a href="#chapter04">Conversion functions</a></h2>
     <p class="example">Функции конвертации данных из одного типа в другой</p>
+
+    <h4>Конвертация числа в строку</h4>
+    <span class="code-word" style="white-space: normal">
+        <span class="example--word">TO_CHAR(number</span><span>, format mask, nls_parameters</span><span
+            class="example--word">)</span>
+        <span class="bad">= T</span>
+    </span>
+    <p class="example">Возвращает тип VARCHAR2</p>
+    <table class="list no_mb" aria-label="форматы для чисел">
+        <thead>
+        <th>Элемент</th>
+        <th>Описание</th>
+        <th>Формат</th>
+        <th>Число</th>
+        <th>Текст</th>
+        </thead>
+        <tr>
+            <td>9</td>
+            <td>Ширина</td>
+            <td>99999</td>
+            <td>18</td>
+            <td>18</td>
+        </tr>
+        <tr>
+            <td>0</td>
+            <td>Отображение нуля</td>
+            <td>099999</td>
+            <td>18</td>
+            <td>000018</td>
+        </tr>
+        <tr>
+            <td>.</td>
+            <td>Позиция десятичной точки</td>
+            <td>099999.99</td>
+            <td>18.35</td>
+            <td>000018.350</td>
+        </tr>
+        <tr>
+            <td>D</td>
+            <td>Позиция десятичного разделителя</td>
+            <td>099999D999</td>
+            <td>18.35</td>
+            <td>000018.350</td>
+        </tr>
+        <tr>
+            <td>,</td>
+            <td>Позиция запятой</td>
+            <td>099,999,999</td>
+            <td>1234567</td>
+            <td>001,234,567</td>
+        </tr>
+        <tr>
+            <td>G</td>
+            <td>Позиция разделителя групп</td>
+            <td>099999G999</td>
+            <td>1234567</td>
+            <td>001,234,567</td>
+        </tr>
+        <tr>
+            <td>$</td>
+            <td>Знак $</td>
+            <td>$099999</td>
+            <td>18</td>
+            <td>$000018</td>
+        </tr>
+        <tr>
+            <td>L</td>
+            <td>Локальная валюта</td>
+            <td>L099999</td>
+            <td>18</td>
+            <td>$000018</td>
+        </tr>
+        <tr>
+            <td>MI</td>
+            <td>Позиция знака -</td>
+            <td>099999MI</td>
+            <td>-18</td>
+            <td>000018-</td>
+        </tr>
+        <tr>
+            <td>PR</td>
+            <td>Скобки для отрицательных чисел</td>
+            <td>099999PR</td>
+            <td>-18</td>
+            <td>&lt;000018&gt;</td>
+        </tr>
+        <tr>
+            <td>S</td>
+            <td>Префикс + или -</td>
+            <td>S099999</td>
+            <td>18</td>
+            <td>+000018</td>
+        </tr>
+    </table>
+    <p class="example">* Если число не влазит в формат получаем строку из символа #</p>
+
+    <h4>Конвертация даты в строку</h4>
+    <span class="code-word" style="white-space: normal">
+        <span class="example--word">TO_CHAR(date</span><span>, format mask, nls_parameters</span><span
+            class="example--word">)</span>
+        <span class="bad">= T</span>
+    </span>
+    <p class="example">Возвращает тип VARCHAR2</p>
+    <p></p>
+    <table class="list no_mb" aria-label="форматы для даты" id="conversion_format">
+        <thead>
+        <th>Элемент</th>
+        <th>Описание</th>
+        <th>Текст</th>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Y</td>
+            <td>Последняя цифра года</td>
+            <td>9</td>
+        </tr>
+        <tr>
+            <td>YY</td>
+            <td>Последние две цифры года</td>
+            <td>19</td>
+        </tr>
+        <tr>
+            <td>YYY</td>
+            <td>Последние три цифры года</td>
+            <td>019</td>
+        </tr>
+        <tr>
+            <td>YYYY</td>
+            <td>Год (целиком)</td>
+            <td>2019</td>
+        </tr>
+        <tr>
+            <td>RR</td>
+            <td>Год в формате 2х цифр</td>
+            <td>19</td>
+        </tr>
+        <tr>
+            <td>YEAR</td>
+            <td>Буквенное описание года <span class="example">(Чувствительно&nbsp;к&nbsp;регистру)</span></td>
+            <td>TWENTY NINETEEN</td>
+        </tr>
+        <tr>
+            <td>MM</td>
+            <td>Месяц в формате 2х цифр</td>
+            <td>09</td>
+        </tr>
+        <tr>
+            <td>MON</td>
+            <td>Месяц в формате 3х букв <span class="example">(Чувствительно&nbsp;к&nbsp;регистру)</span></td>
+            <td>SEP</td>
+        </tr>
+        <tr>
+            <td>MONTH</td>
+            <td>Буквенное написание месяца <span class="example">(Чувствительно&nbsp;к&nbsp;регистру)</span></td>
+            <td>SEPTEMBER</td>
+        </tr>
+        <tr>
+            <td>D</td>
+            <td>День недели</td>
+            <td>6</td>
+        </tr>
+        <tr>
+            <td>DD</td>
+            <td>День месяца: две цифры</td>
+            <td>20</td>
+        </tr>
+        <tr>
+            <td>DDD</td>
+            <td>День года</td>
+            <td>263</td>
+        </tr>
+        <tr>
+            <td>DY</td>
+            <td>День недели: три буквы <span class="example">(Чувствительно&nbsp;к&nbsp;регистру)</span></td>
+            <td>FRI</td>
+        </tr>
+        <tr>
+            <td>DAY</td>
+            <td>День недели: текстовое название <span class="example">(Чувствительно&nbsp;к&nbsp;регистру)</span></td>
+            <td>FRIDAY</td>
+        </tr>
+        <tr>
+            <td>W</td>
+            <td>Неделя месяца</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>WW</td>
+            <td>Неделя года</td>
+            <td>38</td>
+        </tr>
+        <tr>
+            <td>Q</td>
+            <td>Квартал года</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>СС</td>
+            <td>Век</td>
+            <td>21</td>
+        </tr>
+        <tr>
+            <td>AM, PM, A.M.,&nbsp;P.M.</td>
+            <td>Индикатор</td>
+            <td>PM</td>
+        </tr>
+        <tr>
+            <td>HH, HH12 и HH24</td>
+            <td>Формат времени</td>
+            <td>04, 04, 16</td>
+        </tr>
+        <tr>
+            <td>MI</td>
+            <td>Минуты</td>
+            <td>17</td>
+        </tr>
+        <tr>
+            <td>SS</td>
+            <td>Секунды</td>
+            <td>38</td>
+        </tr>
+        <tr>
+            <td>SSSSS</td>
+            <td>Секунды после полуночи</td>
+            <td>58638</td>
+        </tr>
+        <tr>
+            <td>- / . , ? # !</td>
+            <td>Пунктуация: 'MM.YY'</td>
+            <td>09.19</td>
+        </tr>
+        <tr>
+            <td>"текст"</td>
+            <td>'"Quarter " Q " of " Year'</td>
+            <td>Quarter 3 of Twenty Nineteen</td>
+        </tr>
+        <tr>
+            <td>TH</td>
+            <td>'DDth " of " Month'</td>
+            <td>20TH of September</td>
+        </tr>
+        <tr>
+            <td>SP</td>
+            <td>Буквенное написание 'MmSp Month Yyyysp'</td>
+            <td>Nine September Two Thousand Nineteen</td>
+        </tr>
+        <tr>
+            <td>THSP, SPTH</td>
+            <td>Комбинация 'hh24SpTh'</td>
+            <td>sixteenth</td>
+        </tr>
+        </tbody>
+    </table>
+    <p class="example">* Если появляются лишние пробелы, то перед шаблоном надо использовать
+        <span class="code-word">fm</span>, т.е. ,например, fmMON</p>
+
+    <h4>Конвертация из строки в дату</h4>
+    <span class="code-word" style="white-space: normal">
+        <span class="example--word">TO_DATE(text</span><span>, format mask, nls_parameters</span><span
+            class="example--word">)</span>
+        <span class="bad">= D</span>
+    </span>
+    <p class="example">Используем те же <a href="#conversion_format">маски</a></p>
+
+    <h4>Конвертация текста в строку</h4>
+    <span class="code-word" style="white-space: normal">
+        <span class="example--word">TO_NUMBER(text</span><span>, format mask, nls_parameters</span><span
+            class="example--word">)</span>
+        <span class="bad">= N</span>
+    </span>
+    <p class="example">Используем те же <a href="#conversion_format">маски</a></p>
+
+    <hr>
+    <h2 class="no_mb" id="general"><a href="#chapter04">General functions</a></h2>
+    <p class="example">Для упрощения работы с NULL</p>
+
+    <h4>Проверка на NULL с дефолтным значением</h4>
+    <span class="code-word example--word">NVL(value, if_null)</span>
+    <p class="example">Если if_null = null вернется null</p>
+
+    <h4>Проверка на NULL с дефолтными значениями</h4>
+    <span class="code-word example--word">NVL2(value, if_not_null, if_null)</span>
+    <p class="example">Парамтры if_not_null и if_null должны быть одного типа (или автоматически приводимы), но не могут
+        быть Long.</p>
+
+    <h4>Сравнение с возвратом NULL</h4>
+    <span class="code-word example--word">NULLIF(value1, value2)</span>
+    <p>Если параметры <strong>равны</strong> возвращается NULL, если <strong>неравны</strong> - первый параметр.</p>
+
+    <h4>Возврат значения если не NULL</h4>
+    <span class="code-word">
+        <span class="example--word">COALESCE(value1, value2</span>, ..., valueN<span class="example--word">)</span>
+    </span>
+    <p class="example no_mb">Возвращает первое значение из списка не равное NULL.</p>
+    <p class="example">Если все параметры NULL, то будет возвращен NULL.</p>
+
+    <hr>
+    <h2 class="no_mb" id="conditional"><a href="#chapter04">Conditional functions</a></h2>
+    <p class="example">Функции if-then-else логики</p>
+
+    <h4>Каскадное сравнение </h4>
+    <span class="code-word" style="white-space: normal">
+        <span class="example--word">DECODE(expr, comp1, if_true1</span>, comp2,&nbsp;if_true2, ..., comp2,&nbsp;if_trueN, if_else<span
+            class="example--word">)</span>
+    </span>
+    <p class="example no_mb">Чисто oracle фишка, в чистом SQL ее нет.</p>
+    <p class="example">Выражение expr сравнивается с comp1, если совпадает - возвращает if_true1. И так N раз. Если нет
+        не одного совпадения возвращает if_else. Если if_else не указан - вернется NULL.</p>
+
+
+    <h4>CASE</h4>
+
 
     <a class="button--top" href="#"></a>
 </section>
