@@ -889,7 +889,7 @@
     <h2 class="no_mb" id="conditional"><a href="#chapter04">Conditional functions</a></h2>
     <p class="example">Функции if-then-else логики</p>
 
-    <h4>Каскадное сравнение (похоже на switch)</h4>
+    <h4>Каскадное сравнение (похоже на CASE)</h4>
     <span class="code-word" style="white-space: normal">
         <span class="example--word">DECODE(expr, comp1, if_true1</span>, comp2,&nbsp;if_true2, ..., comp2,&nbsp;if_trueN, if_else<span
             class="example--word">)</span>
@@ -899,7 +899,31 @@
         не одного совпадения возвращает if_else. Если if_else не указан - вернется NULL.</p>
 
 
-    <h4>CASE</h4>
+    <h4>Simple CASE</h4>
+    <div class="code-word">
+        <p class="example--word">CASE expr</p>
+        <p class="example--word">WHEN comp1 THEN if_true1</p>
+        <p>WHEN comp2 THEN if_true2</p>
+        <p>...</p>
+        <p>WHEN compN THEN if_trueN</p>
+        <p>ELSE if_false</p>
+        <p class="example--word">END</p>
+    </div>
+    <p class="example">Сравниваем expr с разными comp.</p>
+
+    <h4>Searched CASE</h4>
+    <div class="code-word">
+        <p class="example--word">CASE</p>
+        <p class="example--word">WHEN cond1 THEN if_true1</p>
+        <p>WHEN cond2 THEN if_true2</p>
+        <p>...</p>
+        <p>WHEN condN THEN if_trueN</p>
+        <p>ELSE if_false</p>
+        <p class="example--word">END</p>
+    </div>
+    <p class="example">Отсутствует expr, т.е. внутри cond мы можен сравнивать что угодно.</p>
+
+    <p class="important">В обоих случах, если нет if_false и ни одно из условий не выполнилось вернется NULL</p>
 
 
     <a class="button--top" href="#"></a>

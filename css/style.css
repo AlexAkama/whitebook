@@ -285,7 +285,8 @@ img {
     margin-bottom: 15px;
 }
 
-.code p {
+.code p,
+.code-word p {
     margin: 0;
 }
 
