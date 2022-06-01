@@ -886,7 +886,7 @@
     <p>Если параметры <strong>равны</strong> возвращается NULL, если <strong>неравны</strong> - первый параметр.</p>
 
     <h4>Возврат значения если не NULL</h4>
-    <span class="code-word">
+    <span class="code-word" style="white-space: normal">
         <span class="example--word">COALESCE(value1, value2</span>, ..., valueN<span class="example--word">)</span>
     </span>
     <p class="example no_mb">Возвращает первое значение из списка не равное NULL.</p>
@@ -941,7 +941,7 @@
 
     <h4 class="no_mb">COUNT</h4>
     <p class="example no_mb">подсчет по любому типу, null значения игнорируются</p>
-    <span class="code-word no_mb">
+    <span class="code-word no_mb" style="white-space: normal">
         <span class="example--word">COUNT(</span><span class="bad">{</span>*<span class="bad">| {</span>DISTINCT<span
             class="bad">|</span>ALL<span class="bad">}</span><span class="example--word"> expression</span><span
             class="bad">}</span><span class="example--word">)</span>
@@ -993,13 +993,13 @@
             class="example--word">column(s)</span><span class="bad">|</span><span
             class="example--word">expressions(s)</span><span class="bad">}</span>
         <br>HAVING group_condition(s)
-        <br>ORDER&nbsp;BY&nbsp;<span class="bad">{</span><span
+        <br>ORDER&nbsp;BY <span class="bad">{</span><span
             class="example--word">column(s)</span><span class="bad">|</span><span
             class="example--word">expressions(s)</span><span class="bad">|</span><span
-            class="example--word">numeric position</span><span class="bad">}</span>
-        <br><span class="bad">{</span>ASC<span class="bad">|</span>DESC<span class="bad">}</span>
-        <span class="bad">{</span>NULLS FIRST<span class="bad">|</span>LAST<span class="bad">}</span>
-        <span class="example--word">;</span>
+            class="example--word">numeric&nbsp;position</span><span class="bad">}</span>
+        <span class="bad">{</span>ASC<span class="bad">|</span>DESC<span class="bad">}</span>&nbsp;<span
+            class="bad">{</span>NULLS&nbsp;FIRST<span class="bad">|</span>LAST<span class="bad">}</span><span
+            class="example--word">;</span>
     </div>
     <p class="example no_mb">При группировке указывать алиас нельзя, только название столбца.</p>
     <p class="example">HAVING работает с группами, если нет GROUP BY, то он работает с текущей группой
