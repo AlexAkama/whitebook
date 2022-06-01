@@ -21,6 +21,8 @@
         <li><a href="#chapter02">Знакомство с SELECT</a></li>
         <li><a href="#chapter03">Selection и операторы</a></li>
         <li><a href="#chapter04">Функции</a></li>
+        <li><a href="#chapter05">CONVERSION, GENERAL и CONDITIONAL функции</a></li>
+        <li><a href="#chapter06">GROUP функции, GROUP BY, HAVING</a></li>
     </ol>
     <div class="back-panel">
         <a href="../../" class="button button--home">На главную</a>
@@ -243,7 +245,7 @@
 </section>
 
 <section class="container" id="chapter03">
-    <h1>Selection и операторы <span class="update-time">14.05.2022 13:29</span></h1>
+    <h1>Раздел 3. Selection и&nbsp;операторы <span class="update-time">14.05.2022 13:29</span></h1>
     <hr>
     <h3>Концепция Selection</h3>
     <div class="code bold">
@@ -378,7 +380,7 @@
 </section>
 
 <section class="container" id="chapter04">
-    <h1>Функции <span class="update-time">16.05.2022 15:35</span></h1>
+    <h1>Раздел 4. Функции <span class="update-time">16.05.2022 15:35</span></h1>
     <hr>
     <h3>Схема функций</h3>
     <table class="schema" aria-label="sql функции">
@@ -406,7 +408,7 @@
             <td><a href="#conditional">Conditional</a></td>
         </tr>
         <tr>
-            <td>Multiple-row</td>
+            <td><a href="#chapter06">Multiple-row</a></td>
         </tr>
     </table>
     <hr>
@@ -586,8 +588,13 @@
         </tr>
     </table>
 
+    <a class="button--top" href="#"></a>
+</section>
+
+<section class="container" id="chapter05">
+    <h1>Раздел 5. CONVERSION, GENERAL и CONDITIONAL функции<span class="update-time">28.05.2022 23:04</span></h1>
     <hr>
-    <h2 class="no_mb" id="conversion"><a href="#chapter04">Conversion functions</a></h2>
+    <h2 class="no_mb" id="conversion"><a href="#chapter05">Conversion functions</a></h2>
     <p class="example">Функции конвертации данных из одного типа в другой</p>
 
     <h4>Конвертация числа в строку</h4>
@@ -862,7 +869,7 @@
     <p class="example">Используем те же <a href="#conversion_format">маски</a></p>
 
     <hr>
-    <h2 class="no_mb" id="general"><a href="#chapter04">General functions</a></h2>
+    <h2 class="no_mb" id="general"><a href="#chapter05">General functions</a></h2>
     <p class="example">Для упрощения работы с NULL</p>
 
     <h4>Проверка на NULL с дефолтным значением</h4>
@@ -886,7 +893,7 @@
     <p class="example">Если все параметры NULL, то будет возвращен NULL.</p>
 
     <hr>
-    <h2 class="no_mb" id="conditional"><a href="#chapter04">Conditional functions</a></h2>
+    <h2 class="no_mb" id="conditional"><a href="#chapter05">Conditional functions</a></h2>
     <p class="example">Функции if-then-else логики</p>
 
     <h4>Каскадное сравнение (похоже на CASE)</h4>
@@ -925,6 +932,79 @@
 
     <p class="important">В обоих случах, если нет if_false и ни одно из условий не выполнилось вернется NULL</p>
 
+    <a class="button--top" href="#"></a>
+</section>
+
+<section class="container" id="chapter06">
+    <h1 class="no_mb">Раздел 6. GROUP&nbsp;функции<span class="update-time">01.06.2022 17:58</span></h1>
+    <p class="example">Group или Multiple-row работают с агрегированной информацией</p>
+
+    <h4 class="no_mb">COUNT</h4>
+    <p class="example no_mb">подсчет по любому типу, null значения игнорируются</p>
+    <span class="code-word no_mb">
+        <span class="example--word">COUNT(</span><span class="bad">{</span>*<span class="bad">| {</span>DISTINCT<span
+            class="bad">|</span>ALL<span class="bad">}</span><span class="example--word"> expression</span><span
+            class="bad">}</span><span class="example--word">)</span>
+    </span>
+    <p class="example">expression - выражение или столбец</p>
+
+    <h4 class="no_mb">SUM</h4>
+    <p class="example no_mb">сумма, на вход только числовые значения, null значения игнорируются</p>
+    <span class="code-word">
+        <span class="example--word">SUM(</span><span class="bad">{</span>DISTINCT<span
+            class="bad">|</span>ALL<span class="bad">}</span><span class="example--word"> expression</span><span
+            class="example--word">)</span>
+    </span>
+    <p class="example">expression - выражение или столбец</p>
+
+    <h4 class="no_mb">AVG</h4>
+    <p class="example no_mb">среднее арифметическое, на вход только числовые значения, null значения игнорируются</p>
+    <span class="code-word">
+        <span class="example--word">AVG(</span><span class="bad">{</span>DISTINCT<span
+            class="bad">|</span>ALL<span class="bad">}</span><span class="example--word"> expression</span><span
+            class="example--word">)</span>
+    </span>
+
+    <h4 class="no_mb">MAX и MIN</h4>
+    <p class="example no_mb">максимальное и минимальное, на вход можно число, дату и строку</p>
+    <span class="code-word">
+        <span class="example--word">MAX(</span><span class="bad">{</span>DISTINCT<span
+            class="bad">|</span>ALL<span class="bad">}</span><span class="example--word"> expression</span><span
+            class="example--word">)</span>
+    </span><span
+        style="display: inline-block; text-align: center; margin: 5px;">и</span><span
+        class="code-word">
+        <span class="example--word">MIN(</span><span class="bad">{</span>DISTINCT<span
+        class="bad">|</span>ALL<span class="bad">}</span><span class="example--word"> expression</span><span
+        class="example--word">)</span>
+    </span>
+    <p></p>
+    <hr>
+    <h2>GROUP BY и HAVING</h2>
+    <h4 class="no_mb">Вид SELECT'а с группировкой:</h4>
+    <div class="code bold no_mb">
+        <span class="example--word">SELECT *</span><span class="bad">|{</span><span>DISTINCT</span>
+        <span class="example--word">column(s)</span>&nbsp;alias,
+        <span class="example--word">expression(s)</span>&nbsp;alias, group_func(s)&zwj;(<span class="example--word">column</span><span
+            class="bad">|</span><span class="example--word">expression</span> alias)<span class="bad">}</span><br>
+        <span class="example--word">FROM&nbsp;table_name</span>
+        <br>WHERE&nbsp;condition(s)
+        <br>GROUP&nbsp;BY&nbsp;<span class="bad">{</span><span
+            class="example--word">column(s)</span><span class="bad">|</span><span
+            class="example--word">expressions(s)</span><span class="bad">}</span>
+        <br>HAVING group_condition(s)
+        <br>ORDER&nbsp;BY&nbsp;<span class="bad">{</span><span
+            class="example--word">column(s)</span><span class="bad">|</span><span
+            class="example--word">expressions(s)</span><span class="bad">|</span><span
+            class="example--word">numeric position</span><span class="bad">}</span>
+        <br><span class="bad">{</span>ASC<span class="bad">|</span>DESC<span class="bad">}</span>
+        <span class="bad">{</span>NULLS FIRST<span class="bad">|</span>LAST<span class="bad">}</span>
+        <span class="example--word">;</span>
+    </div>
+    <p class="example no_mb">При группировке указывать алиас нельзя, только название столбца.</p>
+    <p class="example">HAVING работает с группами, если нет GROUP BY, то он работает с текущей группой
+        (но так лучше не делать и использовать в паре).</p>
+    <p class="important">Максимальная вложенность multiple-row функций = 2.</p>
 
     <a class="button--top" href="#"></a>
 </section>
