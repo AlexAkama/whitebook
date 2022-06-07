@@ -25,6 +25,7 @@
         <li><a href="#solid">SOLID</a></li>
         <li><a href="#patterns">Паттерны проектирования</a></li>
         <li><a href="#regex">Регулярные выражения</a></li>
+        <li><a href="#endpoint">Как называть endpoint'ы</a></li>
     </ul>
     <div class="back-panel">
         <a href="../../" class="button button--home">На главную</a>
@@ -404,6 +405,48 @@
     </p>
 
     <a href="#" class="button button--top"></a>
+</section>
+
+<section class="container" id="endpoint">
+    <h1>Как называть endpoint'ы<span class="update-time">07.06.2022 14:57</span></h1>
+    <p class="code bold">
+        [GET|POST|PUT|DELETE|...]
+        <br>/ {имя сущности(тей)} / {id_сущности} / {уточнение какие данные info | tradeobjects}
+    </p>
+
+    <p class="no_mb">Если надо получить весь список сущностей</p>
+    <div class="code bold">
+        <p>GET /orders</p>
+        <p>GET /objects</p>
+        <p>GET /workers</p>
+    </div>
+
+    <p class="no_mb">Связанные сущности</p>
+    <p class="code bold">GET /objects/workers</p>
+
+    <p class="no_mb">По конкретной сущности</p>
+    <p class="code bold">GET /order/{id}/objects</p>
+
+    <p class="no_mb">Что то конкретное про дату (например)</p>
+    <div class="code bold">
+        <p>GET /order/{id}/data/start</p>
+        <p>GET /order/{id}/data/final</p>
+    </div>
+
+    <p class="no_mb">Создание новой</p>
+    <div class="code bold">
+        <p>POST /order</p>
+        <p>POST /object</p>
+        <p>POST /object/{id}/worker</p>
+    </div>
+
+    <p class="no_mb">Обновляешь всю сущность то просто</p>
+    <p class="code bold">PUT /order/{id}</p>
+
+    <p class="no_mb">Если например обновляешь не всю сущность, а какую-то часть, то</p>
+    <p class="code bold">PUT /order/{id}/status</p>
+
+    <a class="button--top" href="#"></a>
 </section>
 
 <footer>
