@@ -396,23 +396,21 @@ img {
 }
 
 .navi--prev {
-    padding-left: 4vh;
+    padding-left: 25pt;
 }
 
 .navi--next {
     text-align: right;
-    padding-right: 4vh;
+    padding-right: 25pt;
 }
 
 .navi--prev:after {
-    content: '◀';
-    display: inline-block;
+    content: '◀ ';
     left: 0;
 }
 
 .navi--next:after {
-    content: '▶';
-    display: inline;
+    content: ' ▶';
     right: 0;
 }
 
