@@ -367,7 +367,8 @@ img {
     display: flex;
     justify-content: space-between;
     color: #00a82d;
-    padding: 30px 10px 10px;
+    padding-top: 30px;
+    margin: auto 10px;
     font-size: large;
 }
 
@@ -395,12 +396,12 @@ img {
 }
 
 .navi--prev {
-    padding-left: 2em;
+    padding-left: 30px;
 }
 
 .navi--next {
     text-align: right;
-    padding-right: 2em;
+    padding-right: 30px;
 }
 
 .navi--prev:after {
