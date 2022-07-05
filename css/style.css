@@ -405,11 +405,13 @@ img {
 
 .navi--prev:after {
     content: '◀';
+    display: inline-block;
     left: 0;
 }
 
 .navi--next:after {
     content: '▶';
+    display: inline-block;
     right: 0;
 }
 
