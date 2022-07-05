@@ -396,12 +396,12 @@ img {
 }
 
 .navi--prev {
-    padding-left: 30px;
+    padding-left: 4vh;
 }
 
 .navi--next {
     text-align: right;
-    padding-right: 30px;
+    padding-right: 4vh;
 }
 
 .navi--prev:after {
