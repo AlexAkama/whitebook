@@ -364,11 +364,12 @@ img {
 }
 
 .navi {
+    max-width: 840px;
     display: flex;
     justify-content: space-between;
     color: #00a82d;
     padding-top: 30px;
-    margin: auto 10px;
+    margin: 0 auto;
     font-size: large;
 }
 
@@ -390,7 +391,6 @@ img {
 }
 
 .navi-button:after {
-    font-size: 48px;
     position: absolute;
     top: 15%;
 }
@@ -447,13 +447,15 @@ img {
     background: #eeeeee;
 }
 
-@media screen and (max-width: 680px){
+@media screen and (max-width: 680px) {
     .list {
         font-size: 12px;
     }
+
     .list, .list th, .list td {
         padding: 5px 1px;
     }
+
     .list td:nth-child(2) {
         padding-left: 3px;
     }
