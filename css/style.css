@@ -87,6 +87,8 @@ h4 {
 .breadcrumbs {
     text-transform: uppercase;
     display: flex;
+    font-size: 14px;
+    font-weight: bold;
 }
 
 .breadcrumbs p {
