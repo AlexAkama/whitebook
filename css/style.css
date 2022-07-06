@@ -78,6 +78,10 @@ h4 {
     margin-bottom: 0 !important;
 }
 
+.no_mt {
+    margin-top: 0 !important;
+}
+
 .container {
     max-width: 840px;
     padding: 10px 10px 30px 10px;
@@ -87,6 +91,7 @@ h4 {
 .breadcrumbs {
     text-transform: uppercase;
     display: flex;
+    flex-wrap: wrap;
     font-size: 14px;
     font-weight: bold;
 }
@@ -101,7 +106,7 @@ h4 {
     text-decoration: none;
 }
 
-.breadcrumbs p:first-child:before{
+.breadcrumbs p:first-child:before {
     content: '';
     width: 18px;
     height: 13px;
