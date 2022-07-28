@@ -33,7 +33,7 @@
         <li><a href="#q9">Абстрактные классы</a></li>
         <li><a href="#q10">Интерфейсы</a></li>
         <li><a href="#q11">Порядок вызова конструкторов</a></li>
-        <li><a href="#q12">Object,equals и hashCode</a></li>
+        <li><a href="#q12">Object, equals и hashCode</a></li>
     </ol>
 </section>
 
@@ -590,7 +590,7 @@
     <hr>
     <h3>Какое исключение выбрасывается при возникновении ошибки в блоке инициализации класса?</h3>
     <p class="no_mb">Если возникшее исключение - наследник RuntimeException:</p>
-    <ul>
+    <ul class="tab-2">
         <li>для статических блоков инициализации будет выброшено java.lang.ExceptionInInitializerError;</li>
         <li> для нестатических будет проброшено исключение-источник.</li>
     </ul>
@@ -600,6 +600,109 @@
         исключение выброшено не будет.
     </p>
 
+    <a href="#" class="button button--top"></a>
+</section>
+
+<section class="container" id="q12">
+    <h1>OBJECT</h1>
+    <p class="no_mb">Object это базовый класс для всех остальных объектов в Java.</p>
+    <p class="main-mind">Любой класс наследуется от Object и, соответственно, наследуют его методы.</p>
+    <h4>Методы класса Object</h4>
+
+    <table class="list list--alter" aria-label="Методы класса Object">
+        <thead>
+        <tr>
+            <th>Метод</th>
+            <th>Описание</th>
+        </tr>
+        </thead>
+        <tr>
+            <td>equals()</td>
+            <td>
+                <p>Служит для сравнения объектов по значению; == по ссылке</p>
+                <p class="code-word">public boolean equals(Object obj)</p>
+            </td>
+        </tr>
+        <tr>
+            <td>hashCode()</td>
+            <td>
+                <p>Возвращает hash код для объекта</p>
+                <p class="code-word">int hashCode()</p>
+            </td>
+        </tr>
+        <tr>
+            <td>toString()</td>
+            <td>
+                <p>Возвращает строковое представление объекта</p>
+                <p class="code-word">String toString()</p>
+            </td>
+        </tr>
+        <tr>
+            <td>getClass()</td>
+            <td>
+                <p>Возвращает класс объекта во время выполнения</p>
+                <p class="code-word">Class getClass()</p>
+            </td>
+        </tr>
+        <tr>
+            <td>clone()</td>
+            <td>
+                <p>Создает и возвращает копию объекта</p>
+                <p class="code-word">protected Object clone()</p>
+            </td>
+        </tr>
+        <tr>
+            <td>notify()</td>
+            <td>
+                <p>Возобновляет поток, ожидающий монитор</p>
+                <p class="code-word">void notify()</p>
+            </td>
+        </tr>
+        <tr>
+            <td>notifyAll()</td>
+            <td>
+                <p>Возобновляет все потоки, ожидающие монитор</p>
+                <p class="code-word">void notifyAll()</p>
+            </td>
+        </tr>
+        <tr>
+            <td>wait()</td>
+            <td>
+                <p>
+                    Остановка вызвавшего метод потока до момента пока другой поток не вызовет метод notify() или
+                    notifyAll() для этого объекта
+                </p>
+                <p class="code-word">void wait()</p>
+            </td>
+        </tr>
+        <tr>
+            <td>wait()</td>
+            <td>
+                <p>
+                    Остановка вызвавшего метод потока на определённое время или пока другой поток не вызовет метод
+                    notify() или notifyAll() для этого объекта
+                </p>
+                <p class="code-word">void wait(long timeout)</p>
+            </td>
+        </tr>
+        <tr>
+            <td>wait()</td>
+            <td>
+                <p>
+                    Остановка вызвавшего метод потока на определённое время или пока другой поток не вызовет метод
+                    notify() или notifyAll() для этого объекта
+                </p>
+                <p class="code-word">void wait(long timeout, int nanos)</p>
+            </td>
+        </tr>
+        <tr>
+            <td>finalize()</td>
+            <td>
+                <p>Может вызываться сборщиком мусора в момент удаления объекта при сборке мусора.</p>
+                <p class="code-word">protected void finalize()</p>
+            </td>
+        </tr>
+    </table>
     <a href="#" class="button button--top"></a>
 </section>
 

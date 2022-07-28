@@ -474,6 +474,10 @@ img {
     padding: 10px;
 }
 
+.list td p {
+    margin: 0;
+}
+
 .list td:first-child {
     text-align: center;
 }
@@ -504,6 +508,7 @@ img {
 @media screen and (max-width: 680px) {
     .list {
         font-size: 12px;
+        line-height: 1.2;
     }
 
     .list, .list th, .list td {
