@@ -31,8 +31,8 @@
         <li><a href="#q7">Что такое пул строк?</a></li>
         <li><a href="#q8">Почему String неизменяемый и финализированный класс?</a></li>
         <li><a href="#q9">Какая основная разница между String, StringBuffer, StringBuilder?</a></li>
-        <li><a href="#q"></a></li>
-        <li><a href="#q"></a></li>
+        <li><a href="#q10">Что такое сигнатура метода?</a></li>
+        <li><a href="#q11">Каким образом переменные передаются в методы?</a></li>
     </ol>
 </section>
 
@@ -574,6 +574,39 @@
         <p>}</p>
         <p>System.out.println(joiner); //prefix-Hello.the.brave.world-suffix</p>
     </div>
+    <a href="#" class="button button--top"></a>
+</section>
+
+<section class="container" id="q10">
+    <h1>Что такое сигнатура метода?</h1>
+    <p>
+        <span>Сигнатура</span>
+        - название метода и типы параметров в определенном порядке
+    </p>
+    <div class="code">public void method(double a, int b)</div>
+    <p> Контракт метода - эксепшены.</p>
+
+    <a href="#" class="button button--top"></a>
+</section>
+
+<section class="container" id="q11">
+    <h1>Каким образом переменные передаются в методы, по значению или по ссылке?</h1>
+    <p class="main-mind">Java передает параметры по значению. Всегда.</p>
+    <div class="code no_mb">
+        <p>int х = 3;</p>
+        <p>int у = х;</p>
+    </div>
+    <p>Скопировать значение внутри х и записать эту копию в у.</p>
+    <div class="code no_mb">
+        <p>Cat A = new Cat ();</p>
+        <p>Cat B = A;</p>
+    </div>
+    <p>
+        Ссылка А копируется в ссылку B. К объекту это не относится — у нас по-прежнему всего один объект.
+        Но теперь есть две различных ссылки, контролирующие один и тот же объект Cat.
+    </p>
+
+
     <a href="#" class="button button--top"></a>
 </section>
 

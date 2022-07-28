@@ -331,6 +331,7 @@ img {
 .code p,
 .code-word p {
     margin: 0;
+    font-family: inherit;
 }
 
 .code-word {
