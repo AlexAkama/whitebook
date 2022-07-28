@@ -490,6 +490,16 @@ img {
     background: #eeeeee;
 }
 
+.list--alter td:first-child {
+    text-align: left;
+    font-weight: bold;
+}
+
+.list--content-center td:not(:first-child) {
+    text-align: center;
+}
+
+
 @media screen and (max-width: 680px) {
     .list {
         font-size: 12px;
