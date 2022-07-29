@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JAVA Exceptions</title>
+    <link rel="stylesheet" href="../../../../css/style.css">
+</head>
+
+<body>
+
+<section class="container">
+    <h1 class="no_mb">ООП в JAVA</h1>
+    <div class="after-h1">Вопросы к собеседованию</div>
+    <div class="breadcrumbs">
+        <p><a href="../../../../">главная</a></p>
+        <p><a href="../../">Questions</a></p>
+        <p><a href="..">core</a></p>
+        <p>Exceptions</p>
+    </div>
+    <h4 class="no_mt">Вопросы:</h4>
+    <ol class="menu">
+        <li><a href="#q1">Что такое исключение?</a></li>
+        <li><a href="#q2">Иерархия исключений</a></li>
+        <li><a href="#q3">Обработка исключений</a></li>
+        <li><a href="#q4">Механизм Try-catch-finally</a></li>
+        <li><a href="#q5">Механизм Try-with-resources</a></li>
+    </ol>
+</section>
+
+<section class="container" id="q1">
+    <h1>Что такое исключение?</h1>
+    <p class="main-mind">Событие, которое встречается в ходе программы и прерывает стандартный ход её выполнения.</p>
+    <p class="no_mb">
+        Исключение в Java – объект, экземпляр класса. Могут порождаться не только автоматически
+        при возникновении исключительной ситуации, но и создаваться самим разработчиком. Все классы
+        исключений наследуются от Throwable (имеют свойство – возможность быть брошенными через слово throw).
+    </p>
+    <p class="example">Throwable имплементирует Serializable</p>
+
+    <a href="#" class="button button--top"></a>
+</section>
+
+<section class="container" id="q2">
+    <h1>Иерархия исключений</h1>
+    <div class="image-box">
+        <img class="image" src="img/exceptions.png" alt="Схема исключений">
+    </div>
+    <p>
+        Исключения имеют общего предка — класс Throwable, потомками которого являются классы Exception и Error.
+    </p>
+    <p class="no_mb">
+        <strong>Error</strong> — это критическая ошибка во время исполнения программы, связанная с работой
+        виртуальной машины Java. Error это ошибки виртуальной машины.
+    </p>
+    <p class="no_mb">
+        В большинстве случаев Error не нужно обрабатывать, поскольку она
+        свидетельствует о каких-то серьезных недоработках в коде.
+    </p>
+    <p class="example no_mb">
+        StackOverflowError — возникает, например, когда метод бесконечно вызывает сам себя;
+    </p>
+    <p class="example no_mb">
+        OutOfMemoryError — возникает, когда недостаточно памяти для создания новых объектов;
+    </p>
+    <p class="example">
+        NoClassDefFoundError – не смог найти класс.
+    </p>
+    <p class="no_mb">
+        <strong>Исключения (Exceptions)</strong> являются результатом проблем в программе, которые в принципе
+        решаемые и предсказуемые.
+    </p>
+    <p class="example">
+        Например, произошло деление на ноль в целых числах. RuntimeExceptions исключения, которые могут быть
+        предотвращены программно.
+    </p>
+    <p class="example no_mb">Расскажите про обрабатываемые и необрабатываемые исключения?</p>
+    <p>В Java все исключения делятся на два типа:</p>
+    <ul>
+        <li>
+            <strong>checked</strong> (контролируемые/проверяемые исключения) должны обрабатываться блоком catch
+            или описываться в сигнатуре метода (например, throws IOException). Наличие такого
+            обработчика/модификатора сигнатуры проверяются на этапе компиляции;
+        </li>
+        <li>
+            <strong>unchecked</strong> (неконтролируемые/непроверяемые исключения), к которым относятся ошибки Error,
+            обрабатывать которые не рекомендуется, и исключения времени выполнения, представленные классом
+            RuntimeException и его наследниками;
+        </li>
+    </ul>
+    <h4>RuntimeExceptions:</h4>
+    <ul class="tab-2">
+        <li><strong>ArithmeticException</strong> - исключение, возникающее при делении на ноль</li>
+        <li><strong>IndexOutOfBoundException</strong> - тип индекса вышел за допустимые пределы</li>
+        <li><strong>IllegalArgumentException</strong> - использование неверного аргумента при вызове метода</li>
+        <li><strong>NullPointerException</strong> - использование пустой ссылки</li>
+        <li><strong>NumberFormatException</strong> - ошибка преобразования строки в число</li>
+        <li><strong>ArrayIndexOutOfBoundsException</strong> - выход за пределы массива</li>
+        <li><strong>FileNotFoundException</strong> – не нашел файл для открытия</li>
+        <li><strong>AccessDeniedException</strong></li>
+        <li><strong>SocketException</strong></li>
+        <li><strong>BindException</strong></li>
+        <li><strong>ConnectException</strong></li>
+    </ul>
+
+    <a href="#" class="button button--top"></a>
+</section>
+
+<section class="container" id="q3">
+    <h1>Обработка исключений</h1>
+    <hr>
+    <h4 class="no_mb">Можно ли обработать необрабатываемые исключения?</h4>
+    <p>Можно, но не надо.</p>
+    <hr>
+    <h4 class="no_mb">Какой оператор позволяет принудительно выбросить исключение?</h4>
+    <p class="code-word">throw new Exception();</p>
+    <hr>
+    <h4 class="no_mb">О чем говорит ключевое слово <span class="code-word">throws</span>?</h4>
+    <p>
+        Модификатор throws прописывается в сигнатуре метода и указывает на то, что метод
+        потенциально может выбросить исключение с указанным типом
+    </p>
+    <hr>
+    <h4 class="no_mb">Как создать собственное («пользовательское») исключение?</h4>
+    <p>
+        Необходимо унаследоваться от базового класса требуемого типа исключений (например от Exception или
+        RuntimeException).
+    </p>
+    <hr>
+    <h4>
+        Что произойдет если исключение будет выброшено из блока catch после чего другое исключение будет выброшено из
+        блока finally?
+    </h4>
+    <p>
+        Из finally подавит из catch будет обработано в finally блоке.
+    </p>
+    <p>
+        Одно в try, второе в finally, то исключение в finally проглотит исключение.
+    </p>
+    <p>
+        Если до блока finally исключение было обработано, то мы можем получить информацию об исключении в блоке try и
+        тем самым не потерять исключение, которое впоследствии может быть перезаписано в finally другим исключением.
+    </p>
+
+    <a href="#" class="button button--top"></a>
+</section>
+
+<section class="container" id="q4">
+    <h1>Механизм Try-catch-finally</h1>
+    <p><strong>try</strong>
+        — данное ключевое слово используется для отметки начала блока кода, который
+        потенциально может привести к ошибке.
+    </p>
+    <p><strong>catch</strong>
+        — ключевое слово для отметки начала блока кода,
+        предназначенного для перехвата и обработки исключений в случае их возникновения.
+    </p>
+    <p class="no_mb"><strong>finally</strong>
+        — ключевое слово для отметки начала блока кода, который является дополнительным. Этот блок
+        помещается после последнего блока catch.
+    </p>
+    <p class="main-mind">
+        Управление передаётся в блок finally в любом случае, было выброшено исключение или нет.
+    </p>
+
+    <p class="no_mb">Общий вид конструкции для обработки исключительной ситуации выглядит следующим образом:</p>
+    <div class="code">
+        <p>try {</p>
+        <p class="tab-1">//код, который потенциально может привести к исключительной ситуации</p>
+        <p>} catch(SomeException e ) { //в скобках указывается класс конкретной ожидаемой ошибки</p>
+        <p class="tab-1">//код обработки исключительной ситуации</p>
+        <p>} finally {</p>
+        <p class="tab-1">//необязательный блок, код которого выполняется в любом случае</p>
+        <p>}</p>
+    </div>
+    <hr>
+    <h4>Возможно ли использование блока try-finally (без catch)</h4>
+    <p>Да</p>
+    <hr>
+    <h4>Может ли один блок catch отлавливать сразу несколько исключений?</h4>
+    <p>Да</p>
+    <hr>
+    <h4>Всегда ли выполняется блок finally? Существуют ли ситуации, когда блок finally не будет выполнен?</h4>
+    <p class="no_mb">Не будет выполнен когда:</p>
+    <ol class="tab-2">
+        <li>Когда System.exit(0) вызывается из блока try.</li>
+        <li>Когда JVM исчерпывает память catch (OutOfMemoryError oome) { // do stuff }</li>
+        <li>Когда ваш java-процесс принудительно убит из задачи или консоли</li>
+        <li>Условие взаимоблокировки потоков в блоке try</li>
+        <li>Когда ваш компьютер отключается из-за сбоя питания</li>
+    </ol>
+    <hr>
+    <h4>
+        Может ли метод main() выбросить исключение во вне и если да, то где будет происходить обработка данного
+        исключения?
+    </h4>
+    <p>Может и оно будет передано в виртуальную машину Java (JVM).</p>
+    <hr>
+    <h4>В каком порядке следует обрабатывать исключения в catch блоках?</h4>
+    <p></p>
+    <hr>
+    <h4></h4>
+    <p class="no_mb">
+        <strong>Общее правило</strong>: обрабатывать исключения нужно от «младшего» к старшему.
+    </p>
+    <p class="example">
+        Т.е. нельзя поставить в первый блок catch(Exception ex) {}, иначе все дальнейшие блоки catch() уже ничего не
+        смогут обработать, т.к. любое исключение будет соответствовать обработчику catch(Exception ex).
+    </p>
+
+    <a href="#" class="button button--top"></a>
+</section>
+
+<section class="container" id="q5">
+    <h1>Механизм Try-With-Resources</h1>
+    <p class="no_mb">
+        Конструкцию try-with-resources ввели в Java 7. Она дает возможность объявлять
+        <strong>один или несколько ресурсов</strong> в блоке try, которые
+        <strong>будут закрыты автоматически</strong> без использования finally блока.
+    </p>
+    <p class="no_mb">
+        В <strong>качестве ресурса</strong> можно использовать любой объект, класс которого реализует интерфейс
+        <strong>java.lang.AutoCloseable или java.io.Closable.</strong>
+    </p>
+    <p class="no_mb">
+        Если try блок также выбрасывает исключение, оно побеждает, а исключение из close() метода подавляется.
+    </p>
+    <h4 class="no_mb">Использование блока finally для закрытия ресурса</h4>
+    <div class="code">
+        <p>public static String readFirstLineFromFileWithFinallyBlock(String path) throws IOException {</p>
+        <p class="tab-1">BufferedReader br = new BufferedReader(new FileReader(path));</p>
+        <p class="tab-1">try {</p>
+        <p class="tab-2">return br.readLine();</p>
+        <p class="tab-1">} finally {</p>
+        <p class="tab-2">if (br != null) {</p>
+        <p class="tab-3">br.close();</p>
+        <p class="tab-2">}</p>
+        <p class="tab-1">}</p>
+        <p>}</p>
+    </div>
+    <h4 class="no_mb ">Использование конструкции try-with-resources для закрытия ресурса</h4>
+    <div class="code">
+        <p>public static String readFirstLineFromFile(String path) throws IOException {</p>
+        <p class="tab-1">try (BufferedReader br = new BufferedReader(new FileReader(path))) {</p>
+        <p class="tab-2"> return br.readLine();</p>
+        <p class="tab-1">}</p>
+        <p>}</p>
+    </div>
+    <h4 class="no_mb ">Использование конструкции try-with-resources для закрытия нескольких ресурсов</h4>
+    <div class="code">
+        <p>public static String readFirstLineFromFile2(String path) throws IOException {</p>
+        <p class="tab-1">try (FileReader f = new FileReader("a.txt"); BufferedReader br = new BufferedReader(f)) {</p>
+        <p class="tab-2">return br.readLine();</p>
+        <p class="tab-1">}</p>
+        <p>}</p>
+    </div>
+    <hr>
+    <h4>
+        Что произойдет если исключение будет выброшено из блока catch после чего другое
+        исключение будет выброшено из метода close() при использовании try-with-resources?
+    </h4>
+    <p>
+        Если исключение будет выброшено в основном коде (в try) и в методе close(), то приоритетнее будет
+        первое исключение, а второе исключение будет подавлено, но информация о нем сохранится (с
+        помощью метода Throwable.addSuppressed(Throwable exception), который вызывается неявно Java
+        компилятором):
+    </p>
+
+    <a href="#" class="button button--top"></a>
+</section>
+
+<div class="navi">
+    <a class="navi-button navi--prev" href="../java_oop/">ОПП в JAVA</a>
+    <a class="navi-button navi--next" href="../java_serial/">Сериализация JAVA</a>
+</div>
+
+<footer>
+    <div class="footer__text">Алексей Маслов, 2021-2022</div>
+</footer>
+
+</body>
+
+<script src="../../../../js/script.js"></script>
+
+</html>
