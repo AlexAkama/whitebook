@@ -80,17 +80,17 @@
     <p class="no_mb tab-1">Числа 0 или 0.0</p>
     <p class="no_mb tab-1">boolean = false</p>
     <p class="tab-1">Объекты (в том числе Sting) = null</p>
-    <table class="list list--alter" aria-label="Примитивы">
+    <table class="list list--dictionary" aria-label="Примитивы">
         <thead>
         <tr>
-            <th>Тип</th>
-            <th>Умолчание</th>
-            <th>Память</th>
-            <th>Допустимо</th>
+            <th scope="col">Тип</th>
+            <th scope="col">Умолчание</th>
+            <th scope="col">Память</th>
+            <th scope="col">Допустимо</th>
         </tr>
         </thead>
         <tr>
-            <td colspan="4">Целочисленные типы</td>
+            <th colspan="4" id="number_type">Целочисленные типы</th>
         </tr>
         <tr>
             <td>byte</td>
@@ -123,7 +123,7 @@
             <td>от -9_223_372_036_854_775_808L до&nbsp;&nbsp;9_223_372_036_854_775_807L</td>
         </tr>
         <tr>
-            <td colspan="4">Типы с плавающей точкой</td>
+            <th colspan="4" id="float_type">Типы с плавающей точкой</th>
         </tr>
         <tr>
             <td>float</td>
@@ -138,7 +138,7 @@
             <td>от 4.9e-324 до 1.7e+308</td>
         </tr>
         <tr>
-            <td colspan="4">Логический тип</td>
+            <th colspan="4" id="logic_type">Логический тип</th>
         </tr>
         <tr>
             <td>boolean</td>
@@ -244,7 +244,7 @@
         Потеря данных (старшие биты будут потеряны).
     </p>
     <img src="img/casting.png" alt="Схема приведения типов">
-    <table class="list list--alter list--content-center" aria-label="Приведение типов">
+    <table class="list list--dictionary list--content-center" aria-label="Приведение типов">
         <thead>
         <tr>
             <th>↓ИЗ | В→</th>

@@ -508,10 +508,6 @@ img {
     margin: 0;
 }
 
-.list td:first-child {
-    text-align: center;
-}
-
 .list td:nth-child(2) {
     padding-left: 20px;
 }
@@ -525,8 +521,7 @@ img {
     background: #eeeeee;
 }
 
-.list--alter td:first-child {
-    text-align: left;
+.list--dictionary td:first-child {
     font-weight: bold;
 }
 
