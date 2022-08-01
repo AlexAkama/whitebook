@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JAVA 8</title>
+    <link rel="stylesheet" href="../../../../css/style.css">
+</head>
+
+<body>
+
+<section class="container">
+    <h1 class="no_mb">JAVA 8</h1>
+    <div class="after-h1">Вопросы к собеседованию</div>
+    <div class="breadcrumbs">
+        <p><a href="../../../../">главная</a></p>
+        <p><a href="../../">Questions</a></p>
+        <p><a href="..">core</a></p>
+        <p>java 8</p>
+    </div>
+    <h4 class="no_mt">Вопросы по JAVA 8:</h4>
+    <ol class="menu">
+        <li><a href="#q1">Нововведения</a></li>
+        <li><a href="#q2">Новые классы для даты</a></li>
+        <li><a href="#q3">Optional</a></li>
+        <li><a href="#q4">Что такое Nashorn?</a></li>
+        <li><a href="#q5">Что такое jjs?</a></li>
+        <li><a href="#q6">Класс для (де)кодировки</a></li>
+        <li><a href="#q7">Новые методы для maps</a></li>
+        <li><a href="#q8">Что такое LocalDateTime?</a></li>
+        <li><a href="#q9">Что такое ZonedDateTime?</a></li>
+    </ol>
+</section>
+
+<section class="container" id="q1">
+    <h1>Нововведения в JAVA 8</h1>
+    <ul class="tab-2">
+        <li>Методы интерфейсов по умолчанию;</li>
+        <li>Лямбда-выражения;</li>
+        <li>Функциональные интерфейсы;</li>
+        <li>Ссылки на методы и конструкторы;</li>
+        <li>Повторяемые аннотации;</li>
+        <li>Аннотации на типы данных;</li>
+        <li>Рефлексия для параметров методов;</li>
+        <li>Stream API для работы с коллекциями;</li>
+        <li>Параллельная сортировка массивов;</li>
+        <li>Новое API для работы с датами и временем;</li>
+        <li>Новый движок JavaScript Nashorn;</li>
+        <li>Добавлено несколько новых классов для потокобезопасной работы;</li>
+        <li>Добавлен новый API для Calendar и Locale;</li>
+        <li>Добавлена поддержка Unicode 6.2.0;</li>
+        <li>Добавлен стандартный класс для работы с Base64;</li>
+        <li>Добавлена поддержка беззнаковой арифметики;</li>
+        <li>
+            Улучшена производительность конструктора java.lang.String(byte[], *) и
+            метода java.lang.String.getBytes();
+        </li>
+        <li>
+            Новая реализация AccessController.doPrivileged, позволяющая устанавливать подмножество
+            привилегий без необходимости проверки всех остальных уровней доступа;
+        </li>
+        <li>Password-based алгоритмы стали более устойчивыми;</li>
+        <li>Добавлена поддержка SSL/TLS Server Name Indication (NSI) в JSSE Server;</li>
+        <li>Улучшено хранилище ключей (KeyStore);</li>
+        <li>Добавлен алгоритм SHA-224;</li>
+        <li>Удален мост JDBC - ODBC;</li>
+        <li>Удален PermGen, изменен способ хранения мета-данных классов;</li>
+        <li>
+            Возможность создания профилей для платформы Java SE, которые включают в себя не всю
+            платформу целиком, а некоторую ее часть;
+        </li>
+        <li>Инструментарий</li>
+        <ul>
+            <li>Добавлена утилита jjs для использования JavaScript Nashorn;</li>
+            <li>Команда java может запускать JavaFX приложения;</li>
+            <li>Добавлена утилита jdeps для анализа .class-файлов.</li>
+        </ul>
+    </ul>
+
+    <a href="#" class="button button--top"></a>
+</section>
+
+<section class="container" id="q2">
+    <h1>Новые классы для работы с датами в JAVA 8</h1>
+    <p>
+        Новый же Java 8 Date/Time API содержит неизменные, потокобезопасные классы с продуманным
+        дизайном на любой вкус и цвет.
+    </p>
+    <p>Содержатся они в <strong>пакете java.time</strong></p>
+    <table class="list list--alter" aria-label="">
+        <thead>
+        <tr>
+            <th>Класс</th>
+            <th>Описание</th>
+        </tr>
+        </thead>
+        <tr>
+            <td>LocalDate</td>
+            <td>дата без времени и временных зон</td>
+        </tr>
+        <tr>
+            <td>LocalTime</td>
+            <td>время без даты и временных зо</td>
+        </tr>
+        <tr>
+            <td>LocalDateTime</td>
+            <td>дата и время без временных зон</td>
+        </tr>
+        <tr>
+            <td>ZonedDateTime</td>
+            <td>дата и время с временной зоной</td>
+        </tr>
+        <tr>
+            <td>DateTimeFormatter</td>
+            <td>форматирует даты в строки и наоборот, только для классов java.time</td>
+        </tr>
+        <tr>
+            <td>Instant</td>
+            <td>колличество секунд с Unix epoch time (полночь 1 января 1970 UTC)</td>
+        </tr>
+        <tr>
+            <td>Duration</td>
+            <td>продолжительность в секундах и наносекундах</td>
+        </tr>
+        <tr>
+            <td>Period</td>
+            <td>период времени в годах, месяцах и днях</td>
+        </tr>
+        <tr>
+            <td>TemporalAdjuster</td>
+            <td>
+                <p>корректировщик дат</p>
+                <p class="example">к примеру, может получить дату следующего понедельника</p>
+            </td>
+        </tr>
+    </table>
+
+    <a href="#" class="button button--top"></a>
+</section>
+
+<section class="container" id="q3">
+    <h1>Optional</h1>
+    <p class="main-mind">
+        Опциональное значение Optional — это контейнер для объекта, который может содержать или не
+        содержать значение null.
+    </p>
+    Такая обёртка <strong>является</strong> удобным <strong>средством предотвращения NullPointerException</strong>,
+    т.к. имеет некоторые функции высшего порядка, избавляющие от добавления повторяющихся if&nbsp;null/notNull проверок:
+    <div class="code">
+        <p>Optional &lt;String&gt; optional = Optional.of("hello");</p>
+        <p>optional.isPresent(); // true</p>
+        <p>optional.ifPresent(s -> System.out.println(s.length())); // 5</p>
+        <p>optional.get(); // "hello"</p>
+        <p>optional.orElse("ops..."); // "hello"</p>
+    </div>
+
+    <p><a href="../../../java#optional">Примеры использования и ошибки</a></p>
+
+    <a href="#" class="button button--top"></a>
+</section>
+
+<section class="container" id="q4">
+    <h1 class="no_mb">Что такое Nashorn?</h1>
+    <h3 class="no_mt">Не используется в современных версиях</h3>
+    <p>
+        Nashorn - это движок JavaScript, разрабатываемый на Java компанией Oracle. Призван дать
+        возможность встраивать код JavaScript в приложения Java. В сравнении с Rhino, который
+        поддерживается Mozilla Foundation, Nashorn обеспечивает от 2 до 10 раз более высокую
+        производительность, так как он компилирует код и передает байт-код виртуальной машине Java
+        непосредственно в памяти. Nashorn умеет компилировать код JavaScript и генерировать классы Java,
+        которые загружаются специальным загрузчиком. Так же возможен вызов кода Java прямо из JavaScript.
+    </p>
+    <a href="#" class="button button--top"></a>
+</section>
+
+<section class="container" id="q5">
+    <h1>Что такое jjs?</h1>
+    <p>
+        jjs это утилита командной строки, которая позволяет исполнять программы на языке JavaScript прямо в
+        консоли.
+    </p>
+    <a href="#" class="button button--top"></a>
+</section>
+
+<section class="container" id="q6">
+    <h1 class="no_mb">Класс для (де)кодировки</h1>
+    <h4 class="no_mt no_mb">
+        Какой класс появился в Java 8 для кодирования/декодирования данных?
+    </h4>
+    <p class="example">используется в читалках (кодирование / декодирования в формат эл. книг)</p>
+    <p class="main-mind">
+        Base64 - потокобезопасный класс, который реализует кодировщик и декодировщик данных, используя
+        схему кодирования base64 согласно RFC 4648 и RFC 2045.
+    </p>
+    <table class="list list--alter" aria-label="">
+        <caption>Методы класса Base64:</caption>
+        <thead>
+        <tr>
+            <th>Метод</th>
+            <th>Описание</th>
+        <tr>
+        </thead>
+        <tr>
+            <td>
+                <p>getEncoder()</p>
+                <p>getDecoder()</p>
+            </td>
+            <td>возвращает кодировщик/декодировщик base64, соответствующий стандарту RFC 4648</td>
+        </tr>
+        <tr>
+            <td>
+                <p>getUrlEncoder()</p>
+                <p>getUrlDecoder()</p>
+            </td>
+            <td>возвращает URL-safe кодировщик/декодировщик base64, соответствующий стандарту RFC 4648</td>
+        </tr>
+        <tr>
+            <td>
+                <p>getMimeEncoder()</p>
+                <p>getMimeDecoder()</p>
+            </td>
+            <td>возвращает MIME кодировщик/декодировщик, соответствующий стандарту RFC 2045</td>
+        </tr>
+    </table>
+    <hr>
+    <h4>Как создать Base64 кодировщик и декодировщик?</h4>
+    <div class="code">
+        <p>// Encode</p>
+        <p>String b64 = Base64.getEncoder().encodeToString("input".getBytes("utf-8")); //aW5wdXQ==</p>
+        <p>// Decode</p>
+        <p>new String(Base64.getDecoder().decode("aW5wdXQ=="), "utf-8"); //input</p>
+    </div>
+
+    <a href="#" class="button button--top"></a>
+</section>
+
+<section class="container" id="q7">
+    <h1 class="no_mb">Новые методы для maps</h1>
+    <h4 class="no_mt">
+        Какие дополнительные методы для работы с ассоциативными массивами (maps) появились в Java 8?
+    </h4>
+    <p class="main-mind example no_mb">
+        Ассоциативный массив — абстрактный тип данных (интерфейс к хранилищу данных), позволяющий хранить пары вида
+        «(ключ, значение)» и поддерживающий операции добавления пары, а также поиска и удаления пары по ключу.
+    </p>
+    <p>
+        <a class="link-to-source"
+           href="https://ru.wikipedia.org/wiki/%D0%90%D1%81%D1%81%D0%BE%D1%86%D0%B8%D0%B0%D1%82%D0%B8%D0%B2%D0%BD%D1%8B%D0%B9_%D0%BC%D0%B0%D1%81%D1%81%D0%B8%D0%B2">
+            источник (wiki)
+        </a>
+    </p>
+
+    <table class="list list--alter" aria-label="Новые методы map">
+        <thead>
+        <tr>
+            <th>Метод</th>
+            <th>Описание</th>
+        <tr>
+        </thead>
+        <tr>
+            <td>putIfAbsent()</td>
+            <td>
+                <p>добавляет пару «ключ-значение», только если ключ отсутствовал</p>
+                <p class="code-word example wrap-normal">map.putIfAbsent("a", "Aa");</p>
+            </td>
+        </tr>
+        <tr>
+            <td>forEach()</td>
+            <td>
+                <p>принимает функцию, которая производит операцию над каждым элементом</p>
+                <p class="code-word example wrap-normal">map.forEach((k, v) -> System.out.println(v));</p>
+            </td>
+        </tr>
+        <tr>
+            <td>compute()</td>
+            <td>
+                <p>
+                    создаёт или обновляет текущее значение на полученное в результате вычисления
+                    (возможно использовать ключ и текущее значение)
+                </p>
+                <p class="code-word example wrap-normal">
+                    map.compute("a", (k, v) -> String.valueOf(k).concat(v)); //["a", "aAa"]
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td>computeIfPresent()</td>
+            <td>
+                <p>
+                    если ключ существует, обновляет текущее значение на полученное в результате вычисления
+                    (возможно использовать ключ и текущее значение)
+                </p>
+                <p class="code-word example wrap-normal">map.computeIfPresent("a", (k, v) -> k.concat(v))</p>
+            </td>
+        </tr>
+        <tr>
+            <td>computeIfAbsent()</td>
+            <td>
+                <p>
+                    если ключ отсутствует, создаёт его со значением, которое вычисляется
+                    (возможно использовать ключ)
+                </p>
+                <p class="code-word example wrap-normal">map.computeIfAbsent("a", k -> "A".concat(k)); //["a","Aa"]</p>
+            </td>
+        </tr>
+        <tr>
+            <td>getOrDefault()</td>
+            <td>
+                <p> в случае отсутствия ключа, возвращает переданное значение по-умолчанию </p>
+                <p class="code-word example wrap-normal">map.getOrDefault("a", "not found")</p>
+            </td>
+        </tr>
+        <tr>
+            <td>merge()</td>
+            <td>
+                <p>
+                    принимает ключ, значение и функцию, которая объединяет передаваемое и текущее значения.
+                    Если под заданным ключем значение отсутствует, то записывает туда передаваемое значение.
+                </p>
+                <p class="code-word example wrap-normal">map.merge("a", "z", (value, newValue) ->
+                    value.concat(newValue)); //["a","Aaz"]</p>
+            </td>
+        </tr>
+    </table>
+
+
+    <a href="#" class="button button--top"></a>
+</section>
+
+<section class="container" id="q8">
+    <h1>Что такое LocalDateTime?</h1>
+    <p>
+        <strong>LocalDateTime</strong> объединяет
+        <strong>вместе LocaleDate и LocalTime</strong>, содержит дату и время в календарной
+        системе ISO-8601 без привязки к часовому поясу.
+    </p>
+    <p class="bold">Время хранится с точностью до наносекунды.</p>
+    <p>
+        Содержит множество удобных методов, таких как
+        <span class="code-word example">plusMinutes</span>,
+        <span class="code-word example">plusHours</span>,
+        <span class="code-word example">isAfter</span>,
+        <span class="code-word example">toSecondOfDay</span> и т.д.
+    </p>
+    <a href="#" class="button button--top"></a>
+</section>
+
+<section class="container" id="q9">
+    <h1>Что такое ZonedDateTime?</h1>
+    <p>
+        java.time.ZonedDateTime — <strong>аналог java.util.Calendar</strong>, класс с самым полным объемом информации о
+        временном контексте в календарной системе ISO-8601.
+    </p>
+    <p>
+        <strong>Включает временную зону</strong>, поэтому все
+        операции с временными сдвигами этот класс проводит с её учётом.
+    </p>
+    <a href="#" class="button button--top"></a>
+</section>
+
+<div class="navi">
+    <a class="navi-button navi--prev" href="../java_stream/">Stream API</a>
+    <a class="navi-button navi--next" href="#"></a>
+</div>
+
+<footer>
+    <div class="footer__text">Алексей Маслов, 2021-2022</div>
+</footer>
+
+</body>
+
+</html>

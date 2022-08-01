@@ -189,9 +189,21 @@ img {
     cursor: pointer;
 }
 
-.show {
-    position: center;
+.full {
     max-width: none;
+}
+
+.show {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: #737373;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: auto;
 }
 
 .update-time {
@@ -335,6 +347,7 @@ img {
     background-color: rgb(251, 250, 248);
     border: 1px solid rgba(0, 0, 0, 0.14902);
     margin-bottom: 15px;
+    overflow: auto;
 }
 
 .code p,
@@ -352,6 +365,10 @@ img {
     background-color: rgb(251, 250, 248);
     border: 1px solid rgba(0, 0, 0, 0.14902);
     white-space: nowrap;
+}
+
+.wrap-normal {
+    white-space: normal;
 }
 
 .code.example--word,
