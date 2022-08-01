@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stream API</title>
+    <link rel="stylesheet" href="../../../../css/style.css">
+</head>
+
+<body>
+
+<section class="container">
+    <h1 class="no_mb">Stream API</h1>
+    <div class="after-h1">Вопросы к собеседованию</div>
+    <div class="breadcrumbs">
+        <p><a href="../../../../">главная</a></p>
+        <p><a href="../../">Questions</a></p>
+        <p><a href="..">core</a></p>
+        <p>STREAM api</p>
+    </div>
+    <h4 class="no_mt">Вопросы:</h4>
+    <ol class="menu">
+        <li><a href="#q1">Что такое Stream API?</a></li>
+        <li><a href="#q2">Способы создания стрима?</a></li>
+        <li><a href="#q3">Методы</a></li>
+        <li><a href="#q4">Терминальные методы</a></li>
+        <li><a href="#q5">Метод collect()</a></li>
+        <li><a href="#q6">Метод reduce()</a></li>
+        <li><a href="#q7">Класс Collectors</a></li>
+        <li><a href="#q8">Параллельная обработка</a></li>
+        <li><a href="#q9">Стримы для примитивов</a></li>
+    </ol>
+</section>
+
+<section class="container" id="q1">
+    <h1>Что такое Stream API?</h1>
+    <p class="main-mind">
+        Интерфейс java.util.Stream представляет собой последовательность элементов, над которой можно
+        производить различные операции.
+    </p>
+
+    <h4>Для чего нужны стримы?</h4>
+    <p class="main-mind">
+        Нужны для упрощения работы с наборами данных, в частности, упростить операции фильтрации,
+        сортировки и другие манипуляции с данными.
+    </p>
+    <div class="code">
+        <p>IntStream.of(50, 60, 70, 80, 90, 100, 110, 120)</p>
+        <p class="tab-3">.filter(x -> x < 90)</p>
+        <p class="tab-3">.map(x -> x + 10)</p>
+        <p class="tab-3">.limit(3)</p>
+        <p class="tab-3">.forEach(System.out::print);</p>
+    </div>
+    <hr>
+    <h4>Создание экземпляра Stream</h4>
+    <div class="code no_mb">
+        <p>Stream.empty() //Пустой стрим</p>
+        <p>list.stream() //Стрим из List</p>
+        <p>map.entrySet().stream() //Стрим из Map</p>
+        <p>Arrays.stream(array) //Стрим из массива</p>
+        <p>Stream.of("1", "2", "3") //Стрим из указанных элементов</p>
+    </div>
+    <p class="example">Стрим из BufferedReader с помощью метода lines(); нужно закрывать close ().</p>
+    <a class="example" href="">подробнее</a>
+    <p></p>
+    <hr>
+    <h3>Типы операций</h3>
+    <p>
+        <strong>Промежуточные</strong>
+        (“intermediate”, “lazy”) - обрабатывают поступающие элементы и возвращают стрим.
+        Может быть <strong>много или ни одной</strong>.
+    </p>
+    <p>
+        <strong>Терминальные</strong>
+        (“terminal”, ещё называют “eager”) - обрабатывают элементы и завершают работу стрима,
+        может быть <strong>только один</strong>.
+    </p>
+    <h4>Важные моменты:</h4>
+    <ul>
+        <li>
+            <p class="main-mind no_mb">Обработка не начнётся до тех пор, пока не будет вызван терминальный оператор.</p>
+            <p class="example">list.stream().filter(s - > s > 5) (не возьмёт ни единого элемента из списка);</p>
+        </li>
+        <li>
+            <p class="main-mind">Экземпляр стрима нельзя использовать более одного раза. </p>
+        </li>
+    </ul>
+    <table class="list" aria-label="">
+        <thead>
+        <tr>
+            <th>Коллекции</th>
+            <th>Streams</th>
+        <tr>
+        </thead>
+        <tr>
+            <td>Конечны (хранят набор элементов)</td>
+            <td>Бесконечны</td>
+        </tr>
+        <tr>
+            <td>Индивидуальный доступ к элементам</td>
+            <td>Нет индивид. доступа к элементам</td>
+        </tr>
+        <tr>
+            <td>Можно менять (добавлять/удалять) элементы, в т.ч. через итератор</td>
+            <td>Если как то обрабатываем данные, то не влияет на источник</td>
+        </tr>
+    </table>
+
+    <hr>
+    <h4>Почему Stream называют ленивым?</h4>
+    <p class="main-mind example">
+        Ленивое программирование - технология, которая позволяет вам отсрочить вычисление кода до тех пор,
+        пока не понадобится его результирующее значение.
+    </p>
+    <p>Блок обработки – промежуточные операции не выполняются, пока не вызовется терминальная.</p>
+
+    <a href="#" class="button button--top"></a>
+</section>
+
+<section class="container" id="q9">
+    <h1>Стримы для примитивов</h1>
+    <p>
+        Кроме универсальных объектных существуют особые виды стримов для работы с примитивными
+        типами данных int, long и double: <strong>IntStream, LongStream и DoubleStream</strong>.
+    </p>
+    <p class="no_mb">
+        Эти примитивные стримы работают так же, как и обычные объектные, но со следующими отличиями:
+    </p>
+    <ul class="tab-2">
+        <li>
+
+            <p><strong>используют специализированные лямбда-выражения;</strong></p>
+            <p class="example">например, IntFunction или IntPredicate вместо Function и Predicate</p>
+        </li>
+        <li>
+            поддерживают <strong>дополнительные конечные операции: </strong>
+            <span class="code-word example">sum()</span>,
+            <span class="code-word example">average()</span>,
+            <span class="code-word example">mapToObj()</span>.
+        </li>
+    </ul>
+    <a href="#" class="button button--top"></a>
+</section>
+
+<div class="navi">
+    <a class="navi-button navi--prev" href="../stream_api/">Функциональные интерфейсы</a>
+    <a class="navi-button navi--next" href="#">JAVA8</a>
+</div>
+
+<footer>
+    <div class="footer__text">Алексей Маслов, 2021-2022</div>
+</footer>
+
+</body>
+
+</html>
