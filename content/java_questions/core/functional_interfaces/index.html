@@ -29,7 +29,175 @@
 </section>
 
 <section class="container" id="q1">
-    <h1></h1>
+    <h1>Функциональные интерфейсы</h1>
+    <p class="main-mind">
+        Функциональный интерфейс - это интерфейс, который определяет только один абстрактный метод.
+    </p>
+    <p class="main-mind">
+        Основное назначение – использование в лямбда выражениях и method reference.
+    </p>
+    <p class="no_mb">
+        Чтобы точно определить интерфейс как функциональный, добавлена аннотация
+        <an>@FunctionalInterface</an>
+        , работающая по принципу @Override.
+    </p>
+    <p> Она обозначит замысел и не даст определить второй абстрактный метод в интерфейсе. </p>
+    <p>
+        Интерфейс может включать сколько угодно default методов и при этом оставаться функциональным,
+        потому что default методы - не абстрактные.
+    </p>
+    <hr>
+    <h4>Встроенные функциональные интерфейсы:</h4>
+    <ul>
+        <li class="mb10">
+            <p class="bold">Predicate&lt;T&gt;</p>
+            <p class="code-word example"> public interface Predicate&lt;T&gt; { boolean test(T t); } </p>
+            <p>
+                Проверяет соблюдение некоторого условия. Если оно соблюдается, то возвращается значение true.
+                В качестве параметра лямбда-выражение принимает объект типа&nbsp;T.
+            </p>
+        </li>
+        <li class="mb10">
+            <p class="bold">Function&lt;T, R></p>
+            <p class="code-word example">public interface Function&lt;T, R&gt; { R apply(T t); }</p>
+            <p>Представляет функцию перехода от объекта типа T к объекту типа R </p>
+        </li>
+        <li class="mb10">
+            <p class="bold">Supplier&lt;T&gt;</p>
+            <p class="code-word example">public interface Supplier&lt;T&gt; { T get(); }</p>
+            <p>Не принимает никаких аргументов, но должен возвращать объект типа T </p>
+        </li>
+        <li class="mb10">
+            <p class="bold">Consumer&lt;T&gt;</p>
+            <p class="code-word example">public interface Consumer&lt;T&gt; { void accept(T t); }</p>
+            <p> Выполняет некоторое действие над объектом типа T, при этом ничего не возвращая</p>
+        </li>
+        <li class="mb10">
+            <p class="bold">UnaryOperator&lt;T&gt;</p>
+            <p class="code-word example">public interface UnaryOperator&lt;T&gt; { T apply(T t); }</p>
+            <p>
+                принимает в качестве параметра объект типа T, выполняет над ними операции и
+                возвращает результат операций в виде объекта типа T
+            </p>
+        </li>
+        <li class="mb10">
+            <p class="bold">BinaryOperator&lt;T&gt;</p>
+            <p class="code-word example">public interface BinaryOperator&lt;T&gt; { T apply(T t1, T t2); }</p>
+            <p>
+                принимает в качестве параметра два объекта типа T, выполняет над ними бинарную
+                операцию и возвращает ее результат также в виде объекта типа T
+            </p>
+        </li>
+    </ul>
+    <table class="list list--dictionary" aria-label="Встроенные функциональные интерфейсы">
+        <thead>
+        <tr>
+            <th>Название</th>
+            <th>Пример</th>
+        <tr>
+        </thead>
+        <tr>
+            <td>Predicate&lt;T&gt;</td>
+            <td>
+                <div class="code no_margin">
+                    <p>import java.util.function.Predicate;</p>
+                    <p>public class LambdaApp {</p>
+                    <p class="tab-1">public static void main(String[] args) {</p>
+                    <p class="tab-2">Predicate&lt;Integer&gt; isPositive = x -> x > 0;</p>
+                    <p class="tab-2">System.out.println(isPositive.test(5)); // true</p>
+                    <p class="tab-2">System.out.println(isPositive.test(-7)); // false</p>
+                    <p class="tab-1">}</p>
+                    <p>}</p>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>Function&lt;T,R&gt;</td>
+            <td>
+                <div class="code no_margin">
+                    <p>import java.util.function.Function;</p>
+                    <p>public class LambdaApp {</p>
+                    <p class="tab-1">public static void main(String[] args) {</p>
+                    <p class="tab-2">Function&lt;Integer, String&gt; convert = x-> String.valueOf(x) + " долларов";</p>
+                    <p class="tab-2">System.out.println(convert.apply(5)); // 5 долларов</p>
+                    <p class="tab-1">}</p>
+                    <p>}</p>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>Supplier&lt;T&gt;</td>
+            <td>
+                <div class="code no_margin">
+                    <p>import java.util.Scanner;</p>
+                    <p>import java.util.function.Supplier;</p>
+                    <p>public class LambdaApp {</p>
+                    <p class="tab-1 mb10">public static void main(String[] args) {</p>
+                    <p class="tab-2">Supplier&lt;User&gt; userFactory = () -> {</p>
+                    <p class="tab-3">Scanner in = new Scanner(System.in);</p>
+                    <p class="tab-3">System.out.println("Введите имя: ");</p>
+                    <p class="tab-3">String name = in.nextLine();</p>
+                    <p class="tab-3">return new User(name);</p>
+                    <p class="tab-2 mb10">};</p>
+                    <p class="tab-2">User user1 = userFactory.get();</p>
+                    <p class="tab-2 mb10">User user2 = userFactory.get();</p>
+                    <p class="tab-2">System.out.println("Имя user1: " + user1.getName());</p>
+                    <p class="tab-2">System.out.println("Имя user2: " + user2.getName());</p>
+                    <p class="tab-1">}</p>
+                    <p class="mb10">}</p>
+                    <p>Введите имя:</p>
+                    <p>Том</p>
+                    <p>Введите имя:</p>
+                    <p>Сэм</p>
+                    <p>Имя user1: Том</p>
+                    <p>Имя user2: Сэм</p>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>Consumer&lt;T&gt;</td>
+            <td>
+                <div class="code no_margin">
+                    <p>import java.util.function.Consumer;</p>
+                    <p>public class LambdaApp {</p>
+                    <p class="tab-1">public static void main(String[] args) {</p>
+                    <p class="tab-2">Consumer&lt;Integer&gt; printer = x-> System.out.printf("%d долларов \n", x);</p>
+                    <p class="tab-2">printer.accept(600); // 600 долларов</p>
+                    <p class="tab-1">}</p>
+                    <p>}</p>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>UnaryOperator&lt;T&gt;</td>
+            <td>
+                <div class="code no_margin">
+                    <p>import java.util.function.UnaryOperator;</p>
+                    <p>public class LambdaApp {</p>
+                    <p class="tab-1">public static void main(String[] args) {</p>
+                    <p class="tab-2">UnaryOperator&lt;Integer&gt; square = x -> x*x;</p>
+                    <p class="tab-2">System.out.println(square.apply(5)); // 25</p>
+                    <p class="tab-1">}</p>
+                    <p>}</p>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>BinaryOperator&lt;T&gt;</td>
+            <td>
+                <div class="code no_margin">
+                    <p>import java.util.function.BinaryOperator;</p>
+                    <p>public class LambdaApp {</p>
+                    <p class="tab-1">public static void main(String[] args) {</p>
+                    <p class="tab-2">BinaryOperator&lt;Integer&gt; multiply = (x, y) -> x * y;</p>
+                    <p class="tab-2">System.out.println(multiply.apply(3, 5)); // 15</p>
+                    <p class="tab-2"> System.out.println(multiply.apply(10, -2)); // -20</p>
+                    <p class="tab-1">}</p>
+                    <p>}</p>
+                </div>
+            </td>
+        </tr>
+    </table>
 
     <a href="#" class="button button--top"></a>
 </section>

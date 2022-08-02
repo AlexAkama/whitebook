@@ -78,6 +78,14 @@ h4 {
     margin-bottom: 0 !important;
 }
 
+.mb10 {
+    margin-bottom: 10px !important;
+}
+
+.no_margin {
+    margin: 0 !important;
+}
+
 .no_mt {
     margin-top: 0 !important;
 }
@@ -529,6 +537,11 @@ img {
     vertical-align: middle;
 }
 
+an {
+    font-weight: bold;
+    color: darkorange;
+
+}
 
 @media screen and (max-width: 680px) {
     .list {
