@@ -353,6 +353,10 @@ img {
     overflow: auto;
 }
 
+td .code {
+    word-break: break-word;
+}
+
 .code p,
 .code-word p {
     margin: 0;

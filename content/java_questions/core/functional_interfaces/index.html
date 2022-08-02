@@ -92,8 +92,8 @@
     <table class="list list--dictionary" aria-label="Встроенные функциональные интерфейсы">
         <thead>
         <tr>
-            <th>Название</th>
-            <th>Пример</th>
+            <th>Интерфейс</th>
+            <th>Пример использования</th>
         <tr>
         </thead>
         <tr>
@@ -204,6 +204,53 @@
 
 <section class="container" id="q2">
     <h1>Лямбда-выражения</h1>
+    <p class="main-mind">
+        Представляет набор инструкций, которые можно выделить в отдельную переменную и затем
+        многократно вызвать в различных местах программы.
+    </p>
+    <p class="main-mind">
+        Образует реализацию метода, определенного в функциональном интерфейсе. При этом важно, что функциональный
+        интерфейс должен содержать только один единственный метод без реализации.
+    </p>
+    <p class="code-word">список параметров выражения -> тело лямбда-выражения (действия)</p>
+
+    <p>
+        Параметры лямбда-выражения должны соответствовать по типу параметрам метода из функционального интерфейса.
+    </p>
+    <p class="no_mb">
+        B лямбда-выражении <strong>использование обобщений не допускается</strong>. В этом случае нам надо типизировать
+        объект интерфейса определенным типом, который потом будет применяться в лямбда-выражении:
+    </p>
+    <div class="code">
+        <p>public class LambdaApp {</p>
+        <p class="tab-1 mb10">public static void main(String[] args) {</p>
+        <p class="tab-2">Operationable&lt;Integer&gt; operation1 = (x, y)-> x + y;</p>
+        <p class="tab-2 mb10"> Operationable&lt;String&gt; operation2 = (x, y) -> x + y;</p>
+        <p class="tab-2">System.out.println(operation1.calculate(20, 10)); //30</p>
+        <p class="tab-2 mb10">System.out.println(operation2.calculate("20", "10")); //2010</p>
+        <p class="tab-1">}</p>
+        <p class="mb10">}</p>
+        <p>interface Operationable&lt;T&gt; {</p>
+        <p class="tab-1">T calculate(T x, T y);</p>
+        <p>}</p>
+    </div>
+    <hr>
+    <h4>Важно:</h4>
+    <p class="main-mind no_mb">
+        Одним из ключевых моментов в использовании лямбд является отложенное выполнение (deferred execution).
+    </p>
+    <p>
+        То есть мы определяем в одном месте программы лямбда-выражение и затем можем его
+        вызывать при необходимости неопределенное количество раз в различных частях программы.
+    </p>
+    <p class="no_mb">Отложенное выполнение может потребоваться, к примеру, в следующих случаях:</p>
+    <ul class="tab-2">
+        <li>Выполнение кода отдельном потоке</li>
+        <li>Выполнение одного и того же кода несколько раз</li>
+        <li>Выполнение кода в результате какого-то события</li>
+        <li>Выполнение кода только в том случае, когда он действительно необходим и если он необходим</li>
+    </ul>
+
 
     <a href="#" class="button button--top"></a>
 </section>
@@ -218,7 +265,7 @@
     <ul>
         <li>
             <p style="margin-bottom: 10px">Ссылка <strong>на статический метод</strong>
-                - <span class="code-word">ContainingClass::staticMethodName</span>
+                - <span class="code-word example">ContainingClass::staticMethodName</span>
             </p>
             <div class="code">
                 <p>Function &lt;String, Boolean&gt; function = e -> Boolean.valueOf(e);</p>
@@ -230,7 +277,7 @@
         <li>
             <p style="margin-bottom: 10px"> Ссылка
                 <strong>на нестатический метод конкретного объекта</strong>
-                <span class="code-word">containingObject::instanceMethodName</span></p>
+                - <span class="code-word example">containingObject::instanceMethodName</span></p>
             <div class="code">
                 <p>Consumer &lt;String&gt; consumer = e -> System.out.println(e);</p>
                 <p>consumer.accept("OCPJP 8");</p>
@@ -241,7 +288,7 @@
         <li>
             <p style="margin-bottom: 10px">Ссылка
                 <strong>на нестатический метод любого объекта конкретного типа</strong>
-                <span class="code-word">ContainingType::methodName</span>
+                - <span class="code-word example">ContainingType::methodName</span>
             </p>
             <div class="code">
                 <p>Function &lt;String, String&gt; function = s -> s.toLowerCase();</p>
@@ -252,7 +299,7 @@
         </li>
         <li>
             <p style="margin-bottom: 10px">Ссылка
-                <strong>на конструктор</strong> <span class="code-word">ClassName::new</span></p>
+                <strong>на конструктор</strong> - <span class="code-word example">ClassName::new</span></p>
             <div class="code">
                 <p>Function &lt;String, Integer&gt; function = (d) -> new Integer(d);</p>
                 <p>System.out.println(function.apply("4"));</p>
