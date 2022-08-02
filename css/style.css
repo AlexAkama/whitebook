@@ -299,7 +299,7 @@ img {
     font-weight: bold;
 }
 
-.center{
+.center {
     text-align: center;
 }
 
@@ -368,7 +368,7 @@ img {
     border-radius: 4px;
     background-color: rgb(251, 250, 248);
     border: 1px solid rgba(0, 0, 0, 0.14902);
-    white-space: nowrap;
+    /*white-space: nowrap;*/
 }
 
 .wrap-normal {
@@ -532,6 +532,10 @@ img {
 
 .list--content-center td:not(:first-child) {
     text-align: center;
+}
+
+.list--content-vertical-middle td:not(:first-child) {
+    vertical-align: middle;
 }
 
 

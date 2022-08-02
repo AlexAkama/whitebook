@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stream API</title>
+    <title>JAVA Stream API</title>
     <link rel="stylesheet" href="../../../../css/style.css">
 </head>
 
@@ -23,14 +23,12 @@
     <h4 class="no_mt">Вопросы:</h4>
     <ol class="menu">
         <li><a href="#q1">Что такое Stream API?</a></li>
-        <li><a href="#q2">Способы создания стрима?</a></li>
-        <li><a href="#q3">Методы</a></li>
+        <li><a href="#q2">Способы создания стрима</a></li>
+        <li><a href="#q3">Промежуточные методы</a></li>
         <li><a href="#q4">Терминальные методы</a></li>
-        <li><a href="#q5">Метод collect()</a></li>
-        <li><a href="#q6">Метод reduce()</a></li>
-        <li><a href="#q7">Класс Collectors</a></li>
-        <li><a href="#q8">Параллельная обработка</a></li>
-        <li><a href="#q9">Стримы для примитивов</a></li>
+        <li><a href="#q5">Класс Collectors</a></li>
+        <li><a href="#q6">Параллельная обработка</a></li>
+        <li><a href="#q7">Стримы для примитивов</a></li>
     </ol>
 </section>
 
@@ -63,7 +61,7 @@
         <p>Stream.of("1", "2", "3") //Стрим из указанных элементов</p>
     </div>
     <p class="example">Стрим из BufferedReader с помощью метода lines(); нужно закрывать close ().</p>
-    <a class="example" href="">подробнее</a>
+    <a class="example" href="#q2">подробнее</a>
     <p></p>
     <hr>
     <h3>Типы операций</h3>
@@ -119,7 +117,388 @@
     <a href="#" class="button button--top"></a>
 </section>
 
-<section class="container" id="q9">
+<section class="container" id="q2">
+    <h1>Способы создания стрима</h1>
+
+    <p class="no_mb"><strong>Из коллекции</strong>:</p>
+    <p class="code">Stream&lt;String&gt; fromCollection = Arrays.asList("x", "y", "z").stream();</p>
+
+    <p class="no_mb"><strong>Из набора значений</strong>:</p>
+    <p class="code">Stream&lt;String&gt; fromValues = Stream.of("x", "y", "z");</p>
+
+    <p class="no_mb"><strong>Из массива</strong>:</p>
+    <p class="code">Stream&lt;String&gt; fromArray = Arrays.stream(new String[]{"x", "y", "z"});</p>
+
+    <p class="no_mb"><strong>Из файла</strong> (каждая строка в файле будет отдельным элементом в стриме):</p>
+    <p class="code">Stream&lt;String&gt; fromFile = Files.lines(Paths.get("input.txt"));</p>
+
+    <p class="no_mb"><strong>Из строки:</strong>:</p>
+    <p class="code">IntStream fromString = "0123456789".chars();</p>
+
+    <p class="no_mb">С помощью <strong>Stream.builder()</strong>:</p>
+    <p class="code">Stream&lt;String&gt; fromBuilder = Stream.builder().add("z").add("y").add("z").build();</p>
+
+    <p class="no_mb">С помощью <strong>Stream.iterate()</strong> (бесконечный):</p>
+    <p class="code">Stream&lt;Integer&gt; fromIterate = Stream.iterate(1, n -> n + 1);</p>
+
+    <p class="no_mb">С помощью <strong>Stream.generate()</strong> (бесконечный):</p>
+    <p class="code">Stream&lt;String&gt; fromGenerate = Stream.generate(() -> "0");</p>
+
+    <a href="#" class="button button--top"></a>
+</section>
+
+<section class="container" id="q3">
+    <h1>Промежуточные методы</h1>
+    <table class="list list--dictionary" aria-label="Промежуточные методы">
+        <thead>
+        <tr>
+            <th>Метод</th>
+            <th>Описание</th>
+        <tr>
+        </thead>
+        <tr>
+            <td>peek()</td>
+            <td>
+                <p>Может видеть состояние данных в потоке (в основном для отладки)</p>
+                <p class="code-word example">Stream&lt;T&gt; peek(Consumer&lt;? super T&gt; action);</p>
+            </td>
+        </tr>
+        <tr>
+            <td>map()</td>
+            <td>
+                <p>Позволяет задать функцию преобразования одного объекта в другой</p>
+                <p class="code-word example">
+                    &lt;R&gt; Stream&lt;R&gt; map(Function&lt;? super T, ? extends R&gt; mapper);
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td>flatMap()</td>
+            <td>
+                <p>Можно преобразовать один элемент в ноль, один или множество других</p>
+                <p class="code-word example">
+                    &lt;R&gt; Stream&lt;R&gt; flatMap(Function&lt;? super T,
+                    ? extends Stream&lt;? extends R&gt;&gt; mapper);
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td>filter()</td>
+            <td>
+                <p>Который фильтрует все элементы, возвращая только те, что соответствуют условию</p>
+                <p class="code-word example">Stream&lt;T&gt; filter(Predicate&lt;? super T&gt; predicate);</p>
+            </td>
+        </tr>
+        <tr>
+            <td>limit()</td>
+            <td>
+                <p>Возвращает модифицированный поток, в котором не более n элементов</p>
+                <p class="code-word example">Stream&lt;T&gt; limit(long maxSize);</p>
+            </td>
+        </tr>
+        <tr>
+            <td>skip()</td>
+            <td>
+                <p>Возвращает новый поток, в котором пропущены первые n элементов</p>
+                <p class="code-word example">Stream&lt;T&gt; skip(long n);</p>
+            </td>
+        </tr>
+        <tr>
+            <td>sorted()</td>
+            <td>
+                <p>Для сортировки тех объектов, которые реализуют интерфейс Comparable</p>
+                <p class="code-word example">Stream&lt;T&gt; sorted();</p>
+                <p class="example">или</p>
+                <p>Для реализации своей логики сортировки</p>
+                <p class="code-word example">Stream&lt;T&gt; sorted(Comparator&lt;? super T&gt; comparator);</p>
+            </td>
+        </tr>
+        <tr>
+            <td>distinct()</td>
+            <td>
+                <p>Возвращает только уникальные элементы в виде потока</p>
+                <p class="code-word example">Stream&lt;T&gt; distinct();</p>
+            </td>
+        </tr>
+    </table>
+    <a href="#" class="button button--top"></a>
+</section>
+
+<section class="container" id="q4">
+    <h1>Терминальные методы</h1>
+    <table class="list list--dictionary" aria-label="Терминальные методы">
+        <thead>
+        <tr>
+            <th>Метод</th>
+            <th>Описание</th>
+        <tr>
+        </thead>
+        <tr>
+            <td>forEach()</td>
+            <td>
+                <p>Произведет переданное действие с каждым элементом стрима</p>
+                <p class="code-word example">void forEach(Consumer&lt;? super T&gt; action);</p>
+            </td>
+        </tr>
+        <tr>
+            <td>findFirst()</td>
+            <td>
+                <p>Первый в порядке следования элемент из стрима</p>
+                <p>Возвращает Optional т.к. элемента может не быть</p>
+                <p class="code-word example">Optional&lt;T&gt; findFirst();</p>
+            </td>
+        </tr>
+        <tr>
+            <td>allMatch()</td>
+            <td>
+                <p>Позволяет удостовериться, удовлетворяют ли все элементы стрима определенному условию</p>
+                <p class="code-word example">boolean allMatch(Predicate&lt;? super T&gt; predicate);</p>
+            </td>
+        </tr>
+        <tr>
+            <td>min()</td>
+            <td>
+                <p>Возвращает минимальный элемент из стрима</p>
+                <p class="code-word example">Optional&lt;T&gt; min(Comparator&lt;? super T&gt; comparator);</p>
+            </td>
+        </tr>
+        <tr>
+            <td>max()</td>
+            <td>
+                <p>Возвращает максимальный элемент из стрима</p>
+                <p class="code-word example">Optional&lt;T&gt; max(Comparator&lt;? super T&gt; comparator);</p>
+            </td>
+        </tr>
+        <tr>
+            <td>count()</td>
+            <td>
+                <p>Возвращает количество элементов, оставшееся в стриме</p>
+                <p class="code-word example">long count();</p>
+            </td>
+        </tr>
+        <tr>
+            <td>collect()</td>
+            <td>
+                <p style="margin-bottom: 10px">
+                    Собирает элементы стрима в новое хранилище (использует <a href="#q5">Collectors</a>)
+                </p>
+                <p class="code-word example">
+                    &lt;R&gt; R collect(Supplier&lt;R&gt; supplier,
+                    BiConsumer&lt;R, ? super T&gt; accumulator,
+                    BiConsumer&lt;R, R&gt; combiner);
+                </p>
+                <p class="example">или</p>
+                <p class="code-word example">&lt;R, A> R collect(Collector&lt;? super T, A, R&gt; collector);</p>
+            </td>
+        </tr>
+        <tr>
+            <td>reduce()</td>
+            <td>
+                <p style="margin-bottom: 10px">
+                    Позволяет выполнять какое-то действие на всей коллекции и возвращать один результат
+                </p>
+                <p class="code-word example">T reduce(T identity, BinaryOperator&lt;T&gt; accumulator);</p>
+                <p class="example">или</p>
+                <p class="code-word example">Optional&lt;T&gt; reduce(BinaryOperator&lt;T&gt; accumulator);</p>
+                <p class="example">или</p>
+                <p class="code-word example">
+                    &lt;U&gt; U reduce(U identity,
+                    BiFunction&lt;U, ? super T, U&gt; accumulator,
+                    BinaryOperator&lt;U&gt; combiner);
+                </p>
+            </td>
+        </tr>
+    </table>
+
+    <a href="#" class="button button--top"></a>
+</section>
+
+<section class="container" id="q5">
+    <h1>Класс Collectors и его методы</h1>
+    <p class="no_mb">
+        В Java 8 в классе Collectors реализовано несколько распространённых коллекторов:
+    </p>
+    <table class="list list--dictionary list--content-vertical-middle" aria-label="Распространенные коллекторы">
+        <thead>
+        <tr>
+            <th>Метод</th>
+            <th>Описание</th>
+        <tr>
+        </thead>
+        <tr>
+            <td>
+                <p>toList()</p>
+                <p>toCollection()</p>
+                <p>toSet()</p>
+            </td>
+            <td>представляют стрим в виде списка, коллекции или множества</td>
+        </tr>
+        <tr>
+            <td>
+                <p>toConcurrentMap()</p>
+                <p>toMap()</p>
+            </td>
+            <td>позволяют преобразовать стрим в Map</td>
+        </tr>
+        <tr>
+            <td>
+                <p>averagingInt()</p>
+                <p>averagingDouble()</p>
+                <p>averagingLong()</p>
+            </td>
+            <td>возвращают среднее значение</td>
+        </tr>
+        <tr>
+            <td>
+                <p>summingInt()</p>
+                <p>summingDouble()</p>
+                <p>ummingLong()</p>
+            </td>
+            <td>возвращает сумму</td>
+        </tr>
+        <tr>
+            <td>
+                <p>summarizingInt()</p>
+                <p>summarizingDouble()</p>
+                <p>summarizingLong()</p>
+            </td>
+            <td>возвращают SummaryStatistics с разными агрегатными значениями</td>
+        </tr>
+        <tr>
+            <td>partitioningBy()</td>
+            <td>разделяет коллекцию на две части по соответствию условию
+                и возвращает их как Map&lt;Boolean,&nbsp;List&gt;
+            </td>
+        </tr>
+        <tr>
+            <td>groupingBy()</td>
+            <td>разделяет коллекцию на несколько частей и возвращает Map&lt;N,&nbsp;List &lt;T&gt;&gt;</td>
+        </tr>
+        <tr>
+            <td>mapping()</td>
+            <td>дополнительные преобразования значений для сложных Collector-ов</td>
+        </tr>
+    </table>
+
+    <p class="no_mb">
+        Так же существует возможность создания собственного коллектора через
+        <span class="code-word example">Collector.of()</span>:
+    </p>
+    <div class="code">
+        <p>Collector
+            &lt;String, List&lt;String&gt;, List&lt;String&gt;&gt; toList = Collector.of(
+        </p>
+        <p class="tab-3">ArrayList::new,</p>
+        <p class="tab-3">List::add,</p>
+        <p class="tab-3">(l1, l2) -> { l1.addAll(l2); return l1; }</p>
+        <p class="tab-2">);</p>
+    </div>
+
+    <a href="#" class="button button--top"></a>
+</section>
+
+<section class="container" id="q6">
+    <h1>Параллельная обработке в Java 8.</h1>
+    <p>Стримы могут быть последовательными и параллельными.</p>
+    <p>
+        Операции над последовательными стримами выполняются в одном потоке процессора, над параллельными — используя
+        несколько потоков процессора.
+    </p>
+    <p>
+        Параллельные стримы используют общий ForkJoinPool доступный через статический ForkJoinPool.commonPool() метод.
+        При этом, если окружение не является многоядерным, то поток будет выполняться как последовательный.
+    </p>
+    <p>
+        Фактически применение параллельных стримов сводится к тому, что данные в стримах будут разделены на части,
+        каждая часть обрабатывается на отдельном ядре процессора, и в конце эти части соединяются,
+        и над ними выполняются конечные операции.
+    </p>
+    <p>
+        Для создания параллельного потока из коллекции можно также использовать метод
+        <span class="code-word example">parallelStream()</span> интерфейса Collection.
+    </p>
+    <p>
+        Чтобы сделать обычный последовательный стрим параллельным, надо вызвать у объекта Stream
+        метод <span class="code-word example">parallel()</span>.
+    </p>
+    <p>
+        Метод <span class="code-word example">isParallel()</span> позволяет узнать является ли стрим параллельным.
+    </p>
+    <p>
+        С помощью, методов <span class="code-word example">parallel()</span>
+        и <span class="code-word example">sequential()</span> можно определять какие операции могут быть
+        параллельными, а какие только последовательными.
+    </p>
+    <p class="no_mb">Так же из любого последовательного стрима можно сделать параллельный и наоборот:</p>
+    <div class="code">
+        <p>collection</p>
+        <p class="tab-2">.stream()
+        <p class="tab-2">.peek(...) // операция последовательна</p>
+        <p class="tab-2">.parallel()</p>
+        <p class="tab-2">.map(...) // операция может выполняться параллельно</p>
+        <p class="tab-2">.sequential()</p>
+        <p class="tab-2">.reduce(...) // операция снова последовательна</p>
+    </div>
+
+    <p class="no_mb"> Как правило, <strong>элементы</strong> передаются <strong>в стрим в том же порядке</strong>,
+        в котором они определены в источнике данных.</p>
+    <p class="no_mb">При работе с параллельными стримами
+        <strong>система сохраняет порядок</strong> следования элементов.</p>
+    <p>
+        <strong>Исключение</strong> составляет метод <span class="code-word example">forEach()</span>,
+        который может выводить элементы в произвольном порядке. И чтобы сохранить порядок следования,
+        необходимо применять метод <span class="code-word example">forEachOrdered()</span>.
+    </p>
+
+    <p class="no_mb">
+        Критерии, которые могут повлиять на <strong>производительность</strong> в параллельных стримах:
+    </p>
+    <ul class="tab-2">
+        <li>Размер данных - чем больше данных, тем сложнее сначала разделять данные, а потом их соединять.</li>
+        <li>
+            Количество ядер процессора. Теоретически, чем больше ядер в компьютере, тем быстрее
+            программа будет работать. Если на машине одно ядро, нет смысла применять параллельные потоки.
+        </li>
+        <li>
+            <p>Чем проще структура данных, с которой работает поток, тем быстрее будут происходить операции.</p>
+            <p class="example">
+                Например, данные из ArrayList легко использовать, так как структура данной коллекции
+                предполагает последовательность несвязанных данных. А вот коллекция типа LinkedList - не
+                лучший вариант, так как в последовательном списке все элементы связаны с
+                предыдущими/последующими. И такие данные трудно распараллелить.
+
+            </p>
+        </li>
+        <li>Над данными примитивных типов операции будут производиться быстрее, чем над объектами классов.</li>
+        <li>
+            Крайне не рекомендуется использовать параллельные стримы для скольких-нибудь долгих
+            операций (например, сетевых соединений), так как все параллельные стримы работают c одним
+            ForkJoinPool, то такие долгие операции могут остановить работу всех параллельных стримов в JVM
+            из-за отсутствия доступных потоков в пуле, т.е. параллельные стримы стоит использовать лишь для
+            коротких операций, где счет идет на миллисекунды, но не для тех где счет может идти на секунды и
+            минуты;
+        </li>
+        <li>
+            <p>
+                Сохранение порядка в параллельных стримах увеличивает издержки при выполнении и если
+                порядок не важен, то имеется возможность отключить его сохранение и тем самым увеличить
+                производительность, использовав промежуточную операцию
+                <span class="code-word example">unordered()</span>:
+            </p>
+            <div class="code">
+                <p>collection.parallelStream()</p>
+                <p class="tab-2">.sorted()</p>
+                <p class="tab-2">.unordered()</p>
+                <p class="tab-2">.collect(Collectors.toList());</p>
+            </div>
+
+        </li>
+    </ul>
+
+    <a href="#" class="button button--top"></a>
+</section>
+
+<section class="container" id="q7">
     <h1>Стримы для примитивов</h1>
     <p>
         Кроме универсальных объектных существуют особые виды стримов для работы с примитивными
@@ -145,8 +524,8 @@
 </section>
 
 <div class="navi">
-    <a class="navi-button navi--prev" href="../stream_api/">Функциональные интерфейсы</a>
-    <a class="navi-button navi--next" href="#">JAVA8</a>
+    <a class="navi-button navi--prev" href="../functional_interfaces/">Функциональные интерфейсы</a>
+    <a class="navi-button navi--next" href="../java_8/">JAVA8</a>
 </div>
 
 <footer>
