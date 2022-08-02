@@ -299,6 +299,10 @@ img {
     font-weight: bold;
 }
 
+.center{
+    text-align: center;
+}
+
 .main-mind {
     font-weight: bold;
     padding-left: 12px;
@@ -495,6 +499,7 @@ img {
 .list {
     border-collapse: collapse;
     margin-bottom: 20px;
+    min-width: 100%;
 }
 
 .list,
