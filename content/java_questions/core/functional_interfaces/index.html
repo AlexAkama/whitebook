@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JAVA Functional Interfaces</title>
+    <link rel="stylesheet" href="../../../../css/style.css">
+</head>
+
+<body>
+
+<section class="container">
+    <h1 class="no_mb">Функциональные интерфейсы</h1>
+    <div class="after-h1">Вопросы к собеседованию</div>
+    <div class="breadcrumbs">
+        <p><a href="../../../../">главная</a></p>
+        <p><a href="../../">Questions</a></p>
+        <p><a href="..">core</a></p>
+        <p>FuncI</p>
+    </div>
+    <h4 class="no_mt">Вопросы:</h4>
+    <ol class="menu">
+        <li><a href="#q1">Определение</a></li>
+        <li><a href="#q2">Лямбда-выражения</a></li>
+        <li><a href="#q3">Ссылка на метод</a></li>
+    </ol>
+</section>
+
+<section class="container" id="q1">
+    <h1></h1>
+
+    <a href="#" class="button button--top"></a>
+</section>
+
+<section class="container" id="q2">
+    <h1>Лямбда-выражения</h1>
+
+    <a href="#" class="button button--top"></a>
+</section>
+
+<section class="container" id="q3">
+    <h1>Ссылка на метод</h1>
+    <p class="main-mind">
+        Ссылки на методы (Method References) – это компактные лямбда выражения для методов,
+        у которых уже есть имя.
+    </p>
+    <p>Ссылки на методы бывают четырех видов:</p>
+    <ul>
+        <li>
+            <p style="margin-bottom: 10px">Ссылка <strong>на статический метод</strong>
+                - <span class="code-word">ContainingClass::staticMethodName</span>
+            </p>
+            <div class="code">
+                <p>Function &lt;String, Boolean&gt; function = e -> Boolean.valueOf(e);</p>
+                <p>System.out.println(function.apply("TRUE"));</p>
+                <p>Function &lt;String, Boolean&gt; function = Boolean::valueOf;</p>
+                <p>System.out.println(function.apply("TRUE"));</p>
+            </div>
+        </li>
+        <li>
+            <p style="margin-bottom: 10px"> Ссылка
+                <strong>на нестатический метод конкретного объекта</strong>
+                <span class="code-word">containingObject::instanceMethodName</span></p>
+            <div class="code">
+                <p>Consumer &lt;String&gt; consumer = e -> System.out.println(e);</p>
+                <p>consumer.accept("OCPJP 8");</p>
+                <p>Consumer &lt;String&gt; consumer = System.out::println;</p>
+                <p>consumer.accept("OCPJP 8");</p>
+            </div>
+        </li>
+        <li>
+            <p style="margin-bottom: 10px">Ссылка
+                <strong>на нестатический метод любого объекта конкретного типа</strong>
+                <span class="code-word">ContainingType::methodName</span>
+            </p>
+            <div class="code">
+                <p>Function &lt;String, String&gt; function = s -> s.toLowerCase();</p>
+                <p>System.out.println(function.apply("OCPJP 8"));</p>
+                <p>Function &lt;String, String&gt; function = String::toLowerCase;</p>
+                <p>System.out.println(function.apply("OCPJP 8"));</p>
+            </div>
+        </li>
+        <li>
+            <p style="margin-bottom: 10px">Ссылка
+                <strong>на конструктор</strong> <span class="code-word">ClassName::new</span></p>
+            <div class="code">
+                <p>Function &lt;String, Integer&gt; function = (d) -> new Integer(d);</p>
+                <p>System.out.println(function.apply("4"));</p>
+                <p>Function &lt;String, Integer&gt; function = Integer::new;</p>
+                <p>System.out.println(function.apply("4"));</p>
+            </div>
+        </li>
+    </ul>
+
+    <a href="#" class="button button--top"></a>
+</section>
+
+<div class="navi">
+    <a class="navi-button navi--prev" href="../collections/">Классы</a>
+    <a class="navi-button navi--next" href="../stream_api/">Сериализация</a>
+</div>
+
+
+<footer>
+    <div class="footer__text">Алексей Маслов, 2021-2022</div>
+</footer>
+
+</body>
+
+</html>
