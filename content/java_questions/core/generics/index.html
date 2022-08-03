@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JAVA Generics</title>
+    <link rel="stylesheet" href="../../../../css/style.css">
+</head>
+
+<body>
+
+<section class="container">
+    <h1 class="no_mb">Generics</h1>
+    <div class="after-h1">Вопросы к собеседованию</div>
+    <div class="breadcrumbs">
+        <p><a href="../../../../">главная</a></p>
+        <p><a href="../../">Questions</a></p>
+        <p><a href="..">core</a></p>
+        <p>generics</p>
+    </div>
+    <h4 class="no_mt">Вопросы:</h4>
+    <ol class="menu">
+        <li><a href="#q1">Что такое дженерики?</a></li>
+        <li><a href="#q2">Для чего нужны дженерики?</a></li>
+        <li><a href="#q3">Что такое сырые типы (raw type)?</a></li>
+        <li><a href="#q4">Что такое вайлдкарды (маски)?</a></li>
+    </ol>
+</section>
+
+<section class="container" id="q1">
+    <h1>Generics</h1>
+    <p class="main-mind"> Generics - набор свойств языка позволяющих определять и использовать обобщенные типы и
+        методы.</p>
+    <p>
+        Обобщенные типы или методы отличаются от обычных тем, что имеют типизированные параметры
+        (T – параметр в котором могут быть разные объекты).
+    </p>
+    <div class="code">
+        <p>ArrayList&lt;Integer&gt; list = new ArrayList&lt;Integer&gt;();</p>
+    </div>
+
+    <p class="no_mb">Свойства Generics:</p>
+    <ul class="tab-2">
+        <li>Строгая типизация.</li>
+        <li>Единая реализация.</li>
+        <li>Отсутствие информации о типе.</li>
+    </ul>
+    <p class="m10">Ограничения:</p>
+    <ul>
+        <li class="mb10">
+            <p>В <span class="code-word">&lt;&gt;</span> могут быть только ссылочные типы:
+                <span class="good">можно: String, Integer, int[]</span>,
+                <span class="bad">нельзя: int, double</span>.
+            </p>
+        </li>
+        <li class="mb10">
+            Внутри класса или метода нельзя создать экземпляр класса, массив или использовать метод equals,
+            так как внутри класса не известно о самом классе – компилятор не может понять тип.
+        </li>
+        <li class="mb10">
+            Ограничение наследования.
+            <p class="example">
+                Пусть у нас есть тип Foo, который является подтипом Bar, и еще G - наследник Коллекции.
+            </p>
+            <p class="example">
+                То G&lt;Foo&gt; не является наследником G&lt;Bar&gt;.
+            </p>
+        </li>
+        <li class="mb10">Не может быть параметром статического класса.</li>
+        <li class="mb10">
+            Не может создать, поймать, или бросить объекты параметризованных типов.
+            <div class="code">
+                class MathException&lt;T&gt; extends Exception { /* ... */ } // compile-time error
+            </div>
+        </li>
+        <li>
+            У class не может быть двух перегруженных методов, у которых будет та же самая подпись после стирания типа.
+            <div class="code">
+                <p>public class Example {</p>
+                <p class="tab-1">public void print(Set&lt;String&gt; strSet) { }</p>
+                <p class="tab-1">public void print(Set&lt;Integer&gt; intSet) { }</p>
+                <p>}</p>
+            </div>
+        </li>
+    </ul>
+    <p class="no_mb">
+        Примером использования обобщенных типов может служить Java Collection Framework.
+    </p>
+    <p class="example">
+        Так, класс LinkedList&lt;E&gt; - типичный обобщенный тип. Он содержит параметр E, который представляет тип
+        элементов, которые будут храниться в коллекции.
+    </p>
+    <p class="no_mb">
+        Создание объектов обобщенных типов происходит посредством замены параметризированных типов реальными типами
+        данных.
+    </p>
+    <p class="example">
+        Вместо того, чтобы просто использовать LinkedList, ничего не говоря о типе элемента в списке,
+        предлагается использовать точное указание типа LinkedList&lt;String&gt;, LinkedList&lt;Integer&gt; и т.п.
+    </p>
+
+    <a href="#" class="button button--top"></a>
+</section>
+
+<section class="container" id="q2">
+    <h1>Для чего нужны дженерики?</h1>
+    <p class="no_mb">
+        Generics (обобщенные типы и методы) позволяют нам уйти от жесткого определения используемых типов.
+    </p>
+    <p class="no_mb"> С их помощью можно объявлять классы, интерфейсы и методы, где тип данных указан в виде
+        параметра. </p>
+    <p> Возможность создавать универсальные алгоритмы и структуры данных.</p>
+    <p>
+        Позволяет осуществлять проверку на правильность написания кода во время компиляции, а не в Runtime.
+    </p>
+    <p class="no_mb main-mind">
+        Компилятор стирает все дженерики. В Runtime дженериков практически нет. Компилятор использует кастование.
+    </p>
+    <p class="example">Хоть бы слово про стирание типов...</p>
+    <p>Сделали использование Java Collection Framework проще, удобнее и безопаснее.</p>
+
+
+    <h3>Стирание типов</h3>
+    <p>
+        Это когда при компиляции из обобщенных классов с параметрами генерируется код обычных сырых классов с
+        расстановкой, где нужно, приведения типов, генерацией дополнительных методов и т.д.
+    </p>
+    <p class="main-mind">Дженерики существуют только на этапе компиляции и только для компилятора.</p>
+    <p>Стираются вверх (т.е. если не указано extends, то стирается в Object)</p>
+
+    <a class="link-to-source" href="https://www.youtube.com/embed/pgzHglCsTcw" target="_blank">
+        очень классный видосик
+    </a>
+
+    <a href="#" class="button button--top"></a>
+</section>
+
+<section class="container" id="q3">
+    <h1>Что такое сырые типы (raw type)?</h1>
+    <p class="main-mind no_mb">
+        Raw type - это имя интерфейса без указания параметризованного типа
+    </p>
+    <p class="example">Сырые типы — это типы без указания "уточненения" в фигурных скобках.</p>
+    <p class="no_mb">Нужны чтобы поддерживать старый код (обратная совместимость).</p>
+    <p>Рекомендуется использовать хоть какие-то параметризованные типы.</p>
+    <p class="no_mb">
+        Также Diamond синтаксис связан с понятием <strong>"Type Inference", или же выведение типов</strong>.
+        Ведь компилятор, видя справа <span class="code-word"><></span> смотрит на левую часть,
+        где расположено объявление типа переменной, в которую присваивается значение.
+        И по этой части понимает, каким типом типизируется значение справа.
+    </p>
+    <div class="code">List &lt;String&gt; list = new ArrayList<>();</div>
+    <p class="no_mb">
+        На самом деле, если в левой части указан дженерик, а справа не указан <span class="code-word"><></span>,
+        компилятор сможет вывести тип. Однако это будет смешиванием нового стиля с дженериками и старого стиля без них -
+        вы теряете безопасность (типобезопасность) типов (может добавляться какой угодно тип в список, а
+        не то что надо. Когда будет доставаться – то может быть сюрприз)))
+    </p>
+    <div class="code">
+        <p>ArrayList &lt;String&gt; strings = new ArrayList<>(); // parameterized type</p>
+        <p>ArrayList arrayList = new ArrayList(); // raw type</p>
+        <p>arrayList = strings; // Ok</p>
+        <p>strings = arrayList; // Unchecked assignment (назначение)</p>
+        <p>arrayList.add(1); //unchecked call</p>
+    </div>
+
+    <a href="#" class="button button--top"></a>
+</section>
+
+<section class="container" id="q4">
+    <h1>Что такое вайлдкарды (Маски)</h1>
+    <p> Языковая конструкция внутри diamond-оператора, позволяющая сделать код более универсальным. </p>
+    <p class="main-mind">Решает проблему наследования типов в дженериках.</p>
+    <p> Может быть 3-х типов: инвариантность, upper и lower.</p>
+    <h3>Принцип PECS</h3>
+    <p class="main-mind">
+        The Get and Put Principle или PECS (Producer Extends Consumer Super) Get and Put Principe
+    </p>
+    <p>
+        Из одного типа переменных можно только читать, в другой — только вписывать (исключением является
+        возможность записать null для extends и прочитать Object для super).
+    </p>
+    <ul>
+        <li class="mb10">
+            <p class="bold">&lt;?&gt;</p>
+            <p>
+                Запись вида Collection&lt;?&gt; <strong>равносильна</strong>
+                <span class="code-word">Collection&lt? extends Object&gt;</span> , а значит — коллекция
+                может содержать объекты любого класса, так как все классы в Java наследуются от Object –
+                поэтому <strong>подстановка называется неограниченной</strong>.
+            </p>
+        </li>
+        <li class="mb10">
+            <p class="bold">Ковариация</p>
+            <p>
+                Если мы объявили wildcard с extends, то это producer. Он только «продюсирует»,
+                предоставляет элемент из контейнера, а сам ничего не принимает.
+            </p>
+        </li>
+        <li>
+            <p class="bold">Контрвариация</p>
+            <p>
+                Если же мы объявили wildcard с super — то это consumer. Он только принимает, а
+                предоставить ничего не может.
+            </p>
+        </li>
+    </ul>
+    <p>
+        Если метод имеет аргументы с параметризованным типом (например, Collection или Predicate), то в
+        случае, если аргумент - производитель (producer), нужно использовать ? extends T, а если аргумент -
+        потребитель (consumer), нужно использовать ? super T.
+    </p>
+    <p>
+
+        Eсли метод читает данные из аргумента, то этот аргумент - производитель,
+        Метод передаёт данные в аргумент, то аргумент является потребителем. Важно заметить, что
+        определяя производителя или потребителя, мы рассматриваем только данные типа T.
+    </p>
+
+    <p>
+        <a class="link-to-source" href="https://www.youtube.com/embed/2yeFSrcTQh8" target="_blank">
+            Если ни хрена не поняли - смотрите видосик
+        </a>
+    </p>
+
+    <table class="list list--dictionary list--content-vertical-middle" aria-label="wildcards">
+        <thead>
+        <tr>
+            <th>Тип</th>
+            <th>Что можно присвоить =</th>
+            <th>Что можно читать get()</th>
+            <th>Что можно добавлять add()</th>
+        <tr>
+        </thead>
+        <tr>
+            <td>Инвариантный<br>List&lt;Type&gt;</td>
+            <td>Только List&lt;Type&gt;</td>
+            <td>Type и предки Type</td>
+            <td>Type и наследники Type</td>
+        </tr>
+        <tr>
+            <td>Ковариантный<br>List&lt;?&nbsp;extends&nbsp;Type&gt;</td>
+            <td>List&lt;Type&gt; и List наследников Type</td>
+            <td>Type и предки Type</td>
+            <td>Ничего</td>
+        </tr>
+        <tr>
+            <td>Контрвариантный<br>List&lt;?&nbsp;super&nbsp;Type&gt;</td>
+            <td>List&lt;Type&gt; и List предков Type</td>
+            <td>Object</td>
+            <td>Type и наследники Type</td>
+        </tr>
+    </table>
+
+
+    <a href="#" class="button button--top"></a>
+</section>
+
+<div class="navi">
+    <a class="navi-button navi--prev" href="../serialization/">Сериализация</a>
+    <a class="navi-button navi--next" href="../collections/">Коллекции</a>
+</div>
+
+
+<footer>
+    <div class="footer__text">Алексей Маслов, 2021-2022</div>
+</footer>
+
+</body>
+
+</html>
