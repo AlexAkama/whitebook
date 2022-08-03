@@ -74,6 +74,14 @@ h4 {
     margin-bottom: 8px;
 }
 
+strong {
+    font-weight: 500;
+    color: darkolivegreen;
+    background-color: lightgoldenrodyellow;
+    border-radius: 5px;
+    padding: 0 5px;
+}
+
 .no_mb {
     margin-bottom: 0 !important;
 }
