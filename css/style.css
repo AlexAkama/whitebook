@@ -90,6 +90,10 @@ strong {
     margin-bottom: 10px !important;
 }
 
+.sparse-li li {
+    margin-bottom: 10px !important;
+}
+
 .no_margin {
     margin: 0 !important;
 }

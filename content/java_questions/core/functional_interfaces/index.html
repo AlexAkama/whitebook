@@ -48,8 +48,8 @@
     </p>
     <hr>
     <h4>Встроенные функциональные интерфейсы:</h4>
-    <ul>
-        <li class="mb10">
+    <ul class="sparse-li">
+        <li>
             <p class="bold">Predicate&lt;T&gt;</p>
             <p class="code-word example"> public interface Predicate&lt;T&gt; { boolean test(T t); } </p>
             <p>
@@ -57,22 +57,22 @@
                 В качестве параметра лямбда-выражение принимает объект типа&nbsp;T.
             </p>
         </li>
-        <li class="mb10">
+        <li>
             <p class="bold">Function&lt;T, R></p>
             <p class="code-word example">public interface Function&lt;T, R&gt; { R apply(T t); }</p>
             <p>Представляет функцию перехода от объекта типа T к объекту типа R </p>
         </li>
-        <li class="mb10">
+        <li>
             <p class="bold">Supplier&lt;T&gt;</p>
             <p class="code-word example">public interface Supplier&lt;T&gt; { T get(); }</p>
             <p>Не принимает никаких аргументов, но должен возвращать объект типа T </p>
         </li>
-        <li class="mb10">
+        <li>
             <p class="bold">Consumer&lt;T&gt;</p>
             <p class="code-word example">public interface Consumer&lt;T&gt; { void accept(T t); }</p>
             <p> Выполняет некоторое действие над объектом типа T, при этом ничего не возвращая</p>
         </li>
-        <li class="mb10">
+        <li>
             <p class="bold">UnaryOperator&lt;T&gt;</p>
             <p class="code-word example">public interface UnaryOperator&lt;T&gt; { T apply(T t); }</p>
             <p>
@@ -80,7 +80,7 @@
                 возвращает результат операций в виде объекта типа T
             </p>
         </li>
-        <li class="mb10">
+        <li>
             <p class="bold">BinaryOperator&lt;T&gt;</p>
             <p class="code-word example">public interface BinaryOperator&lt;T&gt; { T apply(T t1, T t2); }</p>
             <p>
