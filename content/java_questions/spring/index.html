@@ -28,16 +28,12 @@
             <p class="tab-2"><a href="#q1_di">Dependency Injection (DI)</a></p>
         </li>
         <li><a href="#q2">Что такое IoC Container?</a></li>
+        <li><a href="#q3">Что такое Bean в Spring?</a></li>
     </ol>
 
     <table aria-label="Вопросы по Spring">
 
         <tr>
-            <td>3.</td>
-            <td>Что такое Bean в Spring?</td>
-        </tr>
-        <tr>
-
             <td>4.</td>
             <td>Расскажите про аннотацию <span>@Bean</span></td>
         </tr>
@@ -346,9 +342,10 @@
             <p class="example">- для веб-приложений;</p>
         </li>
         <li>
-            <p>AnnotationConfigApplicationContext - для обычной Java-конфигурации,</p>
+            <p>AnnotationConfigApplicationContext</p>
             <p class="example">
-                в качестве аргумента которому передается класс, либо список классов с аннотацией
+                - для обычной Java-конфигурации,в качестве аргумента которому передается класс, либо список классов с
+                аннотацией
                 <an>@Configuration</an>
                 , либо с любой другой аннотацией JSR-330, в том числе и
                 <an>@Component</an>
@@ -380,7 +377,7 @@
                 <an>@Configuration</an>
                 .
             </p>
-            <p>
+            <p class="example">
                 Появились аннотации
                 <an>@Configuration</an>
                 ,
@@ -393,6 +390,19 @@
             </p>
         </li>
     </ul>
+    <a href="#" class="button button--top"></a>
+</section>
+
+<section class="container" id="q3">
+    <h1>Что такое Bean в Spring?</h1>
+    <p>
+        В Spring объекты, образующие основу приложения и управляемые контейнером Spring IoC, называются бинами.
+    </p>
+    <p class="main-mind no_mb">
+        Бин — это объект, который создается, собирается и управляется контейнером <a href="#q2">Spring IoC</a>.
+    </p>
+    <p class="example">Иначе говоря, бин — это просто один из множества объектов в вашем приложении.</p>
+    <p> Бины и их зависимости отражаются в метаданных конфигурации, используемых контейнером. </p>
     <a href="#" class="button button--top"></a>
 </section>
 
