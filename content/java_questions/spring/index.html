@@ -19,48 +19,24 @@
         <p><a href="..">Questions</a></p>
         <p>spring</p>
     </div>
-    <h3 class="no_mt">Разделы по CORE</h3>
+    <h3 class="no_mt">Вопросы:</h3>
     <ol class="menu">
         <li>
-            <a href="#q1">Что такое инверсия контроля (IoC) и внедрение зависимостей (DI)?<br>
-                Как они реализованы в Spring?</a>
-            <p class="tab-2"><a href="#q1_ioc">Inversion of Control (IoC)</a></p>
-            <p class="tab-2"><a href="#q1_di">Dependency Injection (DI)</a></p>
+            <a href="#q1">Инверсия контроля (<span>IoC</span>) и внедрение зависимостей (<span>DI</span>)</a>
+            <p class="tab-2 example"><a href="#q1_ioc">Inversion of Control (IoC)</a></p>
+            <p class="tab-2 example"><a href="#q1_di">Dependency Injection (DI)</a></p>
         </li>
-        <li><a href="#q2">Что такое IoC Container?</a></li>
-        <li><a href="#q3">Что такое Bean в Spring?</a></li>
+        <li><a href="#q2"><span>IoC Container</span></a></li>
+        <li><a href="#q3">Bean в Spring</a></li>
+        <li><a href="#q4">Аннотация <span>@Bean</span></a></li>
+        <li><a href="#q5">Аннотация <span>@Component</span></a></li>
+        <li><a href="#q6">Отличия <span>@Bean</span> и <span>@Component</span></a></li>
+        <li><a href="#q7">Отличия <span>@Service</span> и <span>@Repository</span></a></li>
+        <li><a href="#q8">Аннотация <span>@Autowired</span></a></li>
+        <li><a href="#q9">Аннотация <span>@Resource</span></a></li>
     </ol>
 
     <table aria-label="Вопросы по Spring">
-
-        <tr>
-            <td>4.</td>
-            <td>Расскажите про аннотацию <span>@Bean</span></td>
-        </tr>
-        <tr>
-            <td>5.</td>
-            <td>Расскажите про аннотацию <span>@Component</span></td>
-        </tr>
-        <tr>
-            <td>6.</td>
-            <td>Чем отличаются аннотации <span>@Bean</span>
-                и <span>@Component</span>?
-            </td>
-        </tr>
-        <tr>
-            <td>7.</td>
-            <td>Расскажите про аннотации <span>@Service</span> и <span>@Repository</span>.
-                В&nbsp;чем&nbsp;различия?
-            </td>
-        </tr>
-        <tr>
-            <td>8.</td>
-            <td>Расскажите про аннотацию <span>@Autowired</span></td>
-        </tr>
-        <tr>
-            <td>9.</td>
-            <td>Расскажите про аннотацию <span>@Resource</span></td>
-        </tr>
         <tr>
             <td>10.</td>
             <td>Расскажите про аннотацию <span>@Inject</span></td>
@@ -231,7 +207,7 @@
 </section>
 
 <section class="container" id="q1">
-    <h1>Что такое инверсия контроля (IoC) и внедрение зависимостей (DI)?</h1>
+    <h1>Инверсия контроля (IoC) и внедрение зависимостей (DI)</h1>
     <hr>
     <h3 id="q1_ioc">Inversion of Control (IoC)</h3>
     <p class="main-mind">Инверсия (от латинского inversio) - перестановка.</p>
@@ -325,7 +301,7 @@
 </section>
 
 <section class="container" id="q2">
-    <h1>Что такое IoC Container?</h1>
+    <h1>IoC Container?</h1>
     <p>
         В Spring Framework IoC Container <strong> отвечает за создание, настройку и сборку объектов, известных как бины,
         а также за управление их жизненным циклом</strong>.
@@ -394,7 +370,7 @@
 </section>
 
 <section class="container" id="q3">
-    <h1>Что такое Bean в Spring?</h1>
+    <h1>Bean в Spring?</h1>
     <p>
         В Spring объекты, образующие основу приложения и управляемые контейнером Spring IoC, называются бинами.
     </p>
@@ -403,6 +379,360 @@
     </p>
     <p class="example">Иначе говоря, бин — это просто один из множества объектов в вашем приложении.</p>
     <p> Бины и их зависимости отражаются в метаданных конфигурации, используемых контейнером. </p>
+    <a href="#" class="button button--top"></a>
+</section>
+
+<section class="container" id="q4">
+    <h1>Аннотация @Bean</h1>
+    <p class="main-mind">
+        @Bean - Это аннотация Spring Framework, она используется над методом для указания того, что данный метод
+        создает, настраивает и инициализирует новый объект, управляемый Spring IoC контейнером.
+    </p>
+    <p>
+        Такие методы можно использовать как в классах с аннотацией
+        <an>@Configuration</an>
+        , так и в классах с аннотацией
+        <an>@Component</an>
+        (или её наследниках).
+    </p>
+    <p class="no_mb"> Позволяет дополнительно определить у бина: </p>
+    <table class="list list--dictionary" aria-label="">
+        <thead>
+        <tr>
+            <th>Параметр</th>
+            <th>Описание</th>
+        <tr>
+        </thead>
+        <tr>
+            <td>name</td>
+            <td>имя (уникальный идентификатор) бина;</td>
+        </tr>
+        <tr>
+            <td>initMethod</td>
+            <td>имя метода для вызова во время инициализации бина;</td>
+        </tr>
+        <tr>
+            <td>destroyMethod</td>
+            <td>имя метода для вызова во время удаления бина из контекста;</td>
+        </tr>
+        <tr>
+            <td>autowireCandidate</td>
+            <td>является ли этот бин кандидатом на автоматическое внедрение в другой бин.</td>
+        </tr>
+    </table>
+    <p>
+        Классы, аннотированные
+        <an>@Configuration</an>, <strong>проксируются через CGLIB</strong>.
+    </p>
+    <p>
+        Классы
+        <an>@Component</an>
+        <strong>или обычные классы не проксируются</strong> и не перехватывают вызовы методов с аннотациями @Bean, что
+        означает, что вызовы не будут маршрутизироваться через контейнер
+        и каждый раз будет возвращаться новый экземпляр бина.
+    </p>
+    <p>
+        Также методы бинов, вызывая друг друга в таких классах, не будут создавать бины, а будет просто выполняться код
+        метода, ведь в данном случае они отработают не через прокси.
+    </p>
+    <p>
+        <span class="bold">CGLIB (Code Generation Library)</span>
+        - Это библиотека инструментария байтов, используемая во многих средах Java, таких
+        как Hibernate или Spring. Инструментарий байт-кода позволяет манипулировать или создавать классы после фазы
+        компиляции программы.
+    </p>
+    <p class="no_mb"> Hibernate использует CGLIB для генерации динамических прокси. </p>
+    <p class="example">
+        Например, он не вернет полный объект, хранящийся в базе данных, но вернет инструментальную версию хранимого
+        класса, которая лениво загружает значения из базы данных по требованию.
+    </p>
+    <p>
+        <span class="bold">Прокси</span>
+        — это шаблон проектирования. Создаем и используем его для добавления и изменения функционала уже существующих
+        классов. В таком случае, прокси-объект применяется вместо исходного. Обычно он использует тот же метод, что и
+        оригинальный, и в Java прокси-классы расширяют исходные.
+    </p>
+    <hr>
+    <h3>Имена бинов</h3>
+    <p>
+        <strong>Имя бина</strong>, которое в контейнере является одновременно и его
+        <strong>уникальным идентификатором</strong>, по умолчанию соответствует имени метода, аннотированного @Bean.
+    </p>
+    <p class="no_mb">
+        Но если требуется указать иное имя, то можно использовать <strong>атрибут name</strong>, который
+        принимает String. Однако, атрибут name также <strong>может принимать массив String</strong>,
+        что позволяет использовать несколько имен.
+    </p>
+    <p>
+        <strong>
+            Первый элемент массива будет являться именем и уникальным
+            идентификатором бина, а остальные будут его псевдонимами.
+        </strong>
+    </p>
+    <div class="code">
+        <p><an>@Bean</an>({"b1", "b2"}) //
+            <span class="good">bean available as 'b1' and 'b2'</span>, <span class="bad">but not 'myBean'</span></p>
+        <p>public MyBean myBean() {</p>
+        <p class="tab-1">// instantiate and configure MyBean obj</p>
+        <p class="tab-1">return obj;</p>
+        <p>}</p>
+    </div>
+
+    <a href="#" class="button button--top"></a>
+</section>
+
+<section class="container" id="q5">
+    <h1>Аннотация @Component</h1>
+    <p class="no_mb">Если хотим, <strong>чтобы из этого класса был создан бин</strong>, то используем
+        <an>@Component</an></p>
+    <p class="example"> Именно эту аннотацию ищет Spring Framework, когда сканирует наши классы.</p>
+    <p class="no_mb"><strong>Именем бина будет название класса с маленькой буквы</strong>. </p>
+    <p class="example">Можно указать имя (Id) для создаваемого бина.</p>
+
+    <p class="no_mb"> Аннотация @Component имеет наследников: </p>
+    <p class="no_mb"><an>@Repository</an>, <an>@Service</an> и <an>@Controller</an>.</p>
+    <p class="example no_mb">
+        Все они являются частными случаями использования @Component для слоёв DAO, сервиса и
+        контроллера MVC соответственно.
+    </p>
+    <p class="example no_mb">Также эти аннотации могут иметь дополнительный смысл в будущих версиях Spring
+        Framework.</p>
+    <p class="example">В остальных же случаях достаточно использовать аннотацию @Component.</p>
+
+    <table class="list list--dictionary" aria-label="@Component">
+        <thead>
+        <tr>
+            <th>Аннотация</th>
+            <th>Описание</th>
+        <tr>
+        </thead>
+        <tr>
+            <td>@Component</td>
+            <td>Spring определяет этот класс как кандидата для создания bean.</td>
+        </tr>
+        <tr>
+            <td>@Service</td>
+            <td>
+                <p>указывает, что класс содержит бизнес-логику и вызывает методы на уровне хранилища.</p>
+                <p class="example">Ничем не отличается от классов с @Component.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>@Repository</td>
+            <td>
+                <p>указывает, что класс выполняет роль хранилища (объект доступа к DAO).</p>
+                <p class="example">
+                    Задача @Repository заключается в том, чтобы отлавливать определенные исключения персистентности и
+                    пробрасывать их как одно непроверенное исключение Spring Framework.
+                    Для этого Spring оборачивает эти классы в прокси, и в контекст должен быть добавлен класс
+                    PersistenceExceptionTranslationPostProcessor.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td>@Controller</td>
+            <td>
+                <p>указывает, что класс выполняет роль контроллера MVC.</p>
+                <p class="example">DispatcherServlet просматривает такие классы для поиска @RequestMapping.</p>
+            </td>
+        </tr>
+    </table>
+    <p>
+        <span class="bold">@RequestMapping</span> используется для мапинга (связывания) с URL для всего класса
+        или для конкретного метода обработчика.
+    </p>
+    <a href="#" class="button button--top"></a>
+</section>
+
+<section class="container" id="q6">
+    <h1>Отличия @Bean и @Component</h1>
+    <p class="main-mind">
+        Аннотация @Component (как и @Service и @Repository) используется для автоматического обнаружения и
+        автоматической настройки бинов в ходе сканирования путей к классам.
+    </p>
+    <p class="main-mind no_mb">Аннотация @Bean используется для явного объявления бина.</p>
+    <p class="no_mb">
+        A не для того, чтобы Spring делал это автоматически в ходе сканирования путей к классам:
+    </p>
+    <ul class="tab-2">
+        <li>прописываем <strong>вручную метод для создания бина</strong>;</li>
+        <li>
+            делает возможным <strong>объявление бина независимо от объявления класса</strong>,
+            что позволяет использовать классы из сторонних библиотек,
+            у которых мы не можем указать аннотацию @Component;
+        </li>
+        <li>
+            аннотацией @Bean <strong>можно настроить initMethod, destroyMethod, autowireCandidate</strong>,
+            делая создание бина более гибким.
+        </li>
+    </ul>
+    <a href="#" class="button button--top"></a>
+</section>
+
+<section class="container" id="q7">
+    <h1>Отличия @Service и @Repository</h1>
+    <p class="no_mb">
+        @Service и @Repository являются частными случаями @Component.
+    </p>
+    <p>
+        <strong>Технически они одинаковы</strong> , но мы используем их<strong>для разных целей</strong>.
+    </p>
+    <p class="no_mb">
+        Задача @Repository заключается в том, чтобы отлавливать определенные исключения персистентности и пробрасывать
+        их как одно непроверенное исключение Spring Framework.
+    </p>
+    <p> Для этого в контекст должен быть добавлен класс PersistenceExceptionTranslationPostProcessor. </p>
+    <p class="no_mb"> Мы помечаем бины аннотацией @Service, чтобы указать, что они содержат бизнес-логику. </p>
+    <p>Так что нет никакого другого предназначения, кроме как использовать ее на уровне сервиса.</p>
+    <a href="#" class="button button--top"></a>
+</section>
+
+<section class="container" id="q8">
+    <h1>Аннотация @Autowired</h1>
+    <p class="main-mind">
+        Аннотация Spring Framework, которой отмечают конструктор, поле, сеттер-метод или метод конфигурации,
+        указывая, что им обязательно требуется внедрение зависимостей.
+    </p>
+    <p>
+        Если в контейнере не будет обнаружен необходимый для вставки бин, то будет выброшено исключение, либо можно
+        указать <an>@Autowired(required = false)</an>, означающее, что внедрение зависимости в данном месте
+        необязательно.
+    </p>
+    <p>
+        Аннотация @Autowired является альтернативой Java-аннотации @Inject, не имеющей required = false (зависимость
+        должна быть обязательно внедрена).
+    </p>
+    <p class="no_mb">
+        Начиная со Spring Framework 4.3, аннотация @Autowired для конструктора больше не требуется, если целевой
+        компонент определяет только один конструктор.
+    </p>
+    <p>
+        Однако, если доступно несколько конструкторов и нет
+        основного/стандартного конструктора, по крайней мере один из конструкторов должен быть аннотирован @Autowired,
+        чтобы указать контейнеру, какой из них использовать.
+    </p>
+    <p class="no_mb">
+        <strong>По умолчанию Spring распознает объекты для вставки по типу</strong>.
+    </p>
+    <p>
+        Если в контейнере доступно более одного бина одного и того же типа, будет исключение. Для избежания этого можно
+        указать аннотацию Spring Framework - <an>@Qualifier</an>("fooFormatter"), где fooFormatter — это имя (Id) одного
+        из нескольких бинов одного типа, находящихся в контейнере и доступных для внедрения:
+    </p>
+    <div class="code">
+        <p>public class FooService {</p>
+        <p class="tab-1"><an>@Autowired</an></p>
+        <p class="tab-1"><an>@Qualifier("fooFormatter")</an></p>
+        <p class="tab-1">private Formatter formatter;</p>
+        <p>}</p>
+    </div>
+    <hr>
+    <h4>Выбор из нескольких бинов</h4>
+    <p>
+        <strong>При выборе</strong> между несколькими бинами при автоматическом внедрении
+        <strong>используется имя поля</strong>.
+        Это поведение по умолчанию, если нет других настроек.
+    </p>
+    <div class="code">
+        <p><an>@Component</an></p>
+        <p><an>@Qualifier("fooFormatter")</an></p>
+        <p>public class FooFormatter implements Formatter {</p>
+        <p class="tab-1">//...</p>
+        <p class="mb10">}</p>
+        <p><an>@Component</an></p>
+        <p><an>@Qualifier("barFormatter")</an></p>
+        <p>public class BarFormatter implements Formatter {</p>
+        <p class="tab-1">//...</p>
+        <p class="mb10">}</p>
+        <p>public class FooService {</p>
+        <p class="tab-1"><an>@Autowired</an></p>
+        <p class="tab-1">private Formatter fooFormatter;</p>
+        <p>}</p>
+    </div>
+    <p>
+        В этом случае Spring определит, что нужно внедрить бин с именем FooFormatter, поскольку имя поля соответствует
+        значению, которое мы использовали в аннотации @Component для этого бина.
+    </p>
+    <hr>
+    <h4>Вставка всех бинов</h4>
+    <p>
+        Мы также можем указать Spring предоставить все бины определенного типа из ApplicationContext, добавив аннотацию
+        @Autowired в поле или метод с массивом или коллекцией этого типа:
+    </p>
+    <div class="code">
+        <p><an>@Autowired</an></p>
+        <p class="mb10">private MovieCatalog[] movieCatalogs;</p>
+        <p class="mb10">или</p>
+        <p><an>@Autowired</an></p>
+        <p class="mb10">private Set &lt;MovieCatalog&gt; movieCatalogs;</p>
+        <p class="mb10">или</p>
+        <p><an>@Autowired</an></p>
+        <p>public void setMovieCatalogs(Set &lt;MovieCatalog&gt; movieCatalogs) {</p>
+        <p class="tab-1">this.movieCatalogs = movieCatalogs;</p>
+        <p>}</p>
+    </div>
+    <p class="no_mb">Даже коллекции типа Map могут быть подключены автоматически, если тип ключа - String.</p>
+    <p>Ключами будут имена бинов, а значениями - сами бины:</p>
+    <div class="code">
+        <p class="mb10">public class MovieRecommender {</p>
+        <p class="tab-1 mb10">private Map&lt;String, MovieCatalog&gt; movieCatalogs;</p>
+        <p class="tab-1"><an>@Autowired</an></p>
+        <p class="tab-1">public void setMovieCatalogs(Map&lt;String, MovieCatalog&gt; movieCatalogs) {</p>
+        <p class="tab-2">this.movieCatalogs = movieCatalogs;</p>
+        <p class="tab-1 mb10">}</p>
+        <p class="tab-1 mb10">//...</p>
+        <p>}</p>
+    </div>
+
+    <a href="#" class="button button--top"></a>
+</section>
+
+<section class="container" id="q9">
+    <h1>Аннотация @Resource</h1>
+    <p><strong>Java-аннотация</strong>@Resource может применяться к классам, полям и методам.</p>
+    <p class="main-mind">
+        Она пытается получить зависимость: сначала по имени, затем по типу, затем по описанию (Qualifier).
+    </p>
+    <p>
+        Имя извлекается <strong>из имени аннотируемого сеттера или поля,
+        либо</strong> берется из параметра <strong>name</strong>.
+    </p>
+    <p>
+        <strong>При аннотировании классов имя не извлекается из имени класса</strong>
+        по умолчанию, поэтому оно <strong>должно быть указано явно</strong>.
+    </p>
+    <p>
+        Указав данную аннотацию у полей или методов с аргументом name, в контейнере будет произведен поиск компонентов с
+        данным именем, и <strong>в контейнере должен быть бин</strong> с таким именем:
+    </p>
+    <div class="code">
+        <p><an>@Resource(name="namedFile")</an></p>
+        <p>private File defaultFile;</p>
+    </div>
+    <p>
+        Если указать её без аргументов, то Spring Framework может найти бин по типу.
+    </p>
+    <p>
+        Если в контейнере несколько бинов-кандидатов на внедрение, то нужно использовать аннотацию <an>@Qualifier</an>
+    </p>
+    <div class="code">
+        <p><an>@Resource</an></p>
+        <p><an>@Qualifier("defaultFile")</an></p>
+        <p>private File dependency1;</p>
+        <p class="mb10"></p>
+        <p><an>@Resource</an></p>
+        <p><an>@Qualifier("namedFile")</an></p>
+        <p>private File dependency2;</p>
+    </div>
+
+    <hr>
+    <h4>Разница с @Autowired:</h4>
+    <ul class="tab-2 sparse-li">
+        <li>ищет бин сначала по имени, а потом по типу;</li>
+        <li>не нужна дополнительная аннотация для указания имени конкретного бина;</li>
+        <li>@Autowired позволяет отметить место вставки бина как необязательное @Autowired(required=false);</li>
+        <li>при замене Spring Framework на другой фреймворк, менять аннотацию @Resource не нужно.</li>
+    </ul>
     <a href="#" class="button button--top"></a>
 </section>
 
