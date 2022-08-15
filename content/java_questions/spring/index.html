@@ -27,21 +27,11 @@
             <p class="tab-2"><a href="#q1_ioc">Inversion of Control (IoC)</a></p>
             <p class="tab-2"><a href="#q1_di">Dependency Injection (DI)</a></p>
         </li>
+        <li><a href="#q2">Что такое IoC Container?</a></li>
     </ol>
 
     <table aria-label="Вопросы по Spring">
-        <tr>
-            <th id="spring"></th>
-        </tr>
-        <tr>
-            <td>1.</td>
-            <td>
-            </td>
-        </tr>
-        <tr>
-            <td>2.</td>
-            <td>Что такое IoC Container?</td>
-        </tr>
+
         <tr>
             <td>3.</td>
             <td>Что такое Bean в Spring?</td>
@@ -339,8 +329,70 @@
 </section>
 
 <section class="container" id="q2">
-    <h1></h1>
+    <h1>Что такое IoC Container?</h1>
+    <p>
+        В Spring Framework IoC Container <strong> отвечает за создание, настройку и сборку объектов, известных как бины,
+        а также за управление их жизненным циклом</strong>.
+    </p>
+    <p>Он (контейнер) представлен интерфейсом ApplicationContext.</p>
+    <p>Spring Framework предоставляет несколько реализаций интерфейса ApplicationContext:</p>
+    <ul class="tab-2 sparse-li">
+        <li>
+            <p>ClassPathXmlApplicationContext и FileSystemXmlApplicationContext</p>
+            <p class="example">- для автономных приложений;</p>
+        </li>
+        <li>
+            <p>WebApplicationContext</p>
+            <p class="example">- для веб-приложений;</p>
+        </li>
+        <li>
+            <p>AnnotationConfigApplicationContext - для обычной Java-конфигурации,</p>
+            <p class="example">
+                в качестве аргумента которому передается класс, либо список классов с аннотацией
+                <an>@Configuration</an>
+                , либо с любой другой аннотацией JSR-330, в том числе и
+                <an>@Component</an>
+                .
+            </p>
 
+        </li>
+    </ul>
+
+    <p>
+        Контейнер получает инструкции о том, какие объекты создавать, настраивать и собирать, через метаданные
+        конфигурации, которые представлены в виде XML, Java-аннотаций или Java-кода:
+    </p>
+    <ul class="tab-2 sparse-li">
+        <li>XML - Метаданные считываются из файла с расширением *.xml;</li>
+        <li>
+            Java-аннотации - В Spring 2.5 появилась поддержка метаданных конфигурации на основе аннотаций, которая
+            использует данные байт-кода для подключения компонентов.
+            Вместо того, чтобы использовать XML-файл для описания связывания компонентов, разработчик перемещает
+            конфигурацию в сам класс компонента, используя аннотации к соответствующему классу, методу или полю.
+            При этом, сам XML-файл с базовыми настройками остаётся. Контейнер считывает аннотации перед
+            считыванием XML, поэтому, если бин конфигурируется и через аннотации и через XML-файл, то
+            <strong>настройки XML переопределят настройки аннотаций</strong>.
+        </li>
+        <li>
+            <p>
+                Java-код - Начиная со Spring 3.0, используя Java-код, а не файлы XML, мы можем определять настройки в
+                специальном классе, помеченном аннотацией
+                <an>@Configuration</an>
+                .
+            </p>
+            <p>
+                Появились аннотации
+                <an>@Configuration</an>
+                ,
+                <an>@Bean</an>
+                ,
+                <an>@Import</an>
+                и
+                <an>@DependsOn</an>
+                и т.д.
+            </p>
+        </li>
+    </ul>
     <a href="#" class="button button--top"></a>
 </section>
 
