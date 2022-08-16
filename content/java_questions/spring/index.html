@@ -40,17 +40,12 @@
         <li><a href="#q8">Аннотация <span>@Autowired</span></a></li>
         <li><a href="#q9">Аннотация <span>@Resource</span></a></li>
         <li><a href="#q10">Аннотация <span>@Inject</span></a></li>
+        <li><a href="#q11">Аннотация <span>@Lookup</span></a></li>
+        <li><a href="#q12">Можно ли вставить бин в статическое поле?</a></li>
     </ol>
 
     <table aria-label="Вопросы по Spring">
-        <tr>
-            <td>11.</td>
-            <td>Расскажите про аннотацию <span>@Lookup</span></td>
-        </tr>
-        <tr>
-            <td>12.</td>
-            <td>Можно ли вставить бин в статическое поле? Почему?</td>
-        </tr>
+
         <tr>
             <td>13.</td>
             <td>Расскажите про аннотации <span>@Primary</span> и <span>@Qualifier</span></td>
@@ -795,6 +790,100 @@
         <p><an>@Inject</an></p>
         <p><an>@Named("yetAnotherFieldInjectDependency")</an></p>
         <p>private ArbitraryDependency yetAnotherFieldInjectDependency;</p>
+    </div>
+    <a href="#" class="button button--top"></a>
+</section>
+
+<section class="container" id="q11">
+    <h1>Аннотация @Lookup</h1>
+    <p>
+        Обычно бины в приложении Spring являтся синглтонами, и для внедрения зависимостей
+        мы используем конструктор или сеттер.
+    </p>
+    <p>
+
+    </p>
+    <p>
+        Но бывает и другая ситуация: имеется бин Car – синглтон (singleton bean), и ему требуется каждый раз новый
+        экземпляр бина Passenger. То есть Car – синглтон, а Passenger – так называемый прототипный бин (prototype bean).
+        Жизненные циклы бинов разные. Бин Car создается контейнером только раз, а бин Passenger создается каждый раз
+        новый – допустим, это происходит каждый раз при вызове какого-то метода бина Car. Вот здесь-то и пригодится
+        <strong>внедрение бина с помощью Lookup-метода</strong> . Оно происходит не при инициализации контейнера, а
+        позднее: <strong>каждый раз, когда вызывается метод</strong>.
+    </p>
+    <p>
+        Суть в том, что мы создаём метод-заглушку в бине Car и помечаем его специальным образом – аннотацией @Lookup.
+        Этот метод должен возвращать бин Passenger, каждый раз новый. Контейнер Spring под капотом создаст
+        прокси-подкласс и переопределит этот метод и будет нам выдавать новый экземпляр бина Passenger при каждом вызове
+        аннотированного метода. Даже если в нашей заглушке он возвращает null (а так и надо делать - всё равно этот
+        метод будет переопределен в прокси-подклассе):
+    </p>
+    <div class="code">
+        <p>@Component</p>
+        <p class="mb10">public class Car {</p>
+        <p class="tab-1"><an>@Lookup</an></p>
+        <p class="tab-1">public Passenger createPassenger() {</p>
+        <p class="tab-2">return null;</p>
+        <p class="tab-1 mb10">}</p>
+        <p class="tab-1">public String drive(String name) {</p>
+        <p class="tab-2">Passenger passenger = createPassenger();</p>
+        <p class="tab-2">passenger.setName(name);</p>
+        <p class="tab-2">return "car with " + passenger.getName();</p>
+        <p class="tab-1 mb10">}</p>
+        <p>}</p>
+    </div>
+    <p>
+        Допустим, в бине есть метод drive(), и при каждом вызове метода drive() бину Car требуется новый экземпляр бина
+        Passenger – сегодня пассажир Петя, завтра – Вася. То есть <strong></strong>бин Passenger прототипный. Для
+        получения этого бина
+        надо написать метод-заглушку createPassenger() и аннотировать его с помощью @Lookup.
+    </p>
+    <p>
+        Контейнер Spring переопределит этот метод-заглушку и будет выдавать при его вызове каждый раз новый экземпляр
+        Passenger.
+    </p>
+    <p>
+        Переопределяем бин Passenger как прототипный:
+    </p>
+    <div class="code">
+        <p><an>@Component</an></p>
+        <p><an>@Scope("prototype")</an></p>
+        <p class="mb10">public class Passenger {</p>
+        <p class="tab-1">private String name;</p>
+        <p class="tab-1">// + геттер и сеттер</p>
+        <p>}</p>
+    </div>
+    <p>
+        Теперь при вызове метода drive() мы можем везти каждый раз нового пассажира. Имя его передаётся в аргументе
+        метода drive(), и затем задается сеттером во вновь созданном экземпляре пассажира.
+    </p>
+    <a href="#" class="button button--top"></a>
+</section>
+
+<section class="container" id="q12">
+    <h1>Можно ли вставить бин в статическое поле?</h1>
+    <p class="main-mind">Spring не позволяет внедрять бины напрямую в статические поля.</p>
+    <p>Пример:</p>
+    <div class="code">
+        <p><an>@Component</an></p>
+        <p>public class TestDataInit {</p>
+        <p class="tab-1"><an>@Autowired</an></p>
+        <p class="tab-1">private static OrderItemService orderItemService;</p>
+        <p>}</p>
+    </div>
+    <p>
+        <strong>Если вы распечатать TestDataInit.orderItemService, там будет null.</strong>
+    </p>
+    <p>Чтобы исправить это, необходимо создать нестатический сеттер-метод:</p>
+    <div class="code">
+        <p><an>@Component</an></p>
+        <p class="mb10">public class TestDataInit {</p>
+        <p class="tab-1 mb10">private static OrderItemService orderItemService;</p>
+        <p class="tab-1"><an>@Autowired</an></p>
+        <p class="tab-1">public void setOrderItemService(OrderItemService orderItemService) {</p>
+        <p class="tab-2">TestDataInit.orderItemService = orderItemService;</p>
+        <p class="tab-1 mb10">}</p>
+        <p>}</p>
     </div>
     <a href="#" class="button button--top"></a>
 </section>
