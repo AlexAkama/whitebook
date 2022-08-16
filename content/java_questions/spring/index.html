@@ -42,25 +42,24 @@
         <li><a href="#q10">Аннотация <span>@Inject</span></a></li>
         <li><a href="#q11">Аннотация <span>@Lookup</span></a></li>
         <li><a href="#q12">Можно ли вставить бин в статическое поле?</a></li>
+        <li><a href="#q13">Аннотации <span>@Primary</span> и <span>@Qualifier</span></a></li>
+        <li>
+            <p>
+                <a href="#q14">Как заинжектить примитив?</a>
+                <span class="spoiler-button"></span>
+            </p>
+            <div class="spoiler">
+                <p class="tab-2 example"><a href="#q14_value">@Value</a></p>
+                <p class="tab-2 example"><a href="#q14_spel">@Value with SpEL</a></p>
+                <p class="tab-2 example"><a href="#q14_map">@Value with Map</a></p>
+                <p class="tab-2 example"><a href="#q14_constructor">@Value with Constructor</a></p>
+                <p class="tab-2 example"><a href="#q14_setter">@Value with Setter</a></p>
+            </div>
+        </li>
     </ol>
 
     <table aria-label="Вопросы по Spring">
 
-        <tr>
-            <td>13.</td>
-            <td>Расскажите про аннотации <span>@Primary</span> и <span>@Qualifier</span></td>
-        </tr>
-        <tr>
-            <td>14.</td>
-            <td>
-                Как заинжектить примитив?
-                <p>@Value</p>
-                <p>@Value with SpEL</p>
-                <p>@Value with Map</p>
-                <p>@Value with Constructor</p>
-                <p>@Value with Setter</p>
-            </td>
-        </tr>
         <tr>
             <td>15.</td>
             <td>
@@ -866,9 +865,9 @@
     <p>Пример:</p>
     <div class="code">
         <p><an>@Component</an></p>
-        <p>public class TestDataInit {</p>
+        <p class="mb10">public class TestDataInit {</p>
         <p class="tab-1"><an>@Autowired</an></p>
-        <p class="tab-1">private static OrderItemService orderItemService;</p>
+        <p class="tab-1 mb10">private static OrderItemService orderItemService;</p>
         <p>}</p>
     </div>
     <p>
@@ -882,6 +881,203 @@
         <p class="tab-1"><an>@Autowired</an></p>
         <p class="tab-1">public void setOrderItemService(OrderItemService orderItemService) {</p>
         <p class="tab-2">TestDataInit.orderItemService = orderItemService;</p>
+        <p class="tab-1 mb10">}</p>
+        <p>}</p>
+    </div>
+    <a href="#" class="button button--top"></a>
+</section>
+
+<section class="container" id="q13">
+    <h1>Аннотации @Primary и @Qualifier</h1>
+    <p class="main-mind">
+        @Primary - эта аннотация указывает, какой компонент определенного типа должен внедряться по умолчанию.
+    </p>
+    <div class="code no_mb">
+        <p><an>@Configuration</an></p>
+        <p class="mb10">public class Config { </p>
+        <p class="tab-1"><an>@Bean</an></p>
+        <p class="tab-1">public Employee JohnEmployee() {</p>
+        <p class="tab-2">return new Employee("John");</p>
+        <p class="tab-1 mb10">}</p>
+        <p class="tab-1"><an>@Bean</an></p>
+        <p class="tab-1"><an>@Primary</an></p>
+        <p class="tab-1">public Employee TonyEmployee() {</p>
+        <p class="tab-2">return new Employee("Tony");</p>
+        <p class="tab-1 mb10">}</p>
+        <p></p>
+        <p>}</p>
+    </div>
+    <p class="example no_mb">или</p>
+    <div class="code no_mb">
+        <p><an>@Component</an></p>
+        <p class="mb10">public class DepartmentManager implements Manager {</p>
+        <p class="tab-1"><an>@Override</an></p>
+        <p class="tab-1">public String getManagerName() {</p>
+        <p class="tab-2">return "Department manager";</p>
+        <p class="tab-1 mb10">}</p>
+        <p class="mb10">}</p>
+        <p><an>@Component</an></p>
+        <p><an>@Primary</an></p>
+        <p class="mb10">public class GeneralManager implements Manager {</p>
+        <p class="tab-1"><an>@Override</an></p>
+        <p class="tab-1">public String getManagerName() {</p>
+        <p class="tab-2">return "General manager";</p>
+        <p class="tab-1 mb10">}</p>
+        <p>}</p>
+    </div>
+    <p class="example">
+        Теперь, где будут требоваться бины типа Employee и Manager будут созданы и внедрены TonyEmployee и
+        GeneralManager.
+    </p>
+    <p class="example no_mb">Когда есть несколько бинов одного типа, подходящих для внедрения</p>
+    <p>
+        Aннотация @Qualifier позволяет указать в качестве аргумента имя конкретного бина, который следует внедрить.
+    </p>
+    <p class="example no_mb">При совместном применении</p>
+    <p>Аннотация @Qualifier будет иметь над @Primary приоритет.</p>
+
+    <a href="#" class="button button--top"></a>
+</section>
+
+<section class="container" id="q14">
+    <h1>Как заинжектить примитив?</h1>
+    <h3 id="q14_value">@Value</h3>
+    <p>Внедрить в поле примитив можно с помощью аннотации @Value на уровне параметров поля или конструктора/метода.</p>
+    <p>Значения, которые необходимо внедрить аннотацией @Value, определяются в файле свойств (*.properties)</p>
+    <p class="no_mb"></p>
+    <div class="code">
+        <p><an>@Component</an></p>
+        <p><an>@PropertySource("classpath:values.properties")</an></p>
+        <p>public class CollectionProvider {</p>
+        <p class="tab-1">//...</p>
+        <p>}</p>
+    </div>
+    <p class="no_mb">Содержимое файла values.properties:</p>
+    <div class="code">
+        <p>value.from.file=Value got from the file</p>
+        <p>priority=high</p>
+        <p>listOfValues=A,B,C</p>
+    </div>
+    <p class="no_mb">Внедряем значение value.from.file, равное “Value got from the file”:</p>
+    <div class="code">
+        <p><an>@Value("${value.from.file}")</an></p>
+        <p>private String valueFromFile;</p>
+    </div>
+    <p>
+        Если из файла не подтянутся значения по тем или иным причинам, то можно указать значения,
+        которые будут внедрены по умолчанию.
+    </p>
+    <p class="no_mb">В данном примере, если не будет доступен value.from.file, то внедрится значение “some default”:</p>
+    <div class="code">
+        <p><an>@Value("${value.from.file:some default}")</an></p>
+        <p>private String someDefault;</p>
+    </div>
+    <p class="no_mb">
+        Если нужно внедрить несколько значений, то можно их определить в файле *.properties через запятую и Spring
+        внедрит их как массив:
+    </p>
+    <div class="code">
+        <p><an>@Value("${listOfValues}")</an></p>
+        <p>private String[] valuesArray;</p>
+    </div>
+    <hr>
+    <h3 id="q14_spel">@Value with SpEL</h3>
+    <p> Кроме того, для внедрения значений можно использовать язык SpEL (Spring Expression Language):</p>
+    <div class="code no_mb">
+        <p><an>@Value("#{systemProperties['priority']}")</an></p>
+        <p>private String spelValue;</p>
+    </div>
+    <p class="example no_mb">или со значениями по умолчанию:</p>
+    <div class="code">
+        <p><an>@Value("#{systemProperties['unknown'] ?: 'some default'}")</an></p>
+        <p>private String spelSomeDefault;</p>
+    </div>
+    <p class="no_mb"> Можно использовать значение поля из другого бина. </p>
+    <p class="example no_mb">
+        Предположим, есть бин с именем someBean с полем someValue, равным 10. В поле будет записано число 10:
+    </p>
+    <div class="code">
+        <p><an>@Value("#{someBean.someValue}")</an></p>
+        <p>private Integer someBeanValue;</p>
+    </div>
+    <p class="no_mb">Можно манипулировать свойствами, чтобы получить список значений.</p>
+    <p class="example no_mb">Получаем список строковых значений A, B и C:</p>
+    <div class="code">
+        <p><an>@Value("#{'${listOfValues}'.split(',')}")</an></p>
+        <p>private List&lt;String&gt; valuesList;</p>
+    </div>
+    <hr>
+    <h3 id="q14_map">@Value with Map</h3>
+    <p>Можно использовать аннотацию @Value для добавления свойств в Map.</p>
+    <p class="no_mb">Свойство в файле свойств должно быть определено в формате {key: 'value'}:</p>
+    <div class="code">
+        <p>valuesMap={key1: '1', key2: '2', key3: '3'}</p>
+    </div>
+    <p class="no_mb">Вставка:</p>
+    <div class="code">
+        <p><an>@Value("#{${valuesMap}}")</an></p>
+        <p>private Map &lt;String, Integer&gt; valuesMap;</p>
+    </div>
+    <p class="no_mb">Можем просто внедрить значение по ключу:</p>
+    <div class="code">
+        <p><an>@Value("#{${valuesMap}.key1}")</an></p>
+        <p>private Integer valuesMapKey1;</p>
+    </div>
+    <p class="no_mb">
+        Если достоверно не известно, содержит ли Map определенный ключ, то нужно выбрать более безопасное выражение,
+        которое не будет генерировать исключение, а установит значение в null, если ключ не найден:
+    </p>
+    <div class="code">
+        <p><an>@Value("#{${valuesMap}['unknownKey']}")</an></p>
+        <p>private Integer unknownMapKey;</p>
+    </div>
+    <p class="no_mb"> Можно установить значения по умолчанию для свойств или ключей, которые могут не существовать: </p>
+    <div class="code">
+        <p><an>@Value("#{${unknownMap : {key1: '1', key2: '2'}}}")</an></p>
+        <p class="mb10">private Map&lt;String, Integer&gt; unknownMap;</p>
+        <p><an>@Value("#{${valuesMap}['unknownKey'] ?: 5}")</an></p>
+        <p>private Integer unknownMapKeyWithDefaultValue;</p>
+    </div>
+    <p class="no_mb"> Записи карты также могут быть отфильтрованы перед внедрением.</p>
+    <p class="example no_mb"> Предположим, нам нужно получить только те записи, значения которых больше единицы: </p>
+    <div class="code">
+        <p><an>@Value("#{${valuesMap}.?[value>'1']}")</an></p>
+        <p>private Map&lt;String, Integer&gt; valuesMapFiltered;</p>
+    </div>
+    <p class="no_mb"> Мы также можем использовать аннотацию @Value для добавления всех текущих системных свойств: </p>
+    <div class="code">
+        <p><an>@Value("#{systemProperties}")</an></p>
+        <p>private Map&gt;String, String&gt; systemPropertiesMap;</p>
+    </div>
+    <hr>
+    <h3 id="q14_constructor">@Value with Constructor</h3>
+    <p class="no_mb">
+        Можно внедрять значения в конструкторе, если оно не найдено, то будет внедрено значение по умолчанию:
+    </p>
+    <div class="code">
+        <p><an>@Component</an></p>
+        <p><an>@PropertySource("classpath:values.properties")</an></p>
+        <p class="mb10">public class PriorityProvider {</p>
+        <p class="tab-1 mb10">private String priority;</p>
+        <p class="tab-1"><an>@Autowired</an></p>
+        <p class="tab-1">public PriorityProvider(<an>@Value("${priority:normal}")</an> String priority) {</p>
+        <p class="tab-2">this.priority = priority;</p>
+        <p class="tab-1 mb10">}</p>
+        <p class="tab-1 mb10">//standard getter</p>
+        <p>}</p>
+    </div>
+    <hr>
+    <h3 id="q14_setter">@Value with Setter</h3>
+    <p>В приведенном коде используется выражение SpEL для добавления списка значений в метод setValues:</p>
+    <div class="code">
+        <p><an>@Component</an></p>
+        <p><an>@PropertySource("classpath:values.properties")</an></p>
+        <p class="mb10">public class CollectionProvider {</p>
+        <p class="tab-1 mb10">private List&lt;String&gt; values = new ArrayList<>();</p>
+        <p class="tab-1"><an>@Autowired</an></p>
+        <p class="tab-1">public void setValues(<an>@Value("#{'${listOfValues}'.split(',')}")</an>
+            List&lt;String&gt; values) {</p>
+        <p class="tab-2">this.values.addAll(values);</p>
         <p class="tab-1 mb10">}</p>
         <p>}</p>
     </div>
