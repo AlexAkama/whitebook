@@ -22,9 +22,14 @@
     <h3 class="no_mt">Вопросы:</h3>
     <ol class="menu">
         <li>
-            <a href="#q1">Инверсия контроля (<span>IoC</span>) и внедрение зависимостей (<span>DI</span>)</a>
-            <p class="tab-2 example"><a href="#q1_ioc">Inversion of Control (IoC)</a></p>
-            <p class="tab-2 example"><a href="#q1_di">Dependency Injection (DI)</a></p>
+            <p>
+                <a href="#q1">Инверсия контроля (<span>IoC</span>) и внедрение зависимостей (<span>DI</span>)</a>
+                <span class="spoiler-button"></span>
+            </p>
+            <div class="spoiler">
+                <p class="tab-2 example"><a href="#q1_ioc">Inversion of Control (IoC)</a></p>
+                <p class="tab-2 example"><a href="#q1_di">Dependency Injection (DI)</a></p>
+            </div>
         </li>
         <li><a href="#q2"><span>IoC Container</span></a></li>
         <li><a href="#q3">Bean в Spring</a></li>
@@ -34,13 +39,10 @@
         <li><a href="#q7">Отличия <span>@Service</span> и <span>@Repository</span></a></li>
         <li><a href="#q8">Аннотация <span>@Autowired</span></a></li>
         <li><a href="#q9">Аннотация <span>@Resource</span></a></li>
+        <li><a href="#q10">Аннотация <span>@Inject</span></a></li>
     </ol>
 
     <table aria-label="Вопросы по Spring">
-        <tr>
-            <td>10.</td>
-            <td>Расскажите про аннотацию <span>@Inject</span></td>
-        </tr>
         <tr>
             <td>11.</td>
             <td>Расскажите про аннотацию <span>@Lookup</span></td>
@@ -736,11 +738,74 @@
     <a href="#" class="button button--top"></a>
 </section>
 
+<section class="container" id="q10">
+    <h1>Аннотация @Inject</h1>
+    <p>
+        <strong>Java-аннотация</strong>
+        @Inject входит в пакет javax.inject и, чтобы её использовать, нужно добавить зависимость:
+    </p>
+    <div class="code">
+        <p>&lt;dependency&gt;</p>
+        <p class="tab-1">&lt;groupId&gt;javax.inject&lt;/groupId&gt;</p>
+        <p class="tab-1">&lt;artifactId&gt;javax.inject&lt;/artifactId&gt;</p>
+        <p class="tab-1">&lt;version&gt;1&lt;/version&gt;</p>
+        <p>&lt;/dependency&gt;</p>
+    </div>
+    <p>Размещается над полями, методами, и конструкторами с аргументами.</p>
+    <p class="main-mind">
+        @Inject как и @Autowired в первую очередь пытается подключить зависимость по типу, затем по описанию и только
+        потом по имени.
+    </p>
+    <p>
+        Это означает, что даже если имя переменной ссылки на класс отличается от имени компонента, но
+        они одинакового типа, зависимость все равно будет разрешена:
+    </p>
+    <div class="code">
+        <p><an>@Inject</an></p>
+        <p>private ArbitraryDependency fieldInjectDependency;</p>
+    </div>
+    <p>отличается от имени компонента, настроенного в контексте приложения:</p>
+    <div class="code">
+        <p><an>@Bean</an></p>
+        <p>public ArbitraryDependency injectDependency() {</p>
+        <p class="tab-1">ArbitraryDependency injectDependency = new ArbitraryDependency();</p>
+        <p class="tab-1">return injectDependency;</p>
+        <p>}</p>
+    </div>
+    <p>
+        Разность имён injectDependency и fieldInjectDependency не имеет значения, зависимость будет подобрана по типу
+        ArbitraryDependency.
+    </p>
+    <br>
+    <p>
+        Если в контейнере <strong>несколько бинов-кандидатов</strong> на внедрение,
+        то нужно использовать аннотацию <strong>@Qualifier</strong>:
+    </p>
+    <div class="code">
+        <p><an>@Inject</an></p>
+        <p><an>@Qualifier("defaultFile")</an></p>
+        <p class="mb10">private ArbitraryDependency defaultDependency;</p>
+        <p><an>@Inject</an></p>
+        <p><an>@Qualifier("namedFile")</an></p>
+        <p>private ArbitraryDependency namedDependency;</p>
+    </div>
+    <br>
+    <p>При использовании конкретного имени (Id) бина используем @Named:</p>
+    <div class="code">
+        <p><an>@Inject</an></p>
+        <p><an>@Named("yetAnotherFieldInjectDependency")</an></p>
+        <p>private ArbitraryDependency yetAnotherFieldInjectDependency;</p>
+    </div>
+    <a href="#" class="button button--top"></a>
+</section>
+
 <footer>
     <div class="footer__text">Алексей Маслов, 2021-2022</div>
 </footer>
 
 </body>
+
+<script src="../../../js/spoiler.js"></script>
 
 </html>
 

@@ -74,7 +74,7 @@ h4 {
     margin-bottom: 8px;
 }
 
-span{
+span {
     font-family: inherit;
 }
 
@@ -258,6 +258,7 @@ img {
     padding: 5px 20px;
     border-radius: 4px;
     display: inline;
+    transition: all 0.3s ease 0s;
 }
 
 .button--home {
@@ -562,6 +563,49 @@ an {
     font-weight: bold;
     color: darkorange;
 
+}
+
+.spoiler {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .3s ease;
+}
+
+.spoiler-button {
+    position: relative;
+    display: inline-block;
+    padding-right: 25px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.spoiler-button:after,
+.spoiler-button:before {
+    content: '';
+    width: 10px;
+    height: 2px;
+    background-color: #00a82d;
+    position: absolute;
+    top: 14px;
+    transition: all 0.3s ease 0s;
+}
+
+.spoiler-button:before {
+    transform: rotate(40deg);
+    right: 7px;
+}
+
+.spoiler-button:after {
+    transform: rotate(-40deg);
+    right: 0;
+}
+
+.spoiler-button.active:before {
+    transform: rotate(-40deg);
+}
+
+.spoiler-button.active:after {
+    transform: rotate(40deg);
 }
 
 @media screen and (max-width: 680px) {
