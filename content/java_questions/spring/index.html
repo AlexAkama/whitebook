@@ -56,26 +56,24 @@
                 <p class="tab-2 example"><a href="#q14_setter">@Value with Setter</a></p>
             </div>
         </li>
+        <li>
+            <p>
+                <a href="#q15">Как заинжектить коллекцию?</a>
+                <span class="spoiler-button"></span>
+            </p>
+            <div class="spoiler">
+                <p class="tab-2 example"><a href="#q15_array">Array Injection</a></p>
+                <p class="tab-2 example"><a href="#q15_collection">Collections Injection</a></p>
+                <p class="tab-2 example"><a href="#q15_beans">Коллекции бинов одного типа</a></p>
+                <p class="tab-2 example"><a href="#q15_qualifier">Использование @Qualifier</a></p>
+                <p class="tab-2 example"><a href="#q15_sort">Упорядочивание элементов массивов/списков</a></p>
+            </div>
+        </li>
+        <li><a href="#q16">Аннотация <span>@Conditional</span></a></li>
     </ol>
 
     <table aria-label="Вопросы по Spring">
 
-        <tr>
-            <td>15.</td>
-            <td>
-                Как заинжектить коллекцию?
-                <p>Array Injection</p>
-                <p>Collections Injection</p>
-                <p>Коллекции бинов одного типа</p>
-                <p>Использование @Qualifier</p>
-                <p>Упорядочивание элементов массивов / списков</p>
-            </td>
-        </tr>
-        <tr>
-
-            <td>16.</td>
-            <td>Расскажите про аннотацию <span>@Conditional</span></td>
-        </tr>
         <tr>
             <td>17.</td>
             <td>Расскажите про аннотацию <span>@ComponentScan</span></td>
@@ -1084,6 +1082,380 @@
     <a href="#" class="button button--top"></a>
 </section>
 
+<section class="container" id="q15">
+    <h1>Как заинжектить коллекцию?</h1>
+    <hr>
+    <h3 id="q15_array">Array Injection</h3>
+    <p>
+        Можно вставлять массивы примитивов и ссылочных типов. Со всеми массивами и коллекциями можно использовать
+        внедрение через конструкторы, сеттеры или поля:
+    </p>
+    <div class="code">
+        <p><an>@Configuration</an></p>
+        <p class="mb10">public class ArrayExample {</p>
+        <p class="tab-1"><an>@Bean</an></p>
+        <p class="tab-1">public TestBean testBean () {</p>
+        <p class="tab-2">return new TestBean();</p>
+        <p class="tab-1 mb10">}</p>
+        <p class="tab-1"><an>@Bean</an></p>
+        <p class="tab-1">public String[] strArray() {</p>
+        <p class="tab-2">return new String[]{"two", "three", "four"};</p>
+        <p class="tab-1 mb10">}</p>
+        <p class="mb10">}</p>
+        <p class="mb10">public class TestBean {</p>
+        <p class="tab-1 mb10">private String[] stringArray;</p>
+        <p class="tab-1"><an>@Autowired</an></p>
+        <p class="tab-1">public void setStringArray (String[] stringArray) {</p>
+        <p class="tab-2">this.stringArray = stringArray;</p>
+        <p class="tab-1 mb10">}</p>
+        <p>}</p>
+    </div>
+
+    <hr>
+    <h3 id="q15_collection">Collections Injection</h3>
+    <div class="code">
+        <p><an>@Configuration</an></p>
+        <p class="mb10">public class ListExample {</p>
+        <p class="tab-1"><an>@Bean</an></p>
+        <p class="tab-1">public TestBean testBean () {</p>
+        <p class="tab-2">return new TestBean();</p>
+        <p class="tab-1 mb10">}</p>
+        <p class="tab-1"><an>@Bean</an></p>
+        <p class="tab-1">public List&lt;String&gt; strList() {</p>
+        <p class="tab-2">return Arrays.asList("two", "three", "four");</p>
+        <p class="tab-1">}</p>
+        <p class="mb10">}</p>
+        <p class="mb10">public class TestBean {</p>
+        <p class="tab-1 mb10">private List &lt;String&gt; stringList;</p>
+        <p class="tab-1"><an>@Autowired</an></p>
+        <p class="tab-1">public void setStringList (List&lt;String&gt; stringList) {</p>
+        <p class="tab-2">this.stringList = stringList;</p>
+        <p class="tab-1">}</p>
+        <p>}</p>
+    </div>
+
+    <hr>
+    <h3 id="q15_beans">Коллекции бинов одного типа</h3>
+    <p class="no_mb">
+        Можно собрать все бины одного типа, находящиеся в контейнере, и внедрить их в коллекцию или массив:
+    </p>
+    <div class="code">
+        <p><an>@Configuration</an></p>
+        <p class="mb10">public class SetInjection {</p>
+
+        <p class="tab-1"><an>@Bean</an></p>
+        <p class="tab-1">public TestBean testBean () {</p>
+        <p class="tab-2">return new TestBean();</p>
+        <p class="tab-1 mb10">}</p>
+        <p class="tab-1"><an>@Bean</an></p>
+        <p class="tab-1">public RefBean refBean1 () {</p>
+        <p class="tab-2">return new RefBean("bean 1");</p>
+        <p class="tab-1 mb10">}</p>
+        <p class="tab-1"><an>@Bean</an></p>
+        <p class="tab-1">public RefBean refBean2 () {</p>
+        <p class="tab-2">return new RefBean2("bean 2");</p>
+        <p class="tab-1 mb10">}</p>
+        <p class="tab-1"><an>@Bean</an></p>
+        <p class="tab-1">public RefBean refBean3 () {</p>
+        <p class="tab-2">return new RefBean3("bean 3");</p>
+        <p class="tab-1 mb20">}</p>
+
+        <p class="tab-1 mb10">public static class TestBean {</p>
+        <p class="tab-2 example">// All bean instances of type RefBean will be injecting here</p>
+        <p class="tab-2"><an>@Autowired</an></p>
+        <p class="tab-2 mb10">private Set&lt;RefBean&gt; refBeans;</p>
+        <p class="tab-2 mb10">...</p>
+        <p class="tab-1 mb10">}</p>
+
+        <p class="tab-1 mb10">public static class RefBean {</p>
+        <p class="tab-2 mb10"> private String str;</p>
+        <p class="tab-2">public RefBean(String str) {</p>
+        <p class="tab-3">this.str = str;</p>
+        <p class="tab-2 mb10">}</p>
+        <p class="tab-2 mb10">...</p>
+        <p class="tab-1 mb10">}</p>
+
+        <p>}</p>
+    </div>
+
+    <p class="no_mb">
+        Если нужно внедрить вышеупомянутые бины RefBean в Map, то значениями Map будут сами бины, а ключами будут
+        имена бинов:
+    </p>
+    <div class="code">
+        <p>{refBean1 = RefBean{str='bean 1'}, refBean2 = RefBean{str='bean 2'},
+            refBean3 = RefBean{str='bean 3'}}</p>
+    </div>
+
+    <hr>
+    <h3 id="q15_qualifier">Использование @Qualifier</h3>
+    <p class="no_mb">
+        Методы класса JavaConfig (те, которые аннотированы @Bean) могут быть объявлены с определенным квалифицирующим
+        типом, используя @Qualifier. Используя параметр 'name' у аннотации @Bean, чтобы указать конкретный
+        классификатор для бина, указывается не имя, а идентификатор бина, который должен быть уникальным,
+        потому что все бины хранятся в контейнере в Map.
+    </p>
+    <p>
+        В случае если необходимо чтобы несколько бинов имели одно и то же имя квалификатора, чтобы их можно было
+        внедрить в одну коллекцию с одним и тем же квалификатором, нужно использовать аннотацию @Qualifier вместе с
+        @Bean вместо элемента name.
+    </p>
+    <div class="code">
+        <p><an>@Configuration</an></p>
+        <p class="mb10">public class SetInjection {</p>
+
+        <p class="tab-1"><an>@Bean</an></p>
+        <p class="tab-1">public TestBean testBean () {</p>
+        <p class="tab-2">return new TestBean();</p>
+        <p class="tab-1 mb10">}</p>
+
+        <p class="tab-1"><an>@Bean</an></p>
+        <p class="tab-1">public RefBean refBean1 () {</p>
+        <p class="tab-2">return new RefBean("bean 1");</p>
+        <p class="tab-1 mb10">}</p>
+
+        <p class="tab-1"><an>@Bean</an></p>
+        <p class="tab-1"><an>@Qualifier("myRefBean")</an></p>
+        <p class="tab-1">public RefBean refBean2 () {</p>
+        <p class="tab-2">return new RefBean2("bean 2");</p>
+        <p class="tab-1 mb10">}</p>
+
+        <p class="tab-1"><an>@Bean</an></p>
+        <p class="tab-1"><an>@Qualifier("myRefBean")</an></p>
+        <p class="tab-1">public RefBean refBean3 () {</p>
+        <p class="tab-2">return new RefBean3("bean 3");</p>
+        <p class="tab-1 mb10">}</p>
+
+        <p class="tab-1 mb10">public static class TestBean {</p>
+        <p class="tab-2"><an>@Autowired</an></p>
+        <p class="tab-2"><an>@Qualifier("myRefBean")</an></p>
+        <p class="tab-2 mb10">private Set&lt;RefBean&gt; refBeans;</p>
+        <p class="tab-2 mb10">...</p>
+        <p class="tab-1 mb10">}</p>
+
+        <p>}</p>
+    </div>
+    <p><strong>
+        Только бины с именами refBean2 и refBean3 попадут в коллекцию, так как у них одинаковые квалификаторы -
+        myRefBean.
+    </strong></p>
+
+    <hr>
+    <h3 id="q15_sort">Упорядочивание элементов массивов/списков</h3>
+    <p class="no_mb">Бины могут быть упорядочены, когда они вставляются в списки (не Set или Map) или массивы.</p>
+    <p>Поддерживаются как аннотация @Order, так и интерфейс Ordered.</p>
+    <p class="no_mb">Например:</p>
+    <div class="code no_mb">
+        <p><an>@Configuration</an></p>
+        <p class="mb10">public class ArrayExample {</p>
+
+        <p class="tab-1"><an>@Bean</an></p>
+        <p class="tab-1">public TestBean testBean () {</p>
+        <p class="tab-2">return new TestBean();</p>
+        <p class="tab-1 mb10">}</p>
+
+        <p class="tab-1"><an>@Bean</an></p>
+        <p class="tab-1"><an>@Order(3)</an></p>
+        <p class="tab-1">public String refString1 () {</p>
+        <p class="tab-2">return "my string 1";</p>
+        <p class="tab-1 mb10">}</p>
+
+        <p class="tab-1"><an>@Bean</an></p>
+        <p class="tab-1"><an>@Order(1)</an></p>
+        <p class="tab-1">public String refString2 () {</p>
+        <p class="tab-2">return "my string 2";</p>
+        <p class="tab-1 mb10">}</p>
+
+        <p class="tab-1"><an>@Bean</an></p>
+        <p class="tab-1"><an>@Order(2)</an></p>
+        <p class="tab-1">public String refString3 () {</p>
+        <p class="tab-2">return "my string 3";</p>
+        <p class="tab-1 mb10">}</p>
+
+        <p class="tab-1 mb10">private static class TestBean {</p>
+        <p class="tab-2 mb10">private String[] stringArray;</p>
+
+        <p class="tab-2"><an>@Autowired</an></p>
+        <p class="tab-2">public void setStringArray (String[] stringArray) {</p>
+        <p class="tab-3">this.stringArray = stringArray;</p>
+        <p class="tab-2 mb10">}</p>
+
+        <p class="tab-2">public String[] getStringArray () {</p>
+        <p class="tab-3">return stringArray;</p>
+        <p class="tab-2 mb10">}</p>
+
+        <p class="tab-1 mb10">}</p>
+
+        <p>}</p>
+    </div>
+    <p class="example no_mb">Массив строк будет выглядеть так:</p>
+    <p class="example">[my string 2, my string 3, my string 1]</p>
+
+    <hr>
+    <br>
+    <div class="image-box">
+        <img class="image" src="./img/inject.png" alt="схема внедрения">
+    </div>
+    <br>
+    <hr>
+    <h4>Также можно объявить бин-коллекцию и внедрять её в другие бины:</h4>
+    <div class="code">
+        <p><an>@Service</an></p>
+        <p><an>@Getter</an></p>
+        <p class="mb10">public class ActionHeroesService {</p>
+        <p class="tab-1"><an>@Autowired</an></p>
+        <p class="tab-1 mb10">List&lt;Hero&gt; actionHeroes;</p>
+        <p class="mb10">}</p>
+        <p><an>@Configuration</an></p>
+        <p class="mb10">public class HeroesConfig {</p>
+        <p class="tab-1"><an>@Bean</an></p>
+        <p class="tab-1">public List&lt;Hero&gt; action() {</p>
+        <p class="tab-2">List&lt;Hero&gt; result = new ArrayList<>();</p>
+        <p class="tab-2">result.add(new Terminator());</p>
+        <p class="tab-2">result.add(new Rambo());</p>
+        <p class="tab-2">return result;</p>
+        <p class="tab-1 mb10">}</p>
+        <p>}</p>
+    </div>
+
+    <a href="#" class="button button--top"></a>
+</section>
+
+<section class="container" id="q16">
+    <h1>Аннотация @Conditional</h1>
+    <p>
+        Часто бывает полезно включить или отключить весь класс @Configuration, @Component или отдельные методы @Bean в
+        зависимости от каких-либо условий.
+    </p>
+    <p class="main-mind">
+        Аннотация @Conditional указывает, что компонент имеет право на регистрацию в контексте только тогда, когда все
+        условия соответствуют.
+    </p>
+    <p class="no_mb">Может применяться:</p>
+    <ul class="tab-2">
+        <li>над классами прямо или косвенно аннотированными @Component, включая классы @Configuration;</li>
+        <li>над методами @Bean;</li>
+        <li>как мета-аннотация при создании наших собственных аннотаций-условий.</li>
+    </ul>
+    <p>
+        Условия проверяются непосредственно перед тем, как должно быть зарегистрировано BeanDefinition компонента, и они
+        могут помешать регистрации данного BeanDefinition. Поэтому нельзя допускать, чтобы при проверке условий мы
+        взаимодействовали с бинами (которых еще не существует), с их BeanDefinition-ами можно.
+    </p>
+    <p class="no_mb">
+        Условия мы определяем в специально создаваемых нами классах, которые должны имплементировать функциональный
+        интерфейс Condition с одним единственным методом, возвращающим true или false:
+    </p>
+    <div class="code">
+        <p>boolean matches(ConditionContext context, AnnotatedTypeMetadata metadata)</p>
+    </div>
+
+    <p class="no_mb">
+        Создав свой класс и переопределив в нем метод matches() со своей логикой, необходимо передать этот класс в
+        аннотацию @Conditional в качестве параметра:
+    </p>
+    <div class="code">
+        <p><an>@Configuration</an></p>
+        <p><an>@Conditional(OurConditionClass.class)</an></p>
+        <p>class MySQLAutoconfiguration {</p>
+        <p class="tab-1">//...</p>
+        <p>}</p>
+    </div>
+
+    <p class="no_mb">
+        Для того, чтобы проверить несколько условий, можно передать в @Conditional несколько классов с условиями:
+    </p>
+    <div class="code">
+        <p><an>@Bean</an></p>
+        <p><an>@Conditional(HibernateCondition.class, OurConditionClass.class)</an></p>
+        <p>Properties additionalProperties() {</p>
+        <p>//...</p>
+        <p>}</p>
+    </div>
+
+    <p class="main-mind">
+        Если класс @Configuration помечен как @Conditional, то на все методы @Bean, аннотации @Import и аннотации
+        @ComponentScan, связанные с этим классом, также будут распространяться указанные условия.
+    </p>
+    <p><strong>Для детальной настройки</strong> классов, аннотированных @Configuration используется интерфейс
+        <strong>ConfigurationCondition</strong></p>
+    <p class="no_mb"><strong>В одном классе - одно условие</strong>.</p>
+    <p>
+        Для создания более сложных условий можно использовать классы AnyNestedCondition,
+        AllNestedConditions и NoneNestedConditions.
+    </p>
+
+    <p class="no_mb">
+        В Spring Framework имеется множество готовых аннотаций (и связанных с ними склассами-условиями,
+        имплементирующими интерфейс Condition), которые можно применять совместно над одним определением бина:
+    </p>
+    <table class="list list--dictionary" aria-label="Conditional annotation">
+        <thead>
+        <tr>
+            <th>Аннотация</th>
+            <th>Описание</th>
+        <tr>
+        </thead>
+        <tr>
+            <td>ConditionalOnBean</td>
+            <td>Условие выполняется, в случае если присутствует нужный бин в BeanFactory.</td>
+        </tr>
+        <tr>
+            <td>ConditionalOnClass</td>
+            <td>Условие выполняется, если нужный класс есть в classpath.</td>
+        </tr>
+        <tr>
+            <td>ConditionalOnCloudPlatform</td>
+            <td>Условие выполняется, когда активна определенная платформа.</td>
+        </tr>
+        <tr>
+            <td>ConditionalOnExpression</td>
+            <td>Условие выполняется, когда SpEL выражение вернуло положительное значение.</td>
+        </tr>
+        <tr>
+            <td>ConditionalOnJava</td>
+            <td>Условие выполняется, когда приложение запущено с определенной версией JVM.</td>
+        </tr>
+        <tr>
+            <td>ConditionalOnJndi</td>
+            <td>Условие выполняется, только если через JNDI доступен определенный ресурс.</td>
+        </tr>
+        <tr>
+            <td>ConditionalOnMissingBean</td>
+            <td>Условие выполняется, в случае если нужный бин отсутствует в контейнере.</td>
+        </tr>
+        <tr>
+            <td>ConditionalOnMissingClass</td>
+            <td>Условие выполняется, если нужный класс отсутствует в classpath.</td>
+        </tr>
+        <tr>
+            <td>ConditionalOnNotWebApplication</td>
+            <td>Условие выполняется, если контекст приложения не является веб контекстом.</td>
+        </tr>
+        <tr>
+            <td>ConditionalOnProperty</td>
+            <td>Условие выполняется, если в файле настроек заданы нужные параметры.</td>
+        </tr>
+        <tr>
+            <td>ConditionalOnResource</td>
+            <td>Условие выполняется, если присутствует нужный ресурс в classpath.</td>
+        </tr>
+        <tr>
+            <td>ConditionalOnSingleCandidate</td>
+            <td>
+                Условие выполняется, если bean-компонент указанного класса уже содержится в контейнере и он
+                единственный.
+            </td>
+        </tr>
+        <tr>
+            <td>ConditionalOnWebApplication</td>
+            <td>Условие выполняется, если контекст приложения является веб контекстом.</td>
+        </tr>
+    </table>
+
+    <a href="#" class="button button--top"></a>
+</section>
+
 <footer>
     <div class="footer__text">Алексей Маслов, 2021-2022</div>
 </footer>
@@ -1091,6 +1463,7 @@
 </body>
 
 <script src="../../../js/spoiler.js"></script>
+<script src="../../../js/script.js"></script>
 
 </html>
 
