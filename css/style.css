@@ -578,7 +578,7 @@ an {
 
 .spoiler.active {
     border: #00a82d solid 1px;
-    padding-bottom: 5px;
+    padding: 0 5px 5px 0;
 }
 
 .spoiler-button {

@@ -89,20 +89,18 @@
                 <span class="spoiler-button"></span>
             </p>
             <div class="spoiler">
-                <p>
-                    <a href="#q20_beans"></a>Жизненный цикл бинов
-                </p>
-                <ol class="">
-                    <li>Парсирование конфигурации и создание BeanDefinition</li>
-                    <li>Настройка созданных BeanDefinition</li>
-                    <li>Создание кастомных FactoryBean (только для XML-конфигурации)</li>
-                    <li>Создание экземпляров бинов</li>
-                    <li>Настройка созданных бинов</li>
-                    <li>Бины готовы к использованию</li>
-                    <li>Закрытие контекста</li>
-                </ol>
-                <p><a href="#q20_postconstuct">@PostConstruct</a></p>
-                <p><a href="#q20_predestroy">@PreDestroy</a></p>
+                <p class="tab-2"><a href="#q20_beans">Жизненный цикл бинов</a></p>
+                <ul class="tab-3">
+                    <li style="line-height: 24px">Парсирование конфигурации и создание BeanDefinition</li>
+                    <li style="line-height: 24px">Настройка созданных BeanDefinition</li>
+                    <li style="line-height: 24px">Создание кастомных FactoryBean (только для XML-конфигурации)</li>
+                    <li style="line-height: 24px">Создание экземпляров бинов</li>
+                    <li style="line-height: 24px">Настройка созданных бинов</li>
+                    <li style="line-height: 24px">Бины готовы к использованию</li>
+                    <li style="line-height: 24px">Закрытие контекста</li>
+                </ul>
+                <p class="tab-2"><a href="#q20_predestroy">@PreDestroy</a></p>
+                <p class="tab-2"><a href="#q20_postconstuct">@PostConstruct</a></p>
             </div>
         </li>
     </ol>
@@ -1681,6 +1679,30 @@
     <a href="#" class="button button--top"></a>
 </section>
 
+
+<section class="container" id="q20">
+    <h1>Жизненный цикл бина, аннотации @PostConstruct и @PreDestroy </h1>
+    <div class="after-h1">
+        <p class="tab-2"><a href="#q20_beans">Жизненный цикл бинов</a></p>
+        <p class="tab-2"><a href="#q20_predestroy">@PreDestroy</a></p>
+        <p class="tab-2"><a href="#q20_postconstuct">@PostConstruct</a></p>
+    </div>
+    <h3 id="q20_beans">Жизненный цикл бинов</h3>
+    <ul class="tab-2">
+        <li style="line-height: 24px">Парсирование конфигурации и создание BeanDefinition</li>
+        <li style="line-height: 24px">Настройка созданных BeanDefinition</li>
+        <li style="line-height: 24px">Создание кастомных FactoryBean (только для XML-конфигурации)</li>
+        <li style="line-height: 24px">Создание экземпляров бинов</li>
+        <li style="line-height: 24px">Настройка созданных бинов</li>
+        <li style="line-height: 24px">Бины готовы к использованию</li>
+        <li style="line-height: 24px">Закрытие контекста</li>
+    </ul>
+    <hr>
+    <h3 id="q20_predestroy">Аннотация @PreDestroy</h3>
+    <hr>
+    <h3 id="q20_postconstuct">Аннотация @PostConstruct</h3>
+    <a href="#" class="button button--top"></a>
+</section>
 <footer>
     <div class="footer__text">Алексей Маслов, 2021-2022</div>
 </footer>
