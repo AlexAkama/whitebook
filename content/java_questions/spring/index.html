@@ -27,8 +27,8 @@
                 <span class="spoiler-button"></span>
             </p>
             <div class="spoiler">
-                <p class="tab-2 example"><a href="#q1_ioc">Inversion of Control (IoC)</a></p>
-                <p class="tab-2 example"><a href="#q1_di">Dependency Injection (DI)</a></p>
+                <p class="tab-2"><a href="#q1_ioc">Inversion of Control (IoC)</a></p>
+                <p class="tab-2"><a href="#q1_di">Dependency Injection (DI)</a></p>
             </div>
         </li>
         <li><a href="#q2"><span>IoC Container</span></a></li>
@@ -49,11 +49,11 @@
                 <span class="spoiler-button"></span>
             </p>
             <div class="spoiler">
-                <p class="tab-2 example"><a href="#q14_value">@Value</a></p>
-                <p class="tab-2 example"><a href="#q14_spel">@Value with SpEL</a></p>
-                <p class="tab-2 example"><a href="#q14_map">@Value with Map</a></p>
-                <p class="tab-2 example"><a href="#q14_constructor">@Value with Constructor</a></p>
-                <p class="tab-2 example"><a href="#q14_setter">@Value with Setter</a></p>
+                <p class="tab-2"><a href="#q14_value">@Value</a></p>
+                <p class="tab-2"><a href="#q14_spel">@Value with SpEL</a></p>
+                <p class="tab-2"><a href="#q14_map">@Value with Map</a></p>
+                <p class="tab-2"><a href="#q14_constructor">@Value with Constructor</a></p>
+                <p class="tab-2"><a href="#q14_setter">@Value with Setter</a></p>
             </div>
         </li>
         <li>
@@ -62,11 +62,11 @@
                 <span class="spoiler-button"></span>
             </p>
             <div class="spoiler">
-                <p class="tab-2 example"><a href="#q15_array">Array Injection</a></p>
-                <p class="tab-2 example"><a href="#q15_collection">Collections Injection</a></p>
-                <p class="tab-2 example"><a href="#q15_beans">Коллекции бинов одного типа</a></p>
-                <p class="tab-2 example"><a href="#q15_qualifier">Использование @Qualifier</a></p>
-                <p class="tab-2 example"><a href="#q15_sort">Упорядочивание элементов массивов/списков</a></p>
+                <p class="tab-2"><a href="#q15_array">Array Injection</a></p>
+                <p class="tab-2"><a href="#q15_collection">Collections Injection</a></p>
+                <p class="tab-2"><a href="#q15_beans">Коллекции бинов одного типа</a></p>
+                <p class="tab-2"><a href="#q15_qualifier">Использование @Qualifier</a></p>
+                <p class="tab-2"><a href="#q15_sort">Упорядочивание элементов массивов/списков</a></p>
             </div>
         </li>
         <li><a href="#q16">Аннотация <span>@Conditional</span></a></li>
@@ -78,37 +78,37 @@
                 <span class="spoiler-button"></span>
             </p>
             <div class="spoiler">
-                <p class="example tab-2"><a href="#q19_bf">BeanFactory</a></p>
-                <p class="example tab-2"><a href="#q19_ac">ApplicationContext</a></p>
-                <p class="example tab-2"><a href="#q19_eq">ApplicationContext vs. BeanFactory</a></p>
+                <p class="tab-2"><a href="#q19_bf">BeanFactory</a></p>
+                <p class="tab-2"><a href="#q19_ac">ApplicationContext</a></p>
+                <p class="tab-2"><a href="#q19_eq">ApplicationContext vs. BeanFactory</a></p>
+            </div>
+        </li>
+        <li>
+            <p>
+                <a href="#q20">Жизненный цикл бина, аннотации <span>@PostConstruct</span> и <span>@PreDestroy</span></a>
+                <span class="spoiler-button"></span>
+            </p>
+            <div class="spoiler">
+                <p>
+                    <a href="#q20_beans"></a>Жизненный цикл бинов
+                </p>
+                <ol class="">
+                    <li>Парсирование конфигурации и создание BeanDefinition</li>
+                    <li>Настройка созданных BeanDefinition</li>
+                    <li>Создание кастомных FactoryBean (только для XML-конфигурации)</li>
+                    <li>Создание экземпляров бинов</li>
+                    <li>Настройка созданных бинов</li>
+                    <li>Бины готовы к использованию</li>
+                    <li>Закрытие контекста</li>
+                </ol>
+                <p><a href="#q20_postconstuct">@PostConstruct</a></p>
+                <p><a href="#q20_predestroy">@PreDestroy</a></p>
             </div>
         </li>
     </ol>
 
     <table aria-label="Вопросы по Spring">
 
-        <tr>
-            <td>20.</td>
-            <td>
-                Расскажите про жизненный цикл бина, аннотации <span>@PostConstruct</span> и <span>@PreDestroy</span>
-                <div>
-                    Жизненный цикл бинов
-                    <ol>
-                        <li>Парсирование конфигурации и создание BeanDefinition</li>
-                        <li>Настройка созданных BeanDefinition</li>
-                        <li>Создание кастомных FactoryBean (только для XML-конфигурации)</li>
-                        <li>Создание экземпляров бинов</li>
-                        <li>Настройка созданных бинов</li>
-                        <li>Бины готовы к использованию</li>
-                        <li>Закрытие контекста</li>
-                    </ol>
-                </div>
-                <p>@PostConstruct</p>
-                <p>@PreDestroy</p>
-
-
-            </td>
-        </tr>
         <tr>
             <td>21.</td>
             <td>

@@ -11,7 +11,7 @@ for (let button of buttons) {
             } else {
                 button.classList.add('active');
                 spoiler.classList.add('active');
-                spoiler.style.maxHeight = spoiler.scrollHeight + 'px';
+                spoiler.style.maxHeight = spoiler.scrollHeight + 5 + 'px';
             }
         }
     );

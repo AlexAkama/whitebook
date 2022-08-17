@@ -573,6 +573,12 @@ an {
     max-height: 0;
     overflow: hidden;
     transition: max-height .3s ease;
+    background-color: lightgoldenrodyellow;
+}
+
+.spoiler.active {
+    border: #00a82d solid 1px;
+    padding-bottom: 5px;
 }
 
 .spoiler-button {
