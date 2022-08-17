@@ -72,20 +72,21 @@
         <li><a href="#q16">Аннотация <span>@Conditional</span></a></li>
         <li><a href="#q17">Аннотация <span>@ComponentScan</span></a></li>
         <li><a href="#q18">Аннотация <span>@Profile</span></a></li>
+        <li>
+            <p>
+                <a href="#q19"><span>ApplicationContext</span> и <span>BeanFactory</span></a>
+                <span class="spoiler-button"></span>
+            </p>
+            <div class="spoiler">
+                <p class="example tab-2"><a href="#q19_bf">BeanFactory</a></p>
+                <p class="example tab-2"><a href="#q19_ac">ApplicationContext</a></p>
+                <p class="example tab-2"><a href="#q19_eq">ApplicationContext vs. BeanFactory</a></p>
+            </div>
+        </li>
     </ol>
 
     <table aria-label="Вопросы по Spring">
 
-        <tr>
-            <td>19.</td>
-            <td>
-                Расскажите про <span>ApplicationContext</span> и <span>BeanFactory</span>,
-                чем отличаются? В каких случаях что стоит использовать?
-                <p>BeanFactory</p>
-                <p>ApplicationContext</p>
-                <p>ApplicationContext vs. BeanFactory</p>
-            </td>
-        </tr>
         <tr>
             <td>20.</td>
             <td>
@@ -1558,6 +1559,109 @@
         настройки для всех профилей, и иметь по файлу настроек для каждого профиля application-dev.properties и
         application-prod.properties, содержащие свои собственные дополнительные настройки.
     </p>
+
+    <a href="#" class="button button--top"></a>
+</section>
+
+<section class="container" id="q19">
+    <h1 class="no_mb">ApplicationContext и BeanFactory</h1>
+    <div class="after-h1">
+        <p>Чем отличаются? В каких случаях что стоит использовать?</p>
+        <p class="tab-2"><a href="#q19_bf">BeanFactory</a></p>
+        <p class="tab-2"><a href="#q19_ac">ApplicationContext</a></p>
+        <p class="tab-2"><a href="#q19_eq">ApplicationContext vs. BeanFactory</a></p>
+    </div>
+    <h3 id="q19_bf">BeanFactory</h3>
+    <p class="main-mind">
+        BeanFactory — это интерфейс, который предоставляет механизм конфигурации, способный управлять объектами любого
+        типа.
+    </p>
+    <p class="no_mb">
+        В общем, BeanFactory предоставляет инфраструктуру конфигурации и основные функциональные возможности.
+    </p>
+    <p>BeanFactory легче по сравнению с ApplicationContext.</p>
+
+    <hr>
+    <h3 id="q19_ac">ApplicationContext</h3>
+    <p class="main-mind">
+        ApplicationContext является наследником BeanFactory и полностью реализует его функционал, добавляя больше
+        специфических enterprise-функций.
+    </p>
+    <hr>
+    <h3 id="q19_eq">ApplicationContext vs. BeanFactory</h3>
+    <table class="list list--content-center" aria-label="">
+        <thead>
+        <tr>
+            <th>Особенность</th>
+            <th>BeanFactory</th>
+            <th>ApplicationContext</th>
+        <tr>
+        </thead>
+        <tr>
+            <td>Bean instantiation/wiring</td>
+            <td>Yes</td>
+            <td>Yes</td>
+        </tr>
+        <tr>
+            <td>Integrated lifecycle management</td>
+            <td>No</td>
+            <td>Yes</td>
+        </tr>
+        <tr>
+            <td>Automatic BeanPostProcessor registration</td>
+            <td>No</td>
+            <td>Yes</td>
+        </tr>
+        <tr>
+            <td>Automatic BeanFactoryPostProcessor registration</td>
+            <td>No</td>
+            <td>Yes</td>
+        </tr>
+        <tr>
+            <td>Convenient MessageSource access (for internalization)</td>
+            <td>No</td>
+            <td>Yes</td>
+        </tr>
+        <tr>
+            <td>Built-in ApplicationEvent publication mechanism</td>
+            <td>No</td>
+            <td>Yes</td>
+        </tr>
+    </table>
+
+    <ul class="sparse-li">
+        <li>ApplicationContext загружает все бины при запуске, а BeanFactory - по требованию.</li>
+        <li>
+            <p class="mb10">
+                ApplicationContext расширяет BeanFactory и предоставляет функции, которые подходят для корпоративных
+                приложений:
+            </p>
+            <ul class="sparse-li">
+                <li>поддержка внедрения зависимостей на основе аннотаций;</li>
+                <li>удобный доступ к MessageSource (для использования в интернационализации);</li>
+                <li>публикация ApplicationEvent - для бинов, реализующих интерфейс ApplicationListener, с помощью
+                    интерфейса ApplicationEventPublisher;
+                </li>
+                <li>простая интеграция с функциями Spring AOP.</li>
+            </ul>
+        </li>
+        <li>
+            <p>ApplicationContext поддерживает автоматическую регистрацию BeanPostProcessor и
+                BeanFactoryPostProcessor.</p>
+            <p class="example">
+                Поэтому всегда желательно использовать ApplicationContext, потому что Spring 2.0 (и выше) интенсивно
+                использует BeanPostProcessor.
+            </p>
+        </li>
+        <li>
+            ApplicationContext поддерживает практически все типы scope для бинов, а BeanFactory поддерживает только два
+            - Singleton и Prototype.
+        </li>
+        <li>
+            В BeanFactory не будут работать транзакции и Spring AOP. Это может привести к путанице, потому что
+            конфигурация с виду будет корректной.
+        </li>
+    </ul>
 
     <a href="#" class="button button--top"></a>
 </section>
