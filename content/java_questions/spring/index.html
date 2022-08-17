@@ -71,14 +71,11 @@
         </li>
         <li><a href="#q16">Аннотация <span>@Conditional</span></a></li>
         <li><a href="#q17">Аннотация <span>@ComponentScan</span></a></li>
+        <li><a href="#q18">Аннотация <span>@Profile</span></a></li>
     </ol>
 
     <table aria-label="Вопросы по Spring">
 
-        <tr>
-            <td>18.</td>
-            <td>Расскажите про аннотацию <span>@Profile</span></td>
-        </tr>
         <tr>
             <td>19.</td>
             <td>
@@ -1502,6 +1499,65 @@
             pattern="com\\.baeldung\\.componentscan\\.springapp\\.flowers\\..*"))
         </an></p>
     </div>
+
+    <a href="#" class="button button--top"></a>
+</section>
+
+<section class="container" id="q18">
+    <h1>Аннотация @Profile</h1>
+    <p class="no_mb">
+        Профили — это ключевая особенность Spring Framework, позволяющая нам относить бины к разным профилям
+        (логическим группам), например, dev, test, prod.
+    </p>
+    <p>
+        Можно активировать разные профили в разных средах, чтобы загрузить только те бины, которые нужны.
+    </p>
+    <p class="main-mind no_mb">Аннотацию @Profile, относит бин к конкретному профилю.</p>
+    <p class="example">Можно применять на уровне класса или метода.</p>
+    <p class="no_mb">Аннотация @Profile принимает в качестве аргумента имя одного или нескольких профилей.</p>
+    <p class="example">Она фактически реализована с помощью гораздо более гибкой аннотации @Conditional.</p>
+
+    <h4>Пример:</h4>
+    <p class="no_mb">
+        Есть бин, который должен быть активным только во время разработки, но не должен использоваться в продакшене.
+    </p>
+    <p class="no_mb">
+        Аннотируем этот компонент с профилем <span class="code-word">«dev»</span>, и он будет присутствовать в
+        контейнере только во время разработки - во время продакшена профиль dev просто не будет активен:
+    </p>
+    <div class="code">
+        <p><an>@Component</an></p>
+        <p><an>@Profile("dev")</an></p>
+        <p>public class DevDatasourceConfig {...}</p>
+    </div>
+    <p class="no_mb">
+        В качестве быстрого обозначения имена профилей также могут начинаться с оператора NOT, например «!dev», чтобы
+        исключить их из профиля:
+    </p>
+    <div class="code no_mb">
+        <p><an>@Component</an></p>
+        <p><an>@Profile("!dev")</an></p>
+        <p>public class DevDatasourceConfig {...}</p>
+    </div>
+    <p class="example">Тут компонент активируется, только если профиль «dev» не активен.</p>
+    <p>
+        Следующим шагом является активация нужного профиля для того, чтобы в контейнере были зарегистрированы только
+        бины, соответствующие данному профилю.
+        <strong>Одновременно могут быть активны несколько профилей.</strong>
+    </p>
+    <p class="no_mb">
+        По умолчанию, <strong>если профиль бина не определен</strong>, то он относится
+        <strong>к профилю "default"</strong>.
+    </p>
+    <p>
+        Spring также предоставляет способ установить профиль по умолчанию, когда другой профиль не активен, используя
+        свойство «spring.profiles.default».
+    </p>
+    <p>
+        В Spring Boot есть возможность иметь один файл настроек application.properties, в котором будут основные
+        настройки для всех профилей, и иметь по файлу настроек для каждого профиля application-dev.properties и
+        application-prod.properties, содержащие свои собственные дополнительные настройки.
+    </p>
 
     <a href="#" class="button button--top"></a>
 </section>
