@@ -70,14 +70,11 @@
             </div>
         </li>
         <li><a href="#q16">Аннотация <span>@Conditional</span></a></li>
+        <li><a href="#q17">Аннотация <span>@ComponentScan</span></a></li>
     </ol>
 
     <table aria-label="Вопросы по Spring">
 
-        <tr>
-            <td>17.</td>
-            <td>Расскажите про аннотацию <span>@ComponentScan</span></td>
-        </tr>
         <tr>
             <td>18.</td>
             <td>Расскажите про аннотацию <span>@Profile</span></td>
@@ -1452,6 +1449,59 @@
             <td>Условие выполняется, если контекст приложения является веб контекстом.</td>
         </tr>
     </table>
+
+    <a href="#" class="button button--top"></a>
+</section>
+
+<section class="container" id="q17">
+    <h1>Аннотация @ComponentScan</h1>
+    <p class="no_mb">
+        Аннотация @ComponentScan используется вместе с аннотацией @Configuration для указания пакетов, которые мы хотим
+        сканировать на наличие компонентов, из которых нужно сделать бины.
+    </p>
+    <p class="no_mb">
+        @ComponentScan без аргументов указывает Spring по умолчанию сканировать текущий пакет и все его подпакеты.
+    </p>
+    <p>
+        Текущий пакет - тот, в котором находится файл конфигурации с этой самой аннотацией @ComponentScan.
+    </p>
+    <p class="no_mb">В контейнер попадут:</p>
+    <ul class="tab-2">
+        <li>бин конфигурационного класса;</li>
+        <li>бины, объявленные в конфигурационном классе с помощью @Bean;</li>
+        <li>все бины из пакета и его подпакетов.</li>
+    </ul>
+    <p>
+        Аннотация <strong>@SpringBootApplication включает</strong> в себя аннотации <strong>
+        @ComponentScan, @SpringBootConfiguration и @EnableAutoConfiguration </strong>,
+        но это не мешает разместить её ещё раз отдельно для указания конкретного пакета.
+    </p>
+
+    <p class="no_mb">
+        Если указать @ComponentScan с атрибутом <strong>basePackages</strong>, то это
+        <strong>изменит пакет</strong> по умолчанию <strong>на указанный</strong>:</p>
+    <div class="code">
+        <p><an>@ComponentScan(basePackages = "com.baeldung.componentscan.springapp.animals") </an></p>
+        <p><an>@Configuration</an></p>
+        <p>public class SpringComponentScanApp {</p>
+        <p class="tab-1">//...</p>
+        <p>}</p>
+    </div>
+
+    <p class="no_mb">
+        Если указать @ComponentScan с атрибутом <strong>excludeFilters</strong>, то это позволит использовать
+        <strong>фильтр</strong> и исключить ненужные классы из процесса сканирования:
+    </p>
+    <div class="code">
+        <p><an>@ComponentScan(excludeFilters =
+        </an></p>
+        <p class="tab-1"><an>
+            @ComponentScan.Filter(type=FilterType.REGEX,
+        </an></p>
+        <p class="tab-2"><an>
+            pattern="com\\.baeldung\\.componentscan\\.springapp\\.flowers\\..*"))
+        </an></p>
+    </div>
 
     <a href="#" class="button button--top"></a>
 </section>
