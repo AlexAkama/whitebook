@@ -351,7 +351,8 @@ img {
 }
 
 .example--word {
-    color: rgb(182, 41, 212);
+    font-family: 'Monaco', 'Menlo', 'Consolas', 'Courier New', monospace;
+    font-weight: 600;
 }
 
 .key_combination {
