@@ -33,7 +33,8 @@
         <li><a href="#q10">Демон потоки</a></li>
         <li><a href="#q11">Приоритет потока</a></li>
         <li><a href="#q12">Метод Thread.join()</a></li>
-
+        <li><a href="#q13">Отличия yield() и sleep()</a></li>
+        <li><a href="#q14">Остановка потока</a></li>
     </ol>
 
 </section>
@@ -943,6 +944,93 @@
     <a href="#" class="button button--top"></a>
 </section>
 
+<section class="container" id="q13">
+    <h1>Отличия yield() и sleep()</h1>
+    <p>
+        В то время как <strong>yield()</strong> может сделать <strong>только</strong> эвристическую
+        <strong>попытку</strong> (зависит от платформы и планировщика) <strong>приостановить</strong>
+        выполнение текущего потока без гарантии того, когда он будет запланирован назад,
+        <strong>sleep() может заставить планировщик приостановить выполнение</strong>
+        текущего потока как минимум на указанный период времени в качестве его параметра.
+    </p>
+    <table class="list" aria-label="">
+        <thead>
+        <tr>
+            <th>Код</th>
+            <th>Прогон 1</th>
+            <th>Прогон 2</th>
+        <tr>
+        </thead>
+        <tr>
+            <td>
+                <div class="code no_margin">
+                    <p>public class ThreadYield {</p>
+                    <p class="tab-1 mb10">public static void main(String[]&nbsp;args) {</p>
+                    <p class="tab-2">Runnable r = () -> {</p>
+                    <p class="tab-3">int counter = 0;</p>
+                    <p class="tab-3">while (counter < 2) {</p>
+                    <p class="tab-4">System.out.println(Thread.currentThread().getName());</p>
+                    <p class="tab-4">counter++;</p>
+                    <p class="tab-4">Thread.yield();</p>
+                    <p class="tab-3">}</p>
+                    <p class="tab-2 mb10">};</p>
+                    <p class="tab-2">new Thread(r).start();</p>
+                    <p class="tab-2 mb10">new Thread(r).start();</p>
+                    <p class="tab-1">}</p>
+                    <p>}</p>
+                </div>
+            </td>
+            <td>
+                <p>Thread-0</p>
+                <p>Thread-1</p>
+                <p>Thread-1</p>
+                <p>Thread-0</p>
+            </td>
+            <td>
+                <p>Thread-0</p>
+                <p>Thread-0</p>
+                <p>Thread-1</p>
+                <p>Thread-1</p>
+            </td>
+        </tr>
+    </table>
+    <a href="#" class="button button--top"></a>
+</section>
+
+<section class="container" id="q14">
+    <h1>Остановка потока</h1>
+    <p class="no_mb"><span class="code-word">stop()</span> - помечен как deprecated.</p>
+    <p> Потому что он просто останавливал поток без какой-либо дополнительной работы. «Не потокобезопасен». </p>
+    <p class="no_mb">
+        <span class="code-word">Thread.interrupt()</span>
+        - только сообщает потоку о необходимости остановки. Потокобезопасен.
+    <p class="no_mb">Вызов этого метода устанавливает у потока статус, что он прерван.</p>
+    <p class="no_mb">
+        Если разработчик не вставил обработку, то и поток не остановится.
+    </p>
+    <p class="main-mind">Сам разработчик пишет выход из потока! </p>
+
+    <p class="example no_mb">Hа пример</p>
+    <div class="code">If (условие выхода и isInterrupted()) then break;</div>
+    <p class="no_mb">
+        Метод возвращает <span class="example--word">true</span>, если поток может быть прерван,
+        в ином случае возвращается <span class="example--word">false</span>.
+    </p>
+    <div class="code">clockThread.interrupt();</div>
+    <p>
+        Метод <strong>interrupt()</strong> также
+        <strong>способен вывести поток из состояния ожидания или спячки</strong>.
+        Т.е. если у потока были вызваны методы sleep() или wait() – текущее состояние прервется и будет выброшено
+        исключение InterruptedException.
+        <strong>Флаг в этом случае не выставляется</strong>.
+    </p>
+    <p>
+        <span class="code-word">isInterrupted()</span>
+        – Нестатический метод используется одним потоком для проверки статуса прерывания у другого потока,
+        не изменяя флаг прерывания.
+    </p>
+    <a href="#" class="button button--top"></a>
+</section>
 
 <footer>
     <div class="footer__text">Алексей Маслов, 2021-2022</div>
