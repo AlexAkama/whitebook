@@ -81,7 +81,7 @@ strong {
     color: darkolivegreen;
     background-color: lightgoldenrodyellow;
     border-radius: 5px;
-    /*padding: 0 5px;*/
+    font-family: inherit;
 }
 
 .no_mb {
@@ -417,6 +417,10 @@ td .code {
 
 .tab-3 {
     padding-left: 45px;
+}
+
+.tab-4 {
+    padding-left: 60px;
 }
 
 .bad {

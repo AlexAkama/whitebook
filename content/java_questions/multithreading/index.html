@@ -15,13 +15,14 @@
     <h1 class="no_mb">JAVA Multithreading</h1>
     <div class="after-h1">Вопросы для собеседования</div>
     <div class="breadcrumbs">
-        <p><a href="../../../..">главная</a></p>
-        <p><a href="../..">Questions</a></p>
+        <p><a href="../../..">главная</a></p>
+        <p><a href="..">Questions</a></p>
         <p>Multithreading</p>
     </div>
     <h3 class="no_mt">Вопросы:</h3>
     <ol class="menu">
         <li><a href="#q1">Чем процесс отличается от потока?</a></li>
+        <li><a href="#q2">Thread и Runnable</a></li>
     </ol>
 </section>
 
@@ -146,10 +147,265 @@
     <a href="#" class="button button--top"></a>
 </section>
 
+<section class="container" id="q2">
+    <h1>Thread и Runnable</h1>
+    <div class="after-h1">
+        <p><a href="#q2_diff">Чем Thread отличается от Runnable?</a></p>
+        <p><a href="#q2_constructors">Конструкторы Thread</a></p>
+        <p><a href="#q2_methods">Методы класса Thread</a></p>
+        <p><a href="#q2_lifecircle">Жизненный цикл потока</a></p>
+    </div>
+    <table class="list" aria-label="Thread&Runnable" id="q2_diff">
+        <thead>
+        <tr>
+            <th>Thread</th>
+            <th>Runnable</th>
+        <tr>
+        </thead>
+        <tr>
+            <td>Класс</td>
+            <td>Интерфейс</td>
+        </tr>
+        <tr>
+            <td>Можно наследоваться только от одного родительского класса Thread</td>
+            <td>Можно имплементить много интерфейсов</td>
+        </tr>
+        <tr>
+            <td>Свои конструкторы и методы</td>
+            <td>Только метод run()</td>
+        </tr>
+        <tr>
+            <td>Имплементироует Runnable</td>
+            <td></td>
+        </tr>
+    </table>
+
+    <p class="no_mb">Thread:</p>
+    <div class="code">
+        <p>public class ThreadTest1 {</p>
+        <p class="tab-1">public static void main(String[] args) throws InterruptedException {</p>
+        <p class="tab-2"><strong>AnotherTask thread = new&nbsp;AnotherTask();</strong></p>
+        <p class="tab-2"><strong>thread.start();</strong></p>
+        <p class="tab-2">for (int i = 0; i < 3; i++) {</p>
+        <p class="tab-3">System.out.println("m" + i);</p>
+        <p class="tab-3">Thread.sleep(1000);</p>
+        <p class="tab-2">}</p>
+        <p class="tab-1">thread.join();</p>
+        <p class="tab-1">System.out.println("End");</p>
+        <p class="tab-1">}</p>
+        <p class="mb20">}</p>
+        <p><strong>class AnotherTask extends Thread</strong> {</p>
+        <p class="tab-1">@Override</p>
+        <p class="tab-1">public void run() {</p>
+        <p class="tab-2">for (int i = 0; i < 5; i++) {</p>
+        <p class="tab-3">System.out.println("r" + i);</p>
+        <p class="tab-3">try {</p>
+        <p class="tab-4">Thread.sleep(1000);</p>
+        <p class="tab-3">}</p>
+        <p class="tab-3">catch (InterruptedException e) {</p>
+        <p class="tab-4">System.out.println("Interrupt");</p>
+        <p class="tab-3">}</p>
+        <p class="tab-2">}</p>
+        <p class="tab-1">}</p>
+        <p>}</p>
+    </div>
+
+    <p class="no_mb">Runnable</p>
+    <div class="code">
+        <p>public class ThreadTest {</p>
+        <p class="tab-1">public static void main(String[] args) throws InterruptedException {</p>
+        <p class="tab-2"><strong>AnotherRun anotherRun = new&nbsp;AnotherRun();</strong></p>
+        <p class="tab-2"><strong>Thread childTread = new&nbsp;Thread(anotherRun);</strong></p>
+        <p class="tab-2"><strong>childTread.start();</strong></p>
+        <p class="tab-2">for (int i = 0; i < 3; i++) {</p>
+        <p class="tab-3">System.out.println("m" + i);</p>
+        <p class="tab-3">Thread.sleep(1000);</p>
+        <p class="tab-2">}</p>
+        <p class="tab-2">childTread.join();</p>
+        <p class="tab-2">System.out.println("End");</p>
+        <p class="tab-1">}</p>
+        <p class="mb20">}</p>
+        <p><strong>class AnotherRun implements Runnable</strong> {</p>
+        <p class="tab-1">@Override</p>
+        <p class="tab-1">public void run() {</p>
+        <p class="tab-2">for (int i = 0; i < 5; i++) {</p>
+        <p class="tab-3">System.out.println("r" + i);</p>
+        <p class="tab-3">try {</p>
+        <p class="tab-4">Thread.sleep(1000);</p>
+        <p class="tab-3">}</p>
+        <p class="tab-3">catch (InterruptedException e) {</p>
+        <p class="tab-4">System.out.println("Interrupt");</p>
+        <p class="tab-3">}</p>
+        <p class="tab-2">}</p>
+        <p class="tab-1">}</p>
+        <p>}</p>
+    </div>
+    <hr>
+    <h3 id="q2_constructors">Конструкторы Thread</h3>
+    <p>
+        В классе Thread определены семь перегруженных конструкторов, большое количество методов, предназначенных для
+        работы с потоками, и три константы (приоритеты выполнения потока).
+    </p>
+    <p>Конструкторы класса Thread:</p>
+    <p><span class="code-word">Thread();</span></p>
+    <p><span class="code-word">Thread(Runnable&nbsp;target);</span></p>
+    <p><span class="code-word">Thread(Runnable&nbsp;target, String&nbsp;name);</span></p>
+    <p><span class="code-word">Thread(String&nbsp;name);</span></p>
+    <p><span class="code-word">Thread(ThreadGroup&nbsp;group, Runnable&nbsp;target);</span></p>
+    <p><span class="code-word">Thread(ThreadGroup&nbsp;group, Runnable&nbsp;target, String&nbsp;name);</span></p>
+    <p><span class="code-word">Thread(ThreadGroup&nbsp;group, String&nbsp;name);</span></p>
+    <p class="no_mb">где :</p>
+    <p class="no_mb tab-2">target – экземпляр класса реализующего интерфейс Runnable;</p>
+    <p class="no_mb tab-2">name – имя создаваемого потока;</p>
+    <p class="tab-2">group – группа к которой относится поток.</p>
+
+    <p class="example no_mb">
+        Пример создания потока, который входит в группу, реализует интерфейс Runnable и имеет свое уникальное название:
+    </p>
+    <div class="code">
+        <p>Runnable r = new MyClassRunnable();</p>
+        <p>ThreadGroup tg = new ThreadGroup();</p>
+        <p>Thread t = new Thread(tg, r, "myThread");</p>
+    </div>
+    <p class="no_mb">
+        Группы потоков удобно использовать, когда необходимо одинаково управлять несколькими потоками.
+    </p>
+    <p class="example">
+        Например, несколько потоков выводят данные на печать и необходимо прервать печать всех документов поставленных в
+        очередь. В этом случае удобно применить команду ко всем потокам одновременно, а не к каждому потоку отдельно. Но
+        это можно сделать, если потоки отнесены к одной группе.
+    </p>
+    <p>
+        Несмотря на то, что главный поток создаётся автоматически, им можно управлять. Для этого необходимо создать
+        объект класса Thread вызовом метода currentThread().
+    </p>
+    <hr>
+    <h3 id="q2_methods">Методы класса Thread</h3>
+    <p class="no_mb">Наиболее часто используемые методы класса Thread для управления потоками:</p>
+    <table class="list list--dictionary" aria-label="">
+        <thead>
+        <tr>
+            <th>Метод</th>
+            <th>Описание</th>
+        <tr>
+        </thead>
+        <tr>
+            <td>long getId()</td>
+            <td>получение идентификатора потока</td>
+        </tr>
+        <tr>
+            <td>String getName()</td>
+            <td>получение имени потока</td>
+        </tr>
+        <tr>
+            <td>int getPriority()</td>
+            <td>получение приоритета потока</td>
+        </tr>
+        <tr>
+            <td>State getState()</td>
+            <td>определение состояния потока</td>
+        </tr>
+        <tr>
+            <td>void interrupt()</td>
+            <td>прерывание выполнения потока</td>
+        </tr>
+        <tr>
+            <td>boolean isAlive()</td>
+            <td>проверка, выполняется ли поток</td>
+        </tr>
+        <tr>
+            <td>boolean isDaemon()</td>
+            <td>проверка, является ли поток «daemon»</td>
+        </tr>
+        <tr>
+            <td>void join()</td>
+            <td>ожидание завершения потока</td>
+        </tr>
+        <tr>
+            <td>void join(millis)</td>
+            <td>ожидание millis милисекунд завершения потока</td>
+        </tr>
+        <tr>
+            <td>void notify()</td>
+            <td>«пробуждение» отдельного потока, ожидающего «сигнала»</td>
+        </tr>
+        <tr>
+            <td>void notifyAll()</td>
+            <td>«пробуждение» всех потоков, ожидающих «сигнала»</td>
+        </tr>
+        <tr>
+            <td>void run()</td>
+            <td>запуск потока</td>
+        </tr>
+        <tr>
+            <td>void setDaemon(bool)</td>
+            <td>определение «daemon» потока</td>
+        </tr>
+        <tr>
+            <td>void setPriority(int)</td>
+            <td>определение приоритета потока</td>
+        </tr>
+        <tr>
+            <td>void sleep(int)</td>
+            <td>приостановка потока на заданное время</td>
+        </tr>
+        <tr>
+            <td>void start()</td>
+            <td>запуск потока</td>
+        </tr>
+        <tr>
+            <td>void wait()</td>
+            <td>приостановка потока, пока другой поток не вызовет метод notify()</td>
+        </tr>
+        <tr>
+            <td>void wait(millis)</td>
+            <td>приостановка потока на millis милисекунд или пока другой поток не вызовет метод notify()</td>
+        </tr>
+    </table>
+
+    <hr>
+    <h3 id="q2_lifecircle">Жизненный цикл потока</h3>
+
+    <ul class="sparse-li">
+        <li>
+            <p><strong>Новый</strong>− Новый поток начинает свой жизненный цикл в состоянии нового.</p>
+            <p class="example"> Он сохраняет это состояние до тех пор, пока программа не запустит поток.</p>
+            <p class="example">Его также называют созданным потоком.</p>
+        </li>
+        <li>
+            <p><strong>Запущенный</strong> − После запуска нового потока он становится запущенным.</p>
+            <p class="example">Считается, что поток в этом состоянии выполняет свою задачу.</p>
+        </li>
+        <li>
+            <p><strong>Ожидающий</strong>− Поток приостановлен и ожидает, пока другой поток выполнит задачу.</p>
+            <p class="example">
+                Поток переходит обратно в запущенное состояние только после того, когда другой поток сигнализирует
+                ожидающему потоку продолжить выполнение.
+            </p>
+        </li>
+        <li>
+            <p><strong>Ожидающий с ограничением по времени</strong>
+                − Поток в этом состоянии переходит обратно в запущенное состояние, когда
+                истекает этот временной интервал или когда происходит событие, которого он ожидает.</p>
+        </li>
+        <li>
+            <p><strong>Остановленный</strong> − Запущенный поток переходит в остановленное состояние, когда он завершает
+                свою задачу или иным образом завершается.</p>
+        </li>
+    </ul>
+    <div class="image-box">
+        <img class="image" src="img/img.png" alt="Жизненный цикл потока">
+    </div>
+
+    <a href="#" class="button button--top"></a>
+</section>
+
 <footer>
     <div class="footer__text">Алексей Маслов, 2021-2022</div>
 </footer>
 
 </body>
+
+<script src="../../../js/script.js"></script>
 
 </html>
