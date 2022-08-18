@@ -268,10 +268,16 @@
         <p><span class="code-word">Thread(ThreadGroup&nbsp;group, Runnable&nbsp;target);</span></p>
         <p><span class="code-word">Thread(ThreadGroup&nbsp;group, Runnable&nbsp;target, String&nbsp;name);</span></p>
         <p><span class="code-word">Thread(ThreadGroup&nbsp;group, String&nbsp;name);</span></p>
-        <p class="no_mb">где :</p>
-        <p class="no_mb tab-2">target – экземпляр класса реализующего интерфейс Runnable;</p>
-        <p class="no_mb tab-2">name – имя создаваемого потока;</p>
-        <p class="tab-2">group – группа к которой относится поток.</p>
+        <p class="no_mb">где:</p>
+        <p class="no_mb tab-2">
+            <span class="example--word">target</span>
+            – экземпляр класса реализующего интерфейс Runnable;</p>
+        <p class="no_mb tab-2">
+            <span class="example--word">name</span>
+            – имя создаваемого потока;</p>
+        <p class="tab-2">
+            <span class="example--word">group</span>
+            – группа к которой относится поток.</p>
     </div>
 
     <p class="example no_mb">
@@ -763,8 +769,14 @@
         <p><span class="code-word">Semaphore(int&nbsp;permits, boolean&nbsp;fair)</span></p>
     </div>
     <p class="no_mb">где:</p>
-    <p class="tab-2 mb10">permits - указывает на количество допустимых разрешений для доступа к ресурсу;</p>
-    <p class="tab-2 no_mb">fair - позволяет установить очередность получения доступа.</p>
+    <p class="tab-2 mb10">
+        <span class="example--word">permits</span>
+        - указывает на количество допустимых разрешений для доступа к ресурсу;
+    </p>
+    <p class="tab-2 no_mb">
+        <span class="example--word">fair</span>
+        - позволяет установить очередность получения доступа.
+    </p>
     <p class="tab-2 example">
         Если он равен true, то разрешения будут предоставляться ожидающим потокам в том порядке, в каком они запрашивали
         доступ. Если же он равен false, то разрешения будут предоставляться в неопределенном порядке.
