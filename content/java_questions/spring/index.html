@@ -1102,7 +1102,7 @@
         <p><an>@Configuration</an></p>
         <p class="mb10">public class ArrayExample {</p>
         <p class="tab-1"><an>@Bean</an></p>
-        <p class="tab-1">public TestBean testBean () {</p>
+        <p class="tab-1">public TestBean testBean() {</p>
         <p class="tab-2">return new TestBean();</p>
         <p class="tab-1 mb10">}</p>
         <p class="tab-1"><an>@Bean</an></p>
@@ -1125,7 +1125,7 @@
         <p><an>@Configuration</an></p>
         <p class="mb10">public class ListExample {</p>
         <p class="tab-1"><an>@Bean</an></p>
-        <p class="tab-1">public TestBean testBean () {</p>
+        <p class="tab-1">public TestBean testBean() {</p>
         <p class="tab-2">return new TestBean();</p>
         <p class="tab-1 mb10">}</p>
         <p class="tab-1"><an>@Bean</an></p>
@@ -1152,19 +1152,19 @@
         <p class="mb10">public class SetInjection {</p>
 
         <p class="tab-1"><an>@Bean</an></p>
-        <p class="tab-1">public TestBean testBean () {</p>
+        <p class="tab-1">public TestBean testBean() {</p>
         <p class="tab-2">return new TestBean();</p>
         <p class="tab-1 mb10">}</p>
         <p class="tab-1"><an>@Bean</an></p>
-        <p class="tab-1">public RefBean refBean1 () {</p>
+        <p class="tab-1">public RefBean refBean1() {</p>
         <p class="tab-2">return new RefBean("bean 1");</p>
         <p class="tab-1 mb10">}</p>
         <p class="tab-1"><an>@Bean</an></p>
-        <p class="tab-1">public RefBean refBean2 () {</p>
+        <p class="tab-1">public RefBean refBean2() {</p>
         <p class="tab-2">return new RefBean2("bean 2");</p>
         <p class="tab-1 mb10">}</p>
         <p class="tab-1"><an>@Bean</an></p>
-        <p class="tab-1">public RefBean refBean3 () {</p>
+        <p class="tab-1">public RefBean refBean3() {</p>
         <p class="tab-2">return new RefBean3("bean 3");</p>
         <p class="tab-1 mb20">}</p>
 
@@ -1213,24 +1213,24 @@
         <p class="mb10">public class SetInjection {</p>
 
         <p class="tab-1"><an>@Bean</an></p>
-        <p class="tab-1">public TestBean testBean () {</p>
+        <p class="tab-1">public TestBean testBean() {</p>
         <p class="tab-2">return new TestBean();</p>
         <p class="tab-1 mb10">}</p>
 
         <p class="tab-1"><an>@Bean</an></p>
-        <p class="tab-1">public RefBean refBean1 () {</p>
+        <p class="tab-1">public RefBean refBean1() {</p>
         <p class="tab-2">return new RefBean("bean 1");</p>
         <p class="tab-1 mb10">}</p>
 
         <p class="tab-1"><an>@Bean</an></p>
         <p class="tab-1"><an>@Qualifier("myRefBean")</an></p>
-        <p class="tab-1">public RefBean refBean2 () {</p>
+        <p class="tab-1">public RefBean refBean2() {</p>
         <p class="tab-2">return new RefBean2("bean 2");</p>
         <p class="tab-1 mb10">}</p>
 
         <p class="tab-1"><an>@Bean</an></p>
         <p class="tab-1"><an>@Qualifier("myRefBean")</an></p>
-        <p class="tab-1">public RefBean refBean3 () {</p>
+        <p class="tab-1">public RefBean refBean3() {</p>
         <p class="tab-2">return new RefBean3("bean 3");</p>
         <p class="tab-1 mb10">}</p>
 
@@ -1258,25 +1258,25 @@
         <p class="mb10">public class ArrayExample {</p>
 
         <p class="tab-1"><an>@Bean</an></p>
-        <p class="tab-1">public TestBean testBean () {</p>
+        <p class="tab-1">public TestBean testBean() {</p>
         <p class="tab-2">return new TestBean();</p>
         <p class="tab-1 mb10">}</p>
 
         <p class="tab-1"><an>@Bean</an></p>
         <p class="tab-1"><an>@Order(3)</an></p>
-        <p class="tab-1">public String refString1 () {</p>
+        <p class="tab-1">public String refString1() {</p>
         <p class="tab-2">return "my string 1";</p>
         <p class="tab-1 mb10">}</p>
 
         <p class="tab-1"><an>@Bean</an></p>
         <p class="tab-1"><an>@Order(1)</an></p>
-        <p class="tab-1">public String refString2 () {</p>
+        <p class="tab-1">public String refString2() {</p>
         <p class="tab-2">return "my string 2";</p>
         <p class="tab-1 mb10">}</p>
 
         <p class="tab-1"><an>@Bean</an></p>
         <p class="tab-1"><an>@Order(2)</an></p>
-        <p class="tab-1">public String refString3 () {</p>
+        <p class="tab-1">public String refString3() {</p>
         <p class="tab-2">return "my string 3";</p>
         <p class="tab-1 mb10">}</p>
 
@@ -1288,7 +1288,7 @@
         <p class="tab-3">this.stringArray = stringArray;</p>
         <p class="tab-2 mb10">}</p>
 
-        <p class="tab-2">public String[] getStringArray () {</p>
+        <p class="tab-2">public String[] getStringArray() {</p>
         <p class="tab-3">return stringArray;</p>
         <p class="tab-2 mb10">}</p>
 

@@ -547,8 +547,8 @@
         <li>
             <p><strong>Системная синхронизация с использованием wait()/notify()</strong></p>
             <p>
-                Когда мы вызываем wait () – это заставляет текущий поток ждать, пока какой-либо другой поток вызовет
-                notify () или notifyAll () для того же объекта.
+                Когда мы вызываем wait() – это заставляет текущий поток ждать, пока какой-либо другой поток вызовет
+                notify() или notifyAll() для того же объекта.
             </p>
             <p>
                 Поток, который ждет выполнения каких-либо условий, вызывает у этого объекта метод wait(), предварительно
@@ -563,7 +563,7 @@
                 synchronized-блок, потому как методы <strong>wait()/notify() не синхронизированы!</strong>
             </p>
             <p>
-                notifyAll () - Этот метод просто пробуждает все потоки, которые ожидают на мониторе этого объекта.
+                notifyAll() - Этот метод просто пробуждает все потоки, которые ожидают на мониторе этого объекта.
             </p>
         </li>
         <li>
@@ -966,7 +966,7 @@
                 <div class="code no_margin">
                     <p>public class ThreadYield {</p>
                     <p class="tab-1 mb10">public static void main(String[]&nbsp;args) {</p>
-                    <p class="tab-2">Runnable r = () -> {</p>
+                    <p class="tab-2">Runnable r =&nbsp;()&nbsp;->&nbsp;{</p>
                     <p class="tab-3">int counter = 0;</p>
                     <p class="tab-3">while (counter < 2) {</p>
                     <p class="tab-4">System.out.println(Thread.currentThread().getName());</p>
