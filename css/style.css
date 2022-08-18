@@ -375,6 +375,10 @@ img {
     overflow: auto;
 }
 
+.scroll {
+    overflow: auto;
+}
+
 td .code {
     word-break: break-word;
 }
@@ -393,7 +397,7 @@ td .code {
     border-radius: 4px;
     background-color: rgb(251, 250, 248);
     border: 1px solid rgba(0, 0, 0, 0.14902);
-    /*white-space: nowrap;*/
+    white-space: nowrap;
 }
 
 .wrap-normal {
