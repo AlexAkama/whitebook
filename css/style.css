@@ -335,6 +335,10 @@ img {
     text-align: center;
 }
 
+.smaller {
+    font-size: smaller;
+}
+
 .main-mind {
     font-weight: bold;
     padding-left: 12px;

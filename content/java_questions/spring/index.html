@@ -105,7 +105,7 @@
         </li>
         <li>
             <p>
-                <a href="#q21">Scope бинов</a>
+                <a href="#q21"><span>Scope</span> бинов</a>
                 <span class="spoiler-button"></span>
             </p>
             <div class="spoiler">
@@ -118,18 +118,11 @@
                 <p class="tab-2"><a href="#q21_custom">Custom thread scope</a></p>
             </div>
         </li>
+        <li><a href="#q22"><span>АОП</span> в Spring</a></li>
+        <li><a href="#q23">Транзакции и аннотация <span>@Transactional</span></a></li>
     </ol>
 
     <table aria-label="Вопросы по Spring">
-
-        <tr>
-            <td>22.</td>
-            <td>Что такое АОП? Как реализовано в спринге?</td>
-        </tr>
-        <tr>
-            <td>23.</td>
-            <td>Как спринг работает с транзакциями? Расскажите про аннотацию <span>@Transactional</span></td>
-        </tr>
         <tr>
             <td>24.</td>
             <td>
@@ -2195,6 +2188,289 @@
             В пятой версии Spring Framework не стало Global session scope.
         </p>
         <a class="button button--head" href="#q21"></a>
+    </div>
+
+    <a href="#" class="button button--top"></a>
+</section>
+
+<section class="container" id="q22">
+    <h1>АОП в Spring</h1>
+    <p>
+        <span class="example--word">Аспектно-ориентированное программирование (АОП)</span>
+        — это парадигма программирования, целью которой является
+        повышение модульности за счет разделения междисциплинарных задач. Это достигается путем добавления
+        дополнительного поведения к существующему коду без изменения самого кода.
+    </p>
+    <p>
+        АОП предоставляет возможность реализации в одном месте сквозной логики - т.е. логики, которая применяется к
+        множеству частей приложения - и обеспечения автоматического применения этой логики по всему приложению.
+    </p>
+    <p>
+        Подход Spring к АОП заключается в создании "динамических прокси" для целевых объектов и "привязывании" объектов
+        к конфигурированному совету для выполнения сквозной логики.
+    </p>
+
+    <p class="example no_mb">Если нихрена не понятно читайте</p>
+
+    <a class="link-to-source" href="https://habr.com/ru/post/428548/" target="_blank">Подробная статья</a>
+
+    <a href="#" class="button button--top"></a>
+</section>
+
+<section class="container" id="q23">
+    <h1>Транзакции и аннотация @Transactional</h1>
+    <div class="after-h1">
+        <p><a href="#q23_params">Параметры аннотации @Transactional</a></p>
+    </div>
+    <p>Для работы с транзакциями Spring Framework использует AOP-прокси:</p>
+    <div class="image-box">
+        <img class="image" src="./img/transactional.png" alt="Транзакции">
+    </div>
+    <p>
+        Для включения возможности управления транзакциями первым делом нужно разместить аннотацию
+        @EnableTransactionManagement у класса-конфигурации @Configuration.
+    </p>
+    <p class="main-mind">
+        Аннотация @EnableTransactionManagement означает, что классы, помеченные @Transactional, должны быть обернуты
+        аспектом транзакций.
+    </p>
+    <p>
+
+        Однако, если мы используем Spring Boot и имеем зависимости spring-data-* или spring-tx, то
+        управление транзакциями будет включено по умолчанию.
+    </p>
+    <p class="no_mb">
+        @EnableTransactionManagement отвечает за регистрацию необходимых компонентов Spring, таких как
+        TransactionInterceptor и proxy advices - набор инструкций, выполняемых на точках среза -
+        Pointcut.
+    </p>
+    <p>
+        Регистрируемые компоненты помещают перехватчик в стек вызовов при вызове методов @Transactional.
+        Spring создает прокси для всех классов, помеченных @Transactional (либо если любой из методов класса помечен
+        этой аннотацией). Прокси-объекты позволяют Spring Framework вводить транзакционную логику до и после вызываемого
+        метода - главным образом для запуска и коммита/отката
+        транзакции.
+    </p>
+    <p> Если мы разместим аннотацию @Transactional над классом @Service, то все его методы станут транзакционными. </p>
+
+    <p class="example--word">Пример процесса <span class="spoiler-button"></span></p>
+    <div id="q23_example" class="spoiler mb10">
+        <p class="tab-1"> Например, при вызове метода save() произойдет примерно следующее: </p>
+        <ol class="sparse-li">
+            <li>
+                <p class="mb10">Вначале мы имеем:</p>
+                <ul class="mb20">
+                    <li>
+                        Класс TransactionInterceptor, у которого основной метод invoke(...), внутри которого вызывается
+                        метод класса-родителя TransactionAspectSupport: invokeWithinTransaction(...), в рамках которого
+                        происходит магия транзакций.
+                    </li>
+                    <li>TransactionManager: решает, создавать ли новый EntityManager и/или транзакцию.</li>
+                    <li>
+                        EntityManager proxy: EntityManager - это интерфейс, и то, что внедряется в бин в слое DAO на
+                        самом
+                        деле не является реализацией EntityManager. В это поле внедряется EntityManager proxy, который
+                        будет
+                        перехватывать обращение к полю EntityManager и делегировать выполнение конкретному EntityManager
+                        в
+                        рантайме. Обычно EntityManager proxy представлен классом SharedEntityManagerInvocationHandler.
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <p class="mb10 example--word">Transaction Interceptor</p>
+                <p>
+                    В TransactionInterceptor отработает код до работы метода save(), в котором будет определено,
+                    выполнить
+                    ли метод save() в пределах уже существующей транзакции БД или должна стартовать новая отдельная
+                    транзакция. TransactionInterceptor сам не содержит логики по принятию решения, решение начать новую
+                    транзакцию, если это нужно, делегируется TransactionManager.
+                </p>
+                <p>
+                    Грубо говоря, на данном этапе наш метод будет обёрнут в try-catch и будет добавлена логика до его
+                    вызова
+                    и после:
+                </p>
+                <div class="code mb20">
+                    <p>try {</p>
+                    <p class="tab-1">transaction.begin();</p>
+                    <p class="tab-1">// логика до</p>
+                    <p class="tab-1">service.save();</p>
+                    <p class="tab-1">// логика после </p>
+                    <p class="tab-1">transaction.commit();</p>
+                    <p>} catch(Exception ex) {</p>
+                    <p class="tab-1">transaction.rollback();</p>
+                    <p class="tab-1">throw ex;</p>
+                    <p>}</p>
+                </div>
+            </li>
+            <li>
+                <p class="mb10 example--word">TransactionManager</p>
+                <p class="mb10">Менеджер транзакций должен предоставить ответ на два вопроса:</p>
+                <ol class="mb20">
+                    <li>Должен ли создаться новый EntityManager?</li>
+                    <li>Должна ли стартовать новая транзакция БД?</li>
+                </ol>
+                <p class="mb10">TransactionManager принимает решение, основываясь на следующих фактах:</p>
+                <ol class="mb20">
+                    <li>Выполняется ли хоть одна транзакция в текущий момент или нет;</li>
+                    <li>
+                        <p>Атрибут «propagation» у метода, аннотированного @Transactional;</p>
+                        <p class="example">для примера, значение REQUIRES_NEW всегда стартует новую транзакцию</p>
+                    </li>
+                </ol>
+                <p class="mb10">Если TransactionManager решил создать новую транзакцию, тогда:</p>
+                <ol>
+                    <li>Создается новый EntityManager;</li>
+                    <li>EntityManager «привязывается» к текущему потоку (Thread);</li>
+                    <li>«Получается» соединение из пула соединений БД;</li>
+                    <li>Соединение «привязывается» к текущему потоку.</li>
+                </ol>
+                <p>И EntityManager и это соединение привязываются к текущему потоку, используя переменные
+                    ThreadLocal.</p>
+            </li>
+            <li>
+                <p class="mb10 example--word">EntityManager proxy</p>
+                <p class="mb20">
+                    Когда метод save() слоя Service делает вызов метода save() слоя DAO, внутри которого вызывается,
+                    например, entityManager.persist(), то не происходит вызов метода persist() напрямую у EntityManager,
+                    записанного в поле класса DAO. Вместо этого метод вызывает EntityManager proxy, который достает
+                    текущий
+                    EntityManager для нашего потока, и у него вызывается метод persist().
+                </p>
+            </li>
+            <li><p class="mb20 example--word">Отрабатывает DAO-метод save().</p></li>
+            <li>
+                <p class="mb10 example--word">TransactionInterceptor</p>
+                <p>
+                    Отработает код после работы метода save(), а именно будет принято решение по коммиту/откату
+                    транзакции.
+                </p>
+            </li>
+        </ol>
+    </div>
+
+    <p>
+        Кроме того, если мы в рамках одного метода сервиса обращаемся не только к методу save(), а к разным методам
+        Service и DAO, то все они буду работать в рамках одной транзакции, которая оборачивает этот метод сервиса.
+    </p>
+    <p>
+        Вся работа происходит через прокси-объекты разных классов. Представим, что у нас в классе сервиса только один
+        метод с аннотацией @Transactional, а остальные нет. Если мы вызовем метод с @Transactional, из которого вызовем
+        метод без @Transactional, то оба будут отработаны в рамках прокси и будут обернуты в нашу транзакционную логику.
+        Однако, если мы вызовем метод без @Transactional, из которого вызовем метод с @Transactional, то они уже не
+        будут работать в рамках прокси и не будут обернуты в нашу транзакционную логику.
+    </p>
+    <p class="main-mind">
+        Если внутри метода с @Transactional есть другой метод с аннотацией @Transactional (вложенная
+        транзакция), то отработает только первая (в которую вложена), из-за особенностей создания proxy.
+    </p>
+    <hr>
+    <div id="q23_params">
+        <h4>Параметры аннотации @Transactional</h4>
+        <table class="list" aria-label="">
+            <thead>
+            <tr>
+                <th>Параметр</th>
+                <th>Описание</th>
+            <tr>
+            </thead>
+            <tr>
+                <td>isolation</td>
+                <td>
+                    <p>Уровень изоляции</p>
+                    <p class="code no_margin">@Transactional<wbr>(isolation=Isolation.READ_COMMITTED)
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>timeout</td>
+                <td>
+                    <p>
+                        Время для TransactionManager-а, чтобы дождаться простоя транзакции, прежде чем принять решение
+                        об откате не отвечающих транзакций.
+                    </p>
+                    <p class="example mb10">
+                        По умолчанию используется таймаут, установленный по умолчанию для базовой транзакционной
+                        системы.
+                    </p>
+                    <p class="code no_margin">@Transactional(timeout=60)</p>
+                </td>
+            </tr>
+            <tr>
+                <td>propagation</td>
+                <td>
+                    <p class="mb10">Схема работы с транзакциями.</p>
+                    <hr>
+                    <p class="smaller">
+                        <span class="example--word">REQUIRED</span>
+                        — Указывает, что целевой метод не может работать без другой транзакции. Если до вызова этого
+                        метода уже была запущена транзакция, то метод будет работать в той же транзакции, если
+                        транзакции не было, то будет создана новая.
+                    </p>
+                    <p class="example--word smaller">Используется по умолчанию.</p>
+                    <hr>
+                    <p class="smaller">
+                        <span class="example--word">REQUIRES_NEW</span>
+                        — Указывает, что новая транзакция должна запускаться каждый раз при вызове целевого метода. Если
+                        транзакция уже идет, она будет приостановлена, прежде чем будет запущена новая.
+                    </p>
+                    <hr>
+                    <p class="smaller">
+                        <span class="example--word">MANDATORY</span>
+                        — Указывает, что для целевого метода требуется активная транзакция. Если активной транзакции
+                        нет, метод не сработает и будет выброшено исключение.
+                    </p>
+                    <hr>
+                    <p class="smaller">
+                        <span class="example--word">SUPPORTS</span>
+                        — Указывает, что целевой метод может выполняться независимо от наличия транзакции. Если
+                        транзакция работает, он будет участвовать в той же транзакции. Если транзакции нет, он всё равно
+                        будет выполняться, если не будет ошибок. Методы, которые извлекают данные, являются лучшими
+                        кандидатами для этой опции.
+                    </p>
+                    <hr>
+                    <p class="smaller">
+                        <span class="example--word">NOT_SUPPORTED</span>
+                        — Указывает, что целевой метод не требует распространения контекста транзакции. В основном те
+                        методы, которые выполняются в транзакции, но выполняют операции с оперативной памятью, являются
+                        лучшими кандидатами для этой опции.
+                    </p>
+                    <hr>
+                    <p class="smaller">
+                        <span class="example--word">NEVER</span>
+                        — Указывает, что целевой метод вызовет исключение, если выполняется в транзакционном процессе.
+                        Этот вариант в большинстве случаев не используется в проектах.
+                    </p>
+                    <hr class="mb10">
+                    <p class="code no_margin">@Transactional<wbr>(propagation=Propagation.REQUIRED)
+                </td>
+            </tr>
+            <tr>
+                <td>rollbackFor</td>
+                <td>
+                    <p class="mb10">
+                        В Spring все классы API бросают RuntimeException, это означает, что если какой-либо метод не
+                        выполняется, контейнер всегда откатывает текущую транзакцию. Проблема заключается только в
+                        проверяемых исключениях. Таким образом, этот параметр можно использовать для декларативного
+                        отката транзакции, если происходит Checked Exception.
+                    </p>
+                    <p class="example--word mb10">
+                        Значение по умолчанию: rollbackFor=RunTimeException.class
+                    </p>
+                    <p class="code no_margin">@Transactional<wbr>(rollbackFor=Exception.class)</p>
+                </td>
+            </tr>
+            <tr>
+                <td>noRollbackFor</td>
+                <td>
+                    <p>
+                        Указывает, что откат не должен происходить, если целевой метод вызывает это исключение.
+                    </p>
+                    <p class="code no_margin">@Transactional<wbr>(noRollbackFor=IllegalStateException.class)</p>
+                </td>
+            </tr>
+        </table>
     </div>
 
     <a href="#" class="button button--top"></a>
