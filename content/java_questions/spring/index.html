@@ -103,23 +103,25 @@
                 <p class="tab-2"><a href="#q20_postconstuct">@PostConstruct</a></p>
             </div>
         </li>
+        <li>
+            <p>
+                <a href="#q21">Scope бинов</a>
+                <span class="spoiler-button"></span>
+            </p>
+            <div class="spoiler">
+                <p class="tab-2"><a href="#q21_singleton">Singleton</a></p>
+                <p class="tab-2"><a href="#q21_prototype">Prototype</a></p>
+                <p class="tab-2"><a href="#q21_request">Request</a></p>
+                <p class="tab-2"><a href="#q21_session">Session</a></p>
+                <p class="tab-2"><a href="#q21_application">Application</a></p>
+                <p class="tab-2"><a href="#q21_websocket">Websocket</a></p>
+                <p class="tab-2"><a href="#q21_custom">Custom thread scope</a></p>
+            </div>
+        </li>
     </ol>
 
     <table aria-label="Вопросы по Spring">
 
-        <tr>
-            <td>21.</td>
-            <td>
-                Расскажите про scope бинов. Какой scope используется по умолчанию? Что изменилось в пятом Spring?
-                <p>Singleton</p>
-                <p>Prototype</p>
-                <p>Request</p>
-                <p>Session</p>
-                <p>Application</p>
-                <p>Websocket</p>
-                <p>Custom thread scope</p>
-            </td>
-        </tr>
         <tr>
             <td>22.</td>
             <td>Что такое АОП? Как реализовано в спринге?</td>
@@ -1698,8 +1700,6 @@
     </ol>
     <a class="button button--head" href="#q20"></a>
 
-    <br>
-    <p></p>
     <hr>
     <div id="lifecircle_1">
         <h4>1. Парсирование конфигурации и создание BeanDefinition</h4>
@@ -2033,6 +2033,173 @@
 
     <a href="#" class="button button--top"></a>
 </section>
+
+<section class="container" id="q21">
+    <h1>Scope бинов</h1>
+    <div class="after-h1">
+        <p>Spring Framework поддерживает шесть scopes:</p>
+        <ol class="tab-2 sparse-li">
+            <li><a href="#q21_singleton">Singleton</a></li>
+            <li><a href="#q21_prototype">Prototype</a></li>
+            <li><a href="#q21_request">Request</a></li>
+            <li><a href="#q21_session">Session</a></li>
+            <li><a href="#q21_application">Application</a></li>
+            <li><a href="#q21_websocket">Websocket</a></li>
+            <li>
+                <a href="#q21_custom">Custom thread scope</a>
+                (Не активированный по умолчанию)
+            </li>
+        </ol>
+        <p>С 3 по 6 доступны только в веб-приложениях. Мы также можем создать свой собственный scope.</p>
+    </div>
+
+    <div id="q21_singleton">
+        <h4>Singleton</h4>
+        <p>
+            <strong>Является дефолтным scope</strong>.
+            В контейнере будет создан только один бин, и все запросы на него будут возвращать один
+            и тот же бин. Этот бин хранится в контейнере, и все запросы и ссылки на этот бин возвращают закэшированный
+            экземпляр.
+        </p>
+        <a class="button button--head" href="#q21"></a>
+
+        <hr>
+        <h4 id="q21_prototype">Prototype</h4>
+        <p>
+            Scope “prototype” приводит к созданию нового бина каждый раз, когда он запрашивается.
+        </p>
+        <p>
+            Для бинов со scope "prototype" Spring <strong>не вызывает метод destroy()</strong>.
+        </p>
+        <p class="main-mind no_mb">
+            Spring не берет на себя контроль полного жизненного цикла бина со scope @prototype.
+        </p>
+        <p class="main-mind">
+            Spring не хранит такие бины в своём контексте (контейнере), а отдаёт их клиенту и больше о них не заботится
+            (в отличие от синглтон-бинов).
+        </p>
+        <a class="button button--head" href="#q21"></a>
+    </div>
+
+    <hr>
+
+    <div id="q21_request">
+        <h4>Request</h4>
+        <p class="no_mb">
+            Контейнер создает новый экземпляр для каждого HTTP-запроса. Таким образом, если сервер в настоящее время
+            обрабатывает 50 запросов, тогда контейнер может иметь не более 50 бинов, по одному для каждого HTTP-запроса.
+        </p>
+        <p>
+            Любое изменение состояния одного экземпляра не будет видимо другим экземплярам. Эти экземпляры уничтожаются,
+            как только HTTP-запрос завершен.
+        </p>
+        <div class="code">
+            <p><an>@Component</an></p>
+            <p><an>@Scope("request")</an></p>
+            <p>public class BeanClass {</p>
+            <p class="tab-1">...</p>
+            <p>}</p>
+        </div>
+        <p class="example">или</p>
+        <div class="code">
+            <p><an>@Component</an></p>
+            <p><an>@RequestScope</an></p>
+            <p>public class BeanClass {</p>
+            <p class="tab-1">...</p>
+            <p>}</p>
+        </div>
+        <a class="button button--head" href="#q21"></a>
+    </div>
+
+    <hr>
+
+    <div id="q21_session">
+        <h4>Session</h4>
+        <p>
+            Бин создается в одном экземпляре для одной HTTP-сессии. Таким образом, если сервер имеет 20 активных сессий,
+            тогда контейнер может иметь не более 20 бинов, по одному для каждой сессии. Все HTTP-запросы в пределах
+            времени жизни одной сессии будут иметь доступ к одному и тому же бину.
+        </p>
+        <div class="code">
+            <p><an>@Component</an></p>
+            <p><an>@Scope("session")</an></p>
+            <p>public class BeanClass {</p>
+            <p class="tab-1">...</p>
+            <p>}</p>
+        </div>
+        <p class="example">или</p>
+        <div class="code">
+            <p><an>@Component</an></p>
+            <p><an>@SessionScope</an></p>
+            <p>public class BeanClass {</p>
+            <p class="tab-1">...</p>
+            <p>}</p>
+        </div>
+        <a class="button button--head" href="#q21"></a>
+    </div>
+
+    <hr>
+
+    <div id="q21_application">
+        <h4>Application</h4>
+        <p>
+            Бин со scope “application” создается в одном экземпляре для жизненного цикла ServletContext. Виден как
+            атрибут ServletContext. Синглтон - в одном экземпляре для ApplicationContext.
+        </p>
+        <div class="code">
+            <p><an>@Component</an></p>
+            <p><an>@Scope("application")</an></p>
+            <p>public class BeanClass {</p>
+            <p class="tab-1">...</p>
+            <p>}</p>
+        </div>
+        <p class="example">или</p>
+        <div class="code">
+            <p><an>@Component</an></p>
+            <p><an>@ApplicationScope</an></p>
+            <p></p>
+            <p class="tab-1">...</p>
+            <p>}</p>
+        </div>
+
+        <a class="button button--head" href="#q21"></a>
+    </div>
+
+    <hr>
+
+    <div id="q21_websocket">
+        <h4>Websocket</h4>
+        <p>
+            Бин со scope “websocket” создается в одном экземпляре для определенного сеанса WebSocket. Один и тот же бин
+            возвращается всякий раз, когда к нему обращаются в течение всего сеанса WebSocket.
+        </p>
+        <div class="code">
+            <p><an>@Component</an></p>
+            <p><an>@Scope("websocket")</an></p>
+            <p>public class BeanClass {</p>
+            <p class="tab-1">...</p>
+            <p>}</p>
+        </div>
+        <a class="button button--head" href="#q21"></a>
+    </div>
+
+    <hr>
+
+    <div id="q21_custom">
+        <h4>Custom thread scope</h4>
+        <p>
+            Spring по умолчанию не предоставляет thread scope, но его можно активировать. Каждый запрос на бин в рамках
+            одного потока будет возвращать один и тот же бин.
+        </p>
+        <p class="main-mind">
+            В пятой версии Spring Framework не стало Global session scope.
+        </p>
+        <a class="button button--head" href="#q21"></a>
+    </div>
+
+    <a href="#" class="button button--top"></a>
+</section>
+
 <footer>
     <div class="footer__text">Алексей Маслов, 2021-2022</div>
 </footer>
