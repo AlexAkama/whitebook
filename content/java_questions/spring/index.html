@@ -1679,7 +1679,6 @@
     <a href="#" class="button button--top"></a>
 </section>
 
-
 <section class="container" id="q20">
     <h1>Жизненный цикл бина, аннотации @PostConstruct и @PreDestroy </h1>
     <div class="after-h1">
@@ -1688,19 +1687,350 @@
         <p class="tab-2"><a href="#q20_postconstuct">@PostConstruct</a></p>
     </div>
     <h3 id="q20_beans">Жизненный цикл бинов</h3>
-    <ul class="tab-2">
-        <li class="no_mb">Парсирование конфигурации и создание BeanDefinition</li>
-        <li class="no_mb">Настройка созданных BeanDefinition</li>
-        <li class="no_mb">Создание кастомных FactoryBean (только для XML-конфигурации)</li>
-        <li class="no_mb">Создание экземпляров бинов</li>
-        <li class="no_mb">Настройка созданных бинов</li>
-        <li class="no_mb">Бины готовы к использованию</li>
-        <li class="no_mb">Закрытие контекста</li>
-    </ul>
+    <ol class="tab-2 sparse-li">
+        <li class="no_mb"><a href="#lifecircle_1">Парсирование конфигурации и создание BeanDefinition</a></li>
+        <li class="no_mb"><a href="#lifecircle_2">Настройка созданных BeanDefinition</a></li>
+        <li class="no_mb"><a href="#lifecircle_3">Создание кастомных FactoryBean (только для XML-конфигурации)</a></li>
+        <li class="no_mb"><a href="#lifecircle_4">Создание экземпляров бинов</a></li>
+        <li class="no_mb"><a href="#lifecircle_5">Настройка созданных бинов</a></li>
+        <li class="no_mb"><a href="#lifecircle_6">Бины готовы к использованию</a></li>
+        <li class="no_mb"><a href="#lifecircle_7">Закрытие контекста</a></li>
+    </ol>
+    <a class="button button--head" href="#q20"></a>
+
+    <br>
+    <p></p>
+    <hr>
+    <div id="lifecircle_1">
+        <h4>1. Парсирование конфигурации и создание BeanDefinition</h4>
+
+        <p class="main-mind">Цель первого этапа — это создание всех BeanDefinition.</p>
+        <p class="no_mb">
+            Объекты BeanDefinition — это <strong>набор метаданных будущего бина</strong>, макет, по которому нужно
+            будет создавать бин в случае необходимости.
+        </p>
+        <p class="example">
+            То есть для каждого бина создается свой объект BeanDefinition, в
+            котором хранится описание того, как создавать и управлять этим конкретным бином.
+            Сколько бинов в программе - столько и объектов BeanDefinition, их описывающих.
+        </p>
+        <p>BeanDefinition содержат (среди прочего) следующие метаданные:</p>
+        <ol class="sparse-li">
+            <li>Имя класса с указанием пакета: обычно это фактический класс бина.</li>
+            <li>
+                Элементы поведенческой конфигурации бина, которые определяют, как бин должен вести себя в контейнере
+                (scope,
+                обратные вызовы жизненного цикла и т.д.).
+            </li>
+            <li>
+                <p> Ссылки на другие bean-компоненты, которые необходимы для его работы.</p>
+                <p>Эти ссылки также называются зависимостями.</p>
+            </li>
+            <li>
+                Другие параметры конфигурации для установки во вновь созданном объекте - например, ограничение размера
+                пула
+                или количество соединений, используемых в бине, который управляет пулом соединений.
+            </li>
+        </ol>
+        <p> Эти метаданные преобразуются в набор свойств, которые составляют каждое BeanDefinition. </p>
+        <table class="list" aria-label="BeanDefinition">
+            <thead>
+            <tr>
+                <th>Свойство</th>
+                <th>Ссылка с описанием</th>
+            <tr>
+            </thead>
+            <tr>
+                <td>Class</td>
+                <td>
+                    <a href="https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/core.html#beans-factory-class"
+                       target="_blank">
+                        Instantiating Beans
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>Name</td>
+                <td>
+                    <a href="https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/core.html#beans-beanname"
+                       target="_blank">
+                        Naming Beans
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>Scope</td>
+                <td>
+                    <a href="https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/core.html#beans-factory-scopes"
+                       target="_blank">
+                        Bean Scopes
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>Constructor arguments</td>
+                <td>
+                    <a href="https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/core.html#beans-factory-collaborators"
+                       target="_blank">
+                        Dependency Injection
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>Properties</td>
+                <td>
+                    <a href="https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/core.html#beans-factory-collaborators"
+                       target="_blank">
+                        Dependency Injection
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>Autowiring mode</td>
+                <td>
+                    <a href="https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/core.html#beans-factory-autowire"
+                       target="_blank">
+                        Autowiring Collaborators
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>Lazy initialization mode</td>
+                <td>
+                    <a href="https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/core.html#beans-factory-lazy-init"
+                       target="_blank">
+                        Lazy-initialized Beans
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>Initialization method</td>
+                <td>
+                    <a href="https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/core.html#beans-factory-lifecycle-initializingbean"
+                       target="_blank">
+                        Initialization Callbacks
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>Destruction method</td>
+                <td>
+                    <a href="https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/core.html#beans-factory-lifecycle-disposablebean"
+                       target="_blank">
+                        Destruction Callbacks
+                    </a>
+                </td>
+            </tr>
+        </table>
+        <p>
+            При конфигурации через аннотации с указанием пакета для сканирования или JavaConfig используется класс
+            <strong>AnnotationConfigApplicationContext</strong> . Регистрируются все классы с
+            @Configuration для дальнейшего парсирования, затем регистрируется специальный
+            BeanFactoryPostProcessor, а именно
+            <strong>BeanDefinitionRegistryPostProcessor</strong>, который при
+            помощи класса <span class="example--word">ConfigurationClassParser</span> парсирует JavaConfig,
+            загружает описания бинов (BeanDefinition), <span class="example--word">создаёт граф</span> зависимостей
+            (между бинами) и создаёт:
+        </p>
+        <div class="code">
+            Map&lt;String,&nbsp;BeanDefinition&gt; beanDefinitionMap = new&nbsp;ConcurrentHashMap<>(256);
+        </div>
+        <p>в которой хранятся все описания бинов, обнаруженных в ходе парсинга конфигурации.</p>
+        <a class="button button--head" href="#q20_beans"></a>
+    </div>
+
+    <div id="lifecircle_2">
+        <h4>2. Настройка созданных BeanDefinition</h4>
+        <p>
+            После первого этапа у нас имеется коллекция Map, в которой хранятся BeanDefinition-ы.
+            BeanFactoryPostProcessor-ы на этапе создания BeanDefinition-ов могут их настроить как нам необходимо.
+            BeanFactoryPostProcessor-ы могут даже настроить саму BeanFactory ещё до того, как она начнет работу по
+            созданию бинов.
+        </p>
+        <p>В интерфейсе BeanFactoryPostProcessor всего один метод:</p>
+        <div class="code">
+            <p>public interface BeanFactoryPostProcessor {</p>
+            <p class="tab-1">
+                void postProcessBeanFactory(ConfigurableListableBeanFactory&nbsp;beanFactory) throws&nbsp;BeansException;
+                }
+            </p>
+            <p>}</p>
+        </div>
+        <a class="button button--head" href="#q20_beans"></a>
+    </div>
+
+    <div id="lifecircle_3">
+        <h4>3. Создание кастомных FactoryBean (только для XML-конфигурации)</h4>
+        <p class="example tab-2">тут что-то происходит...</p>
+        <a class="button button--head" href="#q20_beans"></a>
+    </div>
+
+    <div id="lifecircle_4">
+        <h4>4. Создание экземпляров бинов</h4>
+        <p class="no_mb">
+            <strong>Сначала BeanFactory</strong>
+            из коллекции Map с объектами BeanDefinition достаёт те из них, из которых
+            <strong>создаёт все BeanPostProcessor-ы</strong>, необходимые для настройки обычных бинов.
+        </p>
+        <p>
+            Создаются экземпляры бинов через BeanFactory на основе ранее созданных BeanDefinition.
+        </p>
+        <a class="button button--head" href="#q20_beans"></a>
+    </div>
+
+    <div id="lifecircle_5">
+        <h4>5. Настройка созданных бинов</h4>
+        <p>На данном этапе бины уже созданы, их можно лишь донастроить.</p>
+        <p>
+            <span class="example--word">Интерфейс BeanPostProcessor</span>
+            позволяет вклиниться в процесс настройки
+            <span class="example--word">до того, как бины попадут в контейнер</span>.
+        </p>
+        <p class="no_mb">
+            ApplicationContext автоматически обнаруживает любые бины с реализацией BeanPostProcessor и помечает
+            их как “post-processors” для того, чтобы создать их определенным способом.
+        </p>
+        <p class="example">
+            Например, в Spring есть реализации BeanPostProcessor-ов, которые обрабатывают аннотации
+            @Autowired, @Inject, @Value и @Resource.
+        </p>
+        <p class="no_mb">Интерфейс несет в себе два метода:</p>
+        <div class="scroll">
+            <p>
+                <span class="code-word">postProcessBeforeInitialization(Object&nbsp;bean, String&nbsp;beanName)</span>
+            </p>
+            <p>
+                <span class="code-word">postProcessAfterInitialization(Object&nbsp;bean, String&nbsp;beanName)</span>
+            </p>
+        </div>
+        <p>
+            У обоих методов параметры абсолютно одинаковые.
+            Разница только в порядке их вызова. Первый вызывается до init-метода, второй - после.
+        </p>
+        <p>
+            Как правило, BeanPostProcessor-ы, которые
+            <strong>заполняют бины через маркерные интерфейсы</strong> или тому подобное,
+            реализовывают метод <strong>postProcessBeforeInitialization()</strong>.
+        </p>
+        <p>
+            BeanPostProcessor-ы, которые <strong>оборачивают бины в прокси</strong>,
+            обычно реализуют <strong>postProcessAfterInitialization()</strong>.
+        </p>
+        <p class="main-mind">
+            Прокси — это класс-декорация над бином.
+        </p>
+        <div class="example">
+            <p class="no_mb">
+                Например, мы хотим добавить логику нашему бину, но джава-код уже скомпилирован, поэтому нам нужно на
+                лету сгенерировать новый класс. Этим классом мы должны заменить оригинальный класс так, чтобы никто не
+                заметил подмены.
+            </p>
+            <p class="no_mb">Есть два варианта создания этого класса:</p>
+            <p class="tab-1 no_mb">
+                1. либо он должен наследоваться от оригинального класса (CGLIB) и переопределять его методы, добавляя
+                нужную логику;
+            </p>
+            <p class="tab-1">
+                2. либо он должен имплементировать те же самые интерфейсы, что и первый класс (Dynamic Proxy).
+            </p>
+        </div>
+        <p>
+            По конвенции спринга, если какой-то из BeanPostProcessor-ов меняет что-то в классе, то он должен это делать
+            на этапе postProcessAfterInitialization(). Таким образом мы уверены, что initMethod у данного бина, работает
+            на оригинальный метод, до того, как на него накрутился прокси.
+        </p>
+
+        <p>Хронология событий:</p>
+        <ol class="sparse-li">
+            <li>Сначала сработает метод postProcessBeforeInitialization() всех имеющихся BeanPostProcessor-ов.</li>
+            <li>Затем, при наличии, будет вызван метод, аннотированный @PostConstruct.</li>
+            <li>
+                <p>Если бин имплементирует InitializingBean, то Spring вызовет метод afterPropertiesSet()</p>
+                <p class="example">не рекомендуется к использованию как устаревший.</p>
+            </li>
+            <li>При наличии, будет вызван метод, указанный в параметре initMethod аннотации @Bean.</li>
+            <li>
+                <p>В конце бины пройдут через postProcessAfterInitialization().</p>
+                <p>Создадутся прокси стандартными BeanPostProcessor-ами.</p>
+                <p>Отработают кастомные BeanPostProcessor-ы и применят нашу логику к прокси-объектам.</p>
+                <p>
+                    После чего все бины окажутся в контейнере, который будет обязательно
+                    обновлен методом refresh().</p>
+            </li>
+            <li>После этого можем еще донастроить бины ApplicationListener-ами.</li>
+            <li>Теперь всё.</li>
+        </ol>
+
+        <a class="button button--head" href="#q20_beans"></a>
+    </div>
+
+    <div id="lifecircle_6">
+        <h4>6. Бины готовы к использованию</h4>
+        <p>Их можно получить с помощью метода <span class="example--word">ApplicationContext::getBean()</span></p>
+        <a class="button button--head" href="#q20_beans"></a>
+    </div>
+
+    <div id="lifecircle_7">
+        <h4>7. Закрытие контекста</h4>
+        <p>Когда контекст закрывается (метод close() из ApplicationContext), бин уничтожается.</p>
+        <p>Если в бине есть метод, аннотированный @PreDestroy, то перед уничтожением вызовется этот метод.</p>
+        <p class="no_mb"> Если бин имплементирует DisposibleBean, то Spring вызовет метод destroy() </p>
+        <p class="example">не рекомендуется к использованию как устаревший.</p>
+        <p>Если в аннотации @Bean определен метод destroyMethod, то будет вызван и он.</p>
+        <a class="button button--head" href="#q20_beans"></a>
+    </div>
+
+    <br>
     <hr>
     <h3 id="q20_predestroy">Аннотация @PreDestroy</h3>
+    <p>
+        Spring вызывает методы, аннотированные @PostConstruct, только один раз, сразу после инициализации свойств
+        компонента. За данную аннотацию отвечает один из BeanPostProcessor-ов.
+    </p>
+    <p>
+        Метод, аннотированный @PostConstruct, может иметь любой уровень доступа, может иметь любой тип возвращаемого
+        значения (хотя тип возвращаемого значения игнорируется Spring-ом), метод не должен принимать аргументы. Он также
+        может быть статическим, но преимуществ такого использования метода нет, т.к. доступ у него будет только к
+        статическим полям/методам бина, и в таком случае смысл его использования для настройки бина пропадает.
+    </p>
+    <p>
+        Одним из примеров использования @PostConstruct является заполнение базы данных. Например, во время разработки
+        нам может потребоваться создать пользователей по умолчанию
+    </p>
+    <a class="button button--head" href="#q20"></a>
+
     <hr>
     <h3 id="q20_postconstuct">Аннотация @PostConstruct</h3>
+    <p>
+        Метод, аннотированный @PreDestroy, запускается только один раз, непосредственно перед тем, как Spring удаляет
+        наш компонент из контекста приложения.
+    </p>
+    <p>
+        Как и в случае с @PostConstruct, методы, аннотированные @PreDestroy, могут иметь любой уровень доступа, но не
+        могут быть статическими.
+    </p>
+    <p>
+        Целью этого метода может быть освобождение ресурсов или выполнение любых других задач очистки до уничтожения
+        бина например, закрытие соединения с базой данных.
+    </p>
+    <p>
+        Обратите внимание, что аннотации @PostConstruct и @PreDestroy являются частью Java EE, а именно пакета
+        javax.annotation модуля java.xml.ws.annotation. И поскольку Java EE устарела в Java 9, то с этой версии пакет
+        считается устаревшим (Deprecated).
+    </p>
+    <p class="no_mb">
+        С Java 11 данный пакет вообще удален, поэтому мы должны добавить
+        дополнительную зависимость для использования этих аннотаций:
+    </p>
+    <div class="code">
+        <p>&lt;dependency&gt;</p>
+        <p class="tab-1">&lt;groupId&gt;javax.annotation&lt;/groupId&gt;</p>
+        <p class="tab-1">&lt;artifactId&gt;javax.annotation-api&lt;/artifactId&gt;</p>
+        <p class="tab-1">&lt;version&gt;1.3.2&lt;/version&gt;</p>
+        <p>&lt;/dependency&gt;</p>
+    </div>
+    <a class="button button--head" href="#q20"></a>
+
     <a href="#" class="button button--top"></a>
 </section>
 <footer>

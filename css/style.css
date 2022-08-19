@@ -265,6 +265,14 @@ img {
     transition: all 0.3s ease 0s;
 }
 
+.button--head:before {
+    display: inline;
+    content: 'оглавление';
+    top: -20px;
+    right: 0;
+    font-size: small;
+}
+
 .button--home {
     background-color: #00a82d;
     border: #00a82d solid 2px;
