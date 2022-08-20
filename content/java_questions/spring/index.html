@@ -146,36 +146,12 @@
                 <p><a href="#response_entity">ResponseEntity</a></p>
             </div>
         </li>
+        <li><a href="#q29"></a></li>
+        <li><a href="#q30">Передача параметров в GET-запросе</a></li>
+        <li><a href="#q31">Spring Security</a></li>
+        <li><a href="#q32">Spring Boot</a></li>
+        <li><a href="#q33">Нововведения Spring 5</a></li>
     </ol>
-
-    <table aria-label="Вопросы по Spring">
-        <tr>
-            <td>29.</td>
-            <td>
-                В чем разница между <span>Filters</span>, <span>Listeners</span> и <span>Interceptors</span>?
-                <p>Filter</p>
-                <p>Interceptor</p>
-                <p>Filter vs. Interceptor</p>
-                <p>Java Listener</p>
-            </td>
-        </tr>
-        <tr>
-            <td>30.</td>
-            <td>Можно ли передать в GET-запросе один и тот же параметр несколько раз? Как?</td>
-        </tr>
-        <tr>
-            <td>31.</td>
-            <td>Как работает <span>Spring Security</span>? Как сконфигурировать? Какие интерфейсы используются?</td>
-        </tr>
-        <tr>
-            <td>32.</td>
-            <td>Что такое <span>Spring Boot</span>? Какие у него преимущества? Как конфигурируется? Подробно</td>
-        </tr>
-        <tr>
-            <td>33.</td>
-            <td>Расскажите про нововведения Spring 5</td>
-        </tr>
-    </table>
 
 </section>
 
@@ -2970,6 +2946,74 @@
         <a class="button button--head" href="#q28"></a>
     </div>
 
+    <a href="#" class="button button--top"></a>
+</section>
+
+<section class="container" id="q29">
+    <h1></h1>
+
+    <a href="#" class="button button--top"></a>
+</section>
+
+<section class="container" id="q30">
+    <h1>Передача параметров в GET-запросе</h1>
+    <h4> Можно ли передать в GET-запросе один и тот же параметр несколько раз и как? </h4>
+    <p class="no_mb example--word">Да можно.</p>
+    <p>Можно принять все значения, используя массив в методе контроллера:</p>
+    <div class="code">
+        <p>http://localhost:8080/login?name=Ranga&name=Ravi&name=Sathish</p>
+        <p>&darr;</p>
+        <p>public String method(@RequestParam(value="name") String[] names) {...}</p>
+    </div>
+    <p class="example">или</p>
+
+    <div class="code">
+        <p>http://localhost:8080/api/foos?id=1,2,3</p>
+        <p>&darr;</p>
+        <p><an>@GetMapping("/api/foos")</an></p>
+        <p><an>@ResponseBody</an></p>
+        <p>public String getFoos(@RequestParam List&lt;String&gt;&nbsp;id) {</p>
+        <p class="tab-1">return "IDs are " + id;</p>
+        <p>}</p>
+    </div>
+
+    <a href="#" class="button button--top"></a>
+</section>
+
+<section class="container" id="q31">
+    <h1>Spring Security</h1>
+    <div class="after-h1 tab-2">
+        <p><a href="">Как работает?</a></p>
+        <p><a href="">Как сконфигурировать?</a></p>
+        <p><a href="">Какие интерфейсы используются?</a></p>
+    </div>
+
+    <a href="#" class="button button--top"></a>
+</section>
+
+<section class="container" id="q32">
+    <h1>Spring Boot</h1>
+    <div class="after-h1 tab-2">
+        <p><a href="">Преимущества</a></p>
+        <p><a href="">Как конфигурируется?</a></p>
+    </div>
+
+    <a href="#" class="button button--top"></a>
+</section>
+
+<section class="container" id="q33">
+    <h1>Нововведения Spring 5</h1>
+    <ul class="sparse-li">
+        <li>Используется JDK 8+ (Optional, CompletableFuture, Time API, java.util.function, default methods)</li>
+        <li>Поддержка Java 9 (Automatic-Module-Name in 5.0, module-info in 6.0+, ASM 6)</li>
+        <li>Поддержка HTTP/2 (TLS, Push), NIO/NIO.2</li>
+        <li>Поддержка Kotlin</li>
+        <li>Реактивность (веб-инфраструктура с реактивным стеком, «Spring WebFlux»)</li>
+        <li>Null-safety аннотации(@Nullable), новая документация</li>
+        <li>Совместимость с Java EE 8 (Servlet 4.0, Bean Validation 2.0, JPA 2.2, JSON Binding API 1.0)</li>
+        <li>Поддержка JUnit 5 + Testing Improvements (conditional and concurrent)</li>
+        <li>Удалена поддержка: Portlet, Velocity, JasperReports, XMLBeans, JDO, Guava</li>
+    </ul>
     <a href="#" class="button button--top"></a>
 </section>
 
