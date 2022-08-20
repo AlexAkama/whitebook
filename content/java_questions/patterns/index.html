@@ -40,6 +40,7 @@
         собой решение некоторой часто возникающей проблемы
         проектирования.
     </p>
+    <hr class="mb20">
     <p>Паттерны проектирования:</p>
     <ul class="sparse-li mb20">
         <li><span class="example--word">Порождающие(creational)</span> - удобное и безопасное создание новых объектов;
@@ -50,7 +51,8 @@
         <li><span class="example--word">Поведенческие(behavioral)</span> - эффективное и безотказное взаимодействие;
         </li>
     </ul>
-    <p class="center">Основные примеры:</p>
+    <hr class="mb20">
+    <p class="center mb20">Основные примеры:</p>
     <div class="flex">
         <div class="min-w-150">
             <p class="main-mind"><a href="#cp">Порождающие</a></p>
@@ -61,14 +63,14 @@
             <p><a href="#prototype">Прототип</a></p>
         </div>
         <div class="min-w-150">
-            <p class="main-mind">Структурные</p>
-            <p>Адаптер</p>
-            <p>Мост</p>
-            <p>Компоновщик</p>
-            <p>Декоратор</p>
-            <p>Фасад</p>
-            <p>Легковес</p>
-            <p>Заместитель</p>
+            <p class="main-mind"><a href="#sp">Структурные</a></p>
+            <p><a href="#adapter">Адаптер</a></p>
+            <p><a href="#bridge">Мост</a></p>
+            <p><a href="#composite">Компоновщик</a></p>
+            <p><a href="#decorator">Декоратор</a></p>
+            <p><a href="#facade">Фасад</a></p>
+            <p><a href="#flyweigtht">Легковес</a></p>
+            <p><a href="#proxy">Заместитель</a></p>
         </div>
         <div class="min-w-150">
             <p class="main-mind">Поведенческие</p>
@@ -199,35 +201,163 @@
         <a class="button button--head" href="#cp"></a>
     </div>
 
-    <hr>
-    <div id="">
-        <h4></h4>
-        <p class="no_mb"><span class="example--word">Цель:</span></p>
-        <p></p>
-        <p class="no_mb"><span class="example--word">Для чего используется:</span></p>
-        <p></p>
-        <p class="no_mb"><span class="example--word">Пример использования:</span></p>
-        <ul>
-            <li></li>
-            <li></li>
-        </ul>
-        <a class="button button--head" href="#cp"></a>
-    </div>
-
-
     <a href="#" class="button button--top"></a>
 </section>
 
 <section class="container" id="sp">
     <h1>Структурные<wbr>(structural) паттерны</h1>
     <div class="tab-2 after-h1">
-        <p>Адаптер</p>
-        <p>Мост</p>
-        <p>Компоновщик</p>
-        <p>Декоратор</p>
-        <p>Фасад</p>
-        <p>Легковес</p>
-        <p>Заместитель</p>
+        <p><a href="#adapter">Адаптер</a></p>
+        <p><a href="#bridge">Мост</a></p>
+        <p><a href="#composite">Компоновщик</a></p>
+        <p><a href="#decorator">Декоратор</a></p>
+        <p><a href="#facade">Фасад</a></p>
+        <p><a href="#flyweigtht">Приспособленец</a></p>
+        <p><a href="#proxy">Заместитель</a></p>
+    </div>
+
+    <div id="adapter">
+        <h4>Адаптер (Adapter)</h4>
+        <p class="no_mb"><span class="example--word">Цель:</span></p>
+        <p>Преобразование интерфейса одного класса в интерфейс того класса, который необходим клиенту.</p>
+        <p class="no_mb"><span class="example--word">Для чего используется:</span></p>
+        <p>Для обеспечения совместной работы классов, интерфейсы которых не совместимы.</p>
+        <p class="no_mb"><span class="example--word">Пример использования:</span></p>
+        <ul>
+            <li>интерфейс класса, который мы хотим использовать не соответствует нашим потребностям;</li>
+            <li>
+                необходим класс, который должен взаимодействовать с классами, которые ему неизвестны
+                или не связаны с ним;
+            </li>
+            <li>
+                необходимо использовать несколько существующих подклассов, но нецелесообразно использовать
+                методы этих классов создавая их новые подклассы.
+            </li>
+        </ul>
+        <a class="button button--head" href="#sp"></a>
+    </div>
+
+    <hr>
+    <div id="bridge">
+        <h4>Мост (Bridge)</h4>
+        <p class="no_mb"><span class="example--word">Цель:</span></p>
+        <p>
+            Отделить абстракцию от её реализации таким образом, чтобы мы могли изменять независимо друг от друга
+            и то и другое.
+        </p>
+        <p class="no_mb"><span class="example--word">Для чего используется:</span></p>
+        <p>Для получения преимуществ наследования без потери гибкости.</p>
+        <p class="no_mb"><span class="example--word">Пример использования:</span></p>
+        <ul>
+            <li>
+                предотвращения жёсткого привязки абстракции к реализации (например, реализацию необходимо выбрать
+                во время выполнения программы);
+            </li>
+            <li>в будущем мы хотим расширять с помощью подклассов и реализацию и абстракцию;</li>
+            <li>если изменения в реализации не должны отражаться на клиентах абстракции;</li>
+            <li>для разделения одной реализации между несколькими оъектами и не показывать это клиенту.</li>
+        </ul>
+        <a class="button button--head" href="#sp"></a>
+    </div>
+
+    <hr>
+    <div id="composite">
+        <h4>Компоновщик (Composite)</h4>
+        <p class="no_mb"><span class="example--word">Цель:</span></p>
+        <p>
+            Скомпонировать объекты в структуры по типу "дерева", позволяя клиентам единообразно трактовать
+            отдельные и составные объекты.
+        </p>
+        <p class="no_mb"><span class="example--word">Для чего используется:</span></p>
+        <p>
+            Для группировки мелких компонентов в более крупные, которые, в свою очередь, могут стать основой для
+            ещё более крупных стуктур.
+        </p>
+        <p class="no_mb"><span class="example--word">Пример использования:</span></p>
+        <ul>
+            <li>для представления иерархии "часть-целое";</li>
+            <li>мы хотим, чтобы клиенты одним способом трактовали как отдельные, так и составные объекты.</li>
+        </ul>
+        <a class="button button--head" href="#sp"></a>
+    </div>
+
+    <hr>
+    <div id="decorator">
+        <h4>Декоратор(Decorator)</h4>
+        <p class="no_mb"><span class="example--word">Цель:</span></p>
+        <p>Динамическое добавление новых обязанностей объекту.</p>
+        <p class="no_mb"><span class="example--word">Для чего используется:</span></p>
+        <p>Используется в качестве альтернативы порождению подклассов для расширения функциональности.</p>
+        <p class="no_mb"><span class="example--word">Пример использования:</span></p>
+        <ul>
+            <li>динамическое и понятное клиентам добавления обязанностей объектам;</li>
+            <li>реализация обязанностей, которые могут быть сняты с объекта;</li>
+            <li>расширение класса путём порождения подклассов невозможно по каким-либо причинам.</li>
+        </ul>
+        <a class="button button--head" href="#sp"></a>
+    </div>
+
+    <hr>
+    <div id="facade">
+        <h4>Фасад (Facade)</h4>
+        <p class="no_mb"><span class="example--word">Цель:</span></p>
+        <p>Предоставить унифицированный интерфейс вместо нескольких интерфейсов подститсемы.</p>
+        <p class="no_mb"><span class="example--word">Для чего используется:</span></p>
+        <p>Используется для опредления интерфейса высокого уровня, который упрощает использование подсистемы.</p>
+        <p class="no_mb"><span class="example--word">Пример использования:</span></p>
+        <ul>
+            <li>изолирование клиентов от компонентов подсистемы, упрощая работу с ней;</li>
+            <li>необходимость ослабления связанности подсистемы с клиентами;</li>
+        </ul>
+        <a class="button button--head" href="#sp"></a>
+    </div>
+
+    <hr>
+    <div id="flyweigtht">
+        <h4>Приспособленец (Flyweight)</h4>
+        <p class="no_mb"><span class="example--word">Цель:</span></p>
+        <p>Поддержка множества мелких объектов.</p>
+        <p class="no_mb"><span class="example--word">Для чего используется:</span></p>
+        <p>Использует разделение для того, чтобы поддерживать много мелких объектов.</p>
+        <p class="no_mb"><span class="example--word">Пример использования:</span></p>
+        <ul>
+            <li>когда используется большое число объектов;</li>
+            <li>большую часть состояния объектов можно вынести наружу;</li>
+            <li>приложение не зависит от идентичности объекта.</li>
+        </ul>
+        <a class="button button--head" href="#sp"></a>
+    </div>
+
+    <hr>
+    <div id="proxy">
+        <h4>Заместитель (Proxy)</h4>
+        <p class="no_mb"><span class="example--word">Цель:</span></p>
+        <p>Для замещения другого объекта и контроля доступа к нему.</p>
+        <p class="no_mb"><span class="example--word">Для чего используется:</span></p>
+        <p>Для обеспечения контроля досутпа к опредленному объекту.</p>
+        <p class="no_mb"><span class="example--word">Пример использования:</span></p>
+        <ul>
+            <li class="mb10">когда есть необходимость ссылаться на объект способом отличным от обычного указателя;</li>
+            <table class="list" aria-label="proxy">
+                <tr>
+                    <td>удалённое замещение</td>
+                    <td>локалный представитель вместо объекта в другом адресном пространстве</td>
+                </tr>
+                <tr>
+                    <td>виртуальное замещение</td>
+                    <td>создание "тяжёлых объектов" при необходимости</td>
+                </tr>
+                <tr>
+                    <td>защищённое замещение</td>
+                    <td>контроль доступа к указанному объекту</td>
+                </tr>
+                <tr>
+                    <td>"умная" ссылка</td>
+                    <td>замена обычного указателя (подсчёт числа ссылок, установка блокировки ит.д.)</td>
+                </tr>
+            </table>
+        </ul>
+        <a class="button button--head" href="#sp"></a>
     </div>
 
     <a href="#" class="button button--top"></a>
@@ -246,6 +376,21 @@
         <p>Состояние</p>
         <p>Шаблон</p>
         <p>Посетитель</p>
+    </div>
+
+    <hr>
+    <div id="">
+        <h4></h4>
+        <p class="no_mb"><span class="example--word">Цель:</span></p>
+        <p></p>
+        <p class="no_mb"><span class="example--word">Для чего используется:</span></p>
+        <p></p>
+        <p class="no_mb"><span class="example--word">Пример использования:</span></p>
+        <ul>
+            <li></li>
+            <li></li>
+        </ul>
+        <a class="button button--head" href="#sp"></a>
     </div>
 
     <a href="#" class="button button--top"></a>
