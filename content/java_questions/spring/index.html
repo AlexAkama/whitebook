@@ -23,7 +23,7 @@
     <ol class="menu">
         <li>
             <p>
-                <a href="#q1">Инверсия контроля (<span>IoC</span>) и внедрение зависимостей (<span>DI</span>)</a>
+                <a href="#q1">Инверсия контроля (IoC) и внедрение зависимостей (DI)</a>
                 <span class="spoiler-button"></span>
             </p>
             <div class="spoiler">
@@ -31,18 +31,18 @@
                 <p class="tab-2"><a href="#q1_di">Dependency Injection (DI)</a></p>
             </div>
         </li>
-        <li><a href="#q2"><span>IoC Container</span></a></li>
+        <li><a href="#q2">IoC Container</a></li>
         <li><a href="#q3">Bean в Spring</a></li>
-        <li><a href="#q4">Аннотация <span>@Bean</span></a></li>
-        <li><a href="#q5">Аннотация <span>@Component</span></a></li>
-        <li><a href="#q6">Отличия <span>@Bean</span> и <span>@Component</span></a></li>
-        <li><a href="#q7">Отличия <span>@Service</span> и <span>@Repository</span></a></li>
-        <li><a href="#q8">Аннотация <span>@Autowired</span></a></li>
-        <li><a href="#q9">Аннотация <span>@Resource</span></a></li>
-        <li><a href="#q10">Аннотация <span>@Inject</span></a></li>
-        <li><a href="#q11">Аннотация <span>@Lookup</span></a></li>
+        <li><a href="#q4">Аннотация @Bean</a></li>
+        <li><a href="#q5">Аннотация @Component</a></li>
+        <li><a href="#q6">Отличия @Bean и @Component</a></li>
+        <li><a href="#q7">Отличия @Service и @Repository</a></li>
+        <li><a href="#q8">Аннотация @Autowired</a></li>
+        <li><a href="#q9">Аннотация @Resource</a></li>
+        <li><a href="#q10">Аннотация @Inject</a></li>
+        <li><a href="#q11">Аннотация @Lookup</a></li>
         <li><a href="#q12">Можно ли вставить бин в статическое поле?</a></li>
-        <li><a href="#q13">Аннотации <span>@Primary</span> и <span>@Qualifier</span></a></li>
+        <li><a href="#q13">Аннотации @Primary и @Qualifier</a></li>
         <li>
             <p>
                 <a href="#q14">Как заинжектить примитив?</a>
@@ -69,12 +69,12 @@
                 <p class="tab-2"><a href="#q15_sort">Упорядочивание элементов массивов/списков</a></p>
             </div>
         </li>
-        <li><a href="#q16">Аннотация <span>@Conditional</span></a></li>
-        <li><a href="#q17">Аннотация <span>@ComponentScan</span></a></li>
-        <li><a href="#q18">Аннотация <span>@Profile</span></a></li>
+        <li><a href="#q16">Аннотация @Conditional</a></li>
+        <li><a href="#q17">Аннотация @ComponentScan</a></li>
+        <li><a href="#q18">Аннотация @Profile</a></li>
         <li>
             <p>
-                <a href="#q19"><span>ApplicationContext</span> и <span>BeanFactory</span></a>
+                <a href="#q19">ApplicationContext и BeanFactory</a>
                 <span class="spoiler-button"></span>
             </p>
             <div class="spoiler">
@@ -85,7 +85,7 @@
         </li>
         <li>
             <p>
-                <a href="#q20">Жизненный цикл бина, аннотации <span>@PostConstruct</span> и <span>@PreDestroy</span></a>
+                <a href="#q20">Жизненный цикл бина, аннотации @PostConstruct и @PreDestroy</a>
                 <span class="spoiler-button"></span>
             </p>
             <div class="spoiler">
@@ -105,7 +105,7 @@
         </li>
         <li>
             <p>
-                <a href="#q21"><span>Scope</span> бинов</a>
+                <a href="#q21">Scope бинов</a>
                 <span class="spoiler-button"></span>
             </p>
             <div class="spoiler">
@@ -118,27 +118,16 @@
                 <p class="tab-2"><a href="#q21_custom">Custom thread scope</a></p>
             </div>
         </li>
-        <li><a href="#q22"><span>АОП</span> в Spring</a></li>
-        <li><a href="#q23">Транзакции и аннотация <span>@Transactional</span></a></li>
+        <li><a href="#q22">АОП в Spring</a></li>
+        <li><a href="#q23">Транзакции и аннотация @Transactional</a></li>
+        <li><a href="#q24">Паттерн MVC в Spring</a></li>
+        <li><a href="#q25">ViewResolver</a></li>
+        <li><a href="#q26">Паттерн Front Controller в Spring</a></li>
+        <li><a href="#q27">Отличия Model, ModelMap и ModelAndView</a></li>
+
     </ol>
 
     <table aria-label="Вопросы по Spring">
-        <tr>
-            <td>24.</td>
-            <td>
-                Расскажите про паттерн MVC, как он реализован в Spring?
-                <p>MVC (Model-View-Controller)</p>
-                <p>Spring Web MVC</p>
-            </td>
-        </tr>
-        <tr>
-            <td>25.</td>
-            <td>Что такое <span>ViewResolver</span>?</td>
-        </tr>
-        <tr>
-            <td>26.</td>
-            <td>Расскажите про шаблон проектирования Front Controller, как он реализован в Spring?</td>
-        </tr>
         <tr>
             <td>27.</td>
             <td>
@@ -2471,6 +2460,416 @@
                 </td>
             </tr>
         </table>
+    </div>
+
+    <a href="#" class="button button--top"></a>
+</section>
+
+<section class="container" id="q24">
+    <h1>Паттерн MVC в Spring</h1>
+    <div id="mvc">
+        <h3>MVC (Model-View-Controller)</h3>
+        <p class="main-mind">
+            Это шаблон проектирования программного обеспечения, который делит программную логику на три отдельных, но
+            взаимосвязанных компонента: модель, представление и контроллер — таким образом, что модификация каждого
+            компонента может осуществляться независимо.
+        </p>
+        <p><span class="example--word">Модель(Model)</span>
+            — предоставляет данные и реагирует на команды контроллера, изменяя своё состояние. Она содержит всю
+            бизнес-логику приложения.
+        </p>
+        <p><span class="example--word">Представление(View)</span>
+            — отвечает за отображение пользователю данных из модели в нужном формате.
+        </p>
+        <p><span class="example--word">Контроллер(Controller)</span>
+            — содержит код, который отвечает за обработку действий пользователя и обменивается данными с моделью (любое
+            действие пользователя в системе обрабатывается в контроллере).
+        </p>
+        <p>
+            Основная цель следования принципам MVC — отделить реализацию бизнес-логики приложения (модели) от ее
+            визуализации (вида). Такое разделение повысит возможность повторного использования кода.
+        </p>
+        <p>
+            Польза применения MVC наиболее наглядна в случаях, когда пользователю нужно предоставлять одни и те же
+            данные в разных формах. Например, в виде таблицы, графика или диаграммы (используя различные виды). При
+            этом, не затрагивая реализацию видов, можно изменить реакции на действия пользователя (нажатие мышью на
+            кнопке, ввод данных).
+        </p>
+    </div>
+
+    <hr>
+    <div>
+        <h3>Front controller (Единая точка входа)</h3>
+        <p class="main-mind">
+            Паттерн, где центральный сервлет, DispatcherServlet, принимает все
+            запросы и распределяет их между контроллерами, обрабатывающими разные URL.
+        </p>
+        <p class="mb20">
+            <a class="link-to-source" href="#q26">подробнее</a>
+        </p>
+    </div>
+
+    <hr>
+    <div id="spring_web_mvc">
+        <h3>Spring Web MVC</h3>
+        <p class="main-mind">
+            Это оригинальный веб-фреймворк, основанный на Servlet API, предназначенный для создания веб-приложений на
+            языке Java, с использованием двух самых популярных шаблонов проектирования - Front controller и MVC.
+        </p>
+        <p class="no_mb">
+            Spring MVC реализует четкое разделение задач, что позволяет нам легко разрабатывать и тестировать наши
+            приложения. Данные задачи разбиты между разными компонентами:
+        </p>
+        <ul class="tab-4 no_mb">
+            <li>Dispatcher Servlet</li>
+            <li>Controllers</li>
+            <li>View Resolvers</li>
+            <li>Views</li>
+            <li>Models</li>
+            <li>ModelAndView</li>
+            <li>Model</li>
+            <li>Session Attributes</li>
+        </ul>
+        <p class="mb20">
+            Компоненты полностью независимы друг от друга, и отвечают только за одно направление. Поэтому MVC дает нам
+            довольно большую гибкость. Он основан на интерфейсах (с предоставленными классами реализации), и мы можем
+            настраивать каждую часть фреймворка с помощью пользовательских интерфейсов.
+        </p>
+    </div>
+
+    <hr>
+    <div id="base_handlers">
+        <h3>Интерфейсы для обработки запросов</h3>
+        <div>
+            <h4>HandlerMapping</h4>
+            <p class="no_mb">
+                По запросу определяет, какие перехватчики (interceptors) с пре- и пост-процессорной обработкой запроса
+                должны отработать, а затем решает, какому контроллеру (обработчику) нужно передать данный запрос на
+                исполнение. Процесс их определения основан на некоторых критериях, детали которых зависят от реализации
+                HandlerMapping.
+            </p>
+            <p class="">
+                Двумя основными реализациями HandlerMapping являются RequestMappingHandlerMapping (который поддерживает
+                аннотированные методы @RequestMapping) и SimpleUrlHandlerMapping (который поддерживает явную регистрацию
+                путей URI для обработчиков).
+            </p>
+        </div>
+        <div>
+            <h4>HandlerAdapter</h4>
+            <p class="no_mb">
+                Помогает DispatcherServlet вызвать обработчик, сопоставленный с запросом. Для вызова аннотированного
+                контроллера необходимо прочитать аннотации над методами контроллера и принять решение.
+            </p>
+            <p> Основная цель HandlerAdapter - избавить DispatcherServlet от этой рутины.</p>
+        </div>
+        <div>
+            <h4>ViewResolver</h4>
+            <p>
+                Сопоставляет имена представлений, возвращаемых методами контроллеров, с фактическими представлениями
+                (html-файлами).
+            </p>
+        </div>
+        <div>
+            <h4>View</h4>
+            <p>
+                Отвечает за возвращение ответа клиенту в виде текстов и изображений. Используются встраиваемые
+                шаблонизаторы (Thymeleaf, FreeMarker и т.д.), так как у Spring нет родных. Некоторые запросы могут идти
+                прямо во View, не заходя в Model, другие проходят через все слои.
+            </p>
+        </div>
+        <div>
+            <h4>LocaleResolver</h4>
+            <p>
+                Определение часового пояса и языка клиента для того, чтобы предложить представления на его языке.
+            </p>
+        </div>
+        <div>
+            <h4>MultipartResolver</h4>
+            <p>
+                Обеспечивает Upload — загрузку на сервер локальных файлов клиента. По умолчанию этот интерфейс не
+                включается в приложении и необходимо указывать его в файле конфигурации. После настройки любой запрос о
+                загрузке будет отправляться этому интерфейсу.
+            </p>
+        </div>
+        <div>
+            <h4>FlashMapManager</h4>
+            <p>
+                Сохраняет и извлекает «входной» и «выходной» FlashMap, который можно использовать для передачи атрибутов
+                из одного запроса в другой, обычно через редирект.
+            </p>
+        </div>
+
+        <p>Пример <span class="spoiler-button"></span></p>
+        <div class="spoiler">
+            <p class="tab-1">Ниже приведена последовательность событий, соответствующая входящему HTTP-запросу:</p>
+            <ul class="tab-3 sparse-li">
+                <li>
+                    После получения HTTP-запроса DispatcherServlet обращается к интерфейсу HandlerMapping, который
+                    определяет,
+                    какой Контроллер (Controller) должен быть вызван, после чего HandlerAdapter, отправляет запрос в
+                    нужный
+                    метод Контроллера.
+                </li>
+                <li>
+                    Контроллер принимает запрос и вызывает соответствующий служебный метод, основанный на GET, POST и
+                    т.д.
+                    Вызванный метод формирует данные Модели (например, набор данных из БД) и возвращает их в
+                    DispatcherServlet
+                    вместе с именем Представления (View) (как правило имя html-файла).
+                </li>
+                <li>
+                    При помощи интерфейса ViewResolver DispatcherServlet определяет, какое Представление нужно
+                    использовать на основании полученного имени и получает в ответе имя представления View.
+                    <p class="mb10"></p>
+                    <ol>
+                        <li>
+                            если это REST-запрос на сырые данные (JSON/XML), то DispatcherServlet сам его отправляет;
+                        </li>
+                        <li>
+                            если обычный запрос, то DispatcherServlet отправляет данные Модели в виде атрибутов в
+                            Представление (View) - шаблонизаторы Thymeleaf, FreeMarker и т.д., которые сами отправляют
+                            ответ.
+                        </li>
+                    </ol>
+                </li>
+            </ul>
+        </div>
+        <p>Все действия происходят через один единственный DispatcherServlet.</p>
+        <div class="image-box">
+            <img class="image" src="./img/http-request.png" alt="Схема HTTP-запроса">
+        </div>
+    </div>
+
+    <hr>
+    <div id="configurator">
+        <h3>Конфигурирование</h3>
+        <p>
+            Сконфигурировать наше Spring MVC-приложение мы можем с помощью Java-config, добавив зависимость
+            spring-webmvc и установив над классом конфигурации <an>@EnableWebMvc</an>, которая применит дефолтные
+            настройки - зарегистрирует некоторые специальные бины из Spring MVC и адаптирует их к нашим бинам.
+        </p>
+        <p>
+            Но, если требуется тонкая настройка, то мы можем имплементировать интерфейс
+            <span class="example--word">WebMvcConfigurer</span> и переопределить необходимые методы.
+        </p>
+        <p>
+            Теперь нужно зарегистрировать конфигурацию в Spring Context это позволит сделать созданный нами класс
+            MyWebAppInitializer, который нужно унаследовать от Abstract<wbr>Annotation<wbr>Config<wbr>Dispatcher<wbr>Servlet<wbr>Initializer,
+            и
+            передать в его методы классы нашей конфигурации RootConfig.class и App1Config.class:
+        </p>
+        <div class="code">
+            <p class="mb10">
+                public class MyWebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
+            </p>
+            <p class="tab-1"><an>@Override</an></p>
+            <p class="tab-1">protected Class<?>[] getRootConfigClasses() {</p>
+            <p class="tab-2">return new Class<?>[] { RootConfig.class };</p>
+            <p class="tab-1 mb10">}</p>
+            <p class="tab-1"><an>@Override</an></p>
+            <p class="tab-1">protected Class<?>[] getServletConfigClasses() {</p>
+            <p class="tab-2">return new Class<?>[] { App1Config.class };</p>
+            <p class="tab-1 mb10">}</p>
+            <p class="tab-1"><an>@Override</an></p>
+            <p class="tab-1">protected String[] getServletMappings() {</p>
+            <p class="tab-2">return new String[] { "/*" };</p>
+            <p class="tab-1 mb10">}</p>
+            <p>}</p>
+        </div>
+        <p>
+            Своими внутренними методами он создает два экземпляра WebApplicationContext в виде объектов класса
+            AnnotationConfigWebApplicationContext.
+        </p>
+        <p>
+            Если же у нас только один класс конфигурации, то его нужно передать в метод getRootConfigClasses(), а
+            getServletConfigClasses() должен возвращать null.
+        </p>
+    </div>
+
+    <a href="#" class="button button--top"></a>
+</section>
+
+<section class="container" id="q25">
+    <h1>ViewResolver</h1>
+    <p class="no_mb">
+        Все платформы MVC предоставляют способ работы с представлениями.
+    </p>
+    <p>
+        Spring делает это с помощью ViewResolver,
+        который позволяет отображать модели в браузере, не привязывая реализацию к определенной технологии
+        представления.
+    </p>
+    <p class="no_mb">
+        ViewResolver сопоставляет имена представлений, возвращаемых методами контроллеров, с фактическими
+        представлениями (html-файлами).
+    </p>
+    <p>
+        Spring Framework поставляется с довольно большим количеством ViewResolver, например
+        InternalResourceViewResolver, XmlViewResolver, ResourceBundleViewResolver и несколькими другими.
+    </p>
+    <p>По умолчанию реализацией интерфейса ViewResolver является класс InternalResourceViewResolver.</p>
+    <p>Любым реализациям ViewResolver желательно поддерживать интернационализацию, то есть множество языков.</p>
+
+    <a href="#" class="button button--top"></a>
+</section>
+
+<section class="container" id="q26">
+    <h1>Front Controller</h1>
+    <p class="main-mind">Паттерн Front Controller обеспечивает единую точку входа для всех входящих запросов.</p>
+    <p>
+        Все запросы обрабатываются
+        одним фрагментом кода, который затем может делегировать ответственность за обработку запроса другим объектам
+        приложения. Он также обеспечивает интерфейс для общего поведения, такого как безопасность, интернационализация и
+        передача определенных представлений определенным пользователям.
+    </p>
+    <p class="no_mb example">Как реализовано в Spring?</p>
+    <p>
+        В Spring в качестве Front Controller выступает DispatcherServlet, все действия проходят через него. Как правило,
+        в приложении задаётся только один
+        <span class="example--word">DispatcherServlet с маппингом "/"</span>,
+        который перехватывает все запросы. Это и есть реализация паттерна Front Controller.
+    </p>
+    <p>
+        Однако иногда необходимо определить два и более DispatcherServlet-а, которые будут отвечать за свой собственный
+        функционал. Например, чтобы один обрабатывал REST-запросы с маппингом "/api", а другой обычные запросы с
+        маппингом "/default".
+    </p>
+    <p>Spring предоставляет нам такую возможность, и для начала нужно понять, что:</p>
+    <ul class="tab-2 sparse-li">
+        <li>
+            Spring может иметь несколько контекстов одновременно. Одним из них будет корневой контекст, а все остальные
+            контексты будут дочерними.
+        </li>
+        <li>
+            Все дочерние контексты могут получить доступ к бинам, определенным в корневом контексте, но не наоборот.
+            Корневой
+            контекст не может получить доступ к бинам дочерних контекстов.
+        </li>
+        <li>Каждый дочерний контекст внутри себя может переопределить бины из корневого контекста.</li>
+    </ul>
+    <p class="no_mb">
+        Каждый DispatcherServlet имеет свой дочерний контекст приложения.
+    </p>
+    <p class="no_mb">
+        DispatcherServlet по сути является сервлетом
+        (он расширяет HttpServlet), основной целью которого является обработка входящих веб-запросов, соответствующих
+        настроенному шаблону URL. Он принимает входящий URI и находит правильную комбинацию контроллера и вида.
+    </p>
+    <p>
+        Веб-приложение может определять любое количество DispatcherServlet-ов. Каждый из них будет работать в своем
+        собственном пространстве имен, загружая свой собственный дочерний WebApplicationContext (на рисунке - Servlet
+        WebApplicationContext) с вьюшками, контроллерами и т.д. Например, когда нам нужно в одном Servlet
+        WebApplicationContext определить обычные контроллеры, а в другом REST-контроллеры.
+    </p>
+    <div class="image-box mb10">
+        <img src="img/dispatcherservlet.png" alt="DispatcherServlet">
+    </div>
+    <p>
+        WebApplicationContext расширяет ApplicationContext (создаёт и управляет бинами и т.д.), но помимо этого он имеет
+        дополнительный метод getServletContext(), через который у него есть возможность получать доступ к
+        ServletContext-у.
+    </p>
+    <p class="no_mb">
+        ContextLoaderListener создает корневой контекст приложения (на рисунке - Root WebApplicationContext) и будет
+        использоваться всеми дочерними контекстами, созданными всеми DispatcherServlet. Напомню, что корневой контекст
+        приложения будет общим и может быть только один. Root WebApplicationContext содержит компоненты, которые видны
+        всем дочерним контекстам, такие как сервисы, репозитории, компоненты инфраструктуры и т.д. После создания
+        корневого контекста приложения он сохраняется в ServletContext как атрибут, имя которого:
+    </p>
+    <div class="scroll">
+        <p><span class="code-word mb20">WebApplicationContext.class.getName() + ".ROOT"</span></p>
+    </div>
+    <p>
+        Чтобы из контроллера любого дочернего контекста обратиться к корневому контексту приложения, мы можем
+        использовать класс WebApplicationContextUtils, содержащий статические методы:
+    </p>
+    <div class="code">
+        <p><an>@Autowired</an></p>
+        <p>ServletContext context;</p>
+        <p>ApplicationContext ac = WebApplicationContextUtils<wbr>.getWebApplicationContext(context);</p>
+        <p> if(ac == null) {</p>
+        <p class="tab-1">return "root application context is null";</p>
+        <p>}</p>
+    </div>
+
+    <div>
+        <h4>ContextLoaderListener vs DispatcherServlet</h4>
+        <ol class="tab-2">
+            <li>ContextLoaderListener создает корневой контекст приложения.</li>
+            <li>Каждый DispatcherServlet создаёт себе один дочерний контекст.</li>
+            <li>Дочерние контексты могут обращаться к бинам, определенным в корневом контексте.</li>
+            <li>Бины в корневом контексте не могут получить доступ к бинам в дочерних контекстах (напрямую).</li>
+            <li>Все контексты добавляются в ServletContext.</li>
+            <li>Мы можем получить доступ к корневому контексту, используя класс WebApplicationContextUtils.</li>
+        </ol>
+        <div class="image-box">
+            <img class="image" src="./img/context.png" alt="ContextLoaderListener vs DispatcherServlet">
+        </div>
+    </div>
+
+
+    <a href="#" class="button button--top"></a>
+</section>
+
+<section class="container" id="q27">
+    <h1>Отличия Model, ModelMap и ModelAndView</h1>
+    <div>
+        <h3>Model</h3>
+        <p>
+            <span class="example--word">Интерфейс</span> , лежит в пакете spring-context.
+            В методах контроллера мы можем использовать объекты Model для
+            того, чтобы складывать туда данные, предназначенные для формирования представлений.
+        </p>
+        <p class="no_mb">Кроме того, в Model мы можем передать даже Map с атрибутами:</p>
+        <div class="code">
+            <p><an>@GetMapping("/showViewPage")</an></p>
+            <p>public String passParametersWithModel(Model model) {</p>
+            <p class="tab-1">Map&lt;String,&nbsp;String&gt; map = new&nbsp;HashMap<>();</p>
+            <p class="tab-1">map.put("spring", "mvc");</p>
+            <p class="tab-1">model.addAttribute("message", "Baeldung");</p>
+            <p class="tab-1">model.mergeAttributes(map);</p>
+            <p class="tab-1">return "viewPage";</p>
+            <p>}</p>
+        </div>
+    </div>
+    <div>
+        <h3>ModelMap</h3>
+        <p>
+            Этот <span class="example--word">класс наследуется от LinkedHashMap &lt;String,&nbsp;Object&gt;</span> и
+            по сути служит общим контейнером модели для Servlet MVC, но не привязан к нему, и лежит в пакете
+            spring-context.
+        </p>
+        <p class="no_mb"></p>
+        Имеет все преимущества LinkedHashMap плюс несколько удобных методов:
+        <div class="code">
+            <p><an>@GetMapping("/printViewPage")</an></p>
+            <p>public String passParametersWithModelMap(ModelMap map) {</p>
+            <p class="tab-1">map.addAttribute("welcomeMessage", "welcome");</p>
+            <p class="tab-1">map.addAttribute("message", "Baeldung");</p>
+            <p class="tab-1">return "viewPage";</p>
+            <p>}</p>
+        </div>
+
+    </div>
+    <div>
+        <h3>ModelAndView</h3>
+        <p>
+            Этот <span class="example--word">класс</span> лежит в пакете spring-webmvc и
+            <span class="example--word">может одновременно хранить модели и представление</span>, чтобы
+            контроллер мог отдавать их в одном возвращаемом значении.
+        </p>
+        <p>
+            Внутри содержит поле private Object view, куда
+            записывает нужное представление, а также поле private ModelMap model, куда и складывает все атрибуты модели:
+        </p>
+        <div class="code">
+            <p><an>@GetMapping("/goToViewPage")</an></p>
+            <p>public ModelAndView passParametersWithModelAndView() {</p>
+            <p class="tab-1">ModelAndView modelAndView = new&nbsp;ModelAndView("viewPage");</p>
+            <p class="tab-1">modelAndView.addObject("message", "Baeldung");</p>
+            <p class="tab-1">return modelAndView;</p>
+            <p>}</p>
+        </div>
     </div>
 
     <a href="#" class="button button--top"></a>

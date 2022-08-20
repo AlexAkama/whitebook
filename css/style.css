@@ -389,6 +389,7 @@ img {
     border: 1px solid rgba(0, 0, 0, 0.14902);
     margin-bottom: 15px;
     overflow: auto;
+    white-space: nowrap;
 }
 
 .scroll {
