@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patterns</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+<section class="container">
+    <h1 class="no_mb">PATTERNS</h1>
+    <div class="after-h1">Вопросы и ответы для подготовки к собеседованиям</div>
+    <div class="breadcrumbs">
+        <p><a href="../../../">главная</a></p>
+        <p><a href="../">Questions</a></p>
+        <p>Patterns</p>
+    </div>
+    <h3 class="no_mt">Разделы</h3>
+    <ul class="menu">
+        <li><a href="#intro">Введение</a></li>
+        <li><a href="#cp">Порождающие(creational) паттерны</a></li>
+        <li><a href="#sp">Структурные(structural) паттерны</a></li>
+        <li><a href="#bp">Поведенческие(behavioral) паттерны</a></li>
+    </ul>
+</section>
+
+<section class="container" id="intro">
+    <h1>Введение</h1>
+    <p>
+        Надо обязательно вспомнить
+        <a href="../core/oop/" target="_blank">что такое ООП</a>.
+    </p>
+    <p class="main-mind">
+        Паттерн(шаблон) проектирования
+        (рассматриваем только вариант для программирования) - способ организации программного кода, представляющего
+        собой решение некоторой часто возникающей проблемы
+        проектирования.
+    </p>
+    <p>Паттерны проектирования:</p>
+    <ul class="sparse-li mb20">
+        <li><span class="example--word">Порождающие(creational)</span> - удобное и безопасное создание новых объектов;
+        </li>
+        <li><span class="example--word">Структурные(structural)</span> - построение, удобной в поддержке, иерархии
+            классов;
+        </li>
+        <li><span class="example--word">Поведенческие(behavioral)</span> - эффективное и безотказное взаимодействие;
+        </li>
+    </ul>
+    <p class="center">Основные примеры:</p>
+    <div class="flex">
+        <div class="min-w-150">
+            <p class="main-mind"><a href="#cp">Порождающие</a></p>
+            <p><a href="#factory_method">Фабричный метод</a></p>
+            <p><a href="#abstract_factory">Абстрактная ф-ка</a></p>
+            <p><a href="#singleton">Одиночка</a></p>
+            <p><a href="#builder">Строитель</a></p>
+            <p><a href="#prototype">Прототип</a></p>
+        </div>
+        <div class="min-w-150">
+            <p class="main-mind">Структурные</p>
+            <p>Адаптер</p>
+            <p>Мост</p>
+            <p>Компоновщик</p>
+            <p>Декоратор</p>
+            <p>Фасад</p>
+            <p>Легковес</p>
+            <p>Заместитель</p>
+        </div>
+        <div class="min-w-150">
+            <p class="main-mind">Поведенческие</p>
+            <p>Итератор</p>
+            <p>Посредник</p>
+            <p>Стратегия</p>
+            <p>Наблюдатель</p>
+            <p>Команда</p>
+            <p>Цепочка...</p>
+            <p>Снимок</p>
+            <p>Состояние</p>
+            <p>Шаблон</p>
+            <p>Посетитель</p>
+        </div>
+    </div>
+    <a href="#" class="button button--top"></a>
+</section>
+
+<section class="container" id="cp">
+    <h1>Порождающие<wbr>(creational) паттерны</h1>
+    <p class="example--word">Основная цель отделить процесс создания объектов от основной логики.</p>
+    <div class="tab-2 after-h1">
+        <p><a href="#factory_method">Фабричный метод</a></p>
+        <p><a href="#abstract_factory">Абстрактная ф-ка</a></p>
+        <p><a href="#singleton">Одиночка</a></p>
+        <p><a href="#builder">Строитель</a></p>
+        <p><a href="#prototype">Прототип</a></p>
+    </div>
+
+    <div id="factory_method">
+        <h4>Фабрика (Factory Method)</h4>
+        <p class="no_mb"><span class="example--word">Цель:</span></p>
+        <p>
+            Создание интерфейса, который создаёт объект. При этом, выбор того, экземпляр какого класса создавать
+            остаётся за классами, которые имплементируют данный интерфейс.
+        </p>
+        <p class="no_mb"><span class="example--word">Для чего используется:</span></p>
+        <p>Для делигирования создания экземпляров, другому классу.</p>
+        <p class="no_mb"><span class="example--word">Пример использования:</span></p>
+        <ul>
+            <li>заранее неизвестно, экземпляры, какого класса нужно будет создавать;</li>
+            <li>класс спроектирован таким образом, что создаваемые им объекты имеют свойства определённого класса.</li>
+        </ul>
+        <a class="button button--head" href="#cp"></a>
+    </div>
+
+    <hr>
+    <div id="abstract_factory">
+        <h4>Абстрактная фабрика (Abstract Factory)</h4>
+        <p class="no_mb"><span class="example--word">Цель:</span></p>
+        <p>
+            Создание интерфейса, для создания множества взаимосвязанных или взаимозависимых объектов, без жёсткой
+            привязке к конкретным классам.
+        </p>
+        <p class="no_mb"><span class="example--word">Для чего используется:</span></p>
+        <p>Для создания множеств взаимосвязанных объектов.</p>
+        <p class="no_mb"><span class="example--word">Пример использования:</span></p>
+        <ul>
+            <li>система не должна зависеть от метода создания, компоновки и представления входящих в неё объектов;</li>
+            <li>входящие взаимосвязанные объекты должны использоваться вместе;</li>
+            <li>система должна конфигурироваться одним из множеств объектов, из которых она состоит;</li>
+            <li>нам необходимо предоставить множество объектов, раскрывая только их интерфейсы, но не реализацию.</li>
+        </ul>
+        <a class="button button--head" href="#cp"></a>
+    </div>
+
+    <hr>
+    <div id="singleton">
+        <h4>Одиночка (Singleton)</h4>
+        <p class="no_mb"><span class="example--word">Цель:</span></p>
+        <p>
+            Гарантировать, что у класса будет только один единственный экземпляр и к нему будет предоставлена
+            глобальная точка доступа.
+        </p>
+        <p class="no_mb"><span class="example--word">Для чего используется:</span></p>
+        <p>Для создания единственного экземпляра определённого класса.</p>
+        <p class="no_mb"><span class="example--word">Пример использования:</span></p>
+        <ul>
+            <li>необходим только один экземпляр конкретного класса, который доступен для всех клиентов;</li>
+            <li>
+                единственный экземпляр должен наследоваться путём порождения подклассов, при этом, клиенты
+                имеют возможность работать с классом-неследником без модификации своего кода.
+            </li>
+        </ul>
+        <a class="button button--head" href="#cp"></a>
+    </div>
+
+    <hr>
+    <div id="builder">
+        <h4>Строитель (Builder)</h4>
+        <p class="no_mb"><span class="example--word">Цель:</span></p>
+        <p>
+            Отделить конструирование сложного объекта от его представления таким образом, чтобы в результате
+            одного и того же конструирования мы могли получить разные представления.
+        </p>
+        <p class="no_mb"><span class="example--word">Для чего используется:</span></p>
+        <p>Для создания различных объектов из одного набора данных.</p>
+        <p class="no_mb"><span class="example--word">Пример использования:</span></p>
+        <ul>
+            <li>
+                порядок создания сложного объекта не должен зависеть от того, из каких частей состоит объект и
+                того, как эти объекты взаимосвязаны;
+            </li>
+            <li>
+                процесс конструирования объекта должен предоставлять различные представления объекта, который мы
+                конструируем.
+            </li>
+        </ul>
+        <a class="button button--head" href="#cp"></a>
+    </div>
+
+    <hr>
+    <div id="prototype">
+        <h4>Прототип (Prototype)</h4>
+        <p class="no_mb"><span class="example--word">Цель:</span></p>
+        <p>
+            Определить вид создаваемых объектов с помощью экземпляра - прототипа и создавать новые объекты,
+            копируя этот прототип.
+        </p>
+        <p class="no_mb"><span class="example--word">Для чего используется:</span></p>
+        <p>Для создания копий заданного объекта.</p>
+        <p class="no_mb"><span class="example--word">Пример использования:</span></p>
+        <ul>
+            <li>классы, экземпляры которых необходимо создать определяются во время выполнения программы;</li>
+            <li>для избежания построения иерархии классов, фабрик или параллельных иерархий классов;</li>
+            <li>экземпляры класса могут находиться в одном из немногих возможных состояний.</li>
+        </ul>
+        <a class="button button--head" href="#cp"></a>
+    </div>
+
+    <hr>
+    <div id="">
+        <h4></h4>
+        <p class="no_mb"><span class="example--word">Цель:</span></p>
+        <p></p>
+        <p class="no_mb"><span class="example--word">Для чего используется:</span></p>
+        <p></p>
+        <p class="no_mb"><span class="example--word">Пример использования:</span></p>
+        <ul>
+            <li></li>
+            <li></li>
+        </ul>
+        <a class="button button--head" href="#cp"></a>
+    </div>
+
+
+    <a href="#" class="button button--top"></a>
+</section>
+
+<section class="container" id="sp">
+    <h1>Структурные<wbr>(structural) паттерны</h1>
+    <div class="tab-2 after-h1">
+        <p>Адаптер</p>
+        <p>Мост</p>
+        <p>Компоновщик</p>
+        <p>Декоратор</p>
+        <p>Фасад</p>
+        <p>Легковес</p>
+        <p>Заместитель</p>
+    </div>
+
+    <a href="#" class="button button--top"></a>
+</section>
+
+<section class="container" id="bp">
+    <h1>Поведенческие<wbr>(behavioral) паттерны</h1>
+    <div class="tab-2 after-h1">
+        <p>Итератор</p>
+        <p>Посредник</p>
+        <p>Стратегия</p>
+        <p>Наблюдатель</p>
+        <p>Команда</p>
+        <p>Цепочка...</p>
+        <p>Снимок</p>
+        <p>Состояние</p>
+        <p>Шаблон</p>
+        <p>Посетитель</p>
+    </div>
+
+    <a href="#" class="button button--top"></a>
+</section>
+
+<footer>
+    <div class="footer__text">Алексей Маслов, 2021-2022</div>
+</footer>
+
+</body>
+
+</html>
