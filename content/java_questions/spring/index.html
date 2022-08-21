@@ -146,7 +146,7 @@
                 <p><a href="#response_entity">ResponseEntity</a></p>
             </div>
         </li>
-        <li><a href="#q29"></a></li>
+        <li><a href="#q29">Filters, Listeners и Interceptors</a></li>
         <li><a href="#q30">Передача параметров в GET-запросе</a></li>
         <li><a href="#q31">Spring Security</a></li>
         <li><a href="#q32">Spring Boot</a></li>
@@ -2949,7 +2949,59 @@
 </section>
 
 <section class="container" id="q29">
-    <h1></h1>
+    <h1>Filters, Listeners и Interceptors</h1>
+    <div class="after-h1">
+        <p><a href="#filters">Filters</a></p>
+        <p><a href="#listeners">Listeners</a></p>
+        <p><a href="#interceptors">Interceptors</a></p>
+    </div>
+
+    <div id="filters">
+        <h3>Filter</h3>
+        <p>
+            Это интерфейс из пакета javax.servlet, имплементации которого выполняют задачи фильтрации либо по пути
+            запроса к ресурсу (сервлету, либо по статическому контенту), либо по пути ответа от ресурса, либо в обоих
+            направлениях.
+        </p>
+        <p>
+            Фильтры выполняют фильтрацию в методе <span class="example--word">doFilter</span>.
+            Каждый фильтр имеет доступ к объекту FilterConfig, из
+            которого он может получить параметры инициализации и ссылку на ServletContext, который он может
+            использовать, например, для загрузки ресурсов, необходимых для задач фильтрации. Фильтры настраиваются в
+            дескрипторе развертывания веб-приложения.
+        </p>
+        <p>
+            В веб-приложении мы можем написать несколько фильтров, которые вместе называются цепочкой фильтров.
+            Веб-сервер решает, какой фильтр вызывать первым, в соответствии с порядком регистрации фильтров.
+        </p>
+        <p class="no_mb">
+            Когда вызывается метод
+            <span class="example--word">
+            doFilter<wbr>(ServletRequest&nbsp;request, ServletResponse&nbsp;response, FilterChain&nbsp;chain)
+            </span>
+            первого фильтра, веб-сервер создает объект FilterChain, представляющий цепочку фильтров, и передаёт её в
+            метод.
+        </p>
+        <div class="image-box">
+            <img class="image" src="./img/filter.png" alt="Filters">
+        </div>
+
+        <a class="button button--head" href="#q29"></a>
+    </div>
+
+    <hr>
+    <div id="listeners">
+        <h3></h3>
+
+        <a class="button button--head" href="#q29"></a>
+    </div>
+
+    <hr>
+    <div id="interceptors">
+        <h3></h3>
+
+        <a class="button button--head" href="#q29"></a>
+    </div>
 
     <a href="#" class="button button--top"></a>
 </section>
