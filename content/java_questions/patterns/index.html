@@ -73,17 +73,16 @@
             <p><a href="#proxy">Заместитель</a></p>
         </div>
         <div class="min-w-150">
-            <p class="main-mind">Поведенческие</p>
-            <p>Итератор</p>
-            <p>Посредник</p>
-            <p>Стратегия</p>
-            <p>Наблюдатель</p>
-            <p>Команда</p>
-            <p>Цепочка...</p>
-            <p>Снимок</p>
-            <p>Состояние</p>
-            <p>Шаблон</p>
-            <p>Посетитель</p>
+            <p class="main-mind"><a href="#bp">Поведенческие</a></p>
+            <p><a href="#iterator">Итератор</a></p>
+            <p><a href="#mediator">Посредник</a></p>
+            <p><a href="#strategy">Стратегия</a></p>
+            <p><a href="#observer">Наблюдатель</a></p>
+            <p><a href="#command">Команда</a></p>
+            <p><a href="#chain">Цепочка...</a></p>
+            <p><a href="#state">Состояние</a></p>
+            <p><a href="#template">Шаблон</a></p>
+            <p><a href="#visitor">Посетитель</a></p>
         </div>
     </div>
     <a href="#" class="button button--top"></a>
@@ -93,15 +92,15 @@
     <h1>Порождающие<wbr>(creational) паттерны</h1>
     <p class="example--word">Основная цель отделить процесс создания объектов от основной логики.</p>
     <div class="tab-2 after-h1">
-        <p><a href="#factory_method">Фабричный метод</a></p>
-        <p><a href="#abstract_factory">Абстрактная ф-ка</a></p>
-        <p><a href="#singleton">Одиночка</a></p>
-        <p><a href="#builder">Строитель</a></p>
-        <p><a href="#prototype">Прототип</a></p>
+        <p><a href="#factory_method">Фабричный метод (Factory Method)</a></p>
+        <p><a href="#abstract_factory">Абстрактная ф-ка (Abstract Factory)</a></p>
+        <p><a href="#singleton">Одиночка (Singleton)</a></p>
+        <p><a href="#builder">Строитель (Builder)</a></p>
+        <p><a href="#prototype">Прототип (Prototype)</a></p>
     </div>
 
     <div id="factory_method">
-        <h4>Фабрика (Factory Method)</h4>
+        <h3>Фабрика (Factory Method)</h3>
         <p class="no_mb"><span class="example--word">Цель:</span></p>
         <p>
             Создание интерфейса, который создаёт объект. При этом, выбор того, экземпляр какого класса создавать
@@ -119,7 +118,7 @@
 
     <hr>
     <div id="abstract_factory">
-        <h4>Абстрактная фабрика (Abstract Factory)</h4>
+        <h3>Абстрактная фабрика (Abstract Factory)</h3>
         <p class="no_mb"><span class="example--word">Цель:</span></p>
         <p>
             Создание интерфейса, для создания множества взаимосвязанных или взаимозависимых объектов, без жёсткой
@@ -139,7 +138,7 @@
 
     <hr>
     <div id="singleton">
-        <h4>Одиночка (Singleton)</h4>
+        <h3>Одиночка (Singleton)</h3>
         <p class="no_mb"><span class="example--word">Цель:</span></p>
         <p>
             Гарантировать, что у класса будет только один единственный экземпляр и к нему будет предоставлена
@@ -160,7 +159,7 @@
 
     <hr>
     <div id="builder">
-        <h4>Строитель (Builder)</h4>
+        <h3>Строитель (Builder)</h3>
         <p class="no_mb"><span class="example--word">Цель:</span></p>
         <p>
             Отделить конструирование сложного объекта от его представления таким образом, чтобы в результате
@@ -184,7 +183,7 @@
 
     <hr>
     <div id="prototype">
-        <h4>Прототип (Prototype)</h4>
+        <h3>Прототип (Prototype)</h3>
         <p class="no_mb"><span class="example--word">Цель:</span></p>
         <p>
             Определить вид создаваемых объектов с помощью экземпляра - прототипа и создавать новые объекты,
@@ -207,17 +206,17 @@
 <section class="container" id="sp">
     <h1>Структурные<wbr>(structural) паттерны</h1>
     <div class="tab-2 after-h1">
-        <p><a href="#adapter">Адаптер</a></p>
-        <p><a href="#bridge">Мост</a></p>
-        <p><a href="#composite">Компоновщик</a></p>
-        <p><a href="#decorator">Декоратор</a></p>
-        <p><a href="#facade">Фасад</a></p>
-        <p><a href="#flyweigtht">Приспособленец</a></p>
-        <p><a href="#proxy">Заместитель</a></p>
+        <p><a href="#adapter">Адаптер (Adapter)</a></p>
+        <p><a href="#bridge">Мост (Bridge)</a></p>
+        <p><a href="#composite">Компоновщик (Composite)</a></p>
+        <p><a href="#decorator">Декоратор (Decorator)</a></p>
+        <p><a href="#facade">Фасад (Facade)</a></p>
+        <p><a href="#flyweigtht">Приспособленец (Flyweight)</a></p>
+        <p><a href="#proxy">Заместитель (Proxy)</a></p>
     </div>
 
     <div id="adapter">
-        <h4>Адаптер (Adapter)</h4>
+        <h3>Адаптер (Adapter)</h3>
         <p class="no_mb"><span class="example--word">Цель:</span></p>
         <p>Преобразование интерфейса одного класса в интерфейс того класса, который необходим клиенту.</p>
         <p class="no_mb"><span class="example--word">Для чего используется:</span></p>
@@ -239,7 +238,7 @@
 
     <hr>
     <div id="bridge">
-        <h4>Мост (Bridge)</h4>
+        <h3>Мост (Bridge)</h3>
         <p class="no_mb"><span class="example--word">Цель:</span></p>
         <p>
             Отделить абстракцию от её реализации таким образом, чтобы мы могли изменять независимо друг от друга
@@ -262,7 +261,7 @@
 
     <hr>
     <div id="composite">
-        <h4>Компоновщик (Composite)</h4>
+        <h3>Компоновщик (Composite)</h3>
         <p class="no_mb"><span class="example--word">Цель:</span></p>
         <p>
             Скомпонировать объекты в структуры по типу "дерева", позволяя клиентам единообразно трактовать
@@ -283,7 +282,7 @@
 
     <hr>
     <div id="decorator">
-        <h4>Декоратор(Decorator)</h4>
+        <h3>Декоратор (Decorator)</h3>
         <p class="no_mb"><span class="example--word">Цель:</span></p>
         <p>Динамическое добавление новых обязанностей объекту.</p>
         <p class="no_mb"><span class="example--word">Для чего используется:</span></p>
@@ -299,7 +298,7 @@
 
     <hr>
     <div id="facade">
-        <h4>Фасад (Facade)</h4>
+        <h3>Фасад (Facade)</h3>
         <p class="no_mb"><span class="example--word">Цель:</span></p>
         <p>Предоставить унифицированный интерфейс вместо нескольких интерфейсов подститсемы.</p>
         <p class="no_mb"><span class="example--word">Для чего используется:</span></p>
@@ -314,7 +313,7 @@
 
     <hr>
     <div id="flyweigtht">
-        <h4>Приспособленец (Flyweight)</h4>
+        <h3>Приспособленец (Flyweight)</h3>
         <p class="no_mb"><span class="example--word">Цель:</span></p>
         <p>Поддержка множества мелких объектов.</p>
         <p class="no_mb"><span class="example--word">Для чего используется:</span></p>
@@ -330,7 +329,7 @@
 
     <hr>
     <div id="proxy">
-        <h4>Заместитель (Proxy)</h4>
+        <h3>Заместитель (Proxy)</h3>
         <p class="no_mb"><span class="example--word">Цель:</span></p>
         <p>Для замещения другого объекта и контроля доступа к нему.</p>
         <p class="no_mb"><span class="example--word">Для чего используется:</span></p>
@@ -366,29 +365,237 @@
 <section class="container" id="bp">
     <h1>Поведенческие<wbr>(behavioral) паттерны</h1>
     <div class="tab-2 after-h1">
-        <p>Итератор</p>
-        <p>Посредник</p>
-        <p>Стратегия</p>
-        <p>Наблюдатель</p>
-        <p>Команда</p>
-        <p>Цепочка...</p>
-        <p>Снимок</p>
-        <p>Состояние</p>
-        <p>Шаблон</p>
-        <p>Посетитель</p>
+        <p><a href="#iterator">Итератор (Iterator)</a></p>
+        <p><a href="#mediator">Посредник (Mediator)</a></p>
+        <p><a href="#strategy">Стратегия (Strategy)</a></p>
+        <p><a href="#observer">Наблюдатель (Observer)</a></p>
+        <p><a href="#command">Команда (Command)</a></p>
+        <p><a href="#chain">Цепочка ответственности (Chain Of Responsibility)</a></p>
+        <p><a href="#state">Состояние (State)</a></p>
+        <p><a href="#template">Шаблонный метод (Template method)</a></p>
+        <p><a href="#visitor">Посетитель (Visitor)</a></p>
+        <p><a href="#iterator">Интерпретатор (Interpreter)</a></p>
+        <p><a href="#memento">Хранитель (Memento)</a></p>
+    </div>
+
+    <div id="chain">
+        <h3>Цепочка ответственности (Chain Of Responsibility)</h3>
+        <p class="no_mb"><span class="example--word">Цель:</span></p>
+        <p>Связывание объектов-получателей в цепочку и передача запроса по ней.</p>
+        <p class="no_mb"><span class="example--word">Для чего используется:</span></p>
+        <p>
+            Помогает избежать привязки отправителя запроса к его получателю, что даёт возможность обработать
+            данный запрос нескольким объектам.
+        </p>
+        <p class="no_mb"><span class="example--word">Пример использования:</span></p>
+        <ul>
+            <li>ослабление привязанности (объект не должен знать, кто именно обработает его запрос);</li>
+            <li>дополнительная гибкость при распределении обязанностей между объектами;</li>
+        </ul>
+        <a class="button button--head" href="#sp"></a>
     </div>
 
     <hr>
-    <div id="">
-        <h4></h4>
+    <div id="command">
+        <h3>Команда (Command)</h3>
         <p class="no_mb"><span class="example--word">Цель:</span></p>
-        <p></p>
+        <p>Инкапсулирование запроса в объект.</p>
         <p class="no_mb"><span class="example--word">Для чего используется:</span></p>
-        <p></p>
+        <p>
+            Чтобы задать параметры клиентов для обработки определённых запросов, создание очереди из этих запросов
+            или их контроля и поддержки отмены операций.
+        </p>
         <p class="no_mb"><span class="example--word">Пример использования:</span></p>
         <ul>
-            <li></li>
-            <li></li>
+            <li>параметризация объектов выполняемым дейтсвием;</li>
+            <li>определять запрос, ставить его в очередь или выполнять его в разное время.</li>
+        </ul>
+        <a class="button button--head" href="#sp"></a>
+    </div>
+
+    <hr>
+    <div id="interpreter">
+        <h3>Интерпретатор (Interpreter)</h3>
+        <p class="no_mb"><span class="example--word">Цель:</span></p>
+        <p>Определение представления грамматики объекта.</p>
+        <p class="no_mb"><span class="example--word">Для чего используется:</span></p>
+        <p>Используется для определения представления грамматики заданного языка и интерпретации его предложений.</p>
+        <p class="no_mb"><span class="example--word">Пример использования:</span></p>
+        <ul>
+            <li>упрощение иерархии классов с помощью интерпретирования.</li>
+        </ul>
+        <a class="button button--head" href="#sp"></a>
+    </div>
+
+    <hr>
+    <div id="iterator">
+        <h3>Итератор (Iterator)</h3>
+        <p class="no_mb"><span class="example--word">Цель:</span></p>
+        <p>Получение последовательного доступа ко всем элементам составного объекта.</p>
+        <p class="no_mb"><span class="example--word">Для чего используется:</span></p>
+        <p>
+            Для получения последовательного доступа ко всем элементам составного объекта, скрывая его
+            внутреннее представление.
+        </p>
+        <p class="no_mb"><span class="example--word">Пример использования:</span></p>
+        <ul>
+            <li>различные виды обхода составного объекта;</li>
+            <li>упрощённый доступ к составному объекту.</li>
+        </ul>
+        <a class="button button--head" href="#sp"></a>
+    </div>
+
+    <hr>
+    <div id="mediator">
+        <h3>Посредник (Mediator)</h3>
+        <p class="no_mb"><span class="example--word">Цель:</span></p>
+        <p>Инкапсуляция способа взаимодейтсвия множества объектов.</p>
+        <p class="no_mb"><span class="example--word">Для чего используется:</span></p>
+        <p>
+            Для определения объекта, который инкапсулирует способ взаимодействия множества объектов и обеспечения
+            слабой связи между этими объектами.
+        </p>
+        <p class="no_mb"><span class="example--word">Пример использования:</span></p>
+        <ul>
+            <li>связи между объектами сложны и чётко определены;</li>
+            <li>нельзя повторно использовать объект, так как он обменивается информацией с другими объектами;</li>
+            <li>
+                поведение, распределённое между несколькими классами должно легко настраиваться без создания
+                подклассов.
+            </li>
+        </ul>
+        <a class="button button--head" href="#sp"></a>
+    </div>
+
+    <hr>
+    <div id="memento">
+        <h3>Хранитель (Memento)</h3>
+        <p class="no_mb"><span class="example--word">Цель:</span></p>
+        <p>
+            Сохранить внутренне состояние объекта за его пределы.
+        </p>
+        <p class="no_mb"><span class="example--word">Для чего используется:</span></p>
+        <p>
+            Фиксирование внутреннего состояния объекта за его пределами не нарушая инкапсуляцию
+            и восстановления объекта в случае необходимости.
+        </p>
+        <p class="no_mb"><span class="example--word">Пример использования:</span></p>
+        <ul>
+            <li>
+                необходимо сохранить текущее состояние объекта или его части и восстановление в будущем, но
+                прямое получение состояния раскрывает детали реализации и нарушает инкапсуляцию объекта.
+            </li>
+        </ul>
+        <a class="button button--head" href="#sp"></a>
+    </div>
+
+    <hr>
+    <div id="observer">
+        <h3>Наблюдатель (Observer)</h3>
+        <p class="no_mb"><span class="example--word">Цель:</span></p>
+        <p>Определение зависимости "один ко многим" между объектами.</p>
+        <p class="no_mb"><span class="example--word">Для чего используется:</span></p>
+        <p>
+            Определение зависимости "один ко многим" между объектами таким образом, что при
+            изменении состояния одного объекта все зависящие от него объекты были уведомлены
+            об этом и обновились.
+        </p>
+        <p class="no_mb"><span class="example--word">Пример использования:</span></p>
+        <ul>
+            <li>
+                когда у модели имеются два аспекта, один из которых зависит от другого. Инкапсулирование
+                этих аспектов в разные классы позволяют использовать их независимо друг от друга;
+            </li>
+            <li>когда один объект должен оповещать другие и не делать предположений об этих объектах;</li>
+            <li>ослабление связи между объектами.</li>
+        </ul>
+        <a class="button button--head" href="#sp"></a>
+    </div>
+
+    <hr>
+    <div id="state">
+        <h3>Состояние (State)</h3>
+        <p class="no_mb"><span class="example--word">Цель:</span></p>
+        <p>Управление поведением объекта в зависимости от состояния.</p>
+        <p class="no_mb"><span class="example--word">Для чего используется:</span></p>
+        <p>Позволяет нам управлять поведением объекта в зависимости от внутреннего состояние объекта.</p>
+        <p class="no_mb"><span class="example--word">Пример использования:</span></p>
+        <ul>
+            <li>поведение объекта зависит от его состояние и изменяется во время выполнения;</li>
+            <li>
+                когда встречается большое количество условных операторов, когда выбор ветви
+                зависит от состояния объекта.
+            </li>
+        </ul>
+        <a class="button button--head" href="#sp"></a>
+    </div>
+
+    <hr>
+    <div id="strategy">
+        <h3>Стратегия (Strategy)</h3>
+        <p class="no_mb"><span class="example--word">Цель:</span></p>
+        <p>Взаимозаменяемость семейства классов.</p>
+        <p class="no_mb"><span class="example--word">Для чего используется:</span></p>
+        <p>
+            Определение семейства классов, инкапсулирование каждого из них и организация
+            их взаимозаменяемости.
+        </p>
+        <p class="no_mb"><span class="example--word">Пример использования:</span></p>
+        <ul>
+            <li>есть несколько родственных классов, которые отличаются поведением;</li>
+            <li>необходимо иметь несколько вариантов поведения;</li>
+            <li>в классе есть данные, о которых не должен знать клиент;</li>
+            <li>с помощью условных операторов в классе определено большое количество возможных поведений.</li>
+        </ul>
+        <a class="button button--head" href="#sp"></a>
+    </div>
+
+    <hr>
+    <div id="template">
+        <h3>Шаблонный метод (Template method)</h3>
+        <p class="no_mb"><span class="example--word">Цель:</span></p>
+        <p>Определение основы класса и создание возможности подклассам переопределять его части.</p>
+        <p class="no_mb"><span class="example--word">Для чего используется:</span></p>
+        <p>
+            Определяет основу класса и позволяет подклассам переопределять некоторые его части
+            не изменяя его структуру в целом.
+        </p>
+        <p class="no_mb"><span class="example--word">Пример использования:</span></p>
+        <ul>
+            <li>
+                однократное использование различных частей класса, оставляя реализацию  изменяющегося
+                поведения на усмотрение подклассов;
+            </li>
+            <li>вычленение и локализация общего для всех подклассов поведения в родительском;</li>
+            <li>управление расширениями подклассов.</li>
+        </ul>
+        <a class="button button--head" href="#sp"></a>
+    </div>
+
+    <hr>
+    <div id="visitor">
+        <h3>Посетитель (Visitor)</h3>
+        <p class="no_mb"><span class="example--word">Цель:</span></p>
+        <p>Описание действий, которые выполняются с каждым объектом в некоторой структуре.</p>
+        <p class="no_mb"><span class="example--word">Для чего используется:</span></p>
+        <p>
+            Описание операций, которые выполняются с каждым объектом из некоторой структуры.
+            Позволяет определить новую операцию без изменения классов этих объектов.
+        </p>
+        <p class="no_mb"><span class="example--word">Пример использования:</span></p>
+        <ul>
+            <li>
+                в структуре присутствуют объекты многих классов с различными интерфейсами и нам
+                необходимо выполнить над ними операции, которые зависят от конкретных классов;
+            </li>
+            <li>
+                необходимо выполнять не связанные между собой операции над объектами, которые
+                входят в состав структуры и мы не хотим добавлять эти операции в классы;
+            </li>
+            <li>
+                классы, которые устанавливают структуру объектов редко изменяются, но часто
+                добавляются новые операции над этой структурой.
+            </li>
         </ul>
         <a class="button button--head" href="#sp"></a>
     </div>
