@@ -396,6 +396,11 @@ img {
     overflow: auto;
 }
 
+.first-line-to-left {
+    text-indent: -30px;
+    padding-left: 40px
+}
+
 td .code {
     word-break: break-word;
 }

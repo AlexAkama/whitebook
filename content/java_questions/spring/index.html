@@ -2990,15 +2990,194 @@
     </div>
 
     <hr>
-    <div id="listeners">
-        <h3></h3>
+    <div id="interceptors">
+        <h3>Interceptor</h3>
+        <p>
+            Это интерфейс из пакета org.aopalliance.intercept, предназначенный для аспектно-ориентированного
+            программирования.
+        </p>
+        <p>
+            В Spring, когда запрос отправляется в Controller, перед тем как он в него попадёт, он может пройти через
+            перехватчики Interceptor (0 или более). Это одна из реализаций АОП в Spring. Вы можете использовать
+            Interceptor для выполнения таких задач, как запись в Log, добавление или обновление конфигурации перед тем,
+            как запрос обработается Controller-ом.
+        </p>
+        <p>
+            Стек перехватчиков: он предназначен для связывания перехватчиков в цепочку в определенном порядке. При
+            доступе к перехваченному методу или полю перехватчик в цепочке перехватчиков вызывается в том порядке, в
+            котором он был определен.
+        </p>
+        <div class="image-box">
+            <img class="image" src="./img/interseptor.png" alt="interceptors">
+        </div>
+        <p>
+            Мы можем использовать Interceptor-ы для выполнения логики до попадания в контроллер, после обработки в
+            контроллере, а также после формирования представления. Также можем запретить выполнение метода контроллера.
+            Мы можем указать любое количество перехватчиков.
+        </p>
+        <p>
+            Перехватчики работают с <span class="example--word">HandlerMapping</span> и поэтому должны реализовывать
+            <span class="example--word">интерфейс HandlerInterceptor</span>
+            или <span class="example--word">наследоваться</span> от готового класса
+            <span class="example--word">HandlerInterceptorAdapter</span>.
+        </p>
+        <p>
+            В случае реализации HandlerInterceptor нам нужно
+            переопределить 3 метода, а в случае HandlerInterceptor, только необходимые нам:
+        </p>
+        <ul class="sparse-li">
+            <li>
+                <div class="code first-line-to-left no_mb">
+                    public boolean preHandle<wbr>
+                    (HttpServletRequest&nbsp;request,<wbr> HttpServletResponse&nbsp;response,<wbr> Object&nbsp;handler)
+                </div>
+                <p>
+                    Вызывается после того, как HandlerMapping определил соответствующий контроллер, но до того, как
+                    HandlerAdapter вызовет метод контроллера. С помощью этого метода каждый перехватчик может решить,
+                    прервать цепочку выполнения или направить запрос на испольнение дальше по цепочке перехватчиков до
+                    метода контроллера. Если этот метод возвращает true, то запрос отправляется следующему перехватчику
+                    или в контроллер. Если метод возвращает false, то исполнение запроса прекращается, обычно отправляя
+                    ошибку HTTP или записывая собственный ответ в response.
+                </p>
+            </li>
+            <li>
+                <div class="code first-line-to-left no_mb">
+                    public void postHandle<wbr>(HttpServletRequest&nbsp;request,<wbr> HttpServletResponse&nbsp;response,
+                    <wbr> Object&nbsp;handler,<wbr> ModelAndView&nbsp;modelAndView)
+                </div>
+                <p>
+                    Отработает после контроллера, но перед формированием представления. Мы можем использовать этот метод
+                    для добавления дополнительных атрибутов в ModelAndView или для определения времени, затрачиваемого
+                    методом-обработчиком на обработку запроса клиента. Вы можете добавить больше объектов модели в
+                    представление, но вы не можете изменить HttpServletResponse, так как он уже зафиксирован.
+                </p>
+            </li>
+            <li>
+                <div class="code first-line-to-left no_mb">
+                    public void afterCompletion<wbr>(HttpServletRequest&nbsp;request,<wbr> HttpServletResponse&nbsp;response,
+                    <wbr> Object&nbsp;handler,<wbr> Exception&nbsp;ex)
+                </div>
+                <p>
+                    Oтработает после формирования представления. Вызывается только в том случае, если метод preHandle
+                    этого перехватчика успешно завершен и вернул true!
+                </p>
+            </li>
+        </ul>
+        <div class="image-box mb20">
+            <img class="image" src="./img/handler_interseptor.png" alt="HandlerInterceptor">
+        </div>
+        <p>
+            Следует знать, что HandlerInterceptor связан с бином DefaultAnnotationHandlerMapping, который
+            отвечает за применение перехватчиков к любому классу, помеченному аннотацией @Controller.
+        </p>
+        <p>
+            Чтобы добавить наши перехватчики в конфигурацию Spring, нам нужно переопределить метод
+            addInterceptors() внутри класса, который реализует WebMvcConfigurer:
+        </p>
+        <div class="code">
+            <p><an>@Override</an></p>
+            <p class="mb20">public void addInterceptors<wbr>(InterceptorRegistry&nbsp;registry) {</p>
+            <p class="tab-1">// LogInterceptor applies to all URLs.</p>
+            <p class="tab-1 mb20">registry<wbr>.addInterceptor(new LogInterceptor());</p>
+            <p class="tab-1">// This interceptor applies to URL /admin/oldLogin.</p>
+            <p class="tab-1">// Using OldURLInterceptor to redirect to new URL.</p>
+            <p class="tab-1 mb20">
+                registry<wbr>.addInterceptor(new&nbsp;OldLoginInterceptor())<wbr>
+                .addPathPatterns("/admin/oldLogin");
+            </p>
+            <p class="tab-1">// This interceptor applies to URLs like /admin/*</p>
+            <p class="tab-1">// Exclude /admin/oldLogin</p>
+            <p class="tab-1 mb20">
+                registry<wbr>.addInterceptor(new&nbsp;AdminInterceptor())<wbr>.addPathPatterns("/admin/*")<wbr>
+                .excludePathPatterns("/admin/oldLogin");
+            </p>
+            <p>}</p>
+        </div>
+
+        <div id="filter_vs_interceptor">
+            <h4>Filter vs. Interceptor</h4>
+            <ul>
+                <li>Перехватчик основан на механизме Reflection, а фильтр основан на обратном вызове функции.</li>
+                <li>Фильтр зависит от контейнера сервлета, тогда как перехватчик не зависит от него.</li>
+                <li>
+                    Перехватчики могут работать только с запросами к контроллерам, в то время как фильтры могут работать
+                    почти со всеми запросами (например, js, .css и т.д.).
+                </li>
+                <li>
+                    Перехватчики в отличии от фильтров могут обращаться к объектам в контейнере Spring, что даёт им
+                    более изощренный функционал.
+                </li>
+            </ul>
+
+            <p class="no_mb">Порядок работы:</p>
+            <ol>
+                <li>Фильтры до;</li>
+                <li>Перехватчики до;</li>
+                <li>Метод контроллера;</li>
+                <li>Перехватчики после;</li>
+                <li>Фильтры после.</li>
+            </ol>
+            <p>
+                HandlerInterceptor в основном похож на Servlet Filter, но в отличие от последнего он просто позволяет
+                настраивать предварительную обработку с возможностью запретить выполнение самого обработчика и
+                настраивать постобработку.
+            </p>
+            <p>
+                Согласно документации Spring, фильтры более мощные, например, они позволяют обмениваться объектами
+                запроса и ответа, которые передаются по цепочке. Это означает, что фильтры работают больше в области
+                запроса/ответа, в то время как HandlerInterceptors являются бинами и могут обращаться к другим
+                компонентам в приложении.
+            </p>
+            <p class="main-mind">
+                Фильтры настраивается в web.xml, а HandlerInterceptor в контексте приложения.
+            </p>
+        </div>
 
         <a class="button button--head" href="#q29"></a>
     </div>
 
     <hr>
-    <div id="interceptors">
-        <h3></h3>
+    <div id="listeners">
+        <h3>Java Listener</h3>
+        <p>
+            <span class="example--word">Listener(Слушатель)</span>
+            - это класс, который реализует интерфейс javax.servlet.ServletContextListener.
+        </p>
+        <p class="main-mind">
+            Он инициализируется только один раз при запуске веб-приложения и уничтожается при остановке веб-приложения.
+        </p>
+        <p>
+            Слушатель сидит и ждет,
+            когда произойдет указанное событие, затем «перехватывает» событие и запускает собственное событие. Например,
+            мы хотим инициализировать пул соединений с базой данных до запуска веб-приложения. ServletContextListener -
+            это то, что нам нужно, он будет запускать наш код до запуска веб-приложения.
+        </p>
+        <p class="main-mind">
+            Все ServletContextListeners уведомляются об инициализации контекста до инициализации любых фильтров или
+            сервлетов в веб-приложении.
+        </p>
+        <p class="main-mind">
+            Все ServletContextListeners уведомляются об уничтожении контекста после того, как все сервлеты и фильтры
+            уничтожены.
+        </p>
+        <p>
+            Чтобы создать свой Listener нам достаточно создать класс, имплементирующий интерфейс ServletContextListener
+            и поставить над ним аннотацию @WebListener:
+        </p>
+        <div class="code">
+            <p><an>@WebListener</an></p>
+            <p class="mb20">public class MyAppServletContextListener implements ServletContextListener {</p>
+            <p class="tab-1">//Run this before web application is started</p>
+            <p class="tab-1"><an>@Override</an></p>
+            <p class="tab-1">public void contextInitialized(ServletContextEvent&nbsp;arg0) {</p>
+            <p class="tab-2">System.out.println("ServletContextListener started");</p>
+            <p class="tab-1 mb20">}</p>
+            <p class="tab-1"><an> @Override</an></p>
+            <p class="tab-1">public void contextDestroyed<wbr>(ServletContextEvent&nbsp;arg0) {</p>
+            <p class="tab-2">System.out.println("ServletContextListener destroyed");</p>
+            <p class="tab-1 mb20">}</p>
+            <p>}</p>
+        </div>
 
         <a class="button button--head" href="#q29"></a>
     </div>
