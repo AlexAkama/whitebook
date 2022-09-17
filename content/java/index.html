@@ -20,7 +20,7 @@
         <li><a href="./stream">Stream</a></li>
         <li><a href="#json">JSON</a></li>
         <li><a href="#optional">Optional</a></li>
-        <li><a href="#example">Базовые задачки</a></li>
+        <li><a href="#example">Базовые кейсы</a></li>
         <li><a href="#null">Почему нельзя возвращать NULL?</a></li>
         <li><a href="#question">Интересные вопросы</a></li>
     </ul>
@@ -240,8 +240,30 @@
 </section>
 
 <section class="container" id="example">
-    <h1 class="no_mb">Базовые задачки</h1>
-    <div class="after-h1">и их решения...</div>
+    <h1 class="no_mb">Базовые кейсы</h1>
+    <div class="after-h1">на анализ кода</div>
+    <div id="instanceof">
+        <h3>instanceof</h3>
+        <p><span class="bold">Вопрос:</span> Что будет выведено в консоль?</p>
+        <div class="code">
+            <p>public class Loader {</p>
+            <p class="tab-1">public static void main(String[] args) {</p>
+            <p class="tab-2">B b = new C();</p>
+            <p class="tab-2">A a = b;</p>
+            <p class="tab-2">if (a instanceof A) System.out.println("A");</p>
+            <p class="tab-2">if (a instanceof B) System.out.println("B");</p>
+            <p class="tab-2">if (a instanceof C) System.out.println("C");</p>
+            <p class="tab-2">if (a instanceof D) System.out.println("D");</p>
+            <p class="tab-1">}</p>
+            <p class="mb20">}</p>
+            <p>class A {}</p>
+            <p>class B extends A {}</p>
+            <p>class C extends B {}</p>
+            <p>class D extends C {}</p>
+        </div>
+        <p><span class="bold">Ответ:</span> A B C</p>
+        <p>Если непонятно, то читайте про instanceof.</p>
+    </div>
 </section>
 
 <section class="container" id="question">
@@ -254,7 +276,7 @@
 </section>
 
 <footer>
-        <div class="footer__text"><a href="https://t.me/java40plus" title="Мой блог в телеграм">
+    <div class="footer__text"><a href="https://t.me/java40plus" title="Мой блог в телеграм">
         Алексей Маслов, 2021-2022
     </a></div>
 </footer>
