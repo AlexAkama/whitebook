@@ -39,6 +39,11 @@ footer {
     font-size: 14px;
 }
 
+.footer__text a,
+.footer__text a:hover {
+    text-decoration: inherit;
+}
+
 h1 {
     display: block;
     padding: 0;
