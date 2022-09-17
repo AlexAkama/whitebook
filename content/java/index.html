@@ -264,6 +264,51 @@
         <p><span class="bold">Ответ:</span> A B C</p>
         <p>Если непонятно, то читайте про instanceof.</p>
     </div>
+    <hr>
+    <div id="overloading">
+        <h3>Перегрузка методов (method overloading)</h3>
+        <p><span class="bold">Вопрос:</span> Что будет выведено в консоль?</p>
+        <div class="code">
+            <p class="mb10">class SuperBase {</p>
+            <p class="tab-1 mb10">public int i = 3;</p>
+            <p class="tab-1">public void foo(Object o) {</p>
+            <p class="tab-2">System.out.println("Object " + i);</p>
+            <p class="tab-1 mb10">}</p>
+            <p class="tab-1">public void foo(String s) {</p>
+            <p class="tab-2">System.out.println("String " + i);</p>
+            <p class="tab-1 mb10">}</p>
+            <p class="mb20">}</p>
+            <p class="mb10">class Base extends SuperBase {</p>
+            <p class="tab-1">public Base() {</p>
+            <p class="tab-2">i = 5;</p>
+            <p class="tab-1 mb10">}</p>
+            <p class="tab-1">public static void main(String[] args) {</p>
+            <p class="tab-2">SuperBase sb = new Base();</p>
+            <p class="tab-2">Object o = "";</p>
+            <p class="tab-2">sb.foo(o);</p>
+            <p class="tab-2">sb.foo("");</p>
+            <p class="tab-1 mb10">}</p>
+            <p>}</p>
+        </div>
+        <p><span class="bold">Ответ:</span> Object 5 String 5</p>
+    </div>
+    <hr>
+    <div id="inheritance">
+        <h3>Inheritance (наследование)</h3>
+        <p><span class="bold">Вопрос:</span> Каким будет результат кода?</p>
+        <div class="code">
+            <p>class Parent {}</p>
+            <p>class DeriveOne extends Parent {}</p>
+            <p class="mb10">class DeriveTwo extends Parent {}</p>
+            <p>Parent p = new Parent();</p>
+            <p>DeriveOne d1 = new DeriveOne();</p>
+            <p>DeriveTwo d2 = new DeriveTwo();</p>
+            <p>d1 = (DeriveOne) d2;</p>
+        </div>
+        <p class="no_mb"><span class="bold">Ответ:</span> Ошибка компиляции.</p>
+        <p class="example">Компилятору сразу понятно, что невозможно кастировать d2 к классу DeriveOne,
+            т.к. d2 не является наследником DeriveOne</p>
+    </div>
 </section>
 
 <section class="container" id="question">
