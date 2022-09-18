@@ -607,7 +607,6 @@ an {
     max-height: 0;
     overflow: hidden;
     transition: max-height .3s ease;
-    background-color: lightgoldenrodyellow;
 }
 
 .spoiler p {
@@ -618,9 +617,11 @@ an {
 .spoiler.active {
     border: #00a82d solid 1px;
     padding: 0 5px 5px 0;
+    background-color: lightgoldenrodyellow;
 }
 
-.spoiler-button {
+.spoiler-button,
+.submenu-button {
     position: relative;
     display: inline-block;
     padding-right: 25px;
@@ -655,6 +656,102 @@ an {
 
 .spoiler-button.active:after {
     transform: rotate(40deg);
+}
+
+.submenu-button:after,
+.submenu-button:before {
+    content: '';
+    width: 15px;
+    height: 2px;
+    background-color: #00a82d;
+    position: absolute;
+    top: 14px;
+    transition: all 0.3s ease 0s;
+}
+
+.submenu-button:before {
+    transform: rotate(90deg);
+    right: 10px;
+}
+
+.submenu-button.active:before {
+    transform: rotate(0deg);
+    right: 10px;
+}
+
+.submenu-button.active:after {
+    transform: rotate(-90deg);
+    width: 0;
+    right: 10px;
+}
+
+.submenu {
+    display: none;
+}
+
+.submenu.active {
+    display: inline-block;
+}
+
+.submenu-total {
+    font-size: small;
+    color: #00a82d;
+    cursor: pointer;
+}
+
+.search-box {
+    display: inline-block;
+    position: relative;
+    width: 30%;
+    min-width: 320px;
+}
+
+.search-box:after {
+    content: '';
+    position: absolute;
+    right: 4px;
+    top: 4px;
+    width: 24px;
+    height: 24px;
+    display: block;
+    background-position: center;
+    background-size: cover;
+    background-image: url("img/search-32.png");
+}
+
+.search-box.icon-cancel:after {
+    background-image: url("img/cancel-32.png");
+}
+
+input:focus {
+    box-shadow: 0 0 0 2px #00a82d;
+    border: 1px solid #737373;
+}
+
+#search {
+    width: 100%;
+    outline: 0;
+    border: 1px solid #737373;
+    border-radius: 3px;
+    padding: 3px 32px 3px 10px;
+    font-size: 18px;
+}
+
+#search::placeholder {
+    color: transparent;
+}
+
+#search:not(:placeholder-shown) + #search-label {
+    top: 5px;
+    font-size: 0;
+}
+
+#search-label {
+    transition: all 0.3s ease-in-out;
+    position: absolute;
+    left: 10px;
+    top: 5px;
+    color: #737373;
 }
 
 @media screen and (max-width: 680px) {
