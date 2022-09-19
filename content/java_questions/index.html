@@ -212,9 +212,177 @@
                 </li>
             </ul>
         </li>
-        <li><a href="./multithreading/">Multithreading</a></li>
-        <li><a href="./spring/">Spring</a></li>
-        <li><a href="./patterns/">Patterns</a></li>
+        <li>
+            <p class="mb10">
+                <a href="./multithreading/">Multithreading</a>
+                <span class="submenu-button"></span>
+            </p>
+            <ol class="menu submenu no-display">
+                <li><a href="./multithreading/#q1">Чем процесс отличается от потока?</a></li>
+                <li><a href="./multithreading/#q2">Thread и Runnable</a></li>
+                <li><a href="./multithreading/#q3">Монитор и synchronized</a></li>
+                <li><a href="./multithreading/#q4">Синхронизация</a></li>
+                <li><a href="./multithreading/#q5">Методы wait(), notify() и notifyAll()</a></li>
+                <li><a href="./multithreading/#q6">Состояния потока</a></li>
+                <li><a href="./multithreading/#q7">Семафор</a></li>
+                <li><a href="./multithreading/#q8">Volatile</a></li>
+                <li><a href="./multithreading/#q9">Типы данных Atomic</a></li>
+                <li><a href="./multithreading/#q10">Демон потоки</a></li>
+                <li><a href="./multithreading/#q11">Приоритет потока</a></li>
+                <li><a href="./multithreading/#q12">Метод Thread.join()</a></li>
+                <li><a href="./multithreading/#q13">Отличия yield() и sleep()</a></li>
+                <li><a href="./multithreading/#q14">Остановка потока</a></li>
+                <li><a href="./multithreading/#q15">Runnable и Callable</a></li>
+                <li><a href="./multithreading/#q16">FutureTask</a></li>
+                <li><a href="./multithreading/#q17">Deadlock</a></li>
+                <li><a href="./multithreading/#q18">Levelock</a></li>
+                <li><a href="./multithreading/#q19">Race Condition</a></li>
+                <li><a href="./multithreading/#q20">Фреймворк Fork/Join</a></li>
+                <li><a href="./multithreading/#q21">Concurrent Collections (кратко)</a></li>
+                <li><a href="./multithreading/#q22">Stream API & ForkJoinPool</a></li>
+            </ol>
+        </li>
+        <li>
+            <p class="mb10">
+                <a href="./spring/">Spring</a>
+                <span class="submenu-button"></span>
+            </p>
+            <ol class="menu submenu no-display">
+                <li>
+                    <p class="mb10">
+                        <a href="./spring/#q1">Инверсия контроля (IoC) и внедрение зависимостей (DI)</a>
+                        <span class="submenu-button"></span>
+                    </p>
+                    <ol class="menu submenu no-display">
+                        <li><a href="./spring/#q1_ioc">Inversion of Control (IoC)</a></li>
+                        <li><a href=./spring/"#q1_di">Dependency Injection (DI)</a></li>
+                    </ol>
+                </li>
+                <li><a href="./spring/#q2">IoC Container</a></li>
+                <li><a href="./spring/#q3">Bean в Spring</a></li>
+                <li><a href="./spring/#q4">Аннотация @Bean</a></li>
+                <li><a href="./spring/#q5">Аннотация @Component</a></li>
+                <li><a href="./spring/#q6">Отличия @Bean и @Component</a></li>
+                <li><a href="./spring/#q7">Отличия @Service и @Repository</a></li>
+                <li><a href="./spring/#q8">Аннотация @Autowired</a></li>
+                <li><a href="./spring/#q9">Аннотация @Resource</a></li>
+                <li><a href="./spring/#q10">Аннотация @Inject</a></li>
+                <li><a href="./spring/#q11">Аннотация @Lookup</a></li>
+                <li><a href="./spring/#q12">Можно ли вставить бин в статическое поле?</a></li>
+                <li><a href="./spring/#q13">Аннотации @Primary и @Qualifier</a></li>
+                <li>
+                    <p class="mb10">
+                        <a href="./spring/#q14">Как заинжектить примитив?</a>
+                        <span class="submenu-button"></span>
+                    </p>
+                    <ol class="menu submenu no-display">
+                        <li><a href="./spring/#q14_value">@Value</a></li>
+                        <li><a href="./spring/#q14_spel">@Value with SpEL</a></li>
+                        <li><a href="./spring/#q14_map">@Value with Map</a></li>
+                        <li><a href="./spring/#q14_constructor">@Value with Constructor</a></li>
+                        <li><a href="./spring/#q14_setter">@Value with Setter</a></li>
+                    </ol>
+                </li>
+                <li>
+                    <p class="mb10">
+                        <a href="./spring/#q15">Как заинжектить коллекцию?</a>
+                        <span class="submenu-button"></span>
+                    </p>
+                    <ol class="menu submenu no-display">
+                        <li><a href="./spring/#q15_array">Array Injection</a></li>
+                        <li><a href="./spring/#q15_collection">Collections Injection</a></li>
+                        <li><a href="./spring/#q15_beans">Коллекции бинов одного типа</a></li>
+                        <li><a href="./spring/#q15_qualifier">Использование @Qualifier</a></li>
+                        <li><a href="./spring/#q15_sort">Упорядочивание элементов массивов/списков</a></li>
+                    </ol>
+                </li>
+                <li><a href="./spring/#q16">Аннотация @Conditional</a></li>
+                <li><a href="./spring/#q17">Аннотация @ComponentScan</a></li>
+                <li><a href="./spring/#q18">Аннотация @Profile</a></li>
+                <li>
+                    <p class="mb10">
+                        <a href="./spring/#q19">ApplicationContext и BeanFactory</a>
+                        <span class="submenu-button"></span>
+                    </p>
+                    <ol class="menu submenu no-display">
+                        <li><a href="./spring/#q19_bf">BeanFactory</a></li>
+                        <li><a href="./spring/#q19_ac">ApplicationContext</a></li>
+                        <li><a href="./spring/#q19_eq">ApplicationContext vs. BeanFactory</a></li>
+                    </ol>
+                </li>
+                <li>
+                    <p class="mb10">
+                        <a href="./spring/#q20">Жизненный цикл бина, аннотации @PostConstruct и @PreDestroy</a>
+                        <span class="submenu-button"></span>
+                    </p>
+                    <ol class="menu submenu no-display">
+                        <li><a href="./spring/#q20_beans">Жизненный цикл бинов</a></li>
+                        <li><a href="./spring/#q20_predestroy">@PreDestroy</a></li>
+                        <li><a href="./spring/#q20_postconstuct">@PostConstruct</a></li>
+                    </ol>
+                </li>
+                <li>
+                    <p class="mb10">
+                        <a href="./spring/#q21">Scope бинов</a>
+                        <span class="submenu-button"></span>
+                    </p>
+                    <ol class="menu submenu no-display">
+                        <li><a href="./spring/#q21_singleton">Singleton</a></li>
+                        <li><a href="./spring/#q21_prototype">Prototype</a></li>
+                        <li><a href="./spring/#q21_request">Request</a></li>
+                        <li><a href="./spring/#q21_session">Session</a></li>
+                        <li><a href="./spring/#q21_application">Application</a></li>
+                        <li><a href="./spring/#q21_websocket">Websocket</a></li>
+                        <li><a href="./spring/#q21_custom">Custom thread scope</a></li>
+                    </ol>
+                </li>
+                <li><a href="./spring/#q22">АОП в Spring</a></li>
+                <li><a href="./spring/#q23">Транзакции и аннотация @Transactional</a></li>
+                <li><a href="./spring/#q24">Паттерн MVC в Spring</a></li>
+                <li><a href="./spring/#q25">ViewResolver</a></li>
+                <li><a href="./spring/#q26">Паттерн Front Controller в Spring</a></li>
+                <li>
+                    <p class="mb10">
+                        <a href="./spring/#q27">Отличия Model, ModelMap и ModelAndView</a>
+                        <span class="submenu-button"></span>
+                    </p>
+                    <ol class="menu submenu no-display">
+                        <li><a href="./spring/#model">Model</a></li>
+                        <li><a href="./spring/#model_map">ModelMap</a></li>
+                        <li><a href="./spring/#model_view">ModelAndView</a></li>
+                    </ol>
+                </li>
+                <li>
+                    <p class="mb10">
+                        <a href="./spring/#q28">Аннотации @Controller и @RestController</a>
+                        <span class="submenu-button"></span>
+                    </p>
+                    <ol class="menu submenu no-display">
+                        <li><a href="./spring/#controller">@Controller</a></li>
+                        <li><a href="./spring/#rest_controller">@RestController</a></li>
+                        <li><a href="./spring/#response_entity">ResponseEntity</a></li>
+                    </ol>
+                </li>
+                <li><a href="./spring/#q29">Filters, Listeners и Interceptors</a></li>
+                <li><a href="./spring/#q30">Передача параметров в GET-запросе</a></li>
+                <li><a href="./spring/#q31">Spring Security</a></li>
+                <li><a href="./spring/#q32">Spring Boot</a></li>
+                <li><a href="./spring/#q33">Нововведения Spring 5</a></li>
+                <li><a href="./spring/#q34">Servlet</a></li>
+            </ol>
+        </li>
+        <li>
+            <p class="mb10">
+                <a href="./patterns/">Patterns</a>
+                <span class="submenu-button"></span>
+            </p>
+            <ul class="menu submenu no-display">
+                <li><a href="./patterns/#intro">Введение</a></li>
+                <li><a href="./patterns/#cp">Порождающие(creational) паттерны</a></li>
+                <li><a href="./patterns/#sp">Структурные(structural) паттерны</a></li>
+                <li><a href="./patterns/#bp">Поведенческие(behavioral) паттерны</a></li>
+            </ul>
+        </li>
     </ul>
 </section>
 
