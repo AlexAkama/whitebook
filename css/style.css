@@ -231,6 +231,10 @@ img {
     overflow: auto;
 }
 
+.no-display {
+    display: none !important;
+}
+
 .update-time {
     right: 10px;
     top: 0;
@@ -683,14 +687,6 @@ an {
     transform: rotate(-90deg);
     width: 0;
     right: 10px;
-}
-
-.submenu {
-    display: none;
-}
-
-.submenu.active {
-    display: inline-block;
 }
 
 .submenu-total {
