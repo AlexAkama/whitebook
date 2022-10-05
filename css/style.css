@@ -784,7 +784,7 @@ input:focus {
     content: '';
     position: absolute;
     width: 10px;
-    height: 90%;
+    height: 50%;
     left: 0;
     top: 50%;
     border-top: 2px solid #00a82d;
@@ -798,6 +798,7 @@ input:focus {
     width: 2px;
     height: 100%;
     left: 0;
+    top: 0;
     background: #00a82d;
 }
 
@@ -806,7 +807,7 @@ input:focus {
     position: absolute;
     width: 10px;
     height: 2px;
-    top: 49%;
+    top: 50%;
     left: 0;
     background: #00a82d;
 }
@@ -815,7 +816,7 @@ input:focus {
     content: '';
     position: absolute;
     width: 10px;
-    height: 90%;
+    height: 50%;
     left: 0;
     bottom: 50%;
     border-left: 2px solid #00a82d;
