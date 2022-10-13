@@ -996,7 +996,7 @@
 </section>
 
 <section class="container" id="chapter07">
-    <h1>JOIN</h1>
+    <h1><a href="#">JOIN</a></h1>
     <div class="after-h1">
 
     </div>
@@ -1004,13 +1004,13 @@
     <div class="horizontal-schema horizontal-schema--design">
         <div>JOIN</div>
         <div>
-            <div>INNER JOIN (NATURAL JOIN)</div>
+            <div><a href="#join_inner">INNER JOIN (NATURAL JOIN)</a></div>
             <div>OUTER JOIN</div>
             <div>CROSS JOIN</div>
         </div>
     </div>
     <p class="no_mb">еще</p>
-    <div class="horizontal-schema horizontal-schema--design">
+    <div class="horizontal-schema horizontal-schema--design" id="join">
         <div>JOIN</div>
         <div>
             <div>EQUIJOIN</div>
@@ -1018,8 +1018,57 @@
         </div>
     </div>
     <p class="no_mb">и отдельно</p>
-    <div class="horizontal-schema horizontal-schema--design">
+    <div class="horizontal-schema horizontal-schema--design mb20">
         <div>ORACLE JOIN</div>
+    </div>
+
+    <hr>
+    <div id="join_inner">
+        <h3><a href="#chapter07">INNER JOIN (NATURAL JOIN)</a></h3>
+        <h4 class="no_mb">Типы INNER JOIN:</h4>
+        <div class="horizontal-schema horizontal-schema--design">
+            <div>INNER JOIN (NATURAL&nbsp;JOIN)</div>
+            <div>
+                <div><a href="#join_natural">NATURAL JOIN</a></div>
+                <div><a href="#join_using">USING</a></div>
+                <div><a href="#join_on">ON</a></div>
+            </div>
+        </div>
+        <div id="join_natural">
+            <h4><a href="#join_inner">NATURAL JOIN</a></h4>
+            <p>Таблица к, которой присоединяем называется
+                <span class="example--word">source</span>,
+                та в которой ищем -
+                <span class="example--word">target</span>.
+            </p>
+            <p class="no_mb">Объединяет по столбцам с одинаковыми именами, т.е. не дает выбрать критерий.</p>
+            <p class="example no_mb">Если несколько столбцов, то объединение пойдет по всем.</p>
+            <p class="example">Если нет столбцов с одинаковыми именами произойдет CROSS JOIN.</p>
+            <p class="no_mb">При соединении поиск проходит по всем строкам таргета, а не останавливается когда
+                совпало.</p>
+            <p>Поэтому может быть несколько совпадений!!!</p>
+            <p>Если в таргете не найдено совпадения, но в результат строка не попадает.</p>
+            <div class="code bold no_mb">
+                SELECT column(s) FROM table_1 NATURAL JOIN table_2;
+            </div>
+            <p class="example">Если нужно в селект листе указать столбец, по которому происходит объединение,
+                то он указывается без имени таблицы или алиса таблицы (иначе ошибка)</p>
+        </div>
+    </div>
+    <div id="join_using">
+        <h4><a href="#join_inner">INNER JOIN with USING</a></h4>
+        <div class="code bold no_mb">
+            SELECT column(s) FROM table_1 JOIN table_2 USING (column(s));
+        </div>
+        <p class="example no_mb">В скобках указываем имена столбцов, по которым хотим произвести объединение.</p>
+        <p class="example">Если указать все одинаковые какие есть, то результат будет такой же как у
+            NATURAL&nbsp;JOIN.</p>
+    </div>
+    <div id="join_on">
+        <h4><a href="#join_inner">INNER JOIN with ON</a></h4>
+        <div class="code bold">
+            SELECT column(s) FROM table_1 JOIN table_2 ON (column1 = column1));
+        </div>
     </div>
 
 </section>
