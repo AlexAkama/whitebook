@@ -593,12 +593,30 @@
 
 <section class="container" id="q10">
     <h1>Что такое сигнатура метода?</h1>
+    <div>
+        <p class="no_mb">
+            <span class="example--word">Объявление метода</span>
+            - это весь код, который описывает метод.
+        </p>
+        <div class="code no_mb">public String methodName(double a, int b) throws IOException</div>
+        <p class="example">
+            модификатор_доступа + тип_возвращаемого_значения + имя_метода(список_параметров) + исключения
+        </p>
+    </div>
     <p>
-        <span>Сигнатура</span>
-        - название метода и типы параметров в определенном порядке
+        <span class="example--word">Сигнатура</span>
+        - название метода и параметры в определенном порядке.
+        <span class="code">methodName(double a, int b)</span>
     </p>
-    <div class="code">public void method(double a, int b)</div>
-    <p> Контракт метода - эксепшены.</p>
+    <p class="no_mb">
+        <span class="example--word">Контракт метода</span>
+        - сигнатура метода, в сочетании с типом возвращаемого значения.
+        В контракт также входят типы возбуждаемых методом исключений.
+    </p>
+    <div class="code no_mb">String methodName(double a, int b) throws IOException</div>
+    <p class="example">
+        Насколько я понял модификатор доступа ни куда не входит.
+    </p>
 
     <a href="#" class="button button--top"></a>
 </section>
@@ -630,7 +648,7 @@
 </div>
 
 <footer>
-        <div class="footer__text"><a href="https://t.me/java40plus" title="Мой блог в телеграм">
+    <div class="footer__text"><a href="https://t.me/java40plus" title="Мой блог в телеграм">
         Алексей Маслов, 2021-2022
     </a></div>
 </footer>
