@@ -1141,15 +1141,15 @@
     <hr>
     <div id="join_oracle">
         <h3><a href="#chapter07">ORACLE JOIN SYNTAX</a></h3>
-        <h4>INNER JOIN</h4>
+        <h4 class="no_mb">INNER JOIN</h4>
         <p class="no_mb">Таблицы через запятую, условие объединения в WHERE.</p>
         <div class="code bold no_mb">
             <p>SELECT column(s)</p>
             <p>FROM table_1 t1, table_2 t2 </p>
             <p>WHERE t1.column1 = t2.column2;</p>
         </div>
-        <h4>RIGHT OUTER JOIN</h4>
-        <p class="main-mind no_mb">
+        <h4 class="no_mb">RIGHT OUTER JOIN</h4>
+        <p class="main-mind mb02">
             Для OUTER JOIN используем оператор соединения
             <span class="code-word">(+)</span>
             в условии в WHERE, который указывает на то, какая из таблиц является таблицей добавления.
@@ -1160,20 +1160,20 @@
             <p>FROM table_1 t1, table_2 t2 </p>
             <p>WHERE t1.column1(+) = t2.column2;</p>
         </div>
-        <h4>LEFT OUTER JOIN</h4>
+        <h4 class="no_mb">LEFT OUTER JOIN</h4>
         <p class="mb02">Аналогично используем <span class="code-word">(+)</span>, только с другой стороны.</p>
         <div class="code bold no_mb">
             <p>SELECT column(s)</p>
             <p>FROM table_1 t1, table_2 t2 </p>
             <p>WHERE t1.column1 = t2.column2(+);</p>
         </div>
-        <h4>CROSS JOIN</h4>
+        <h4 class="no_mb">CROSS JOIN</h4>
         <p class="no_mb">Просто указываем таблицы через запятую.</p>
         <div class="code bold no_mb">
             <p>SELECT column(s)</p>
             <p>FROM table_1 t1, table_2 t2;</p>
         </div>
-        <h4>FULL OUTER JOIN</h4>
+        <h4 class="no_mb">FULL OUTER JOIN</h4>
         <p>
             С помощью oracle синтаксиса
             <span class="example--word bad">сделать нельзя</span>
