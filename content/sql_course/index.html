@@ -33,12 +33,12 @@
 <section class="container" id="chapter01">
     <h1>Раздел 1. Введение&nbsp;в&nbsp;SQL <span class="update-time">12.05.2022 22:56</span></h1>
     <p>
-        <strong>SQL (Structured Query Language)</strong>
+        <span class="example--word">SQL (Structured Query Language)</span>
         - Язык структурированных запросов.
     </p>
     <p class="no_mb">
         Один из инструментов работы с БД -
-        <strong>SQL Developer</strong>
+        <span class="example--word">SQL Developer</span>
     </p>
     <p>
         <a class="link-to-source" href="https://www.oracle.com/tools/downloads/sqldev-downloads.html"
@@ -71,13 +71,13 @@
 
     <hr>
     <h3>SQL КОМАНДЫ</h3>
-    <p class="no_mb"><strong>DML</strong> - Data Manipulation Language</p>
+    <p class="no_mb"><span class="example--word larger">DML</span> - Data Manipulation Language</p>
     <p class="example">Предназначены для манипуляции данными</p>
-    <p class="no_mb"><strong>DDL</strong> - Data Definition Language</p>
+    <p class="no_mb"><span class="example--word larger">DDL</span> - Data Definition Language</p>
     <p class="example">Предназначены для определения структуры БД и работы с объектами (CRUD)</p>
-    <p class="no_mb"><strong>TCL</strong> - Transaction Control Language</p>
+    <p class="no_mb"><span class="example--word larger">TCL</span> - Transaction Control Language</p>
     <p class="example">Предназначены для реализации и управления транзакциями</p>
-    <p class="no_mb"><strong>DCL</strong> - Data Control Language</p>
+    <p class="no_mb"><span class="example--word larger">DCL</span> - Data Control Language</p>
     <p class="example">Предназначены определения доступа к данным</p>
     <p>
         <a class="link-to-source" href="https://info-comp.ru/what-is-ddl-dml-dcl-tcl" target="_blank">источник</a>
@@ -140,12 +140,13 @@
         <strong>долях секунды</strong> (f - кол-во десятичных знаков)
     </p>
     <h4>Тип NULL</h4>
-    <p class="no_mb"><strong>NULL</strong> - это отсутствие данных.</p>
+    <p class="no_mb"><span class="example--word larger">NULL</span> - это отсутствие данных.</p>
     <p class="example">0, пробел или строка 'null' - это не null. Они занимают место в памяти.
         <br>Результат арифметических операций с null - всегда null.</p>
     <hr>
     <h3>Команда DESCRIBE</h3>
-    <p class="example"><strong>Data Dictionary</strong> - место где Oracle хранит данные о таблицах. Нужна для DDL.</p>
+    <p><span class="example--word">Data Dictionary</span>
+        - место где Oracle хранит данные о таблицах. Нужна для DDL.</p>
     <div class="code no_mb bold">
         <span class="example--word">DESC</span>RIBE SCHEMA.<span class="example--word">TABLE_NAME</span>
     </div>
@@ -157,58 +158,75 @@
     <h1>Раздел 2. Знакомство&nbsp;с&nbsp;SELECT <span class="update-time">13.05.2022 13:21</span></h1>
     <hr>
     <h3>Фундаментальные концепции</h3>
-    <p><strong>PROJECTION</strong> - выбор столбцов из таблицы.</p>
-    <p><strong>SELECTION</strong> - выбор строк из таблицы.</p>
-    <p><strong>JOINING</strong> - объединение таблиц.</p>
+    <p><span class="example--word">PROJECTION</span> - выбор столбцов из таблицы.</p>
+    <p><span class="example--word">SELECTION</span> - выбор строк из таблицы.</p>
+    <p><span class="example--word">JOINING</span> - объединение таблиц.</p>
     <hr>
     <h3>Команда SELECT</h3>
     <div class="code bold">
-        <span class="example--word">SELECT * FROM&nbsp;table_name;</span>
-        <span class="example">//&nbsp;базовый синтаксис</span>
+        <p><span class="example--word">SELECT *</span></p>
+        <p><span class="example--word">FROM&nbsp;table_name;</span></p>
+        <p class="example">//&nbsp;базовый синтаксис</p>
     </div>
     <div class="code bold">
-        <span class="example--word">SELECT column(s) FROM&nbsp;table_name;</span>
-        <span class="example">//&nbsp;projection</span>
+        <p class="example--word">SELECT column(s)</p>
+        <p class="example--word">FROM&nbsp;table_name;</p>
+        <p class="example">//&nbsp;projection</p>
     </div>
     <hr>
     <h3>Оператор DISTINCT</h3>
     <p>Выбор уникальных значений (сочетаний).</p>
     <div class="code bold">
-        <span class="example--word">SELECT </span>
-        <span>DISTINCT </span>
-        <span class="example--word"> column(s) FROM&nbsp;table_name;</span>
+        <p>
+            <span class="example--word">SELECT </span>
+            <span>DISTINCT </span>
+            <span class="example--word"> column(s)</span>
+        </p>
+        <p><span class="example--word">FROM&nbsp;table_name;</span></p>
     </div>
     <p class="main-mind">Если столбцов несколько, то выводится уникальные сочетания.</p>
     <hr>
     <h3>Выражения в Select list</h3>
-    <p class="no_mb"><strong>Select list</strong> - это то что мы выбираем.</p>
+    <p class="no_mb"><span class="example--word">Select list</span> - это то что мы выбираем.</p>
     <div class="code">
-        <span class="example--word bold">SELECT </span>
-        <span class="example--word">{Select list}</span>
-        <span class="example--word bold"> FROM&nbsp;table_name;</span>
+        <p>
+            <span class="example--word bold">SELECT</span>
+            <span class="example--word">{Select list}</span>
+        </p>
+        <p class="example--word bold">FROM&nbsp;table_name;</p>
     </div>
     <div class="code bold">
-        <span class="example--word">SELECT column(s), expression(s) FROM&nbsp;table_name;</span>
+        <p class="example--word">SELECT column(s), expression(s)</p>
+        <p class="example--word">FROM&nbsp;table_name;</p>
     </div>
     <p>Оператор конкатенации - ||</p>
     <hr>
     <h3>Alias (псевдоним)</h3>
-    <p><strong>Alias</strong>(псевдоним) - альтернативное имя для столбца или выражения.</p>
+    <p><span class="example--word">Alias</span>(псевдоним) - альтернативное имя для столбца или выражения.</p>
     <div class="code bold">
-        <span class="example--word">SELECT column(s)</span>
-        <span>alias</span><span class="example--word">, expression(s) </span>
-        <span>alias</span><span class="example--word"> FROM&nbsp;table_name;</span>
+        <p>
+            <span class="example--word">SELECT column(s)</span>
+            <span>alias</span><span class="example--word">, expression(s)</span>
+            <span>alias</span>
+        </p>
+        <p class="example--word">FROM&nbsp;table_name;</p>
     </div>
     <div class="code bold no_mb">
-        <span class="example--word">SELECT column(s)</span>
-        <span>AS alias</span><span class="example--word">, expression(s) </span>
-        <span>AS alias</span><span class="example--word"> FROM&nbsp;table_name;</span>
+        <p>
+            <span class="example--word">SELECT column(s)</span>
+            <span>AS alias</span><span class="example--word">, expression(s)</span>
+            <span>AS alias</span>
+        </p>
+        <p class="example--word">FROM&nbsp;table_name;</p>
     </div>
     <p class="example">AS можно не использовать, но оно добавляет читаемость.</p>
     <div class="code bold no_mb">
-        <span class="example--word">SELECT column(s)</span>
-        <span>"alias text"</span><span class="example--word">, expression(s) </span>
-        <span>"alias text"</span><span class="example--word"> FROM&nbsp;table_name;</span>
+        <p>
+            <span class="example--word">SELECT column(s)</span>
+            <span>"alias text"</span><span class="example--word">, expression(s)</span>
+            <span>"alias text"</span>
+        </p>
+        <p class="example--word">FROM&nbsp;table_name;</p>
     </div>
     <p class="example">Если нужен alias с пробелами в тексе то использовать двойные кавычки.
         <br>Кроме того, если нет кавычек alias будет отображен большими буквами.
@@ -219,7 +237,7 @@
     <hr>
     <h3>Оператор Q</h3>
     <p class="no_mb">Если в тексте хочется использовать одинарную кавычку то ее надо экранировать другой.</p>
-    <p>Пример:
+    <p class="example">Пример:
         <span class="bold">'It's my life'</span>
         - <span class="bad">не сработает</span>,
         <span class="bold">'It''s my life'</span>
@@ -236,10 +254,12 @@
     <h3 class="no_mb">Шаблон SELECT</h3>
     <p class="bold">после первого знакомства</p>
     <div class="code bold">
-        <span class="example--word">SELECT *</span><span class="bad">|{</span><span>DISTINCT</span>
-        <span class="example--word">column(s)</span>&nbsp;<span>alias,</span>
-        <span class="example--word">expression(s)</span>&nbsp;<span>alias</span><span class="bad">}</span>
-        <span class="example--word">FROM&nbsp;table_name;</span>
+        <p>
+            <span class="example--word">SELECT *</span><span class="bad">|{</span><span>DISTINCT</span>
+            <span class="example--word">column(s)</span>&nbsp;<span>alias,</span>
+            <span class="example--word">expression(s)</span>&nbsp;<span>alias</span><span class="bad">}</span>
+        </p>
+        <p class="example--word">FROM&nbsp;table_name;</p>
     </div>
 
     <a href="#" class="button button--top"></a>
@@ -250,11 +270,13 @@
     <hr>
     <h3>Концепция Selection</h3>
     <div class="code bold">
-        <span class="example--word">SELECT *</span><span class="bad">|{</span><span>DISTINCT</span>
-        <span class="example--word">column(s)</span>&nbsp;<span>alias,</span>
-        <span class="example--word">expression(s)</span>&nbsp;<span>alias</span><span class="bad">}</span>
-        <span class="example--word">FROM&nbsp;table_name</span>
-        <span>WHERE&nbsp;condition(s)</span><span class="example--word">;</span>
+        <p>
+            <span class="example--word">SELECT *</span><span class="bad">|{</span><span>DISTINCT</span>
+            <span class="example--word">column(s)</span>&nbsp;<span>alias,</span>
+            <span class="example--word">expression(s)</span>&nbsp;<span>alias</span><span class="bad">}</span>
+        </p>
+        <p class="example--word">FROM&nbsp;table_name</p>
+        <p><span>WHERE&nbsp;condition(s)</span><span class="example--word">;</span></p>
     </div>
     <hr>
     <h3>Операторы сравнения</h3>
@@ -363,19 +385,24 @@
     <hr>
     <h3>ORDER BY</h3>
     <div class="code bold no_mb">
-        <span class="example--word">SELECT *</span><span class="bad">|{</span><span>DISTINCT</span>
-        <span class="example--word">column(s)</span>&nbsp;alias,
-        <span class="example--word">expression(s)</span>&nbsp;alias<span class="bad">}</span>
-        <span class="example--word">FROM&nbsp;table_name</span>
-        WHERE&nbsp;condition(s) ORDER&nbsp;BY&nbsp;<span class="bad">{</span><span
-            class="example--word">column(s)</span><span class="bad">|</span><span
-            class="example--word">expressions(s)</span><span class="bad">|</span><span
-            class="example--word">numeric position</span><span class="bad">}</span>
-        <span class="bad">{</span>ASC<span class="bad">|</span>DESC<span class="bad">}</span>
-        <span class="bad">{</span>NULLS FIRST<span class="bad">|</span>LAST<span class="bad">}</span>
-        <span class="example--word">;</span>
+        <p>
+            <span class="example--word">SELECT *</span><span class="bad">|{</span><span>DISTINCT</span>
+            <span class="example--word">column(s)</span>&nbsp;alias,
+            <span class="example--word">expression(s)</span>&nbsp;alias<span class="bad">}</span>
+        </p>
+        <p class="example--word">FROM&nbsp;table_name</p>
+        <p> WHERE&nbsp;condition(s)</p>
+        <p>
+            ORDER&nbsp;BY&nbsp;<span class="bad">{</span><span
+                class="example--word">column(s)</span><span class="bad">|</span><span
+                class="example--word">expressions(s)</span><span class="bad">|</span><span
+                class="example--word">numeric position</span><span class="bad">}</span>
+            <span class="bad">{</span>ASC<span class="bad">|</span>DESC<span class="bad">}</span>
+            <span class="bad">{</span>NULLS FIRST<span class="bad">|</span>LAST<span class="bad">}</span><span
+                class="example--word">;</span>
+        </p>
     </div>
-    <p class="example"><strong>numeric position</strong> считается из select list'а</p>
+    <p class="example">numeric position считается из select list'а</p>
 
     <a class="button--top" href="#"></a>
 </section>
@@ -439,18 +466,18 @@
     <span class="code-word example--word">RPAD(s, n, p)</span>
     <span class="example">где&nbsp;s&nbsp;-&nbsp;строка, n&nbsp;-&nbsp;конечная длинна текста, p&nbsp;-&nbsp;текст для заполнения.</span>
     <h4>Обрезка символов по краям</h4>
-    <span class="code-word" style="white-space: normal;">
+    <div class="code-word bold" style="white-space: normal;">
         <span class="example--word">TRIM(</span><span class="bad">{</span>trailing<span
             class="bad">|</span>leading<span class="bad">|</span>both<span class="bad">}</span>
         char&nbsp;FROM&nbsp;<span class="example--word">s)</span>
-    </span>
+    </div>
     <p class="example no_mb">По умолчанию: тип удаления both, а символ для удаления - пробел.</p>
     <p class="example"> Важно: удалять можно только один какой-то символ.</p>
     <h4>Поиск в строке</h4>
-    <span class="code-word" style="white-space: normal;">
+    <div class="code-word" style="white-space: normal;">
             <span class="example--word">INSTR(s, searchString</span><span>, startPosition, nth&nbsp;occurrence</span><span
             class="example--word">)</span>
-    </span>
+    </div>
     <p class="example no_mb">Где s - строка в которой ищем. searchString - искомый текст; startPosition - позиция с
         которой начинается поиск; <span style="white-space: nowrap">n-ное</span> появление;</p>
     <h4>Извлечение подстроки</h4>
@@ -463,10 +490,10 @@
     <p class="example no_mb">Если startPosition&lt;0 то позиция считается с конца s.</p>
     <p class="example">Важно: Если длина строки s меньше startPosition то функция вернет null.</p>
     <h4>Замена подстроки</h4>
-    <span class="code-word" style="white-space: normal;">
+    <div class="code-word" style="white-space: normal;">
             <span class="example--word">REPLACE(s, searchString</span><span>, replacementString</span><span
             class="example--word">)</span>
-    </span>
+    </div>
     <p class="example no_mb">Где s - строка в которой производим замену. searchString - текст, который нужно заменить;
         replacementString - текст, на который нужно заменить;</p>
     <p class="example">Если replacementString не указан, то функция удалит searchString из s.</p>
@@ -501,7 +528,7 @@
     <p class="example">Возвращает текущее время db-server'а</p>
 
     <h4>Разница между датами</h4>
-    <span class="code-word example--word" style="white-space: normal">MONTHS_BETWEEN(start_date, finish_date)</span>
+    <div class="code-word example--word" style="white-space: normal">MONTHS_BETWEEN(start_date, finish_date)</div>
     <p class="example no_mb">Возвращает дробное число, кол-во месяцев между датами.</p>
     <p class="example no_mb">Стандарт oracle месяц = 31 день.</p>
     <p class="example">Если первый аргумент больше второго - возвращает отрицательное число.</p>
@@ -584,11 +611,11 @@
     <p class="example">Функции конвертации данных из одного типа в другой</p>
 
     <h4>Конвертация числа в строку</h4>
-    <span class="code-word" style="white-space: normal">
+    <div class="code-word" style="white-space: normal; display: inline-block">
         <span class="example--word">TO_CHAR(number</span><span>, format mask, nls_parameters</span><span
             class="example--word">)</span>
         <span class="bad">= T</span>
-    </span>
+    </div>
     <p class="example">Возвращает тип VARCHAR2</p>
     <table class="list no_mb" aria-label="форматы для чисел">
         <thead>
@@ -679,11 +706,11 @@
     <p class="example">* Если число не влазит в формат получаем строку из символа #</p>
 
     <h4>Конвертация даты в строку</h4>
-    <span class="code-word" style="white-space: normal">
+    <div class="code-word" style="white-space: normal; display: inline-block">
         <span class="example--word">TO_CHAR(date</span><span>, format mask, nls_parameters</span><span
             class="example--word">)</span>
         <span class="bad">= T</span>
-    </span>
+    </div>
     <p class="example">Возвращает тип VARCHAR2</p>
     <p></p>
     <table class="list no_mb" aria-label="форматы для даты" id="conversion_format">
@@ -715,7 +742,7 @@
         </tr>
         <tr>
             <td>RR</td>
-            <td>Год в формате 2х цифр</td>
+            <td>Год в формате 2-х цифр</td>
             <td>19</td>
         </tr>
         <tr>
@@ -725,12 +752,12 @@
         </tr>
         <tr>
             <td>MM</td>
-            <td>Месяц в формате 2х цифр</td>
+            <td>Месяц в формате 2-х цифр</td>
             <td>09</td>
         </tr>
         <tr>
             <td>MON</td>
-            <td>Месяц в формате 3х букв <span class="example">(Чувствительно&nbsp;к&nbsp;регистру)</span></td>
+            <td>Месяц в формате 3-х букв <span class="example">(Чувствительно&nbsp;к&nbsp;регистру)</span></td>
             <td>SEP</td>
         </tr>
         <tr>
@@ -814,7 +841,7 @@
             <td>09.19</td>
         </tr>
         <tr>
-            <td>"текст"</td>
+            <td>"Текст"</td>
             <td>'"Quarter " Q " of " Year'</td>
             <td>Quarter 3 of Twenty Nineteen</td>
         </tr>
@@ -839,19 +866,19 @@
         <span class="code-word">fm</span>, т.е. ,например, fmMON</p>
 
     <h4>Конвертация из строки в дату</h4>
-    <span class="code-word" style="white-space: normal">
+    <div class="code-word" style="white-space: normal; display: inline-block">
         <span class="example--word">TO_DATE(text</span><span>, format mask, nls_parameters</span><span
             class="example--word">)</span>
         <span class="bad">= D</span>
-    </span>
+    </div>
     <p class="example">Используем те же <a href="#conversion_format">маски</a></p>
 
     <h4>Конвертация текста в строку</h4>
-    <span class="code-word" style="white-space: normal">
+    <div class="code-word" style="white-space: normal; display: inline-block">
         <span class="example--word">TO_NUMBER(text</span><span>, format mask, nls_parameters</span><span
             class="example--word">)</span>
         <span class="bad">= N</span>
-    </span>
+    </div>
     <p class="example">Используем те же <a href="#conversion_format">маски</a></p>
 
     <hr>
@@ -873,7 +900,7 @@
 
     <h4>Возврат значения если не NULL</h4>
     <span class="code-word" style="white-space: normal">
-        <span class="example--word">COALESCE(value1, value2</span>, ..., valueN<span class="example--word">)</span>
+        <span class="example--word">COALESCE(val1, val2</span>, ..., valN<span class="example--word">)</span>
     </span>
     <p class="example no_mb">Возвращает первое значение из списка не равное NULL.</p>
     <p class="example">Если все параметры NULL, то будет возвращен NULL.</p>
@@ -883,10 +910,10 @@
     <p class="example">Функции if-then-else логики</p>
 
     <h4>Каскадное сравнение (похоже на CASE)</h4>
-    <span class="code-word" style="white-space: normal">
+    <div class="code-word" style="white-space: normal">
         <span class="example--word">DECODE(expr, comp1, if_true1</span>, comp2,&nbsp;if_true2, ..., comp2,&nbsp;if_trueN, if_else<span
             class="example--word">)</span>
-    </span>
+    </div>
     <p class="example no_mb">Чисто oracle фишка, в чистом SQL ее нет.</p>
     <p class="example">Выражение expr сравнивается с comp1, если совпадает - возвращает if_true1. И так N раз. Если нет
         не одного совпадения возвращает if_else. Если if_else не указан - вернется NULL.</p>
@@ -927,11 +954,11 @@
 
     <h4 class="no_mb">COUNT</h4>
     <p class="example no_mb">подсчет по любому типу, null значения игнорируются</p>
-    <span class="code-word no_mb" style="white-space: normal">
+    <div class="code-word no_mb" style="white-space: normal; display: inline-block">
         <span class="example--word">COUNT(</span><span class="bad">{</span>*<span class="bad">| {</span>DISTINCT<span
             class="bad">|</span>ALL<span class="bad">}</span><span class="example--word"> expression</span><span
             class="bad">}</span><span class="example--word">)</span>
-    </span>
+    </div>
     <p class="example">expression - выражение или столбец</p>
 
     <h4 class="no_mb">SUM</h4>
@@ -996,7 +1023,7 @@
 </section>
 
 <section class="container" id="chapter07">
-    <h1><a href="#">JOIN</a></h1>
+    <h1>Pаздел 7.<br><a href="#">JOIN</a><span class="update-time">22.10.2022 22:38</span></h1>
     <div class="after-h1">
 
     </div>
@@ -1068,7 +1095,7 @@
                 <p>NATURAL JOIN table_2;</p>
             </div>
             <p class="example">Если нужно в селект листе указать столбец, по которому происходит объединение,
-                то он указывается без имени таблицы или алиса таблицы (иначе ошибка)</p>
+                то он указывается без имени таблицы или алиаса таблицы (иначе ошибка)</p>
         </div>
         <div id="join_using">
             <h4><a href="#join_inner">INNER JOIN with USING</a></h4>

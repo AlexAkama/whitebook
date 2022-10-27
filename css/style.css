@@ -379,6 +379,10 @@ img {
     font-weight: 700;
 }
 
+.larger {
+    font-size: larger;
+}
+
 .key_combination {
     color: rgb(182, 41, 212);
     font-weight: 600;
