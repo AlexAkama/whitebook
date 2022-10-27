@@ -55,6 +55,10 @@ h1 {
     position: relative;
 }
 
+h1 > a {
+    text-decoration: none;
+}
+
 .after-h1 {
     color: #00a82d;
     border-bottom: #00a82d solid 3px;
@@ -236,8 +240,8 @@ img {
 }
 
 .update-time {
-    right: 10px;
-    top: 0;
+    right: 0;
+    top: -5px;
     font-size: xx-small;
     color: darkgrey;
     white-space: nowrap;
@@ -852,6 +856,14 @@ input:focus {
 .horizontal-schema--design > * > *:first-child::after,
 .horizontal-schema--design > * > *:last-child::after {
     border-radius: 0;
+}
+
+.horizontal-schema--single > * > * {
+    padding-left: 5px;;
+}
+
+.horizontal-schema--single > * > *:after {
+    border: none !important;
 }
 
 .vertical-schema {

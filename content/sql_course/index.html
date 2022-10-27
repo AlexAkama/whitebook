@@ -24,6 +24,7 @@
         <li><a href="#chapter05">CONVERSION, GENERAL и CONDITIONAL функции</a></li>
         <li><a href="#chapter06">GROUP функции, GROUP BY, HAVING</a></li>
         <li><a href="#chapter07">JOIN(объединение)</a></li>
+        <li><a href="#chapter08">SUBQUERY(подзапросы)</a></li>
     </ol>
     <div class="back-panel">
         <a href="../../" class="button button--home">На главную</a>
@@ -475,7 +476,7 @@
     <p class="example"> Важно: удалять можно только один какой-то символ.</p>
     <h4>Поиск в строке</h4>
     <div class="code-word" style="white-space: normal;">
-            <span class="example--word">INSTR(s, searchString</span><span>, startPosition, nth&nbsp;occurrence</span><span
+        <span class="example--word">INSTR(s, searchString</span><span>, startPosition, nth&nbsp;occurrence</span><span
             class="example--word">)</span>
     </div>
     <p class="example no_mb">Где s - строка в которой ищем. searchString - искомый текст; startPosition - позиция с
@@ -491,7 +492,7 @@
     <p class="example">Важно: Если длина строки s меньше startPosition то функция вернет null.</p>
     <h4>Замена подстроки</h4>
     <div class="code-word" style="white-space: normal;">
-            <span class="example--word">REPLACE(s, searchString</span><span>, replacementString</span><span
+        <span class="example--word">REPLACE(s, searchString</span><span>, replacementString</span><span
             class="example--word">)</span>
     </div>
     <p class="example no_mb">Где s - строка в которой производим замену. searchString - текст, который нужно заменить;
@@ -911,7 +912,8 @@
 
     <h4>Каскадное сравнение (похоже на CASE)</h4>
     <div class="code-word" style="white-space: normal">
-        <span class="example--word">DECODE(expr, comp1, if_true1</span>, comp2,&nbsp;if_true2, ..., comp2,&nbsp;if_trueN, if_else<span
+        <span class="example--word">DECODE(expr, comp1, if_true1</span>, comp2,&nbsp;if_true2, ..., comp2,&nbsp;if_trueN,
+        if_else<span
             class="example--word">)</span>
     </div>
     <p class="example no_mb">Чисто oracle фишка, в чистом SQL ее нет.</p>
@@ -1023,7 +1025,7 @@
 </section>
 
 <section class="container" id="chapter07">
-    <h1>Pаздел 7.<br><a href="#">JOIN</a><span class="update-time">22.10.2022 22:38</span></h1>
+    <h1>Pаздел 7. <a href="#">JOIN</a><span class="update-time">22.10.2022 22:38</span></h1>
     <div class="after-h1">
 
     </div>
@@ -1208,6 +1210,46 @@
         </p>
     </div>
 
+</section>
+
+<section class="container" id="chapter08">
+    <h1>Раздел 8. <a href="#">SUBQUERY</a><span class="update-time">27.10.2022 11:14</span></h1>
+    <h4>Типы подзапросов:</h4>
+    <div class="horizontal-schema horizontal-schema--design mb20">
+        <div>SUBUERIES</div>
+        <div>
+            <div class="horizontal-schema horizontal-schema--single ">
+                <div>SINGLE ROW</div>
+                <div>
+                    <div>SCALAR</div>
+                </div>
+            </div>
+            <div>MULTIPLE ROW</div>
+        </div>
+    </div>
+    <div class="mb20">
+        <p class="example--word no_mb">SINGLE ROW</p>
+        <p>Возвращает одну строку.</p>
+        <p class="example--word no_mb">SCALAR</p>
+        <p>Частный случай SINGLE ROW, когда возвращается одна строка и один столбец.</p>
+        <p class="example--word no_mb">MULTIPLE ROW</p>
+        <p>Результат - несколько строк.</p>
+    </div>
+    <p class="main-mind">
+        Не зависимо от типа подзапрос один раз выполняется и запоминается. Дальше используется сохраненное значение.
+    </p>
+    <hr>
+    <h4>CORRELATED SUBQUERIES</h4>
+    <p class="no_mb">Такие подзапросы, которые связаны с внешним подзапросом.</p>
+    <p class="example с">
+        Т.е. если в подзапросе используется что-то из данных текущей строки, а не агрегированное.
+        Т.е. то, что требует пересчета для каждой строки.
+    </p>
+    <p class="main-mind">
+        Коррелированные запросы выполняются каждый раз. (что&nbsp;ресурсоемко!)
+    </p>
+
+    <a href="#" class="button button--top"></a>
 </section>
 
 <footer>
