@@ -25,6 +25,7 @@
         <li><a href="#chapter06">GROUP функции, GROUP BY, HAVING</a></li>
         <li><a href="#chapter07">JOIN(объединение)</a></li>
         <li><a href="#chapter08">SUBQUERY(подзапросы)</a></li>
+        <li><a href="#chapter09">SET operators (Операторы множеств)</a></li>
     </ol>
     <div class="back-panel">
         <a href="../../" class="button button--home">На главную</a>
@@ -1216,7 +1217,7 @@
     <h1>Раздел 8. <a href="#">SUBQUERY</a><span class="update-time">27.10.2022 11:14</span></h1>
     <h4>Типы подзапросов:</h4>
     <div class="horizontal-schema horizontal-schema--design mb20">
-        <div>SUBUERIES</div>
+        <div>SUBQUERIES</div>
         <div>
             <div class="horizontal-schema horizontal-schema--single ">
                 <div>SINGLE ROW</div>
@@ -1250,6 +1251,132 @@
     </p>
 
     <a href="#" class="button button--top"></a>
+</section>
+
+<section class="container" id="chapter09">
+    <h1>Раздел 9. <a href="#">SET&nbsp;operators <span class="smaller">(Операторы множеств)</span></a></h1>
+
+    <hr>
+    <div>
+        <p>
+            <span class="example--word">COMPOUND QUERY</span>
+            - сложный запрос. Состоит из нескольких <span class="example--word smaller">SELECT</span>'ов,
+            которые не являются <span class="example--word smaller">SUBQUERY</span>.
+        </p>
+        <p></p>
+        <div class="code bold">
+            <p>SELECT x FROM table1</p>
+            <p>UNION</p>
+            <p>SELECT y FROM table2</p>
+        </div>
+    </div>
+
+    <hr>
+    <div>
+        <div class="horizontal-schema horizontal-schema--design">
+            <div>SET OPERATORS</div>
+            <div>
+                <div>UNION</div>
+                <div>UNION ALL</div>
+                <div>INTERSECT</div>
+                <div>MINUS</div>
+            </div>
+        </div>
+        <div>
+            <p>
+                <span class="example--word">UNION ALL</span>
+                - просто объединяет, не производя никаких действий.
+            </p>
+        </div>
+        <div>
+            <p>
+                <span class="example--word">UNION</span>
+                - сортирует (естественным путем), удаляет дубликаты и объединяет. Результат тоже сортирован.
+            </p>
+        </div>
+        <div>
+            <p>
+                <span class="example--word">INTERSECT</span>
+                - пересечение. Находит общие значения во множествах, исключает дубликаты и сортирует результат.
+            </p>
+        </div>
+        <div>
+            <p class="no_mb">
+                <span class="example--word">MINUS</span>
+                - оставляет те значения из первого множества, которых нет во втором. Также убирает дубликаты и делает
+                сортировку.
+            </p>
+            <p class="example">
+                В класcическом SQL оператор называется EXCEPT.
+            </p>
+        </div>
+        <p class="main-mind no_mb">Важно: сортировка множеств происходит с самого начала.</p>
+        <p class="main-mind">Если заведомо известно, что дубликатов нет, то лучше всего использовать UNION ALL.</p>
+    </div>
+
+    <hr>
+    <div>
+        <h4 class="no_mb">Условия</h4>
+        <ul>
+            <li>В результатах select'ов должно совпадать кол-во столбцов.</li>
+            <li>
+                <p class="no_mb">В столбцах должны совпадать типы данных (или должны быть из одного семейства).</p>
+                <p class="example no_mb">Пример: </p>
+                <p class="example no_mb">SELECT1 = DATE, INTEGER, VARCHAR2</p>
+                <p class="example no_mb">SELECT2 = TIMESTAMP, NUMBER, CHAR</p>
+                <p class="example no_mb">В результате будут выбраны наиболее широкие(точные) типы:</p>
+                <p class="example">RESULT = TIMESTAMP, NUMBER, VARCHAR2</p>
+            </li>
+        </ul>
+    </div>
+
+    <hr>
+    <div>
+        <h4 class="no_mb">Сортировка результата</h4>
+        <p class="no_mb">
+            Если не устаивает стандартная сортировка (сортируются все столбцы в натуральном порядке),
+            то после можно использовать простой <span class="example--word">ORDER BY</span>.
+        </p>
+        <div class="code bold no_mb">
+            <p>SELECT x FROM table1</p>
+            <p>UNION</p>
+            <p>SELECT y FROM table2</p>
+            <p>ORDER BY name DESC</p>
+        </div>
+        <p class="example">Сортировать можно только конечный результат.</p>
+
+        <p class="no_mb">Если в селект-листе указана звездочка, то для сортировки нельзя использовать имя столбца:</p>
+        <div class="code bold">
+            <p>SELECT * FROM table1</p>
+            <p>UNION</p>
+            <p>SELECT * FROM table2</p>
+            <p>ORDER BY name DESC <span>// Будет ошибка</span></p>
+        </div>
+        <p class="no_mb">Однако!!! Сортировку можно выполнить по номеру столбца:</p>
+        <div class="code bold">
+            <p>SELECT * FROM table1</p>
+            <p>UNION</p>
+            <p>SELECT * FROM table2</p>
+            <p>ORDER BY 3 DESC <span>// Будет отсортировано по третьему столбцу</span></p>
+        </div>
+    </div>
+
+    <hr>
+    <div>
+        <h4 class="no_mb">Алиасы</h4>
+        <p>В результат попадают алиасы из первого select'а. Из второго игнорируются.</p>
+    </div>
+
+    <hr>
+    <div>
+        <h4>Важно</h4>
+        <p>Можно использовать несколько set операторов.</p>
+        <p>Выполняются последовательно.</p>
+        <p>Изменить приоритет можно с использованием скобок.</p>
+    </div>
+
+    <a href="#" class="button button--top"></a>
+
 </section>
 
 <footer>
