@@ -88,10 +88,10 @@
         <div class="min-w-75">
             <p class="main-mind">DML</p>
             <p>SELECT</p>
-            <p>INSERT</p>
-            <p>UPDATE</p>
-            <p>DELETE</p>
-            <p>MERGE</p>
+            <p><a href="#insert">INSERT</a></p>
+            <p><a href="#update">UPDATE</a></p>
+            <p><a href="#delete">DELETE</a></p>
+            <p><a href="#merge">MERGE</a></p>
         </div>
         <div class="min-w-75">
             <p class="main-mind">DDL</p>
@@ -1374,6 +1374,76 @@
         <p>Выполняются последовательно.</p>
         <p>Изменить приоритет можно с использованием скобок.</p>
     </div>
+
+    <a href="#" class="button button--top"></a>
+
+</section>
+
+<section class="container" id="">
+    <h1>Раздел 10. <a href="#">DML&nbsp;команды</a></h1>
+
+    <div id="dml">
+        <div>
+            <div class="horizontal-schema horizontal-schema--design">
+                <div>DML</div>
+                <div>
+                    <div>SELECT</div>
+                    <div><a href="#insert">INSET</a></div>
+                    <div><a href="#update">UPDATE</a></div>
+                    <div><a href="#delete">DELETE</a></div>
+                    <div><a href="#merge">MERGE</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <p class="no_mb">Select рассматривали ранее. Он самый большой и часто используемый.</p>
+    <p>Далее все остальные команды.</p>
+
+    <hr>
+    <div id="insert">
+        <h3 class="no_mb"><a href="#dml">INSERT</a></h3>
+        <p>Вставляет одну или несколько строк в таблицу.</p>
+        <div class="code bold">
+            <p><span class="example--word">INSERT INTO table_name</span> (column(s))</p>
+            <p><span class="example--word">VALUES (value(s));</span></p>
+        </div>
+        <p class="no_mb">Если не использовать название колонок, то необходимо в запросе указать данные для всех
+            столбцов.</p>
+        <p class="no_mb">Причем порядок в значениях должен быть такой же, как и у колонок.</p>
+        <p>Если указываются имена столбцов, то порядок значений должен быть такой, как запросе.</p>
+        <p>
+            Правило хорошего тона: всегда использовать названия столбцов. Т.к. если в таблицу будет добавлено
+            новое поле, то запрос без указания колонок перестанет работать, а с указанием - нет.
+        </p>
+        <p class="no_mb"> Для вставки лучше сразу в запросе использовать функции.</p>
+        <p class="example no_mb">На пример: INITCAP() - первая буква большая, UPPER() - все буквы большие.</p>
+        <p class="example no_mb">Но самое главное - конвертация времени, например: </p>
+        <p class="example no_mb">TO_DATE('28-NOW-2022', 'DD-MON-YYYY')</p>
+        <p class="example">
+            Потому что, если в базе изменят формат, то автоконвертация из строки в дату может не сработать.
+        </p>
+        <p class="no_mb">Так же можно вставлять несколько строк:</p>
+        <div class="code bold">
+            <p><span class="example--word">INSERT INTO table_name</span> (column(s))</p>
+            <p><span class="example--word">SUBQUERY;</span></p>
+        </div>
+        <p>Еще можно вставлять в несколько таблиц, но это этим обычно не пользуются. </p>
+    </div>
+
+    <hr>
+    <div id="update">
+        <h3 class="no_mb"><a href="#dml">UPDATE</a></h3>
+        <p class="no_mb">Изменение информации в уже имеющихся строках.</p>
+        <p class="example no_mb">Может менять одну или несколько строк, а так же один или несколько столбцов.</p>
+        <p class="example">Не может изменять данные в нескольких таблицах.</p>
+        <div class="code bold">
+            <p class="example--word">UPDATE table_name</p>
+            <p><span class="example--word">SET column</span>(s)<span class="example--word">=value</span>(s)</p>
+            <p>WHERE condition(s)<span class="example--word">;</span></p>
+        </div>
+
+    </div>
+
 
     <a href="#" class="button button--top"></a>
 
