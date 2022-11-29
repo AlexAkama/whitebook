@@ -1442,9 +1442,55 @@
             <p><span class="example--word">SET column</span>(s)<span class="example--word">=value</span>(s)</p>
             <p>WHERE condition(s)<span class="example--word">;</span></p>
         </div>
-
+        <p class="no_mb">Возможно использование SUBQUERY</p>
+        <div class="code bold">
+            <p class="example--word">UPDATE table_name</p>
+            <p><span class="example--word">SET column</span>(s)<span class="example--word">=subquery</span>(s)</p>
+            <p>WHERE column=subquery<span class="example--word">;</span></p>
+        </div>
     </div>
 
+    <hr>
+    <div id="delete">
+        <h3 class="no_mb"><a href="#dml">DELETE</a></h3>
+        <p class="no_mb">Удаляет строки из таблицы.</p>
+        <p class="example no_mb">Удаляет строку полностью.</p>
+        <p class="example">Может удалить одну или несколько строк.</p>
+        <div class="code bold">
+            <p class="example--word">DELETE</p>
+            <p class="example--word">FROM table_name</p>
+            <p>WHERE conditions<span class="example--word">;</span></p>
+        </div>
+        <p>Использование SUBQUERY возможно только в WHERE</p>
+        <div class="code bold">
+            <p class="example--word">DELETE</p>
+            <p class="example--word">FROM table_name</p>
+            <p>WHERE column=subquery<span class="example--word">;</span></p>
+        </div>
+    </div>
+
+    <hr>
+    <div id="merge">
+        <h3><a href="#dml">MERGE</a></h3>
+        <p class="no_mb">Может совмещать предыдущие операторы</p>
+        <p>Используется очень редко.</p>
+        <div class="code bold">
+            <p><span class="example--word">MERGE INTO table_name1</span> t1</p>
+            <p>
+                <span class="example--word">USING</span>
+                <span class="bad">{</span><span class="example--word">table_name2</span><span class="bad">|</span><span
+                    class="example--word">subquery</span><span class="bad">}</span>
+                t2
+            </p>
+            <p class="example--word">ON (t1.column=t2.column)</p>
+            <p class="example--word">WHEN MATCHED THEN</p>
+            <p>UPDATE SET column=value</p>
+            <p>DELETE WHERE condition</p>
+            <p class="example--word">WHEN NOT MATCHED THEN</p>
+            <p>INSERT (value1, value2)</p>
+            <p>VALUES (column1, column2)</p>
+        </div>
+    </div>
 
     <a href="#" class="button button--top"></a>
 
