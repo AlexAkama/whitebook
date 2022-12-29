@@ -27,6 +27,7 @@
         <li><a href="#chapter08">SUBQUERY(подзапросы)</a></li>
         <li><a href="#chapter09">SET operators (Операторы множеств)</a></li>
         <li><a href="#chapter10">DML команды</a></li>
+        <li><a href="#chapter11">TCL команды</a></li>
     </ol>
     <div class="back-panel">
         <a href="../../" class="button button--home">На главную</a>
@@ -34,7 +35,7 @@
 </section>
 
 <section class="container" id="chapter01">
-    <h1>Раздел 1. Введение&nbsp;в&nbsp;SQL <span class="update-time">12.05.2022 22:56</span></h1>
+    <h1>Раздел 1. <a href="#">Введение&nbsp;в&nbsp;SQL</a><span class="update-time">12.05.2022 22:56</span></h1>
     <p>
         <span class="example--word">SQL (Structured Query Language)</span>
         - Язык структурированных запросов.
@@ -88,7 +89,7 @@
     <div class="flex" style="max-width: 500px;">
         <div class="min-w-75">
             <p class="main-mind">DML</p>
-            <p>SELECT</p>
+            <p><a href="#chapter02">SELECT</a></p>
             <p><a href="#insert">INSERT</a></p>
             <p><a href="#update">UPDATE</a></p>
             <p><a href="#delete">DELETE</a></p>
@@ -158,7 +159,7 @@
 </section>
 
 <section class="container" id="chapter02">
-    <h1>Раздел 2. Знакомство&nbsp;с&nbsp;SELECT <span class="update-time">13.05.2022 13:21</span></h1>
+    <h1>Раздел 2. <a href="#">Знакомство&nbsp;с&nbsp;SELECT</a><span class="update-time">13.05.2022 13:21</span></h1>
     <hr>
     <h3>Фундаментальные концепции</h3>
     <p><span class="example--word">PROJECTION</span> - выбор столбцов из таблицы.</p>
@@ -269,7 +270,7 @@
 </section>
 
 <section class="container" id="chapter03">
-    <h1>Раздел 3. Selection и&nbsp;операторы <span class="update-time">14.05.2022 13:29</span></h1>
+    <h1>Раздел 3. <a href="#">Selection и&nbsp;операторы</a><span class="update-time">14.05.2022 13:29</span></h1>
     <hr>
     <h3>Концепция Selection</h3>
     <div class="code bold">
@@ -411,7 +412,7 @@
 </section>
 
 <section class="container" id="chapter04">
-    <h1>Раздел 4. Функции <span class="update-time">16.05.2022 15:35</span></h1>
+    <h1>Раздел 4. <a href="">Функции</a><span class="update-time">16.05.2022 15:35</span></h1>
     <hr>
     <h3>Схема функций</h3>
     <div class="horizontal-schema horizontal-schema--design">
@@ -608,7 +609,8 @@
 </section>
 
 <section class="container" id="chapter05">
-    <h1>Раздел 5. CONVERSION, GENERAL и CONDITIONAL функции<span class="update-time">28.05.2022 23:04</span></h1>
+    <h1>Раздел 5. <a href="#">CONVERSION, GENERAL и CONDITIONAL функции</a><span
+            class="update-time">28.05.2022 23:04</span></h1>
     <hr>
     <h2 class="no_mb" id="conversion"><a href="#chapter05">Conversion functions</a></h2>
     <p class="example">Функции конвертации данных из одного типа в другой</p>
@@ -953,7 +955,7 @@
 </section>
 
 <section class="container" id="chapter06">
-    <h1 class="no_mb">Раздел 6. GROUP&nbsp;функции<span class="update-time">01.06.2022 17:58</span></h1>
+    <h1 class="no_mb">Раздел 6. <a href="#">GROUP&nbsp;функции</a><span class="update-time">01.06.2022 17:58</span></h1>
     <p class="example">Group или Multiple-row работают с агрегированной информацией</p>
 
     <h4 class="no_mb">COUNT</h4>
@@ -1255,7 +1257,10 @@
 </section>
 
 <section class="container" id="chapter09">
-    <h1>Раздел 9. <a href="#">SET&nbsp;operators <span class="smaller">(Операторы множеств)</span></a></h1>
+    <h1>
+        Раздел 9. <a href="#">SET&nbsp;operators <span class="smaller">(Операторы множеств)</span></a>
+        <span class="update-time">27.11.2022 11:17</span>
+    </h1>
 
     <hr>
     <div>
@@ -1381,7 +1386,9 @@
 </section>
 
 <section class="container" id="chapter10">
-    <h1>Раздел 10. <a href="#">DML&nbsp;команды</a></h1>
+    <h1>Раздел 10. <a href="#">DML&nbsp;команды</a>
+        <span class="update-time">29.11.2022 11:30</span>
+    </h1>
 
     <div id="dml">
         <div>
@@ -1493,6 +1500,111 @@
     </div>
 
     <a href="#" class="button button--top"></a>
+
+</section>
+
+<section class="container" id="chapter11">
+    <h1>Раздел 11. <a href="#">TCL&nbsp;команды</a>
+        <span class="update-time">28.12.2022 22:55</span>
+    </h1>
+
+    <div id="tcl">
+        <div class="horizontal-schema horizontal-schema--design mb20">
+            <div>TCL команды</div>
+            <div>
+                <div>COMMIT</div>
+                <div>ROLLBACK</div>
+                <div>SAVEPOINT</div>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+    <div id="acid">
+        <h3>Принципы ACID</h3>
+        <p class="no_mb"><span class="bold good">A</span>TOMICITY - атомарность</p>
+        <p class="example">
+            Транзакция атомарна(неделима). Т.е. либо выполняются все DML команды внутри транзакции,
+            либо не выполняется ни одна.
+        </p>
+        <p class="no_mb"><span class="bold good">C</span>ONSISTENCY - консистентность</p>
+        <p class="example">
+            При запуске SELECT учитывается только состояние таблицы на момент запуска.
+        </p>
+        <p class="no_mb"><span class="bold good">I</span>SOLATION - изолированность</p>
+        <p class="example">Изменения видны другим пользователям только после завершения транзакции.</p>
+        <p class="no_mb"><span class="bold good">D</span>URABLE - долговечность</p>
+        <p class="example">После окончания транзакции данные не могут быть потеряны.</p>
+    </div>
+
+    <hr>
+    <div id="transaction">
+        <h3>Транзакции</h3>
+        <p class="no_mb">
+            Транзакция запускается непосредственно перед стартом DML команды:
+            <span class="code-word">INSET</span>,
+            <span class="code-word">UPDATE</span>,
+            <span class="code-word">DELETE</span> или&nbsp;<span class="code-word">MERGE</span>.
+        </p>
+        <p class="example">Транзакция запускается не явно, и нет никакой команды для запуска транзакции</p>
+        <p>При наличии открытой транзакции, DML команды не открывают новую, а выполняются в уже открытой.</p>
+        <p class="no_mb">
+            Транзакция закрывается только тогда будет вызваны
+            <span class="code-word">COMMIT</span> или&nbsp;<span class="code-word">ROLLBACK</span>.
+        </p>
+        <p>Важно!!! <span class="code-word">SAVEPOINT</span> не завершает транзакцию.
+        <p>Транзакция не связана ни с какой таблицей.</p>
+        <p>Любая DDL или DCL команда завершают транзакцию коммитом.</p>
+        <p>
+            Важно!!! Когда выходишь из тула происходит закрытие транзакции,
+            а вот чем (commit или rollback) зависит от настроек.
+        </p>
+        <p>Также закрытие транзакции происходит при завершении сессии (тут только rollback).</p>
+    </div>
+
+    <hr>
+    <div id="commit">
+        <h3>COMMIT</h3>
+        <p class="main-mind">Сохранение внесенных изменений.</p>
+        <p>Самая простая комманда в SQL</p>
+        <div class="code example--word">COMMIT;</div>
+        <p>Работает очень быстро.</p>
+    </div>
+
+    <hr>
+    <div id="rollback">
+        <h3>ROLLBACK</h3>
+        <p class="main-mind">Отмена внесенных изменений.</p>
+        <div class="code-word mb10">
+            <p>
+                <span class="example--word">ROLLBACK</span>
+                TO SAVEPOINT savepoint_name<span class="example--word">;</span>
+            </p>
+        </div>
+        <p>Может выполняться значительное время.</p>
+        <p class="no_mb">Важно!!!</p>
+        <p class="no_mb">ROLLBACK без параметров заканчивает транзакцию.</p>
+        <p>ROLLBACK TO SAVEPOINT не заканчивает транзакцию.</p>
+    </div>
+
+    <hr>
+    <div id="save-point">
+        <h3>SAVEPOINT</h3>
+        <p class="main-mind">Это маркер, который используется при ROLLBACK'е.</p>
+        <div class="code example--word">SAVEPOINT savepoint_name;</div>
+    </div>
+    <p class="no_mb">Создается в текущей транзакции.</p>
+    <p>После закрытия транзакции - уничтожается.</p>
+    <a href="#" class="button button--top"></a>
+    <p class="main-mind">SAVEPOINT не является стандартной командой SQL</p>
+
+    <hr>
+    <div id="autocommit">
+        <h3>AUTOCOMMIT</h3>
+        <p>Если очень хочется что-бы после каждой DML команды проходил коммит то можно использовать следующе:</p>
+        <div class="code-word mb10">SET AUTOCOMMIT {ON|OFF};</div>
+        <p class="main-mind">Но лучше это никогда не использовать!</p>
+    </div>
 
 </section>
 
