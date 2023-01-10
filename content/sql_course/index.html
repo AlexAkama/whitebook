@@ -28,6 +28,7 @@
         <li><a href="#chapter09">SET operators (Операторы множеств)</a></li>
         <li><a href="#chapter10">DML команды</a></li>
         <li><a href="#chapter11">TCL команды</a></li>
+        <li><a href="#chapter12">DDL команды</a></li>
     </ol>
     <div class="back-panel">
         <a href="../../" class="button button--home">На главную</a>
@@ -1029,7 +1030,7 @@
 </section>
 
 <section class="container" id="chapter07">
-    <h1>Pаздел 7. <a href="#">JOIN</a><span class="update-time">22.10.2022 22:38</span></h1>
+    <h1>Раздел 7. <a href="#">JOIN</a><span class="update-time">22.10.2022 22:38</span></h1>
     <div class="after-h1">
 
     </div>
@@ -1606,6 +1607,103 @@
         <p class="main-mind">Но лучше это никогда не использовать!</p>
     </div>
 
+    <hr>
+    <div id="select_for_upfate">
+        <h3>SELECT FOR UPDATE</h3>
+        <div class="code bold">
+            <p><span class="example--word">SELECT *</span></p>
+            <p><span class="example--word">FROM&nbsp;table_name</span></p>
+            <p><span class="example--word">...</span></p>
+            <p><span class="example--word">FOR UPDATE;</span></p>
+        </div>
+        <p>На все выведенные строки будет поставлен lock, и при попытке изменить эти данные из другой сессии произойдет
+            "зависание", до тех пор пока не будет снят lock.</p>
+        <p>Lock будет снят при закрытии транзакции, в которой он был вызван.</p>
+    </div>
+
+</section>
+
+<section class="container" id="chapter12">
+    <h1>Раздел 12. <a href="#">DDL&nbsp;Команды: Работа с&nbsp;таблицами</a></h1>
+
+    <hr>
+    <div>
+        <h3>Объекты базы данных</h3>
+        <div class="vertical-schema mb20">
+            <div>DB OBJECTS</div>
+            <div>
+                <div>TABLE</div>
+                <div>VIEW</div>
+                <div>SYNONYM</div>
+                <div>INDEX</div>
+                <div>SEQUENCE</div>
+            </div>
+        </div>
+
+        <div class="code">
+            <p>SELECT * FROM dba_objects; // Покажет все объекты БД (если есть доступ)</p>
+            <p>SELECT * FROM user_objects; // Покажет все объекты пользователя БД</p>
+            <p>SELECT * FROM all_objects; // Покажет все объекты доступные пользователю </p>
+        </div>
+    </div>
+
+    <hr>
+    <div>
+        <h3>USER и SCHEMA</h3>
+        <p class="main-mind no_mb">USER - это сущность, которая может совершить logon-процесс.</p>
+        <p class="example">Есть имя и пароль.</p>
+        <p class="main-mind no_mb">SCHEMA - контейнер для всех объектов, принадлежащих одному юзеру.</p>
+        <p class="example">По-умолчанию пустая.</p>
+        <p>Объект не может быть вне схемы!!!</p>
+        <p>Возможно получение доступа к объектам другого пользователя, но нужно предоставить доступ.</p>
+        <p>Есть пользователи по-умолчанию, например
+            <span class="example--word">SYS</span> и
+            <span class="example--word">SYSTEM</span>.
+            Их объекты используются для служебных целей и мониторинга.
+        </p>
+    </div>
+
+    <hr>
+    <div>
+        <h3>NAMESPACE</h3>
+        <p>Ограничения для имен:</p>
+        <ol>
+            <li>Длина от 1 до 30 символов.</li>
+            <li>Нельзя использовать зарезервированные слова (from, select, where и т.п.)</li>
+            <li>Должно начинаться с буквы (Aa-Zz)</li>
+            <li>Можно использовать
+                <span class="code-word">_</span>,
+                <span class="code-word">$</span>,
+                <span class="code-word">#</span>
+            </li>
+            <li>Прописные буквы конвертируются в заглавные.</li>
+        </ol>
+        <p class="no_mb">
+            Если взять имя в двойные кавычки, то данные правила можно игнорировать, за исключением первого.
+        </p>
+        <p>Но и использовать придется только с двойными кавчками.</p>
+        <p class="no_mb">В NAMESPACE объекты имеют уникальные имена.</p>
+        <p>
+            INDEX и CONSTRAIN имеют свои неймспейсы, и поэтому они могут совпадать, например, с именами таблиц
+            (но так лучше никогда не делать).
+        </p>
+    </div>
+
+    <a href="#" class="button button--top"></a>
+</section>
+
+<section class="container" id="chapter13">
+    <h1>Раздел 13. <a href="#">DDL&nbsp;Команды: CONSTRAINT и&nbsp;INDEX</a></h1>
+
+
+    <a href="#" class="button button--top"></a>
+</section>
+
+<section class="container" id="chapter14">
+    <h1>Раздел 14. <a href="#">DDL&nbsp;Команды: VIEW, SYNONYM и&nbsp;SEQUENCE</a></h1>
+
+
+    <a href="#" class="button button--top"></a>
 </section>
 
 <footer>
