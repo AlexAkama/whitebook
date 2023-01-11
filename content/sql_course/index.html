@@ -74,88 +74,193 @@
         Еще существуют, например, иерархические БД
     </p>
 
-    <hr>
-    <h3>SQL КОМАНДЫ</h3>
-    <p class="no_mb"><span class="example--word larger">DML</span> - Data Manipulation Language</p>
-    <p class="example">Предназначены для манипуляции данными</p>
-    <p class="no_mb"><span class="example--word larger">DDL</span> - Data Definition Language</p>
-    <p class="example">Предназначены для определения структуры БД и работы с объектами (CRUD)</p>
-    <p class="no_mb"><span class="example--word larger">TCL</span> - Transaction Control Language</p>
-    <p class="example">Предназначены для реализации и управления транзакциями</p>
-    <p class="no_mb"><span class="example--word larger">DCL</span> - Data Control Language</p>
-    <p class="example">Предназначены определения доступа к данным</p>
-    <p>
-        <a class="link-to-source" href="https://info-comp.ru/what-is-ddl-dml-dcl-tcl" target="_blank">источник</a>
-    </p>
-    <div class="flex" style="max-width: 500px;">
-        <div class="min-w-75">
-            <p class="main-mind">DML</p>
-            <p><a href="#chapter02">SELECT</a></p>
-            <p><a href="#insert">INSERT</a></p>
-            <p><a href="#update">UPDATE</a></p>
-            <p><a href="#delete">DELETE</a></p>
-            <p><a href="#merge">MERGE</a></p>
-        </div>
-        <div class="min-w-75">
-            <p class="main-mind">DDL</p>
-            <p>CREATE</p>
-            <p>ALTER</p>
-            <p>DROP</p>
-            <p>RENAME</p>
-            <p>TRUNCATE</p>
-        </div>
-        <div class="min-w-75">
-            <p class="main-mind">TCL</p>
-            <p>COMMIT</p>
-            <p>ROLLBACK</p>
-            <p>SAVEPOINT</p>
-        </div>
-        <div class="min-w-75">
-            <p class="main-mind">DCL</p>
-            <p>GRANT</p>
-            <p>REVOKE</p>
-        </div>
+    <div id="intro_menu">
+        <h3>Базовые знания:</h3>
+        <p class="tab-1"><a href="#sql_commands">SQL КОМАНДЫ</a></p>
+        <p class="tab-1"><a href="#data_type">ТИПЫ ДАННЫХ</a></p>
+        <p class="tab-1"><a href="#describe">Команда DESCRIBE</a></p>
+        <p class="tab-1"><a href="#db_objects">Объекты БД</a></p>
+        <p class="tab-1"><a href="#user_schema">USER и SCHEMA</a></p>
+        <p class="tab-1"><a href="#namespace">NAMESPACE</a></p>
     </div>
-    <p class="example">Это далеко не все команды...</p>
 
     <hr>
-    <h3>ТИПЫ ДАННЫХ</h3>
-    <p class="main-mind">
-        Тип данных - это множество допустимых значений этих данных, а также совокупность операция над ними.
-    </p>
-    <h4>Числовые типы</h4>
-    <p>INTEGER</p>
-    <p class="no_mb">NUMBER(p,s)</p>
-    <p class="example">
-        p(precision) - общее максимальное кол-во цифр
-        <br>s(scale) - сколько из общего отводится на дробную часть
-        <br>Важно! Кол-во на целую часть = p - s
-    </p>
-    <h4>Алфавитно-цифровые типы</h4>
-    <p class="no_mb">CHAR(length)</p>
-    <p class="example">Фиксированная длина</p>
-    <p class="no_mb">VARCHAR2(size)</p>
-    <p class="example">Переменная длинна</p>
-    <a href="#" class="button button--top"></a>
-    <h4>Типы даты и времени</h4>
-    <p class="no_mb">DATE</p>
-    <p class="example">Содержит информацию о голе, месяце, дне, часе, минуте, секунде.</p>
-    <p class="no_mb">TIMESTAMP(f)</p>
-    <p class="example">Содержит информацию о голе, месяце, дне, часе, минуте, секунде,
-        <strong>долях секунды</strong> (f - кол-во десятичных знаков)
-    </p>
-    <h4>Тип NULL</h4>
-    <p class="no_mb"><span class="example--word larger">NULL</span> - это отсутствие данных.</p>
-    <p class="example">0, пробел или строка 'null' - это не null. Они занимают место в памяти.
-        <br>Результат арифметических операций с null - всегда null.</p>
-    <hr>
-    <h3>Команда DESCRIBE</h3>
-    <p><span class="example--word">Data Dictionary</span>
-        - место где Oracle хранит данные о таблицах. Нужна для DDL.</p>
-    <div class="code no_mb bold">
-        <span class="example--word">DESC</span>RIBE SCHEMA.<span class="example--word">TABLE_NAME</span>
+    <div id="sql_commands">
+        <h3><a href="#intro_menu">SQL КОМАНДЫ</a></h3>
+        <p class="no_mb"><span class="example--word larger">DML</span> - Data Manipulation Language</p>
+        <p class="example">Предназначены для манипуляции данными</p>
+        <p class="no_mb"><span class="example--word larger">DDL</span> - Data Definition Language</p>
+        <p class="example">Предназначены для определения структуры БД и работы с объектами (CRUD)</p>
+        <p class="no_mb"><span class="example--word larger">TCL</span> - Transaction Control Language</p>
+        <p class="example">Предназначены для реализации и управления транзакциями</p>
+        <p class="no_mb"><span class="example--word larger">DCL</span> - Data Control Language</p>
+        <p class="example">Предназначены определения доступа к данным</p>
+        <p>
+            <a class="link-to-source" href="https://info-comp.ru/what-is-ddl-dml-dcl-tcl" target="_blank">источник</a>
+        </p>
+        <div class="flex" style="max-width: 500px;">
+            <div class="min-w-75">
+                <p class="main-mind">DML</p>
+                <p><a href="#chapter02">SELECT</a></p>
+                <p><a href="#insert">INSERT</a></p>
+                <p><a href="#update">UPDATE</a></p>
+                <p><a href="#delete">DELETE</a></p>
+                <p><a href="#merge">MERGE</a></p>
+            </div>
+            <div class="min-w-75">
+                <p class="main-mind">DDL</p>
+                <p>CREATE</p>
+                <p>ALTER</p>
+                <p>DROP</p>
+                <p>RENAME</p>
+                <p>TRUNCATE</p>
+            </div>
+            <div class="min-w-75">
+                <p class="main-mind">TCL</p>
+                <p><a href="#commit">COMMIT</a></p>
+                <p><a href="#rollback">ROLLBACK</a></p>
+                <p><a href="#save_point">SAVEPOINT</a></p>
+            </div>
+            <div class="min-w-75">
+                <p class="main-mind">DCL</p>
+                <p>GRANT</p>
+                <p>REVOKE</p>
+            </div>
+        </div>
+        <p class="example">Это далеко не все команды...</p>
     </div>
-    <p class="example">Вывод данных о структуре таблице (имя, тип).</p>
+
+    <hr>
+    <div id="data_type">
+        <h3><a href="#intro_menu">ТИПЫ ДАННЫХ</a></h3>
+        <p class="main-mind">
+            Тип данных - это множество допустимых значений этих данных, а также совокупность операция над ними.
+        </p>
+        <h4>Числовые типы</h4>
+        <p><span class="code-word">INTEGER</span></p>
+        <p class="no_mb"><span class="code-word">NUMBER(p,s)</span></p>
+        <p class="example">
+            p(precision) - общее максимальное кол-во цифр
+            <br>s(scale) - сколько из общего отводится на дробную часть
+            <br>Важно! Кол-во на целую часть = p - s
+        </p>
+        <h4>Алфавитно-цифровые типы</h4>
+        <p class="no_mb"><span class="code-word">CHAR(length)</span></p>
+        <p class="example">Фиксированная длина</p>
+        <p class="no_mb"><span class="code-word">VARCHAR2(size)</span></p>
+        <p class="example">Переменная длинна</p>
+        <a href="#" class="button button--top"></a>
+        <h4>Типы даты и времени</h4>
+        <p class="no_mb"><span class="code-word">DATE</span></p>
+        <p class="example">Содержит информацию о голе, месяце, дне, часе, минуте, секунде.</p>
+        <p class="no_mb"><span class="code-word">TIMESTAMP(f)</span></p>
+        <p class="example">Содержит информацию о голе, месяце, дне, часе, минуте, секунде,
+            <strong>долях секунды</strong> (f - кол-во десятичных знаков)
+        </p>
+        <h4>Тип NULL</h4>
+        <p class="no_mb"><span class="code-word">NULL</span> - это отсутствие данных.</p>
+        <p class="example">0, пробел или строка 'null' - это не null. Они занимают место в памяти.
+            <br>Результат арифметических операций с null - всегда null.</p>
+        <div class="mb20">
+            <h4>Другие типы данных <span class="spoiler-button"></span></h4>
+            <div class="spoiler" style="background-color: transparent; border: none;">
+                <p class="no_mb"><span class="code-word">TIMESTAMP WITH TIMEZONE</span></p>
+                <p class="example no_mt">Такой же как TIMESTAMP, но добавляется данные от часовом поясе.</p>
+                <p class="no_mb"><span class="code-word">TIMESTAMP WITH LOCAL TIMEZONE</span></p>
+                <p class="example no_mb no_mt">Отличается от предыдущего, тем что не содержит информацию от часовом
+                    поясе.</p>
+                <p class="example no_mb no_mt">Т.е. дата и время переводится в то время в котором вы находитесь.</p>
+                <p class="example no_mt">Важно!!! Два пользователя могут получить разное время.</p>
+                <p class="no_mb"><span class="code-word">INTERVAL YEAR TO MONTH</span></p>
+                <p class="example no_mt">Содержит значение год и месяц</p>
+                <p class="no_mb"><span class="code-word">INTERVAL DAY TO SECOND</span></p>
+                <p class="example no_mt">Содержит значение дни, часы, минуты и секунды.</p>
+                <p class="no_mb"><span class="code-word">CLOB</span> - Character Large Object</p>
+                <p class="example no_mt">Можно хранить огромные текстовые элементы.</p>
+                <p class="no_mb"><span class="code-word">BLOB</span> - Binary Large Object</p>
+                <p class="example no_mt">Можно хранить огромные бинарные элементы (фото, видео).</p>
+                <p class="no_mb"><span class="code-word">LONG</span> - Устаревший</p>
+                <p class="example no_mt no_mb">Рекомендуется хранить в CLOB.</p>
+                <p class="example no_mt">Два столбца с типом LONG не могут быть в одной таблице.</p>
+                <p class="no_mb"><span class="code-word">ROWID</span> - Row ID</p>
+                <p class="example no_mt">Относится только к Oracle. Физический адрес строки. Зашифрован.</p>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+    <div id="describe">
+        <h3><a href="#intro_menu">Команда DESCRIBE</a></h3>
+        <p><span class="example--word">Data Dictionary</span>
+            - место где Oracle хранит данные о таблицах. Нужна для DDL.</p>
+        <div class="code no_mb bold">
+            <span class="example--word">DESC</span>RIBE SCHEMA.<span class="example--word">TABLE_NAME</span>
+        </div>
+        <p class="example">Вывод данных о структуре таблице (имя, тип).</p>
+    </div>
+
+    <hr>
+    <div id="db_objects">
+        <h3><a href="#intro_menu">Объекты базы данных</a></h3>
+        <div class="horizontal-schema horizontal-schema--design mb20">
+            <div>DB OBJECTS</div>
+            <div>
+                <div>TABLE</div>
+                <div>VIEW</div>
+                <div>SYNONYM</div>
+                <div>INDEX</div>
+                <div>SEQUENCE</div>
+            </div>
+        </div>
+
+        <div class="code">
+            <p>SELECT * FROM dba_objects; // Покажет все объекты БД (если есть доступ)</p>
+            <p>SELECT * FROM user_objects; // Покажет все объекты пользователя БД</p>
+            <p>SELECT * FROM all_objects; // Покажет все объекты доступные пользователю </p>
+        </div>
+    </div>
+
+    <hr>
+    <div id="user_schema">
+        <h3><a href="#intro_menu">USER и SCHEMA</a></h3>
+        <p class="main-mind no_mb">USER - это сущность, которая может совершить logon-процесс.</p>
+        <p class="example">Есть имя и пароль.</p>
+        <p class="main-mind no_mb">SCHEMA - контейнер для всех объектов, принадлежащих одному юзеру.</p>
+        <p class="example">По-умолчанию пустая.</p>
+        <p>Объект не может быть вне схемы!!!</p>
+        <p>Возможно получение доступа к объектам другого пользователя, но нужно предоставить доступ.</p>
+        <p>Есть пользователи по-умолчанию, например
+            <span class="example--word">SYS</span> и
+            <span class="example--word">SYSTEM</span>.
+            Их объекты используются для служебных целей и мониторинга.
+        </p>
+    </div>
+
+    <hr>
+    <div id="namespace">
+        <h3><a href="#intro_menu">NAMESPACE</a></h3>
+        <p>Ограничения для имен:</p>
+        <ol>
+            <li>Длина от 1 до 30 символов.</li>
+            <li>Нельзя использовать зарезервированные слова (from, select, where и т.п.)</li>
+            <li>Должно начинаться с буквы (Aa-Zz)</li>
+            <li>Можно использовать
+                <span class="code-word">_</span>,
+                <span class="code-word">$</span>,
+                <span class="code-word">#</span>
+            </li>
+            <li>Прописные буквы конвертируются в заглавные.</li>
+        </ol>
+        <p class="no_mb">
+            Если взять имя в двойные кавычки, то данные правила можно игнорировать, за исключением первого.
+        </p>
+        <p>Но и использовать придется только с двойными кавчками.</p>
+        <p class="no_mb">В NAMESPACE объекты имеют уникальные имена.</p>
+        <p>
+            INDEX и CONSTRAIN имеют свои неймспейсы, и поэтому они могут совпадать, например, с именами таблиц
+            (но так лучше никогда не делать).
+        </p>
+    </div>
 
 </section>
 
@@ -1513,9 +1618,9 @@
         <div class="horizontal-schema horizontal-schema--design mb20">
             <div>TCL команды</div>
             <div>
-                <div>COMMIT</div>
-                <div>ROLLBACK</div>
-                <div>SAVEPOINT</div>
+                <div><a href="#commit">COMMIT</a></div>
+                <div><a href="#rollback">ROLLBACK</a></div>
+                <div><a href="#save_point">SAVEPOINT</a></div>
             </div>
         </div>
     </div>
@@ -1565,7 +1670,7 @@
 
     <hr>
     <div id="commit">
-        <h3>COMMIT</h3>
+        <h3><a href="#tcl">COMMIT</a></h3>
         <p class="main-mind">Сохранение внесенных изменений.</p>
         <p>Самая простая комманда в SQL</p>
         <div class="code example--word">COMMIT;</div>
@@ -1574,7 +1679,7 @@
 
     <hr>
     <div id="rollback">
-        <h3>ROLLBACK</h3>
+        <h3><a href="#tcl">ROLLBACK</a></h3>
         <p class="main-mind">Отмена внесенных изменений.</p>
         <div class="code-word mb10">
             <p>
@@ -1589,15 +1694,15 @@
     </div>
 
     <hr>
-    <div id="save-point">
-        <h3>SAVEPOINT</h3>
+    <div id="save_point">
+        <h3><a href="#tcl">SAVEPOINT</a></h3>
         <p class="main-mind">Это маркер, который используется при ROLLBACK'е.</p>
         <div class="code example--word">SAVEPOINT savepoint_name;</div>
+        <p class="no_mb">Создается в текущей транзакции.</p>
+        <p>После закрытия транзакции - уничтожается.</p>
+        <a href="#" class="button button--top"></a>
+        <p class="main-mind">SAVEPOINT не является стандартной командой SQL</p>
     </div>
-    <p class="no_mb">Создается в текущей транзакции.</p>
-    <p>После закрытия транзакции - уничтожается.</p>
-    <a href="#" class="button button--top"></a>
-    <p class="main-mind">SAVEPOINT не является стандартной командой SQL</p>
 
     <hr>
     <div id="autocommit">
@@ -1608,7 +1713,7 @@
     </div>
 
     <hr>
-    <div id="select_for_upfate">
+    <div id="select_for_update">
         <h3>SELECT FOR UPDATE</h3>
         <div class="code bold">
             <p><span class="example--word">SELECT *</span></p>
@@ -1625,69 +1730,6 @@
 
 <section class="container" id="chapter12">
     <h1>Раздел 12. <a href="#">DDL&nbsp;Команды: Работа с&nbsp;таблицами</a></h1>
-
-    <hr>
-    <div>
-        <h3>Объекты базы данных</h3>
-        <div class="vertical-schema mb20">
-            <div>DB OBJECTS</div>
-            <div>
-                <div>TABLE</div>
-                <div>VIEW</div>
-                <div>SYNONYM</div>
-                <div>INDEX</div>
-                <div>SEQUENCE</div>
-            </div>
-        </div>
-
-        <div class="code">
-            <p>SELECT * FROM dba_objects; // Покажет все объекты БД (если есть доступ)</p>
-            <p>SELECT * FROM user_objects; // Покажет все объекты пользователя БД</p>
-            <p>SELECT * FROM all_objects; // Покажет все объекты доступные пользователю </p>
-        </div>
-    </div>
-
-    <hr>
-    <div>
-        <h3>USER и SCHEMA</h3>
-        <p class="main-mind no_mb">USER - это сущность, которая может совершить logon-процесс.</p>
-        <p class="example">Есть имя и пароль.</p>
-        <p class="main-mind no_mb">SCHEMA - контейнер для всех объектов, принадлежащих одному юзеру.</p>
-        <p class="example">По-умолчанию пустая.</p>
-        <p>Объект не может быть вне схемы!!!</p>
-        <p>Возможно получение доступа к объектам другого пользователя, но нужно предоставить доступ.</p>
-        <p>Есть пользователи по-умолчанию, например
-            <span class="example--word">SYS</span> и
-            <span class="example--word">SYSTEM</span>.
-            Их объекты используются для служебных целей и мониторинга.
-        </p>
-    </div>
-
-    <hr>
-    <div>
-        <h3>NAMESPACE</h3>
-        <p>Ограничения для имен:</p>
-        <ol>
-            <li>Длина от 1 до 30 символов.</li>
-            <li>Нельзя использовать зарезервированные слова (from, select, where и т.п.)</li>
-            <li>Должно начинаться с буквы (Aa-Zz)</li>
-            <li>Можно использовать
-                <span class="code-word">_</span>,
-                <span class="code-word">$</span>,
-                <span class="code-word">#</span>
-            </li>
-            <li>Прописные буквы конвертируются в заглавные.</li>
-        </ol>
-        <p class="no_mb">
-            Если взять имя в двойные кавычки, то данные правила можно игнорировать, за исключением первого.
-        </p>
-        <p>Но и использовать придется только с двойными кавчками.</p>
-        <p class="no_mb">В NAMESPACE объекты имеют уникальные имена.</p>
-        <p>
-            INDEX и CONSTRAIN имеют свои неймспейсы, и поэтому они могут совпадать, например, с именами таблиц
-            (но так лучше никогда не делать).
-        </p>
-    </div>
 
     <a href="#" class="button button--top"></a>
 </section>
@@ -1713,5 +1755,7 @@
 </footer>
 
 </body>
+
+<script src="../../js/spoiler.js"></script>
 
 </html>
