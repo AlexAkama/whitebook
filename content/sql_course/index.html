@@ -1730,6 +1730,121 @@
 
 <section class="container" id="chapter12">
     <h1>Раздел 12. <a href="#">DDL&nbsp;Команды: Работа с&nbsp;таблицами</a></h1>
+    <div>
+        <p class="tab-1"><a href="#create_table">Создание таблиц</a></p>
+        <p class="tab-1"><a href="#altering_table">Изменение таблиц</a></p>
+        <p class="tab-1"><a href="#truncate">Опустошение таблиц</a></p>
+        <p class="tab-1"><a href="#drop">Удаление таблиц</a></p>
+    </div>
+
+    <hr>
+    <div id="create_table">
+        <h3><a href="#chapter12">Создание таблиц</a></h3>
+        <div class="code bold">
+            <p>
+                <span class="example--word">CREATE TABLE</span>
+                schema.<span class="example--word">table</span> ORGANIZATION HEAP
+            </p>
+            <p><span class="example--word">(column_name datatype</span> DEFAULT expr,</p>
+            <p>column_name datatype DEFAULT expr,</p>
+            <p>...<span class="example--word">);</span></p>
+        </div>
+        <h4>Создание таблицы с использованием SUBQUERY</h4>
+        <div class="code bold no_mb">
+            <span class="example--word">CREATE TABLE </span>
+            schema.<span class="example--word">table AS subquery;</span>
+        </div>
+        <p class="example">Таблица будет сожержать результат запроса.</p>
+    </div>
+
+    <hr>
+    <div id="altering_table">
+        <h3><a href="#chapter12">Изменение таблиц</a></h3>
+
+        <p class="bold no_mb">Добавление столбца</p>
+        <div class="code bold">
+            <p>ALTER TABLE table_name</p>
+            <p>ADD (column_name data_type DEFAULT expr);</p>
+        </div>
+
+        <p class="bold no_mb">Изменение столбца</p>
+        <div class="code bold no_mb">
+            <p>ALTER TABLE table_name</p>
+            <p>MODIFY (column_name data_type DEFAULT expr);</p>
+        </div>
+        <p class="example">Нельзя изменить если может быть нарушение целосности данных.</p>
+
+        <p class="bold no_mb">Удаление столбца</p>
+        <div class="code bold no_mb">
+            <p>ALTER TABLE table_name</p>
+            <p>DROP COLUMN column_name;</p>
+        </div>
+        <p class="example">Нельзя удалить если на этот столбец что-то ссылается.</p>
+
+        <p class="bold no_mb">Неиспользуемые столбцы</p>
+        <div class="code bold no_mb">
+            <p>ALTER TABLE table_name</p>
+            <p>SET UNUSED COLUMN column_name;</p>
+            <p>ALTER TABLE table_name</p>
+            <p>DROP UNUSED COLUMNS;</p>
+        </div>
+        <p class="example">
+            SET UNUSED исключает колонку из таблицы, но физического удаления не происходит.
+            Некоторая альтернатива DROP, но с возможностью отложенного удаления данных.
+            Удобно если в таблице куча данных, и их удаление занимает много времени,
+            то при таком раскладе можно выбоать время когда данные физически будут удалены.
+        </p>
+
+        <p class="bold no_mb">Переименование столбца</p>
+        <div class="code bold">
+            <p>ALTER TABLE table_name</p>
+            <p>RENAME COLUMN column_name_old TO column_name_new;</p>
+        </div>
+
+        <p class="bold no_mb">Запрет на изменение таблицы</p>
+        <div class="code bold no_mb">
+            <p>ALTER TABLE table_name</p>
+            <p>READ ONLY;</p>
+        </div>
+        <p class="example">Данные нельзя изменить (вставить, удалить и т.п.), но саму таблицу можно удалить.</p>
+
+        <p class="main-mind no_mb">
+            Пока в другой сессии открыта транзакция, то в текущей сессии DDL команда не может быть выполнена.
+        </p>
+        <p class="main-mind no_mb">Она будет ждать закрытия транзакции.</p>
+        <p class="example">
+            По факту перед и после DDL команд стоит автокоммит.
+        </p>
+
+    </div>
+
+    <hr>
+    <div id="truncate">
+        <h3><a href="#chapter12">Опустошение таблиц</a></h3>
+        <div class="code bold no_mb">
+            <span class="example--word">TRUNCATE TABLE</span>
+            schema.<span class="example--word">table_name</span>
+        </div>
+        <p class="example">Таблица осталась, а строк в ней нет. Не изменяет структуру таблицы.</p>
+
+        <p class="main-mind">Удаляет все строки.</p>
+        <p class="main-mind">Нельзя восстановить с помощью ROLLBACK.</p>
+    </div>
+
+    <hr>
+    <div id="drop">
+        <h3><a href="#chapter12">Удаление таблиц</a></h3>
+        <div class="code bold no_mb">
+            <span class="example--word">DROP TABLE</span>
+            schema.<span class="example--word">table_name</span>
+        </div>
+        <p class="example">Удалена информация и сама таблица с ее структурой.</p>
+        <p class="main-mind">
+            Нельзя удалить, если в другой сессии есть открытая транзакция,
+            или есть связи с другими таблицами.
+        </p>
+    </div>
+
 
     <a href="#" class="button button--top"></a>
 </section>
