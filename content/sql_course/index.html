@@ -1180,7 +1180,7 @@
         </p>
         <h4 class="no_mb">Типы INNER JOIN:</h4>
         <div class="horizontal-schema horizontal-schema--design">
-            <div>INNER JOIN (NATURAL&nbsp;JOIN)</div>
+            <div>INNER JOIN<br>(NATURAL&nbsp;JOIN)</div>
             <div>
                 <div><a href="#join_natural">NATURAL&nbsp;JOIN</a></div>
                 <div><a href="#join_using">USING</a></div>
@@ -1499,9 +1499,9 @@
     <div id="dml">
         <div>
             <div class="horizontal-schema horizontal-schema--design">
-                <div>DML</div>
+                <div><a href="#sql_commands">DML Команды</a></div>
                 <div>
-                    <div>SELECT</div>
+                    <div><a href="#chapter02">SELECT</a></div>
                     <div><a href="#insert">INSET</a></div>
                     <div><a href="#update">UPDATE</a></div>
                     <div><a href="#delete">DELETE</a></div>
@@ -1616,7 +1616,7 @@
 
     <div id="tcl">
         <div class="horizontal-schema horizontal-schema--design mb20">
-            <div>TCL команды</div>
+            <div><a href="#sql_commands">TCL команды</a></div>
             <div>
                 <div><a href="#commit">COMMIT</a></div>
                 <div><a href="#rollback">ROLLBACK</a></div>
@@ -1628,18 +1628,18 @@
     <hr>
     <div id="acid">
         <h3>Принципы ACID</h3>
-        <p class="no_mb"><span class="bold good">A</span>TOMICITY - атомарность</p>
+        <p class="no_mb"><span class="bold good">ATOMICITY</span> - атомарность</p>
         <p class="example">
             Транзакция атомарна(неделима). Т.е. либо выполняются все DML команды внутри транзакции,
             либо не выполняется ни одна.
         </p>
-        <p class="no_mb"><span class="bold good">C</span>ONSISTENCY - консистентность</p>
+        <p class="no_mb"><span class="bold good">CONSISTENCY</span> - консистентность</p>
         <p class="example">
             При запуске SELECT учитывается только состояние таблицы на момент запуска.
         </p>
-        <p class="no_mb"><span class="bold good">I</span>SOLATION - изолированность</p>
+        <p class="no_mb"><span class="bold good">ISOLATION</span> - изолированность</p>
         <p class="example">Изменения видны другим пользователям только после завершения транзакции.</p>
-        <p class="no_mb"><span class="bold good">D</span>URABLE - долговечность</p>
+        <p class="no_mb"><span class="bold good">DURABLE</span> - долговечность</p>
         <p class="example">После окончания транзакции данные не могут быть потеряны.</p>
     </div>
 
