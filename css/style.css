@@ -785,14 +785,14 @@ input:focus {
     background: #00a82d;
 }
 
-.horizontal-schema > * > * {
+.horizontal-schema > *:not(:first-child) > * {
     position: relative;
     padding-left: 15px;
     padding-top: 5px;
     padding-bottom: 5px;
 }
 
-.horizontal-schema > * > *:first-child::after {
+.horizontal-schema > *:not(:first-child) > *:first-child::after {
     content: '';
     position: absolute;
     width: 10px;
@@ -804,7 +804,7 @@ input:focus {
     border-top-left-radius: 5px;
 }
 
-.horizontal-schema > * > *:not(:first-child):not(:last-child)::before {
+.horizontal-schema > *:not(:first-child) > *:not(:first-child):not(:last-child)::before {
     content: '';
     position: absolute;
     width: 2px;
@@ -814,7 +814,7 @@ input:focus {
     background: #00a82d;
 }
 
-.horizontal-schema > * > *:not(:first-child):not(:last-child)::after {
+.horizontal-schema > *:not(:first-child) > *:not(:first-child):not(:last-child)::after {
     content: '';
     position: absolute;
     width: 10px;
@@ -824,7 +824,7 @@ input:focus {
     background: #00a82d;
 }
 
-.horizontal-schema > * > *:last-child::after {
+.horizontal-schema > *:not(:first-child) > *:last-child::after {
     content: '';
     position: absolute;
     width: 10px;
@@ -853,8 +853,8 @@ input:focus {
     content: none;
 }
 
-.horizontal-schema--design > * > *:first-child::after,
-.horizontal-schema--design > * > *:last-child::after {
+.horizontal-schema--design > *:not(:first-child) > *:first-child::after,
+.horizontal-schema--design > *:not(:first-child) > *:last-child::after {
     border-radius: 0;
 }
 
