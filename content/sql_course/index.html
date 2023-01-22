@@ -1852,6 +1852,173 @@
 <section class="container" id="chapter13">
     <h1>Раздел 13. <a href="#">DDL&nbsp;Команды: CONSTRAINT и&nbsp;INDEX</a></h1>
 
+    <div>
+        <div id="constraint_intro">
+            <p class="main-mind">CONSTRAINT - это бизнес правило, которому должно удовлетворять значение.</p>
+            <div class="horizontal-schema horizontal-schema--design mb20">
+                <div>CONSTRAINT</div>
+                <div>
+                    <div>
+                        <p class="no_mb">NOT NULL</p>
+                        <p class="no_mb example">Нужно обязательно что-то вставлять.</p>
+
+                    </div>
+                    <div>
+                        <p class="no_mb">PRIMARY KEY</p>
+                        <p class="no_mb example">Для уникальной идентификации. Уникальный и not null.</p>
+                    </div>
+                    <div>
+                        <p class="no_mb">FOREIGN KEY</p>
+                        <p class="no_mb example">Для указания связи с primary key. Может быть null.</p>
+                    </div>
+                    <div>
+                        <p class="no_mb">CHECK</p>
+                        <p class="no_mb example">Проверка соответствия условию.</p>
+                    </div>
+                    <div>
+                        <p class="no_mb">UNIQUE</p>
+                        <p class="no_mb example">Допускаются только уникальные значения.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="index_intro">
+            <p class="main-mind no_mb">
+                INDEX - это объект БД, создаваемый с целью повышения производительности поиска данных.
+            </p>
+            <p class="example">
+                Ускорение работы, с помощью индексов, достигается, в первую очередь, за счет того, что индекс
+                имеет структуру, оптимизированную конкретно под поиск (Сбалансированное бинарное дерево).
+            </p>
+            <p>
+                Используются при работе PRIMARY KEY и UNIQUE. Индексы создаются автоматически.
+            </p>
+        </div>
+        <div class="code bold">
+            <p>... CONSTRAINT constraint_name <span class="example--word">constraint_type</span> ...</p>
+        </div>
+        <p>
+            Constraint можно создавать прямо при создании таблицы (CREATE TABLE) в описании поля (inline level)
+            или же после описания всех строк (table level), но тогда после надо указывать имя столбца.
+        </p>
+        <p>
+            Constraint можно создавать на несколько столбцов (composite constraint). Используется вариант table level,
+            и в скобках указываются те колонки, на которые необходимо распространить правило.
+        </p>
+        <p>Если не указать имя, оно будет присвоено автоматически.</p>
+        <p class="no_mb">
+            Если назначать constraint на уже имеющуюся таблицу с данными (ALTER TABLE),
+            то данные должны удовлетворять условию, иначе будет ошибка и constraint не будет создан.
+        </p>
+        <p>
+            Есть два варианта, через оператор MODIFY или через ADD.
+        </p>
+        <p>Удалить constraint можно в любое время.</p>
+    </div>
+
+    <hr>
+    <div id="conctraint">
+        <h3>CONSTRAINT TYPE</h3>
+        <div id="unique">
+            <h4>UNIQUE</h4>
+            <p class="main-mind">Принуждает столбец(ы) содержать только уникальные значения. Исключение - null.</p>
+            <p class="no_mb">Создает индекс. Он делает поиск быстрым</p>
+            <p>При поиске по null делает full table scan!</p>
+        </div>
+        <div>
+            <h4>NOT NULL</h4>
+            <p class="main-mind">Не разрешает столбцам содержать null.</p>
+            <p>Нужно указывать для каждого столбца (inline level), в table level этот constraint не создать.</p>
+            <p>
+                Если у поля есть DEFAULT, то он будет использоваться если добавляем без указания имени
+                столбца в VALUES. При попытке добавить null "руками" - будет ошибка.
+            </p>
+        </div>
+        <div>
+            <h4>PRIMARY KEY</h4>
+            <p class="main-mind no_mb">
+                Принуждает столбец(ы) содержать только уникальные значения и не разрешает содержать значение null.
+            </p>
+            <p class="example">По факту, это UNIQUE и NOT NULL вместе.</p>
+            <p>В таблице не может быть больше одного PRIMARY KEY столбца.</p>
+            <p>Может быть композитным (состоять из нескольких столбцов.)</p>
+        </div>
+    </div>
+    <div>
+        <h4>FOREIGN KEY</h4>
+        <p class="main-mind">
+            Принуждает использовать значение из определенного столбца другой таблицы или null.
+        </p>
+        <p>
+            FOREIGN KEY определен в child-таблице и его столбец зависит от столбца в parrent-таблице.
+            Т.е. создается parent-child relationship. Отношение Many-To-One.
+        </p>
+        <p>
+            Должен ссылаться на UNIQUE или PRIMARY KEY.
+        </p>
+        <p class="no_mb">Inline level</p>
+        <div class="code bold">
+            <p>
+                ... CONSTRAINT constraint_name
+                <span class="example--word">REFERENCES parent-table_name(column_name)</span>
+                ...
+            </p>
+        </div>
+        <p class="no_mb">Table level</p>
+        <div class="code bold">
+            <p>
+                ... CONSTRAINT constraint_name
+                <span class="example--word">FOREIGN KEY(column_name) REFERENCES parent-table_name(column_name)</span>
+                ...
+            </p>
+            <p class="example">Если не указать column_name, то ссылка будет на FOREIGN KEY.</p>
+        </div>
+    </div>
+
+    <div>
+        <h3>Использование</h3>
+        <p>Где может быть использован constraint:</p>
+        <table class="list list--dictionary list--content-center" aria-label="constraint_use">
+            <thead>
+            <tr>
+                <th>Constraint</th>
+                <th>Inline level</th>
+                <th>Table level</th>
+                <th>MODIFY</th>
+                <th>ADD</th>
+            <tr>
+            </thead>
+            <tr>
+                <td>UNIQUE</td>
+                <td>Y</td>
+                <td>Y</td>
+                <td>Y</td>
+                <td>Y</td>
+            </tr>
+            <tr>
+                <td>NOT NULL</td>
+                <td>Y</td>
+                <td>N</td>
+                <td>Y</td>
+                <td>N</td>
+            </tr>
+            <tr>
+                <td>PRIMARY KEY</td>
+                <td>Y</td>
+                <td>Y</td>
+                <td>Y</td>
+                <td>Y</td>
+            </tr>
+            <tr>
+                <td>FOREIGN KEY</td>
+                <td>Y</td>
+                <td>Y</td>
+                <td>Y</td>
+                <td>Y</td>
+            </tr>
+        </table>
+    </div>
+
 
     <a href="#" class="button button--top"></a>
 </section>
