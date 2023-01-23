@@ -28,7 +28,8 @@
         <li><a href="#chapter09">SET operators (Операторы множеств)</a></li>
         <li><a href="#chapter10">DML команды</a></li>
         <li><a href="#chapter11">TCL команды</a></li>
-        <li><a href="#chapter12">DDL команды</a></li>
+        <li><a href="#chapter12">DDL Команды: Работа с таблицами</a></li>
+        <li><a href="#chapter13">DDL Команды: CONSTRAINT и INDEX</a></li>
     </ol>
     <div class="back-panel">
         <a href="../../" class="button button--home">На главную</a>
@@ -1859,24 +1860,24 @@
                 <div>CONSTRAINT</div>
                 <div>
                     <div>
-                        <p class="no_mb">NOT NULL</p>
+                        <p class="no_mb"><a href="#not_null">NOT NULL</a></p>
                         <p class="no_mb example">Нужно обязательно что-то вставлять.</p>
 
                     </div>
                     <div>
-                        <p class="no_mb">PRIMARY KEY</p>
+                        <p class="no_mb"><a href="#primary_key">PRIMARY KEY</a></p>
                         <p class="no_mb example">Для уникальной идентификации. Уникальный и not null.</p>
                     </div>
                     <div>
-                        <p class="no_mb">FOREIGN KEY</p>
+                        <p class="no_mb"><a href="#foreign_key">FOREIGN KEY</a></p>
                         <p class="no_mb example">Для указания связи с primary key. Может быть null.</p>
                     </div>
                     <div>
-                        <p class="no_mb">CHECK</p>
+                        <p class="no_mb"><a href="#check">CHECK</a></p>
                         <p class="no_mb example">Проверка соответствия условию.</p>
                     </div>
                     <div>
-                        <p class="no_mb">UNIQUE</p>
+                        <p class="no_mb"><a href="#unique">UNIQUE</a></p>
                         <p class="no_mb example">Допускаются только уникальные значения.</p>
                     </div>
                 </div>
@@ -1919,14 +1920,16 @@
     <hr>
     <div id="conctraint">
         <h3>CONSTRAINT TYPE</h3>
+
         <div id="unique">
-            <h4>UNIQUE</h4>
+            <h4><a href="#chapter13">UNIQUE</a></h4>
             <p class="main-mind">Принуждает столбец(ы) содержать только уникальные значения. Исключение - null.</p>
             <p class="no_mb">Создает индекс. Он делает поиск быстрым</p>
             <p>При поиске по null делает full table scan!</p>
         </div>
-        <div>
-            <h4>NOT NULL</h4>
+
+        <div id="not_null">
+            <h4><a href="#chapter13">NOT NULL</a></h4>
             <p class="main-mind">Не разрешает столбцам содержать null.</p>
             <p>Нужно указывать для каждого столбца (inline level), в table level этот constraint не создать.</p>
             <p>
@@ -1934,8 +1937,9 @@
                 столбца в VALUES. При попытке добавить null "руками" - будет ошибка.
             </p>
         </div>
-        <div>
-            <h4>PRIMARY KEY</h4>
+
+        <div id="primary_key">
+            <h4><a href="#chapter13">PRIMARY KEY</a></h4>
             <p class="main-mind no_mb">
                 Принуждает столбец(ы) содержать только уникальные значения и не разрешает содержать значение null.
             </p>
@@ -1943,80 +1947,115 @@
             <p>В таблице не может быть больше одного PRIMARY KEY столбца.</p>
             <p>Может быть композитным (состоять из нескольких столбцов.)</p>
         </div>
-    </div>
-    <div>
-        <h4>FOREIGN KEY</h4>
-        <p class="main-mind">
-            Принуждает использовать значение из определенного столбца другой таблицы или null.
-        </p>
-        <p>
-            FOREIGN KEY определен в child-таблице и его столбец зависит от столбца в parrent-таблице.
-            Т.е. создается parent-child relationship. Отношение Many-To-One.
-        </p>
-        <p>
-            Должен ссылаться на UNIQUE или PRIMARY KEY.
-        </p>
-        <p class="no_mb">Inline level</p>
-        <div class="code bold">
-            <p>
-                ... CONSTRAINT constraint_name
-                <span class="example--word">REFERENCES parent-table_name(column_name)</span>
-                ...
-            </p>
-        </div>
-        <p class="no_mb">Table level</p>
-        <div class="code bold">
-            <p>
-                ... CONSTRAINT constraint_name
-                <span class="example--word">FOREIGN KEY(column_name) REFERENCES parent-table_name(column_name)</span>
-                ...
-            </p>
-            <p class="example">Если не указать column_name, то ссылка будет на FOREIGN KEY.</p>
-        </div>
-    </div>
 
-    <div>
-        <h3>Использование</h3>
-        <p>Где может быть использован constraint:</p>
-        <table class="list list--dictionary list--content-center" aria-label="constraint_use">
-            <thead>
-            <tr>
-                <th>Constraint</th>
-                <th>Inline level</th>
-                <th>Table level</th>
-                <th>MODIFY</th>
-                <th>ADD</th>
-            <tr>
-            </thead>
-            <tr>
-                <td>UNIQUE</td>
-                <td>Y</td>
-                <td>Y</td>
-                <td>Y</td>
-                <td>Y</td>
-            </tr>
-            <tr>
-                <td>NOT NULL</td>
-                <td>Y</td>
-                <td>N</td>
-                <td>Y</td>
-                <td>N</td>
-            </tr>
-            <tr>
-                <td>PRIMARY KEY</td>
-                <td>Y</td>
-                <td>Y</td>
-                <td>Y</td>
-                <td>Y</td>
-            </tr>
-            <tr>
-                <td>FOREIGN KEY</td>
-                <td>Y</td>
-                <td>Y</td>
-                <td>Y</td>
-                <td>Y</td>
-            </tr>
-        </table>
+        <div id="foreign_key">
+            <h4>a[href=#chapter13]{FOREIGN KEY}</h4>
+            <p class="main-mind">
+                Принуждает использовать значение из определенного столбца другой таблицы или null.
+            </p>
+            <p>
+                FOREIGN KEY определен в child-таблице и его столбец зависит от столбца в parrent-таблице.
+                Т.е. создается parent-child relationship. Отношение Many-To-One.
+            </p>
+            <p>
+                Должен ссылаться на UNIQUE или PRIMARY KEY.
+            </p>
+            <p class="no_mb">Inline level</p>
+            <div class="code bold">
+                <p>
+                    ... CONSTRAINT constraint_name
+                    <span class="example--word">REFERENCES parent-table_name(column_name)</span>
+                    ...
+                </p>
+            </div>
+            <p class="no_mb">Table level</p>
+            <div class="code bold">
+                <p>
+                    ... CONSTRAINT constraint_name
+                    <span class="example--word">FOREIGN KEY(column_name) REFERENCES parent-table_name(column_name)</span>
+                    ...
+                </p>
+                <p class="example">Если не указать column_name, то ссылка будет на FOREIGN KEY.</p>
+            </div>
+            <p>
+                Для задания поведения при удалении используется <span class="code-word">ON DELETE</span> с параметром:
+            </p>
+            <ol>
+                <li class="mb10">
+                    <span class="code-word">CASCADE</span>
+                    - при удалении записи в parent-таблице будут удалены все связанные строки в child-таблице
+                </li>
+                <li>
+                    <span class="code-word">SET NULL</span>
+                    - запись в parent-таблице будет удалена, в связанные строки в child-таблице будет записан null
+                </li>
+            </ol>
+            <p>
+                Так же, при наличии связи FOREIGN KEY нельзя
+                очистить(<a href="#truncate">TRUNCATE</a>)
+                или удалить(<a href="#drop">DROP</a>) таблицу.
+            </p>
+        </div>
+
+        <div id="check">
+            <h3><a href="#chapter13">CHECK</a></h3>
+            <p class="main-mind">Принуждает использовать значения, которые удовлетворяются его условию(ям).</p>
+            <p>В условиях можно использовать некоторые функции, но не все.</p>
+            <p>В условии нельзя использовать SUBQUERY.</p>
+        </div>
+
+        <hr>
+        <div>
+            <h3>Использование</h3>
+            <p>Где может быть использован constraint:</p>
+            <table class="list list--dictionary list--content-center" aria-label="constraint_use">
+                <thead>
+                <tr>
+                    <th>Constraint</th>
+                    <th>Inline level</th>
+                    <th>Table level</th>
+                    <th>MODIFY</th>
+                    <th>ADD</th>
+                <tr>
+                </thead>
+                <tr>
+                    <td>UNIQUE</td>
+                    <td>Y</td>
+                    <td>Y</td>
+                    <td>Y</td>
+                    <td>Y</td>
+                </tr>
+                <tr>
+                    <td>NOT NULL</td>
+                    <td>Y</td>
+                    <td>N</td>
+                    <td>Y</td>
+                    <td>N</td>
+                </tr>
+                <tr>
+                    <td>PRIMARY KEY</td>
+                    <td>Y</td>
+                    <td>Y</td>
+                    <td>Y</td>
+                    <td>Y</td>
+                </tr>
+                <tr>
+                    <td>FOREIGN KEY</td>
+                    <td>Y</td>
+                    <td>Y</td>
+                    <td>Y</td>
+                    <td>Y</td>
+                </tr>
+                <tr>
+                    <td>CHECK</td>
+                    <td>Y</td>
+                    <td>Y</td>
+                    <td>Y</td>
+                    <td>Y</td>
+                </tr>
+            </table>
+        </div>
+
     </div>
 
 
