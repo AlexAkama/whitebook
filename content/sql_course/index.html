@@ -1852,121 +1852,75 @@
 
 <section class="container" id="chapter13">
     <h1>Раздел 13. <a href="#">DDL&nbsp;Команды: CONSTRAINT и&nbsp;INDEX</a></h1>
-
-    <div>
-        <div id="constraint_intro">
-            <p class="main-mind">CONSTRAINT - это бизнес правило, которому должно удовлетворять значение.</p>
-            <div class="horizontal-schema horizontal-schema--design mb20">
-                <div><a href="#constraint">CONSTRAINT</a></div>
-                <div>
-                    <div>
-                        <p class="no_mb"><a href="#not_null">NOT NULL</a></p>
-                        <p class="no_mb example">Нужно обязательно что-то вставлять.</p>
-
-                    </div>
-                    <div>
-                        <p class="no_mb"><a href="#primary_key">PRIMARY KEY</a></p>
-                        <p class="no_mb example">Для уникальной идентификации. Уникальный и not null.</p>
-                    </div>
-                    <div>
-                        <p class="no_mb"><a href="#foreign_key">FOREIGN KEY</a></p>
-                        <p class="no_mb example">Для указания связи с primary key. Может быть null.</p>
-                    </div>
-                    <div>
-                        <p class="no_mb"><a href="#check">CHECK</a></p>
-                        <p class="no_mb example">Проверка соответствия условию.</p>
-                    </div>
-                    <div>
-                        <p class="no_mb"><a href="#unique">UNIQUE</a></p>
-                        <p class="no_mb example">Допускаются только уникальные значения.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="code bold">
-                <p>... CONSTRAINT constraint_name <span class="example--word">constraint_type</span> ...</p>
-            </div>
-            <p>
-                Constraint можно создавать прямо при создании таблицы (CREATE TABLE) в описании поля (inline level)
-                или же после описания всех строк (table level), но тогда после надо указывать имя столбца.
-            </p>
-            <p>
-                Constraint можно создавать на несколько столбцов (composite constraint). Используется вариант table
-                level,
-                и в скобках указываются те колонки, на которые необходимо распространить правило.
-            </p>
-            <p>Если не указать имя, оно будет присвоено автоматически.</p>
-            <p class="no_mb">
-                Если назначать constraint на уже имеющуюся таблицу с данными (ALTER TABLE),
-                то данные должны удовлетворять условию, иначе будет ошибка и constraint не будет создан.
-            </p>
-            <p>
-                Есть два варианта, через оператор MODIFY или через ADD.
-            </p>
-            <p class="mb20">Удалить constraint можно в любое время.</p>
-        </div>
-
-        <div id="index_intro">
-            <p class="main-mind no_mb">
-                INDEX - это объект БД, создаваемый с целью повышения производительности поиска данных.
-            </p>
-            <p class="example">
-                Ускорение работы, с помощью индексов, достигается, в первую очередь, за счет того, что индекс
-                имеет структуру, оптимизированную конкретно под поиск.
-            </p>
-            <div class="horizontal-schema horizontal-schema--design mb20">
-                <div><a href="#index">INDEX TYPE</a></div>
-                <div>
-                    <div><a href="#b-tree">B-TREE</a></div>
-                    <div><a href="#bitmap">BITMAP</a></div>
-                </div>
-            </div>
-            <p>
-                Используются при работе PRIMARY KEY и UNIQUE. Индексы создаются автоматически.
-            </p>
-            <div class="code bold">
-                <p>
-                    <span class="example--word">CREATE</span>
-                    <span class="bad">{</span>UNIQUE<span class="bad">|</span>BITMAP<span class="bad">}</span>
-                    <span class="example--word">INDEX</span>
-                </p>
-                <p>
-                    schema.<span class="example--word">index_name ON</span>
-                </p>
-                <p>
-                    schema.<span class="example--word">table_name (column1</span>
-                    , collumn2, ...<span class="example--word">);</span>
-                </p>
-                <p class="example">Если не указать UNIQUE или BITMAP будет создан B-TREE </p>
-                <p class="example">Если не указать UNIQUE будет создан B-TREE NOT UNIQUE</p>
-            </div>
-
-            <p>Индексы могут быть композитными.</p>
-
-            <div class="code bold no_mb">
-                <span class="example--word">DROP INDEX</span>
-                schema.<span class="example--word">index_name;</span>
-                <p class="example">Нельзя удалить индексы, которые используются в constraint.</p>
-            </div>
-
-
-        </div>
-
-    </div>
+    <p class="tab-1"><a href="#constraint">CONSTRAINT</a></p>
+    <p class="tab-1"><a href="#index">INDEX</a></p>
 
     <hr>
     <div id="constraint">
-        <h3><a href="#constraint_intro">CONSTRAINT TYPE</a></h3>
+        <h3><a href="#chapter13">CONSTRAINT</a></h3>
+        <p class="main-mind">CONSTRAINT - это бизнес правило, которому должно удовлетворять значение.</p>
+        <div class="horizontal-schema horizontal-schema--design mb20">
+            <div>CONSTRAINT</div>
+            <div>
+                <div>
+                    <p class="no_mb"><a href="#not_null">NOT NULL</a></p>
+                    <p class="no_mb example">Нужно обязательно что-то вставлять.</p>
+
+                </div>
+                <div>
+                    <p class="no_mb"><a href="#primary_key">PRIMARY KEY</a></p>
+                    <p class="no_mb example">Для уникальной идентификации. Уникальный и not null.</p>
+                </div>
+                <div>
+                    <p class="no_mb"><a href="#foreign_key">FOREIGN KEY</a></p>
+                    <p class="no_mb example">Для указания связи с primary key. Может быть null.</p>
+                </div>
+                <div>
+                    <p class="no_mb"><a href="#check">CHECK</a></p>
+                    <p class="no_mb example">Проверка соответствия условию.</p>
+                </div>
+                <div>
+                    <p class="no_mb"><a href="#unique">UNIQUE</a></p>
+                    <p class="no_mb example">Допускаются только уникальные значения.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="code bold">
+            <p>... CONSTRAINT constraint_name <span class="example--word">constraint_type</span> ...</p>
+        </div>
+
+        <p>
+            Constraint можно создавать прямо при создании таблицы (CREATE TABLE) в описании поля (inline level)
+            или же после описания всех строк (table level), но тогда после надо указывать имя столбца.
+        </p>
+        <p>
+            Constraint можно создавать на несколько столбцов (composite constraint). Используется вариант table
+            level,
+            и в скобках указываются те колонки, на которые необходимо распространить правило.
+        </p>
+        <p>Если не указать имя, оно будет присвоено автоматически.</p>
+        <p class="no_mb">
+            Если назначать constraint на уже имеющуюся таблицу с данными (ALTER TABLE),
+            то данные должны удовлетворять условию, иначе будет ошибка и constraint не будет создан.
+        </p>
+        <p>
+            Есть два варианта, через оператор MODIFY или через ADD.
+        </p>
+        <p class="mb20">Удалить constraint можно в любое время.</p>
+
+
+        <h3><a href="#constraint">CONSTRAINT TYPE</a></h3>
 
         <div id="unique">
-            <h4><a href="#constraint_intro">UNIQUE</a></h4>
+            <h4><a href="#constraint">UNIQUE</a></h4>
             <p class="main-mind">Принуждает столбец(ы) содержать только уникальные значения. Исключение - null.</p>
             <p class="no_mb">Создает индекс. Он делает поиск быстрым</p>
             <p>При поиске по null делает full table scan!</p>
         </div>
 
         <div id="not_null">
-            <h4><a href="#constraint_intro">NOT NULL</a></h4>
+            <h4><a href="#constraint">NOT NULL</a></h4>
             <p class="main-mind">Не разрешает столбцам содержать null.</p>
             <p>Нужно указывать для каждого столбца (inline level), в table level этот constraint не создать.</p>
             <p>
@@ -1976,7 +1930,7 @@
         </div>
 
         <div id="primary_key">
-            <h4><a href="#constraint_intro">PRIMARY KEY</a></h4>
+            <h4><a href="#constraint">PRIMARY KEY</a></h4>
             <p class="main-mind no_mb">
                 Принуждает столбец(ы) содержать только уникальные значения и не разрешает содержать значение null.
             </p>
@@ -1986,7 +1940,7 @@
         </div>
 
         <div id="foreign_key">
-            <h4><a href="#constraint_intro">FOREIGN KEY</a></h4>
+            <h4><a href="#constraint">FOREIGN KEY</a></h4>
             <p class="main-mind">
                 Принуждает использовать значение из определенного столбца другой таблицы или null.
             </p>
@@ -2015,7 +1969,8 @@
                 <p class="example">Если не указать column_name, то ссылка будет на FOREIGN KEY.</p>
             </div>
             <p>
-                Для задания поведения при удалении используется <span class="code-word">ON DELETE</span> с параметром:
+                Для задания поведения при удалении используется <span class="code-word">ON DELETE</span> с
+                параметром:
             </p>
             <ol>
                 <li class="mb10">
@@ -2035,13 +1990,12 @@
         </div>
 
         <div id="check">
-            <h3><a href="#constraint_intro">CHECK</a></h3>
+            <h4><a href="#constraint">CHECK</a></h4>
             <p class="main-mind">Принуждает использовать значения, которые удовлетворяются его условию(ям).</p>
             <p>В условиях можно использовать некоторые функции, но не все.</p>
             <p>В условии нельзя использовать SUBQUERY.</p>
         </div>
 
-        <hr>
         <div>
             <h3>Использование</h3>
             <p>Где может быть использован constraint:</p>
@@ -2097,7 +2051,51 @@
 
     <hr>
     <div id="index">
-        <h3><a href="#index_intro">INDEX TYPE</a></h3>
+        <h3><a href="#chapter13">INDEX</a></h3>
+        <p class="main-mind no_mb">
+            INDEX - это объект БД, создаваемый с целью повышения производительности поиска данных.
+        </p>
+        <p class="example">
+            Ускорение работы, с помощью индексов, достигается, в первую очередь, за счет того, что индекс
+            имеет структуру, оптимизированную конкретно под поиск.
+        </p>
+        <div class="horizontal-schema horizontal-schema--design mb20">
+            <div>INDEX TYPE</div>
+            <div>
+                <div><a href="#b-tree">B-TREE</a></div>
+                <div><a href="#bitmap">BITMAP</a></div>
+            </div>
+        </div>
+        <p>
+            Используются при работе PRIMARY KEY и UNIQUE. Индексы создаются автоматически.
+        </p>
+
+        <div class="code bold">
+            <p>
+                <span class="example--word">CREATE</span>
+                <span class="bad">{</span>UNIQUE<span class="bad">|</span>BITMAP<span class="bad">}</span>
+                <span class="example--word">INDEX</span>
+            </p>
+            <p>
+                schema.<span class="example--word">index_name ON</span>
+            </p>
+            <p>
+                schema.<span class="example--word">table_name (column1</span>
+                , collumn2, ...<span class="example--word">);</span>
+            </p>
+            <p class="example">Если не указать UNIQUE или BITMAP будет создан B-TREE </p>
+            <p class="example">Если не указать UNIQUE будет создан B-TREE NOT UNIQUE</p>
+        </div>
+
+        <p>Индексы могут быть композитными.</p>
+
+        <div class="code bold no_mb">
+            <span class="example--word">DROP INDEX</span>
+            schema.<span class="example--word">index_name;</span>
+            <p class="example">Нельзя удалить индексы, которые используются в constraint.</p>
+        </div>
+
+        <h3><a href="#index">INDEX TYPE</a></h3>
         <p class="main-mind no_mb">
             Огромный плюс - индексы ускоряют поиск (почти всегда), т.е. ускоряют SELECT.
         </p>
@@ -2105,19 +2103,19 @@
             Огромный минус - замедляют выполнение других DML команд.
         </p>
 
-        <div id="rowid">
+        <div id="rowid" class="mb20">
             <p><span class="bold no_mb">rowid</span> - присутствует всегда.</p>
             <p class="no_mb">Что бы его увидеть в SELECT надо указать руками.</p>
             <p class="no_mb">По нему можно делать SELECT</p>
             <p>И rowid <strong>глобально уникален!</strong></p>
         </div>
 
-        <div id="b-tree">
-            <h4><a href="#index_intro">B_TREE</a></h4>
+        <div id="b-tree" class="mb20">
+            <h4><a href="#index">B_TREE</a></h4>
             <p class="no_mb">Используется по умолчанию.</p>
             <p>На основе сбалансированного дерева.</p>
-            <p class="no_mb"><span class="bold">UNIQUE</span>(по-умолчанию) - не поддерживает создание дубликатов.</p>
-            <p><span class="bold">NOT_UNIQUE</span> - поддерживает создание дубликатов.</p>
+            <p class="no_mb"><span class="bold smaller">UNIQUE</span>(по-умолчанию) - не поддерживает создание дубликатов.</p>
+            <p><span class="bold smaller">NOT_UNIQUE</span> - поддерживает создание дубликатов.</p>
 
             <p class="no_mb">Будет эффективен когда:</p>
             <ol>
@@ -2127,11 +2125,26 @@
                 <li>Когда используется where, join, group by.</li>
             </ol>
         </div>
-        <div id="bitmap">
-            <h4><a href="#index_intro">BITMAP</a></h4>
-        </div>
-    </div>
 
+        <div id="bitmap">
+            <h4><a href="#index">BITMAP</a></h4>
+            <p class="no_mb">Создают битовую карту использования значения</p>
+            <p class="example">Типа такого: 001010101</p>
+
+            <p class="no_mb">Могут использовать null, т.к. это просто значение.</p>
+            <p class="example">Это считается большим преимуществом над B-TREE</p>
+
+            <p>Могут сильно ускорять работу где используются AND, OR и NOT операторы.</p>
+
+            <p class="no_mb">Будет эффективен когда:</p>
+            <ol>
+                <li>Малое кол-во уникальных значений.</li>
+                <li>Будет много строк.</li>
+                <li>Используется булева логика (AND, OR и NOT)</li>
+            </ol>
+        </div>
+
+    </div>
 
     <a href="#" class="button button--top"></a>
 </section>
