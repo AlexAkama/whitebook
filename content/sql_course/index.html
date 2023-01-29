@@ -30,6 +30,7 @@
         <li><a href="#chapter11">TCL команды</a></li>
         <li><a href="#chapter12">DDL Команды: Работа с таблицами</a></li>
         <li><a href="#chapter13">DDL Команды: CONSTRAINT и INDEX</a></li>
+        <li><a href="#chapter14">DDL Команды: VIEW, SYNONYM и&nbsp;SEQUENCE</a></li>
     </ol>
     <div class="back-panel">
         <a href="../../" class="button button--home">На главную</a>
@@ -1730,7 +1731,10 @@
 </section>
 
 <section class="container" id="chapter12">
-    <h1>Раздел 12. <a href="#">DDL&nbsp;Команды: Работа с&nbsp;таблицами</a></h1>
+    <h1>
+        Раздел 12. <a href="#">DDL&nbsp;Команды: Работа с&nbsp;таблицами</a>
+        <span class="update-time">10.01.2023 18:19</span>
+    </h1>
     <div>
         <p class="tab-1"><a href="#create_table">Создание таблиц</a></p>
         <p class="tab-1"><a href="#altering_table">Изменение таблиц</a></p>
@@ -1851,7 +1855,10 @@
 </section>
 
 <section class="container" id="chapter13">
-    <h1>Раздел 13. <a href="#">DDL&nbsp;Команды: CONSTRAINT и&nbsp;INDEX</a></h1>
+    <h1>
+        Раздел 13. <a href="#">DDL&nbsp;Команды: CONSTRAINT и&nbsp;INDEX</a>
+        <span class="update-time">12.01.2023 11:36</span>
+    </h1>
     <p class="tab-1"><a href="#constraint">CONSTRAINT</a></p>
     <p class="tab-1"><a href="#index">INDEX</a></p>
 
@@ -2151,27 +2158,181 @@
 </section>
 
 <section class="container" id="chapter14">
-    <h1>Раздел 14. <a href="#">DDL&nbsp;Команды: VIEW, SYNONYM и&nbsp;SEQUENCE</a></h1>
-    <p class="main-mind">
-        Представление (VIEW) — объект базы данных, являющийся результатом выполнения запроса к базе данных,
-        определенного с помощью оператора SELECT, в момент обращения к представлению.
-    </p>
-    <p>
-        Представления иногда называют «виртуальными таблицами». Такое название связано с тем, что представление доступно
-        для пользователя как таблица, но само оно не содержит данных, а извлекает их из таблиц в момент обращения к
-        нему. Если данные изменены в базовой таблице, то пользователь получит актуальные данные при обращении к
-        представлению, использующему данную таблицу; кэширования результатов выборки из таблицы при работе представлений
-        не производится. При этом, механизм кэширования запросов (query cache) работает на уровне запросов пользователя
-        безотносительно к тому, обращается ли пользователь к таблицам или представлениям.
-    </p>
-    <p><a class="link-to-source" href="https://habr.com/ru/post/47031/" target="_blank">источник</a></p>
-    <p class="no_mb">Почему используют VIEW:</p>
-    <ol>
-        <li>Обеспечение security policy.</li>
-        <li>Упрощение написания sql-запросов для юзеров.</li>
-        <li>Предотвращение ошибок.</li>
-        <li>Упрощения нейминга для понимания.</li>
-    </ol>
+    <h1>
+        Раздел 14. <a href="#">DDL&nbsp;Команды: VIEW, SYNONYM и&nbsp;SEQUENCE</a>
+        <span class="update-time">29.01.2023 17:11</span>
+    </h1>
+    <div>
+        <p class="tab-1"><a href="#view">VIEW</a></p>
+        <p class="tab-1"><a href="#synonym">SYNONYM</a></p>
+        <p class="tab-1"><a href="#sequence">SEQUENCE</a></p>
+    </div>
+
+    <hr>
+    <div id="view">
+        <h3><a href="#chapter14">VIEW</a></h3>
+
+        <p class="main-mind">
+            Представление (VIEW) — объект базы данных, являющийся результатом выполнения запроса к базе данных,
+            определенного с помощью оператора SELECT, в момент обращения к представлению.
+        </p>
+        <p>
+            Представления иногда называют «виртуальными таблицами». Такое название связано с тем, что представление
+            доступно
+            для пользователя как таблица, но само оно не содержит данных, а извлекает их из таблиц в момент обращения к
+            нему. Если данные изменены в базовой таблице, то пользователь получит актуальные данные при обращении к
+            представлению, использующему данную таблицу; кэширования результатов выборки из таблицы при работе
+            представлений
+            не производится. При этом, механизм кэширования запросов (query cache) работает на уровне запросов
+            пользователя
+            безотносительно к тому, обращается ли пользователь к таблицам или представлениям.
+        </p>
+        <p><a class="link-to-source" href="https://habr.com/ru/post/47031/" target="_blank">источник</a></p>
+        <p class="no_mb">Почему используют VIEW:</p>
+        <ol>
+            <li>Обеспечение security policy.</li>
+            <li>Упрощение написания sql-запросов для юзеров.</li>
+            <li>Предотвращение ошибок.</li>
+            <li>Упрощения нейминга для понимания.</li>
+        </ol>
+        <p>Select стоящий за view обычно оптимизируется программистом, что бы пользователь не задумывался о
+            доработке.</p>
+
+        <h4>Типы VIEW</h4>
+        <div class="vertical-schema" style="display: inline-block;">
+            <div>VIEW</div>
+            <div>
+                <div>
+                    <p class="no_mb">SIMPLE</p>
+                    <ul class="tab-3" style="text-align: left; min-width: 175px;">
+                        <li>One table</li>
+                        <li>No functions</li>
+                        <li>No aggregation</li>
+                    </ul>
+                </div>
+                <div>
+                    <p class="no_mb">COMPLEX</p>
+                    <ul class="tab-3" style="text-align: left; min-width: 175px">
+                        <li>Join tables</li>
+                        <li>Functions</li>
+                        <li>Aggregation</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <p><span class="bold">SIMPLE</span> - Можно сделать INSERT(UPDATE, DELETE)</p>
+        <p><span class="bold">COMPLEX</span> - Нельзя сделать INSERT(UPDATE, DELETE)</p>
+        <p class="no_mb">
+            Т.е. можно выполнить операции только, в том случае если строку из view можно однозначно сопоставить
+            со строкой в таблице.
+        </p>
+        <p class="example">
+            Иногда в COMPLEX может быть четкая связь для UPDATE или DELETE и запрос может пройти.
+        </p>
+        <p>
+            Если используется <span class="bold">rownum</span> то это всегда COMPLEX.
+        </p>
+
+        <div class="code bold no_mb">
+            <p>
+                <span class="example--word">CREATE</span> OR REPLACE
+                <span class="bad">{</span>FORSE<span class="bad">|</span>NOFORSE<span class="bad">}</span>
+                <span class="example--word">VIEW</span>
+            </p>
+            <p>schema.<span class="example--word">view_name</span> (alias1. alias2, ...)</p>
+            <p><span class="example--word">AS subquery</span></p>
+            <p>
+                WITH CHECK OPTION
+                <span class="bad">{</span>CONSTRAINT constraint_name<span class="bad">}</span>
+            </p>
+            <p class="example">Для того что бы не вставить строки, которые будут не видны в представлении.</p>
+            <p>
+                WITH READ ONLY
+                <span class="bad">{</span>CONSTRAINT constraint_name<span class="bad">}</span><span
+                    class="example--word">;</span>
+            </p>
+            <p class="example no_mb">Что бы запретить использование DML команд. Только для селекта.</p>
+        </div>
+        <p class="example">
+            CONSTRAINT constraint_name - никакого отношения к constraint, используется для того что бы
+            в ошибке выводилось нормальное имя.
+        </p>
+        <p>
+            Таблицы и представления находятся в одном namespace, поэтому имена должны быть разными.
+        </p>
+        <div class="code bold no_mb">
+            <span class="example--word">ALTER VIEW</span>
+            schema.<span class="example--word">view_name COMPILE;</span>
+        </div>
+        <p class="example">Проверка работоспособности view.</p>
+        <p class="main-mind no_mb"> Изменить view невозможно.</p>
+        <p class="main-mind">Что бы внести изменения надо удалить, а затем создать новое.</p>
+
+        <div class="code bold no_mb">
+            <span class="example--word">DROP VIEW</span>
+            schema.<span class="example--word">view_name;</span>
+        </div>
+
+    </div>
+
+    <hr>
+    <div id="synonym">
+        <h3><a href="#chapter14">SYNONYM</a></h3>
+        <p class="main-mind">Альтернативное имя объекта БД.</p>
+        <p class="no_mb">Полное имя таблицы выглядит так:</p>
+        <p class="bold">schema.table@database</p>
+        <p>Позволяет использовать базы из других схем и баз, без их указания.</p>
+
+        <div class="vertical-schema mb10" style="display: inline-block;">
+            <div>SYNONYM</div>
+            <div>
+                <div style="min-width: 100px;">PRIVATE</div>
+                <div style="min-width: 100px;">PUBLIC</div>
+            </div>
+        </div>
+
+        <p class="no_mb">Public synonym находятся в public_namespace.</p>
+        <p>
+            Private synonym - в namespace, поэтому названия не должны совпадать
+            с&nbsp;таблицами и&nbsp;представлениями.</p>
+        <p>
+            <span class="bold">Приоритет поиска</span>
+            - сначала ищется в схеме (private), а уже потом в&nbsp;public_namespace.
+        </p>
+
+        <div class="code bold">
+            <p>
+                <span class="example--word">CREATE</span> PUBLIC
+                <span class="example--word">SYNONYM synonym_name</span>
+            </p>
+            <p><span class="example--word">FOR object_name;</span></p>
+            <p class="example">Создание синонима.</p>
+        </div>
+
+        <div class="code no_mb">
+            <p>
+                <span class="example--word">ALTER</span> PUBLIC
+                <span class="example--word">SYNONYM synonym_name</span>
+            </p>
+            <p><span class="example--word"> COMPILE;</span></p>
+            <p class="example">Проверка работоспособности синонима.</p>
+        </div>
+
+        <div class="code">
+            <p>
+                <span class="example--word">DROP</span> PUBLIC
+                <span class="example--word">SYNONYM synonym_name;</span>
+            </p>
+            <p class="example">Удаление синонима.</p>
+        </div>
+
+    </div>
+
+    <hr>
+    <div id="sequence">
+        <h3><a href="#chapter14">SEQUENCE</a></h3>
+
+    </div>
 
     <a href="#" class="button button--top"></a>
 </section>
