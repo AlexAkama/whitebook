@@ -1658,7 +1658,7 @@
         <li class="no_mb"><a href="#lifecircle_6">Бины готовы к использованию</a></li>
         <li class="no_mb"><a href="#lifecircle_7">Закрытие контекста</a></li>
     </ol>
-    <a class="button button--head" href="#q20"></a>
+    <a class="button button--content_table" href="#q20"></a>
 
     <hr>
     <div id="lifecircle_1">
@@ -1796,7 +1796,7 @@
             Map&lt;String,&nbsp;BeanDefinition&gt; beanDefinitionMap = new&nbsp;ConcurrentHashMap<>(256);
         </div>
         <p>в которой хранятся все описания бинов, обнаруженных в ходе парсинга конфигурации.</p>
-        <a class="button button--head" href="#q20_beans"></a>
+        <a class="button button--content_table" href="#q20_beans"></a>
     </div>
 
     <div id="lifecircle_2">
@@ -1816,13 +1816,13 @@
             </p>
             <p>}</p>
         </div>
-        <a class="button button--head" href="#q20_beans"></a>
+        <a class="button button--content_table" href="#q20_beans"></a>
     </div>
 
     <div id="lifecircle_3">
         <h4>3. Создание кастомных FactoryBean (только для XML-конфигурации)</h4>
         <p class="example tab-2">тут что-то происходит...</p>
-        <a class="button button--head" href="#q20_beans"></a>
+        <a class="button button--content_table" href="#q20_beans"></a>
     </div>
 
     <div id="lifecircle_4">
@@ -1835,7 +1835,7 @@
         <p>
             Создаются экземпляры бинов через BeanFactory на основе ранее созданных BeanDefinition.
         </p>
-        <a class="button button--head" href="#q20_beans"></a>
+        <a class="button button--content_table" href="#q20_beans"></a>
     </div>
 
     <div id="lifecircle_5">
@@ -1921,13 +1921,13 @@
             <li>Теперь всё.</li>
         </ol>
 
-        <a class="button button--head" href="#q20_beans"></a>
+        <a class="button button--content_table" href="#q20_beans"></a>
     </div>
 
     <div id="lifecircle_6">
         <h4>6. Бины готовы к использованию</h4>
         <p>Их можно получить с помощью метода <span class="example--word">ApplicationContext::getBean()</span></p>
-        <a class="button button--head" href="#q20_beans"></a>
+        <a class="button button--content_table" href="#q20_beans"></a>
     </div>
 
     <div id="lifecircle_7">
@@ -1937,7 +1937,7 @@
         <p class="no_mb"> Если бин имплементирует DisposibleBean, то Spring вызовет метод destroy() </p>
         <p class="example">не рекомендуется к использованию как устаревший.</p>
         <p>Если в аннотации @Bean определен метод destroyMethod, то будет вызван и он.</p>
-        <a class="button button--head" href="#q20_beans"></a>
+        <a class="button button--content_table" href="#q20_beans"></a>
     </div>
 
     <br>
@@ -1957,7 +1957,7 @@
         Одним из примеров использования @PostConstruct является заполнение базы данных. Например, во время разработки
         нам может потребоваться создать пользователей по умолчанию
     </p>
-    <a class="button button--head" href="#q20"></a>
+    <a class="button button--content_table" href="#q20"></a>
 
     <hr>
     <h3 id="q20_postconstuct">Аннотация @PostConstruct</h3>
@@ -1989,7 +1989,7 @@
         <p class="tab-1">&lt;version&gt;1.3.2&lt;/version&gt;</p>
         <p>&lt;/dependency&gt;</p>
     </div>
-    <a class="button button--head" href="#q20"></a>
+    <a class="button button--content_table" href="#q20"></a>
 
     <a href="#" class="button button--top"></a>
 </section>
@@ -2021,7 +2021,7 @@
             и тот же бин. Этот бин хранится в контейнере, и все запросы и ссылки на этот бин возвращают закэшированный
             экземпляр.
         </p>
-        <a class="button button--head" href="#q21"></a>
+        <a class="button button--content_table" href="#q21"></a>
 
         <hr>
         <h4 id="q21_prototype">Prototype</h4>
@@ -2038,7 +2038,7 @@
             Spring не хранит такие бины в своём контексте (контейнере), а отдаёт их клиенту и больше о них не заботится
             (в отличие от синглтон-бинов).
         </p>
-        <a class="button button--head" href="#q21"></a>
+        <a class="button button--content_table" href="#q21"></a>
     </div>
 
     <hr>
@@ -2068,7 +2068,7 @@
             <p class="tab-1">...</p>
             <p>}</p>
         </div>
-        <a class="button button--head" href="#q21"></a>
+        <a class="button button--content_table" href="#q21"></a>
     </div>
 
     <hr>
@@ -2095,7 +2095,7 @@
             <p class="tab-1">...</p>
             <p>}</p>
         </div>
-        <a class="button button--head" href="#q21"></a>
+        <a class="button button--content_table" href="#q21"></a>
     </div>
 
     <hr>
@@ -2122,7 +2122,7 @@
             <p>}</p>
         </div>
 
-        <a class="button button--head" href="#q21"></a>
+        <a class="button button--content_table" href="#q21"></a>
     </div>
 
     <hr>
@@ -2140,7 +2140,7 @@
             <p class="tab-1">...</p>
             <p>}</p>
         </div>
-        <a class="button button--head" href="#q21"></a>
+        <a class="button button--content_table" href="#q21"></a>
     </div>
 
     <hr>
@@ -2154,7 +2154,7 @@
         <p class="main-mind">
             В пятой версии Spring Framework не стало Global session scope.
         </p>
-        <a class="button button--head" href="#q21"></a>
+        <a class="button button--content_table" href="#q21"></a>
     </div>
 
     <a href="#" class="button button--top"></a>
@@ -2814,7 +2814,7 @@
             <p class="tab-1">return "viewPage";</p>
             <p>}</p>
         </div>
-        <a class="button button--head" href="#q27"></a>
+        <a class="button button--content_table" href="#q27"></a>
     </div>
     <hr>
     <div id="model_map">
@@ -2834,7 +2834,7 @@
             <p class="tab-1">return "viewPage";</p>
             <p>}</p>
         </div>
-        <a class="button button--head" href="#q27"></a>
+        <a class="button button--content_table" href="#q27"></a>
     </div>
     <hr>
     <div id="model_view">
@@ -2856,7 +2856,7 @@
             <p class="tab-1">return modelAndView;</p>
             <p>}</p>
         </div>
-        <a class="button button--head" href="#q27"></a>
+        <a class="button button--content_table" href="#q27"></a>
     </div>
 
     <a href="#" class="button button--top"></a>
@@ -2885,7 +2885,7 @@
             Это просто дочерняя аннотация
             аннотации @Component и позволяет автоматически определять классы при сканировании пакетов.
         </p>
-        <a class="button button--head" href="#q28"></a>
+        <a class="button button--content_table" href="#q28"></a>
     </div>
 
     <hr>
@@ -2904,7 +2904,7 @@
             передается обратно в объект HttpResponse. Контроллер использует Jackson message converter для конвертации
             входящих/исходящих данных. Как правило целевые данные представлены в json или xml.
         </p>
-        <a class="button button--head" href="#q28"></a>
+        <a class="button button--content_table" href="#q28"></a>
     </div>
 
     <hr>
@@ -2943,7 +2943,7 @@
             <p class="tab-1">return new&nbsp;ResponseEntity(HttpStatus.NOT_FOUND); </p>
             <p>}</p>
         </div>
-        <a class="button button--head" href="#q28"></a>
+        <a class="button button--content_table" href="#q28"></a>
     </div>
 
     <a href="#" class="button button--top"></a>
@@ -2987,7 +2987,7 @@
             <img class="image" src="./img/filter.png" alt="Filters">
         </div>
 
-        <a class="button button--head" href="#q29"></a>
+        <a class="button button--content_table" href="#q29"></a>
     </div>
 
     <hr>
@@ -3134,7 +3134,7 @@
             </p>
         </div>
 
-        <a class="button button--head" href="#q29"></a>
+        <a class="button button--content_table" href="#q29"></a>
     </div>
 
     <hr>
@@ -3180,7 +3180,7 @@
             <p>}</p>
         </div>
 
-        <a class="button button--head" href="#q29"></a>
+        <a class="button button--content_table" href="#q29"></a>
     </div>
 
     <a href="#" class="button button--top"></a>
@@ -3330,7 +3330,7 @@
                 </p>
             </li>
         </ul>
-        <a class="button button--head" href="#q32"></a>
+        <a class="button button--content_table" href="#q32"></a>
     </div>
 
     <hr>
@@ -3392,7 +3392,7 @@
                 <p>Servlet container запускается, приложение готово к работе!</p>
             </li>
         </ul>
-        <a class="button button--head" href="#q32"></a>
+        <a class="button button--content_table" href="#q32"></a>
     </div>
 
     <a href="#" class="button button--top"></a>

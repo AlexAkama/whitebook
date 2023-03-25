@@ -278,12 +278,12 @@ img {
     transition: all 0.3s ease 0s;
 }
 
-.button--head {
+.button--content_table {
     display: block;
     margin-bottom: 20px;
 }
 
-.button--head:before {
+.button--content_table:before {
     display: inline;
     content: 'оглавление';
     font-size: small;
