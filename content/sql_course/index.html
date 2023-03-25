@@ -2331,7 +2331,98 @@
     <hr>
     <div id="sequence">
         <h3><a href="#chapter14">SEQUENCE</a></h3>
+        <div class="main-mind">
+            <p class="no_mb">Не привязан к таблицам!</p>
+            <p class="no_mb">Не привязан к сесиям!</p>
+            <p>Не привязан к транзакциям!</p>
+        </div>
+    </div>
 
+    <h3>Создание</h3>
+    <div>
+        <div class="code bold">
+            <p>
+                <span class="example--word">CREATE SEQUENCE</span> schema.<span
+                    class="example--word">sequence_name</span>
+            </p>
+            <p>INCREMENT BY number</p>
+            <p>START WITH number</p>
+            <p><span class="bad">{</span>MAXVALUE number<span class="bad">|</span>NOMAXVALUE<span class="bad">}</span>
+            </p>
+            <p><span class="bad">{</span>MINVALUE number<span class="bad">|</span>NOMINVALUE<span class="bad">}</span>
+            </p>
+            <p><span class="bad">{</span>CYCLE<span class="bad">|</span>NOCYCLE<span class="bad">}</span></p>
+            <p>
+                <span class="bad">{</span>CACHE number<span class="bad">|</span>NOCACHE<span class="bad">}</span><span
+                    class="example--word">;</span>
+            </p>
+        </div>
+        <p class="no_mb">
+            Можем узнать следующее значение последовательности используя
+            <span class="code-word">nextval</span>.</p>
+        <p class="no_mb">
+            Можем узнать текущее значение последовательности используя
+            <span class="code-word">currval</span>,
+            но это будут не последнее значение последовательности, а последнее значение используемое в этой сессии.
+        </p>
+        <div class="code no_mb">
+            <p>select s1.nextval from dual;</p>
+            <p>select s1.currval from dual;</p>
+        </div>
+        <p class="example">Вызов currval, если nextval ни разу не вызван, приведет к ошибке.</p>
+
+        <p>
+            <span class="bold">CACHE</span> default = 20
+        </p>
+
+        <p class="no_mb">
+            При совместном использовании <span class="bold">START WITH</span> и <span class="bold">CYCLE</span>
+            при переходе на следующий виток цикла отсчет начинается с 1, а не с параметра указанного в START WITH.
+        </p>
+        <div class="example">
+            <div class="code no_mb">
+                <p>CREATE SEQUENCE s1</p>
+                <p class="tab-1">START WITH 7</p>
+                <p class="tab-1">INCREMENT 4</p>
+                <p class="tab-1">MAXVALUE 17</p>
+                <p class="tab-1">CYCLE</p>
+                <p class="tab-1">CACHE 2</p>
+            </div>
+            <p>Результат работы: 7, 11 , 15, 1, 5 ...</p>
+        </div>
+    </div>
+
+    <h3>Изменение</h3>
+    <div>
+        <div class="code bold no_mb">
+            <p>
+                <span class="example--word">ALTER SEQUENCE</span> schema.<span
+                    class="example--word">sequence_name</span>
+            </p>
+            <p>INCREMENT BY number</p>
+            <p><span class="bad">{</span>MAXVALUE number<span class="bad">|</span>NOMAXVALUE<span class="bad">}</span>
+            </p>
+            <p><span class="bad">{</span>MINVALUE number<span class="bad">|</span>NOMINVALUE<span class="bad">}</span>
+            </p>
+            <p><span class="bad">{</span>CYCLE<span class="bad">|</span>NOCYCLE<span class="bad">}</span></p>
+            <p>
+                <span class="bad">{</span>CACHE number<span class="bad">|</span>NOCACHE<span class="bad">}</span><span
+                    class="example--word">;</span>
+            </p>
+        </div>
+        <p class="example">
+            Можем поменять все параметры кроме START WITH
+        </p>
+    </div>
+
+    <h3>Удаление</h3>
+    <div>
+        <div class="code bold">
+            <p>
+                <span class="example--word">DROP SEQUENCE</span> schema.<span
+                    class="example--word">sequence_name</span><span class="example--word">;</span>
+            </p>
+        </div>
     </div>
 
     <a href="#" class="button button--top"></a>
