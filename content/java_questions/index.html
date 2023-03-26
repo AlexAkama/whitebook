@@ -373,6 +373,200 @@
         </li>
         <li>
             <p class="mb10">
+                <a href="./jpa/">JPA & HIBERNATE</a>
+                <span class="submenu-button"></span>
+            </p>
+            <ol class="menu submenu no-display">
+                <li>
+                    <p class="mb10">
+                        <a href="./jpa/#q1">Что такое ORM? Что такое JPA? Что такое Hibernate?</a>
+                        <span class="submenu-button"></span>
+                    </p>
+                    <ul class="menu submenu no-display">
+                        <li><a href="./jpa/#q1_orm">Что такое ORM?</a></li>
+                        <li><a href="./jpa/#q1_jpa">Что такое JPA</a></li>
+                        <li><a href="./jpa/#q1_hibernate">Что такое Hibernate?</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <p class="mb10">
+                        <a href="./jpa/#q2">Что такое EntityManager? Какие функции он выполняет?</a>
+                        <span class="submenu-button"></span>
+                    </p>
+                    <ul class="menu submenu no-display">
+                        <li><a href="./jpa/#q2_entitymanager">EntityManager</a></li>
+                        <li><a href="./jpa/#q2_entitymanager_function">Основные функции EntityManager</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <p class="mb10">
+                        <a href="./jpa/#q3">Каким условиям должен удовлетворять класс, чтобы являться Entity?</a>
+                        <span class="submenu-button"></span>
+                    </p>
+                    <ul class="menu submenu no-display">
+                        <li><a href="./jpa/#q3_entity">Entity</a></li>
+                        <li><a href="./jpa/#q3_entity_jpa">Требования к Entity классу в JPA</a></li>
+                        <li><a href="./jpa/#q3_entity_hibernate">Требования к Entity классу в Hibernate</a></li>
+                    </ul>
+                </li>
+                <li><a href="./jpa/#q4">Может ли абстрактный класс быть Entity?</a></li>
+                <li>
+                    <p class="mb10">
+                        <a href="./jpa/#q5">Наследование Entity классов</a>
+                        <span class="submenu-button"></span></p>
+                    <ul class="menu submenu no-display">
+                        <li><a href="./jpa/#5_entity_inherit_not_entity">
+                            Может ли Entity класс наследоваться от не
+                            Entity классов (non-entity classes)?</a></li>
+                        <li><a href="./jpa/#5_entity_inherit_entity">
+                            Может ли Entity класс наследоваться от Entity
+                            классов?</a></li>
+                        <li><a href="./jpa/#5_not_entity_inherit_entity">
+                            Может ли не Entity класс наследоваться от
+                            Entity класса?</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <p class="mb10">
+                        <a href="./jpa/#q6">
+                            Что такое встраиваемый (Embeddable) класс?
+                            Какие требования JPA предъявляет к встраиваемым (Embeddable) классам?
+                        </a>
+                        <span class="submenu-button"></span>
+                    </p>
+                    <ul class="menu submenu no-display">
+                        <li><a href="./jpa/#q6_definition">Встраиваемый (Embeddable) класс</a></li>
+                        <li><a href="./jpa/#q6_features">Особенности встраиваемых классов</a></li>
+                        <li><a href="./jpa/#q6_requirements">Требования к встраиваемым классам</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <p class="mb10">
+                        <a href="./jpa/#q7">Что такое Mapped Superclass?</a>
+                        <span class="submenu-button"></span>
+                    </p>
+                    <ul class="menu submenu no-display">
+                        <li><a href="./jpa/#q7_features">Особенности Mapped Superclass</a></li>
+                        <li><a href="./jpa/#q7_vs_embeddable">Mapped Superclass vs. Embeddable class</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <p class="mb10">
+                        <a href="./jpa/#q8">
+                            Какие три стратегии маппинга при наследовании сущностей
+                            (Entity Inheritance Mapping Strategies) описаны в JPA?
+                        </a>
+                        <span class="submenu-button"></span>
+                    </p>
+                    <ul class="menu submenu no-display">
+                        <li><a href="./jpa/#q8_single">Одна таблица на всю иерархию классов</a></li>
+                        <li><a href="./jpa/#q8_joined">Стратегия «соединения» (JOINED)</a></li>
+                        <li><a href="./jpa/#q8_everyone">Таблица для каждого конкретного класса сущностей</a></li>
+                    </ul>
+                </li>
+                <li><a href="./jpa/#q9">Как мапятся Enum`ы?</a></li>
+                <li>
+                    <p class="mb10">
+                        <a href="./jpa/#q10_">Как мапятся даты (до Java 8 и после)</a>
+                        <span class="submenu-button"></span>
+                    </p>
+                    <ul class="menu submenu no-display">
+                        <li><a href="./jpa/#q10_sql">java.sql</a></li>
+                        <li><a href="./jpa/#q10_util">java.util</a></li>
+                        <li><a href="./jpa/#q10_date">java.util.Date</a></li>
+                        <li><a href="./jpa/#q10_calendar">java.util.Calendar</a></li>
+                        <li><a href="./jpa/#q10_time">java.time</a></li>
+                    </ul>
+                </li>
+                <li><a href="./jpa/#q11">Как сохранять в базе данных коллекции базовых типов?</a></li>
+                <li>
+                    <p class="mb10">
+                        <a href="./jpa/#q12">Какие существуют виды связей?</a>
+                        <span class="submenu-button"></span>
+                    </p>
+                    <ul class="menu submenu no-display">
+                        <li><a href="./jpa/#q12_multiplicity">Множественность в отношениях сущностей</a></li>
+                        <li>
+                            <p class="mb10">
+                                <a href="./jpa/#q12_direction">Направление в отношениях сущностей</a>
+                                <span class="submenu-button"></span>
+                            </p>
+                            <ul class="menu submenu no-display">
+                                <li><a href="./jpa/#q12_bidirectional">Двунаправленные отношения</a></li>
+                                <li><a href="./jpa/#q12_unidirectional">Однонаправленные отношения</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="./jpa/#q12_request">Запросы и направление отношений</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <p class="mb10">
+                        <a href="./jpa/#q13">Что такое "владелец связи"?</a>
+                        <span class="submenu-button"></span>
+                    </p>
+                    <ul class="menu submenu no-display">
+                        <li><a href="./jpa/#q13_owner">Владелец связи и владеемый</a></li>
+                        <li><a href="./jpa/#q13_parent">Родительская сущность (таблица)</a></li>
+                        <li><a href="./jpa/#q13_child">Дочерняя сущность (таблица)</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <p class="mb10">
+                        <a href="./jpa/#q14">Что такое каскадные операции?</a>
+                        <span class="submenu-button"></span>
+                    </p>
+                    <ul class="menu submenu no-display">
+                        <li><a href="./jpa/#q14_orphans">Удаление сирот в отношениях (Orphan Removal)</a></li>
+                    </ul>
+                </li>
+                <li><a href="./jpa/#q15">Какие два типа fetch-стратегии в JPA вы знаете?</a></li>
+                <li><a href="./jpa/#q16">
+                    Какие четыре статуса жизненного цикла Entity-объекта (Entity Instance’s Life Cycle)
+                    вы можете перечислить?</a>
+                </li>
+                <li><a href="./jpa/#q17">Как влияет операция persist на объекты Entity каждого статуса?</a></li>
+                <li><a href="./jpa/#q18">Как влияет операция remove на объекты Entity каждого статуса?</a></li>
+                <li><a href="./jpa/#q19">Как влияет операция merge на объекты Entity каждого статуса?</a></li>
+                <li><a href="./jpa/#q20">Как влияет операция refresh на объекты Entity каждого статуса?</a></li>
+                <li><a href="./jpa/#q21">Как влияет операция detach на объекты Entity каждого статуса?</a></li>
+                <li>
+                    <p class="mb10">
+                        <a href="./jpa/#q22">Для чего нужна аннотация @Basic?</a>
+                        <span class="submenu-button"></span>
+                    </p>
+                    <ul class="menu submenu no-display">
+                        <li><a href="./jpa/#q22_">Базовый тип значений</a></li>
+                    </ul>
+                </li>
+                <li><a href="./jpa/#q23">Для чего нужна аннотация @Column?</a></li>
+                <li><a href="./jpa/#q24">Для чего нужна аннотация @Access?</a></li>
+                <li><a href="./jpa/#q25">Для чего нужна аннотация @Cacheable?</a></li>
+                <li>
+                    <p class="mb10">
+                        <a href="./jpa/#q26">Для чего нужны аннотации @Embedded и @Embeddable?</a>
+                        <span class="submenu-button"></span>
+                    </p>
+                    <ul class="menu submenu no-display">
+                        <li><a href="./jpa/#q26_embeddable">@Embeddable</a></li>
+                        <li><a href="./jpa/#q26_embedded">@Embedded</a></li>
+                    </ul>
+                </li>
+
+                <!--                li>(p.mb10>(a[href="./jpa/#q26"]+span.submenu-button))+ul.menu.submenu.no-display>(li>a[href="./jpa/#q26_"])*2-->
+            </ol>
+        </li>
+
+        <li>
+            <p class="mb10">
+                <a href="./sql/">SQL</a>
+                <span class="submenu-button"></span>
+            </p>
+            <ul class="menu submenu no-display">
+                <li><a href="./jpa/#"></a></li>
+            </ul>
+        </li>
+        <li>
+            <p class="mb10">
                 <a href="./patterns/">Patterns</a>
                 <span class="submenu-button"></span>
             </p>
@@ -430,7 +624,7 @@
     </ul>
 </section>
 
-<section class="container">
+<section class="container" id="video">
     <h1></h1>
     <p class="no_mb">
         <a href="https://www.youtube.com/playlist?list=PL4DF-Dpx_ABoXN1wJ2nA-BcdrxFrrp1TL" target="_blank">
