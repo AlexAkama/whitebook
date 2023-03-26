@@ -578,7 +578,7 @@
                         <li><a href="./jpa/#q28_id">@Id</a></li>
                         <li>
                             <p class="mb10">
-                            <a href="./jpa/#q28_strategy">Стратегии генерации Id</a>
+                                <a href="./jpa/#q28_strategy">Стратегии генерации Id</a>
                                 <span class="submenu-button"></span>
                             </p>
                             <ul>
@@ -590,8 +590,124 @@
                         </li>
                     </ul>
                 </li>
-
-<!--                li>(p.mb10>(a[href="./jpa/#q28"]+span.submenu-button))+ul.menu.submenu.no-display>(li>a[href="./jpa/#q28_"])*2-->
+                <li>
+                    <p class="mb10">
+                        <a href="./jpa/#q29">Расскажите про аннотации @JoinColumn, @JoinColumns и @JoinTable.
+                            Где и для чего они используются?</a>
+                        <span class="submenu-button"></span>
+                    </p>
+                    <ul class="menu submenu no-display">
+                        <li><a href="./jpa/#q29_join_column">@JoinColumn</a></li>
+                        <li><a href="./jpa/#q29_join_columns">@JoinColumns</a></li>
+                        <li><a href="./jpa/#q29_join_table">@JoinTable</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <p class="mb10">
+                        <a href="./jpa/#q30">Для чего нужны аннотации @OrderBy и @OrderColumn,
+                            чем они отличаются друг от друга?</a>
+                        <span class="submenu-button"></span>
+                    </p>
+                    <ul class="menu submenu no-display">
+                        <li><a href="./jpa/#q30_">@OrderBy</a></li>
+                        <li><a href="./jpa/#q30_">@OrderColumn</a></li>
+                        <li><a href="./jpa/#q30_">@OrderBy vs @OrderColumn</a></li>
+                    </ul>
+                </li>
+                <li><a href="./jpa/#q31">Для чего нужна аннотация @Transient?</a></li>
+                <li>
+                    <p class="mb10">
+                        <a href="./jpa/#q32">Какие шесть режимов блокировок (lock modes) описаны в спецификации JPA
+                            (или какие есть значения у enum LockModeType в JPA)?</a>
+                        <span class="submenu-button"></span>
+                    </p>
+                    <ul class="menu submenu no-display">
+                        <li><a href="./jpa/#q32_optimistic">Оптимистичное блокирование</a></li>
+                        <li><a href="./jpa/#q32_pessimistic">Пессимистичное блокирование </a></li>
+                    </ul>
+                </li>
+                <li>
+                    <p class="mb10">
+                        <a href="./jpa/#q33">Какие два вида кэшей (cache) вы знаете в JPA и для чего они нужны?</a>
+                        <span class="submenu-button"></span>
+                    </p>
+                    <ul class="menu submenu no-display">
+                        <li><a href="./jpa/#q33_l1">Кэш первого уровня</a></li>
+                        <li><a href="./jpa/#q33_l2">Кэш второго уровня</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <p class="mb10">
+                        <a href="./jpa/#q34">Как работать с кэшем 2 уровня?</a>
+                        <span class="submenu-button"></span>
+                    </p>
+                    <ul class="menu submenu no-display">
+                        <li><a href="./jpa/#q34_shared_cache_mode"></a>shared-cache-mode</li>
+                        <li><a href="./jpa/#q34_cache">@Cache</a></li>
+                        <li><a href="./jpa/#q34_query_cache">Кэш запросов (Query Cache)</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <p class="mb10">
+                        <a href="./jpa/#q35">Что такое JPQL/HQL и чем он отличается от SQL?</a>
+                        <span class="submenu-button"></span>
+                    </p>
+                    <ul class="menu submenu no-display">
+                        <li>
+                            <p class="mb10">
+                                <a href="./jpa/#q35_jpql">Java Persistence query language (JPQL)</a>
+                                <span class="submenu-button"></span>
+                            </p>
+                            <ul class="menu submenu no-display">
+                                <li><a href="./jpa/#q35_polymorph">Полиморфные запросы</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="./jpa/#q35_hql">Hibernate Query Language (HQL)</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <p class="mb10">
+                        <a href="./jpa/#q36">Что такое Criteria API и для чего он используется?</a>
+                        <span class="submenu-button"></span>
+                    </p>
+                    <ul class="menu submenu no-display">
+                        <li><a href="./jpa/#q36_hibernate_criteria">Hibernate Criteria API</a></li>
+                        <li>
+                            <p class="mb10">
+                                <a href="./jpa/#q36_jpa_criteria">JPA Criteria API</a>
+                                <span class="submenu-button"></span>
+                            </p>
+                            <ul class="menu submenu no-display">
+                                <li><a href="./jpa/#q36_metamodel">Metamodel и типобезопасность</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <p class="mb10">
+                        <a href="./jpa/#q37">Расскажите про проблему N+1 Select и путях ее решения</a>
+                        <span class="submenu-button"></span>
+                    </p>
+                    <ul class="menu submenu no-display">
+                        <li><a href="./jpa/#q37_eager">N+1 при FetchType.EAGER</a></li>
+                        <li><a href="./jpa/#q37_lazy">N+1 при FetchType.LAZY</a></li>
+                        <li>
+                            <p class="mb10">
+                                <a href="./jpa/#q37_solution">Решения проблемы N+1</a>
+                                <span class="submenu-button"></span>
+                            </p>
+                            <ul class="menu submenu no-display">
+                                <li><a href="./jpa/#q37_join_fetch">JOIN FETCH</a></li>
+                                <li><a href="./jpa/#q37_entity_graph">EntityGraph</a></li>
+                                <li><a href="./jpa/#q37_sub_select">@Fetch(FetchMode.SUBSELECT)</a></li>
+                                <li><a href="./jpa/#q37_batch_size">@BatchSize</a></li>
+                                <li><a href="./jpa/#q37_mapping">HibernateSpecificMapping, SqlResultSetMapping</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="./jpa/#38">Что такое Entity Graph? Как и для чего его использовать?</a></li>
+                <!--                li>(p.mb10>(a[href="./jpa/#q37"]+span.submenu-button))+ul.menu.submenu.no-display>(li>a[href="./jpa/#q37_"])*3-->
             </ol>
         </li>
 
