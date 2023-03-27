@@ -278,13 +278,13 @@
         <p><span class="code-word">Thread(ThreadGroup&nbsp;group, String&nbsp;name);</span></p>
         <p class="no_mb">где:</p>
         <p class="no_mb tab-2">
-            <span class="example--word">target</span>
+            <span class="accent-mono">target</span>
             – экземпляр класса реализующего интерфейс Runnable;</p>
         <p class="no_mb tab-2">
-            <span class="example--word">name</span>
+            <span class="accent-mono">name</span>
             – имя создаваемого потока;</p>
         <p class="tab-2">
-            <span class="example--word">group</span>
+            <span class="accent-mono">group</span>
             – группа к которой относится поток.</p>
     </div>
 
@@ -498,7 +498,7 @@
     <h3>Монитор нестатического синхронизированного класса</h3>
     <p>
         Что является монитором у нестатического синхронизированного класса? –
-        <span class="example--word">Объект</span>.
+        <span class="accent-mono">Объект</span>.
     </p>
     <p>
         В случае нестатического синхронизированного метода память выделяется многократно при каждом вызове метода.
@@ -805,11 +805,11 @@
     </div>
     <p class="no_mb">где:</p>
     <p class="tab-2 mb10">
-        <span class="example--word">permits</span>
+        <span class="accent-mono">permits</span>
         - указывает на количество допустимых разрешений для доступа к ресурсу;
     </p>
     <p class="tab-2 no_mb">
-        <span class="example--word">fair</span>
+        <span class="accent-mono">fair</span>
         - позволяет установить очередность получения доступа.
     </p>
     <p class="tab-2 example">
@@ -945,10 +945,10 @@
     </p>
     <p class="no_mb">Чтобы <strong>установить приоритет</strong> потока, используется метод класса Thread:</p>
     <p><span class="code-word">final void setPriority(int level)</span></p>
-    <p class="no_mb">Значение <span class="example--word">level</span> изменяется в пределах</p>
-    <p class="no_mb">от <span class="example--word">Thread.MIN_PRIORITY = 1</span></p>
-    <p class="no_mb">до <span class="example--word">Thread.MAX_PRIORITY = 10</span>.</p>
-    <p>Приоритет по умолчанию - <span class="example--word">Thread.NORM_PRlORITY = 5</span>.</p>
+    <p class="no_mb">Значение <span class="accent-mono">level</span> изменяется в пределах</p>
+    <p class="no_mb">от <span class="accent-mono">Thread.MIN_PRIORITY = 1</span></p>
+    <p class="no_mb">до <span class="accent-mono">Thread.MAX_PRIORITY = 10</span>.</p>
+    <p>Приоритет по умолчанию - <span class="accent-mono">Thread.NORM_PRlORITY = 5</span>.</p>
     <p class="no_mb">
         <strong>Получить</strong>
         текущее значение приоритета потока можно вызвав у экземпляра класса Thread метод:
@@ -1060,8 +1060,8 @@
     <p class="example no_mb">Hа пример</p>
     <div class="code">If (условие выхода и isInterrupted()) then break;</div>
     <p class="no_mb">
-        Метод возвращает <span class="example--word">true</span>, если поток может быть прерван,
-        в ином случае возвращается <span class="example--word">false</span>.
+        Метод возвращает <span class="accent-mono">true</span>, если поток может быть прерван,
+        в ином случае возвращается <span class="accent-mono">false</span>.
     </p>
     <div class="code">clockThread.interrupt();</div>
     <p>
@@ -1127,7 +1127,7 @@
         FutureTask представляет собой отменяемое асинхронное вычисление в параллельном Java приложении.
     </p>
     <p>
-        <span class="example--word">java.util.concurrent.Future</span>
+        <span class="accent-mono">java.util.concurrent.Future</span>
         - этот класс предоставляет базовую реализацию Future, с методами для запуска и остановки
         вычисления, методами для запроса состояния вычисления и извлечения результатов. Результат может быть получен
         только
@@ -1149,21 +1149,21 @@
     <p>Происходит, когда достигаются состояния:</p>
     <ol class="sparse-li">
         <li>
-            <p class="example--word">Взаимного исключения:</p>
+            <p class="accent-mono">Взаимного исключения:</p>
             <p>
                 по крайней мере один ресурс занят в режиме неделимости, следовательно, только один поток может
                 использовать ресурс в любой данный момент времени.
             </p>
         </li>
         <li>
-            <p class="example--word">Удержания и ожидания:</p>
+            <p class="accent-mono">Удержания и ожидания:</p>
             <p>
                 поток удерживает как минимум один ресурс и запрашивает дополнительные ресурсы, которые удерживаются
                 другими потоками.
             </p>
         </li>
         <li>
-            <p class="example--word">Отсутствия предочистки:</p>
+            <p class="accent-mono">Отсутствия предочистки:</p>
             <p>
                 операционная система не переназначает ресурсы: если они уже заняты, они должны
                 отдаваться удерживающим потокам сразу же.
@@ -1171,7 +1171,7 @@
 
         </li>
         <li>
-            <p class="example--word">Цикличного ожидания:</p>
+            <p class="accent-mono">Цикличного ожидания:</p>
             <p>
                 поток ждёт освобождения ресурса другим потоком,
                 который в свою очередь ждёт освобождения ресурса заблокированного первым потоком.
@@ -1221,26 +1221,26 @@
     <p>Распространённые способы решения:</p>
     <ul class="tab-2 sparse-li">
         <li>
-            <p class="example--word">Использование локальной копии</p>
+            <p class="accent-mono">Использование локальной копии</p>
             <p>
                 — копирование разделяемой переменной в локальную переменную потока.
             </p>
             <p>
                 Этот способ работает только тогда, когда переменная одна и копирование
                 производится атомарно (за одну машинную команду), использование
-                <span class="example--word">volatile</span>.
+                <span class="accent-mono">volatile</span>.
             </p>
         </li>
         <li>
-            <p class="example--word">Синхронизация</p>
+            <p class="accent-mono">Синхронизация</p>
             <p>
                 — операции над разделяемым ресурсом
                 происходят в синхронизированном блоке (при использовании ключевого слова
-                <span class="example--word">synchronized</span>).
+                <span class="accent-mono">synchronized</span>).
             </p>
         </li>
         <li>
-            <p class="example--word">Комбинирование методов</p>
+            <p class="accent-mono">Комбинирование методов</p>
             <p>
                 — вышеперечисленные способы можно комбинировать, копируя «опасные» переменные в синхронизированном
                 блоке.
@@ -1308,36 +1308,36 @@
         <img class="image" src="./img/сoncurrent.png" alt="Concurrent Collections">
     </div>
     <p>
-        <span class="example--word">Concurrent Collections</span>
+        <span class="accent-mono">Concurrent Collections</span>
         — набор коллекций, более эффективно работающие в многопоточной среде нежели стандартные универсальные коллекции
         из java.util пакета. Вместо базового враппера Collections.synchronizedList с блокированием доступа ко всей
         коллекции используются блокировки по сегментам данных или же оптимизируется работа для параллельного чтения
         данных по wait-free алгоритмам.
     </p>
     <p>
-        <span class="example--word">Queues</span>
+        <span class="accent-mono">Queues</span>
         — неблокирующие и блокирующие очереди с поддержкой многопоточности. Неблокирующие очереди заточены на скорость и
         работу без блокирования потоков. Блокирующие очереди используются, когда нужно «притормозить» потоки «Producer»
         или «Consumer», если не выполнены какие-либо условия, например, очередь пуста или перепонена, или же нет
         свободного «Consumer»'a.
     </p>
     <p>
-        <span class="example--word">Synchronizers</span>
+        <span class="accent-mono">Synchronizers</span>
         — вспомогательные утилиты для синхронизации потоков. Представляют собой мощное оружие в «параллельных»
         вычислениях.
     </p>
     <p>
-        <span class="example--word">Executors</span>
+        <span class="accent-mono">Executors</span>
         — содержит в себе отличные фрейморки для создания пулов потоков, планирования работы асинхронных задач с
         получением результатов.
     </p>
     <p>
-        <span class="example--word">Locks</span>
+        <span class="accent-mono">Locks</span>
         — представляет собой альтернативные и более гибкие механизмы синхронизации потоков по сравнению с базовыми
         synchronized, wait, notify, notifyAll.
     </p>
     <p>
-        <span class="example--word">Atomics</span>
+        <span class="accent-mono">Atomics</span>
         — классы с поддержкой атомарных операций над примитивами и ссылками.
     </p>
 

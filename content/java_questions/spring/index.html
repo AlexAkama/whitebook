@@ -1788,8 +1788,8 @@
             @Configuration для дальнейшего парсирования, затем регистрируется специальный
             BeanFactoryPostProcessor, а именно
             <strong>BeanDefinitionRegistryPostProcessor</strong>, который при
-            помощи класса <span class="example--word">ConfigurationClassParser</span> парсирует JavaConfig,
-            загружает описания бинов (BeanDefinition), <span class="example--word">создаёт граф</span> зависимостей
+            помощи класса <span class="accent-mono">ConfigurationClassParser</span> парсирует JavaConfig,
+            загружает описания бинов (BeanDefinition), <span class="accent-mono">создаёт граф</span> зависимостей
             (между бинами) и создаёт:
         </p>
         <div class="code">
@@ -1842,9 +1842,9 @@
         <h4>5. Настройка созданных бинов</h4>
         <p>На данном этапе бины уже созданы, их можно лишь донастроить.</p>
         <p>
-            <span class="example--word">Интерфейс BeanPostProcessor</span>
+            <span class="accent-mono">Интерфейс BeanPostProcessor</span>
             позволяет вклиниться в процесс настройки
-            <span class="example--word">до того, как бины попадут в контейнер</span>.
+            <span class="accent-mono">до того, как бины попадут в контейнер</span>.
         </p>
         <p class="no_mb">
             ApplicationContext автоматически обнаруживает любые бины с реализацией BeanPostProcessor и помечает
@@ -1926,7 +1926,7 @@
 
     <div id="lifecircle_6">
         <h4>6. Бины готовы к использованию</h4>
-        <p>Их можно получить с помощью метода <span class="example--word">ApplicationContext::getBean()</span></p>
+        <p>Их можно получить с помощью метода <span class="accent-mono">ApplicationContext::getBean()</span></p>
         <a class="button button--content_table" href="#q20_beans"></a>
     </div>
 
@@ -2163,7 +2163,7 @@
 <section class="container" id="q22">
     <h1>АОП в Spring</h1>
     <p>
-        <span class="example--word">Аспектно-ориентированное программирование (АОП)</span>
+        <span class="accent-mono">Аспектно-ориентированное программирование (АОП)</span>
         — это парадигма программирования, целью которой является
         повышение модульности за счет разделения междисциплинарных задач. Это достигается путем добавления
         дополнительного поведения к существующему коду без изменения самого кода.
@@ -2220,7 +2220,7 @@
     </p>
     <p> Если мы разместим аннотацию @Transactional над классом @Service, то все его методы станут транзакционными. </p>
 
-    <p class="example--word">Пример процесса <span class="spoiler-button"></span></p>
+    <p class="accent-mono">Пример процесса <span class="spoiler-button"></span></p>
     <div id="q23_example" class="spoiler mb10">
         <p class="tab-1"> Например, при вызове метода save() произойдет примерно следующее: </p>
         <ol class="sparse-li">
@@ -2245,7 +2245,7 @@
                 </ul>
             </li>
             <li>
-                <p class="mb10 example--word">Transaction Interceptor</p>
+                <p class="mb10 accent-mono">Transaction Interceptor</p>
                 <p>
                     В TransactionInterceptor отработает код до работы метода save(), в котором будет определено,
                     выполнить
@@ -2272,7 +2272,7 @@
                 </div>
             </li>
             <li>
-                <p class="mb10 example--word">TransactionManager</p>
+                <p class="mb10 accent-mono">TransactionManager</p>
                 <p class="mb10">Менеджер транзакций должен предоставить ответ на два вопроса:</p>
                 <ol class="mb20">
                     <li>Должен ли создаться новый EntityManager?</li>
@@ -2297,7 +2297,7 @@
                     ThreadLocal.</p>
             </li>
             <li>
-                <p class="mb10 example--word">EntityManager proxy</p>
+                <p class="mb10 accent-mono">EntityManager proxy</p>
                 <p class="mb20">
                     Когда метод save() слоя Service делает вызов метода save() слоя DAO, внутри которого вызывается,
                     например, entityManager.persist(), то не происходит вызов метода persist() напрямую у EntityManager,
@@ -2306,9 +2306,9 @@
                     EntityManager для нашего потока, и у него вызывается метод persist().
                 </p>
             </li>
-            <li><p class="mb20 example--word">Отрабатывает DAO-метод save().</p></li>
+            <li><p class="mb20 accent-mono">Отрабатывает DAO-метод save().</p></li>
             <li>
-                <p class="mb10 example--word">TransactionInterceptor</p>
+                <p class="mb10 accent-mono">TransactionInterceptor</p>
                 <p>
                     Отработает код после работы метода save(), а именно будет принято решение по коммиту/откату
                     транзакции.
@@ -2370,27 +2370,27 @@
                     <p class="mb10">Схема работы с транзакциями.</p>
                     <hr>
                     <p class="smaller">
-                        <span class="example--word">REQUIRED</span>
+                        <span class="accent-mono">REQUIRED</span>
                         — Указывает, что целевой метод не может работать без другой транзакции. Если до вызова этого
                         метода уже была запущена транзакция, то метод будет работать в той же транзакции, если
                         транзакции не было, то будет создана новая.
                     </p>
-                    <p class="example--word smaller">Используется по умолчанию.</p>
+                    <p class="accent-mono smaller">Используется по умолчанию.</p>
                     <hr>
                     <p class="smaller">
-                        <span class="example--word">REQUIRES_NEW</span>
+                        <span class="accent-mono">REQUIRES_NEW</span>
                         — Указывает, что новая транзакция должна запускаться каждый раз при вызове целевого метода. Если
                         транзакция уже идет, она будет приостановлена, прежде чем будет запущена новая.
                     </p>
                     <hr>
                     <p class="smaller">
-                        <span class="example--word">MANDATORY</span>
+                        <span class="accent-mono">MANDATORY</span>
                         — Указывает, что для целевого метода требуется активная транзакция. Если активной транзакции
                         нет, метод не сработает и будет выброшено исключение.
                     </p>
                     <hr>
                     <p class="smaller">
-                        <span class="example--word">SUPPORTS</span>
+                        <span class="accent-mono">SUPPORTS</span>
                         — Указывает, что целевой метод может выполняться независимо от наличия транзакции. Если
                         транзакция работает, он будет участвовать в той же транзакции. Если транзакции нет, он всё равно
                         будет выполняться, если не будет ошибок. Методы, которые извлекают данные, являются лучшими
@@ -2398,14 +2398,14 @@
                     </p>
                     <hr>
                     <p class="smaller">
-                        <span class="example--word">NOT_SUPPORTED</span>
+                        <span class="accent-mono">NOT_SUPPORTED</span>
                         — Указывает, что целевой метод не требует распространения контекста транзакции. В основном те
                         методы, которые выполняются в транзакции, но выполняют операции с оперативной памятью, являются
                         лучшими кандидатами для этой опции.
                     </p>
                     <hr>
                     <p class="smaller">
-                        <span class="example--word">NEVER</span>
+                        <span class="accent-mono">NEVER</span>
                         — Указывает, что целевой метод вызовет исключение, если выполняется в транзакционном процессе.
                         Этот вариант в большинстве случаев не используется в проектах.
                     </p>
@@ -2422,7 +2422,7 @@
                         проверяемых исключениях. Таким образом, этот параметр можно использовать для декларативного
                         отката транзакции, если происходит Checked Exception.
                     </p>
-                    <p class="example--word mb10">
+                    <p class="accent-mono mb10">
                         Значение по умолчанию: rollbackFor=RunTimeException.class
                     </p>
                     <p class="code no_margin">@Transactional<wbr>(rollbackFor=Exception.class)</p>
@@ -2452,14 +2452,14 @@
             взаимосвязанных компонента: модель, представление и контроллер — таким образом, что модификация каждого
             компонента может осуществляться независимо.
         </p>
-        <p><span class="example--word">Модель(Model)</span>
+        <p><span class="accent-mono">Модель(Model)</span>
             — предоставляет данные и реагирует на команды контроллера, изменяя своё состояние. Она содержит всю
             бизнес-логику приложения.
         </p>
-        <p><span class="example--word">Представление(View)</span>
+        <p><span class="accent-mono">Представление(View)</span>
             — отвечает за отображение пользователю данных из модели в нужном формате.
         </p>
-        <p><span class="example--word">Контроллер(Controller)</span>
+        <p><span class="accent-mono">Контроллер(Controller)</span>
             — содержит код, который отвечает за обработку действий пользователя и обменивается данными с моделью (любое
             действие пользователя в системе обрабатывается в контроллере).
         </p>
@@ -2628,7 +2628,7 @@
         </p>
         <p>
             Но, если требуется тонкая настройка, то мы можем имплементировать интерфейс
-            <span class="example--word">WebMvcConfigurer</span> и переопределить необходимые методы.
+            <span class="accent-mono">WebMvcConfigurer</span> и переопределить необходимые методы.
         </p>
         <p>
             Теперь нужно зарегистрировать конфигурацию в Spring Context это позволит сделать созданный нами класс
@@ -2704,7 +2704,7 @@
     <p>
         В Spring в качестве Front Controller выступает DispatcherServlet, все действия проходят через него. Как правило,
         в приложении задаётся только один
-        <span class="example--word">DispatcherServlet с маппингом "/"</span>,
+        <span class="accent-mono">DispatcherServlet с маппингом "/"</span>,
         который перехватывает все запросы. Это и есть реализация паттерна Front Controller.
     </p>
     <p>
@@ -2799,7 +2799,7 @@
     <div id="model">
         <h3>Model</h3>
         <p>
-            <span class="example--word">Интерфейс</span> , лежит в пакете spring-context.
+            <span class="accent-mono">Интерфейс</span> , лежит в пакете spring-context.
             В методах контроллера мы можем использовать объекты Model для
             того, чтобы складывать туда данные, предназначенные для формирования представлений.
         </p>
@@ -2820,7 +2820,7 @@
     <div id="model_map">
         <h3>ModelMap</h3>
         <p>
-            Этот <span class="example--word">класс наследуется от LinkedHashMap &lt;String,&nbsp;Object&gt;</span> и
+            Этот <span class="accent-mono">класс наследуется от LinkedHashMap &lt;String,&nbsp;Object&gt;</span> и
             по сути служит общим контейнером модели для Servlet MVC, но не привязан к нему, и лежит в пакете
             spring-context.
         </p>
@@ -2840,8 +2840,8 @@
     <div id="model_view">
         <h3>ModelAndView</h3>
         <p>
-            Этот <span class="example--word">класс</span> лежит в пакете spring-webmvc и
-            <span class="example--word">может одновременно хранить модели и представление</span>, чтобы
+            Этот <span class="accent-mono">класс</span> лежит в пакете spring-webmvc и
+            <span class="accent-mono">может одновременно хранить модели и представление</span>, чтобы
             контроллер мог отдавать их в одном возвращаемом значении.
         </p>
         <p>
@@ -2894,12 +2894,12 @@
         <p>
             Аннотация @RestController была введена в Spring 4.0 для упрощения создания RESTful веб-сервисов. Это удобная
             аннотация, которая
-            <span class="example--word">объединяет @Controller и @ResponseBody</span>
+            <span class="accent-mono">объединяет @Controller и @ResponseBody</span>
             что устраняет необходимость аннотировать каждый
             метод обработки запросов аннотацией @ResponseBody.
         </p>
         <p>
-            <span class="example--word">@ResponseBody</span>
+            <span class="accent-mono">@ResponseBody</span>
             сообщает контроллеру, что возвращаемый объект автоматически сериализуется в json или xml и
             передается обратно в объект HttpResponse. Контроллер использует Jackson message converter для конвертации
             входящих/исходящих данных. Как правило целевые данные представлены в json или xml.
@@ -2965,7 +2965,7 @@
             направлениях.
         </p>
         <p>
-            Фильтры выполняют фильтрацию в методе <span class="example--word">doFilter</span>.
+            Фильтры выполняют фильтрацию в методе <span class="accent-mono">doFilter</span>.
             Каждый фильтр имеет доступ к объекту FilterConfig, из
             которого он может получить параметры инициализации и ссылку на ServletContext, который он может
             использовать, например, для загрузки ресурсов, необходимых для задач фильтрации. Фильтры настраиваются в
@@ -2977,7 +2977,7 @@
         </p>
         <p class="no_mb">
             Когда вызывается метод
-            <span class="example--word">
+            <span class="accent-mono">
             doFilter<wbr>(ServletRequest&nbsp;request, ServletResponse&nbsp;response, FilterChain&nbsp;chain)
             </span>
             первого фильтра, веб-сервер создает объект FilterChain, представляющий цепочку фильтров, и передаёт её в
@@ -3017,10 +3017,10 @@
             Мы можем указать любое количество перехватчиков.
         </p>
         <p>
-            Перехватчики работают с <span class="example--word">HandlerMapping</span> и поэтому должны реализовывать
-            <span class="example--word">интерфейс HandlerInterceptor</span>
-            или <span class="example--word">наследоваться</span> от готового класса
-            <span class="example--word">HandlerInterceptorAdapter</span>.
+            Перехватчики работают с <span class="accent-mono">HandlerMapping</span> и поэтому должны реализовывать
+            <span class="accent-mono">интерфейс HandlerInterceptor</span>
+            или <span class="accent-mono">наследоваться</span> от готового класса
+            <span class="accent-mono">HandlerInterceptorAdapter</span>.
         </p>
         <p>
             В случае реализации HandlerInterceptor нам нужно
@@ -3141,7 +3141,7 @@
     <div id="listeners">
         <h3>Java Listener</h3>
         <p>
-            <span class="example--word">Listener(Слушатель)</span>
+            <span class="accent-mono">Listener(Слушатель)</span>
             - это класс, который реализует интерфейс javax.servlet.ServletContextListener.
         </p>
         <p class="main-mind">
@@ -3189,7 +3189,7 @@
 <section class="container" id="q30">
     <h1>Передача параметров в GET-запросе</h1>
     <h4> Можно ли передать в GET-запросе один и тот же параметр несколько раз и как? </h4>
-    <p class="no_mb example--word">Да можно.</p>
+    <p class="no_mb accent-mono">Да можно.</p>
     <p>Можно принять все значения, используя массив в методе контроллера:</p>
     <div class="code">
         <p>http://localhost:8080/login?name=Ranga&name=Ravi&name=Sathish</p>
@@ -3293,7 +3293,7 @@
                     и т.д.
                 </p>
                 <p>
-                    <span class="example--word">Автоматическая конфигурация работает в последнюю очередь</span> ,
+                    <span class="accent-mono">Автоматическая конфигурация работает в последнюю очередь</span> ,
                     после регистрации пользовательских бинов и
                     всегда отдает им приоритет.
                 </p>
@@ -3418,17 +3418,17 @@
     <h1>Серввлет (Setvlet)</h1>
     <p class="example no_mb">Определение от WiKi</p>
     <p>
-        <span class="example--word">Сервлет</span>
+        <span class="accent-mono">Сервлет</span>
          является интерфейсом Java, реализация которого расширяет функциональные возможности сервера. Сервлет
         взаимодействует с клиентами посредством принципа запрос-ответ.
     </p>
     <p>
-        <span class="example--word">Java Servlet API</span>
+        <span class="accent-mono">Java Servlet API</span>
         — стандартизированный API, предназначенный для реализации на сервере и работе с клиентом по
         схеме запрос-ответ.
     </p>
     <p>
-        <span class="example--word">Сервлет</span>
+        <span class="accent-mono">Сервлет</span>
          — это класс, который умеет получать запросы от клиента и возвращать ему ответы.
         С помощью них строится клиент-серверная архитектура.
     </p>

@@ -378,7 +378,7 @@ img {
     color: darkgrey;
 }
 
-.example--word {
+.accent-mono {
     font-family: 'Monaco', 'Menlo', 'Consolas', 'Courier New', monospace;
     font-weight: 700;
 }
@@ -443,10 +443,10 @@ td .code {
     white-space: normal;
 }
 
-.code.example--word,
-.code-word.example--word,
-.code .example--word,
-.code-word .example--word {
+.code.accent-mono,
+.code-word.accent-mono,
+.code .accent-mono,
+.code-word .accent-mono {
     color: #00a82d;
 }
 

@@ -43,12 +43,12 @@
     <hr class="mb20">
     <p>Паттерны проектирования:</p>
     <ul class="sparse-li mb20">
-        <li><span class="example--word">Порождающие(creational)</span> - удобное и безопасное создание новых объектов;
+        <li><span class="accent-mono">Порождающие(creational)</span> - удобное и безопасное создание новых объектов;
         </li>
-        <li><span class="example--word">Структурные(structural)</span> - построение, удобной в поддержке, иерархии
+        <li><span class="accent-mono">Структурные(structural)</span> - построение, удобной в поддержке, иерархии
             классов;
         </li>
-        <li><span class="example--word">Поведенческие(behavioral)</span> - эффективное и безотказное взаимодействие;
+        <li><span class="accent-mono">Поведенческие(behavioral)</span> - эффективное и безотказное взаимодействие;
         </li>
     </ul>
     <hr class="mb20">
@@ -90,7 +90,7 @@
 
 <section class="container" id="cp">
     <h1><a href="#">Порождающие<wbr>(creational) паттерны</a></h1>
-    <p class="example--word">Основная цель отделить процесс создания объектов от основной логики.</p>
+    <p class="accent-mono">Основная цель отделить процесс создания объектов от основной логики.</p>
     <div class="tab-2 after-h1">
         <p><a href="#factory_method">Фабричный метод (Factory Method)</a></p>
         <p><a href="#abstract_factory">Абстрактная ф-ка (Abstract Factory)</a></p>
@@ -101,14 +101,14 @@
 
     <div id="factory_method">
         <h3>Фабрика (Factory Method)</h3>
-        <p class="no_mb"><span class="example--word">Цель:</span></p>
+        <p class="no_mb"><span class="accent-mono">Цель:</span></p>
         <p>
             Создание интерфейса, который создаёт объект. При этом, выбор того, экземпляр какого класса создавать
             остаётся за классами, которые имплементируют данный интерфейс.
         </p>
-        <p class="no_mb"><span class="example--word">Для чего используется:</span></p>
+        <p class="no_mb"><span class="accent-mono">Для чего используется:</span></p>
         <p>Для делигирования создания экземпляров, другому классу.</p>
-        <p class="no_mb"><span class="example--word">Пример использования:</span></p>
+        <p class="no_mb"><span class="accent-mono">Пример использования:</span></p>
         <ul>
             <li>заранее неизвестно, экземпляры, какого класса нужно будет создавать;</li>
             <li>класс спроектирован таким образом, что создаваемые им объекты имеют свойства определённого класса.</li>
@@ -119,14 +119,14 @@
     <hr>
     <div id="abstract_factory">
         <h3>Абстрактная фабрика (Abstract Factory)</h3>
-        <p class="no_mb"><span class="example--word">Цель:</span></p>
+        <p class="no_mb"><span class="accent-mono">Цель:</span></p>
         <p>
             Создание интерфейса, для создания множества взаимосвязанных или взаимозависимых объектов, без жёсткой
             привязке к конкретным классам.
         </p>
-        <p class="no_mb"><span class="example--word">Для чего используется:</span></p>
+        <p class="no_mb"><span class="accent-mono">Для чего используется:</span></p>
         <p>Для создания множеств взаимосвязанных объектов.</p>
-        <p class="no_mb"><span class="example--word">Пример использования:</span></p>
+        <p class="no_mb"><span class="accent-mono">Пример использования:</span></p>
         <ul>
             <li>система не должна зависеть от метода создания, компоновки и представления входящих в неё объектов;</li>
             <li>входящие взаимосвязанные объекты должны использоваться вместе;</li>
@@ -139,14 +139,14 @@
     <hr>
     <div id="singleton">
         <h3>Одиночка (Singleton)</h3>
-        <p class="no_mb"><span class="example--word">Цель:</span></p>
+        <p class="no_mb"><span class="accent-mono">Цель:</span></p>
         <p>
             Гарантировать, что у класса будет только один единственный экземпляр и к нему будет предоставлена
             глобальная точка доступа.
         </p>
-        <p class="no_mb"><span class="example--word">Для чего используется:</span></p>
+        <p class="no_mb"><span class="accent-mono">Для чего используется:</span></p>
         <p>Для создания единственного экземпляра определённого класса.</p>
-        <p class="no_mb"><span class="example--word">Пример использования:</span></p>
+        <p class="no_mb"><span class="accent-mono">Пример использования:</span></p>
         <ul>
             <li>необходим только один экземпляр конкретного класса, который доступен для всех клиентов;</li>
             <li>
@@ -160,14 +160,14 @@
     <hr>
     <div id="builder">
         <h3>Строитель (Builder)</h3>
-        <p class="no_mb"><span class="example--word">Цель:</span></p>
+        <p class="no_mb"><span class="accent-mono">Цель:</span></p>
         <p>
             Отделить конструирование сложного объекта от его представления таким образом, чтобы в результате
             одного и того же конструирования мы могли получить разные представления.
         </p>
-        <p class="no_mb"><span class="example--word">Для чего используется:</span></p>
+        <p class="no_mb"><span class="accent-mono">Для чего используется:</span></p>
         <p>Для создания различных объектов из одного набора данных.</p>
-        <p class="no_mb"><span class="example--word">Пример использования:</span></p>
+        <p class="no_mb"><span class="accent-mono">Пример использования:</span></p>
         <ul>
             <li>
                 порядок создания сложного объекта не должен зависеть от того, из каких частей состоит объект и
@@ -184,14 +184,14 @@
     <hr>
     <div id="prototype">
         <h3>Прототип (Prototype)</h3>
-        <p class="no_mb"><span class="example--word">Цель:</span></p>
+        <p class="no_mb"><span class="accent-mono">Цель:</span></p>
         <p>
             Определить вид создаваемых объектов с помощью экземпляра - прототипа и создавать новые объекты,
             копируя этот прототип.
         </p>
-        <p class="no_mb"><span class="example--word">Для чего используется:</span></p>
+        <p class="no_mb"><span class="accent-mono">Для чего используется:</span></p>
         <p>Для создания копий заданного объекта.</p>
-        <p class="no_mb"><span class="example--word">Пример использования:</span></p>
+        <p class="no_mb"><span class="accent-mono">Пример использования:</span></p>
         <ul>
             <li>классы, экземпляры которых необходимо создать определяются во время выполнения программы;</li>
             <li>для избежания построения иерархии классов, фабрик или параллельных иерархий классов;</li>
@@ -217,11 +217,11 @@
 
     <div id="adapter">
         <h3>Адаптер (Adapter)</h3>
-        <p class="no_mb"><span class="example--word">Цель:</span></p>
+        <p class="no_mb"><span class="accent-mono">Цель:</span></p>
         <p>Преобразование интерфейса одного класса в интерфейс того класса, который необходим клиенту.</p>
-        <p class="no_mb"><span class="example--word">Для чего используется:</span></p>
+        <p class="no_mb"><span class="accent-mono">Для чего используется:</span></p>
         <p>Для обеспечения совместной работы классов, интерфейсы которых не совместимы.</p>
-        <p class="no_mb"><span class="example--word">Пример использования:</span></p>
+        <p class="no_mb"><span class="accent-mono">Пример использования:</span></p>
         <ul>
             <li>интерфейс класса, который мы хотим использовать не соответствует нашим потребностям;</li>
             <li>
@@ -239,14 +239,14 @@
     <hr>
     <div id="bridge">
         <h3>Мост (Bridge)</h3>
-        <p class="no_mb"><span class="example--word">Цель:</span></p>
+        <p class="no_mb"><span class="accent-mono">Цель:</span></p>
         <p>
             Отделить абстракцию от её реализации таким образом, чтобы мы могли изменять независимо друг от друга
             и то и другое.
         </p>
-        <p class="no_mb"><span class="example--word">Для чего используется:</span></p>
+        <p class="no_mb"><span class="accent-mono">Для чего используется:</span></p>
         <p>Для получения преимуществ наследования без потери гибкости.</p>
-        <p class="no_mb"><span class="example--word">Пример использования:</span></p>
+        <p class="no_mb"><span class="accent-mono">Пример использования:</span></p>
         <ul>
             <li>
                 предотвращения жёсткого привязки абстракции к реализации (например, реализацию необходимо выбрать
@@ -262,17 +262,17 @@
     <hr>
     <div id="composite">
         <h3>Компоновщик (Composite)</h3>
-        <p class="no_mb"><span class="example--word">Цель:</span></p>
+        <p class="no_mb"><span class="accent-mono">Цель:</span></p>
         <p>
             Скомпонировать объекты в структуры по типу "дерева", позволяя клиентам единообразно трактовать
             отдельные и составные объекты.
         </p>
-        <p class="no_mb"><span class="example--word">Для чего используется:</span></p>
+        <p class="no_mb"><span class="accent-mono">Для чего используется:</span></p>
         <p>
             Для группировки мелких компонентов в более крупные, которые, в свою очередь, могут стать основой для
             ещё более крупных стуктур.
         </p>
-        <p class="no_mb"><span class="example--word">Пример использования:</span></p>
+        <p class="no_mb"><span class="accent-mono">Пример использования:</span></p>
         <ul>
             <li>для представления иерархии "часть-целое";</li>
             <li>мы хотим, чтобы клиенты одним способом трактовали как отдельные, так и составные объекты.</li>
@@ -283,11 +283,11 @@
     <hr>
     <div id="decorator">
         <h3>Декоратор (Decorator)</h3>
-        <p class="no_mb"><span class="example--word">Цель:</span></p>
+        <p class="no_mb"><span class="accent-mono">Цель:</span></p>
         <p>Динамическое добавление новых обязанностей объекту.</p>
-        <p class="no_mb"><span class="example--word">Для чего используется:</span></p>
+        <p class="no_mb"><span class="accent-mono">Для чего используется:</span></p>
         <p>Используется в качестве альтернативы порождению подклассов для расширения функциональности.</p>
-        <p class="no_mb"><span class="example--word">Пример использования:</span></p>
+        <p class="no_mb"><span class="accent-mono">Пример использования:</span></p>
         <ul>
             <li>динамическое и понятное клиентам добавления обязанностей объектам;</li>
             <li>реализация обязанностей, которые могут быть сняты с объекта;</li>
@@ -299,11 +299,11 @@
     <hr>
     <div id="facade">
         <h3>Фасад (Facade)</h3>
-        <p class="no_mb"><span class="example--word">Цель:</span></p>
+        <p class="no_mb"><span class="accent-mono">Цель:</span></p>
         <p>Предоставить унифицированный интерфейс вместо нескольких интерфейсов подститсемы.</p>
-        <p class="no_mb"><span class="example--word">Для чего используется:</span></p>
+        <p class="no_mb"><span class="accent-mono">Для чего используется:</span></p>
         <p>Используется для опредления интерфейса высокого уровня, который упрощает использование подсистемы.</p>
-        <p class="no_mb"><span class="example--word">Пример использования:</span></p>
+        <p class="no_mb"><span class="accent-mono">Пример использования:</span></p>
         <ul>
             <li>изолирование клиентов от компонентов подсистемы, упрощая работу с ней;</li>
             <li>необходимость ослабления связанности подсистемы с клиентами;</li>
@@ -314,11 +314,11 @@
     <hr>
     <div id="flyweigtht">
         <h3>Приспособленец (Flyweight)</h3>
-        <p class="no_mb"><span class="example--word">Цель:</span></p>
+        <p class="no_mb"><span class="accent-mono">Цель:</span></p>
         <p>Поддержка множества мелких объектов.</p>
-        <p class="no_mb"><span class="example--word">Для чего используется:</span></p>
+        <p class="no_mb"><span class="accent-mono">Для чего используется:</span></p>
         <p>Использует разделение для того, чтобы поддерживать много мелких объектов.</p>
-        <p class="no_mb"><span class="example--word">Пример использования:</span></p>
+        <p class="no_mb"><span class="accent-mono">Пример использования:</span></p>
         <ul>
             <li>когда используется большое число объектов;</li>
             <li>большую часть состояния объектов можно вынести наружу;</li>
@@ -330,11 +330,11 @@
     <hr>
     <div id="proxy">
         <h3>Заместитель (Proxy)</h3>
-        <p class="no_mb"><span class="example--word">Цель:</span></p>
+        <p class="no_mb"><span class="accent-mono">Цель:</span></p>
         <p>Для замещения другого объекта и контроля доступа к нему.</p>
-        <p class="no_mb"><span class="example--word">Для чего используется:</span></p>
+        <p class="no_mb"><span class="accent-mono">Для чего используется:</span></p>
         <p>Для обеспечения контроля досутпа к опредленному объекту.</p>
-        <p class="no_mb"><span class="example--word">Пример использования:</span></p>
+        <p class="no_mb"><span class="accent-mono">Пример использования:</span></p>
         <ul>
             <li class="mb10">когда есть необходимость ссылаться на объект способом отличным от обычного указателя;</li>
             <table class="list" aria-label="proxy">
@@ -380,14 +380,14 @@
 
     <div id="chain">
         <h3>Цепочка ответственности (Chain Of Responsibility)</h3>
-        <p class="no_mb"><span class="example--word">Цель:</span></p>
+        <p class="no_mb"><span class="accent-mono">Цель:</span></p>
         <p>Связывание объектов-получателей в цепочку и передача запроса по ней.</p>
-        <p class="no_mb"><span class="example--word">Для чего используется:</span></p>
+        <p class="no_mb"><span class="accent-mono">Для чего используется:</span></p>
         <p>
             Помогает избежать привязки отправителя запроса к его получателю, что даёт возможность обработать
             данный запрос нескольким объектам.
         </p>
-        <p class="no_mb"><span class="example--word">Пример использования:</span></p>
+        <p class="no_mb"><span class="accent-mono">Пример использования:</span></p>
         <ul>
             <li>ослабление привязанности (объект не должен знать, кто именно обработает его запрос);</li>
             <li>дополнительная гибкость при распределении обязанностей между объектами;</li>
@@ -398,14 +398,14 @@
     <hr>
     <div id="command">
         <h3>Команда (Command)</h3>
-        <p class="no_mb"><span class="example--word">Цель:</span></p>
+        <p class="no_mb"><span class="accent-mono">Цель:</span></p>
         <p>Инкапсулирование запроса в объект.</p>
-        <p class="no_mb"><span class="example--word">Для чего используется:</span></p>
+        <p class="no_mb"><span class="accent-mono">Для чего используется:</span></p>
         <p>
             Чтобы задать параметры клиентов для обработки определённых запросов, создание очереди из этих запросов
             или их контроля и поддержки отмены операций.
         </p>
-        <p class="no_mb"><span class="example--word">Пример использования:</span></p>
+        <p class="no_mb"><span class="accent-mono">Пример использования:</span></p>
         <ul>
             <li>параметризация объектов выполняемым дейтсвием;</li>
             <li>определять запрос, ставить его в очередь или выполнять его в разное время.</li>
@@ -416,11 +416,11 @@
     <hr>
     <div id="interpreter">
         <h3>Интерпретатор (Interpreter)</h3>
-        <p class="no_mb"><span class="example--word">Цель:</span></p>
+        <p class="no_mb"><span class="accent-mono">Цель:</span></p>
         <p>Определение представления грамматики объекта.</p>
-        <p class="no_mb"><span class="example--word">Для чего используется:</span></p>
+        <p class="no_mb"><span class="accent-mono">Для чего используется:</span></p>
         <p>Используется для определения представления грамматики заданного языка и интерпретации его предложений.</p>
-        <p class="no_mb"><span class="example--word">Пример использования:</span></p>
+        <p class="no_mb"><span class="accent-mono">Пример использования:</span></p>
         <ul>
             <li>упрощение иерархии классов с помощью интерпретирования.</li>
         </ul>
@@ -430,14 +430,14 @@
     <hr>
     <div id="iterator">
         <h3>Итератор (Iterator)</h3>
-        <p class="no_mb"><span class="example--word">Цель:</span></p>
+        <p class="no_mb"><span class="accent-mono">Цель:</span></p>
         <p>Получение последовательного доступа ко всем элементам составного объекта.</p>
-        <p class="no_mb"><span class="example--word">Для чего используется:</span></p>
+        <p class="no_mb"><span class="accent-mono">Для чего используется:</span></p>
         <p>
             Для получения последовательного доступа ко всем элементам составного объекта, скрывая его
             внутреннее представление.
         </p>
-        <p class="no_mb"><span class="example--word">Пример использования:</span></p>
+        <p class="no_mb"><span class="accent-mono">Пример использования:</span></p>
         <ul>
             <li>различные виды обхода составного объекта;</li>
             <li>упрощённый доступ к составному объекту.</li>
@@ -448,14 +448,14 @@
     <hr>
     <div id="mediator">
         <h3>Посредник (Mediator)</h3>
-        <p class="no_mb"><span class="example--word">Цель:</span></p>
+        <p class="no_mb"><span class="accent-mono">Цель:</span></p>
         <p>Инкапсуляция способа взаимодейтсвия множества объектов.</p>
-        <p class="no_mb"><span class="example--word">Для чего используется:</span></p>
+        <p class="no_mb"><span class="accent-mono">Для чего используется:</span></p>
         <p>
             Для определения объекта, который инкапсулирует способ взаимодействия множества объектов и обеспечения
             слабой связи между этими объектами.
         </p>
-        <p class="no_mb"><span class="example--word">Пример использования:</span></p>
+        <p class="no_mb"><span class="accent-mono">Пример использования:</span></p>
         <ul>
             <li>связи между объектами сложны и чётко определены;</li>
             <li>нельзя повторно использовать объект, так как он обменивается информацией с другими объектами;</li>
@@ -470,16 +470,16 @@
     <hr>
     <div id="memento">
         <h3>Хранитель (Memento)</h3>
-        <p class="no_mb"><span class="example--word">Цель:</span></p>
+        <p class="no_mb"><span class="accent-mono">Цель:</span></p>
         <p>
             Сохранить внутренне состояние объекта за его пределы.
         </p>
-        <p class="no_mb"><span class="example--word">Для чего используется:</span></p>
+        <p class="no_mb"><span class="accent-mono">Для чего используется:</span></p>
         <p>
             Фиксирование внутреннего состояния объекта за его пределами не нарушая инкапсуляцию
             и восстановления объекта в случае необходимости.
         </p>
-        <p class="no_mb"><span class="example--word">Пример использования:</span></p>
+        <p class="no_mb"><span class="accent-mono">Пример использования:</span></p>
         <ul>
             <li>
                 необходимо сохранить текущее состояние объекта или его части и восстановление в будущем, но
@@ -492,15 +492,15 @@
     <hr>
     <div id="observer">
         <h3>Наблюдатель (Observer)</h3>
-        <p class="no_mb"><span class="example--word">Цель:</span></p>
+        <p class="no_mb"><span class="accent-mono">Цель:</span></p>
         <p>Определение зависимости "один ко многим" между объектами.</p>
-        <p class="no_mb"><span class="example--word">Для чего используется:</span></p>
+        <p class="no_mb"><span class="accent-mono">Для чего используется:</span></p>
         <p>
             Определение зависимости "один ко многим" между объектами таким образом, что при
             изменении состояния одного объекта все зависящие от него объекты были уведомлены
             об этом и обновились.
         </p>
-        <p class="no_mb"><span class="example--word">Пример использования:</span></p>
+        <p class="no_mb"><span class="accent-mono">Пример использования:</span></p>
         <ul>
             <li>
                 когда у модели имеются два аспекта, один из которых зависит от другого. Инкапсулирование
@@ -515,11 +515,11 @@
     <hr>
     <div id="state">
         <h3>Состояние (State)</h3>
-        <p class="no_mb"><span class="example--word">Цель:</span></p>
+        <p class="no_mb"><span class="accent-mono">Цель:</span></p>
         <p>Управление поведением объекта в зависимости от состояния.</p>
-        <p class="no_mb"><span class="example--word">Для чего используется:</span></p>
+        <p class="no_mb"><span class="accent-mono">Для чего используется:</span></p>
         <p>Позволяет нам управлять поведением объекта в зависимости от внутреннего состояние объекта.</p>
-        <p class="no_mb"><span class="example--word">Пример использования:</span></p>
+        <p class="no_mb"><span class="accent-mono">Пример использования:</span></p>
         <ul>
             <li>поведение объекта зависит от его состояние и изменяется во время выполнения;</li>
             <li>
@@ -533,14 +533,14 @@
     <hr>
     <div id="strategy">
         <h3>Стратегия (Strategy)</h3>
-        <p class="no_mb"><span class="example--word">Цель:</span></p>
+        <p class="no_mb"><span class="accent-mono">Цель:</span></p>
         <p>Взаимозаменяемость семейства классов.</p>
-        <p class="no_mb"><span class="example--word">Для чего используется:</span></p>
+        <p class="no_mb"><span class="accent-mono">Для чего используется:</span></p>
         <p>
             Определение семейства классов, инкапсулирование каждого из них и организация
             их взаимозаменяемости.
         </p>
-        <p class="no_mb"><span class="example--word">Пример использования:</span></p>
+        <p class="no_mb"><span class="accent-mono">Пример использования:</span></p>
         <ul>
             <li>есть несколько родственных классов, которые отличаются поведением;</li>
             <li>необходимо иметь несколько вариантов поведения;</li>
@@ -553,14 +553,14 @@
     <hr>
     <div id="template">
         <h3>Шаблонный метод (Template method)</h3>
-        <p class="no_mb"><span class="example--word">Цель:</span></p>
+        <p class="no_mb"><span class="accent-mono">Цель:</span></p>
         <p>Определение основы класса и создание возможности подклассам переопределять его части.</p>
-        <p class="no_mb"><span class="example--word">Для чего используется:</span></p>
+        <p class="no_mb"><span class="accent-mono">Для чего используется:</span></p>
         <p>
             Определяет основу класса и позволяет подклассам переопределять некоторые его части
             не изменяя его структуру в целом.
         </p>
-        <p class="no_mb"><span class="example--word">Пример использования:</span></p>
+        <p class="no_mb"><span class="accent-mono">Пример использования:</span></p>
         <ul>
             <li>
                 однократное использование различных частей класса, оставляя реализацию  изменяющегося
@@ -575,14 +575,14 @@
     <hr>
     <div id="visitor">
         <h3>Посетитель (Visitor)</h3>
-        <p class="no_mb"><span class="example--word">Цель:</span></p>
+        <p class="no_mb"><span class="accent-mono">Цель:</span></p>
         <p>Описание действий, которые выполняются с каждым объектом в некоторой структуре.</p>
-        <p class="no_mb"><span class="example--word">Для чего используется:</span></p>
+        <p class="no_mb"><span class="accent-mono">Для чего используется:</span></p>
         <p>
             Описание операций, которые выполняются с каждым объектом из некоторой структуры.
             Позволяет определить новую операцию без изменения классов этих объектов.
         </p>
-        <p class="no_mb"><span class="example--word">Пример использования:</span></p>
+        <p class="no_mb"><span class="accent-mono">Пример использования:</span></p>
         <ul>
             <li>
                 в структуре присутствуют объекты многих классов с различными интерфейсами и нам

@@ -40,12 +40,12 @@
 <section class="container" id="chapter01">
     <h1>Раздел 1. <a href="#">Введение&nbsp;в&nbsp;SQL</a><span class="update-time">11.01.2023 12:16</span></h1>
     <p>
-        <span class="example--word">SQL (Structured Query Language)</span>
+        <span class="accent-mono">SQL (Structured Query Language)</span>
         - Язык структурированных запросов.
     </p>
     <p class="no_mb">
         Один из инструментов работы с БД -
-        <span class="example--word">SQL Developer</span>
+        <span class="accent-mono">SQL Developer</span>
     </p>
     <p>
         <a class="link-to-source" href="https://www.oracle.com/tools/downloads/sqldev-downloads.html"
@@ -89,13 +89,13 @@
     <hr>
     <div id="sql_commands">
         <h3><a href="#intro_menu">SQL КОМАНДЫ</a></h3>
-        <p class="no_mb"><span class="example--word larger">DML</span> - Data Manipulation Language</p>
+        <p class="no_mb"><span class="accent-mono larger">DML</span> - Data Manipulation Language</p>
         <p class="example">Предназначены для манипуляции данными</p>
-        <p class="no_mb"><span class="example--word larger">DDL</span> - Data Definition Language</p>
+        <p class="no_mb"><span class="accent-mono larger">DDL</span> - Data Definition Language</p>
         <p class="example">Предназначены для определения структуры БД и работы с объектами (CRUD)</p>
-        <p class="no_mb"><span class="example--word larger">TCL</span> - Transaction Control Language</p>
+        <p class="no_mb"><span class="accent-mono larger">TCL</span> - Transaction Control Language</p>
         <p class="example">Предназначены для реализации и управления транзакциями</p>
-        <p class="no_mb"><span class="example--word larger">DCL</span> - Data Control Language</p>
+        <p class="no_mb"><span class="accent-mono larger">DCL</span> - Data Control Language</p>
         <p class="example">Предназначены определения доступа к данным</p>
         <p>
             <a class="link-to-source" href="https://info-comp.ru/what-is-ddl-dml-dcl-tcl" target="_blank">источник</a>
@@ -193,10 +193,10 @@
     <hr>
     <div id="describe">
         <h3><a href="#intro_menu">Команда DESCRIBE</a></h3>
-        <p><span class="example--word">Data Dictionary</span>
+        <p><span class="accent-mono">Data Dictionary</span>
             - место где Oracle хранит данные о таблицах. Нужна для DDL.</p>
         <div class="code no_mb bold">
-            <span class="example--word">DESC</span>RIBE SCHEMA.<span class="example--word">TABLE_NAME</span>
+            <span class="accent-mono">DESC</span>RIBE SCHEMA.<span class="accent-mono">TABLE_NAME</span>
         </div>
         <p class="example">Вывод данных о структуре таблице (имя, тип).</p>
     </div>
@@ -232,8 +232,8 @@
         <p>Объект не может быть вне схемы!!!</p>
         <p>Возможно получение доступа к объектам другого пользователя, но нужно предоставить доступ.</p>
         <p>Есть пользователи по-умолчанию, например
-            <span class="example--word">SYS</span> и
-            <span class="example--word">SYSTEM</span>.
+            <span class="accent-mono">SYS</span> и
+            <span class="accent-mono">SYSTEM</span>.
             Их объекты используются для служебных целей и мониторинга.
         </p>
     </div>
@@ -270,19 +270,19 @@
     <h1>Раздел 2. <a href="#">Знакомство&nbsp;с&nbsp;SELECT</a><span class="update-time">13.05.2022 13:21</span></h1>
     <hr>
     <h3>Фундаментальные концепции</h3>
-    <p><span class="example--word">PROJECTION</span> - выбор столбцов из таблицы.</p>
-    <p><span class="example--word">SELECTION</span> - выбор строк из таблицы.</p>
-    <p><span class="example--word">JOINING</span> - объединение таблиц.</p>
+    <p><span class="accent-mono">PROJECTION</span> - выбор столбцов из таблицы.</p>
+    <p><span class="accent-mono">SELECTION</span> - выбор строк из таблицы.</p>
+    <p><span class="accent-mono">JOINING</span> - объединение таблиц.</p>
     <hr>
     <h3>Команда SELECT</h3>
     <div class="code bold">
-        <p><span class="example--word">SELECT *</span></p>
-        <p><span class="example--word">FROM&nbsp;table_name;</span></p>
+        <p><span class="accent-mono">SELECT *</span></p>
+        <p><span class="accent-mono">FROM&nbsp;table_name;</span></p>
         <p class="example">//&nbsp;базовый синтаксис</p>
     </div>
     <div class="code bold">
-        <p class="example--word">SELECT column(s)</p>
-        <p class="example--word">FROM&nbsp;table_name;</p>
+        <p class="accent-mono">SELECT column(s)</p>
+        <p class="accent-mono">FROM&nbsp;table_name;</p>
         <p class="example">//&nbsp;projection</p>
     </div>
     <hr>
@@ -290,55 +290,55 @@
     <p>Выбор уникальных значений (сочетаний).</p>
     <div class="code bold">
         <p>
-            <span class="example--word">SELECT </span>
+            <span class="accent-mono">SELECT </span>
             <span>DISTINCT </span>
-            <span class="example--word"> column(s)</span>
+            <span class="accent-mono"> column(s)</span>
         </p>
-        <p><span class="example--word">FROM&nbsp;table_name;</span></p>
+        <p><span class="accent-mono">FROM&nbsp;table_name;</span></p>
     </div>
     <p class="main-mind">Если столбцов несколько, то выводится уникальные сочетания.</p>
     <hr>
     <h3>Выражения в Select list</h3>
-    <p class="no_mb"><span class="example--word">Select list</span> - это то что мы выбираем.</p>
+    <p class="no_mb"><span class="accent-mono">Select list</span> - это то что мы выбираем.</p>
     <div class="code">
         <p>
-            <span class="example--word bold">SELECT</span>
-            <span class="example--word">{Select list}</span>
+            <span class="accent-mono bold">SELECT</span>
+            <span class="accent-mono">{Select list}</span>
         </p>
-        <p class="example--word bold">FROM&nbsp;table_name;</p>
+        <p class="accent-mono bold">FROM&nbsp;table_name;</p>
     </div>
     <div class="code bold">
-        <p class="example--word">SELECT column(s), expression(s)</p>
-        <p class="example--word">FROM&nbsp;table_name;</p>
+        <p class="accent-mono">SELECT column(s), expression(s)</p>
+        <p class="accent-mono">FROM&nbsp;table_name;</p>
     </div>
     <p>Оператор конкатенации - ||</p>
     <hr>
     <h3>Alias (псевдоним)</h3>
-    <p><span class="example--word">Alias</span>(псевдоним) - альтернативное имя для столбца или выражения.</p>
+    <p><span class="accent-mono">Alias</span>(псевдоним) - альтернативное имя для столбца или выражения.</p>
     <div class="code bold">
         <p>
-            <span class="example--word">SELECT column(s)</span>
-            <span>alias</span><span class="example--word">, expression(s)</span>
+            <span class="accent-mono">SELECT column(s)</span>
+            <span>alias</span><span class="accent-mono">, expression(s)</span>
             <span>alias</span>
         </p>
-        <p class="example--word">FROM&nbsp;table_name;</p>
+        <p class="accent-mono">FROM&nbsp;table_name;</p>
     </div>
     <div class="code bold no_mb">
         <p>
-            <span class="example--word">SELECT column(s)</span>
-            <span>AS alias</span><span class="example--word">, expression(s)</span>
+            <span class="accent-mono">SELECT column(s)</span>
+            <span>AS alias</span><span class="accent-mono">, expression(s)</span>
             <span>AS alias</span>
         </p>
-        <p class="example--word">FROM&nbsp;table_name;</p>
+        <p class="accent-mono">FROM&nbsp;table_name;</p>
     </div>
     <p class="example">AS можно не использовать, но оно добавляет читаемость.</p>
     <div class="code bold no_mb">
         <p>
-            <span class="example--word">SELECT column(s)</span>
-            <span>"alias text"</span><span class="example--word">, expression(s)</span>
+            <span class="accent-mono">SELECT column(s)</span>
+            <span>"alias text"</span><span class="accent-mono">, expression(s)</span>
             <span>"alias text"</span>
         </p>
-        <p class="example--word">FROM&nbsp;table_name;</p>
+        <p class="accent-mono">FROM&nbsp;table_name;</p>
     </div>
     <p class="example">Если нужен alias с пробелами в тексе то использовать двойные кавычки.
         <br>Кроме того, если нет кавычек alias будет отображен большими буквами.
@@ -367,11 +367,11 @@
     <p class="bold">после первого знакомства</p>
     <div class="code bold">
         <p>
-            <span class="example--word">SELECT *</span><span class="bad">|{</span><span>DISTINCT</span>
-            <span class="example--word">column(s)</span>&nbsp;<span>alias,</span>
-            <span class="example--word">expression(s)</span>&nbsp;<span>alias</span><span class="bad">}</span>
+            <span class="accent-mono">SELECT *</span><span class="bad">|{</span><span>DISTINCT</span>
+            <span class="accent-mono">column(s)</span>&nbsp;<span>alias,</span>
+            <span class="accent-mono">expression(s)</span>&nbsp;<span>alias</span><span class="bad">}</span>
         </p>
-        <p class="example--word">FROM&nbsp;table_name;</p>
+        <p class="accent-mono">FROM&nbsp;table_name;</p>
     </div>
 
     <a href="#" class="button button--top"></a>
@@ -383,12 +383,12 @@
     <h3>Концепция Selection</h3>
     <div class="code bold">
         <p>
-            <span class="example--word">SELECT *</span><span class="bad">|{</span><span>DISTINCT</span>
-            <span class="example--word">column(s)</span>&nbsp;<span>alias,</span>
-            <span class="example--word">expression(s)</span>&nbsp;<span>alias</span><span class="bad">}</span>
+            <span class="accent-mono">SELECT *</span><span class="bad">|{</span><span>DISTINCT</span>
+            <span class="accent-mono">column(s)</span>&nbsp;<span>alias,</span>
+            <span class="accent-mono">expression(s)</span>&nbsp;<span>alias</span><span class="bad">}</span>
         </p>
-        <p class="example--word">FROM&nbsp;table_name</p>
-        <p><span>WHERE&nbsp;condition(s)</span><span class="example--word">;</span></p>
+        <p class="accent-mono">FROM&nbsp;table_name</p>
+        <p><span>WHERE&nbsp;condition(s)</span><span class="accent-mono">;</span></p>
     </div>
     <hr>
     <h3>Операторы сравнения</h3>
@@ -498,20 +498,20 @@
     <h3>ORDER BY</h3>
     <div class="code bold no_mb">
         <p>
-            <span class="example--word">SELECT *</span><span class="bad">|{</span><span>DISTINCT</span>
-            <span class="example--word">column(s)</span>&nbsp;alias,
-            <span class="example--word">expression(s)</span>&nbsp;alias<span class="bad">}</span>
+            <span class="accent-mono">SELECT *</span><span class="bad">|{</span><span>DISTINCT</span>
+            <span class="accent-mono">column(s)</span>&nbsp;alias,
+            <span class="accent-mono">expression(s)</span>&nbsp;alias<span class="bad">}</span>
         </p>
-        <p class="example--word">FROM&nbsp;table_name</p>
+        <p class="accent-mono">FROM&nbsp;table_name</p>
         <p> WHERE&nbsp;condition(s)</p>
         <p>
             ORDER&nbsp;BY&nbsp;<span class="bad">{</span><span
-                class="example--word">column(s)</span><span class="bad">|</span><span
-                class="example--word">expressions(s)</span><span class="bad">|</span><span
-                class="example--word">numeric position</span><span class="bad">}</span>
+                class="accent-mono">column(s)</span><span class="bad">|</span><span
+                class="accent-mono">expressions(s)</span><span class="bad">|</span><span
+                class="accent-mono">numeric position</span><span class="bad">}</span>
             <span class="bad">{</span>ASC<span class="bad">|</span>DESC<span class="bad">}</span>
             <span class="bad">{</span>NULLS FIRST<span class="bad">|</span>LAST<span class="bad">}</span><span
-                class="example--word">;</span>
+                class="accent-mono">;</span>
         </p>
     </div>
     <p class="example">numeric position считается из select list'а</p>
@@ -554,48 +554,48 @@
 
     <h3>Case conversion functions</h3>
     <h4>Перевод в нижний регистр</h4>
-    <span class="code-word example--word no_mb">LOWER(s)</span>
+    <span class="code-word accent-mono no_mb">LOWER(s)</span>
     <span class="example">, где s - строка.</span>
     <h4>Перевод в верхний регистр</h4>
-    <span class="code-word example--word no_mb">UPPER(s)</span>
+    <span class="code-word accent-mono no_mb">UPPER(s)</span>
     <span class="example">, где s - строка.</span>
     <h4>Перевод в верхний регистр первой буквы</h4>
-    <span class="code-word example--word no_mb">INITCAP(s)</span>
+    <span class="code-word accent-mono no_mb">INITCAP(s)</span>
     <span class="example">, где s - строка.</span>
     <p class="example">Важно! Переводится первый символ каждого слова.</p>
 
     <h3>Character manipulation function</h3>
     <h4>Конкатенация</h4>
-    <span class="code-word example--word">CONCAT(s,s)</span>
+    <span class="code-word accent-mono">CONCAT(s,s)</span>
     <span class="example">, где s - строка. Аналогичен оператору </span>
     <span class="code-word">||</span>
     <h4>Длина строки</h4>
-    <span class="code-word example--word">LENGTH(s)</span>
+    <span class="code-word accent-mono">LENGTH(s)</span>
     <span class="example">, где s - строка.</span>
     <p class="example">Важно! Считаются все символы, включая проблелы и т.п.</p>
     <h4>Добавление символов (слева/справа)</h4>
-    <span class="code-word example--word">LPAD(s, n, p)</span> и
-    <span class="code-word example--word">RPAD(s, n, p)</span>
+    <span class="code-word accent-mono">LPAD(s, n, p)</span> и
+    <span class="code-word accent-mono">RPAD(s, n, p)</span>
     <span class="example">где&nbsp;s&nbsp;-&nbsp;строка, n&nbsp;-&nbsp;конечная длинна текста, p&nbsp;-&nbsp;текст для заполнения.</span>
     <h4>Обрезка символов по краям</h4>
     <div class="code-word bold" style="white-space: normal;">
-        <span class="example--word">TRIM(</span><span class="bad">{</span>trailing<span
+        <span class="accent-mono">TRIM(</span><span class="bad">{</span>trailing<span
             class="bad">|</span>leading<span class="bad">|</span>both<span class="bad">}</span>
-        char&nbsp;FROM&nbsp;<span class="example--word">s)</span>
+        char&nbsp;FROM&nbsp;<span class="accent-mono">s)</span>
     </div>
     <p class="example no_mb">По умолчанию: тип удаления both, а символ для удаления - пробел.</p>
     <p class="example"> Важно: удалять можно только один какой-то символ.</p>
     <h4>Поиск в строке</h4>
     <div class="code-word" style="white-space: normal;">
-        <span class="example--word">INSTR(s, searchString</span><span>, startPosition, nth&nbsp;occurrence</span><span
-            class="example--word">)</span>
+        <span class="accent-mono">INSTR(s, searchString</span><span>, startPosition, nth&nbsp;occurrence</span><span
+            class="accent-mono">)</span>
     </div>
     <p class="example no_mb">Где s - строка в которой ищем. searchString - искомый текст; startPosition - позиция с
         которой начинается поиск; <span style="white-space: nowrap">n-ное</span> появление;</p>
     <h4>Извлечение подстроки</h4>
     <span class="code-word" style="white-space: normal;">
-            <span class="example--word">SUBSTR(s, startPosition</span><span>, n</span><span
-            class="example--word">)</span>
+            <span class="accent-mono">SUBSTR(s, startPosition</span><span>, n</span><span
+            class="accent-mono">)</span>
     </span>
     <p class="example no_mb">Где s - строка в которой ищем. startPosition - позиция с которой начинаем извлекать;
         n&nbsp;-&nbsp;кол-во извлекаемых символов;</p>
@@ -603,8 +603,8 @@
     <p class="example">Важно: Если длина строки s меньше startPosition то функция вернет null.</p>
     <h4>Замена подстроки</h4>
     <div class="code-word" style="white-space: normal;">
-        <span class="example--word">REPLACE(s, searchString</span><span>, replacementString</span><span
-            class="example--word">)</span>
+        <span class="accent-mono">REPLACE(s, searchString</span><span>, replacementString</span><span
+            class="accent-mono">)</span>
     </div>
     <p class="example no_mb">Где s - строка в которой производим замену. searchString - текст, который нужно заменить;
         replacementString - текст, на который нужно заменить;</p>
@@ -615,16 +615,16 @@
     <p class="example">Функции которые работают с числами</p>
     <h4>Округление</h4>
     <span class="code-word">
-        <span class="example--word">ROUND(n</span>, precision<span class="example--word">)</span>
+        <span class="accent-mono">ROUND(n</span>, precision<span class="accent-mono">)</span>
     </span>
     <p class="example">Математическое округление. При precision&lt;0 округляется целая часть.</p>
     <h4>Отбрасывание</h4>
     <span class="code-word">
-        <span class="example--word">TRUNC(n</span>, precision<span class="example--word">)</span>
+        <span class="accent-mono">TRUNC(n</span>, precision<span class="accent-mono">)</span>
     </span>
     <p class="example">Отбрасывание числа. При precision&lt;0 происходит замена на 0 в целой части числа.</p>
     <h4>Остаток от деления</h4>
-    <span class="code-word"><span class="example--word">MOD(dividend, divisor)</span></span>
+    <span class="code-word"><span class="accent-mono">MOD(dividend, divisor)</span></span>
     <p class="example">Интересно: можно использовать дробные числа.</p>
 
     <hr>
@@ -636,40 +636,40 @@
     <p>Складывать/делить/умножать даты нельзя.</p>
 
     <h4>Системное время</h4>
-    <span class="code-word example--word">SYSDATE</span>
+    <span class="code-word accent-mono">SYSDATE</span>
     <p class="example">Возвращает текущее время db-server'а</p>
 
     <h4>Разница между датами</h4>
-    <div class="code-word example--word" style="white-space: normal">MONTHS_BETWEEN(start_date, finish_date)</div>
+    <div class="code-word accent-mono" style="white-space: normal">MONTHS_BETWEEN(start_date, finish_date)</div>
     <p class="example no_mb">Возвращает дробное число, кол-во месяцев между датами.</p>
     <p class="example no_mb">Стандарт oracle месяц = 31 день.</p>
     <p class="example">Если первый аргумент больше второго - возвращает отрицательное число.</p>
 
     <h4>Добавление к дате</h4>
-    <span class="code-word example--word">ADD_MONTHS(date, number_of_months)</span>
+    <span class="code-word accent-mono">ADD_MONTHS(date, number_of_months)</span>
     <p class="example no_mb">Добавление/вычитание кол-ва месяцев.</p>
     <p class="example">Дробная часть в аргументе игнорируется, т.е. добавляются только целые месяцы.</p>
 
     <h4>Поиск следующего дня недели</h4>
-    <span class="code-word example--word">NEXT_DAY(date, day_of_the_week)</span>
+    <span class="code-word accent-mono">NEXT_DAY(date, day_of_the_week)</span>
     <p class="example no_mb">Где, date - дата, day_of_the_week - день недели.</p>
     <p class="example">Возвращает дату следующего указанного дня недели.</p>
 
     <h4>Поиск последнего дня месяца</h4>
-    <span class="code-word example--word">LAST_DATE(date)</span>
+    <span class="code-word accent-mono">LAST_DATE(date)</span>
     <p class="example">Возвращает дату, последний день месяца в указанной дате.</p>
 
     <h4>Округление даты</h4>
     <span class="code-word">
-        <span class="example--word">ROUND(date</span><span>, date_precision_format</span><span
-            class="example--word">)</span>
+        <span class="accent-mono">ROUND(date</span><span>, date_precision_format</span><span
+            class="accent-mono">)</span>
     </span>
     <p class="example no_mb">Где, date - дата, date_precision_format - точность округления*.</p>
 
     <h4>Отбрасывание даты</h4>
     <span class="code-word">
-        <span class="example--word">TRUNC(date</span><span>, date_precision_format</span><span
-            class="example--word">)</span>
+        <span class="accent-mono">TRUNC(date</span><span>, date_precision_format</span><span
+            class="accent-mono">)</span>
     </span>
     <p class="example no_mb">Где, date - дата, date_precision_format - точность округления*.</p>
 
@@ -725,8 +725,8 @@
 
     <h4>Конвертация числа в строку</h4>
     <div class="code-word" style="white-space: normal; display: inline-block">
-        <span class="example--word">TO_CHAR(number</span><span>, format mask, nls_parameters</span><span
-            class="example--word">)</span>
+        <span class="accent-mono">TO_CHAR(number</span><span>, format mask, nls_parameters</span><span
+            class="accent-mono">)</span>
         <span class="bad">= T</span>
     </div>
     <p class="example">Возвращает тип VARCHAR2</p>
@@ -820,8 +820,8 @@
 
     <h4>Конвертация даты в строку</h4>
     <div class="code-word" style="white-space: normal; display: inline-block">
-        <span class="example--word">TO_CHAR(date</span><span>, format mask, nls_parameters</span><span
-            class="example--word">)</span>
+        <span class="accent-mono">TO_CHAR(date</span><span>, format mask, nls_parameters</span><span
+            class="accent-mono">)</span>
         <span class="bad">= T</span>
     </div>
     <p class="example">Возвращает тип VARCHAR2</p>
@@ -980,16 +980,16 @@
 
     <h4>Конвертация из строки в дату</h4>
     <div class="code-word" style="white-space: normal; display: inline-block">
-        <span class="example--word">TO_DATE(text</span><span>, format mask, nls_parameters</span><span
-            class="example--word">)</span>
+        <span class="accent-mono">TO_DATE(text</span><span>, format mask, nls_parameters</span><span
+            class="accent-mono">)</span>
         <span class="bad">= D</span>
     </div>
     <p class="example">Используем те же <a href="#conversion_format">маски</a></p>
 
     <h4>Конвертация текста в строку</h4>
     <div class="code-word" style="white-space: normal; display: inline-block">
-        <span class="example--word">TO_NUMBER(text</span><span>, format mask, nls_parameters</span><span
-            class="example--word">)</span>
+        <span class="accent-mono">TO_NUMBER(text</span><span>, format mask, nls_parameters</span><span
+            class="accent-mono">)</span>
         <span class="bad">= N</span>
     </div>
     <p class="example">Используем те же <a href="#conversion_format">маски</a></p>
@@ -999,21 +999,21 @@
     <p class="example">Для упрощения работы с NULL</p>
 
     <h4>Проверка на NULL с дефолтным значением</h4>
-    <span class="code-word example--word">NVL(value, if_null)</span>
+    <span class="code-word accent-mono">NVL(value, if_null)</span>
     <p class="example">Если if_null = null вернется null</p>
 
     <h4>Проверка на NULL с дефолтными значениями</h4>
-    <span class="code-word example--word">NVL2(value, if_not_null, if_null)</span>
+    <span class="code-word accent-mono">NVL2(value, if_not_null, if_null)</span>
     <p class="example">Парамтры if_not_null и if_null должны быть одного типа (или автоматически приводимы), но не могут
         быть Long.</p>
 
     <h4>Сравнение с возвратом NULL</h4>
-    <span class="code-word example--word">NULLIF(value1, value2)</span>
+    <span class="code-word accent-mono">NULLIF(value1, value2)</span>
     <p>Если параметры <strong>равны</strong> возвращается NULL, если <strong>неравны</strong> - первый параметр.</p>
 
     <h4>Возврат значения если не NULL</h4>
     <span class="code-word" style="white-space: normal">
-        <span class="example--word">COALESCE(val1, val2</span>, ..., valN<span class="example--word">)</span>
+        <span class="accent-mono">COALESCE(val1, val2</span>, ..., valN<span class="accent-mono">)</span>
     </span>
     <p class="example no_mb">Возвращает первое значение из списка не равное NULL.</p>
     <p class="example">Если все параметры NULL, то будет возвращен NULL.</p>
@@ -1024,9 +1024,9 @@
 
     <h4>Каскадное сравнение (похоже на CASE)</h4>
     <div class="code-word" style="white-space: normal">
-        <span class="example--word">DECODE(expr, comp1, if_true1</span>, comp2,&nbsp;if_true2, ..., comp2,&nbsp;if_trueN,
+        <span class="accent-mono">DECODE(expr, comp1, if_true1</span>, comp2,&nbsp;if_true2, ..., comp2,&nbsp;if_trueN,
         if_else<span
-            class="example--word">)</span>
+            class="accent-mono">)</span>
     </div>
     <p class="example no_mb">Чисто oracle фишка, в чистом SQL ее нет.</p>
     <p class="example">Выражение expr сравнивается с comp1, если совпадает - возвращает if_true1. И так N раз. Если нет
@@ -1035,25 +1035,25 @@
 
     <h4>Simple CASE</h4>
     <div class="code-word">
-        <p class="example--word">CASE expr</p>
-        <p class="example--word">WHEN comp1 THEN if_true1</p>
+        <p class="accent-mono">CASE expr</p>
+        <p class="accent-mono">WHEN comp1 THEN if_true1</p>
         <p>WHEN comp2 THEN if_true2</p>
         <p>...</p>
         <p>WHEN compN THEN if_trueN</p>
         <p>ELSE if_false</p>
-        <p class="example--word">END</p>
+        <p class="accent-mono">END</p>
     </div>
     <p class="example">Сравниваем expr с разными comp.</p>
 
     <h4>Searched CASE</h4>
     <div class="code-word">
-        <p class="example--word">CASE</p>
-        <p class="example--word">WHEN cond1 THEN if_true1</p>
+        <p class="accent-mono">CASE</p>
+        <p class="accent-mono">WHEN cond1 THEN if_true1</p>
         <p>WHEN cond2 THEN if_true2</p>
         <p>...</p>
         <p>WHEN condN THEN if_trueN</p>
         <p>ELSE if_false</p>
-        <p class="example--word">END</p>
+        <p class="accent-mono">END</p>
     </div>
     <p class="example">Отсутствует expr, т.е. внутри cond мы можен сравнивать что угодно.</p>
 
@@ -1069,64 +1069,64 @@
     <h4 class="no_mb">COUNT</h4>
     <p class="example no_mb">подсчет по любому типу, null значения игнорируются</p>
     <div class="code-word no_mb" style="white-space: normal; display: inline-block">
-        <span class="example--word">COUNT(</span><span class="bad">{</span>*<span class="bad">| {</span>DISTINCT<span
-            class="bad">|</span>ALL<span class="bad">}</span><span class="example--word"> expression</span><span
-            class="bad">}</span><span class="example--word">)</span>
+        <span class="accent-mono">COUNT(</span><span class="bad">{</span>*<span class="bad">| {</span>DISTINCT<span
+            class="bad">|</span>ALL<span class="bad">}</span><span class="accent-mono"> expression</span><span
+            class="bad">}</span><span class="accent-mono">)</span>
     </div>
     <p class="example">expression - выражение или столбец</p>
 
     <h4 class="no_mb">SUM</h4>
     <p class="example no_mb">сумма, на вход только числовые значения, null значения игнорируются</p>
     <span class="code-word">
-        <span class="example--word">SUM(</span><span class="bad">{</span>DISTINCT<span
-            class="bad">|</span>ALL<span class="bad">}</span><span class="example--word"> expression</span><span
-            class="example--word">)</span>
+        <span class="accent-mono">SUM(</span><span class="bad">{</span>DISTINCT<span
+            class="bad">|</span>ALL<span class="bad">}</span><span class="accent-mono"> expression</span><span
+            class="accent-mono">)</span>
     </span>
     <p class="example">expression - выражение или столбец</p>
 
     <h4 class="no_mb">AVG</h4>
     <p class="example no_mb">среднее арифметическое, на вход только числовые значения, null значения игнорируются</p>
     <span class="code-word">
-        <span class="example--word">AVG(</span><span class="bad">{</span>DISTINCT<span
-            class="bad">|</span>ALL<span class="bad">}</span><span class="example--word"> expression</span><span
-            class="example--word">)</span>
+        <span class="accent-mono">AVG(</span><span class="bad">{</span>DISTINCT<span
+            class="bad">|</span>ALL<span class="bad">}</span><span class="accent-mono"> expression</span><span
+            class="accent-mono">)</span>
     </span>
 
     <h4 class="no_mb">MAX и MIN</h4>
     <p class="example no_mb">максимальное и минимальное, на вход можно число, дату и строку</p>
     <span class="code-word">
-        <span class="example--word">MAX(</span><span class="bad">{</span>DISTINCT<span
-            class="bad">|</span>ALL<span class="bad">}</span><span class="example--word"> expression</span><span
-            class="example--word">)</span>
+        <span class="accent-mono">MAX(</span><span class="bad">{</span>DISTINCT<span
+            class="bad">|</span>ALL<span class="bad">}</span><span class="accent-mono"> expression</span><span
+            class="accent-mono">)</span>
     </span><span
         style="display: inline-block; text-align: center; margin: 5px;">и</span><span
         class="code-word">
-        <span class="example--word">MIN(</span><span class="bad">{</span>DISTINCT<span
-        class="bad">|</span>ALL<span class="bad">}</span><span class="example--word"> expression</span><span
-        class="example--word">)</span>
+        <span class="accent-mono">MIN(</span><span class="bad">{</span>DISTINCT<span
+        class="bad">|</span>ALL<span class="bad">}</span><span class="accent-mono"> expression</span><span
+        class="accent-mono">)</span>
     </span>
     <p></p>
     <hr>
     <h2>GROUP BY и HAVING</h2>
     <h4 class="no_mb">Вид SELECT'а с группировкой:</h4>
     <div class="code bold no_mb">
-        <span class="example--word">SELECT *</span><span class="bad">|{</span><span>DISTINCT</span>
-        <span class="example--word">column(s)</span>&nbsp;alias,
-        <span class="example--word">expression(s)</span>&nbsp;alias, group_func(s)&zwj;(<span class="example--word">column</span><span
-            class="bad">|</span><span class="example--word">expression</span> alias)<span class="bad">}</span><br>
-        <span class="example--word">FROM&nbsp;table_name</span>
+        <span class="accent-mono">SELECT *</span><span class="bad">|{</span><span>DISTINCT</span>
+        <span class="accent-mono">column(s)</span>&nbsp;alias,
+        <span class="accent-mono">expression(s)</span>&nbsp;alias, group_func(s)&zwj;(<span class="accent-mono">column</span><span
+            class="bad">|</span><span class="accent-mono">expression</span> alias)<span class="bad">}</span><br>
+        <span class="accent-mono">FROM&nbsp;table_name</span>
         <br>WHERE&nbsp;condition(s)
         <br>GROUP&nbsp;BY&nbsp;<span class="bad">{</span><span
-            class="example--word">column(s)</span><span class="bad">|</span><span
-            class="example--word">expressions(s)</span><span class="bad">}</span>
+            class="accent-mono">column(s)</span><span class="bad">|</span><span
+            class="accent-mono">expressions(s)</span><span class="bad">}</span>
         <br>HAVING group_condition(s)
         <br>ORDER&nbsp;BY <span class="bad">{</span><span
-            class="example--word">column(s)</span><span class="bad">|</span><span
-            class="example--word">expressions(s)</span><span class="bad">|</span><span
-            class="example--word">numeric&nbsp;position</span><span class="bad">}</span>
+            class="accent-mono">column(s)</span><span class="bad">|</span><span
+            class="accent-mono">expressions(s)</span><span class="bad">|</span><span
+            class="accent-mono">numeric&nbsp;position</span><span class="bad">}</span>
         <span class="bad">{</span>ASC<span class="bad">|</span>DESC<span class="bad">}</span>&nbsp;<span
             class="bad">{</span>NULLS&nbsp;FIRST<span class="bad">|</span>LAST<span class="bad">}</span><span
-            class="example--word">;</span>
+            class="accent-mono">;</span>
     </div>
     <p class="example no_mb">При группировке указывать алиас нельзя, только название столбца.</p>
     <p class="example">HAVING работает с группами, если нет GROUP BY, то он работает с текущей группой
@@ -1160,11 +1160,11 @@
     </div>
     <div class="tab-3">
         <p class="no_mb">
-            <span class="example--word">EQUIJOIN</span>
+            <span class="accent-mono">EQUIJOIN</span>
             - это объединения в условиях которых используется равенство критериев.
         </p>
         <p>
-            <span class="example--word">NONEEQUIJOIN</span>
+            <span class="accent-mono">NONEEQUIJOIN</span>
             - если в условии не равенство, сравнение, between, ...
         </p>
     </div>
@@ -1192,9 +1192,9 @@
         <div id="join_natural">
             <h4><a href="#join_inner">NATURAL JOIN</a></h4>
             <p>Таблица к, которой присоединяем называется
-                <span class="example--word">source</span>,
+                <span class="accent-mono">source</span>,
                 та в которой ищем -
-                <span class="example--word">target</span>.
+                <span class="accent-mono">target</span>.
             </p>
             <p class="no_mb">Объединяет по столбцам с одинаковыми именами, т.е. не дает выбрать критерий.</p>
             <p class="example no_mb">Если несколько столбцов, то объединение пойдет по всем.</p>
@@ -1241,15 +1241,15 @@
             Очень часто используется в реальной жизни.
         </p>
         <h4>Типы:</h4>
-        <p><span class="example--word">LEFT OUTER JOIN</span>
+        <p><span class="accent-mono">LEFT OUTER JOIN</span>
             - выводится результат INNER JOIN, а потом добавляются все строки
             из левой таблицы,
             по которым условие не было соблюдено.</p>
-        <p><span class="example--word">RIGHT OUTER JOIN</span>
+        <p><span class="accent-mono">RIGHT OUTER JOIN</span>
             - выводится результат INNER JOIN, а потом добавляются все строки
             из правой таблицы,
             по которым условие не было соблюдено.</p>
-        <p><span class="example--word">FULL OUTER JOIN</span>
+        <p><span class="accent-mono">FULL OUTER JOIN</span>
             - выводится результат INNER JOIN, а потом добавляются все строки
             из левой таблицы, а потом из правой,
             по которым условие не было соблюдено.</p>
@@ -1317,7 +1317,7 @@
         <h4 class="no_mb">FULL OUTER JOIN</h4>
         <p>
             С помощью oracle синтаксиса
-            <span class="example--word bad">сделать нельзя</span>
+            <span class="accent-mono bad">сделать нельзя</span>
             - надо использовать базовый синтаксис SQL.
         </p>
     </div>
@@ -1340,11 +1340,11 @@
         </div>
     </div>
     <div class="mb20">
-        <p class="example--word no_mb">SINGLE ROW</p>
+        <p class="accent-mono no_mb">SINGLE ROW</p>
         <p>Возвращает одну строку.</p>
-        <p class="example--word no_mb">SCALAR</p>
+        <p class="accent-mono no_mb">SCALAR</p>
         <p>Частный случай SINGLE ROW, когда возвращается одна строка и один столбец.</p>
-        <p class="example--word no_mb">MULTIPLE ROW</p>
+        <p class="accent-mono no_mb">MULTIPLE ROW</p>
         <p>Результат - несколько строк.</p>
     </div>
     <p class="main-mind">
@@ -1373,9 +1373,9 @@
     <hr>
     <div>
         <p>
-            <span class="example--word">COMPOUND QUERY</span>
-            - сложный запрос. Состоит из нескольких <span class="example--word smaller">SELECT</span>'ов,
-            которые не являются <span class="example--word smaller">SUBQUERY</span>.
+            <span class="accent-mono">COMPOUND QUERY</span>
+            - сложный запрос. Состоит из нескольких <span class="accent-mono smaller">SELECT</span>'ов,
+            которые не являются <span class="accent-mono smaller">SUBQUERY</span>.
         </p>
         <p></p>
         <div class="code bold">
@@ -1398,25 +1398,25 @@
         </div>
         <div>
             <p>
-                <span class="example--word">UNION ALL</span>
+                <span class="accent-mono">UNION ALL</span>
                 - просто объединяет, не производя никаких действий.
             </p>
         </div>
         <div>
             <p>
-                <span class="example--word">UNION</span>
+                <span class="accent-mono">UNION</span>
                 - сортирует (естественным путем), удаляет дубликаты и объединяет. Результат тоже сортирован.
             </p>
         </div>
         <div>
             <p>
-                <span class="example--word">INTERSECT</span>
+                <span class="accent-mono">INTERSECT</span>
                 - пересечение. Находит общие значения во множествах, исключает дубликаты и сортирует результат.
             </p>
         </div>
         <div>
             <p class="no_mb">
-                <span class="example--word">MINUS</span>
+                <span class="accent-mono">MINUS</span>
                 - оставляет те значения из первого множества, которых нет во втором. Также убирает дубликаты и делает
                 сортировку.
             </p>
@@ -1449,7 +1449,7 @@
         <h4 class="no_mb">Сортировка результата</h4>
         <p class="no_mb">
             Если не устаивает стандартная сортировка (сортируются все столбцы в натуральном порядке),
-            то после можно использовать простой <span class="example--word">ORDER BY</span>.
+            то после можно использовать простой <span class="accent-mono">ORDER BY</span>.
         </p>
         <div class="code bold no_mb">
             <p>SELECT x FROM table1</p>
@@ -1520,8 +1520,8 @@
         <h3 class="no_mb"><a href="#dml">INSERT</a></h3>
         <p>Вставляет одну или несколько строк в таблицу.</p>
         <div class="code bold">
-            <p><span class="example--word">INSERT INTO table_name</span> (column(s))</p>
-            <p><span class="example--word">VALUES (value(s));</span></p>
+            <p><span class="accent-mono">INSERT INTO table_name</span> (column(s))</p>
+            <p><span class="accent-mono">VALUES (value(s));</span></p>
         </div>
         <p class="no_mb">Если не использовать название колонок, то необходимо в запросе указать данные для всех
             столбцов.</p>
@@ -1540,8 +1540,8 @@
         </p>
         <p class="no_mb">Так же можно вставлять несколько строк:</p>
         <div class="code bold">
-            <p><span class="example--word">INSERT INTO table_name</span> (column(s))</p>
-            <p><span class="example--word">SUBQUERY;</span></p>
+            <p><span class="accent-mono">INSERT INTO table_name</span> (column(s))</p>
+            <p><span class="accent-mono">SUBQUERY;</span></p>
         </div>
         <p>Еще можно вставлять в несколько таблиц, но это этим обычно не пользуются. </p>
     </div>
@@ -1553,15 +1553,15 @@
         <p class="example no_mb">Может менять одну или несколько строк, а так же один или несколько столбцов.</p>
         <p class="example">Не может изменять данные в нескольких таблицах.</p>
         <div class="code bold">
-            <p class="example--word">UPDATE table_name</p>
-            <p><span class="example--word">SET column</span>(s)<span class="example--word">=value</span>(s)</p>
-            <p>WHERE condition(s)<span class="example--word">;</span></p>
+            <p class="accent-mono">UPDATE table_name</p>
+            <p><span class="accent-mono">SET column</span>(s)<span class="accent-mono">=value</span>(s)</p>
+            <p>WHERE condition(s)<span class="accent-mono">;</span></p>
         </div>
         <p class="no_mb">Возможно использование SUBQUERY</p>
         <div class="code bold">
-            <p class="example--word">UPDATE table_name</p>
-            <p><span class="example--word">SET column</span>(s)<span class="example--word">=subquery</span>(s)</p>
-            <p>WHERE column=subquery<span class="example--word">;</span></p>
+            <p class="accent-mono">UPDATE table_name</p>
+            <p><span class="accent-mono">SET column</span>(s)<span class="accent-mono">=subquery</span>(s)</p>
+            <p>WHERE column=subquery<span class="accent-mono">;</span></p>
         </div>
     </div>
 
@@ -1572,15 +1572,15 @@
         <p class="example no_mb">Удаляет строку полностью.</p>
         <p class="example">Может удалить одну или несколько строк.</p>
         <div class="code bold">
-            <p class="example--word">DELETE</p>
-            <p class="example--word">FROM table_name</p>
-            <p>WHERE conditions<span class="example--word">;</span></p>
+            <p class="accent-mono">DELETE</p>
+            <p class="accent-mono">FROM table_name</p>
+            <p>WHERE conditions<span class="accent-mono">;</span></p>
         </div>
         <p>Использование SUBQUERY возможно только в WHERE</p>
         <div class="code bold">
-            <p class="example--word">DELETE</p>
-            <p class="example--word">FROM table_name</p>
-            <p>WHERE column=subquery<span class="example--word">;</span></p>
+            <p class="accent-mono">DELETE</p>
+            <p class="accent-mono">FROM table_name</p>
+            <p>WHERE column=subquery<span class="accent-mono">;</span></p>
         </div>
     </div>
 
@@ -1590,18 +1590,18 @@
         <p class="no_mb">Может совмещать предыдущие операторы</p>
         <p>Используется очень редко.</p>
         <div class="code bold">
-            <p><span class="example--word">MERGE INTO table_name1</span> t1</p>
+            <p><span class="accent-mono">MERGE INTO table_name1</span> t1</p>
             <p>
-                <span class="example--word">USING</span>
-                <span class="bad">{</span><span class="example--word">table_name2</span><span class="bad">|</span><span
-                    class="example--word">subquery</span><span class="bad">}</span>
+                <span class="accent-mono">USING</span>
+                <span class="bad">{</span><span class="accent-mono">table_name2</span><span class="bad">|</span><span
+                    class="accent-mono">subquery</span><span class="bad">}</span>
                 t2
             </p>
-            <p class="example--word">ON (t1.column=t2.column)</p>
-            <p class="example--word">WHEN MATCHED THEN</p>
+            <p class="accent-mono">ON (t1.column=t2.column)</p>
+            <p class="accent-mono">WHEN MATCHED THEN</p>
             <p>UPDATE SET column=value</p>
             <p>DELETE WHERE condition</p>
-            <p class="example--word">WHEN NOT MATCHED THEN</p>
+            <p class="accent-mono">WHEN NOT MATCHED THEN</p>
             <p>INSERT (value1, value2)</p>
             <p>VALUES (column1, column2)</p>
         </div>
@@ -1675,7 +1675,7 @@
         <h3><a href="#tcl">COMMIT</a></h3>
         <p class="main-mind">Сохранение внесенных изменений.</p>
         <p>Самая простая комманда в SQL</p>
-        <div class="code example--word">COMMIT;</div>
+        <div class="code accent-mono">COMMIT;</div>
         <p>Работает очень быстро.</p>
     </div>
 
@@ -1685,8 +1685,8 @@
         <p class="main-mind">Отмена внесенных изменений.</p>
         <div class="code bold mb10">
             <p>
-                <span class="example--word">ROLLBACK</span>
-                TO SAVEPOINT savepoint_name<span class="example--word">;</span>
+                <span class="accent-mono">ROLLBACK</span>
+                TO SAVEPOINT savepoint_name<span class="accent-mono">;</span>
             </p>
         </div>
         <p>Может выполняться значительное время.</p>
@@ -1699,7 +1699,7 @@
     <div id="save_point">
         <h3><a href="#tcl">SAVEPOINT</a></h3>
         <p class="main-mind">Это маркер, который используется при ROLLBACK'е.</p>
-        <div class="code example--word">SAVEPOINT savepoint_name;</div>
+        <div class="code accent-mono">SAVEPOINT savepoint_name;</div>
         <p class="no_mb">Создается в текущей транзакции.</p>
         <p>После закрытия транзакции - уничтожается.</p>
         <a href="#" class="button button--top"></a>
@@ -1718,10 +1718,10 @@
     <div id="select_for_update">
         <h3>SELECT FOR UPDATE</h3>
         <div class="code bold">
-            <p><span class="example--word">SELECT *</span></p>
-            <p><span class="example--word">FROM&nbsp;table_name</span></p>
-            <p><span class="example--word">...</span></p>
-            <p><span class="example--word">FOR UPDATE;</span></p>
+            <p><span class="accent-mono">SELECT *</span></p>
+            <p><span class="accent-mono">FROM&nbsp;table_name</span></p>
+            <p><span class="accent-mono">...</span></p>
+            <p><span class="accent-mono">FOR UPDATE;</span></p>
         </div>
         <p>На все выведенные строки будет поставлен lock, и при попытке изменить эти данные из другой сессии произойдет
             "зависание", до тех пор пока не будет снят lock.</p>
@@ -1747,17 +1747,17 @@
         <h3><a href="#chapter12">Создание таблиц</a></h3>
         <div class="code bold">
             <p>
-                <span class="example--word">CREATE TABLE</span>
-                schema.<span class="example--word">table</span> ORGANIZATION HEAP
+                <span class="accent-mono">CREATE TABLE</span>
+                schema.<span class="accent-mono">table</span> ORGANIZATION HEAP
             </p>
-            <p><span class="example--word">(column_name datatype</span> DEFAULT expr,</p>
+            <p><span class="accent-mono">(column_name datatype</span> DEFAULT expr,</p>
             <p>column_name datatype DEFAULT expr,</p>
-            <p>...<span class="example--word">);</span></p>
+            <p>...<span class="accent-mono">);</span></p>
         </div>
         <h4>Создание таблицы с использованием SUBQUERY</h4>
         <div class="code bold no_mb">
-            <span class="example--word">CREATE TABLE </span>
-            schema.<span class="example--word">table AS subquery;</span>
+            <span class="accent-mono">CREATE TABLE </span>
+            schema.<span class="accent-mono">table AS subquery;</span>
         </div>
         <p class="example">Таблица будет сожержать результат запроса.</p>
     </div>
@@ -1827,8 +1827,8 @@
     <div id="truncate">
         <h3><a href="#chapter12">Опустошение таблиц</a></h3>
         <div class="code bold no_mb">
-            <span class="example--word">TRUNCATE TABLE</span>
-            schema.<span class="example--word">table_name</span>
+            <span class="accent-mono">TRUNCATE TABLE</span>
+            schema.<span class="accent-mono">table_name</span>
         </div>
         <p class="example">Таблица осталась, а строк в ней нет. Не изменяет структуру таблицы.</p>
 
@@ -1840,8 +1840,8 @@
     <div id="drop">
         <h3><a href="#chapter12">Удаление таблиц</a></h3>
         <div class="code bold no_mb">
-            <span class="example--word">DROP TABLE</span>
-            schema.<span class="example--word">table_name</span>
+            <span class="accent-mono">DROP TABLE</span>
+            schema.<span class="accent-mono">table_name</span>
         </div>
         <p class="example">Удалена информация и сама таблица с ее структурой.</p>
         <p class="main-mind">
@@ -1894,7 +1894,7 @@
         </div>
 
         <div class="code bold">
-            <p>... CONSTRAINT constraint_name <span class="example--word">constraint_type</span> ...</p>
+            <p>... CONSTRAINT constraint_name <span class="accent-mono">constraint_type</span> ...</p>
         </div>
 
         <p>
@@ -1962,7 +1962,7 @@
             <div class="code bold">
                 <p>
                     ... CONSTRAINT constraint_name
-                    <span class="example--word">REFERENCES parent-table_name(column_name)</span>
+                    <span class="accent-mono">REFERENCES parent-table_name(column_name)</span>
                     ...
                 </p>
             </div>
@@ -1970,7 +1970,7 @@
             <div class="code bold">
                 <p>
                     ... CONSTRAINT constraint_name
-                    <span class="example--word">FOREIGN KEY(column_name) REFERENCES parent-table_name(column_name)</span>
+                    <span class="accent-mono">FOREIGN KEY(column_name) REFERENCES parent-table_name(column_name)</span>
                     ...
                 </p>
                 <p class="example">Если не указать column_name, то ссылка будет на FOREIGN KEY.</p>
@@ -2079,16 +2079,16 @@
 
         <div class="code bold">
             <p>
-                <span class="example--word">CREATE</span>
+                <span class="accent-mono">CREATE</span>
                 <span class="bad">{</span>UNIQUE<span class="bad">|</span>BITMAP<span class="bad">}</span>
-                <span class="example--word">INDEX</span>
+                <span class="accent-mono">INDEX</span>
             </p>
             <p>
-                schema.<span class="example--word">index_name ON</span>
+                schema.<span class="accent-mono">index_name ON</span>
             </p>
             <p>
-                schema.<span class="example--word">table_name (column1</span>
-                , collumn2, ...<span class="example--word">);</span>
+                schema.<span class="accent-mono">table_name (column1</span>
+                , collumn2, ...<span class="accent-mono">);</span>
             </p>
             <p class="example">Если не указать UNIQUE или BITMAP будет создан B-TREE </p>
             <p class="example">Если не указать UNIQUE будет создан B-TREE NOT UNIQUE</p>
@@ -2097,8 +2097,8 @@
         <p>Индексы могут быть композитными.</p>
 
         <div class="code bold no_mb">
-            <span class="example--word">DROP INDEX</span>
-            schema.<span class="example--word">index_name;</span>
+            <span class="accent-mono">DROP INDEX</span>
+            schema.<span class="accent-mono">index_name;</span>
             <p class="example">Нельзя удалить индексы, которые используются в constraint.</p>
         </div>
 
@@ -2235,12 +2235,12 @@
 
         <div class="code bold no_mb">
             <p>
-                <span class="example--word">CREATE</span> OR REPLACE
+                <span class="accent-mono">CREATE</span> OR REPLACE
                 <span class="bad">{</span>FORSE<span class="bad">|</span>NOFORSE<span class="bad">}</span>
-                <span class="example--word">VIEW</span>
+                <span class="accent-mono">VIEW</span>
             </p>
-            <p>schema.<span class="example--word">view_name</span> (alias1. alias2, ...)</p>
-            <p><span class="example--word">AS subquery</span></p>
+            <p>schema.<span class="accent-mono">view_name</span> (alias1. alias2, ...)</p>
+            <p><span class="accent-mono">AS subquery</span></p>
             <p>
                 WITH CHECK OPTION
                 <span class="bad">{</span>CONSTRAINT constraint_name<span class="bad">}</span>
@@ -2249,7 +2249,7 @@
             <p>
                 WITH READ ONLY
                 <span class="bad">{</span>CONSTRAINT constraint_name<span class="bad">}</span><span
-                    class="example--word">;</span>
+                    class="accent-mono">;</span>
             </p>
             <p class="example no_mb">Что бы запретить использование DML команд. Только для селекта.</p>
         </div>
@@ -2261,16 +2261,16 @@
             Таблицы и представления находятся в одном namespace, поэтому имена должны быть разными.
         </p>
         <div class="code bold no_mb">
-            <span class="example--word">ALTER VIEW</span>
-            schema.<span class="example--word">view_name COMPILE;</span>
+            <span class="accent-mono">ALTER VIEW</span>
+            schema.<span class="accent-mono">view_name COMPILE;</span>
         </div>
         <p class="example">Проверка работоспособности view.</p>
         <p class="main-mind no_mb"> Изменить view невозможно.</p>
         <p class="main-mind">Что бы внести изменения надо удалить, а затем создать новое.</p>
 
         <div class="code bold no_mb">
-            <span class="example--word">DROP VIEW</span>
-            schema.<span class="example--word">view_name;</span>
+            <span class="accent-mono">DROP VIEW</span>
+            schema.<span class="accent-mono">view_name;</span>
         </div>
 
     </div>
@@ -2302,26 +2302,26 @@
 
         <div class="code bold">
             <p>
-                <span class="example--word">CREATE</span> PUBLIC
-                <span class="example--word">SYNONYM synonym_name</span>
+                <span class="accent-mono">CREATE</span> PUBLIC
+                <span class="accent-mono">SYNONYM synonym_name</span>
             </p>
-            <p><span class="example--word">FOR object_name;</span></p>
+            <p><span class="accent-mono">FOR object_name;</span></p>
             <p class="example">Создание синонима.</p>
         </div>
 
         <div class="code bold no_mb">
             <p>
-                <span class="example--word">ALTER</span> PUBLIC
-                <span class="example--word">SYNONYM synonym_name</span>
+                <span class="accent-mono">ALTER</span> PUBLIC
+                <span class="accent-mono">SYNONYM synonym_name</span>
             </p>
-            <p><span class="example--word"> COMPILE;</span></p>
+            <p><span class="accent-mono"> COMPILE;</span></p>
             <p class="example">Проверка работоспособности синонима.</p>
         </div>
 
         <div class="code bold">
             <p>
-                <span class="example--word">DROP</span> PUBLIC
-                <span class="example--word">SYNONYM synonym_name;</span>
+                <span class="accent-mono">DROP</span> PUBLIC
+                <span class="accent-mono">SYNONYM synonym_name;</span>
             </p>
             <p class="example">Удаление синонима.</p>
         </div>
@@ -2342,8 +2342,8 @@
     <div>
         <div class="code bold">
             <p>
-                <span class="example--word">CREATE SEQUENCE</span> schema.<span
-                    class="example--word">sequence_name</span>
+                <span class="accent-mono">CREATE SEQUENCE</span> schema.<span
+                    class="accent-mono">sequence_name</span>
             </p>
             <p>INCREMENT BY number</p>
             <p>START WITH number</p>
@@ -2354,7 +2354,7 @@
             <p><span class="bad">{</span>CYCLE<span class="bad">|</span>NOCYCLE<span class="bad">}</span></p>
             <p>
                 <span class="bad">{</span>CACHE number<span class="bad">|</span>NOCACHE<span class="bad">}</span><span
-                    class="example--word">;</span>
+                    class="accent-mono">;</span>
             </p>
         </div>
         <p class="no_mb">
@@ -2396,8 +2396,8 @@
     <div>
         <div class="code bold no_mb">
             <p>
-                <span class="example--word">ALTER SEQUENCE</span> schema.<span
-                    class="example--word">sequence_name</span>
+                <span class="accent-mono">ALTER SEQUENCE</span> schema.<span
+                    class="accent-mono">sequence_name</span>
             </p>
             <p>INCREMENT BY number</p>
             <p><span class="bad">{</span>MAXVALUE number<span class="bad">|</span>NOMAXVALUE<span class="bad">}</span>
@@ -2407,7 +2407,7 @@
             <p><span class="bad">{</span>CYCLE<span class="bad">|</span>NOCYCLE<span class="bad">}</span></p>
             <p>
                 <span class="bad">{</span>CACHE number<span class="bad">|</span>NOCACHE<span class="bad">}</span><span
-                    class="example--word">;</span>
+                    class="accent-mono">;</span>
             </p>
         </div>
         <p class="example">
@@ -2419,8 +2419,8 @@
     <div>
         <div class="code bold">
             <p>
-                <span class="example--word">DROP SEQUENCE</span> schema.<span
-                    class="example--word">sequence_name</span><span class="example--word">;</span>
+                <span class="accent-mono">DROP SEQUENCE</span> schema.<span
+                    class="accent-mono">sequence_name</span><span class="accent-mono">;</span>
             </p>
         </div>
     </div>
