@@ -189,6 +189,11 @@ ol, ul {
     margin-bottom: 14px;
 }
 
+ol.marker-mono li::marker{
+    font-family: 'Monaco', 'Menlo', 'Consolas', 'Courier New', monospace;
+    font-weight: 700;
+}
+
 li p {
     margin-bottom: 0;
 }

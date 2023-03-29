@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JPA & HIBERNATE</title>
+    <link rel="stylesheet" href="../../../css/style.css">
+</head>
+
+<body>
+
+<section class="container">
+    <h1 class="no_mb">JPA & HIBERNATE</h1>
+    <div class="after-h1">Вопросы для собеседования</div>
+    <div class="breadcrumbs">
+        <p><a href="../../../">главная</a></p>
+        <p><a href="..">Questions</a></p>
+        <p>JPA</p>
+    </div>
+    <h3 class="no_mt">Воросы:</h3>
+    <ul class="menu">
+        <li><a href="#q1">Что такое: ORM, JPA, Hibernate?</a></li>
+    </ul>
+</section>
+
+<section class="container" id="q1">
+    <h1><a href="#">Что такое: ORM, JPA, Hibernate?</a></h1>
+    <div class="tab-1">
+        <p><a href="##q1_orm">ORM</a></p>
+        <p><a href="##q1_jpa">JPA</a></p>
+        <p><a href="##q1_hibernate">Hibernate</a></p>
+    </div>
+    <hr class="mb10">
+
+    <div id="#q1_orm">
+        <h3><a href="#q1">ORM</a></h3>
+        <p class="no_mb">
+            <span class="accent-mono">Object Relational Mapping</span>
+            - это концепция/процесс преобразования данных из объектно-ориентированного языка в
+            реляционные БД и наоборот.
+        </p>
+        <p class="example">Например, в Java это делается с помощью рефлексии и JDBC.</p>
+        <p class="no_mb">
+            <span class="accent-mono">JDBC (Java DataBase Connectivity)</span>
+            — API для работы с реляционными (зависимыми) БД.
+        </p>
+        <p>
+            Платформенно независимый промышленный стандарт взаимодействия Java-приложений с различными СУБД,
+            реализованный в виде пакета java.sql, входящего в состав Java SE.
+        </p>
+        <p>
+
+            Предоставляет методы для получения и
+            обновления данных. Не зависит от конкретного типа базы. Библиотека, которая входит в стандартную библиотеу,
+            содержит: набор классов и интерфейсов для работы с БД (для нас разработчиков api) + интерфейсы баз данных.
+        </p>
+        <p>
+            JDBC реализует механизмы работы подключений к базе данных, создания запросов и обработки результатов.
+        </p>
+
+        <div>
+            <h4>JDBC Архитектура</h4>
+            <div class="image-box">
+                <img class="image" src="./img/arch.png" alt="JDBC Архитектура">
+            </div>
+        </div>
+
+        <div>
+            <h4>JDBC Сущности</h4>
+            <ol class="marker-mono">
+                <li>
+                    <span class="accent-mono">Connection</span>
+                    (класс) объект которого отвечает за соединение с базой и режим работы с ней.
+                </li>
+                <li>
+                    <p>
+                        <span class="accent-mono">Statement</span>
+                        (объект для оператора JDBC) используется для отправки SQL-оператора на сервер баз данных.
+                    </p>
+                    <p class="mb10">
+                        Объект для оператора связан с объектом Connection и является объектом, обрабатывающим
+                        взаимодействие между приложением и сервером баз данных.
+                    </p>
+                    <div class="tab-1">
+                        <p>Можно:</p>
+                        <ul>
+                            <li>что-то поменять Update statement (create, delete, insert) в базе;</li>
+                            <li>что-то запросить Query statement (select) из базы;</li>
+                        </ul>
+                    </div>
+                    <div class="tab-1">
+                        <p>Виды Statement-ов:</p>
+                        <ul>
+                            <li>
+                                <span class="accent-mono">Statement (обычный)</span>
+                                передаем в него либо Update, либо Query;
+                            </li>
+                            <li>
+                                <span class="accent-mono">PreparedStatement</span>
+                                - возможность сделать некий шаблон запроса, подставлять в него к-то значения и
+                                использовать его;
+                            </li>
+                            <li>
+                                <span class="accent-mono">CallableStatement</span>
+                                - предоставляет возможность вызова хранимой процедуры,
+                                расположенной на сервере, из Java™-приложения.
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <span class="accent-mono">ResultSet</span>
+                    - объект с результатом запроса, который вернула база. Внутри него таблица.
+                </li>
+            </ol>
+        </div>
+
+        <div>
+            <h4>Рефлексия</h4>
+            <div class="tab-1">
+                <p class="no_mb">это API, который позволяет:</p>
+                <ul>
+                    <li>
+                        получать информацию о переменных, методах внутри класса, о самом классе, его конструкторах,
+                        реализованных интерфейсах и т.д.;
+                    </li>
+                    <li>получать новый экземпляр класса;</li>
+                    <li>получать доступ ко всем переменным и методам, в том числе <span>приватным</span>;</li>
+                    <li>преобразовывать классы одного типа в другой (cast);</li>
+                    <li>делать все это <span>во время исполнения программы</span> (динамически, в <span>Runtime</span>).
+                    </li>
+                </ul>
+            </div>
+            <p>
+                В Java есть специальный класс по имени Class. Поэтому его и называют классом класса.
+                С помощью него осуществляется работа с рефлексией.
+            </p>
+        </div>
+
+    </div>
+
+    <hr>
+    <div id="#q1_jpa">
+        <h3><a href="#q1">JPA</a></h3>
+        <p>
+            <span class="accent-mono">Java Persistence API (JPA)</span>
+            - это спецификация (стандарт, технология), обеспечивающая объектно-реляционное отображение простых
+            JAVA-объектов (Plain Old Java Object - POJO) и предоставляющая универсальный API для сохранения, получения и
+            управления такими объектами.
+        </p>
+        <p>
+            Сам JPA не умеет ни сохранять, ни управлять объектами, JPA только определяет правила игры: как должен
+            действовать каждый провайдер (Hibernate, EclipseLink, OJB, Torque и т.д.), реализующий стандарт JPA. Для
+            этого JPA определяет интерфейсы, которые должны быть реализованы провайдерами. Также JPA определяет правила,
+            как должны описываться метаданные отображения и как должны работать провайдеры. Каждый провайдер обязан
+            реализовывать всё из JPA, определяя стандартное получение, сохранение и управление объектами. Помимо этого,
+            провайдеры могут добавлять свои личные классы и интерфейсы, расширяя функционал JPA.
+        </p>
+        <p class="bold no_mb">JPA </p>
+        <div class="tab-1">
+            <ul>
+                <li>API в пакете javax.persistance (набор интерфейсов EntityManager, Query, EntityTransaction);</li>
+                <li>JPQL - объектный язык запросов (запросы выполняются к объектам);</li>
+                <li>Metadata (аннотации или xml)</li>
+            </ul>
+        </div>
+    </div>
+
+    <hr>
+    <div id="#q1_hibernate">
+        <h3><a href="#q1">HIBERNATE</a></h3>
+        <p>
+            <span class="accent-mono">Hibernate</span>
+            - это провайдер, реализующий спецификацию JPA. Hibernate полностью реализует JPA плюс добавляет функционал в
+            виде своих классов и интерфейсов, расширяя свои возможности по работе с сущностями и БД.
+        </p>
+    </div>
+</section>
+
+<footer>
+    <div class="footer__text"><a href="https://t.me/java40plus" title="Мой блог в телеграм">
+        Алексей Маслов, 2021-2023
+    </a></div>
+</footer>
+
+</body>
+
+</html>
