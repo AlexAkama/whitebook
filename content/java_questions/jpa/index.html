@@ -664,6 +664,72 @@
             </li>
             <li>Должны быть аннотированы @Embeddable.</li>
         </ul>
+        <div>
+            <p>
+                Например, у нас может быть встраиваемый класс ClassA, который представляет собой композицию строкового и
+                числового значений, и эти два поля будут добавлены в класс EntityA:
+            </p>
+            <div class="code">
+                <p class="annotation">@Entity</p>
+                <p>public class <span class="name">EntityA</span> {</p>
+                <p class="tab-1 annotation">@Id</p>
+                <p class="tab-1 annotation">@GeneratedValue</p>
+                <p class="tab-1">private int id;</p>
+                <p class="tab-1">...</p>
+                <p class="tab-1 annotation">@Embedded</p>
+                <p class="tab-1">private <span class="name">ClassA</span> classARef;</p>
+                <p class="tab-1">...</p>
+                <p>}</p>
+            </div>
+            <div class="code">
+                <p class="annotation">@Embeddable</p>
+                <p>public class <span class="name">ClassA</span> {</p>
+                <p class="tab-1">private String myStr;</p>
+                <p class="tab-1">private int myInt;</p>
+                <p class="tab-1">...</p>
+                <p>}</p>
+            </div>
+            <div class="image-box">
+                <img class="image" src="./img/embeddable.png" alt="Embeddable">
+            </div>
+            <p>
+                Так как мы можем встраивать классы в неограниченное количество других классов, то у каждого класса,
+                содержащего встраиваемый класс, мы можем изменить названия полей из встраиваемого класса.
+            </p>
+            <p>
+                Например, у класса Driver поля из встраиваемого класса Person будут изменены с name на driver_name и с
+                age на driver_age:
+            </p>
+            <div class="code">
+                <p class="annotation">@Embeddable</p>
+                <p>public class <span class="name">Person</span> {</p>
+                <p class="tab-1">private String name;</p>
+                <p class="tab-1">name; private int age;</p>
+                <p>}</p>
+            </div>
+            <div class="code">
+                <p class="annotation">@Entity</p>
+                <p>public class <span class="name">Driver</span> {</p>
+                <p class="tab-1 annotation">@Embedded</p>
+                <p class="tab-1"><span class="annotation">@AttributeOverrides</span>({</p>
+                <p class="tab-3">
+                    <span class="annotation">@AttributeOverride</span>(name = "name", column =
+                    <span class="annotation">@Column</span>(name = "driver_name")),
+                </p>
+                <p class="tab-3">
+                    <span class="annotation">@AttributeOverride</span>(name = "age", column =
+                    <span class="annotation">@Column</span>(name = "driver_age")),
+                </p>
+                <p class="tab-1">})</p>
+                <p class="tab-1">private Person person;</p>
+                <p class="tab-1">...</p>
+                <p>}</p>
+            </div>
+            <p>
+                Сущности, которые имеют встраиваемые классы, могут аннотировать поле или свойство аннотацией @Embedded,
+                но не обязаны это делать.
+            </p>
+        </div>
     </div>
 
     <a href="#" class="button button--top"></a>
