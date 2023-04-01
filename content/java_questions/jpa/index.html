@@ -22,6 +22,7 @@
     <h3 class="no_mt">Воросы:</h3>
     <ul class="menu">
         <li><a href="#q1">Что такое: ORM, JPA, Hibernate?</a></li>
+        <li><a href="#q2">Что такое EntityManager? Его функции?</a></li>
     </ul>
 </section>
 
@@ -36,9 +37,9 @@
 
     <div id="q1_orm">
         <h3><a href="#q1">ORM</a></h3>
-        <p class="no_mb">
-            <span class="accent-mono">Object Relational Mapping</span>
-            - это концепция/процесс преобразования данных из объектно-ориентированного языка в
+        <p class="no_mb main-mind">
+            Object Relational Mapping (ORM)
+            — это концепция/процесс преобразования данных из объектно-ориентированного языка в
             реляционные БД и наоборот.
         </p>
         <p class="example">Например, в Java это делается с помощью рефлексии и JDBC.</p>
@@ -71,8 +72,10 @@
             <h4>JDBC Сущности</h4>
             <ol class="marker-mono">
                 <li>
-                    <span class="accent-mono">Connection</span>
-                    (класс) объект которого отвечает за соединение с базой и режим работы с ней.
+                    <p class="mb10">
+                        <span class="accent-mono">Connection</span>
+                        (класс) объект которого отвечает за соединение с базой и режим работы с ней.
+                    </p>
                 </li>
                 <li>
                     <p>
@@ -144,8 +147,8 @@
     <hr>
     <div id="q1_jpa">
         <h3><a href="#q1">JPA</a></h3>
-        <p>
-            <span class="accent-mono">Java Persistence API (JPA)</span>
+        <p class="main-mind">
+            Java Persistence API (JPA)
             - это спецификация (стандарт, технология), обеспечивающая объектно-реляционное отображение простых
             JAVA-объектов (Plain Old Java Object - POJO) и предоставляющая универсальный API для сохранения, получения и
             управления такими объектами.
@@ -177,6 +180,149 @@
             виде своих классов и интерфейсов, расширяя свои возможности по работе с сущностями и БД.
         </p>
     </div>
+
+    <a class="button button--top" href="#"></a>
+
+</section>
+
+<section class="container" id="q2">
+    <h1>Что такое EntityManager?<br>Какие функции он выполняет?</h1>
+
+    <div id="q2_entity_manager">
+        <h3>EntityManager</h3>
+        <p class="main-mind">
+            Это интерфейс JPA, используемый для взаимодействия с персистентным контекстом.
+        </p>
+        <p class="no_mb">
+            EntityManager описывает API для всех основных операций над Entity, а также для получения данных и других
+            сущностей JPA.
+        </p>
+        <p>По сути - главный API для работы с JPA.</p>
+        <p>
+            <span class="accent-mono">Персистентный контекст</span>
+            - это набор экземпляров сущностей, загруженных из БД или только что созданных.
+        </p>
+        <p>
+            Персистентный контекст является своего рода кэшем данных в рамках транзакции
+            - это и есть кэш первого уровня.
+        </p>
+        <p>
+            Внутри контекста персистентности происходит управление экземплярами сущностей и их жизненным циклом.
+        </p>
+        <p>
+            EntityManager автоматически сохраняет в БД все изменения, сделанные в его персистентном контексте,
+            в момент коммита транзакции, либо при явном вызове метода <span class="code-word">flush()</span>.
+        </p>
+        <p>
+            Один или несколько EntityManager образуют или могут образовать
+            <span class="accent-mono">persistence context</span>.
+        </p>
+        <p>
+            Если проводить аналогию с обычным JDBC, то EntityManagerFactory будет аналогом DataSource,
+            а EntityManager аналогом Connection.
+        </p>
+        <p>
+            Создание EntityManagerFactory довольно дорогая операция, поэтому обычно её создают один раз
+            и на всё приложение.
+            А чаще всего не создают сами, а делегируют это фреймворку, такому как Spring, например.
+        </p>
+        <p>
+            Интерфейс Session из Hibernate представлен в JPA как раз интерфейсом EntityManager.
+        </p>
+
+        <table class="list" aria-label="">
+            <thead>
+            <tr>
+                <th>JPA</th>
+                <th>JDBC (по аналогии)</th>
+                <th>Hibernate</th>
+            <tr>
+            </thead>
+            <tr>
+                <td>EntityManagerFactory</td>
+                <td>DataSource</td>
+                <td>SessionFactory</td>
+            </tr>
+            <tr>
+                <td>EntityManager</td>
+                <td>Connection</td>
+                <td>Session</td>
+            </tr>
+            <tr>
+                <td>JPQL</td>
+                <td></td>
+                <td>HQL</td>
+            </tr>
+        </table>
+
+    </div>
+
+    <div id="q2_entity_manager_function">
+        <h3>Основные функции EntityManager</h3>
+        <ol>
+            <li>
+                <p>Операции над Entity:</p>
+                <ul>
+                    <li><span class="accent-mono">persist</span> (добавление Entity под управление JPA)</li>
+                    <li><span class="accent-mono">merge</span> (изменение)</li>
+                    <li><span class="accent-mono">remove</span> (удаление)</li>
+                    <li><span class="accent-mono">refresh</span> (обновление данных)</li>
+                    <li><span class="accent-mono">detach</span> (удаление из-под управления контекста персистентности)
+                    </li>
+                    <li><span class="accent-mono">lock</span> (блокирование Entity от изменений в других thread)</li>
+                </ul>
+            </li>
+            <li>
+                <p>Получение данных:</p>
+                <ul>
+                    <li><span class="accent-mono">find</span> (поиск и получение Entity)</li>
+                    <li><span class="accent-mono">createQuery</span></li>
+                    <li><span class="accent-mono">createNamedQuery</span></li>
+                    <li><span class="accent-mono">createNativeQuery</span></li>
+                    <li><span class="accent-mono">contains</span></li>
+                    <li><span class="accent-mono">createNamedStoredProcedureQuery</span></li>
+                    <li><span class="accent-mono">createStoredProcedureQuery</span></li>
+                </ul>
+            </li>
+            <li>
+                <p>Получение других сущностей JPA</p>
+                <ul>
+                    <li><span class="accent-mono">getTransaction</span></li>
+                    <li><span class="accent-mono">getEntityManagerFactory,</span></li>
+                    <li><span class="accent-mono">getCriteriaBuilder</span></li>
+                    <li><span class="accent-mono">getMetamodel</span></li>
+                    <li><span class="accent-mono">getDelegate</span></li>
+                </ul>
+            </li>
+            <li>
+                <p>Работа с EntityGraph</p>
+                <ul>
+                    <li><span class="accent-mono">createEntityGraph</span></li>
+                    <li><span class="accent-mono">getEntityGraph</span></li>
+                </ul>
+            </li>
+            <li>
+                <p>Общие операции</p>
+                <ul>
+                    <li><span class="accent-mono">close</span></li>
+                    <li><span class="accent-mono">isOpen</span></li>
+                    <li><span class="accent-mono">getProperties</span></li>
+                    <li><span class="accent-mono">setProperty</span></li>
+                    <li><span class="accent-mono">clear</span></li>
+                </ul>
+            </li>
+        </ol>
+        <p class="main-mind">
+            Объекты EntityManager не являются потокобезопасными.
+        </p>
+        <p>
+            Это означает, что каждый поток должен получить свой экземпляр EntityManager,
+            поработать с ним и закрыть его в конце.
+        </p>
+
+    </div>
+
+    <a href="#" class="button button--top"></a>
 </section>
 
 <footer>
