@@ -189,7 +189,7 @@ ol, ul {
     margin-bottom: 14px;
 }
 
-ol.marker-mono li::marker{
+ol.marker-mono li::marker {
     font-family: 'Monaco', 'Menlo', 'Consolas', 'Courier New', monospace;
     font-weight: 700;
 }
@@ -414,6 +414,10 @@ img {
     white-space: nowrap;
 }
 
+.code > p > span.name {
+    color: blue;
+}
+
 .scroll {
     overflow: auto;
 }
@@ -618,7 +622,6 @@ an,
 .annotation {
     font-weight: bold;
     color: darkorange;
-
 }
 
 .spoiler {

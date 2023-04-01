@@ -24,6 +24,8 @@
         <li><a href="#q1">Что такое: ORM, JPA, Hibernate?</a></li>
         <li><a href="#q2">Что такое EntityManager? Его функции?</a></li>
         <li><a href="#q3">Каким условиям должен удовлетворять класс, чтобы являться Entity?</a></li>
+        <li><a href="#q4">Может ли абстрактный класс быть Entity?</a></li>
+        <li><a href="#q5">Наследование Entity классов.</a></li>
     </ul>
 </section>
 
@@ -336,7 +338,7 @@
 
     <hr>
     <div id="q3_entity">
-        <h3>Entity</h3>
+        <h3><a href="#q3">Entity</a></h3>
         <p class="main-mind">Сущность (entity) - это объект персистентной области.</p>
         <p>
             Как правило, сущность представляет таблицу в реляционной базе данных, и каждый экземпляр сущности
@@ -392,7 +394,7 @@
 
     <hr>
     <div id="q3_entity_jpa">
-        <h3>Требования к Entity классу в JPA</h3>
+        <h3><a href="#q3">Требования к Entity классу в JPA</a></h3>
         <ul>
             <li class="mb10">
                 Entity класс должен быть помечен аннотацией @Entity или описан в XML файле конфигурации JPA.
@@ -446,7 +448,7 @@
 
     <hr>
     <div id="q3_entity_hibernate">
-        <h3>Требования к Entity классу в Hibernate</h3>
+        <h3><a href="#q3">Требования к Entity классу в Hibernate</a></h3>
         <p>Hibernate не так строг в своих требованиях. Вот отличия от требований JPA:</p>
         <ol>
             <li class="mb10">
@@ -466,6 +468,109 @@
                 <p class="example">Однако обоснованность такого подхода спорна.</p>
             </li>
         </ol>
+    </div>
+
+    <a href="#" class="button button--top"></a>
+</section>
+
+<section class="container" id="q4">
+    <h1><a href="#">Может ли абстрактный класс быть Entity?</a></h1>
+    <p class="main-mind"> Абстрактный класс может быть Entity классом.</p>
+    <p>
+        Абстрактный Entity класс отличается от обычных Entity классов только тем, что нельзя создать объект этого
+        класса. Имена абстрактных классов могут использоваться в запросах.
+    </p>
+
+    <p>
+        Абстрактные Entity классы используются в наследовании, когда их потомки наследуют поля абстрактного класса:
+    </p>
+
+    <div class="code">
+        <p class="annotation">@Entity</p>
+        <p class="annotation">@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)</p>
+        <p>public abstract class <span class="name">Employee</span> {</p>
+        <p class="tab-1 annotation">@Id</p>
+        <p class="tab-1 annotation">@GeneratedValue</p>
+        <p class="tab-1">private long id;</p>
+        <p class="tab-1">private String name;</p>
+        <p class="tab-2">...</p>
+        <p>}</p>
+    </div>
+
+    <div class="code">
+        <p class="annotation">@Entity</p>
+        <p class="annotation">@Table(name = "FULL_TIME_EMP")</p>
+        <p>public class <span class="name">FullTimeEmployee</span> extends <span class="name">Employee</span></p>
+        <p class="tab-1">private int salary;</p>
+        <p class="tab-2">...</p>
+        <p>}</p>
+    </div>
+
+    <div class="code">
+        <p class="annotation">@Entity</p>
+        <p class="annotation">@Table(name = "PART_TIME_EMP")</p>
+        <p>public class <span class="name">PartTimeEmployee</span> extends <span class="name">Employee</span> {</p>
+        <p class="tab-1">private int hourlyRate;</p>
+        <p class="tab-2">...</p>
+        <p>}</p>
+    </div>
+
+    <a href="#" class="button button--top"></a>
+</section>
+
+<section class="container" id="q5">
+    <h1><a href="#">Наследование Entity классов.</a></h1>
+
+    <p>Таблица вариантов наследования Entity классов:</p>
+    <table class="list list--content-center" aria-label="entity_inheritance">
+        <thead>
+        <tr>
+            <th>Родитель/Наследник</th>
+            <th>Entity класс</th>
+            <th>не Entity класс</th>
+        <tr>
+        </thead>
+        <tr>
+            <td>Entity класс</td>
+            <td>+</td>
+            <td>+</td>
+        </tr>
+        <tr>
+            <td>Entity класс</td>
+            <td>+</td>
+            <td>обычное наследование в&nbsp;Java</td>
+        </tr>
+    </table>
+
+    <hr>
+    <div>
+        <h3>Может ли Entity класс наследоваться от не Entity классов (non-entity classes)?</h3>
+        <p>
+            <span class="accent-mono">Да</span>,
+            сущности могут наследоваться от не Entity классов, которые, в свою очередь, могут быть как абстрактными, так
+            и обычными.
+        </p>
+        <p>
+            Состояние (поля) не Entity суперкласса не является персистентным, то есть не хранится в БД и не
+            обрабатывается провайдером (Hibernate), поэтому любое такое состояние (поля), унаследованное Entity классом,
+            также не будет отображаться в БД.
+        </p>
+        <p>
+            Не Entity суперклассы не могут участвовать в операциях EntityManager или Query. Любые маппинги или аннотации
+            отношений в не Entity суперклассах игнорируются.
+        </p>
+    </div>
+
+    <hr>
+    <div>
+        <h3>Может ли Entity класс наследоваться от Entity классов?</h3>
+        <p><span class="accent-mono">Да</span>, может.</p>
+    </div>
+
+    <hr>
+    <div>
+        <h3>Может ли не Entity класс наследоваться от Entity класса?</h3>
+        <p><span class="accent-mono">Да</span>, может.</p>
     </div>
 
     <a href="#" class="button button--top"></a>
