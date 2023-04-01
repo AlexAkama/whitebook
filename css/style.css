@@ -185,6 +185,14 @@ ul {
     padding-left: 20px;
 }
 
+ul.dash-style > li {
+    list-style-type: none;
+}
+
+ul.dash-style > li:before {
+    content: '– ';
+}
+
 ol, ul {
     margin-bottom: 14px;
 }
@@ -441,7 +449,7 @@ td .code {
     font-family: 'Monaco', 'Menlo', 'Consolas', 'Courier New', monospace;
     font-weight: bold;
     padding: 0 4px;
-    color: rgb(51, 51, 51);
+    /*color: rgb(51, 51, 51);*/
     border-radius: 4px;
     background-color: rgb(251, 250, 248);
     border: 1px solid rgba(0, 0, 0, 0.14902);
