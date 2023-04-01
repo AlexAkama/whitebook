@@ -614,7 +614,8 @@ td .code {
     vertical-align: middle;
 }
 
-an {
+an,
+.annotation {
     font-weight: bold;
     color: darkorange;
 
