@@ -29,7 +29,7 @@
         <li><a href="#q6">Что такое встраиваемый (Embeddable) класс?
             Какие требования JPA предъявляет к встраиваемым (Embeddable) классам?</a></li>
         <li><a href="#q7">Что такое Mapped Superclass?</a></li>
-
+        <li><a href="#q8">Какие три стратегии маппинга при наследовании сущностей описаны в JPA?</a></li>
     </ol>
 </section>
 
@@ -857,6 +857,300 @@
             </li>
         </ul>
     </div>
+
+    <a href="#" class="button button--top"></a>
+</section>
+
+<section class="container" id="q8">
+    <h1><a href="#">Какие три стратегии маппинга при наследовании сущностей
+        описаны в JPA?</a></h1>
+    <div class="tab-1">
+        <p><a href="#q8_single">SINGLE_TABLE</a></p>
+        <p><a href="#q8_joined">JOINED</a></p>
+        <p><a href="#q8_everyone">TABLE_PER_CLASS</a></p>
+    </div>
+
+    <hr>
+    <div>
+        <h3>Entity Inheritance Mapping Strategies</h3>
+        <p class="main-mind">
+            Стратегии наследования нужны для того, чтобы дать понять провайдеру (Hibernate)
+            как ему отображать в БД сущности-наследники.
+        </p>
+        <p>
+            Для этого нам нужно декорировать родительский класс аннотацией @Inheritance и указать один из типов
+            отображения.
+        </p>
+        <p>
+            Следующие три стратегии используются для отображения данных сущности-наследника и родительской сущности:
+        </p>
+        <ol class="marker-mono">
+            <li class="mb10">
+                <p class="accent-mono">SINGLE_TABLE</p>
+                <p>Одна таблица на всю иерархию классов.</p>
+            </li>
+            <li class="mb10">
+                <p class="accent-mono">JOINED</p>
+                <p>
+                    Стратегия "соединения", при которой поля или свойства, специфичные для подклассов, отображаются в
+                    таблицах этих подклассов, а поля или свойства родительского класса отображаются в
+                    таблице родительского класса.
+                </p>
+            </li>
+            <li class="mb10">
+                <p class="accent-mono">TABLE_PER_CLASS</p>
+                <p>Таблица для каждого конкретного класса сущностей.</p>
+            </li>
+        </ol>
+    </div>
+
+    <hr>
+    <div id="q8_single">
+        <h3><a href="#q8">SINGLE TABLE</a></h3>
+        <p class="main-mind">Одна таблица на всю иерархию классов</p>
+        <p>
+            <span class="accent-mono">Является стратегией по умолчанию</span>
+            и используется, когда аннотация @Inheritance не указана в родительском классе
+            или когда она указана без конкретной стратегии.
+        </p>
+        <div class="image-box">
+            <img class="image" src="img/single.png" alt="SINGLE TABLE">
+        </div>
+        <p class="main-mind no_mb">
+            Все entity, со всеми наследниками записываются в одну таблицу.
+        </p>
+        <p class="main-mind">
+            Для идентификации типа entity (наследника) определяется специальная
+            колонка "discriminator column".
+        </p>
+        <p class="mb20 main-mind">
+            Минусом
+            стратегии является невозможность применения ограничения NOT NULL для тех колонок таблицы, которые
+            характерны только для классов-наследников.
+        </p>
+        <p>
+            Например, если есть entity Employee c классами-потомками FullTimeEmployee и PartTimeEmployee, то при такой
+            стратегии все FullTimeEmployee и
+            PartTimeEmployee записываются в таблицу Employee, и при этом в таблице появляется дополнительная колонка с
+            именем <span class="accent-mono">DTYPE</span>,
+            в которой будут записаны значения, определяющие принадлежность к классу.
+        </p>
+        <p>
+            По умолчанию эти значения формируются из имён классов, в нашем случае - либо «FullTimeEmployee» либо
+            «PartTimeEmployee».
+        </p>
+        <p>
+            Но мы можем их поменять в аннотации у каждого класса-наследника:
+            <span class="accent-mono">@DiscriminatorValue("F")</span>.
+        </p>
+        <p>
+            Если мы хотим поменять имя колонки, то мы должны указать её новое имя в параметре аннотации у
+            класса-родителя: <span class="accent-mono">@DiscriminatorColumn(name=EMP_TYPE)</span> .
+        </p>
+        <div class="code">
+            <p class="annotation">@Inheritance(strategy = InheritanceType.SINGLE_TABLE)</p>
+            <p class="annotation">@Entity</p>
+            <p class="annotation">@DiscriminatorColumn(name = "EMP_TYPE")</p>
+            <p>public class <span class="name">Employee</span> {</p>
+            <p class="tab-1 annotation">@Id</p>
+            <p class="tab-1 annotation">@GeneratedValue</p>
+            <p class="tab-1">private long id;</p>
+            <p class="tab-1">private String name;</p>
+            <p>}</p>
+        </div>
+        <div class="code">
+            <p class="annotation">@Entity</p>
+            <p class="annotation">@DiscriminatorValue("F")</p>
+            <p>public class <span class="name">FullTimeEmployee</span> extends <span class="name">Employee</span> {</p>
+            <p class="tab-1">private int salary;</p>
+            <p>}</p>
+        </div>
+        <div class="code">
+            <p class="annotation">@Entity</p>
+            <p class="annotation">@DiscriminatorValue("P")</p>
+            <p>public class <span class="name">PartTimeEmployee</span> extends <span class="name">Employee</span> {</p>
+            <p class="tab-1">private int hourlyRate;</p>
+            <p>}</p>
+        </div>
+        <p>
+            Эта стратегия обеспечивает хорошую поддержку полиморфных отношений между сущностями и запросами, которые
+            охватывают всю иерархию классов сущностей:
+        </p>
+        <div class="code tab-1">
+            <p class="bold">-- Persisting entities --</p>
+            <p>FullTimeEmployee{id=0, name='Sara', salary=100000}</p>
+            <p class="mb10">PartTimeEmployee{id=0, name='Tom', hourlyRate='60'}</p>
+            <p class="bold">-- Native queries --</p>
+            <p class="good bold">'Select * from Employee'</p>
+            <p>[F, 1, Sara, null, 100000]</p>
+            <p class="mb10">[P, 2, Tom, 60, null]</p>
+            <p class="bold">-- Loading entities --</p>
+            <p>FullTimeEmployee{id=1, name='Sara', salary=100000}</p>
+            <p>PartTimeEmployee{id=2, name='Tom', hourlyRate='60'}</p>
+        </div>
+    </div>
+
+    <hr>
+    <div id="q8_joined">
+        <h3><a href="#q8">JOINED</a></h3>
+        <p class="main-mind">Стратегия "соединения"</p>
+        <p class="main-mind">
+            В данной стратегии корневой класс иерархии представлен отдельной таблицей, а каждый класс-наследник имеет
+            свою таблицу, в которой отображены только поля этого класса-наследника.
+        </p>
+        <p>
+            То есть таблица подкласса не содержит столбцы для полей, унаследованных от родительского класса, за
+            исключением поля для первичного ключа @Id, который должен быть определен только в родительской таблице.
+        </p>
+        <p>
+            Столбец первичного ключа в таблице подкласса служит внешним ключом первичного ключа таблицы суперкласса.
+        </p>
+        <p>
+            Также в таблице родительского класса добавляется столбец
+            <span class="accent-mono">DiscriminatorColumn</span> с <span class="accent-mono">DiscriminatorValue</span>
+            для определения типа наследника.
+        </p>
+        <div class="image-box">
+            <img class="image" src="./img/joined.png" alt="JOINED">
+        </div>
+        <div class="code">
+            <p class="annotation">@Inheritance(strategy = InheritanceType.JOINED)</p>
+            <p class="annotation">@Entity</p>
+            <p><span class="annotation">@DiscriminatorColumn(name = "EMP_TYPE")</span> //определение типа наследника</p>
+            <p>public class <span class="name">Employee</span> {</p>
+            <p class="tab-1 annotation">@Id</p>
+            <p class="tab-1 annotation">@GeneratedValue</p>
+            <p class="tab-1">private long id;</p>
+            <p class="tab-1">private String name;</p>
+            <p class="tab-1">...</p>
+            <p>}</p>
+        </div>
+        <div class="code">
+            <p class="annotation">@Entity</p>
+            <p class="annotation">@DiscriminatorValue("F")</p>
+            <p class="annotation">@Table(name = "FULL_TIME_EMP")</p>
+            <p>public class <span class="name">FullTimeEmployee</span> extends <span class="name">Employee</span> {</p>
+            <p class="tab-1">private int salary;</p>
+            <p class="tab-1">...</p>
+            <p>}</p>
+        </div>
+        <div class="code">
+            <p class="annotation">@Entity</p>
+            <p class="annotation">@DiscriminatorValue("P")</p>
+            <p class="annotation">@Table(name = "PART_TIME_EMP")</p>
+            <p>public class <span class="name">PartTimeEmployee</span> extends <span class="name">Employee</span> {</p>
+            <p class="tab-1">private int hourlyRate;</p>
+            <p class="tab-1">...</p>
+            <p>}</p>
+        </div>
+        <div class="code tab-1">
+            <p class="bold">-- Persisting entities --</p>
+            <p>FullTimeEmployee{id=0, name='Sara', salary=100000}</p>
+            <p class="mb10">PartTimeEmployee{id=0, name='Robert', hourlyRate='60'}</p>
+            <p class="bold">-- Native queries --</p>
+            <p class="good bold">'Select * from Employee'</p>
+            <p>[F, 1, Sara]</p>
+            <p class="mb10">[P, 2, Robert]</p>
+            <p class="good bold">'Select * from FULL_TIME_EMP'</p>
+            <p class="mb10">[100000, 1]</p>
+            <p class="good bold">'Select * from PART_TIME_EMP'</p>
+            <p>[60, 2]</p>
+        </div>
+        <p>
+            Эта стратегия обеспечивает хорошую поддержку полиморфных отношений, но требует выполнения одной или
+            нескольких операций соединения таблиц при создании экземпляров подклассов сущностей.
+        </p>
+        <p> В глубоких иерархиях классов это может привести к недопустимому снижению производительности. </p>
+        <p>
+            Точно так же запросы, которые покрывают всю иерархию классов, требуют операций соединения между таблицами
+            подклассов, что приводит к снижению производительности:
+        </p>
+        <div class="code tab-1">
+            <p class="bold">-- Loading entities --</p>
+            <p>List&lt;Employee&gt; entityAList = em</p>
+            <p class="tab-4">.createQuery("Select t from Employee t")</p>
+            <p class="tab-4 mb10">.getResultList();</p>
+            <p class="mb10">// Hibernate создает соединения для сборки объектов</p>
+            <p class="bold">-- Result --</p>
+            <p>FullTimeEmployee{id=1, name='Sara', salary=100000}</p>
+            <p>PartTimeEmployee{id=2, name='Robert', hourlyRate='60'}</p>
+        </div>
+    </div>
+
+    <hr>
+    <div id="q8_everyone">
+        <h3><a href="#q8">TABLE PER CLASS</a></h3>
+        <p class="main-mind">Таблица для каждого класса сущностей</p>
+        <p>
+            Каждый класс-наследник имеет свою таблицу. Во всех таблицах подклассов хранятся все поля этого класса плюс
+            те, которые унаследованы от суперкласса.
+        </p>
+        <div class="image-box">
+            <img class="image" src="./img/per_class.png" alt="TABLE PER CLASS">
+        </div>
+        <div class="code">
+            <p class="annotation">@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)</p>
+            <p class="annotation">@Entity</p>
+            <p>public class <span class="name">Employee</span> {</p>
+            <p class="tab-1 annotation">@Id</p>
+            <p class="tab-1 annotation">@GeneratedValue</p>
+            <p class="tab-1">private long id;</p>
+            <p class="tab-1">private String name;</p>
+            <p class="tab-1">...</p>
+            <p>}</p>
+        </div>
+        <div class="code">
+            <p class="annotation">@Entity</p>
+            <p class="annotation">@Table(name = "FULL_TIME_EMP")</p>
+            <p>public class <span class="name">FullTimeEmployee</span> extends <span class="name">Employee</span> {</p>
+            <p class="tab-1">private int salary;</p>
+            <p class="tab-1">...</p>
+            <p>}</p>
+        </div>
+        <div class="code">
+            <p class="annotation">@Entity</p>
+            <p class="annotation">@Table(name = "PART_TIME_EMP")</p>
+            <p>public class <span class="name">PartTimeEmployee</span> extends <span class="name">Employee</span> {</p>
+            <p class="tab-1">private int hourlyRate;</p>
+            <p class="tab-1">...</p>
+            <p>}</p>
+        </div>
+    </div>
+    <div class="code tab-1">
+        <p class="bold">-- Persisting entities --</p>
+        <p>FullTimeEmployee{id=0, name='Sara', salary=100000}</p>
+        <p class="mb10">PartTimeEmployee{id=0, name='Robert', hourlyRate='60'}</p>
+        <p class="bold">-- Native queries --</p>
+        <p class="bold good">'Select * from Employee'</p>
+        <p class="mb10">no data</p>
+        <p class="bold good">'Select * from FULL_TIME_EMP'</p>
+        <p class="mb10">[1, Sara, 100000]</p>
+        <p class="bold good">'Select * from PART_TIME_EMP'</p>
+        <p class="mb10">[2, Robert, 60]</p>
+        <p class="bold">-- Loading entities --</p>
+        <p>List&lt;Employee&gt; entityAList = em</p>
+        <p class="tab-4">.createQuery("Select t from Employee t")</p>
+        <p class="tab-4 mb10">.getResultList();</p>
+        <p>// Hibernate выполнит дополнительные sql-запросы</p>
+        <p class="mb10">// или запросы объединения для получения сущностей</p>
+        <p class="bold">-- Result ---</p>
+        <p>FullTimeEmployee{id=1, name='Sara', salary=100000}</p>
+        <p>PartTimeEmployee{id=2, name='Robert', hourlyRate='60'}</p>
+    </div>
+    <p class="main-mind">
+        Минусом является плохая поддержка полиморфизма (polymorphic relationships) и то, что для выборки всех классов
+        иерархии потребуется большое количество отдельных sql-запросов для каждой таблицы-наследника или использование
+        UNION-запроса для соединения таблиц всех наследников в одну таблицу.
+    </p>
+    <p class="main-mind">
+        Также недостатком этой стратегии является повторение одних и тех же атрибутов в таблицах.
+    </p>
+    <p>
+        При TABLE PER CLASS
+        <span class="accent-mono">не работает стратегия генератора первичных ключей IDENTITY</span>,
+        поскольку может быть несколько объектов подкласса, имеющих один и тот же идентификатор, и запрос базового класса
+        приведет к получению объектов с одним и тем же идентификатором (даже если они принадлежат разным типам).
+    </p>
 
     <a href="#" class="button button--top"></a>
 </section>
