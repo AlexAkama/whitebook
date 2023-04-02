@@ -20,7 +20,7 @@
         <p>JPA</p>
     </div>
     <h3 class="no_mt">Воросы:</h3>
-    <ul class="menu">
+    <ol class="menu">
         <li><a href="#q1">Что такое: ORM, JPA, Hibernate?</a></li>
         <li><a href="#q2">Что такое EntityManager? Его функции?</a></li>
         <li><a href="#q3">Каким условиям должен удовлетворять класс, чтобы являться Entity?</a></li>
@@ -28,7 +28,9 @@
         <li><a href="#q5">Наследование Entity классов.</a></li>
         <li><a href="#q6">Что такое встраиваемый (Embeddable) класс?
             Какие требования JPA предъявляет к встраиваемым (Embeddable) классам?</a></li>
-    </ul>
+        <li><a href="#q7">Что такое Mapped Superclass?</a></li>
+
+    </ol>
 </section>
 
 <section class="container" id="q1">
@@ -545,7 +547,7 @@
     </table>
 
     <hr>
-    <div>
+    <div id="q5_entity_inherit_not_entity">
         <h3>Может ли Entity класс наследоваться от не Entity классов (non-entity classes)?</h3>
         <p>
             <span class="accent-mono">Да</span>,
@@ -564,13 +566,13 @@
     </div>
 
     <hr>
-    <div>
+    <div id="q5_entity_inherit_entity">
         <h3>Может ли Entity класс наследоваться от Entity классов?</h3>
         <p><span class="accent-mono">Да</span>, может.</p>
     </div>
 
     <hr>
-    <div>
+    <div id="q5_not_entity_inherit_entity">
         <h3>Может ли не Entity класс наследоваться от Entity класса?</h3>
         <p><span class="accent-mono">Да</span>, может.</p>
     </div>
@@ -581,10 +583,15 @@
 <section class="container" id="q6">
     <h1><a href="#">Что такое встраиваемый (Embeddable) класс?
         <br>Какие требования JPA предъявляет к встраиваемым (Embeddable) классам?</a></h1>
+    <div class="tab-1">
+        <p><a href="#q6_embeddable">Описание</a></p>
+        <p><a href="#q6_embeddable_features">Особенности</a></p>
+        <p><a href="#q6_embeddable_requirement">Требования</a></p>
+    </div>
 
     <hr>
-    <div class="q6_embeddable">
-        <h3>Встраиваемый (Embeddable) класс</h3>
+    <div id="q6_embeddable">
+        <h3><a href="#q6">Встраиваемый (Embeddable) класс</a></h3>
         <p>
             Это класс, который не используется сам по себе, а только как часть одного или нескольких Entity классов.
         </p>
@@ -613,8 +620,8 @@
     </div>
 
     <hr>
-    <div class="q6_embeddable_feature">
-        <h3>Особенности встраиваемых классов</h3>
+    <div id="q6_embeddable_features">
+        <h3><a href="#q6">Особенности встраиваемых классов</a></h3>
         <ul>
             <li class="mb10">
                 все поля встраиваемого класса, даже коллекции, станут полями класса, в который происходит встраивание;
@@ -655,8 +662,8 @@
     </div>
 
     <hr>
-    <div class="q6_embeddable_requirement">
-        <h3>Требования к встраиваемым классам</h3>
+    <div id="q6_embeddable_requirement">
+        <h3><a href="#q6">Требования к встраиваемым классам</a></h3>
         <ul>
             <li>
                 Должны соответствовать <a href="#q3_entity_jpa">требованиям для сущностей</a>, за исключением того,
@@ -730,6 +737,125 @@
                 но не обязаны это делать.
             </p>
         </div>
+    </div>
+
+    <a href="#" class="button button--top"></a>
+</section>
+
+<section class="container" id="q7">
+    <h1><a href="#">Что такое Mapped Superclass?</a></h1>
+
+    <div class="tab-1">
+        <p><a href="#q7_description">Определение</a></p>
+        <p><a href="#q7_feature">Особенности</a></p>
+        <p><a href="#q7_vs_embeddable">Mapped Superclass vs. Embeddable class</a></p>
+    </div>
+
+    <hr>
+    <div id="q7_description">
+        <h3><a href="#q7">Mapped Superclass</a></h3>
+        <p class="main-mind">
+            Mapped Superclass (сопоставленный суперкласс) - это класс, от которого наследуются Entity, он может
+            содержать
+            аннотации JPA, однако сам такой класс не является Entity, ему не обязательно выполнять все требования,
+            установленные для Entity (например, он может не содержать первичного ключа).
+        </p>
+        <p>
+            Эти суперклассы чаще всего
+            используются, когда у нас есть общая для нескольких классов сущностей информация о состоянии и отображении,
+            которую можно вынести в Mapped Superclass.
+        </p>
+    </div>
+
+    <hr>
+    <div id="q7_feature">
+        <h3><a href="#q7">Особенности Mapped Superclass</a></h3>
+        <ul>
+            <li>Должен быть помечен аннотацией @MappedSuperclass или описан в xml файле.</li>
+            <li>
+                Не может использоваться в операциях EntityManager или Query, вместо этого нужно использовать
+                классы-наследники.
+            </li>
+            <li>
+                Не может состоять в отношениях с другими сущностями
+                (в сущности нельзя создать поле с типом сопоставленного суперкласса).
+            </li>
+            <li>Может быть абстрактным.</li>
+            <li>Не имеет своей таблицы в БД.</li>
+        </ul>
+        <p>
+            Для того, чтобы использовать Mapped Superclass, достаточно унаследовать его в классах-потомках:
+        </p>
+        <div class="code">
+            <p class="annotation">@MappedSuperclass</p>
+            <p>public class <span class="name">Employee</span> {</p>
+            <p class="tab-1 annotation">@Id</p>
+            <p class="tab-1 annotation">@GeneratedValue</p>
+            <p class="tab-1">private long id;</p>
+            <p class="tab-1">private String name;</p>
+            <p class="tab-1">...</p>
+            <p>}</p>
+        </div>
+        <div class="code">
+            <p class="annotation">@Entity</p>
+            <p class="annotation">@Table(name = "FULL_TIME_EMP")</p>
+            <p>public class <span class="name">FullTimeEmployee</span> extends <span class="name">Employee</span> {</p>
+            <p class="tab-1">private int salary;</p>
+            <p class="tab-1">...</p>
+            <p>}</p>
+        </div>
+        <div class="code">
+            <p class="annotation">@Entity</p>
+            <p class="annotation">@Table(name = "PART_TIME_EMP")</p>
+            <p>public class <span class="name">PartTimeEmployee</span> extends <span class="name">Employee</span> {</p>
+            <p class="tab-1">private int hourlyRate;</p>
+            <p class="tab-1">...</p>
+            <p>}</p>
+        </div>
+        <p>
+            В указанном примере кода в БД будут таблицы FULL_TIME_EMPLOYEE и PART_TIME_EMPLOYEE,
+            но таблицы EMPLOYEE не будет:
+        </p>
+        <div class="image-box">
+            <img class="image" src="./img/superclass.png" alt="MappedSuperclass">
+        </div>
+        <p>
+            Это похоже на стратегию наследования “Таблица для каждого конкретного класса сущностей”, но в модели данных
+            нет
+            объединения таблиц или наследования. Также тут нет таблицы для Mapped Superclass. Наследование существует
+            только
+            в объектной модели.
+        </p>
+        <p>
+            Основным недостатком использования сопоставленного суперкласса является то, что полиморфные запросы
+            невозможны,
+            то есть мы не можем загрузить всех наследников Mapped Superclass.
+        </p>
+    </div>
+
+    <hr>
+    <div id="q7_vs_embeddable">
+        <h3><a href="#q7">Mapped Superclass vs. Embeddable class</a></h3>
+        <p>Сходства:</p>
+        <ul>
+            <li>не являются сущностями и могут иметь все аннотации, кроме @Entity;</li>
+            <li>не имеют своих таблиц в БД;</li>
+            <li>не могут использоваться в операциях EntityManager или Query.</li>
+        </ul>
+        <p>Различия:</p>
+        <ul>
+            <li>
+                MappedSuperclass - наследование, Embeddable class - композиция (экземпляр «части» может входить только в
+                одно целое (или никуда не входить));
+            </li>
+            <li>
+                поля из Mapped Superclass могут быть у сущности в одном экземпляре, полей из Embeddable class может быть
+                сколько угодно (встроив в сущность Embeddable class несколько раз и поменяв имена полей);
+            </li>
+            <li>
+                в сущности нельзя создать поле с типом сопоставленного суперкласса, а с Embeddable можно и нужно.
+            </li>
+        </ul>
     </div>
 
     <a href="#" class="button button--top"></a>
