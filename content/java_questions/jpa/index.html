@@ -30,6 +30,7 @@
             Какие требования JPA предъявляет к встраиваемым (Embeddable) классам?</a></li>
         <li><a href="#q7">Что такое Mapped Superclass?</a></li>
         <li><a href="#q8">Какие три стратегии маппинга при наследовании сущностей описаны в JPA?</a></li>
+        <li><a href="#q9">Как мапятся Enum'ы?</a></li>
     </ol>
 </section>
 
@@ -1151,6 +1152,277 @@
         поскольку может быть несколько объектов подкласса, имеющих один и тот же идентификатор, и запрос базового класса
         приведет к получению объектов с одним и тем же идентификатором (даже если они принадлежат разным типам).
     </p>
+
+    <a href="#" class="button button--top"></a>
+</section>
+
+<section class="container" id="q9">
+    <h1><a href="#">Как мапятся Enum'ы?</a></h1>
+    <div class="tab-1">
+        <p><a href="#q9_per_id">По порядковым номерам</a></p>
+        <p><a href="#q9_per_name">По именам</a></p>
+        <p><a href="#q9_postload_prepersist">Методы обратного вызова</a></p>
+        <p><a href="#q9_converter">Converter</a></p>
+    </div>
+
+    <hr>
+    <div id="q9_per_id">
+        <h3><a href="#q9">По порядковым номерам</a></h3>
+        <p>
+            Если мы сохраняем в БД сущность, у которой есть поле-перечисление (Enum), то в таблице этой сущности
+            создаётся
+            <span class="accent-mono">
+            колонка для значений этого перечисления и по умолчанию в ячейки сохраняется порядковый номер этого
+            перечисления (ordinal).
+            </span>
+        </p>
+        <div class="code">
+            <p>public enum <span class="name">MyEnum</span> {</p>
+            <p class="tab-1">ConstA,</p>
+            <p class="tab-1">ConstB,</p>
+            <p class="tab-1">ConstC;</p>
+            <p>}</p>
+        </div>
+        <div class="code">
+            <p class="annotation">@Entity</p>
+            <p>public class <span class="name">MyEntity</span> {</p>
+            <p class="tab-1 annotation">@Id</p>
+            <p class="tab-1">private long myId;</p>
+            <p class="tab-1 mb10">private MyEnum myEnum;</p>
+            <p class="tab-1">public MyEntity() {</p>
+            <p class="tab-1 mb10">}</p>
+            <p class="tab-1">public MyEntity(long myId, MyEnum myEnum) {</p>
+            <p class="tab-2">this.myId = myId;</p>
+            <p class="tab-2">this.myEnum = myEnum;</p>
+            <p class="tab-1 mb10">}</p>
+            <p class="tab-1 mb10">...</p>
+            <p>}</p>
+        </div>
+        <p>
+            В JPA типы Enum могут быть помечены аннотацией
+            <span class="annotation">@Enumerated</span>, которая может принимать в качестве атрибута
+            <span class="accent-mono">EnumType.ORDINAL</span>
+            или
+            <span class="accent-mono">EnumType.STRING</span>,
+            определяющий, отображается ли перечисление (enum) на столбец с типом Integer или String соответственно.
+        </p>
+        <p class="main-mind">
+            <span class="annotation">@Enumerated(EnumType.ORDINAL)</span>
+            - значение по умолчанию, говорит о том, что в базе будут храниться порядковые
+            номера Enum (0, 1, 2…).
+        </p>
+        <p class="no_mb">Проблема с этим типом отображения возникает, когда нам нужно изменить наш Enum.</p>
+        <p class="no_mb">
+            Если мы добавим новое значение в середину или просто изменим порядок перечисления, мы сломаем существующую
+            модель данных.
+        </p>
+        <p>Такие проблемы могут быть трудно уловимыми, и нам придется обновлять все записи базы данных.</p>
+
+    </div>
+
+    <hr>
+    <div id="q9_per_name">
+        <h3><a href="#q9">По именам</a></h3>
+        <p class="main-mind">
+            <span class="annotation"> @Enumerated(EnumType.STRING)</span>
+            - означает, что в базе будут храниться имена Enum.
+        </p>
+        <p>
+            Мы можем безопасно добавлять новые значения перечисления или изменять порядок перечисления.
+        </p>
+        <p>
+            <span class="accent-mono">Однако</span>
+            переименование значения enum все равно нарушит работу базы данных.
+        </p>
+        <p class="no_mb">
+            Кроме того, даже несмотря на то, что это представление данных гораздо более читаемо по сравнению с
+            параметром @Enumerated(EnumType.ORDINAL), оно потребляет намного больше места, чем необходимо.
+        </p>
+        <p>
+            Это может оказаться серьезной проблемой, когда нам нужно иметь дело с большим объемом данных.
+        </p>
+    </div>
+
+    <hr>
+    <div id="q9_postload_prepersist">
+        <h3><a href="#q9">@PostLoad и @PrePersist</a></h3>
+        <p class="no_mb">
+            Другой вариант - использование стандартных методов обратного вызова из JPA.
+        </p>
+        <p>
+            Мы можем смапить наши перечисления в БД и обратно в методах с аннотациями
+            <span class="annotation">@PostLoad </span>
+            и
+            <span class="annotation">@PrePersist</span>.
+        </p>
+        <p class="main-mind">
+            Идея состоит в том, чтобы в сущности иметь не только поле с Enum, но и вспомогательное поле.
+            Поле с Enum аннотируем @Transient, а в БД будет храниться значение из вспомогательного поля.
+        </p>
+        <p>
+            Создадим Enum с полем <span class="code-word">priority</span> содержащем числовое значение приоритета:
+        </p>
+        <div class="code">
+            <p>public enum <span class="name">Priority</span> { </p>
+            <p class="tab-1 mb10">LOW(100), MEDIUM(200), HIGH(300);</p>
+            <p class="tab-1 mb10">private int priority;</p>
+
+            <p class="tab-1">private <span class="name">Priority</span>(int priority) {</p>
+            <p class="tab-2">this.priority = priority;</p>
+            <p class="tab-1 mb10">}</p>
+
+            <p class="tab-1">public int getPriority() {</p>
+            <p class="tab-2">return priority;</p>
+            <p class="tab-1 mb10">}</p>
+
+            <p class="tab-1">public static <span class="name">Priority</span> of(int priority) {</p>
+            <p class="tab-2">return Stream.of(Priority.values())</p>
+            <p class="tab-3">.filter(p -> p.getPriority() == priority)</p>
+            <p class="tab-3">.findFirst()</p>
+            <p class="tab-3">.orElseThrow(IllegalArgumentException::new);</p>
+            <p class="tab-1 mb10">}</p>
+            <p>}</p>
+        </div>
+        <p>
+            Мы добавили метод
+            <span class="accent-mono">Priority.of()</span>,
+            чтобы упростить получение экземпляра
+            <span class="accent-mono">Priority</span>
+            на основе его значения
+            <span class="accent-mono">int</span>.
+        </p>
+        <p>
+            Теперь, чтобы использовать его в нашем классе
+            <span class="accent-mono">Article</span>,
+            нам нужно добавить два атрибута и реализовать методы
+            обратного вызова:
+        </p>
+        <div class="code">
+            <p class="annotation">@Entity</p>
+            <p class="mb10">public class <span class="name">Article</span> {</p>
+            <p class="tab-1 annotation">@Id</p>
+            <p class="tab-1">private int id;</p>
+            <p class="tab-1">private String title;</p>
+            <p class="tab-1 annotation">@Enumerated(EnumType.ORDINAL)</p>
+            <p class="tab-1">private Status status;</p>
+            <p class="tab-1 annotation">@Enumerated(EnumType.STRING)</p>
+            <p class="tab-1">private Type type;</p>
+            <p class="tab-1 annotation">@Basic</p>
+            <p class="tab-1">private int priorityValue;</p>
+            <p class="tab-1 annotation">@Transient</p>
+            <p class="tab-1 mb10">private Priority priority;</p>
+            <p class="tab-1 annotation">@PostLoad</p>
+            <p class="tab-1">void fillTransient() {</p>
+            <p class="tab-2">if (priorityValue > 0) {</p>
+            <p class="tab-3">this.priority = Priority.of(priorityValue);</p>
+            <p class="tab-2">}</p>
+            <p class="tab-1 mb10">}</p>
+            <p class="tab-1 annotation">@PrePersist</p>
+            <p class="tab-1">void fillPersistent() {</p>
+            <p class="tab-2">if (priority != null) {</p>
+            <p class="tab-3">this.priorityValue = priority.getPriority();</p>
+            <p class="tab-2">}</p>
+            <p class="tab-1 mb10">}</p>
+            <p>}</p>
+        </div>
+        <p class="no_mb">
+            Несмотря на то, что этот вариант дает нам б<span class="accent-mono">о</span>льшую гибкость по сравнению
+            с ранее описанными решениями, он не идеален.
+            Просто кажется неправильным иметь в сущности целых два атрибута, представляющих одно перечисление.
+        </p>
+        <p>
+            Кроме того, если мы используем этот вариант, мы не сможем использовать значение Enum в запросах JPQL.
+        </p>
+    </div>
+
+    <hr>
+    <div id="q9_converter">
+        <h3><a href="#q9">Converter</a></h3>
+        <p>
+            В JPA с версии 2.1 можно использовать
+            <span class="accent-mono">Converter</span>
+            для конвертации Enum’а в некое его значение для сохранения в БД и получения из БД.
+        </p>
+        <p>
+            Все, что нам нужно сделать, это создать новый класс, который реализует
+            <span class="accent-mono">javax.persistence.AttributeConverter</span> и аннотировать его с помощью
+            <span class="annotation">@Converter</span>.
+        </p>
+
+        <div class="code">
+            <p>public enum <span class="name">Category</span></p>
+            <p class="tab-1 mb10">SPORT("S"), MUSIC("M"), TECHNOLOGY("T");</p>
+            <p class="tab-1 mb10">private String code;</p>
+            <p class="tab-1">private <span class="name">Category</span>(String code) {</p>
+            <p class="tab-2">this.code = code;</p>
+            <p class="tab-1 mb10">}</p>
+            <p class="tab-1">public String getCode() {</p>
+            <p class="tab-2">return code;</p>
+            <p class="tab-1 mb10">}</p>
+            <p>}</p>
+        </div>
+        <div class="code">
+            <p class="annotation">@Entity</p>
+            <p>public class <span class="name">Article</span> {</p>
+            <p class="tab-1 annotation">@Id</p>
+            <p class="tab-1">private int id;</p>
+            <p class="tab-1">private String title;</p>
+            <p class="tab-1 annotation">@Basic</p>
+            <p class="tab-1">private int priorityValue;</p>
+            <p class="tab-1 annotation">@Transient</p>
+            <p class="tab-1">private <span class="name">Priority</span> priority;</p>
+            <p class="tab-1">private <span class="name">Category</span> category;</p>
+            <p>}</p>
+        </div>
+        <div class="code">
+            <p class="annotation">@Converter(autoApply = true)</p>
+            <p>public class <span class="name">CategoryConverter</span>
+                implements
+                <span class="name">AttributeConverter</span>&lt;<span class="name">Category</span>, String&gt; {</p>
+            <p class="tab-1 annotation">@Override</p>
+            <p class="tab-1">public String convertToDatabaseColumn(<span class="name">Category</span> category) {</p>
+            <p class="tab-2">if (category == null) {</p>
+            <p class="tab-3">return null;</p>
+            <p class="tab-2">}</p>
+            <p class="tab-2">return category.getCode();</p>
+            <p class="tab-1 mb10">}</p>
+            <p class="tab-1 annotation">@Override</p>
+            <p class="tab-1">public <span class="name">Category</span> convertToEntityAttribute(String code) {</p>
+            <p class="tab-2">if (code == null) {</p>
+            <p class="tab-3">return null;</p>
+            <p class="tab-2">}</p>
+            <p class="tab-2">return Stream.of(Category.values())</p>
+            <p class="tab-3">.filter(c -> c.getCode().equals(code))</p>
+            <p class="tab-3">.findFirst()</p>
+            <p class="tab-3">.orElseThrow(IllegalArgumentException::new); } }</p>
+            <p class="tab-1 mb10">}</p>
+            <p>}</p>
+        </div>
+        <p class="no_mb">
+            Мы установили
+            <span class="accent-mono">@Converter(autoApply=true)</span>,
+            чтобы JPA автоматически применял логику преобразования ко всем сопоставленным атрибутам типа
+            <span class="accent-mono">Category</span>.
+        </p>
+        <p>
+            В противном случае нам пришлось бы поместить аннотацию @Converter непосредственно над полем Category у
+            каждой сущности, где оно имеется.
+        </p>
+        <p>В результате в столбце таблицы будут храниться значения: "S", "M" или "T".</p>
+        <p>
+            Как мы видим, мы можем просто установить наши собственные правила преобразования перечислений в
+            соответствующие значения базы данных, если мы используем интерфейс AttributeConverter.
+        </p>
+        <p>
+            Более того, мы можем безопасно добавлять новые значения enum или изменять существующие, не нарушая уже
+            сохраненные данные.
+        </p>
+        <p>
+            Это решение просто в реализации и устраняет все недостатки с @Enumerated(EnumType.ORDINAL),
+            @Enumerated(EnumType.STRING) и методами обратного вызова.
+        </p>
+
+    </div>
 
     <a href="#" class="button button--top"></a>
 </section>

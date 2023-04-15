@@ -412,7 +412,7 @@ img {
 .code {
     font-family: 'Monaco', 'Menlo', 'Consolas', 'Courier New', monospace;
     font-size: smaller;
-    padding: 4px 8px;
+    padding: 10px 8px 14px;
     color: rgb(51, 51, 51);
     border-radius: 4px;
     background-color: rgb(251, 250, 248);
