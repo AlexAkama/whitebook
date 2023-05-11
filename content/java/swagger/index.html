@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SWAGGER</title>
+    <link rel="stylesheet" href="../../../css/style.css">
+</head>
+
+<body>
+
+<section class="container">
+    <h1 class="no_mb">SWAGGER</h1>
+    <div class="after-h1">Как подключить и использовать автогенерацию документации</div>
+    <ul class="menu">
+        <li><a href="#dependencies">Подключение</a></li>
+        <li><a href="#used">Использование</a></li>
+        <li><a href="#multi_string">Многострочное описание</a></li>
+        <li><a href="#example">Пример</a></li>
+    </ul>
+    <div class="back-panel">
+        <a href="../" class="button button--back">Java</a>
+        <a href="../../../" class="button button--home">На главную</a>
+    </div>
+</section>
+
+<section class="container" id="dependencies">
+    <h1>Подключение</h1>
+    <h3>Зависимости</h3>
+
+    <h4>V1: для Spring Boot 2</h4>
+    <div class="code">
+        <p class="tab-1">&lt;dependency&gt;</p>
+        <p class="tab-3">&lt;groupId&gt;org.springdoc&lt;/groupId&gt;</p>
+        <p class="tab-3">&lt;artifactId&gt;springdoc-openapi-ui&lt;/artifactId&gt;</p>
+        <p class="tab-3">&lt;version&gt;1.7.0&lt;/version&gt;</p>
+        <p class="tab-1">&lt;/dependency&gt;</p>
+        <p class="tab-1">&lt;dependency&gt;</p>
+        <p class="tab-3">&lt;groupId&gt;org.springdoc&lt;/groupId&gt;</p>
+        <p class="tab-3">&lt;artifactId&gt;springdoc-openapi-webmvc-core&lt;/artifactId&gt;</p>
+        <p class="tab-3">&lt;version&gt;1.7.0&lt;/version&gt;</p>
+        <p class="tab-1">&lt;/dependency&gt;</p>
+    </div>
+    <p><a class="link-to-source" href="https://springdoc.org/" target="_blank">Источник</a></p>
+    <hr>
+    <h4>V2: для Spring Boot 3 (JAVA 17)</h4>
+    <div class="code">
+        <p class="tab-1">&lt;dependency&gt;</p>
+        <p class="tab-3">&lt;groupId&gt;org.springdoc&lt;/groupId&gt;</p>
+        <p class="tab-3">&lt;artifactId&gt;springdoc-openapi-starter-webmvc-ui&lt;/artifactId&gt;</p>
+        <p class="tab-3">&lt;version&gt;2.1.0&lt;/version&gt;</p>
+        <p class="tab-1">&lt;/dependency&gt;</p>
+        <p class="tab-1">&lt;dependency&gt;</p>
+        <p class="tab-3">&lt;groupId&gt;org.springdoc&lt;/groupId&gt;</p>
+        <p class="tab-3">&lt;artifactId&gt;springdoc-openapi-starter-webmvc-api&lt;/artifactId&gt;</p>
+        <p class="tab-3">&lt;version&gt;2.1.0&lt;/version&gt;</p>
+        <p class="tab-1">&lt;/dependency&gt;</p>
+    </div>
+    <p><a class="link-to-source" href="https://springdoc.org/v2/" target="_blank">Источник</a></p>
+    <a href="#" class="button button--top"></a>
+</section>
+
+<section class="container" id="used">
+    <h1>Использование</h1>
+    <h3>Аннотации</h3>
+    <div>
+        <p class="no_mb"><span class="bold">@Tag</span> - описание контроллера</p>
+        <ul class="tab-3">
+            <li><span>name</span> - имя контроллера</li>
+            <li><span>description</span> - описание</li>
+        </ul>
+    </div>
+
+    <div>
+        <p class="no_mb"><span class="bold">@Operation</span> - описание метода контроллера</p>
+        <ul class="tab-3">
+            <li><span>summary</span> - краткое описание контроллера</li>
+            <li><span>description</span> - описание</li>
+        </ul>
+    </div>
+
+    <div>
+        <p class="no_mb"><span class="bold">@Parameter</span> - описание параметров метода</p>
+        <ul class="tab-3">
+            <li><span>description</span> - описание</li>
+        </ul>
+    </div>
+
+    <div>
+        <p class="no_mb"><span class="bold">@ApiResponse</span> - описание ответа метода контроллера</p>
+        <ul class="tab-3">
+            <li><span>responseCode</span> - код ответа</li>
+            <li><span>description</span> - описание</li>
+            <li><span>content</span> = @Content()</li>
+        </ul>
+        <div>
+            <p class="no_mb">Если описывается несколько ответов, то их можно объединить группу</p>
+            <div class="code">
+                <p>@ApiResponses(</p>
+                <p class="tab-1">@ApiResponse(...),</p>
+                <p class="tab-1">@ApiResponse(...),</p>
+                <p class="tab-1">@ApiResponse(...)</p>
+                <p>)</p>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <p class="no_mb"><span class="bold">@Content</span> - описание контента</p>
+        <ul class="tab-3">
+            <li><span>mediaType</span> - тип контента
+                <p class="example">
+                    (можно использовать значения из
+                    <span class="code-word">org.springframework.http.MediaType</span>)
+                </p>
+            </li>
+        </ul>
+    </div>
+
+    <div>
+        <p class="no_mb"><span class="bold">@ExampleObject</span> - описание примеров</p>
+        <p class="no_mb example tab-3">используется в <span class="bold">examples = {...}</span></p>
+        <ul class="tab-3">
+            <li><span>name</span> - имя примера</li>
+            <li><span>summary</span> - краткое описание примера</li>
+            <li><span>description</span> - описание</li>
+            <li><span>value</span> - значение</li>
+        </ul>
+    </div>
+
+    <hr>
+    <div>
+        <h3>Описание моделей и DTO</h3>
+        <p>И класс и поля описываем одной аннотацией</p>
+        <p class="no_mb"><span class="bold">@Schema</span></p>
+        <ul class="tab-3">
+            <li><span>description</span> - описание</li>
+            <li><span>implementation</span> - генерим схему по классу (пример = Work.class)</li>
+        </ul>
+
+        <p class="no_mb">Если не хотим передавать поля</p>
+        <p class="code bold">@Schema(accessMode = Schema.AccessMode.READ_ONLY)</p>
+
+        <p><span class="bold">@ArraySchema()</span> - данных которые передаются как массив</p>
+    </div>
+
+    <hr>
+    <div>
+        <h3>Валидация</h3>
+        <p>В принципе можно указывать валидацию (я еще нигде пока не использовал)</p>
+        <div class="code">
+            <p>@Min(1)</p>
+            <p>@Max(999)</p>
+            <p>private Integer id;</p>
+        </div>
+        <p>или</p>
+        <div class="code">
+            <p>@NotBlan</p>
+            <p>@Size(min = 1, max = 100)</p>
+            <p>private String name;</p>
+        </div>
+    </div>
+
+    <hr>
+    <div>
+        <h3>Как исключить?</h3>
+        <p class="no_mb"><span class="bold"> @Hidden</span> - исключить контроллер</p>
+        <p><span class="bold">@Operation(hidden = true)</span> - исключить метод</p>
+    </div>
+
+    <hr>
+    <div>
+        <h3>Где искать?</h3>
+        <p class="no_mb">По умолчанию пускаемся на</p>
+        <p>
+            <a href="http://localhost:8080/swagger-ui/index.html" target="_blank">
+                http://server:port/swagger-ui/index.html
+            </a>
+        </p>
+    </div>
+
+    <hr>
+    <div>
+        <h3>Прочее</h3>
+        <p>
+            Про переезд со SpringFox можно прочитать
+            <a href="https://springdoc.org/#migrating-from-springfox" target="_blank">тут</a>
+        </p>
+        <div>
+            <p class="no_mb">Прочие источники и статьи</p>
+            <a class="link-to-source" href="https://habr.com/ru/articles/541592/" target="_blank">1</a>
+            <a class="link-to-source" href="https://struchkov.dev/blog/ru/api-swagger/" target="_blank">2</a>
+            <a class="link-to-source" href="https://www.bezkoder.com/spring-boot-swagger-3/" target="_blank">3</a>
+            <a class="link-to-source" href="https://starkovden.github.io/step7-tags-object.html" target="_blank">4</a>
+        </div>
+
+    </div>
+
+    <a href="#" class="button button--top"></a>
+</section>
+
+<section class="container" id="multi_string">
+    <h1><a href="#">Многострочное описание</a></h1>
+    <h4>Вариант 1</h4>
+    <p class="main-mind no_mb">Можно использовать в тексе описания <span class="code-word">\n\n</span> (именно два)</p>
+    <p class="code">
+        description = "Работа с базовыми функциями\n\nПервая базовая функция\n\nВторая базовая функция"
+    </p>
+    <p>или</p>
+    <h4>Вариант 2</h4>
+    <p class="main-mind no_mb">Использовать текстовый блок с разделяющей строкой, с использованием пустых строк</p>
+    <div class="code">
+        <p>description = """</p>
+        <p class="tab-3">Работа с базовыми функциями</p>
+        <p class="tab-3">&nbsp;</p>
+        <p class="tab-3">Первая базовая функция</p>
+        <p class="tab-3">&nbsp;</p>
+        <p class="tab-3">Вторая базовая функция</p>
+        <p class="tab-3">""")</p>
+    </div>
+
+    <p>Результат обоих вариантов будет такое описание:</p>
+    <div class="code">
+        <p class="tab-1">Работа с базовыми функциями</p>
+        <p class="tab-1">Первая базовая функция</p>
+        <p class="tab-1">Вторая базовая функция</p>
+    </div>
+
+    <a href="#" class="button button--top"></a>
+</section>
+
+<section class="container" id="example">
+    <h1><a href="#">Пример</a></h1>
+    <p>Код описанного контроллера</p>
+    <div class="image-box mb20">
+        <img class="image" src="img/code.png" alt="code">
+    </div>
+    <p>Сгенерированная документация</p>
+    <div class="image-box">
+        <img class="image" src="img/swagger.png" alt="swagger">
+    </div>
+
+    <a href="#" class="button button--top"></a>
+</section>
+
+<footer>
+    <div class="footer__text"><a href="https://t.me/java40plus" title="Мой блог в телеграм">
+        Алексей Маслов, 2021-2023
+    </a></div>
+</footer>
+
+</body>
+
+<script src="../../../js/script.js"></script>
+
+</html>
