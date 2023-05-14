@@ -887,6 +887,41 @@ input:focus {
     text-align: center;
 }
 
+.vertical-schema__sub-menu{
+    margin-left: 10px;
+}
+
+.vertical-schema__sub-item {
+    text-align: left;
+    padding: 10px 0 10px 14px;
+    position: relative;
+}
+
+.vertical-schema__sub-item:last-child::before {
+    top: -50%;
+}
+
+.vertical-schema__sub-item:before {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    width: 10px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border-left: 2px solid #00a82d;
+}
+
+.vertical-schema__sub-item:after {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    width: 10px;
+    left: 0;
+    top: 50%;
+    border-bottom: 2px solid #00a82d;
+}
+
 .vertical-schema > *:first-child {
     display: inline-block;
     padding-bottom: 10px;

@@ -1661,6 +1661,37 @@
     <a class="button button--content_table" href="#q20"></a>
 
     <hr>
+    <div class="mb20">
+        <div>
+            <h4>Простая схема</h4>
+            <div class="image-box">
+                <img class="image" src="img/beans_lifecycle_simple.png" alt="beans_lifecycle_simple">
+            </div>
+        </div>
+        <div>
+            <h4>Схема с колбеками</h4>
+            <p>Вызываются после вызова сеттеров</p>
+            <div class="image-box">
+                <img class="image" src="img/beans_lifecycle.png" alt="beans_lifecycle">
+            </div>
+            <p class="no_mb">Порядок выполнения колбеков такая же, как на схеме:</p>
+            <ul class="tab-2 no_mb">
+                <li>Первым, будет выполнен метод помеченный аннотацией;</li>
+                <li>Вторым, метод перезаписанный при имплементации соответствующего интерфейса;</li>
+                <li>Третьим, метод указанный в xml;</li>
+            </ul>
+            <p>&nbsp;</p>
+        </div>
+        <div>
+            <h4>Схема с пост-процессорами</h4>
+            <div class="image-box">
+                <img class="image" src="img/beans_lifecycle_post_processor.png" alt="beans_lifecycle_post_processor">
+            </div>
+            <p>Пост-процессоров может быть несколько.</p>
+        </div>
+    </div>
+
+    <hr>
     <div id="lifecircle_1">
         <h4>1. Парсирование конфигурации и создание BeanDefinition</h4>
 
@@ -2000,9 +2031,9 @@
         <p>Spring Framework поддерживает шесть scopes:</p>
         <ol class="tab-2 sparse-li">
             <li><a href="#q21_singleton">Singleton</a></li>
-            <li><a href="#q21_prototype">Prototype</a></li>
+            <li><a href="#q21_singleton">Singleton</a></li>
             <li><a href="#q21_request">Request</a></li>
-            <li><a href="#q21_session">Session</a></li>
+            <li><a href="#q21_request">Request</a></li>
             <li><a href="#q21_application">Application</a></li>
             <li><a href="#q21_websocket">Websocket</a></li>
             <li>
@@ -2013,8 +2044,47 @@
         <p>С 3 по 6 доступны только в веб-приложениях. Мы также можем создать свой собственный scope.</p>
     </div>
 
+    <div class="scroll">
+        <div class="vertical-schema">
+            <div>Bean Scopes</div>
+            <div>
+                <div>
+                    <div>
+                        <p class="no_mb">Common</p>
+                        <p class="no_mb example">ApplicationContext</p>
+                    </div>
+                    <div class="vertical-schema__sub-menu">
+                        <div class="vertical-schema__sub-item"><a href="#q21_singleton">Singleton</a></div>
+                        <div class="vertical-schema__sub-item"><a href="#q21_singleton">Singleton</a></div>
+                        <div class="vertical-schema__sub-item">
+                            <p class="no_mb">Thread</p>
+                            <p class="no_mb example">SimpleThreadScope</p>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <p class="no_mb">Web</p>
+                        <p class="no_mb example">WebApplicationContext</p>
+                    </div>
+                    <div class="vertical-schema__sub-menu">
+                        <div class="vertical-schema__sub-item"><a href="#q21_request">Request</a></div>
+                        <div class="vertical-schema__sub-item"><a href="#q21_request">Request</a></div>
+                        <div class="vertical-schema__sub-item"><a href="#q21_application">Application</a></div>
+                        <div class="vertical-schema__sub-item"><a href="#q21_websocket">Websocket</a></div>
+                    </div>
+                </div>
+                <div>
+                    <p><a href="#q21_custom">Custom</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
     <div id="q21_singleton">
-        <h4>Singleton</h4>
+        <h4><a href="#q21">Singleton</a></h4>
         <p>
             <strong>Является дефолтным scope</strong>.
             В контейнере будет создан только один бин, и все запросы на него будут возвращать один
@@ -2022,9 +2092,12 @@
             экземпляр.
         </p>
         <a class="button button--content_table" href="#q21"></a>
+    </div>
 
-        <hr>
-        <h4 id="q21_prototype">Prototype</h4>
+    <hr>
+
+    <div>
+        <h4 id="q21_prototype"><a href="#q21">Prototype</a></h4>
         <p>
             Scope “prototype” приводит к созданию нового бина каждый раз, когда он запрашивается.
         </p>
@@ -2044,7 +2117,7 @@
     <hr>
 
     <div id="q21_request">
-        <h4>Request</h4>
+        <h4><a href="#q21">Request</a></h4>
         <p class="no_mb">
             Контейнер создает новый экземпляр для каждого HTTP-запроса. Таким образом, если сервер в настоящее время
             обрабатывает 50 запросов, тогда контейнер может иметь не более 50 бинов, по одному для каждого HTTP-запроса.
@@ -2074,7 +2147,7 @@
     <hr>
 
     <div id="q21_session">
-        <h4>Session</h4>
+        <h4><a href="#q21">Session</a></h4>
         <p>
             Бин создается в одном экземпляре для одной HTTP-сессии. Таким образом, если сервер имеет 20 активных сессий,
             тогда контейнер может иметь не более 20 бинов, по одному для каждой сессии. Все HTTP-запросы в пределах
@@ -2101,7 +2174,7 @@
     <hr>
 
     <div id="q21_application">
-        <h4>Application</h4>
+        <h4><a href="#q21">Application</a></h4>
         <p>
             Бин со scope “application” создается в одном экземпляре для жизненного цикла ServletContext. Виден как
             атрибут ServletContext. Синглтон - в одном экземпляре для ApplicationContext.
@@ -2128,7 +2201,7 @@
     <hr>
 
     <div id="q21_websocket">
-        <h4>Websocket</h4>
+        <h4><a href="#q21">Websocket</a></h4>
         <p>
             Бин со scope “websocket” создается в одном экземпляре для определенного сеанса WebSocket. Один и тот же бин
             возвращается всякий раз, когда к нему обращаются в течение всего сеанса WebSocket.
@@ -2146,16 +2219,32 @@
     <hr>
 
     <div id="q21_custom">
-        <h4>Custom thread scope</h4>
-        <p>
-            Spring по умолчанию не предоставляет thread scope, но его можно активировать. Каждый запрос на бин в рамках
-            одного потока будет возвращать один и тот же бин.
-        </p>
+        <h4><a href="#q21">Custom thread scope</a></h4>
+        <p>Spring по умолчанию не предоставляет thread scope, но его можно активировать.</p>
+        <p>Каждый запрос на бин в рамках одного потока будет возвращать один и тот же бин.</p>
+        <div class="code">
+            <p>Scope threadScope = new SimpleThreadScope();</p>
+            <p>context.registerScope("thread", threadScope)</p>
+        </div>
         <p class="main-mind">
-            В пятой версии Spring Framework не стало Global session scope.
+            Т.е. его нужно создать и зарегистрировать в контексе ручками
         </p>
-        <a class="button button--content_table" href="#q21"></a>
+
+        <h4><a href="#q21">Other custom</a></h4>
+        <p>Любой другой кастомный scope создается также.</p>
+        <p class="no_mb">Реализуем интерфейс:</p>
+        <p class="code-word smaller">org.springframework.beans.factory.config.Scope</p>
+        <p class="no_mb">И регистрируем в контексте:</p>
+        <p class="code-word smaller">ConfigurationBeanFactory.registerScope</p>
+
+
     </div>
+
+    <hr>
+    <h3></h3>
+    <p class="main-mind">
+        В пятой версии Spring Framework не стало Global session scope.
+    </p>
 
     <a href="#" class="button button--top"></a>
 </section>
@@ -3419,7 +3508,7 @@
     <p class="example no_mb">Определение от WiKi</p>
     <p>
         <span class="accent-mono">Сервлет</span>
-         является интерфейсом Java, реализация которого расширяет функциональные возможности сервера. Сервлет
+        является интерфейсом Java, реализация которого расширяет функциональные возможности сервера. Сервлет
         взаимодействует с клиентами посредством принципа запрос-ответ.
     </p>
     <p>
@@ -3429,7 +3518,7 @@
     </p>
     <p>
         <span class="accent-mono">Сервлет</span>
-         — это класс, который умеет получать запросы от клиента и возвращать ему ответы.
+        — это класс, который умеет получать запросы от клиента и возвращать ему ответы.
         С помощью них строится клиент-серверная архитектура.
     </p>
 
@@ -3437,7 +3526,7 @@
 </section>
 
 <footer>
-        <div class="footer__text"><a href="https://t.me/java40plus" title="Мой блог в телеграм">
+    <div class="footer__text"><a href="https://t.me/java40plus" title="Мой блог в телеграм">
         Алексей Маслов, 2021-2023
     </a></div>
 </footer>
