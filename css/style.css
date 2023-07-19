@@ -423,7 +423,11 @@ img {
     white-space: nowrap;
 }
 
-.code > p > span.name {
+
+/*Убрать класс name*/
+.code > p > span.name,
+.code > p > name {
+    font-family: 'Monaco', 'Menlo', 'Consolas', 'Courier New', monospace;
     color: blue;
 }
 

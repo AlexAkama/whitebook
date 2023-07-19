@@ -31,6 +31,7 @@
         <li><a href="#q7">Что такое Mapped Superclass?</a></li>
         <li><a href="#q8">Какие три стратегии маппинга при наследовании сущностей описаны в JPA?</a></li>
         <li><a href="#q9">Как мапятся Enum'ы?</a></li>
+        <li><a href="#q10">Как мапятся даты (до Java 8 и после)?</a></li>
     </ol>
 </section>
 
@@ -1427,6 +1428,239 @@
     <a href="#" class="button button--top"></a>
 </section>
 
+<section class="container" id="q10">
+    <h1><a href="#">Как мапятся даты (до Java 8 и после)?</a></h1>
+
+    <p>
+        При работе с датами рекомендуется установить определенный часовой пояс для драйвера JDBC. Таким образом, наше
+        приложение будет независимым от текущего часового пояса системы.
+    </p>
+    <p>
+        Другой способ - настроить свойство hibernate.jdbc.time_zone в файле свойств Hibernate, который используется для
+        создания фабрики сессий. Таким образом, мы можем указать часовой пояс один раз для всего приложения.
+    </p>
+
+    <div class="tab-1">
+        <p><a href="#java_sql">java.sql</a></p>
+        <p><a href="#java_util">java.util</a></p>
+        <p><a href="#java_time">java.time</a></p>
+    </div>
+
+    <hr>
+    <div id="java_sql">
+        <h3><a href="#q10">java.sql</a></h3>
+
+        <p> Hibernate позволяет отображать различные классы даты/времени из Java в таблицах баз данных. </p>
+        <p>Стандарт SQL определяет три типа даты/времени:</p>
+        <ol>
+            <li class="mb10">
+                <p class="term"><span>DATE</span>- Представляет календарную дату путем хранения лет, месяцев и дней.</p>
+                <p>Эквивалентом JDBC является <span class="accent-mono">java.sql.Date</span>.</p>
+            </li>
+            <li class="mb10">
+                <p class="term"><span>TIME</span> - Представляет время дня и хранит часы, минуты и секунды.</p>
+                <p>Эквивалентом JDBC является <span class="accent-mono">java.sql.Time</span>.</p>
+            </li>
+            <li class="mb20">
+                <p class="term"><span>TIMESTAMP</span> - Хранит как DATE, так и TIME плюс наносекунды.</p>
+                <p>Эквивалентом JDBC является <span class="accent-mono">java.sql.Timestamp</span>.</p>
+            </li>
+        </ol>
+
+        <p>
+            Поскольку эти типы соответствуют SQL, их сопоставление относительно простое. Мы можем использовать аннотацию
+            <an>@Basic</an> или <an>@Column</an>:
+        </p>
+        <div class="code">
+            <p><an>@Entity</an></p>
+            <p>public class TemporalValues {</p>
+            <p class="tab-1"><an>@Basic</an></p>
+            <p class="tab-1">private java.sql.Date
+                <name>sqlDate</name>
+                ;
+            </p>
+            <p class="tab-1"><an>@Basic</an></p>
+            <p class="tab-1">private java.sql.Time
+                <name>sqlTime</name>
+                ;
+            </p>
+            <p class="tab-1"><an>@Basic</an></p>
+            <p class="tab-1">private java.sql.Timestamp
+                <name>sqlTimestamp</name>
+                ;
+            </p>
+            <p>}</p>
+        </div>
+        <p> Затем мы могли бы установить соответствующие значения следующим образом:</p>
+        <div class="code">
+            <p class="mb10">temporalValues.setSqlDate(java.sql.Date.valueOf("2017-11-15"));</p>
+            <p class="mb10">temporalValues.setSqlTime(java.sql.Time.valueOf("15:30:14"));</p>
+            <p>temporalValues.setSqlTimestamp(java.sql.Timestamp.valueOf("2017-11-15 15:30:14.332"));</p>
+        </div>
+
+        <p class="no_mb">
+            Обратите внимание, что использование типов java.sql для полей сущностей не всегда может быть хорошим
+            выбором.
+        </p>
+        <p class="no_mb">Эти классы специфичны для JDBC и содержат множество устаревших функций.</p>
+        <p>
+            Чтобы избежать зависимостей от пакета java.sql, начали использовать классы даты/времени из пакета java.util
+            вместо классов java.sql.Timestamp и java.sql.Time.
+        </p>
+    </div>
+
+    <hr>
+    <div id="java_util">
+        <h3><a href="#q10">java.util</a></h3>
+
+        <p>
+            <span class="accent-mono">Точность</span>
+            представления времени составляет
+            <span class="accent-mono">одна миллисекунда</span>.</p>
+        <p>
+            Для большинства практических задач этого более чем достаточно, но иногда хочется иметь точность повыше.
+        </p>
+        <p class="no_mb">
+            Поскольку классы в данном API <span class="accent-mono">изменяемые (не immutable)</span>,
+            использовать их в многопоточной среде нужно с осторожностью.
+        </p>
+        <p class="example">
+            В частности java.util.Date можно признать «эффективно» потоко-безопасным, если вы не вызываете у него
+            устаревшие методы.
+        </p>
+
+
+        <div class="java_util_date">
+            <h4>java.util.Date</h4>
+            <p> Тип java.util.Date содержит информацию о дате и времени с точностью до миллисекунд. </p>
+            <p>
+                Но так как классы из этого пакета не имели прямого соответствия типам данных SQL, приходилось
+                использовать над полями java.util.Date аннотацию <an>@Temporal</an>, чтобы дать понять SQL,
+                с каким конкретно типом данных она работает.
+
+            </p>
+            <div>
+                Для этого у аннотации @Temporal нужно было указать параметр
+                <span class="accent-mono">TemporalType</span> , который принимал одно из трёх значений:
+                <ul class="tab-4 no_mb">
+                    <li><span class="accent-mono">DATE</span></li>
+                    <li><span class="accent-mono">TIME</span></li>
+                    <li><span class="accent-mono">TIMESTAMP</span></li>
+                </ul>
+                что позволяло указать базе данных с какими конкретными типами данных она работает.
+            </div>
+            <div class="code">
+                <p><an>@Basic</an></p>
+                <p><an>@Temporal(TemporalType.DATE)</an></p>
+                <p class="mb10">private java.util.Date <name>utilDate</name>;</p>
+                <p><an>@Basic</an></p>
+                <p><an>@Temporal(TemporalType.TIME)</an></p>
+                <p class="mb10">private java.util.Date <name>utilTime</name>;</p>
+                <p><an>@Basic</an></p>
+                <p><an>@Temporal(TemporalType.TIMESTAMP)</an></p>
+                <p>private java.util.Date <name>utilTimestamp</name>;</p>
+            </div>
+            <p class="no_mb">
+                Тип java.util.Date имеет точность до миллисекунд, и недостаточно точен для обработки SQL-значения
+                Timestamp, который имеет точность вплоть до наносекунд.
+            </p>
+            <p class="no_mb">
+                Поэтому, когда мы извлекаем сущность из базы данных, неудивительно, что в этом поле мы находим
+                экземпляр java.sql.Timestamp, даже если изначально мы сохранили java.util.Date.
+            </p>
+            <p>Но это не страшно, так как Timestamp наследуется от Date.</p>
+        </div>
+
+        <div class="java_util_calendar">
+            <h4>java.util.Calendar</h4>
+            <p class="no_mb">
+                Как и в случае java.util.Date, тип java.util.Calendar может быть сопоставлен с различными типами SQL,
+                поэтому мы должны указать их с помощью @Temporal.
+            </p>
+            <p>
+                Разница лишь в том, что Hibernate не поддерживает отображение (маппинг) Calendar на TIME:
+            </p>
+            <div class="code">
+                <p><an>@Basic</an></p>
+                <p><an>@Temporal(TemporalType.DATE)</an></p>
+                <p class="mb10">private java.util.Calendar <name>calendarDate</name>;</p>
+                <p><an>@Basic</an></p>
+                <p><an>@Temporal(TemporalType.TIMESTAMP)</an></p>
+                <p>private java.util.Calendar <name>calendarTimestamp</name>;</p>
+            </div>
+        </div>
+
+    </div>
+
+    <hr>
+    <div id="java_time">
+        <h3><a href="#q10">java.time</a></h3>
+        <p class="no_mb">Начиная с Java 8, доступен новый API даты и времени для работы с временными значениями.</p>
+        <p>Этот API-интерфейс устраняет многие проблемы классов java.util.Date и java.util.Calendar.</p>
+        <p>
+            Все классы в новом API <span class="accent-mono">неизменяемые (immutable)</span> и, как следствие,
+            <span class="accent-mono">потоко-безопасные</span>.
+        </p>
+        <p>
+            <span class="accent-mono">Точность</span> представления времени составляет одна
+            <span class="accent-mono">наносекунда</span>, что в миллион раз точнее чем в пакете java.util.
+        </p>
+
+        <p>
+            Типы данных из пакета java.time напрямую отображаются (маппятся) на соответствующие типы SQL.
+        </p>
+        <p> Поэтому нет необходимости явно указывать аннотацию @Temporal:</p>
+        <ol>
+            <li class="mb10">
+                <span class="accent-mono">LocalDate</span> соответствует <span class="accent-mono">DATE</span>.
+            </li>
+            <li class="mb10">
+                <span class="accent-mono">LocalTime</span> и <span class="accent-mono">OffsetTime</span>
+                соответствуют <span>TIME</span>.
+            </li>
+            <li>
+                <span class="accent-mono">Instant</span>, <span class="accent-mono">LocalDateTime</span>,
+                <span class="accent-mono">OffsetDateTime</span> и <span class="accent-mono">ZonedDateTime</span>
+                соответствуют <span class="accent-mono">TIMESTAMP</span>.
+            </li>
+        </ol>
+
+        <p>Это означает, что мы можем пометить эти поля только аннотацией @Basic (или @Column), например:</p>
+        <div class="code">
+            <p><an>@Basic</an></p>
+            <p class="mb10">private java.time.LocalDate <name>localDate</name>;</p>
+            <p><an>@Basic</an></p>
+            <p class="mb10">private java.time.LocalTime <name>localTime</name>;</p>
+            <p><an>@Basic</an></p>
+            <p class="mb10">private java.time.OffsetTime <name>offsetTime</name>;</p>
+            <p><an>@Basic</an></p>
+            <p class="mb10">private java.time.Instant <name>instant</name>;</p>
+            <p><an>@Basic</an></p>
+            <p class="mb10">private java.time.LocalDateTime <name>localDateTime</name>;</p>
+            <p><an>@Basic</an></p>
+            <p class="mb10">private java.time.OffsetDateTime <name>offsetDateTime</name>;</p>
+            <p><an>@Basic</an></p>
+            <p class="mb10">private java.time.ZonedDateTime <name>zonedDateTime</name>;</p>
+        </div>
+        <p>
+            Каждый временной класс в пакете java.time имеет статический метод
+            <span class="accent-mono">parse()</span> для анализа предоставленного
+            значения типа String с использованием соответствующего формата.
+        </p>
+        <p>Вот как мы можем установить значения полей сущности:</p>
+        <div class="code">
+            <p class="mb10">temporalValues.setLocalDate(LocalDate.parse("2017-11-15"));</p>
+            <p class="mb10">temporalValues.setLocalTime(LocalTime.parse("15:30:18"));</p>
+            <p class="mb10">temporalValues.setOffsetTime(OffsetTime.parse("08:22:12+01:00"));</p>
+            <p class="mb10">temporalValues.setInstant(Instant.parse("2017-11-15T08:22:12Z"));</p>
+            <p class="mb10">temporalValues.setLocalDateTime(LocalDateTime.parse("2017-11-15T08:22:12"));</p>
+            <p class="mb10">temporalValues.setOffsetDateTime(OffsetDateTime.parse("2017-11-15T08:22:12+01:00"));</p>
+            <p>temporalValues.setZonedDateTime( ZonedDateTime.parse("2017-11-15T08:22:12+01:00[Europe/Paris]"));</p>
+        </div>
+    </div>
+
+    <a href="#" class="button button--top"></a>
+</section>
 
 <footer>
     <div class="footer__text"><a href="https://t.me/java40plus" title="Мой блог в телеграм">
