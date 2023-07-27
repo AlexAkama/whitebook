@@ -211,6 +211,11 @@ li p {
     margin-bottom: 0;
 }
 
+*.margined li {
+    margin-bottom: 14px;
+}
+
+
 td {
     vertical-align: top;
     padding-bottom: 10px;
@@ -276,6 +281,10 @@ img {
 
 .menu li, .menu tr {
     margin-bottom: 10px;
+}
+
+.pred-menu {
+    padding-left: 30px;
 }
 
 .back-panel {
@@ -898,7 +907,7 @@ input:focus {
     text-align: center;
 }
 
-.vertical-schema__sub-menu{
+.vertical-schema__sub-menu {
     margin-left: 10px;
 }
 
@@ -1009,6 +1018,7 @@ input:focus {
 .in-progress {
     position: relative;
 }
+
 .in-progress:after {
     content: 'в процессе...';
     color: white;
