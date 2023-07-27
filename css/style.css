@@ -109,6 +109,11 @@ strong {
     margin-bottom: 20px !important;
 }
 
+.mb40 {
+    margin-bottom: 40px !important;
+}
+
+
 .sparse-li li {
     margin-bottom: 10px !important;
 }
@@ -353,6 +358,7 @@ img {
     background-repeat: no-repeat;
 }
 
+class-name,
 .bold {
     font-weight: bold;
 }

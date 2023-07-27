@@ -32,6 +32,7 @@
         <li><a href="#q8">Какие три стратегии маппинга при наследовании сущностей описаны в JPA?</a></li>
         <li><a href="#q9">Как мапятся Enum'ы?</a></li>
         <li><a href="#q10">Как мапятся даты (до Java 8 и после)?</a></li>
+        <li><a href="#q11">Как сохранять в базе данных коллекции базовых типов? </a></li>
     </ol>
 </section>
 
@@ -1657,6 +1658,132 @@
             <p class="mb10">temporalValues.setOffsetDateTime(OffsetDateTime.parse("2017-11-15T08:22:12+01:00"));</p>
             <p>temporalValues.setZonedDateTime( ZonedDateTime.parse("2017-11-15T08:22:12+01:00[Europe/Paris]"));</p>
         </div>
+    </div>
+
+    <a href="#" class="button button--top"></a>
+</section>
+
+<section class="container" id="q11">
+    <h1><a href="#">Как сохранять в базе данных коллекции базовых типов?</a></h1>
+
+    <div>
+        <p>
+            Если у нашей сущности есть поле с коллекцией, то мы привыкли ставить над ним аннотации @OneToMany либо
+            @ManyToMany. Но данные аннотации применяются в случае, когда это коллекция других сущностей (entities).
+        </p>
+        <p>
+            Но что, если у нашей сущности коллекция не других сущностей, а базовых или встраиваемых (embeddable) типов,
+            то есть коллекция элементов?
+        </p>
+        <p>
+            Для этих случаев в JPA имеется специальная аннотация <an>@ElementCollection</an>, которая
+            указывается в классе сущности над полем коллекции базовых или встраиваемых типов.
+        </p>
+        <div>
+            Все записи коллекции хранятся в отдельной таблице, то есть в итоге получаем две таблицы:
+            <ol>
+                <li>одну для сущности,</li>
+                <li>вторую для коллекции элементов.</li>
+            </ol>
+        </div>
+        <p>
+            Конфигурация для таблицы коллекции элементов указывается с помощью аннотации @CollectionTable, которая
+            используется для указания имени таблицы коллекции и JoinColumn, который ссылается на первичную таблицу.
+        </p>
+    </div>
+
+    <div class="image-box">
+        <img class="image" src="img/base_type_collection_mapping.png" alt="Base type collection mapping">
+    </div>
+    <div class="code">
+        <p><an>@Entity</an></p>
+        <p>public class
+            <class-name>Customer</class-name>
+            {
+        </p>
+        <p class="tab-1"><an>@Id</an></p>
+        <p class="tab-1"><an>@GeneratedValue</an></p>
+        <p class="tab-1">private int <name>id;</name></p>
+        <p class="tab-1">private String <name>name;</name></p>
+        <p class="tab-1"><an>@ElementCollection</an></p>
+        <p class="tab-1 mb10">private List &lt;String&gt; <name>phoneNumbers;</name></p>
+        <p class="tab-1 mb10">.............</p>
+        <p>}</p>
+    </div>
+
+    <div class="mb40">
+        <p>
+            Аннотация @ElementCollection похожа на отношение @OneToMany, за исключением того, что целью являются базовые
+            и встраиваемые типы, а не сущности.
+        </p>
+        <p>
+            Можно использовать аннотации
+            <span class="accent-mono">@AttributeOverrides</span> и
+            <span class="accent-mono">@AttributeOverride</span> для настройки отображения в таблице
+            полей базовых или встраиваемых типов.
+        </p>
+    </div>
+
+    <div>
+        <p>
+            Коллекции могут иметь тип
+            <span class="accent-mono">java.util.Map</span>,
+            которые состоят из ключа и значения.
+        </p>
+        <p class="no_mb">Для этого типа коллекций применяются следующие правила:</p>
+        <ol>
+            <li>
+                Ключ или значение Map может быть базовым типом языка программирования Java, встраиваемым классом или
+                сущностью.
+            </li>
+            <li>
+                <p>
+                    Если значение Map является встраиваемым классом или базовым типом, используйте аннотацию
+                    @ElementCollection.
+                </p>
+                <p class="tab-1">
+                    <a class="link-to-source"
+                       href="https://www.logicbig.com/tutorials/java-ee-tutorial/jpa/persisting-maps.html"
+                       target="_blank">пример</a>
+                </p>
+            </li>
+            <li>
+                <p>Если значение Map является сущностью, используйте аннотацию @OneToMany или @ManyToMany.</p>
+                <p class="tab-1">
+                    <a class="link-to-source"
+                       href="https://www.logicbig.com/examples/jpa/map-with-entity-values-customized.html"
+                       target="_blank">пример</a>
+                </p>
+            </li>
+            <li>Использовать тип Map только на одной стороне двунаправленной связи.</li>
+        </ol>
+        <p class="no_mb"> Аннотация @MapKeyColumn позволяет настроить столбец «ключ» в таблице Map. </p>
+        <p class="no_mb"> Аннотация @Column позволяет настроить столбец «значение» в таблице Map. </p>
+        <p class="tab-1">
+            <a class="link-to-source"
+               href="https://www.logicbig.com/tutorials/java-ee-tutorial/jpa/customizing-map-mapping.html"
+               target="_blank">пример</a>
+        </p>
+        <p class="no_mb">
+            Использование коллекций элементов имеет один большой <span class="accent-mono">недостаток</span>:
+        </p>
+        <p class="no_mb">
+            элементы коллекции не имеют идентификатора, и Hibernate не может обращаться индивидуально к каждому элементу
+            коллекции. Когда мы добавляем новый объект в коллекцию или удаляем из коллекции существующий элемент,
+            Hibernate удаляет все строки из таблицы элементов и вставляет новые строки по одной для каждого элемента в
+            коллекции.
+        </p>
+        <p class="example">
+            То есть при добавлении одного элемента в коллекцию Hibernate не добавит одну строку в таблицу коллекции, а
+            очистит её и заполнит по новой всеми элементами.
+        </p>
+        <p>
+            Поэтому коллекции элементов следует использовать только для очень маленьких коллекций, чтобы Hibernate не
+            выполнял слишком много операторов SQL.
+        </p>
+        <p>
+            Во всех других случаях рекомендуется использовать коллекции сущностей с @OneToMany
+        </p>
     </div>
 
     <a href="#" class="button button--top"></a>
