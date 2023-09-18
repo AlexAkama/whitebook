@@ -21,11 +21,12 @@
     </div>
     <ol class="menu">
         <li><a href="#q1">Алгоритм Заяц и Черепаха</a></li>
+        <li><a href="#q2">Бинарный поиск</a></li>
     </ol>
 </section>
 
 <section class="container" id="q1">
-    <h1>Алгоритм Заяц и Черепаха</h1>
+    <h1><a href="#">Алгоритм Заяц и Черепаха</a></h1>
     <p class="main-mind">
         Принцип достаточно прост - делаем два указателя и пускаем их по списку с разной скоростью.
         Первый медленный или черепаха идет по каждому узлу списка, а второй, быстрый Заяц - скачет через один.
@@ -88,8 +89,68 @@
     <a href="#" class="button button--top"></a>
 </section>
 
+<section class="container" id="q2">
+    <h1><a href="#">Бинарный поиск (Binary Search)</a></h1>
+
+    <p>
+        Основная мысль бинарного поиска заключается в эффективном нахождении заданного элемента в упорядоченном массиве
+        данных. Основная идея состоит в том, чтобы разделить массив пополам и проверить, находится ли искомый элемент в
+        левой или правой половине массива. Затем процесс повторяется для выбранной половины, пока не будет найден
+        искомый элемент или пока не останется только один элемент в массиве.
+    </p>
+
+    <div class="image-box">
+        <img class="image-box" src="img/binary_search.png" alt="Бинарный поиск">
+    </div>
+
+    <p class="no_mb">Основной алгоритм бинарного поиска:</p>
+    <ol>
+        <li>
+            Установите начальные значения для переменных low (нижняя граница) и high (верхняя граница) равными 0 и
+            length&nbsp;-&nbsp;1, где length - это длина массива.
+        </li>
+        <li>
+            <p>Пока low не превышает high, выполните следующие шаги:</p>
+            <ul class="no_mb">
+                <li>Вычислите средний индекс как (low&nbsp;+&nbsp;high)&nbsp;/&nbsp;2</li>
+                <li>Если элемент с индексом mid равен искомому элементу, верните&nbsp;mid</li>
+                <li>Если элемент с индексом mid меньше искомого элемента, обновите low как mid&nbsp;+&nbsp;1</li>
+                <li>Если элемент с индексом mid больше искомого элемента, обновите high как mid&nbsp;-&nbsp;1</li>
+            </ul>
+        </li>
+        <li> Если цикл завершается без нахождения искомого элемента, верните -1</li>
+    </ol>
+
+    <p class="main-mind">
+        Бинарный поиск работает ТОЛЬКО на отсортированных массивах.
+    </p>
+
+    <p class="no_mb">Пример кода:</p>
+    <div class="code">
+    <pre><code>    public static int <method>binarySearch</method>(int[] arr, int target) {
+        int left = 0;
+        int right = arr.length - 1;
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            if (arr[mid] == target) {
+                return mid;
+            }
+            if (arr[mid] < target) {
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
+        }
+        return -1;
+    }</code></pre>
+    </div>
+
+
+    <a href="#" class="button button--top"></a>
+</section>
+
 <footer>
-        <div class="footer__text"><a href="https://t.me/java40plus" title="Мой блог в телеграм">
+    <div class="footer__text"><a href="https://t.me/java40plus" title="Мой блог в телеграм">
         Алексей Маслов, 2021-2023
     </a></div>
 </footer>

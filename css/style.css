@@ -438,8 +438,13 @@ class-name,
     white-space: nowrap;
 }
 
+code {
+    font-family: 'Monaco', 'Menlo', 'Consolas', 'Courier New', monospace;
+    padding: 0;
+}
 
 /*Убрать класс name*/
+method,
 .code > p > span.name,
 .code > p > name {
     font-family: 'Monaco', 'Menlo', 'Consolas', 'Courier New', monospace;
