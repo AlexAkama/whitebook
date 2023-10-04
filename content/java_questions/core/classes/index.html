@@ -38,7 +38,7 @@
 </section>
 
 <section class="container" id="q1">
-    <h1>Какие виды классов есть в JAVA?</h1>
+    <h1><a href="#">Какие виды классов есть в JAVA?</a></h1>
     <ul>
         <li>
             <p><span class="accent-mono">Top level class</span> (Обычный класс):</p>
@@ -65,7 +65,7 @@
 </section>
 
 <section class="container" id="q2">
-    <h1>Расскажите про вложенные классы.<br>В каких случаях они применяются?</h1>
+    <h1><a href="#">Расскажите про вложенные классы.<br>В каких случаях они применяются?</a></h1>
     <p class="main-mind">
         Класс называется вложенным (Nested class), если он определен внутри другого класса.
     </p>
@@ -130,7 +130,7 @@
 </section>
 
 <section class="container" id="q3">
-    <h1>Что такое локальный класс?<br>Каковы его особенности?</h1>
+    <h1><a href="#">Что такое локальный класс?<br>Каковы его особенности?</a></h1>
     <p class="main-mind">
         Local inner class (Локальный класс) - это вложенный класс, который может быть декларирован
         в любом блоке, в котором разрешается декларировать переменные.
@@ -156,7 +156,7 @@
 </section>
 
 <section class="container" id="q4">
-    <h1>Что такое анонимные классы?<br>Где они применяются?</h1>
+    <h1><a href="#">Что такое анонимные классы?<br>Где они применяются?</a></h1>
     <p class="main-mind">
         Это вложенный локальный класс без имени, который разрешено декларировать в любом месте
         обрамляющего класса, разрешающем размещение выражений.
@@ -196,7 +196,7 @@
 </section>
 
 <section class="container" id="q5">
-    <h1>Что такое перечисления (enum)?</h1>
+    <h1><a href="#">Что такое перечисления (enum)?</a></h1>
     <p class="main-mind">
         Перечисления представляют набор логически связанных констант.
     </p>
@@ -226,7 +226,7 @@
 </section>
 
 <section class="container" id="q6">
-    <h1>Конструкторы</h1>
+    <h1><a href="#">Конструкторы</a></h1>
     <h3>Что такое конструктор по умолчанию?</h3>
     <p>
         Если у какого-либо класса не определить конструктор, то компилятор сгенерирует конструктор без аргументов - так
@@ -261,7 +261,7 @@
 </section>
 
 <section class="container" id="q7">
-    <h1>Какие модификаторы доступа есть в Java?</h1>
+    <h1><a href="#">Какие модификаторы доступа есть в Java?</a></h1>
     <h3>Модификаторы доступа</h3>
     <p><span class="bold">private</span>(приватный): члены класса доступны только внутри класса.</p>
     <p>
@@ -276,6 +276,51 @@
         Во время наследования возможно изменения модификаторов доступа в сторону большей
         видимости (для поддержания соответствия принципу подстановки Барбары Лисков).
     </p>
+
+    <table class="list list--dictionary list--content-center" aria-label="Access modifiers">
+        <col style="width: 20%">
+        <col style="width: 20%">
+        <col style="width: 20%">
+        <col style="width: 20%">
+        <col style="width: 20%">
+        <thead>
+        <tr>
+            <th>Ключевое слово</th>
+            <th>Класс</th>
+            <th>Пакет</th>
+            <th>Наследник</th>
+            <th>Все</th>
+        </tr>
+        </thead>
+        <tr>
+            <td>private</td>
+            <td class="good bold">YES</td>
+            <td class="bad bold">NO</td>
+            <td class="bad bold">NO</td>
+            <td class="bad bold">NO</td>
+        </tr>
+        <tr>
+            <td>-</td>
+            <td class="good bold">YES</td>
+            <td class="good bold">YES</td>
+            <td class="bad bold">NO</td>
+            <td class="bad bold">NO</td>
+        </tr>
+        <tr>
+            <td>protected</td>
+            <td class="good bold">YES</td>
+            <td class="good bold">YES</td>
+            <td class="good bold">YES</td>
+            <td class="bad bold">NO</td>
+        </tr>
+        <tr>
+            <td>public</td>
+            <td class="good bold">YES</td>
+            <td class="good bold">YES</td>
+            <td class="good bold">YES</td>
+            <td class="good bold">YES</td>
+        </tr>
+    </table>
 
     <h3>Модификатор static</h3>
     <p class="no_mb"> Модификатор, применяемый к полю, блоку, методу, внутреннему классу. </p>
@@ -298,7 +343,7 @@
 </section>
 
 <section class="container" id="q8">
-    <h1>Использование модификаторов</h1>
+    <h1><a href="#">Использование модификаторов</a></h1>
     <hr>
     <h3>Может ли статический метод быть переопределён или перегружен?</h3>
     <p>
@@ -353,7 +398,7 @@
 </section>
 
 <section class="container" id="q9">
-    <h1>Абстрактные классы</h1>
+    <h1><a href="#">Абстрактные классы</a></h1>
     <hr>
     <h3>Что такое абстрактные классы?<br>Чем они отличаются от обычных?</h3>
     <p>
@@ -404,7 +449,7 @@
 </section>
 
 <section class="container" id="q10">
-    <h1>Интерфейсы</h1>
+    <h1><a href="#">Интерфейсы</a></h1>
     <h3>Что такое интерфейсы?</h3>
     <p>
         Ключевое слово <span class="code-word">interface</span> используется для создания полностью абстрактных классов.
@@ -506,7 +551,7 @@
 </section>
 
 <section class="container" id="q11">
-    <h1>Порядок вызова конструкторов и блоков инициализации</h1>
+    <h1><a href="#">Порядок вызова конструкторов и блоков инициализации</a></h1>
     <p>
         Сначала вызываются <strong>все статические блоки</strong> в очередности от первого статического блока
         корневого предка и выше <strong>по цепочке иерархии</strong> до статических блоков самого класса.
@@ -604,7 +649,7 @@
 </section>
 
 <section class="container" id="q12">
-    <h1>OBJECT</h1>
+    <h1><a href="#">OBJECT</a></h1>
     <p class="no_mb">Object это базовый класс для всех остальных объектов в Java.</p>
     <p class="main-mind">Любой класс наследуется от Object и, соответственно, наследуют его методы.</p>
     <h3>Методы класса Object</h3>
@@ -906,7 +951,7 @@
 </div>
 
 <footer>
-        <div class="footer__text"><a href="https://t.me/java40plus" title="Мой блог в телеграм">
+    <div class="footer__text"><a href="https://t.me/java40plus" title="Мой блог в телеграм">
         Алексей Маслов, 2021-2023
     </a></div>
 </footer>
