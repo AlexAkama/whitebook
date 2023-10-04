@@ -438,17 +438,34 @@ class-name,
     white-space: nowrap;
 }
 
+.code pre,
 code {
     font-family: 'Monaco', 'Menlo', 'Consolas', 'Courier New', monospace;
     padding: 0;
 }
 
-/*Убрать класс name*/
-method,
+.code class {
+    font-weight: bold;
+    line-height: 2;
+}
+
+.code method {
+    font-family: inherit;
+    font-weight: bold;
+    line-height: 2;
+    color: blue;
+}
+
+/*Убрать класс name и */
 .code > p > span.name,
 .code > p > name {
     font-family: 'Monaco', 'Menlo', 'Consolas', 'Courier New', monospace;
     color: blue;
+}
+
+.code rem {
+    font-family: inherit;
+    color: #cccccc;
 }
 
 .scroll {
