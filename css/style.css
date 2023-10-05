@@ -406,7 +406,7 @@ class-name,
     color: darkgrey;
 }
 
-.definition span
+.definition span,
 .term span,
 .accent-mono {
     font-family: 'Monaco', 'Menlo', 'Consolas', 'Courier New', monospace;
