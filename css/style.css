@@ -80,8 +80,8 @@ h3 > a {
 }
 
 h3 > a:before {
-    content: '▶ ';
-    color: #00a82d;
+    /*content: '▶ ';*/
+    /*color: #00a82d;*/
 }
 
 h4 {
