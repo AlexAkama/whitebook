@@ -1082,4 +1082,8 @@ input:focus {
     .spoiler p {
         padding-left: 15px;
     }
+
+    .after-h1 {
+        padding-left: 0;
+    }
 }

@@ -26,13 +26,14 @@
         <li><a href="#q2">Какие преимущества у ООП?</a></li>
         <li><a href="#q3">Какие недостатки у ООП?</a></li>
         <li><a href="#q4">Назовите основные принципы ООП.</a></li>
-        <li><a href="#q5">Что такое инкапсуляция? (с&nbsp;примером)</a></li>
-        <li><a href="#q6">Что такое наследование?(с&nbsp;примером)</a></li>
-        <li><a href="#q7">Что такое полиморфизм? (с&nbsp;примером)</a></li>
-        <li><a href="#q8">Что такое ассоциация, агрегация и композиция?</a></li>
-        <li><a href="#q9">Расскажите про раннее (статическое) и позднее (динамическое) связывание.</a></li>
+        <li><a href="#q5">Что такое абстракция?</a></li>
+        <li><a href="#q6">Что такое инкапсуляция? (с&nbsp;примером)</a></li>
+        <li><a href="#q7">Что такое наследование?(с&nbsp;примером)</a></li>
+        <li><a href="#q8">Что такое полиморфизм? (с&nbsp;примером)</a></li>
+        <li><a href="#q9">Что такое ассоциация, агрегация и композиция?</a></li>
+        <li><a href="#q10">Расскажите про раннее (статическое) и позднее (динамическое) связывание.</a></li>
         <li><a href="../../../theory/#solid" target="_blank">SOLID</a></li>
-        <li><a href="#q11">REST</a></li>
+        <li><a href="#q12">REST</a></li>
     </ol>
 </section>
 
@@ -105,13 +106,14 @@
     <h1 class="no_mb"><a href="#">Назовите основные принципы ООП?</a></h1>
     <h3>Принципы:</h3>
     <ul class="tab-2">
-        <li><a href="#q5">инкапсуляция</a></li>
-        <li><a href="#q6">наследование</a></li>
-        <li><a href="#q7">полиморфизм</a></li>
+        <li><a href="#q6">инкапсуляция</a></li>
+        <li><a href="#q7">наследование</a></li>
+        <li><a href="#q8">полиморфизм</a></li>
     </ul>
     <div>
         <p class="term">
-            <span>Инкапсуляция</span> - это свойство системы, позволяющее объединить данные и методы, работающие с ними, в
+            <span>Инкапсуляция</span> - это свойство системы, позволяющее объединить данные и методы, работающие с ними,
+            в
             классе и скрыть детали реализации от пользователя, открыв только то, что необходимо при
             последующем использовании.
         </p>
@@ -131,11 +133,47 @@
 </section>
 
 <section class="container" id="q5">
+    <h1><a href="#">Что такое абстракция?</a></h1>
+    <div class="after-h1 tab-2">
+        <ul>
+            <li><a href="#q6">инкапсуляция</a></li>
+            <li><a href="#q7">наследование</a></li>
+            <li><a href="#q8">полиморфизм</a></li>
+        </ul>
+    </div>
+    <p class="main-mind">
+        Абстракция в программировании - это процесс сокрытия сложности от пользователя и показа только необходимой
+        функциональности.
+    </p>
+    <p>В контексте ООП, это означает, что <strong>детали реализации класса скрываются</strong> от пользователя.</p>
+    <p>В Java, абстракцию можно достичь двумя способами:</p>
+    <ol class="margined">
+        <li>
+            <p class="term">
+                <span>Абстрактные классы:</span>
+                Это классы, которые не могут быть инстанцированы, и они обычно содержат один или несколько
+                абстрактных методов (методы без тела).
+            </p>
+        </li>
+        <li>
+            <p class="term">
+                <span>Интерфейсы:</span>
+                Это полностью абстрактные классы, которые могут содержать только абстрактные методы.
+            </p>
+        </li>
+    </ol>
+
+
+    <a href="#" class="button button--top"></a>
+</section>
+
+<section class="container" id="q6">
     <h1><a href="#">Что такое инкапсуляция?</a></h1>
     <div class="after-h1 tab-2">
         <ul>
-            <li><a href="#q6">наследование</a></li>
-            <li><a href="#q7">полиморфизм</a></li>
+            <li><a href="#q7">наследование</a></li>
+            <li><a href="#q8">полиморфизм</a></li>
+            <li><a href="#q5">абстракция</a></li>
         </ul>
     </div>
     <p class="main-mind">
@@ -199,12 +237,13 @@
     <a href="#" class="button button--top"></a>
 </section>
 
-<section class="container" id="q6">
+<section class="container" id="q7">
     <h1><a href="#">Что такое наследование?</a></h1>
     <div class="after-h1 tab-2">
         <ul>
-            <li><a href="#q5">инкапсуляция</a></li>
-            <li><a href="#q7">полиморфизм</a></li>
+            <li><a href="#q6">инкапсуляция</a></li>
+            <li><a href="#q8">полиморфизм</a></li>
+            <li><a href="#q5">абстракция</a></li>
         </ul>
     </div>
     <p class="main-mind">
@@ -258,12 +297,13 @@
     <a href="#" class="button button--top"></a>
 </section>
 
-<section class="container" id="q7">
+<section class="container" id="q8">
     <h1><a href="#">Что такое полиморфизм?</a></h1>
     <div class="after-h1 tab-2">
         <ul>
-            <li><a href="#q5">инкапсуляция</a></li>
-            <li><a href="#q6">наследование</a></li>
+            <li><a href="#q6">инкапсуляция</a></li>
+            <li><a href="#q7">наследование</a></li>
+            <li><a href="#q5">абстракция</a></li>
         </ul>
     </div>
     <p class="main-mind">
@@ -320,7 +360,7 @@
     <a href="#" class="button button--top"></a>
 </section>
 
-<section class="container" id="q8">
+<section class="container" id="q9">
     <h1><a href="#">Что такое ассоциация, агрегация и композиция?</a></h1>
     <p class="main-mind no_mb">Ассоциация обозначает связь между объектами.</p>
     <p>Композиция и агрегация — частные случаи ассоциации «часть-целое».</p>
@@ -359,7 +399,7 @@
     <a href="#" class="button button--top"></a>
 </section>
 
-<section class="container" id="q9">
+<section class="container" id="q10">
     <h1><a href="#">Расскажите про раннее (статическое) и позднее (динамическое) связывание.</a></h1>
     <p class="main-mind">Связывание - присоединение вызова метода к телу метода.</p>
     <p class="no_mb"><span class="bold">Раннее (статическое) связывание</span>
@@ -409,7 +449,7 @@ class <class>CarInsurance</class> extends <class>Insurance</class> {
     <a href="#" class="button button--top"></a>
 </section>
 
-<section class="container" id="q11">
+<section class="container" id="q12">
     <h1><a href="#">REST</a></h1>
     <p>
         <span class="accent-mono">REST (Representational state transfer)</span>
@@ -444,7 +484,6 @@ class <class>CarInsurance</class> extends <class>Insurance</class> {
 
     <a href="#" class="button button--top"></a>
 </section>
-
 
 <div class="navi">
     <p></p>
