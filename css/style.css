@@ -75,6 +75,15 @@ h2, h3 {
     margin-bottom: 12px;
 }
 
+h3 > a {
+    text-decoration: none;
+}
+
+h3 > a:before {
+    content: '▶ ';
+    color: #00a82d;
+}
+
 h4 {
     font-size: 18px;
     margin-top: 18px;
@@ -91,6 +100,79 @@ strong {
     background-color: lightgoldenrodyellow;
     border-radius: 5px;
     font-family: inherit;
+}
+
+a {
+    font-family: inherit;
+}
+
+a:link,
+a:visited {
+    color: inherit;
+}
+
+a:hover {
+    color: #00a82d;
+    text-decoration: underline;
+}
+
+ol {
+    padding-left: 32px;
+}
+
+ul {
+    padding-left: 20px;
+}
+
+ul.dash-style > li {
+    list-style-type: none;
+}
+
+ul.dash-style > li:before {
+    content: '– ';
+}
+
+ol, ul {
+    margin-bottom: 14px;
+}
+
+ol.marker-mono li::marker {
+    font-family: 'Monaco', 'Menlo', 'Consolas', 'Courier New', monospace;
+    font-weight: 700;
+}
+
+li p {
+    margin-bottom: 0;
+}
+
+*.margined li {
+    margin-bottom: 14px;
+}
+
+td {
+    vertical-align: top;
+    padding-bottom: 10px;
+}
+
+li span,
+td span {
+    font-weight: bold;
+}
+
+td p, td div {
+    margin: 5px 0 0 20px;
+}
+
+td div ol {
+    margin-left: 40px;
+}
+
+p {
+    margin-bottom: 14px;
+}
+
+img {
+    max-width: 100%;
 }
 
 .no_mb {
@@ -112,7 +194,6 @@ strong {
 .mb40 {
     margin-bottom: 40px !important;
 }
-
 
 .sparse-li li {
     margin-bottom: 10px !important;
@@ -171,75 +252,6 @@ strong {
     content: '▶';
     padding-left: 5px;
     color: #00a82d;
-}
-
-a:link, a:visited {
-    color: inherit;
-}
-
-a:hover {
-    color: #00a82d;
-    text-decoration: underline;
-}
-
-ol {
-    padding-left: 32px;
-}
-
-ul {
-    padding-left: 20px;
-}
-
-ul.dash-style > li {
-    list-style-type: none;
-}
-
-ul.dash-style > li:before {
-    content: '– ';
-}
-
-ol, ul {
-    margin-bottom: 14px;
-}
-
-ol.marker-mono li::marker {
-    font-family: 'Monaco', 'Menlo', 'Consolas', 'Courier New', monospace;
-    font-weight: 700;
-}
-
-li p {
-    margin-bottom: 0;
-}
-
-*.margined li {
-    margin-bottom: 14px;
-}
-
-
-td {
-    vertical-align: top;
-    padding-bottom: 10px;
-}
-
-li span,
-td span {
-    font-weight: bold;
-}
-
-td p, td div {
-    margin: 5px 0 0 20px;
-}
-
-td div ol {
-    margin-left: 40px;
-}
-
-p {
-    margin-bottom: 14px;
-}
-
-img {
-    max-width: 100%;
 }
 
 .image-box {
