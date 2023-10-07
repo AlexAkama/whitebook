@@ -345,10 +345,10 @@ img {
 }
 
 .button--top {
-    opacity: 0.5;
-    position: absolute;
+    opacity: 1;
+    position: fixed;
     right: 5px;
-    bottom: 12px;
+    bottom: 5px;
     padding: 0;
     font-weight: bold;
     border: 20px solid transparent;
@@ -356,7 +356,11 @@ img {
 }
 
 .button--top:hover {
-    opacity: 1;
+    border: none;
+}
+.button--top:hover::after {
+    color: green;
+    content: "ВВЕРХ";
 }
 
 .link-to-source {
