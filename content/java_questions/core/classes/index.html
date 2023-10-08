@@ -37,6 +37,7 @@
         <li><a href="#q13">this и super</a></li>
         <li><a href="#q14">Методы. Переопределение и перегрузка</a></li>
         <li><a href="#q15">Effectively final</a></li>
+        <li><a href="#q16">Record</a></li>
     </ol>
 </section>
 
@@ -1738,6 +1739,44 @@
     </div>
 
     <a href="#" class="button button--top"></a>
+</section>
+
+<section class="container" id="q16">
+    <h1><a href="#">Что такое record? Когда можно его применять?</a></h1>
+    <div>
+        <p>
+            Подробненько <a href="https://www.tune-it.ru/web/romo/blog/-/blogs/java-records" target="_blank">тут</a>
+        </p>
+        <p class="example">
+            Record в Java — это нововведение, введенное в Java 14 в качестве превью-функции и стабилизированное в Java
+            16. Record позволяет сократить количество шаблонного кода при создании классов, которые служат просто
+            контейнерами данных.
+        </p>
+        <p class="term">
+            <span>Record</span>
+            — это новый тип объявления (type of declaration) для определения неизменяемых (immutable) классов
+            данных.
+        </p>
+        <p>
+            Он автоматически предоставляет реализации
+            <span class="accent-mono">конструктора</span>
+            и методов
+            <span class="accent-mono">equals()</span>,
+            <span class="accent-mono">hashCode()</span>,
+            <span class="accent-mono">toString()</span>,
+            а также
+            <span class="accent-mono">геттеров</span>
+            для каждого объявленного поля (с именами полей, а не с префиксом get).
+        </p>
+        <p>
+            Record лучше всего подходит для небольших и неизменяемых классов данных. Они не предназначены для больших
+            классов с некоторой сложной логикой или состоянием.
+        </p>
+        <p>
+            Помимо этого, Record не может наследоваться от другого класса (кроме java.lang.Record) и не может быть
+            суперклассом.
+        </p>
+    </div>
 </section>
 
 <div class="navi">
