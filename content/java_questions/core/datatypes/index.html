@@ -161,7 +161,6 @@
             <td>true (истина) или false (ложь)</td>
         </tr>
     </table>
-    <a href="#" class="button button--top"></a>
 </section>
 
 <section class="container" id="q2">
@@ -169,7 +168,6 @@
     <p class="no_mb">Значение примитива становится объектом, чтобы выполнять различные операции ( .parseInt()).</p>
     <p class="no_mb">Примитивы не имеют методов. </p>
     <p>Объекты классов-оберток являются неизменяемыми (Immutable).</p>
-    <a href="#" class="button button--top"></a>
 </section>
 
 <section class="container" id="q3">
@@ -235,8 +233,6 @@
         констант в диапазоне -128 ... +127 является то, что они кэшируются JVM. Поэтому такие обертки с
         одинаковыми значениями будут являться ссылками на один объект.
     </p>
-
-    <a href="#" class="button button--top"></a>
 </section>
 
 <section class="container" id="q4">
@@ -432,7 +428,6 @@
         тип ссылки, через которую происходит обращение к объекту.
     </p>
 
-
     <p> Для проверки возможности приведения нужно воспользоваться оператором
         <span class="code-word">instanceof</span>: </p>
     <div class="code">
@@ -442,8 +437,6 @@
         <p>}</p>
     </div>
 
-
-    <a href="#" class="button button--top"></a>
 </section>
 
 <section class="container" id="q5">
@@ -468,8 +461,6 @@
         <p>System.out.println(i1==i2); //true</p>
         <p> System.out.println(i3==i4); //false</p>
     </div>
-
-    <a href="#" class="button button--top"></a>
 </section>
 
 <section class="container" id="q6">
@@ -486,8 +477,6 @@
         <li>Начиная с Java 7 строки можно использовать в конструкции switch.</li>
     </ul>
     <p>Каждый объект можно привести к строке <span class="code-word">.toString</span></p>
-
-    <a href="#" class="button button--top"></a>
 </section>
 
 <section class="container" id="q7">
@@ -521,8 +510,6 @@
         <p>System.out.println("q==t: " + (q==t)); //true</p>
     </div>
     <p>Пул строк является примером паттерна «Приспособленец» (Flyweight).</p>
-
-    <a href="#" class="button button--top"></a>
 </section>
 
 <section class="container" id="q8">
@@ -555,40 +542,42 @@
             обработка происходит быстрее.
         </li>
     </ul>
-
-    <a href="#" class="button button--top"></a>
 </section>
 
 <section class="container" id="q9">
     <h1>Какая основная разница между String, StringBuffer, StringBuilder?</h1>
-    <p>
-        Класс <span class="bold">String</span>String является неизменяемым (<span class="bold">immutable</span>) -
-        модифицировать объект такого класса нельзя, можно лишь заменить его созданием нового экземпляра.
-    </p>
-    <p>
-        Класс <span class="bold">StringBuffer изменяемый</span> - использовать StringBuffer следует тогда, когда
-        необходимо
-        часто модифицировать содержимое. <span class="bold">Потокобезопасный</span>. <span
-            class="bold">Синхронизирован</span>ные методы работают <span class="bold">медленнее</span> не
-        сихнронизированных.
-    </p>
-    <p>
-        Класс <span class="bold">StringBuilder</span> был добавлен в Java 5 и он во всем идентичен классу StringBuffer
-        за исключением того, что он <span class="bold">не синхронизирован</span> и поэтому его методы выполняются
-        значительно <span class="bold">быстрей</span>.
-    </p>
-    <p>
-        Класс <span class="bold">StringJoiner</span> используется, чтобы создать последовательность строк, разделенных
-        разделителем с возможностью присоединить к полученной строке префикс и суффикс:
-    </p>
-    <div class="code">
-        <p>StringJoiner joiner = new StringJoiner(".", "prefix-", "-suffix");</p>
-        <p>for (String s : "Hello the brave world".split(" ")) {</p>
-        <p class="tab-1">joiner.add(s);</p>
-        <p>}</p>
-        <p>System.out.println(joiner); //prefix-Hello.the.brave.world-suffix</p>
+    <div>
+
+        <p>
+            Класс <span class="bold">String</span> является неизменяемым (<span class="bold">immutable</span>) -
+            модифицировать объект такого класса нельзя, можно лишь заменить его созданием нового экземпляра.
+        </p>
+        <p>
+            Класс <span class="bold">StringBuffer изменяемый</span> - использовать StringBuffer следует тогда, когда
+            необходимо
+            часто модифицировать содержимое. <span class="bold">Потокобезопасный</span>. <span
+                class="bold">Синхронизирован</span>ные методы работают <span class="bold">медленнее</span> не
+            сихнронизированных.
+        </p>
+        <p>
+            Класс <span class="bold">StringBuilder</span> был добавлен в Java 5 и он во всем идентичен классу
+            StringBuffer
+            за исключением того, что он <span class="bold">не синхронизирован</span> и поэтому его методы выполняются
+            значительно <span class="bold">быстрей</span>.
+        </p>
+        <p>
+            Класс <span class="bold">StringJoiner</span> используется, чтобы создать последовательность строк,
+            разделенных
+            разделителем с возможностью присоединить к полученной строке префикс и суффикс:
+        </p>
+        <div class="code">
+            <p>StringJoiner joiner = new StringJoiner(".", "prefix-", "-suffix");</p>
+            <p>for (String s : "Hello the brave world".split(" ")) {</p>
+            <p class="tab-1">joiner.add(s);</p>
+            <p>}</p>
+            <p>System.out.println(joiner); //prefix-Hello.the.brave.world-suffix</p>
+        </div>
     </div>
-    <a href="#" class="button button--top"></a>
 </section>
 
 <section class="container" id="q10">
@@ -617,8 +606,6 @@
     <p class="example">
         Насколько я понял модификатор доступа ни куда не входит.
     </p>
-
-    <a href="#" class="button button--top"></a>
 </section>
 
 <section class="container" id="q11">
@@ -637,9 +624,6 @@
         Ссылка А копируется в ссылку B. К объекту это не относится — у нас по-прежнему всего один объект.
         Но теперь есть две различных ссылки, контролирующие один и тот же объект Cat.
     </p>
-
-
-    <a href="#" class="button button--top"></a>
 </section>
 
 <div class="navi">
@@ -652,6 +636,8 @@
         Алексей Маслов, 2021-2023
     </a></div>
 </footer>
+
+<a href="#" class="button button--top"></a>
 
 </body>
 
