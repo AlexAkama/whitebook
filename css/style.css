@@ -686,6 +686,10 @@ td .code {
     vertical-align: middle;
 }
 
+.list--content-text-small td:not(:first-child) {
+    font-size: small;
+}
+
 an,
 .annotation {
     font-weight: bold;
