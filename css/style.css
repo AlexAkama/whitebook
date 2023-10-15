@@ -599,6 +599,10 @@ td .code {
     font-size: large;
 }
 
+.navi a {
+    flex-basis: 50%;
+}
+
 .navi-button {
     opacity: 0.5;
     right: 5px;
@@ -615,32 +619,20 @@ td .code {
     text-decoration: underline;
 }
 
-.navi-button:after {
-    position: absolute;
-    top: 15%;
+.navi--prev {
+    padding-left: 10px;
 }
 
-.navi--prev {
-    padding-left: 30px;
+.navi--prev:before {
+    content: '◀';
 }
 
 .navi--next {
     text-align: right;
-    padding-right: 30px;
-}
-
-.navi--prev:after {
-    content: '';
-    border: 10px solid transparent;
-    border-right: 15px solid green;
-    left: 0;
 }
 
 .navi--next:after {
-    content: '';
-    border: 10px solid transparent;
-    border-left: 15px solid green;
-    right: 0;
+    content: '▶';
 }
 
 .list {
@@ -690,6 +682,7 @@ td .code {
 }
 
 an,
+    /*убрать, переделать code*/
 .annotation {
     font-weight: bold;
     color: darkorange;
