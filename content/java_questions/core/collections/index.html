@@ -22,18 +22,18 @@
     </div>
     <h4 class="no_mt">Вопросы:</h4>
     <ol class="menu">
-        <li><a href="#q1">Базовые интерфейсы</a></li>
-        <li><a href="#q2">Интерфейс Collection</a></li>
-        <li><a href="#q3">Реализации интерфейса List</a></li>
-        <li><a href="#q4">Реализации интерфейса Set</a></li>
-        <li><a href="#q5">Реализации интерфейса Queue</a></li>
-        <li><a href="#q6">Реализации интерфейса Map</a></li>
-        <li><a href="#q7">Другие коллекции</a></li>
-        <li><a href="#q8">Синхронизированные коллекции</a></li>
+        <li><a href="#base_interface">Базовые интерфейсы</a></li>
+        <li><a href="#collection">Интерфейс Collection</a></li>
+        <li><a href="#list">Реализации интерфейса List</a></li>
+        <li><a href="#set">Реализации интерфейса Set</a></li>
+        <li><a href="#queue">Реализации интерфейса Queue</a></li>
+        <li><a href="#map">Реализации интерфейса Map</a></li>
+        <li><a href="#other">Другие коллекции</a></li>
+        <li><a href="#synchronized">Синхронизированные коллекции</a></li>
     </ol>
 </section>
 
-<section class="container" id="q1">
+<section class="container" id="base_interface">
     <h1>Базовые интерфейсы</h1>
     <p>
         В библиотеке коллекций Java существует <strong>два базовых интерфейса</strong>,
@@ -62,11 +62,9 @@
     </p>
     <p class="no_mb">Интерфейсы Collection и Map являются базовыми, но они не есть единственными.</p>
     <p>Их расширяют другие интерфейсы, добавляющие дополнительный функционал.</p>
-
-    <a href="#" class="button button--top"></a>
 </section>
 
-<section class="container" id="q2">
+<section class="container" id="collection">
     <h1>Интерфейс Collection</h1>
     <div class="image-box">
         <img class="image" src="./img/collection.png" alt="Интерфейс Collection">
@@ -111,10 +109,9 @@
             </p>
         </li>
     </ul>
-    <a href="#" class="button button--top"></a>
 </section>
 
-<section class="container" id="q3">
+<section class="container" id="list">
     <h1>Реализации интерфейса List</h1>
     <div class="image-box">
         <img class="image" src="./img/list.png" alt="Интерфейс List">
@@ -146,11 +143,9 @@
         константное время — ссылки постоянно хранятся на первый и последний, так что добавление элемента в конец списка
         вовсе не значит, что прийдется перебирать весь список в поисках последнего элемента).
     </p>
-
-    <a href="#" class="button button--top"></a>
 </section>
 
-<section class="container" id="q4">
+<section class="container" id="set">
     <h1>Реализации интерфейса Set</h1>
     <div class="code">
         <img class="image" src="./img/set.png" alt="Интерфейс Set">
@@ -190,11 +185,9 @@
         для хранения элементов. TreeSet хорош тем, что для операций add, remove и contains потребуется гарантированное
         время log(n).
     </p>
-
-    <a href="#" class="button button--top"></a>
 </section>
 
-<section class="container" id="q5">
+<section class="container" id="queue">
     <h1>Реализации интерфейса Queue</h1>
     <div class="image-box">
         <img class="image" src="./img/queue.png" alt="Интерфейс Queue">
@@ -204,11 +197,9 @@
         – единственная прямая реализация интерфейса Queue (не считая LinkedList, который больше является
         списком, чем очередью).
     </p>
-
-    <a href="#" class="button button--top"></a>
 </section>
 
-<section class="container" id="q6">
+<section class="container" id="map">
     <h1>Реализации интерфейса Map</h1>
     <p>
         Интерфейс Map соотносит уникальные ключи со значениями. Ключ — это объект, который используется для
@@ -263,11 +254,9 @@
         словами, нахождение объекта представленного ключем в данной коллекции не блокирует сборщик мусора от зачистки.
         После того как ключ будет зачищен вся пара будет удалена из коллекции.
     </p>
-
-    <a href="#" class="button button--top"></a>
 </section>
 
-<section class="container" id="q7">
+<section class="container" id="other">
     <h1>Другие коллекции</h1>
     <p class="no_mb">Их еще называют "устаревшими".</p>
     <p class="example">Но нет аннотации @Deprecated или каких-либо иных, которые бы запрещали их использование в
@@ -301,10 +290,9 @@
         Все методы Hashtable, Stack, Vector являются синхронизированными, что делает их менее эффективными в
         однопоточных приложениях.
     </p>
-    <a href="#" class="button button--top"></a>
 </section>
 
-<section class="container" id="q8">
+<section class="container" id="synchronized">
     <h1>Синхронизированные коллекции</h1>
     <p>
         Получить синхронизированные объекты коллекций можно используя <strong>статические методы класса
@@ -329,8 +317,6 @@
         ConcurrentModificationException.
     </p>
     <p>Кроме того всегда существует возможность "классической" синхронизации с помощью блока synchronized.</p>
-
-    <a href="#" class="button button--top"></a>
 </section>
 
 <div class="navi">
@@ -338,12 +324,14 @@
     <a class="navi-button navi--next" href="../functional_interfaces/">Функциональные интерфейсы</a>
 </div>
 
-
 <footer>
         <div class="footer__text"><a href="https://t.me/java40plus" title="Мой блог в телеграм">
         Алексей Маслов, 2021-2023
     </a></div>
 </footer>
+
+<a href="#" class="button button--top"></a>
+
 
 </body>
 
