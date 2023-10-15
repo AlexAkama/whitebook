@@ -132,7 +132,12 @@ public class <class>ColourPoint</class> extends <class>Point</class> {
     <h1><a href="#">INSTANCEOF</a></h1>
     <div>
         <p class="question">Что будет выведено в консоль?</p>
-        <div class="code"><pre>public class <class>Loader</class> {
+        <div class="code"><pre>class <class>A</class> {}
+class <class>B</class> extends <class>A</class> {}
+class <class>C</class> extends <class>B</class> {}
+class <class>D</class> extends <class>C</class> {}
+
+public class <class>Loader</class> {
     public static void <method>main</method>(String[] args) {
         B b = new C();
         A a = b;
@@ -141,12 +146,7 @@ public class <class>ColourPoint</class> extends <class>Point</class> {
         if (a instanceof C) System.out.println("C");
         if (a instanceof D) System.out.println("D");
     }
-}
-
-class <class>A</class> {}
-class <class>B</class> extends <class>A</class> {}
-class <class>C</class> extends <class>B</class> {}
-class <class>D</class> extends <class>C</class> {}</pre>
+}</pre>
         </div>
         <p class="answer">A B C</p>
     </div>
