@@ -292,6 +292,7 @@ img {
     margin-bottom: 10px;
 }
 
+/*удалить*/
 .pred-menu {
     padding-left: 30px;
 }
@@ -384,7 +385,6 @@ img {
     background-repeat: no-repeat;
 }
 
-class-name,
 .bold {
     font-weight: bold;
 }
@@ -423,6 +423,7 @@ class-name,
     color: darkgrey;
 }
 
+.example span,
 .definition span,
 .term span,
 .accent-mono {
@@ -443,6 +444,7 @@ class-name,
     border-radius: 4px;
 }
 
+code,
 .code {
     font-family: 'Monaco', 'Menlo', 'Consolas', 'Courier New', monospace;
     font-size: smaller;
@@ -462,15 +464,12 @@ code {
     padding: 0;
 }
 
-.code class {
-    font-weight: bold;
-    line-height: 2;
-}
-
+.code class,
 .code method {
     font-family: inherit;
     font-weight: bold;
-    line-height: 2;
+    display: inline-block;
+    margin-bottom: 7px;
     color: blue;
 }
 
@@ -1073,6 +1072,16 @@ input:focus {
     top: 0;
     right: 0;
     z-index: -1;
+}
+
+.question:before {
+    content: "Вопрос: ";
+    font-weight: bold;
+}
+
+.answer:before {
+    content: "Ответ: ";
+    font-weight: bold;
 }
 
 @media screen and (max-width: 1080px) {

@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Interview Tasks</title>
+    <link rel="stylesheet" href="../../../css/style.css">
+</head>
+<body>
+
+<section class="container" id="menu">
+    <h1 class="no_mb">Interview Tasks</h1>
+    <div class="after-h1">
+        Задачи с собесов и на тему
+    </div>
+    <div class="tab-2">
+        <p><a href="#equals">equals</a></p>
+        <p><a href="#instanceof">instanceof</a></p>
+        <p><a href="#method_overloading">Method Overloading (Перегрузка методов)</a></p>
+        <p><a href="#inheritance">Inheritance (Наследование)</a></p>
+    </div>
+</section>
+
+<section class="container" id="equals">
+    <h1><a href="#">EQUALS</a></h1>
+    <p><a class="link-to-source" href="../../java_questions/core/classes/index.html#equals_hashcode">Теория</a></p>
+    <div>
+        <p class="question">Что напечатает следующий код?</p>
+        <div class="code"><pre>public class <class>Point</class> {
+    private final int x;
+    private final int y;
+
+    public <method>Point</method>(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    public boolean <method>equals</method>(Point other) {
+        if (this == other) return true;
+
+        return this.x == other.x && this.y == other.y;
+    }
+
+    public int <method>hashCode</method>() {
+        return Objects.hash(x, y);
+    }
+}
+
+Point p1 = new Point(1, 2);
+Point p2 = new Point(1, 2);
+Point p3 = new Point(2022, 2023);
+
+System.out.println(p1.equals(p2));
+System.out.println(p1.equals(p3));
+
+Set&lt;Point&gt; set = new HashSet<>();
+set.add(p1);
+
+System.out.println(set.contains(p2));
+System.out.println(set.contains(p3));</pre>
+        </div>
+        <p class="answer no_mb">true false false false</p>
+        <p class="main-mind">
+            Метод <span>boolean equals(Point other)</span> не переопределяет <span>Object.equals</span>,
+            а перегружает его.
+            <br>Плюс не определен метод <span>hashcode()</span>, что осложняет нахождение объекта в HashSet.</p>
+    </div>
+
+    <hr>
+    <div>
+        <h4></h4>
+        <p class="question">Какое свойство equals нарушается в этом случае? (если нарушается)</p>
+        <div class="code">
+            <pre>public class <class>Point</class> {
+    private final int x;
+    private final int y;
+
+    public <method>Point</method>(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    // getters
+
+    <an>@Override</an>
+    public boolean <method>equals</method>(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Point)) return false;
+
+        Point other = (Point) o;
+
+        return x == other.x && y == other.y;
+    }
+}
+
+public class <class>ColourPoint</class> extends <class>Point</class> {
+    private final String colour;
+
+    public <method>ColourPoint</method>(int x, int y, String colour) {
+        super(x, y);
+        this.colour = colour;
+    }
+
+    // getters
+
+    <an>@Override</an>
+    public boolean <method>equals</method>(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof ColourPoint)) return false;
+
+        ColourPoint other = (ColourPoint) o;
+
+        return this.getX() == other.getX() &&
+               this.getY() == other.getY() &&
+               this.colour.equals(other.colour);
+    }
+
+}</pre>
+        </div>
+        <p class="answer">Симметрия</p>
+    </div>
+</section>
+
+<section class="container" id="instanceof">
+    <h1><a href="#">INSTANCEOF</a></h1>
+    <div>
+        <p class="question">Что будет выведено в консоль?</p>
+        <div class="code"><pre>public class <class>Loader</class> {
+    public static void <method>main</method>(String[] args) {
+        B b = new C();
+        A a = b;
+        if (a instanceof A) System.out.println("A");
+        if (a instanceof B) System.out.println("B");
+        if (a instanceof C) System.out.println("C");
+        if (a instanceof D) System.out.println("D");
+    }
+}
+
+class <class>A</class> {}
+class <class>B</class> extends <class>A</class> {}
+class <class>C</class> extends <class>B</class> {}
+class <class>D</class> extends <class>C</class> {}</pre>
+        </div>
+        <p class="answer">A B C</p>
+    </div>
+</section>
+
+<section class="container" id="method_overloading">
+    <h1><a href="#">Method Overloading (Перегрузка методов)</a></h1>
+    <div>
+        <p class="question">Что будет выведено в консоль?</p>
+        <div class="code"><pre>class <class>SuperBase</class> {
+    public int i = 3;
+
+    public void <method>foo</method> (Object o) {
+        System.out.println("Object " + i);
+    }
+    public void <method>foo</method> (String s) {
+        System.out.println("String " + i);
+    }
+}
+
+class <class>Base</class> extends <class>SuperBase</class> {
+    public <method>Base</method>() {
+        i = 5;
+    }
+
+    public static void <method>main</method>(String[] args) {
+        SuperBase sb = new Base();
+        Object o = "";
+        sb.foo(o);
+        sb.foo("");
+    }
+}</pre>
+        </div>
+        <p class="answer">Object 5 String 5</p>
+    </div>
+</section>
+
+<section class="container" id="inheritance">
+    <h1><a href="#">Inheritance (наследование)</a></h1>
+    <p><a class="link-to-source" href="../../java_questions/core/oop/index.html#q7" target="_blank">Теория</a></p>
+    <div>
+        <p class="question">Каким будет результат кода?</p>
+        <div class="code"><pre>class <class>Parent</class> {}
+class <class>DeriveOne</class> extends <class>Parent</class> {}
+class <class>DeriveTwo</class> extends <class>Parent</class> {}
+Parent p = new Parent();
+DeriveOne d1 = new DeriveOne();
+DeriveTwo d2 = new DeriveTwo();
+d1 = (DeriveOne) d2;</pre>
+        </div>
+        <p class="answer no_mb">Ошибка компиляции.</p>
+        <p class="main-mind">
+            Компилятору сразу понятно, что невозможно кастировать d2 к классу DeriveOne,
+            т.к. d2 не является наследником DeriveOne
+        </p>
+    </div>
+</section>
+
+<footer>
+    <div class="footer__text"><a href="https://t.me/java40plus" title="Мой блог в телеграм">
+        Алексей Маслов, 2021-2023
+    </a></div>
+</footer>
+<a href="#" class="button button--top"></a>
+
+</body>
+
+</html>
