@@ -33,7 +33,8 @@
         <li><a href="#q9">Абстрактные классы</a></li>
         <li><a href="#q10">Интерфейсы</a></li>
         <li><a href="#q11">Порядок вызова конструкторов</a></li>
-        <li><a href="#q12">Object, equals и hashCode</a></li>
+        <li><a href="#object">Object и его методы</a></li>
+        <li><a href="#equals_hashcode">equals и hashCode</a></li>
         <li><a href="#q13">this и super</a></li>
         <li><a href="#q14">Методы. Переопределение и перегрузка</a></li>
         <li><a href="#q15">Effectively final</a></li>
@@ -1209,178 +1210,187 @@
 
 </section>
 
-<section class="container" id="q12">
-    <h1><a href="#">OBJECT</a></h1>
-    <div class="after-h1 tab-2">
-        <p><a href="#object">Object и его методы</a></p>
-        <p><a href="#equals_hashcode">Equals и HashCode</a></p>
-        <p><a href="../../interview_tasks/index.html#equals" target="_blank">Задачи по equals</a></p>
+<section class="container" id="object">
+    <h1><a href="#">Object и его методы</a></h1>
+    <div>
+        <p class="term">
+            <span>Object</span>
+            это базовый класс для всех остальных объектов в Java.</p>
+        <p class="main-mind">Любой класс наследуется от Object и, соответственно, наследуют его методы.</p>
+        <h3>Методы класса Object</h3>
+        <table class="list list--dictionary" aria-label="Методы класса Object">
+            <thead>
+            <tr>
+                <th>Метод</th>
+                <th>Описание</th>
+            </tr>
+            </thead>
+            <tr>
+                <td>equals()</td>
+                <td>
+                    <p>Служит для сравнения объектов по значению; == по ссылке</p>
+                    <p class="code-word">public boolean equals(Object obj)</p>
+                </td>
+            </tr>
+            <tr>
+                <td>hashCode()</td>
+                <td>
+                    <p>Возвращает hash код для объекта</p>
+                    <p class="code-word">int hashCode()</p>
+                </td>
+            </tr>
+            <tr>
+                <td>toString()</td>
+                <td>
+                    <p>Возвращает строковое представление объекта</p>
+                    <p class="code-word">String toString()</p>
+                </td>
+            </tr>
+            <tr>
+                <td>getClass()</td>
+                <td>
+                    <p>Возвращает класс объекта во время выполнения</p>
+                    <p class="code-word">Class getClass()</p>
+                </td>
+            </tr>
+            <tr>
+                <td>clone()</td>
+                <td>
+                    <p>Создает и возвращает копию объекта</p>
+                    <p class="code-word">protected Object clone()</p>
+                </td>
+            </tr>
+            <tr>
+                <td>notify()</td>
+                <td>
+                    <p>Возобновляет поток, ожидающий монитор</p>
+                    <p class="code-word">void notify()</p>
+                </td>
+            </tr>
+            <tr>
+                <td>notifyAll()</td>
+                <td>
+                    <p>Возобновляет все потоки, ожидающие монитор</p>
+                    <p class="code-word">void notifyAll()</p>
+                </td>
+            </tr>
+            <tr>
+                <td>wait()</td>
+                <td>
+                    <p>
+                        Остановка вызвавшего метод потока до момента пока другой поток не вызовет метод notify() или
+                        notifyAll() для этого объекта
+                    </p>
+                    <p class="code-word">void wait()</p>
+                </td>
+            </tr>
+            <tr>
+                <td>wait()</td>
+                <td>
+                    <p>
+                        Остановка вызвавшего метод потока на определённое время или пока другой поток не вызовет
+                        метод
+                        notify() или notifyAll() для этого объекта
+                    </p>
+                    <p class="code-word">void wait(long timeout)</p>
+                </td>
+            </tr>
+            <tr>
+                <td>wait()</td>
+                <td>
+                    <p>
+                        Остановка вызвавшего метод потока на определённое время или пока другой поток не вызовет
+                        метод
+                        notify() или notifyAll() для этого объекта
+                    </p>
+                    <p class="code-word">void wait(long timeout, int nanos)</p>
+                </td>
+            </tr>
+            <tr>
+                <td>finalize()</td>
+                <td>
+                    <p>Может вызываться сборщиком мусора в момент удаления объекта при сборке мусора.</p>
+                    <p class="code-word">protected void finalize()</p>
+                </td>
+            </tr>
+        </table>
+        <p>
+            <a class="link-to-source"
+               href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html"
+               target="_blank">Документация по OBJECT (Java17)</a>
+        </p>
     </div>
-    <div id="object">
-        <h3>Object</h3>
-        <div>
-            <p>Object это базовый класс для всех остальных объектов в Java.</p>
-            <p class="main-mind">Любой класс наследуется от Object и, соответственно, наследуют его методы.</p>
-            <h3>Методы класса Object</h3>
-            <table class="list list--dictionary" aria-label="Методы класса Object">
-                <thead>
-                <tr>
-                    <th>Метод</th>
-                    <th>Описание</th>
-                </tr>
-                </thead>
-                <tr>
-                    <td>equals()</td>
-                    <td>
-                        <p>Служит для сравнения объектов по значению; == по ссылке</p>
-                        <p class="code-word">public boolean equals(Object obj)</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>hashCode()</td>
-                    <td>
-                        <p>Возвращает hash код для объекта</p>
-                        <p class="code-word">int hashCode()</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>toString()</td>
-                    <td>
-                        <p>Возвращает строковое представление объекта</p>
-                        <p class="code-word">String toString()</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>getClass()</td>
-                    <td>
-                        <p>Возвращает класс объекта во время выполнения</p>
-                        <p class="code-word">Class getClass()</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>clone()</td>
-                    <td>
-                        <p>Создает и возвращает копию объекта</p>
-                        <p class="code-word">protected Object clone()</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>notify()</td>
-                    <td>
-                        <p>Возобновляет поток, ожидающий монитор</p>
-                        <p class="code-word">void notify()</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>notifyAll()</td>
-                    <td>
-                        <p>Возобновляет все потоки, ожидающие монитор</p>
-                        <p class="code-word">void notifyAll()</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>wait()</td>
-                    <td>
-                        <p>
-                            Остановка вызвавшего метод потока до момента пока другой поток не вызовет метод notify() или
-                            notifyAll() для этого объекта
-                        </p>
-                        <p class="code-word">void wait()</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>wait()</td>
-                    <td>
-                        <p>
-                            Остановка вызвавшего метод потока на определённое время или пока другой поток не вызовет
-                            метод
-                            notify() или notifyAll() для этого объекта
-                        </p>
-                        <p class="code-word">void wait(long timeout)</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>wait()</td>
-                    <td>
-                        <p>
-                            Остановка вызвавшего метод потока на определённое время или пока другой поток не вызовет
-                            метод
-                            notify() или notifyAll() для этого объекта
-                        </p>
-                        <p class="code-word">void wait(long timeout, int nanos)</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>finalize()</td>
-                    <td>
-                        <p>Может вызываться сборщиком мусора в момент удаления объекта при сборке мусора.</p>
-                        <p class="code-word">protected void finalize()</p>
-                    </td>
-                </tr>
-            </table>
-            <p>
-                <a class="link-to-source"
-                   href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html"
-                   target="_blank">Документация по OBJECT (Java17)</a>
-            </p>
-            <a class="button button--content_list" href="#q12"></a>
-        </div>
-    </div>
+</section>
+
+<section class="container" id="equals_hashcode">
+    <h1><a href="#">Equals и HashCode</a></h1>
+
+    <h3>Базовый контракт между hashCode() и equals()</h3>
+    <ul class="margined tab-2">
+        <li>одно и то же число каждый раз когда объект не меняется;</li>
+        <li>
+            если два объекта равны через вызов <span class="accent-mono">equals()</span>,
+            то вызов у них <span class="accent-mono">hashCode()</span> должен приводить к одному результату;
+        </li>
+        <li>если <span class="accent-mono">hashCode()</span> у объектов разные, то объекты разные;</li>
+    </ul>
 
     <hr>
-    <div id="equals_hashcode">
-        <h3>Equals и HashCode</h3>
-        <h4>Какой контракт между hashCode() и equals()?</h4>
-        <p class="no_mb"><strong>HashCode</strong> - Общий контракт:</p>
-        <ul>
-            <li>одно и то же число каждый раз когда объект не меняется;</li>
-            <li>
-                если два объекта равны через вызов equals(),
-                то вызов у них hashCode() должен приводить к одному результату;
-            </li>
-            <li>если hashCode() у объектов разные, то объекты разные;</li>
-        </ul>
+    <div id="equals">
+        <h2>Equals</h2>
+        <p class="main-mind">Метод equals() - определяет отношение эквивалентности объектов.</p>
+        <div class="after-h1 tab-2">
+            <p><a href="#equals_base_impl">Базовая реализация</a></p>
+            <p><a href="#equals_base">Основные принципы</a></p>
+            <p><a href="#equals_override_rules">Правила переопределения</a></p>
+            <p><a href="#equals_not_needed">Когда уместно не переопределять equals()</a></p>
+        </div>
 
-        <hr>
-        <div id="equals">
-            <h3>Equals</h3>
-            <p>Базовая реализация</p>
-            <p>Основные принципы и правила переопределения</p>
-            <p>Когда уместно не переопределять equals()</p>
-
+        <div>
+            <h3>Зачем нужен equals().<br>Чем он отличается от операции ==?</h3>
             <div>
-                <p class="main-mind">Метод equals() - определяет отношение эквивалентности объектов.</p>
-                <p>Базовая реализация equals в классе Object проверяет только равенство ссылок:</p>
-                <div class="code">
-                    <pre>public boolean <method>equals</method>(Object obj) {
-    return (this == obj);
-}</pre>
-                </div>
-                <p>
-                    По умолчанию каждый экземпляр равен только самому себе. Это не всегда хорошо, поэтому для новых
-                    классов обычно переопределяют метод equals.
+                <p>Метод equals() - определяет отношение эквивалентности объектов.
+                    <br>При сравнении объектов с помощью == сравнение происходит лишь между ссылками.
+                    <br>При сравнении по переопределённому разработчиком equals() - по внутреннему состоянию объектов.
                 </p>
             </div>
         </div>
 
+        <hr>
+        <div id="equals_base_impl">
+            <h3>Базовая реализация:</h3>
+            <p>equals в классе Object проверяет только равенство ссылок:</p>
+            <div class="code">
+                    <pre>public boolean <method>equals</method>(Object obj) {
+    return (this == obj);
+}</pre>
+            </div>
+            <p>
+                По умолчанию каждый экземпляр равен только самому себе.
+                <br>Это не всегда хорошо, поэтому для новых классов обычно переопределяют метод equals.
+            </p>
+            <a class="button button--content_list" href="#equals"></a>
+        </div>
+
+        <hr>
         <div id="equals_base">
-            <p>Основные принципы:</p>
+            <h3>Основные принципы:</h3>
             <ol>
                 <li>
-                    <p class="no_mb">Рефлексивность</p>
+                    <p class="no_mb accent-mono">Рефлексивность</p>
                     <div class="code no_mb">
                         <p>x.equals(x) = true</p>
                     </div>
                 </li>
                 <li>
-                    <p class="no_mb">Симметричность</p>
+                    <p class="no_mb accent-mono">Симметричность</p>
                     <div class="code no_mb">
                         <p>x.equals(y) = true</p>
                         <p>y.equals(x) = true</p>
                     </div>
                 </li>
                 <li>
-                    <p class="no_mb">Транзитивность</p>
+                    <p class="no_mb accent-mono">Транзитивность</p>
                     <div class="code no_mb">
                         <p>x.equals(y) = true</p>
                         <p>y.equals(z) = true</p>
@@ -1388,7 +1398,7 @@
                     </div>
                 </li>
                 <li>
-                    <p class="no_mb">Постоянство или Непротиворечивость</p>
+                    <p class="no_mb accent-mono">Постоянство или Непротиворечивость</p>
                     <div class="code no_mb">
                         <p>Результат одно и то же число пока объект не изменится</p>
                     </div>
@@ -1400,7 +1410,7 @@
                     </p>
                 </li>
                 <li>
-                    <p class="no_mb">Если объекта нет - ложь</p>
+                    <p class="no_mb accent-mono">Если объекта нет - ложь</p>
                     <div class="code no_mb">
                         <p>x.equals(null) = false</p>
                     </div>
@@ -1409,8 +1419,11 @@
                     </p>
                 </li>
             </ol>
+            <a class="button button--content_list" href="#equals"></a>
+        </div>
 
-            <hr>
+        <hr>
+        <div id="equals_override_rules">
             <h3>Правила переопределения equals():</h3>
             <ul class="tab-2">
                 <li>
@@ -1459,145 +1472,181 @@ public boolean <method>equals</method>(Object obj) {
     return true;
 }</pre>
             </div>
+            <a class="button button--content_list" href="#equals"></a>
         </div>
 
-        <h4>Когда уместно не переопределять equals()</h4>
-        <div>
-            <ol class="margined">
-                <li>Для перечислений (enum)</li>
-                <li>
-                    <p>Когда важны сами экземпляры, а не данные внутри них</p>
-                    <p class="example">Пример - классы Thread, RecursiveTask</p>
-                </li>
-                <li>
-                    <p>Сравнение объектов вообще не предполагается</p>
-                    <p class="example">Пример - класс Pattern</p>
-                </li>
-                <li>В базовом классе уже есть equals и нам подходит эта реализация</li>
-                <li>
-                    Класс имеет модификатор доступа private или по умолчанию и мы уверены,
-                    что метод equals не будет вызван
-                </li>
-            </ol>
-
+        <hr>
+        <div id="equals_not_needed">
+            <h3>Когда уместно не переопределять equals()</h3>
+            <div>
+                <ol class="margined">
+                    <li>Для перечислений (enum)</li>
+                    <li>
+                        <p>Когда важны сами экземпляры, а не данные внутри них</p>
+                        <p class="example">Пример - классы Thread, RecursiveTask</p>
+                    </li>
+                    <li>
+                        <p>Сравнение объектов вообще не предполагается</p>
+                        <p class="example">Пример - класс Pattern</p>
+                    </li>
+                    <li>В базовом классе уже есть equals и нам подходит эта реализация</li>
+                    <li>
+                        Класс имеет модификатор доступа private или по умолчанию и мы уверены,
+                        что метод equals не будет вызван
+                    </li>
+                </ol>
+            </div>
+            <a class="button button--content_list" href="#equals"></a>
         </div>
 
+        <hr>
+        <div id="equals_vs_instanceof">
+            <h3>Чем a.getClass().equals(A.class) отличается от a instanceOf A.class</h3>
+            <p class="no_mb">Для equals всегда нужно сравнивать типы объектов через getClass.</p>
+            <p>instanceof не соблюдает правило симметрии в наследниках.</p>
+            <div class="code">
+                <p>my.equals(child) == true</p>
+                <p>child.equals(my) == false // должно быть тру</p>
+            </div>
+            <p class="main-mind">
+                Оператор instanceof нужен, чтобы проверить, был ли объект, на который ссылается
+                переменная X, создан на основе какого-либо класса Y.
+                <br>Оператор instanceof проверяет именно происхождение объекта, а не переменной.
+            </p>
+        </div>
 
-        <p class="example no_mb">Для чего нужен метод hashCode()?</p>
-        <p>
-            Метод hashCode() необходим для вычисления хэш кода переданного в качестве входного параметра объекта.
-        </p>
-        <p>
-            В Java это целое число, в более широком смысле - битовая строка фиксированной длины, полученная из массива
-            произвольной длины. Этот метод реализован таким образом, что для одного и того же входного объекта,
-            хэш код всегда будет одинаковым.
-        </p>
-        <p class="example no_mb">
-            Почему нельзя реализовать hashcode() который будет гарантированно уникальным для каждого объекта?
-        </p>
-        <p>
-            Следует понимать, что в Java <strong>множество возможных хэш кодов ограничено типом int</strong>,
-            а множество объектов ничем не ограничено.
-        </p>
-        <p class="no_mb">Из-за этого, вполне возможна ситуация, что хэш коды разных объектов могут совпасть:</p>
-        <ul class="tab-2">
-            <li>если хэш коды разные, то и объекты гарантированно разные;</li>
-            <li>если хэш коды равны, то объекты могут необязательно равны.</li>
-            <li>для одного и того-же объекта, хеш-код всегда будет одинаковым;</li>
-            <li>если объекты одинаковые, то и хеш-коды одинаковые (но не наоборот).</li>
-        </ul>
-        <p class="example no_mb">
-            Есть ли какие-либо рекомендации о том, какие поля следует использовать при подсчете hashCode()?
-        </p>
-        <p>
-            <strong>Общий совет:</strong> выбирать поля, которые с большой долью вероятности будут различаться. Для
-            этого необходимо использовать уникальные, лучше всего примитивные поля, например такие как
-            id, uuid. При этом нужно следовать правилу, если поля задействованы при вычислении hashCode(),
-            то они должны быть задействованы и при выполнении equals().
-        </p>
     </div>
 
-
     <hr>
-    <h3>Каким образом реализованы методы hashCode() и equals() в классе Object?</h3>
-    <div class="code no_mb">
-        <p>public boolean equals(Object obj) { return (this == obj);}</p>
-        <p>public native int hashCode();</p>
-    </div>
-    <p class="example">
-        native означает, что реализация данного метода выполнена на другом языке (здесь на C++) и
-        обычно возвращает адрес объекта в памяти.
-    </p>
-    <hr>
-    <h3>Зачем нужен equals(). Чем он отличается от операции ==?</h3>
-    <p class="no_mb">Метод equals() - определяет отношение эквивалентности объектов.</p>
-    <p>
-        При сравнении объектов с помощью == сравнение происходит лишь между ссылками. При
-        сравнении по переопределённому разработчиком equals() - по внутреннему состоянию объектов
-    </p>
-
-
-    <hr>
-    <h4>
-        Что будет, если переопределить equals() не переопределяя hashCode()?
-        Какие могут возникнуть проблемы?
-    </h4>
-    <p class="no_mb">Классы и методы, которые используют правила этого контракта могут работать некорректно.</p>
-    <p class="no_mb">
-        Так для HashMap это может привести к тому, что пара «ключ-значение», которая была в нее
-        помещена при использовании нового экземпляра ключа не будет в ней найдена.
-    </p>
-    <p>
-        В HashSet при добавлении объект сначала сравнивается хэш добавляемого и существующие
-        (быстрая проверка очень экономит время), если хэш разный – то дальше сравнивается по equals.
-    </p>
-    <hr>
-    <h4>Есть класс Point{int x, y;}. Почему хэш-код в виде 31 * x + y предпочтительнее
-        чем x + y</h4>
-    <p>
-        Множитель создает зависимость значения хэш кода от очередности обработки полей, что в
-        итоге порождает лучшую хэш функцию
-    </p>
-    <hr>
-    <h4>Чем a.getClass().equals(A.class) отличается от a instanceOf A.class</h4>
-    <p class="no_mb">Для equals всегда нужно сравнивать типы объектов через <span class="code-word">getClass</span>.</p>
-    <p><span class="code-word">instanceof</span> не соблюдает правило симметрии в наследниках.</p>
-    <div class="code">
-        <p>my.equals(child) == true</p>
-        <p>child.equals(my) == false // должно быть тру</p>
-    </div>
-    <p class="main-mind">
-        Оператор <span class="code-word">instanceof</span> нужен, чтобы проверить, был ли объект, на который ссылается
-        переменная X, создан на основе какого-либо класса Y.
-        <br>Оператор instanceof проверяет именно происхождение объекта, а не переменной.
-    </p>
-
-    <hr>
-    <div>
-        <h3>Lombok аннотация @EqualsAndHashCode</h3>
+    <div id="hashcode">
+        <h2>hashcode</h2>
         <div>
-            <p>Можно использовать если:</p>
-            <ul class="margined">
-                <li>
-                    <p>
-                        Если классы связаны отношением родитель-наследник, сравниваются объекты только одинаковых типов
-                    </p>
-                    <p class="example">
-                        <span>ВАЖНО</span>: у всех классов в иерархии должна быть аннотация
-                        <span>@EqualsAndHashCode</span>.
-                        <br>Если у одного класса будет аннотация, а у другого явно определён equals,
-                        то сравнения могут быть некорректны
-                    </p>
-                </li>
-                <li>
-                    <p>Сравниваются все поля</p>
-                    <p class="example">Изменить список полей можно с помощью аннотаций
-                        <span>@EqualsAndHashCode.Include</span> и
-                        <span>@EqualsAndHashCode.Exclude</span>.</p>
-                    <p class="example">Или явно задать его в <span>@EqualsAndHashCode(of = {"x"}</span>)</p>
-                </li>
-                <li>Все поля проверяются на null</li>
+            <p class="main-mind">
+                Метод hashCode() необходим для вычисления хэш кода объекта, переданного в качестве входного параметра.
+            </p>
+            <p>
+                В Java это целое число, в более широком смысле - битовая строка фиксированной длины,
+                полученная из массива произвольной длины.
+                <br>Этот метод реализован таким образом, что для одного и того же входного объекта,
+                хэш код всегда будет одинаковым.
+            </p>
+            <div class="after-h1 tab-2">
+                <p><a href="#hashcode_not_unique">Почему hashcode() не может быть уникальным?</a></p>
+                <p><a href="#hashCode_base_impl">Базовая реализация</a></p>
+                <p><a href="#hashCode_override">Рекомендации по переопределению</a></p>
+                <p><a href="#equals_wo_hashCode">
+                    Что будет, если переопределить equals() не переопределяя hashCode()?
+                </a></p>
+                <p><a href="#hashCode_order">Почему хэш-код в виде 31 * x + y предпочтительнее</a></p>
+                <p><a href="#hashCode_lombok">Lombok аннотация @EqualsAndHashCode</a></p>
+            </div>
+        </div>
+
+        <div id="hashcode_not_unique">
+            <h3>
+                Почему нельзя реализовать hashcode() который будет гарантированно уникальным для каждого объекта?
+            </h3>
+            <p>
+                Следует понимать, что в Java <strong>множество возможных хэш кодов ограничено
+                <a href="../datatypes/index.html#q1" target="_blank">типом int</a></strong>,
+                а множество объектов ничем не ограничено.
+            </p>
+            <p class="no_mb">Из-за этого, вполне возможна ситуация, что хэш коды разных объектов могут совпасть:</p>
+            <ul class="tab-2">
+                <li>если хэш коды разные, то и объекты гарантированно разные;</li>
+                <li>если хэш коды равны, то объекты могут необязательно равны.</li>
+                <li>для одного и того-же объекта, хеш-код всегда будет одинаковым;</li>
+                <li>если объекты одинаковые, то и хеш-коды одинаковые (но не наоборот).</li>
             </ul>
+            <a class="button button--content_list" href="#hashcode"></a>
+        </div>
+
+        <hr>
+        <div id="hashCode_base_impl">
+            <h3>Каким образом реализованы методы hashCode() и equals() в классе Object?</h3>
+            <div class="code no_mb">
+                <p>public boolean equals(Object obj) { return (this == obj);}</p>
+                <p>public native int hashCode();</p>
+            </div>
+            <p class="example">
+                <span>native</span> означает, что реализация данного метода выполнена на другом языке (здесь на C++) и
+                обычно возвращает адрес объекта в памяти.
+            </p>
+            <a class="button button--content_list" href="#hashcode"></a>
+        </div>
+
+        <div id="hashCode_override">
+            <h3> Есть ли какие-либо рекомендации о том, какие поля следует использовать при подсчете hashCode()? </h3>
+            <p class="main-mind">
+                Общий совет: выбирать поля, которые с большой долью вероятности будут различаться.
+            </p>
+            <p>
+                Для этого необходимо использовать уникальные, лучше всего примитивные поля, например такие как
+                id, uuid.
+                <br>При этом нужно следовать правилу, если поля задействованы при вычислении hashCode(),
+                то они должны быть задействованы и при выполнении equals().
+            </p>
+            <a class="button button--content_list" href="#hashcode"></a>
+        </div>
+
+        <hr>
+        <div id="equals_wo_hashCode">
+            <h3>
+                Что будет, если переопределить equals() не переопределяя hashCode()?
+                <br>Какие могут возникнуть проблемы?
+            </h3>
+            <p class="no_mb">Классы и методы, которые используют правила этого контракта могут работать некорректно.</p>
+            <p class="no_mb">
+                Так для HashMap это может привести к тому, что пара «ключ-значение», которая была в нее
+                помещена при использовании нового экземпляра ключа не будет в ней найдена.
+            </p>
+            <p>
+                В HashSet при добавлении объект сначала сравнивается хэш добавляемого и существующие
+                (быстрая проверка очень экономит время), если хэш разный – то дальше сравнивается по equals.
+            </p>
+            <a class="button button--content_list" href="#hashcode"></a>
+        </div>
+
+        <hr>
+        <div id="hashCode_order">
+            <h3>Есть класс Point{int x, y;}.
+                <br>Почему хэш-код в виде 31 * x + y предпочтительнее чем x + y?</h3>
+            <p>
+                Множитель создает зависимость значения хэш кода от очередности обработки полей, что в
+                итоге порождает лучшую хэш функцию.
+            </p>
+            <a class="button button--content_list" href="#hashcode"></a>
+        </div>
+
+        <hr>
+        <div id="hashCode_lombok">
+            <h3>Lombok аннотация @EqualsAndHashCode</h3>
+            <div>
+                <p>Можно использовать если:</p>
+                <ul class="margined">
+                    <li>
+                        <p>
+                            Если классы связаны отношением родитель-наследник, сравниваются объекты только одинаковых
+                            типов
+                        </p>
+                        <p class="example">
+                            <span>ВАЖНО</span>: у всех классов в иерархии должна быть аннотация
+                            <span>@EqualsAndHashCode</span>.
+                            <br>Если у одного класса будет аннотация, а у другого явно определён equals,
+                            то сравнения могут быть некорректны
+                        </p>
+                    </li>
+                    <li>
+                        <p>Сравниваются все поля</p>
+                        <p class="example">Изменить список полей можно с помощью аннотаций
+                            <span>@EqualsAndHashCode.Include</span> и
+                            <span>@EqualsAndHashCode.Exclude</span>.</p>
+                        <p class="example">Или явно задать его в <span>@EqualsAndHashCode(of = {"x"}</span>)</p>
+                    </li>
+                    <li>Все поля проверяются на null</li>
+                </ul>
+            </div>
+            <a class="button button--content_list" href="#hashcode"></a>
         </div>
     </div>
 
