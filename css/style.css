@@ -116,6 +116,10 @@ ul {
     padding-left: 20px;
 }
 
+ul.dash-style {
+    padding-left: 0;
+}
+
 ul.dash-style > li {
     list-style-type: none;
 }

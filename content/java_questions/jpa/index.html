@@ -153,6 +153,7 @@
             </p>
         </div>
 
+        <a class="button button--content_list" href="#q1"></a>
     </div>
 
     <hr>
@@ -180,6 +181,8 @@
                 <li>Metadata (аннотации или xml)</li>
             </ul>
         </div>
+
+        <a class="button button--content_list" href="#q1"></a>
     </div>
 
     <hr>
@@ -190,6 +193,8 @@
             - это провайдер, реализующий спецификацию JPA. Hibernate полностью реализует JPA плюс добавляет функционал в
             виде своих классов и интерфейсов, расширяя свои возможности по работе с сущностями и БД.
         </p>
+
+        <a class="button button--content_list" href="#q1"></a>
     </div>
 
 </section>
@@ -271,7 +276,7 @@
         <ol>
             <li>
                 <p>Операции над Entity:</p>
-                <ul>
+                <ul class="dash-style">
                     <li><span class="accent-mono">persist</span> (добавление Entity под управление JPA)</li>
                     <li><span class="accent-mono">merge</span> (изменение)</li>
                     <li><span class="accent-mono">remove</span> (удаление)</li>
@@ -283,7 +288,7 @@
             </li>
             <li>
                 <p>Получение данных:</p>
-                <ul>
+                <ul class="dash-style">
                     <li><span class="accent-mono">find</span> (поиск и получение Entity)</li>
                     <li><span class="accent-mono">createQuery</span></li>
                     <li><span class="accent-mono">createNamedQuery</span></li>
@@ -295,7 +300,7 @@
             </li>
             <li>
                 <p>Получение других сущностей JPA</p>
-                <ul>
+                <ul class="dash-style">
                     <li><span class="accent-mono">getTransaction</span></li>
                     <li><span class="accent-mono">getEntityManagerFactory,</span></li>
                     <li><span class="accent-mono">getCriteriaBuilder</span></li>
@@ -305,14 +310,14 @@
             </li>
             <li>
                 <p>Работа с EntityGraph</p>
-                <ul>
+                <ul class="dash-style">
                     <li><span class="accent-mono">createEntityGraph</span></li>
                     <li><span class="accent-mono">getEntityGraph</span></li>
                 </ul>
             </li>
             <li>
                 <p>Общие операции</p>
-                <ul>
+                <ul class="dash-style">
                     <li><span class="accent-mono">close</span></li>
                     <li><span class="accent-mono">isOpen</span></li>
                     <li><span class="accent-mono">getProperties</span></li>
@@ -395,6 +400,8 @@
             </li>
         </ul>
         <p>В JPA принято называть эти персистентные поля и свойства атрибутами класса-сущности.</p>
+
+        <a class="button button--content_list" href="#q3"></a>
     </div>
 
     <hr>
@@ -449,6 +456,8 @@
                 которые уникально определяют запись этого Entity класса в базе данных.
             </li>
         </ul>
+
+        <a class="button button--content_list" href="#q3"></a>
     </div>
 
     <hr>
@@ -473,6 +482,8 @@
                 <p class="example">Однако обоснованность такого подхода спорна.</p>
             </li>
         </ol>
+
+        <a class="button button--content_list" href="#q3"></a>
     </div>
 
 </section>
@@ -539,7 +550,7 @@
             <td>+</td>
         </tr>
         <tr>
-            <td>Entity класс</td>
+            <td>не Entity класс</td>
             <td>+</td>
             <td>обычное наследование в&nbsp;Java</td>
         </tr>
@@ -615,6 +626,8 @@
             сущностей, можно считать что JPA просто встраивает в сущность вместо объекта такого класса те атрибуты,
             которые он содержит.
         </p>
+
+        <a class="button button--content_list" href="#q6"></a>
     </div>
 
     <hr>
@@ -657,6 +670,8 @@
                 встраиваемые классы могут использоваться в качестве ключей и значений Map.
             </li>
         </ul>
+
+        <a class="button button--content_list" href="#q6"></a>
     </div>
 
     <hr>
@@ -735,6 +750,8 @@
                 но не обязаны это делать.
             </p>
         </div>
+
+        <a class="button button--content_list" href="#q6"></a>
     </div>
 
 </section>
@@ -762,6 +779,8 @@
             используются, когда у нас есть общая для нескольких классов сущностей информация о состоянии и отображении,
             которую можно вынести в Mapped Superclass.
         </p>
+
+        <a class="button button--content_list" href="#q7"></a>
     </div>
 
     <hr>
@@ -828,6 +847,8 @@
             невозможны,
             то есть мы не можем загрузить всех наследников Mapped Superclass.
         </p>
+
+        <a class="button button--content_list" href="#q7"></a>
     </div>
 
     <hr>
@@ -853,6 +874,8 @@
                 в сущности нельзя создать поле с типом сопоставленного суперкласса, а с Embeddable можно и нужно.
             </li>
         </ul>
+
+        <a class="button button--content_list" href="#q7"></a>
     </div>
 
 </section>
@@ -984,6 +1007,8 @@
             <p>FullTimeEmployee{id=1, name='Sara', salary=100000}</p>
             <p>PartTimeEmployee{id=2, name='Tom', hourlyRate='60'}</p>
         </div>
+
+        <a class="button button--content_list" href="#q8"></a>
     </div>
 
     <hr>
@@ -1071,6 +1096,8 @@
             <p>FullTimeEmployee{id=1, name='Sara', salary=100000}</p>
             <p>PartTimeEmployee{id=2, name='Robert', hourlyRate='60'}</p>
         </div>
+
+        <a class="button button--content_list" href="#q8"></a>
     </div>
 
     <hr>
@@ -1111,42 +1138,49 @@
             <p class="tab-1">...</p>
             <p>}</p>
         </div>
+
+
+        <div class="code tab-1">
+            <p class="bold">-- Persisting entities --</p>
+            <p>FullTimeEmployee{id=0, name='Sara', salary=100000}</p>
+            <p class="mb10">PartTimeEmployee{id=0, name='Robert', hourlyRate='60'}</p>
+            <p class="bold">-- Native queries --</p>
+            <p class="bold good">'Select * from Employee'</p>
+            <p class="mb10">no data</p>
+            <p class="bold good">'Select * from FULL_TIME_EMP'</p>
+            <p class="mb10">[1, Sara, 100000]</p>
+            <p class="bold good">'Select * from PART_TIME_EMP'</p>
+            <p class="mb10">[2, Robert, 60]</p>
+            <p class="bold">-- Loading entities --</p>
+            <p>List&lt;Employee&gt; entityAList = em</p>
+            <p class="tab-4">.createQuery("Select t from Employee t")</p>
+            <p class="tab-4 mb10">.getResultList();</p>
+            <p>// Hibernate выполнит дополнительные sql-запросы</p>
+            <p class="mb10">// или запросы объединения для получения сущностей</p>
+            <p class="bold">-- Result ---</p>
+            <p>FullTimeEmployee{id=1, name='Sara', salary=100000}</p>
+            <p>PartTimeEmployee{id=2, name='Robert', hourlyRate='60'}</p>
+        </div>
+        <p class="main-mind">
+            Минусом является плохая поддержка полиморфизма (polymorphic relationships) и то, что для выборки всех
+            классов
+            иерархии потребуется большое количество отдельных sql-запросов для каждой таблицы-наследника или
+            использование
+            UNION-запроса для соединения таблиц всех наследников в одну таблицу.
+        </p>
+        <p class="main-mind">
+            Также недостатком этой стратегии является повторение одних и тех же атрибутов в таблицах.
+        </p>
+        <p>
+            При TABLE PER CLASS
+            <span class="accent-mono">не работает стратегия генератора первичных ключей IDENTITY</span>,
+            поскольку может быть несколько объектов подкласса, имеющих один и тот же идентификатор, и запрос базового
+            класса приведет к получению объектов с одним и тем же идентификатором (даже если они принадлежат разным
+            типам).
+        </p>
+
+        <a class="button button--content_list" href="#q8"></a>
     </div>
-    <div class="code tab-1">
-        <p class="bold">-- Persisting entities --</p>
-        <p>FullTimeEmployee{id=0, name='Sara', salary=100000}</p>
-        <p class="mb10">PartTimeEmployee{id=0, name='Robert', hourlyRate='60'}</p>
-        <p class="bold">-- Native queries --</p>
-        <p class="bold good">'Select * from Employee'</p>
-        <p class="mb10">no data</p>
-        <p class="bold good">'Select * from FULL_TIME_EMP'</p>
-        <p class="mb10">[1, Sara, 100000]</p>
-        <p class="bold good">'Select * from PART_TIME_EMP'</p>
-        <p class="mb10">[2, Robert, 60]</p>
-        <p class="bold">-- Loading entities --</p>
-        <p>List&lt;Employee&gt; entityAList = em</p>
-        <p class="tab-4">.createQuery("Select t from Employee t")</p>
-        <p class="tab-4 mb10">.getResultList();</p>
-        <p>// Hibernate выполнит дополнительные sql-запросы</p>
-        <p class="mb10">// или запросы объединения для получения сущностей</p>
-        <p class="bold">-- Result ---</p>
-        <p>FullTimeEmployee{id=1, name='Sara', salary=100000}</p>
-        <p>PartTimeEmployee{id=2, name='Robert', hourlyRate='60'}</p>
-    </div>
-    <p class="main-mind">
-        Минусом является плохая поддержка полиморфизма (polymorphic relationships) и то, что для выборки всех классов
-        иерархии потребуется большое количество отдельных sql-запросов для каждой таблицы-наследника или использование
-        UNION-запроса для соединения таблиц всех наследников в одну таблицу.
-    </p>
-    <p class="main-mind">
-        Также недостатком этой стратегии является повторение одних и тех же атрибутов в таблицах.
-    </p>
-    <p>
-        При TABLE PER CLASS
-        <span class="accent-mono">не работает стратегия генератора первичных ключей IDENTITY</span>,
-        поскольку может быть несколько объектов подкласса, имеющих один и тот же идентификатор, и запрос базового класса
-        приведет к получению объектов с одним и тем же идентификатором (даже если они принадлежат разным типам).
-    </p>
 
 </section>
 
@@ -1212,6 +1246,7 @@
         </p>
         <p>Такие проблемы могут быть трудно уловимыми, и нам придется обновлять все записи базы данных.</p>
 
+        <a class="button button--content_list" href="#q9"></a>
     </div>
 
     <hr>
@@ -1235,6 +1270,8 @@
         <p>
             Это может оказаться серьезной проблемой, когда нам нужно иметь дело с большим объемом данных.
         </p>
+
+        <a class="button button--content_list" href="#q9"></a>
     </div>
 
     <hr>
@@ -1327,6 +1364,8 @@
         <p>
             Кроме того, если мы используем этот вариант, мы не сможем использовать значение Enum в запросах JPQL.
         </p>
+
+        <a class="button button--content_list" href="#q9"></a>
     </div>
 
     <hr>
@@ -1416,6 +1455,7 @@
             @Enumerated(EnumType.STRING) и методами обратного вызова.
         </p>
 
+        <a class="button button--content_list" href="#q9"></a>
     </div>
 
 </section>
@@ -1499,6 +1539,8 @@
             Чтобы избежать зависимостей от пакета java.sql, начали использовать классы даты/времени из пакета java.util
             вместо классов java.sql.Timestamp и java.sql.Time.
         </p>
+
+        <a class="button button--content_list" href="#q10"></a>
     </div>
 
     <hr>
@@ -1582,6 +1624,7 @@
             </div>
         </div>
 
+        <a class="button button--content_list" href="#q10"></a>
     </div>
 
     <hr>
@@ -1649,6 +1692,8 @@
             <p class="mb10">temporalValues.setOffsetDateTime(OffsetDateTime.parse("2017-11-15T08:22:12+01:00"));</p>
             <p>temporalValues.setZonedDateTime( ZonedDateTime.parse("2017-11-15T08:22:12+01:00[Europe/Paris]"));</p>
         </div>
+
+        <a class="button button--content_list" href="#q10"></a>
     </div>
 
 </section>
@@ -1687,7 +1732,9 @@
     </div>
     <div class="code">
         <p><an>@Entity</an></p>
-        <p>public class <class-name>Customer</class-name> {
+        <p>public class
+            <class-name>Customer</class-name>
+            {
         </p>
         <p class="tab-1"><an>@Id</an></p>
         <p class="tab-1"><an>@GeneratedValue</an></p>
@@ -1824,6 +1871,8 @@
                 </p>
             </li>
         </ol>
+
+        <a class="button button--content_list" href="#q12"></a>
     </div>
 
     <hr class="mb20">
@@ -1866,7 +1915,9 @@
                         <div class="code no_mb">
                             <p><an>@Entity</an></p>
                             <p><an>@Table(name="CART")</an></p>
-                            <p class="mb10">public class <class-name>Cart</class-name> {
+                            <p class="mb10">public class
+                                <class-name>Cart</class-name>
+                                {
                             </p>
                             <p class="tab-1 mb10">//...</p>
                             <p class="tab-1"><an>@OneToMany(mappedBy="cart")</an></p>
@@ -1875,7 +1926,9 @@
                             <p class="mb10">}</p>
                             <p><an>@Entity</an></p>
                             <p><an>@Table(name="ITEMS")</an></p>
-                            <p class="mb10">public class <class-name>Items</class-name> {
+                            <p class="mb10">public class
+                                <class-name>Items</class-name>
+                                {
                             </p>
                             <p class="tab-1 mb10">//...</p>
                             <p class="tab-1"><an>@ManyToOne</an></p>
@@ -1915,6 +1968,8 @@
             <p>Вторая сущность (сторона) не имеет поля первой сущности и не знает об отношениях.</p>
 
         </div>
+
+        <a class="button button--content_list" href="#q12"></a>
     </div>
 
     <hr class="mb20">
@@ -1933,8 +1988,9 @@
                 владеемой.
             </li>
         </ul>
-    </div>
 
+        <a class="button button--content_list" href="#q12"></a>
+    </div>
 
 </section>
 
