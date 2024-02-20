@@ -63,7 +63,7 @@ h1 > a {
     color: #00a82d;
     border-bottom: #00a82d solid 3px;
     margin-bottom: 14px;
-    padding-left: 30px ;
+    padding-left: 30px;
 }
 
 h2 {
@@ -522,6 +522,10 @@ td .code {
 
 .wrap-normal {
     white-space: normal;
+}
+
+.wrap-no {
+    white-space: nowrap;
 }
 
 .code.accent-mono,
