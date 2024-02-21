@@ -559,6 +559,10 @@ td .code {
     color: green;
 }
 
+.blue {
+    color: blue;
+}
+
 .bad span, .good span {
     font-weight: bold;
 }

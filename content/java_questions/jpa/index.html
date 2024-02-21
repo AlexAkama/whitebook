@@ -36,6 +36,13 @@
         <li><a href="#q12">Какие существуют виды связей?</a></li>
         <li><a href="#q13">Что такое "владелец связи"?</a></li>
         <li><a href="#q14">Что такое каскадные операции?</a></li>
+        <li><a href="#q15">Какие типы fetch-стратегии в JPA вы знаете?</a></li>
+        <li><a href="#q16">Этапы жизненного цикла Entity-объекта (Entity Instance’s Life Cycle)</a></li>
+        <li><a href="#q17">Как влияет операция persist на объекты Entity каждого статуса?</a></li>
+        <li><a href="#q18">Как влияет операция remove на объекты Entity каждого статуса?</a></li>
+        <li><a href="#q19">Как влияет операция merge на объекты Entity каждого статуса?</a></li>
+        <li><a href="#q20">Как влияет операция refresh на объекты Entity каждого статуса?</a></li>
+        <li><a href="#q21">Как влияет операция detach на объекты Entity каждого статуса?</a></li>
     </ol>
 </section>
 
@@ -2158,6 +2165,144 @@ flushAndClear();
 
         <a class="button button--content_list" href="#q14"></a>
 
+    </div>
+
+</section>
+
+<section class="container" id="q15">
+    <h1><a href="#">Какие типы fetch-стратегии в JPA вы знаете?</a></h1>
+    <p>В JPA описаны два типа fetch-стратегии:</p>
+    <p class="term">
+        <span>LAZY</span>
+        — данные поля сущности будут загружены только во время первого обращения к этому полю.
+    </p>
+    <p class="term">
+        <span>EAGER</span>
+        — данные поля будут загружены немедленно вместе с сущностью.
+    </p>
+    <p>В Hibernate:</p>
+    <p class="term">
+        <span>FetchType.EAGER</span>
+        <br>Hibernate должен сразу загрузить соответствующее аннотированное поле или свойство.
+        <br>Это поведение по умолчанию для полей, аннотированных @Basic, @ManyToOne и @OneToOne (все что быстро).
+    </p>
+    <p class="term">
+        <span>FetchType.LAZY</span>
+        <br>Hibernate может загружать данные не сразу, а при первом обращении к ним, но так как это необязательное
+        требование, то Hibernate имеет право изменить это поведение и загружать их сразу.
+        <br>Это поведение по умолчанию для полей, аннотированных @OneToMany, @ManyToMany
+        и @ElementCollection (все что медленно) .
+    </p>
+    <p>Раньше у Hibernate все поля были LAZY, но в последних версиях - всё как в JPA 2.0.</p>
+</section>
+
+<section class="container" id="q16">
+    <h1><a href="#">Какие типы fetch-стратегии в JPA вы знаете?</a></h1>
+    <p>Согласно JPA объект сущности может иметь один из четырех статусов жизненного цикла:</p>
+    <ol>
+        <li>
+            <p class="term"><span>new</span>
+                - объект создан, не имеет primary key, не является частью контекста персистентности
+                (не&nbsp;управляется&nbsp;JPA);</p>
+        </li>
+        <li>
+            <p class="term"><span>managed</span>
+                - объект создан, имеет primary key, является частью контекста персистентности (управляется&nbsp;JPA);
+            </p>
+        </li>
+        <li>
+            <p class="term"><span>detached</span>
+                - объект создан, имеет primary key, не является (или больше не является) частью контекста
+                персистентности (не&nbsp;управляется&nbsp;JPA);
+            </p>
+        </li>
+        <li>
+            <p class="term"><span>removed</span>
+                - объект создан, является частью контекста персистентности (управляется&nbsp;JPA),
+                будет удален при commit-е транзакции.
+            </p>
+        </li>
+    </ol>
+</section>
+
+<section class="container" id="q17-21">
+    <h1><a href="#">Как влияет операция на объекты Entity?</a></h1>
+
+    <div class="pred-menu">
+        <h3>Операции:</h3>
+        <p><a href="#q17">persist()</a></p>
+        <p><a href="#q18">remove()</a></p>
+        <p><a href="#q19">merge()</a></p>
+        <p><a href="#q20">refresh()</a></p>
+        <p><a href="#q21">detach()</a></p>
+    </div>
+
+    <hr>
+    <div id="q17">
+        <h3><a href="#q17-21">persist()</a></h3>
+        <p class="term"><span>new → managed</span>
+            <br><strong>объект будет сохранен в базу</strong> при commit-е транзакции или в результате flush-операции.
+        </p>
+        <p class="term"><span>managed → </span><span class="blue">{ignored}</span>
+            <br>операция игнорируется, однако связанные entity могут поменять статус на managed,
+            если у них есть аннотации каскадных изменений.</p>
+        <p class="term"><span>removed → managed</span></p>
+        <p class="term"><span>detached → </span><span class="bad">{exception}</span>
+            <br>исключение сразу или на этапе commit-а транзакции
+            (так как у detached уже есть первичный ключ).</p>
+        <a class="button button--content_list" href="#q17-21"></a>
+    </div>
+
+    <hr>
+    <div id="q18">
+        <h3><a href="#q17-21">remove()</a></h3>
+        <p class="term"><span>new → </span><span class="blue">{ignored}</span>
+            <br>операция игнорируется, однако связанные entity могут поменять статус на removed, если у них есть
+            аннотации каскадных изменений и они имели статус managed</p>
+        <p class="term"><span>managed → removed</span>
+            <br>запись в базе данных будет удалена при commit-е транзакции
+            (также произойдут операции remove для всех каскадно зависимых объектов)</p>
+        <p class="term"><span>removed → </span><span class="blue">{ignored}</span>
+            <br>операция игнорируется</p>
+        <p class="term"><span>detached → </span><span class="bad">{exception}</span>
+            <br>исключение сразу или на этапе commit-а транзакции</p>
+        <a class="button button--content_list" href="#q17-21"></a>
+    </div>
+
+    <hr>
+    <div id="q19">
+        <h3><a href="#q17-21">merge()</a></h3>
+        <p class="term"><span>new → ...</span>
+            <br>будет создана <strong>новая managed entity</strong>, в которую будут скопированы данные объекта.</p>
+        <p class="term"><span>managed → </span><span class="blue">{ignored}</span>
+            <br>операция игнорируется, однако операция merge сработает на каскадно зависимых entity,
+            если их статус не managed.</p>
+        <p class="term"><span>removed → </span><span class="bad">{exception}</span>
+            <br>исключение сразу или на этапе commit-а транзакции.</p>
+        <p class="term"><span>detached → ...</span>
+            <br>либо данные будут скопированы в существующую БД managed entity с тем же первичным ключом,
+            <br>либо создана новая managed entity, в которую скопируются данные.</p>
+        <a class="button button--content_list" href="#q17-21"></a>
+    </div>
+
+    <hr>
+    <div id="q20">
+        <h3><a href="#q17-21">refresh()</a></h3>
+        <p class="term"><span>managed → ...</span>
+            <br>будут восстановлены все изменения из базы данных данного entity,
+            также произойдет refresh всех каскадно зависимых объектов</p>
+        <p class="term"><span>new, removed, detached → </span><span class="bad">{exception}</span>
+            <br>будет вызвано исключение.</p>
+        <a class="button button--content_list" href="#q17-21"></a>
+    </div>
+
+    <hr>
+    <div id="q21">
+        <h3><a href="#q17-21">detach()</a></h3>
+        <p class="term"><span>managed, removed → detached</span></p>
+        <p class="term"><span>new, detached → </span><span class="blue">{ignored}</span>
+            <br>операция игнорируется.</p>
+        <a class="button button--content_list" href="#q17-21"></a>
     </div>
 
 </section>
