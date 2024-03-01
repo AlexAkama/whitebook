@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JUnit5</title>
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+
+<section class="container">
+    <h1 class="no_mb">JUnit 5</h1>
+    <div class="after-h1">Записки по курсу "Тестирование с использованием Junit 5"</div>
+    <div class="breadcrumbs">
+        <p><a href="../../">главная</a></p>
+        <p>JUnit 5</p>
+    </div>
+    <ul class="menu">
+        <li><a href="#testing">Что такое тестирование? Уровни тестирования.</a></li>
+        <li><a href="#junit5">Из чего состоит JUnit5?</a></li>
+        <li><a href="#test">Создание теста</a></li>
+        <li><a href="#testlifecycle">Жизненный цикл теста</a></li>
+        <li><a href=""></a></li>
+    </ul>
+</section>
+
+<section class="container" id="testing">
+    <h1><a href="#">Что такое тестирование? Уровни тестирования.</a></h1>
+    <div>
+        <p class="term">
+            <span>Тестирование ПО</span>
+            - это процесс испытания программы, целью которого является определить соответствие между
+            ожидаемым (expected) и актуальным (actual) поведениями с помощью набора тестов.
+        </p>
+        <p class="term">
+            <span>Регрессионное тестирование</span>
+            - проверка работоспособности старого функционала.
+        </p>
+    </div>
+
+    <hr>
+    <div>
+        <h4>Уровни тестирования. Пирамида тестирования.</h4>
+        <div class="image-box">
+            <img class="image" src="img/testing.png" alt="Пирамида тестирования">
+        </div>
+        <div>
+            <ul>
+                <li>модульное тестирование (Unit testing);</li>
+                <li>интеграционное тестирование (Integration testing);</li>
+                <li>системное тестирования;</li>
+                <li>
+                    <p>приемочное тестирование (Acceptance testing).</p>
+                    <p class="example">End To End, E2E, Functional testing</p>
+                </li>
+            </ul>
+        </div>
+        <p>
+            Но можно встретить варианты, где 3 уровня.<br>В этой модели объединяют интеграционный и системный уровни.
+        </p>
+        <p class="term no_mb">
+            <span>Unit testing</span>
+            - тестирование базового (маленького) компонента приложения.
+        </p>
+        <p class="example">
+            Делается для того что бы проверить что тестируемый unit работает правильно в изоляции от других компонентов
+        </p>
+        <p class="term no_mb">
+            <span>Integration testing</span>
+            - тестирование нескольких компонентов приложения.
+        </p>
+        <p class="example">
+            Делается для того что бы проверить что тестируемые unit'ы работают вместе правильно (как один большой unit).
+        </p>
+        <p class="term no_mb">
+            <span>Acceptance testing</span>
+            - тестирование всего приложения в целом.
+        </p>
+        <p class="example">
+            Т.е. как оно работает со стороны пользователя (Функциональное тестирование)
+        </p>
+    </div>
+
+</section>
+
+<section class="container" id="junit5">
+    <h1><a href="#">Из чего состоит JUnit5?</a></h1>
+    <div>
+        <p>JUnit 5 разбит на несколько основных под-проектов:</p>
+        <ul class="margined">
+            <li>
+                <p class="term">
+                    <span>JUnit Platform</span>
+                    <br>Для возможности запуска на JVM, интеграция с билд-инструментами и т.п.
+                </p>
+            </li>
+            <li>
+                <p class="term">
+                    <span>JUnit Jupiter</span>
+                    <br>Набор классов для написания тестов.
+                </p>
+            </li>
+            <li>
+                <p class="term">
+                    <span>JUnit Vintage</span>
+                    <br>Для интеграции с предыдущими версиями.
+                </p>
+            </li>
+        </ul>
+        <p class="main-mind">
+            Для работы JUnit5 необходима версия Java8 или выше
+        </p>
+    </div>
+</section>
+
+<section class="container" id="test">
+    <h1><a href="#">Создание теста</a></h1>
+    <div>
+        <p class="no_mb">По умолчанию тесты создаются в папке <span class="accent-mono">src/test/<...></span></p>
+        <p class="example no_mb">Структура далее обычно совпадает структурой кода.</p>
+        <p class="example">Но как всегда все можно перенастроить.</p>
+        <p>Имя файла должно заканчиваться на <span class="accent-mono">Test</span>.</p>
+        <p>В Unit 5 классы тестов и сами тесты могут не быть public как раньше.</p>
+        <p class="no_mb">Методы тестов аннотируются <span class="bold">@Test</span></p>
+        <p class="example">Но не только ей, есть еще другие аннотации.</p>
+        <p>В наименовании метода теста допускается написание camel-case и snake-case</p>
+        <p>Для проверки ожидаемого и актуального значений используются методы из класса
+            org.junit.jupiter.api.<span class="accent-mono">Assertion</span>.</p>
+        <p>Для расширения функциональности ассертов можно использовать библиотеки
+            <span class="accent-mono">AssertJ</span>, <span class="accent-mono">Hamcrest</span> и д.р.</p>
+        <p>Порядок выполнения тестов не гарантирован.</p>
+    </div>
+</section>
+
+<section class="container" id="testlifecycle">
+    <h1><a href="#">Жизненный цикл теста</a></h1>
+    <div class="image-box">
+        <img class="image" src="img/testlifecycle.png" alt="Жизненный цикл теста">
+    </div>
+    <p class="main-mind">
+        Порядок выполнения тестов не гарантирован!!!
+    </p>
+    <div>
+        <p>
+            По умолчанию для выполнения каждого теста создается свой экземпляра класса теста,
+            что бы обезопасить работу с данными.
+        </p>
+        <p class="no_mb">Это поведение определяет аннотация:</p>
+        <div class="code">
+            <an>@TestInstance</an>(TestInstance.Lifecycle.<key>PER_METHOD</key>)
+        </div>
+        <p class="no_mb">Что бы изменить это поведение нужно использовать другой параметр</p>
+        <div class="code no_mb">
+            <an>@TestInstance</an>(TestInstance.Lifecycle.<key>PER_CLASS</key>)
+        </div>
+        <p>При использовании PER_METHOD создается один инстанс класса с тестами.</p>
+        <p>
+            <span class="bold">Важное замечание:</span>
+            <br>Если используется PER_METHOD, то методы помеченные аннотациями
+            <an>@BeforeAll</an> и <an>@AfterAll</an> должны быть статическими, а если PER_CLASS - то нет,
+            т.е. в этом случае в этих методах есть доступ к не статическому контексту.
+        </p>
+    </div>
+
+</section>
+
+<a href="#" class="button button--top"></a>
+
+<footer>
+    <div class="footer__text"><a href="https://t.me/java40plus" title="Мой блог в телеграм">
+        Алексей Маслов, 2021-2023
+    </a></div>
+</footer>
+
+</body>
+
+<script src="../../js/image.js"></script>
+
+</html>

@@ -63,7 +63,6 @@ h1 > a {
     color: #00a82d;
     border-bottom: #00a82d solid 3px;
     margin-bottom: 14px;
-    padding-left: 30px;
 }
 
 h2 {
@@ -476,6 +475,11 @@ code {
     display: inline-block;
     margin-bottom: 7px;
     color: blue;
+}
+
+.code key{
+    font-weight: bold;
+    color: purple;
 }
 
 /*Убрать класс name и */
@@ -1132,7 +1136,4 @@ input:focus {
         padding-left: 15px;
     }
 
-    .after-h1 {
-        padding-left: 0;
-    }
 }
