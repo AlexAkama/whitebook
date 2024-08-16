@@ -477,9 +477,15 @@ code {
     color: blue;
 }
 
-.code key{
+.code key,
+.code field{
     font-weight: bold;
     color: purple;
+}
+
+.code comment {
+    font-family: inherit;
+    color: lightgray;
 }
 
 /*Убрать класс name и */
@@ -701,6 +707,7 @@ td .code {
 an,
     /*убрать, переделать code*/
 .annotation {
+    font-family: inherit;
     font-weight: bold;
     color: darkorange;
 }

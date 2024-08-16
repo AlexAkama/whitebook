@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Валидация</title>
+    <link rel="stylesheet" href="../../../css/style.css">
+</head>
+
+<body>
+
+<section class="container">
+    <h1 class="no_mb">Валидация значений в Spring</h1>
+    <div class="after-h1">Что бы не выдумывать велосипед</div>
+    <div class="breadcrumbs">
+        <p><a href="../../../">главная</a></p>
+        <p><a href="../">Рабочий опыт</a></p>
+        <p>Валидация</p>
+    </div>
+    <ul class="menu tab-2">
+        <li><a href="#dependency">Зависимость и настройка</a></li>
+        <li><a href="#not_null">@NotNull</a></li>
+        <li><a href="#not_empty">@NotEmpty</a></li>
+        <li><a href="#not_blank">@NotBlank</a></li>
+        <li><a href="#pattern">@Pattern</a></li>
+        <li><a href="#diff">Различия аннотаций</a></li>
+        <li><a href="#integer">Как валидировать число</a></li>
+    </ul>
+</section>
+
+<section class="container" id="dependency">
+    <h1><a href="#">Зависимость и настройка</a></h1>
+
+    <p>Добавляем в pom.xml</p>
+    <div class="code">
+        <pre>&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-validation&lt;/artifactId&gt;
+&lt;/dependency&gt;</pre>
+    </div>
+    <p>или</p>
+    <div class="code no_mb">
+        <pre>&lt;dependency&gt;
+    &lt;groupId&gt;org.hibernate.validator&lt;/groupId&gt;
+    &lt;artifactId&gt;hibernate-validator&lt;/artifactId&gt;
+&lt;/dependency&gt;</pre>
+    </div>
+    <p class="example no_mb">Первый ее под капотом использует</p>
+    <p class="example">
+        Подробнее про Hibernate Validator
+        <a href="https://docs.jboss.org/hibernate/stable/validator/reference/en-US/html_single/" target="_blank">
+            можно прочитать тут
+        </a>
+    </p>
+    <p class="term">
+        Для запуска механизма валидации обычно используют две аннотации: <span>@Valid</span>&nbsp;и&nbsp;<span>@Validated</span>.
+    </p>
+    <div>
+        <h4>Примеры @Valid:</h4>
+        <ul class="margined">
+            <li>
+                <p class="term"><span>Валидация параметров метода:</span></p>
+                <div class="code no_mb">
+                    <pre>    public void createUser(<an>@Valid</an> User user) {
+        ...
+    }</pre>
+                </div>
+                <p>
+                    Поля переданного в метод объекта должны быть валидированы,
+                    согласно указанным в нем(объекте) аннотациям
+                </p>
+            </li>
+            <li>
+                <p class="term"><span> Валидация полей класса:</span></p>
+                <div class="code no_mb">
+                    <pre>    <an>@Valid</an>
+    private User user;</pre>
+                </div>
+                <p>
+                    Поле, определенное в каком-либо классе и аннотированное @Valid, будет валидированно
+                    при его использовании
+                </p>
+            </li>
+            <li>
+                <p class="term"><span>Валидация коллекций:</span></p>
+                <div class="code no_mb">
+                    <pre>    <an>@Valid</an>
+    <an>@NotNull</an>
+    private List&lt;User&gt; users;</pre>
+                </div>
+                <p>
+                    Аннотация @Valid указывает, что каждый элемент списка users должен быть валидирован<br>
+                    Аннотация @NotNull указывает, что список users не должен быть null
+                </p>
+            </li>
+        </ul>
+    </div>
+    <p class="term">
+        <span>@Validated</span>
+        используется для групповой или частичной поверки.<br>
+        <a class="link-to-source" href="https://www.baeldung.com/spring-boot-bean-validation" target="_blank">Подробнее
+            тут</a>
+    </p>
+    <p class="term">
+        Разница между <span>@Validated</span> и <span>@Valid</span> -
+        <a class="bold" href="https://www.baeldung.com/spring-valid-vs-validated" target="_blank">тут</a>
+    </p>
+
+    <hr>
+    <div>
+        <h4>Аннотации</h4>
+        <p class="term">
+            Аннотации <span>@NotBlank</span>, <span>@NotEmpty</span> и <span>@NotNull</span> из пакета
+            <span>javax.validation.constraints</span> обычно используются для валидации
+            полей в Java.<br/>
+            Каждая из них имеет свое предназначение и отличается условиями, при которых поле считается
+            валидным.
+        </p>
+        <p class="no_mb">
+            Кроме них есть огромное количество других очень интересных и полезных аннотаций,
+            которыми можно валидировать почти все.
+        </p>
+        <p>
+            <a class="link-to-source"
+               href="https://docs.jboss.org/hibernate/stable/validator/reference/en-US/html_single/#validator-defineconstraints-spec"
+               target="_blank">
+                Спецификация по всем аннотациям
+            </a>
+        </p>
+    </div>
+</section>
+
+<section class="container" id="not_null">
+    <h1 class="no_mb"><a href="#">@NotNull</a></h1>
+    <p class="smaller good">javax.validation.constraints</p>
+    <div>
+        <p class="term">
+            Аннотация <span>@NotNull</span> проверяет, что значение поля не равно null.
+        </p>
+        <p>
+            Она не проверяет, пустое ли значение или состоит ли оно из пустых пробелов.
+        </p>
+        <p>
+            Используется в случаях, когда необходимо удостовериться, что поле содержит какое-либо значение, а не
+            является null.
+        </p>
+        <div>
+            <p class="example no_mb">Пример:</p>
+            <div class="code">
+                <pre>public class <class>User</class> {
+    <an>@NotNull</an>
+    private String username;
+
+    <comment>// getters and setters</comment>
+}</pre>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="container" id="not_empty">
+    <h1 class="no_mb"><a href="#">@NotEmpty</a></h1>
+    <p class="smaller good">javax.validation.constraints</p>
+    <div>
+        <p class="term">
+            Аннотация <span>@NotEmpty</span> гарантирует, что поле не равно null и не является пустой коллекцией или
+            строкой.
+        </p>
+        <p>
+            Она применяется к коллекциям, строкам или массивам.
+        </p>
+        <p>
+            Используется, когда необходимо удостовериться, что значение существует и не является пустым.
+        </p>
+        <div>
+            <p class="no_mb example s">Пример:</p>
+            <div class="code">
+                <pre>public class <class>User</class> {
+    <an>@NotEmpty</an>
+    private List&lt;String&gt; roles;
+
+    <comment>// getters and setters</comment>
+}</pre>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="container" id="not_blank">
+    <h1 class="no_mb"><a href="#">@NotBlank</a></h1>
+    <p class="smaller good">javax.validation.constraints</p>
+    <div>
+        <p class="term">
+            Аннотация <span>@NotBlank</span> применяется только к строкам и проверяет, что строка не равна null, не
+            является пустой и не состоит только из пробелов.
+        </p>
+        <p>
+            Используется тогда, когда необходимо удостовериться, что строка содержит значимые символы.
+        </p>
+        <div>
+            <p class="no_mb example">Пример:</p>
+            <div class="code">
+                <pre>public class <class>User</class> {
+    <an>@NotBlank</an>
+    private String name;
+
+    <comment>// getters and setters</comment>
+}</pre>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="container" id="pattern">
+    <h1 class="no_mb"><a href="#">@Pattern</a></h1>
+    <p class="smaller good">javax.validation.constraints</p>
+    <div>
+        <p class="term">
+            Аннотация <span>@Pattern</span> из пакета javax.validation.constraints используется для
+            проверки соответствия строкового поля заданному регулярному выражению.
+        </p>
+        <p>
+            Она не включает в себя проверку на null или пустую строку.
+        </p>
+        <p class="term">
+            Если вам нужно одновременно проверить, что строка соответствует определенному шаблону и не является null или
+            пустой, вы должны использовать <span>@Pattern</span> вместе с другими аннотациями, такими, как
+            <span>@NotNull</span>,
+            <span>@NotEmpty</span> или <span>@NotBlank</span>.
+        </p>
+        <div>
+            <p class="example no_mb">Пример:</p>
+            <div class="code">
+            <pre>import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+
+public class <class>User</class> {
+    <an>@NotBlank</an>
+    <an>@Pattern(regexp = "^[a-zA-Z0-9]+$")</an>
+    private String username;
+
+    <comment>// getters and setters</comment>
+}</pre>
+            </div>
+        </div>
+        <div>
+            <p>В этом примере:</p>
+            <ul class="margined">
+                <li><span>@NotBlank</span>: Указывает, что строка не должна быть null, пустой или состоять только из
+                    пробелов.
+                </li>
+                <li><span>@Pattern(regexp = "^[a-zA-Z0-9]+$")</span>: Указывает, что строка должна соответствовать
+                    регулярному
+                    выражению, которое допускает только алфавитно-цифровые символы.
+                </li>
+            </ul>
+        </div>
+        <p class="main-mind">
+            Если вы используете только @Pattern, нужно дополнительно использовать @NotNull, @NotEmpty или @NotBlank
+            для полной проверки.
+        </p>
+    </div>
+</section>
+
+<section class="container" id="diff">
+    <h1><a href="#">Различия</a></h1>
+    <div>
+        <div>
+            <h4 class="no_mb">Отличия:</h4>
+            <p class="example">между часто используемыми</p>
+            <ul class="tab-2 margined">
+                <li><span>@NotNull</span> проверяет только на null.</li>
+                <li><span>@NotEmpty</span> проверяет на null и пустое значение
+                    (например, пустую коллекцию, массив или строку).
+                </li>
+                <li><span>@NotBlank</span> проверяет на null, пустое значение и исключительно пробелы
+                    (применимо только к строкам).
+                </li>
+            </ul>
+        </div>
+        <div>
+            <h4>Когда использовать:</h4>
+            <ul class="tab-2 margined">
+                <li>Используйте <span>@NotNull</span> для значений, которые обязательно должны присутствовать.</li>
+                <li>Используйте <span>@NotEmpty</span> для коллекций, массивов или строк, которые обязательно должны
+                    иметь хотя бы одно значение/элемент.
+                </li>
+                <li>Используйте <span>@NotBlank</span> для строк, которые должны содержать осмысленный текст (без
+                    пробелов и
+                    пустоты).
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section class="container" id="integer">
+    <h1><a href="#">Как валидировать число?</a></h1>
+    <div>
+        <p class="term">
+            Для поля типа
+            <span>Integer (int)</span>
+            наиболее подходящей аннотацией для валидации будет
+            <span>@NotNull</span>.
+        </p>
+        <p class="term">
+            Если нужно проверить, что значение находится в допустимом диапазоне (например от 0 до 65535), можно
+            дополнительно использовать аннотацию <span>@Min</span> и <span>@Max</span>.
+        </p>
+        <div>
+            <p class="example no_mb">Пример:</p>
+            <div class="code">
+                <pre>import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Max;
+
+public class <class>ServerConfig</class> {
+    <an>@NotNull</an>
+    <an>@Min(0)</an>
+    <an>@Max(65535)</an>
+    private Integer port;
+
+    <comment>// getters and setters</comment>
+}</pre>
+            </div>
+            <div>
+                <p>Объяснение:</p>
+                <ol class="margined">
+                    <li><span>@NotNull</span>: Указывает, что поле не должно быть null.</li>
+                    <li><span>@Min(0)</span>: Указывает минимальное допустимое значение для порта.</li>
+                    <li><span>@Max(65535)</span>: Указывает максимальное допустимое значение для порта.</li>
+                </ol>
+            </div>
+            <p>
+                Эти аннотации вместе гарантируют, что значение поля port будет не только задано, но и находиться в
+                допустимом диапазоне для номеров портов.
+            </p>
+        </div>
+    </div>
+
+    <p class="main-mind no_mb">
+        Валидировать можно почти все
+    </p>
+    <p>
+        <a class="link-to-source"
+           href="https://docs.jboss.org/hibernate/stable/validator/reference/en-US/html_single/#validator-defineconstraints-spec"
+           target="_blank">
+            Описание всех доступных аннотаций
+        </a>
+    </p>
+
+</section>
+
+<a href="#" class="button button--top"></a>
+
+<footer>
+    <div class="footer__text"><a href="https://t.me/java40plus" title="Мой блог в телеграм" target="_blank">
+        Ⓒ Алексей Маслов, 2021-2024
+    </a></div>
+</footer>
+
+</body>
+
+</html>
