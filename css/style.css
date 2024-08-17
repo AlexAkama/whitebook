@@ -213,7 +213,6 @@ img {
     text-transform: uppercase;
     display: flex;
     flex-wrap: wrap;
-    flex-wrap: wrap;
     font-size: 14px;
     font-weight: bold;
     margin-bottom: 14px;
@@ -304,6 +303,7 @@ img {
 .menu li:before {
     content: '►'; /* Ваш кастомный маркер */
     position: absolute;
+    font-size: large;
     left: -20px; /* Позиционирование маркера относительно li */
 }
 .menu li:hover::before {
