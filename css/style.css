@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    font-family: 'Monaco', 'Menlo', 'Consolas', 'Courier New', monospace;
     text-rendering: optimizeLegibility
 }
 
@@ -213,6 +213,7 @@ img {
     text-transform: uppercase;
     display: flex;
     flex-wrap: wrap;
+    flex-wrap: wrap;
     font-size: 14px;
     font-weight: bold;
     margin-bottom: 14px;
@@ -294,6 +295,19 @@ img {
 
 .menu li, .menu tr {
     margin-bottom: 10px;
+}
+
+.menu li {
+    list-style-type: none;
+    position: relative;
+}
+.menu li:before {
+    content: '►'; /* Ваш кастомный маркер */
+    position: absolute;
+    left: -20px; /* Позиционирование маркера относительно li */
+}
+.menu li:hover::before {
+    color: #00a82d;
 }
 
 /*удалить*/
