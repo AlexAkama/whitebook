@@ -304,7 +304,6 @@ img {
 .menu li:before {
     content: '►';
     position: absolute;
-    font-size: large;
     left: -20px;
 }
 

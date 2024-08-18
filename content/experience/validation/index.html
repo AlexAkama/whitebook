@@ -12,7 +12,7 @@
 <body>
 
 <section class="container">
-    <h1 class="no_mb">Валидация значений в Spring</h1>
+    <h1 class="no_mb">Валидация значений в Spring&nbsp;Boot</h1>
     <div class="after-h1">Что бы не выдумывать велосипед</div>
     <div class="breadcrumbs">
         <p><a href="../../../">главная</a></p>
@@ -107,29 +107,18 @@
         Разница между <span>@Validated</span> и <span>@Valid</span> -
         <a class="bold" href="https://www.baeldung.com/spring-valid-vs-validated" target="_blank">тут</a>
     </p>
-
-    <hr>
-    <div>
-        <h4>Аннотации</h4>
-        <p class="term">
-            Аннотации <span>@NotBlank</span>, <span>@NotEmpty</span> и <span>@NotNull</span> из пакета
-            <span>javax.validation.constraints</span> обычно используются для валидации
-            полей в Java.
-            Каждая из них имеет свое предназначение и отличается условиями, при которых поле считается
-            валидным.
+    <div class="mb20">
+        <p class="term no_mb">
+            Аннотаций для условий валидации очень много.<br>
+            Часто используемые <span>@NotBlank</span>, <span>@NotEmpty</span> и <span>@NotNull</span>.
         </p>
-        <p class="no_mb">
-            Кроме них есть огромное количество других очень интересных и полезных аннотаций,
-            которыми можно валидировать почти все.
-        </p>
-        <p>
-            <a class="link-to-source"
-               href="https://docs.jboss.org/hibernate/stable/validator/reference/en-US/html_single/#validator-defineconstraints-spec"
-               target="_blank">
-                Спецификация по всем аннотациям
-            </a>
-        </p>
+        <a class="link-to-source"
+           href="https://docs.jboss.org/hibernate/stable/validator/reference/en-US/html_single/#validator-defineconstraints-spec"
+           target="_blank">
+            Спецификация по всем аннотациям
+        </a>
     </div>
+    <a class="button button--to_top_menu" href="#"></a>
 </section>
 
 <section class="container" id="not_null">
@@ -158,6 +147,7 @@
             </div>
         </div>
     </div>
+    <a class="button button--to_top_menu" href="#"></a>
 </section>
 
 <section class="container" id="not_empty">
@@ -186,6 +176,7 @@
             </div>
         </div>
     </div>
+    <a class="button button--to_top_menu" href="#"></a>
 </section>
 
 <section class="container" id="not_blank">
@@ -211,6 +202,7 @@
             </div>
         </div>
     </div>
+    <a class="button button--to_top_menu" href="#"></a>
 </section>
 
 <section class="container" id="pattern">
@@ -262,6 +254,7 @@ public class <class>User</class> {
             для полной проверки.
         </p>
     </div>
+    <a class="button button--to_top_menu" href="#"></a>
 </section>
 
 <section class="container" id="diff">
@@ -294,6 +287,7 @@ public class <class>User</class> {
             </ul>
         </div>
     </div>
+    <a class="button button--to_top_menu" href="#"></a>
 </section>
 
 <section class="container" id="integer">
@@ -350,7 +344,7 @@ public class <class>ServerConfig</class> {
             Описание всех доступных аннотаций
         </a>
     </p>
-
+    <a class="button button--to_top_menu" href="#"></a>
 </section>
 
 <a href="#" class="button button--top"></a>
