@@ -300,12 +300,14 @@ img {
     list-style-type: none;
     position: relative;
 }
+
 .menu li:before {
-    content: '►'; /* Ваш кастомный маркер */
+    content: '►';
     position: absolute;
     font-size: large;
-    left: -20px; /* Позиционирование маркера относительно li */
+    left: -20px;
 }
+
 .menu li:hover::before {
     color: #00a82d;
 }
@@ -333,17 +335,28 @@ img {
     transition: all 0.3s ease 0s;
 }
 
-.button--content_list {
+.button--to_top_menu,
+.button--to_content_menu {
     display: block;
+}
+
+.button--to_content_menu {
     margin-bottom: 20px;
 }
 
-.button--content_list:before {
+.button--to_content_menu:before {
     display: inline;
     content: 'оглавление';
     font-size: small;
 }
 
+.button--to_top_menu:before {
+    display: inline;
+    content: 'наверх';
+    font-size: small;
+}
+
+/* вырезать после перехода на  breadcrumbs*/
 .button--home {
     background-color: #00a82d;
     border: #00a82d solid 2px;
@@ -492,7 +505,7 @@ code {
 }
 
 .code key,
-.code field{
+.code field {
     font-weight: bold;
     color: purple;
 }
