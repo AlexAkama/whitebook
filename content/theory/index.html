@@ -14,6 +14,10 @@
 <section class="container">
     <h1 class="no_mb">Теория</h1>
     <div class="after-h1">Базовый знания не зависимо от языка</div>
+    <div class="breadcrumbs">
+        <p><a href="../../">главная</a></p>
+        <p>Теория</p>
+    </div>
     <ul class="menu">
         <li><a href="#programming">Основы программирования</a></li>
         <li><a href="#abbreviation">Сокращения</a></li>
@@ -28,9 +32,6 @@
         <li><a href="#endpoint">Как называть endpoint'ы</a></li>
         <li><a href="./algorithm">Алгоритмы</a></li>
     </ul>
-    <div class="back-panel">
-        <a href="../../" class="button button--home">На главную</a>
-    </div>
 </section>
 
 <section class="container" id="programming">
@@ -44,7 +45,6 @@
     <hr>
     <h3 class="no_mb">Полезный курс для начинающих:</h3>
     <p><a href="https://www.youtube.com/playlist?list=PLawfWYMUziZqyUL5QDLVbe3j5BKWj42E5">CS50 (Гарвард)</a></p>
-    <a href="#" class="button button--top"></a>
 </section>
 
 <section class="container" id="abbreviation">
@@ -106,15 +106,14 @@
     </p>
     <p class="no_mb">
         <strong>SpEL</strong> (Spring Expression Language)
-        - это язык выражений, созданный для Spring Framework, который поддерживает запросы и управление графом объектов во
+        - это язык выражений, созданный для Spring Framework, который поддерживает запросы и управление графом объектов
+        во
         время выполнения.
     </p>
     <p class="example">
         Также важно отметить, что SpEL создан в виде API-интерфейса, позволяющего интегрировать его в другие приложения
         и фрэймворки.
     </p>
-
-    <a href="#" class="button button--top"></a>
 </section>
 
 <section class="container" id="micros">
@@ -128,8 +127,7 @@
     <p class="no_mb">Пример:</p>
     <p class="tab-1" style="font-size: smaller">
         Есть два класса A и B, которые взаимодействуют друг с другом. Если они слабосвязаны, то класс A
-        будет делать то что он должен делать не зная подробностей реализации класса B. </p>
-    <a href="#" class="button button--top"></a>
+        будет делать то, что он должен делать не зная подробностей реализации класса B. </p>
 </section>
 
 <section class="container" id="protocols">
@@ -152,7 +150,6 @@
     <p class="no_mb tab-1"><strong>SMPT</strong> (Simple Mail Transfer Protocol)</p>
     <p class="no_mb tab-1"><strong>UDP</strong> (User Datagram Protocol)</p>
     <p class="no_mb tab-1"><strong>TELNET</strong> (Teletype network)</p>
-
 </section>
 
 <section class="container" id="oop">
@@ -164,7 +161,6 @@
         <li><strong>инкапсуляция</strong>: скрытие реализации и контролируемый доступ к данным</li>
     </ul>
     <p><a href="../java_questions/core/oop/">В ключе JAVA</a></p>
-    <a href="#" class="button button--top"></a>
 </section>
 
 <section class="container" id="data">
@@ -214,7 +210,6 @@
         <li>Все потомки справа больше либо равны</li>
     </ul>
     <p>Сложность O(h), где h - высота дерева</p>
-    <a href="#" class="button button--top"></a>
 </section>
 
 <section class="container" id="bigo">
@@ -242,7 +237,7 @@
 
     <p class=""><strong>Big O</strong> - (доступно в рамках computer scinece) - показывает
         <strong>верхнюю границу</strong> зависимости между
-        <strong>входными параметрами</strong>функции и
+        <strong>входными параметрами</strong> функции и
         <strong>количеством операций</strong>, которые выполнит процессор.</p>
 
     <p class="bold no_mb">Отбрасывание констант</p>
@@ -258,8 +253,6 @@
     <p><a href="https://tproger.ru/articles/computational-complexity-explained/" target="_blank">Много букв на тему</a>
     </p>
     <p><a href="ttps://habr.com/ru/post/188010/" target="_blank">хорошо|приемлемо|плохо (справочно)</a></p>
-
-    <a href="#" class="button button--top"></a>
 </section>
 
 <section class="container" id="solid">
@@ -380,7 +373,6 @@
     <hr>
     <h3></h3>
     <p><a href="https://refactoring.guru/ru/design-patterns">Целый сайт о паттернах и рефакторинге</a></p>
-    <a href="#" class="button button--top"></a>
 </section>
 
 <section class="container" id="regex">
@@ -416,8 +408,6 @@
     <h3>Таблица</h3>
     <p><a href="https://www.exlab.net/tools/sheets/regexp.html" target="_blank">Табличка (распечатать на бумажку!)</a>
     </p>
-
-    <a href="#" class="button button--top"></a>
 </section>
 
 <section class="container" id="endpoint">
@@ -459,11 +449,12 @@
     <p class="no_mb">Если например обновляешь не всю сущность, а какую-то часть, то</p>
     <p class="code bold">PUT /order/{id}/status</p>
 
-    <a class="button--top" href="#"></a>
 </section>
 
+<a class="button--top" href="#"></a>
+
 <footer>
-        <div class="footer__text"><a href="https://t.me/java40plus" title="Мой блог в телеграм" target="_blank">
+    <div class="footer__text"><a href="https://t.me/java40plus" title="Мой блог в телеграм" target="_blank">
         Ⓒ Алексей Маслов, 2021-2024
     </a></div>
 </footer>

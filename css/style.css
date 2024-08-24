@@ -249,10 +249,20 @@ img {
     margin-right: 2px;
 }
 
-.breadcrumbs p:not(:last-child):after {
-    content: '▶';
+.breadcrumbs p:after {
+    content: '▸';
     padding-left: 5px;
     color: #00a82d;
+}
+
+.breadcrumbs p:last-child{
+    color: #ffffff;
+    background-color: #00a82d;
+}
+
+.breadcrumbs p:last-child:after {
+    content: '●';
+    color: #ffffff;
 }
 
 .image-box {
@@ -302,9 +312,9 @@ img {
 }
 
 .menu li:before {
-    content: '►';
+    content: '▸';
     position: absolute;
-    left: -20px;
+    left: -12px;
 }
 
 .menu li:hover::before {
@@ -316,6 +326,7 @@ img {
     padding-left: 30px;
 }
 
+/*выпилить и удалить*/
 .back-panel {
     text-align: right;
     margin-bottom: 14px;

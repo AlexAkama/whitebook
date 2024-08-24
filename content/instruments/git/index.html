@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GIT</title>
+    <link rel="stylesheet" href="../../../css/style.css" class="css">
+</head>
+
+<body>
+
+<section class="container">
+    <h1 class="no_mb">GIT</h1>
+    <div class="after-h1">Система контроля версий</div>
+    <div class="breadcrumbs">
+        <p><a href="../../..">главная</a></p>
+        <p><a href="../">инструменты</a></p>
+        <p>GIT</p>
+    </div>
+    <ul class="menu">
+        <li><a href="#base">Общее</a></li>
+        <li><a href="#cancel">Отмена операций</a></li>
+        <li><a href="#recovery">Как восстановить файл</a></li>
+    </ul>
+</section>
+
+<section class="container" id="base">
+    <h1><a href="#">Общее</a></h1>
+
+    <hr>
+    <div>
+        <h2>Учебник</h2>
+        <p><a href="https://githowto.com/ru" target="_blank">Читать всем</a></p>
+        <hr>
+        <h2>РЕПОЗИТОРИИ</h2>
+        <p class="no_mb">Адреса репозиториев:</p>
+        <div class="code">git remote -v</div>
+        <p class="no_mb">Изменение адреса репозитория:</p>
+        <div class="code">git remote set-url &lt;имя_репозитория&gt; &lt;url_репозитория&gt;</div>
+        <a href="#" class="button button--to_top_menu mb10"></a>
+    </div>
+
+    <hr>
+    <div>
+        <h2 class="no_mb">ВЕТКИ</h2>
+        <p>Основы ветвления и слияния</p>
+        <p class="no_mb">Создание ветки:</p>
+        <div class="code no_mb">
+            <p>git branch &lt;имя_ветки&gt;</p>
+            <p>git checkout &lt;имя_ветки&gt;</p>
+        </div>
+        <p class="no_mb">или кратко с ключом -b</p>
+        <div class="code">
+            <p>git checkout -b &lt;имя_ветки&gt; </p>
+        </div>
+        <p class="no_mb">Переключение на ветку:</p>
+        <div class="code">
+            <p>git checkout &lt;имя_ветки&gt;</p>
+        </div>
+        <p class="no_mb">Просмотр списка веток:</p>
+        <div class="code">
+            <p>git branch</p>
+        </div>
+        <p class="no_mb">Слияние:</p>
+        <p class="no_mb">ВАЖНО!!! Перед слиянием надо переключится туда куда надо слить данные</p>
+        <div class="code">
+            <p>git checkout &lt;имя_ветки_назначения&gt;</p>
+            <p>git merge &lt;имя_ветки&gt;</p>
+        </div>
+        <p class="no_mb">Удаление ветки:</p>
+        <div class="code">
+            <p>git branch -d &lt;имя_ветки&gt;</p>
+        </div>
+        <p class="no_mb">Переименование ветки</p>
+        <p class="no_mb">Сначала переименовываем локальную ветку, а затем выгружаем изменения на удаленный сервер,
+            удаляем старую ветку на сервере.</p>
+        <div class="code no_mb">
+            <p>git branch -m &lt;старое_название&gt; &lt;новое_название&gt;</p>
+            <p>git push &lt;имя_репозитория&gt; :&lt;старое_название&gt; &lt;новое_название&gt;</p>
+        </div>
+        <p>ВАЖНО!!! Во второй строчке стоит двоеточие перед старым именем ветки — это команда для удаления ветки на
+            сервере!!!</p>
+        <a href="#" class="button button--to_top_menu mb10"></a>
+    </div>
+
+    <hr>
+    <div>
+        <h2>КОММИТЫ</h2>
+        <p class="no_mb">Добавить в</p>
+        <div class="code">
+            <p>git add &lt;имя|маска&gt; // git add . -Добавит все отслеживаемые файлы</p>
+        </div>
+        <p class="no_mb">Создать коммит</p>
+        <div class="code">
+            <p>git commit -m "&lt;текст_комментария&gt;"</p>
+        </div>
+        <p class="no_mb">Изменение последнего коммита</p>
+        <p class="no_mb">ВАЖНО! Коммит не должен быть запушен на удаленный репо (если нет, то ничего не сломается, но
+            гемор
+            потом будет)</p>
+        <div class="code">
+            <p>git --amend -m "&lt;текст_комментария&gt;"</p>
+        </div>
+        <p class="no_mb">Записать в репозиторий (в основную ветку)</p>
+        <div class="code">
+            <p>git push</p>
+        </div>
+        <p class="no_mb">Записать в репозиторий в ветку</p>
+        <div class="code">
+            <p>git push &lt;имя_репозитория&gt; &lt;имя_ветки&gt; // git push origin dev</p>
+        </div>
+        <a href="#" class="button button--to_top_menu"></a>
+    </div>
+
+</section>
+
+<section class="container" id="cancel">
+    <h1><a href="#">Отмена операций</a></h1>
+    <hr>
+    <div>
+        <h2>Отмена коммита</h2>
+        <p class="no_mb">
+            Для отмены
+            <strong>последнего коммита</strong>, если изменения ещё
+            <strong>не опубликованы на сервер</strong> (не сделан git push) воспользоваться командой:
+        </p>
+        <div class="code no_mb">git reset --soft HEAD^</div>
+        <p class="no_mb">
+            При этом изменённый код удалён не будет (будет зелёным цветом в git status).
+            Вы можете подправить код и повторить коммит.
+        </p>
+        <p>
+            <strong>Это работает, если вы не опубликовали свои изменения</strong>.
+            Если же вы уже опубликовали изменения, то не остается ничего другого, как сделать коммит,
+            который отменяет коммит.
+        </p>
+        <p class="no_mb">Пример:</p>
+        <p class="no_mb">--soft - отменит коммит, но сохранит изменения в файлах</p>
+        <p class="no_mb">--hard - отменит коммит и удалит изменения, сделанные коммитом.</p>
+        <p>git reset --soft HEAD~2 - отменит 2 последних коммита, сохранив изменения.
+            Будут видны в git status.</p>
+        <p class="no_mb">Для отмены опубликованного коммита:</p>
+        <div class="code no_mb">git revert &lt;хеш код&gt;</div>
+        <p>Хеш смотрим в <strong>git log</strong>.</p>
+        <a href="#" class="button button--to_top_menu mb10"></a>
+    </div>
+
+    <hr>
+    <div>
+        <h2>Отмена отслеживания</h2>
+        <p class="no_mb">Отменить отслеживание файла:</p>
+        <div class="code no_mb">git rm --cached &lt;имя файла&gt;</div>
+        <p>Важно! Это так же поможет если надо убрать файл из индекса.</p>
+        <p class="no_mb">Отменить отслеживание папки:</p>
+        <div class="code">git rm --cached -r &lt;имя папки&gt;</div>
+        <a href="#" class="button button--to_top_menu mb10"></a>
+    </div>
+
+    <hr>
+    <div>
+        <h2>Отмена изменения в файле</h2>
+        <div class="code">git checkout &lt;имя фала&gt;</div>
+        <a href="#" class="button button--to_top_menu"></a>
+    </div>
+
+</section>
+
+<section class="container" id="recovery">
+    <h1 class="no_mb"><a href="#">Как восстановить файл</a></h1>
+    <p class="main-mind">Ситуация: вы удалили файл и хотите его восстановить или сделали изменения в файле, которые
+        хотите
+        отменить. То есть необходимо вернуть файл в то состояние, в котором он находится в Git репозитории.</p>
+
+    <hr>
+    <div>
+        <h3>Восстановление удаленного файла или отмена изменений</h3>
+        <p class="no_mb">Если вы еще не добавили файл в индекс (<strong>не выполнили git add</strong>),
+            то для восстановления файла можно воспользоваться командой
+            (вместо myfile необходимо указать файл, который вы восстанавливаете):</p>
+        <div class="code">git checkout -- myfile</div>
+        <p>Просмотреть список удаленных файлов можно командой: git ls-files --deleted</p>
+        <a href="#" class="button button--to_top_menu mb10"></a>
+    </div>
+
+    <hr>
+    <div>
+        <h3>Восстановление удаленного файла, если он уже добавлен в индекс (git add)</h3>
+        <p class="no_mb">
+            Если вы удалили файл и уже добавили его в индекс, <strong>выполнив git add</strong>, то сначала нужно
+            удалить
+            его из индекса, а затем выполнить восстановление, как было показано выше. Для этого выполните команды:
+        </p>
+        <div class="code">
+            <p>git reset -- myfile</p>
+            <p>git checkout -- myfile</p>
+        </div>
+        <p><a href="https://pingvinus.ru/git/1580" target="_blank">источник</a></p>
+        <a href="#" class="button button--to_top_menu"></a>
+    </div>
+
+</section>
+
+<a href="#" class="button button--top"></a>
+
+<footer>
+    <div class="footer__text"><a href="https://t.me/java40plus" title="Мой блог в телеграм" target="_blank">
+        Ⓒ Алексей Маслов, 2021-2024
+    </a></div>
+</footer>
+
+</body>
+
+</html>
