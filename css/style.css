@@ -255,7 +255,7 @@ img {
     color: #00a82d;
 }
 
-.breadcrumbs p:last-child{
+.breadcrumbs p:last-child {
     color: #ffffff;
     background-color: #00a82d;
 }
@@ -511,13 +511,20 @@ code {
     font-weight: bold;
     display: inline-block;
     margin-bottom: 7px;
+}
+
+.code class {
     color: blue;
+}
+
+.code method {
+    color: green;
 }
 
 .code key,
 .code field {
     font-weight: bold;
-    color: purple;
+    color: brown;
 }
 
 .code comment {

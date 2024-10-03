@@ -238,8 +238,10 @@ WHERE owner_id = ?;</pre>
             </div>
             <p class="answer no_mb">Да, индекс будет использоваться в запросе.</p>
             <p class="example">
-                В данном запросе имеется условие owner_id = ?, которое соответствует первой колонке составного индекса (owner_id, likes_count).
-                <br/>Индексы могут использоваться даже если условие соответствует только первой колонке составного индекса.
+                В данном запросе имеется условие owner_id = ?, которое соответствует первой колонке составного индекса
+                (owner_id, likes_count).
+                <br/>Индексы могут использоваться даже если условие соответствует только первой колонке составного
+                индекса.
             </p>
         </div>
 
@@ -253,8 +255,10 @@ WHERE likes_count = ?;</pre>
             </div>
             <p class="answer no_mb">Нет, индекс не будет использован в этом запросе.</p>
             <p class="example">
-                Поскольку условие фильтрации затрагивает только likes_count, а индекс начинается с owner_id, то индекс (owner_id, likes_count) не будет полезен.
-                <br/>Составной индекс может быть использован, только если условия фильтрации затрагивают первый столбец (или первый и второй) в индексе.
+                Поскольку условие фильтрации затрагивает только likes_count, а индекс начинается с owner_id, то индекс
+                (owner_id, likes_count) не будет полезен.
+                <br/>Составной индекс может быть использован, только если условия фильтрации затрагивают первый столбец
+                (или первый и второй) в индексе.
             </p>
         </div>
 
@@ -272,8 +276,10 @@ WHERE owner_id = ?
             <p class="example">
                 В этом случае оба индекса (owner_id и likes_count) могут быть использованы.
                 <br/>СУБД может использовать оба индекса для более эффективного выполнения запроса.
-                <br/>Например, некоторые системы управления базами данных могут выполнить пересечение индексов (bitmap index merge)
-                <br/>или выбрать наиболее селективный индекс для начала поиска и затем использовать другой индекс для дальнейшей фильтрации.
+                <br/>Например, некоторые системы управления базами данных могут выполнить пересечение индексов (bitmap
+                index merge)
+                <br/>или выбрать наиболее селективный индекс для начала поиска и затем использовать другой индекс для
+                дальнейшей фильтрации.
             </p>
         </div>
 
@@ -289,15 +295,18 @@ WHERE owner_id = ?
             </div>
             <p class="answer no_mb">
                 Здесь ответ может зависеть от конкретной СУБД и её возможностей оптимизации.
-                <br/>В некоторых случаях, особенно для сложных OR-условий, использование индексов может быть ограниченным.
+                В некоторых случаях, особенно для сложных OR-условий, использование индексов может быть ограниченным.
             </p>
             <p class="example">
                 Обычно:
-                <br/>- Некоторые СУБД могут использовать индексы для обеих колонок при запросах с OR-условиями, выполняя два индексных поиска и объединяя результаты.
-                <br/>- Другие СУБД могут выбрать полный скан таблицы, если считают, что это будет более эффективно по времени.
+                <br/>- Некоторые СУБД могут использовать индексы для обеих колонок при запросах с OR-условиями, выполняя
+                два индексных поиска и объединяя результаты.
+                <br/>- Другие СУБД могут выбрать полный скан таблицы, если считают, что это будет более эффективно по
+                времени.
                 <br/>Таким образом, хотя технически оба индекса потенциально могут быть использованы,
                 <br/>всё зависит от подсистемы оптимизации запросов конкретной СУБД.
-                <br/>В большинстве случаев конкретная база данных будет принимать решение, исходя из своих алгоритмов оптимизации.
+                <br/>В большинстве случаев конкретная база данных будет принимать решение, исходя из своих алгоритмов
+                оптимизации.
             </p>
         </div>
 
@@ -306,6 +315,144 @@ WHERE owner_id = ?
 
 <section class="container" id="jmm">
     <h1><a href="#">JMM</a></h1>
+
+    <div>
+        <h4>1.</h4>
+        <div class="code">
+            <pre>class <class>VolatileExample</class> {
+    private static boolean <field>running</field> = true; <comment>// Не использовано volatile</comment>
+
+    public static void <method>main</method>(String[] args) throws InterruptedException {
+        Thread thread = new Thread(() -> {
+            int count = 0;
+            while (running) {
+                count++;
+            }
+            System.out.println("Stopped at count: " + count);
+        });
+
+        thread.start();
+        Thread.sleep(1000);
+
+        running = false;
+        thread.join();
+        System.out.println("Main thread completed.");
+    }
+}</pre>
+        </div>
+        <p class="question">Что выведет программа в конце работы?</p>
+        <p class="answer no_mb">В таком виде программа не закончится.</p>
+        <p class="example">т.к. не использовано volatile, while (running) может быть преобразовано в while (true)</p>
+    </div>
+
+    <hr>
+    <div>
+        <h4>2.</h4>
+        <div class="code">
+            <pre>class <class>ReorderingExample</class> {
+    private int <field>x</field> = 0;
+    private boolean <field>flag</field> = false; <comment> // тут нужен volatile</comment>
+
+    public void <method>writer</method>() {
+        x = 42; <comment> // (1)</comment>
+        flag = true; <comment> // (2)</comment>
+    }
+
+    public void <method>reader</method>() {
+        if (flag) { <comment> // (3)</comment>
+            System.out.println(x); <comment> // (4)</comment>
+        }
+    }
+
+    public static void <method>main</method>(String[] args) {
+        ReorderingExample example = new ReorderingExample();
+
+        Thread writerThread = new Thread(example::writer);
+        Thread readerThread = new Thread(example::reader);
+
+        writerThread.start();
+        readerThread.start();
+    }
+}</pre>
+        </div>
+        <p class="question">Что выведет программа в конце работы?</p>
+        <p class="answer no_mb">0, 42 или ничего</p>
+        <p class="example">0 - потому-что оптимизатор может поменять местами строки 1 и 2 </p>
+        <p class="question">Что сделать что бы получить ожидаемое?</p>
+        <p class="answer">Добавить volatile для флага</p>
+    </div>
+
+    <hr>
+    <div>
+        <h4>3.</h4>
+        <p class="question">Как правильно создать синглтон</p>
+        <div class="code">
+            <pre>class <class>Singleton</class> {
+    private static Singleton <field>instance</field>; <comment>// Тут еще нужно вкрячить volatile</comment>
+
+    private <method>Singleton</method>() {
+        <comment>// Private constructor</comment>
+    }
+
+    public static Singleton <method>getInstance</method>() {
+        if (instance == null) {
+            synchronized (Singleton.class) {
+                if (instance == null) {
+                    instance = new Singleton();
+                }
+            }
+        }
+        return instance;
+    }
+}</pre>
+        </div>
+        <p class="answer no_mb">Наиболее распространенный способ — «Double-Checked Locking»</p>
+        <p class="example">
+            volatile тут нужен, что бы мы отдали полностью созданный и инициализированный объект,
+            иначе может быть ситуация что ссылка на объект опубликована, а объект еще не создан,
+            или объект создан, но его поля еще не проинициализированны.
+        </p>
+        <p>
+            <a class="link-to-source" href="https://habr.com/ru/articles/27108/" target="_blank">статейка на тему</a>
+        </p>
+    </div>
+
+    <hr>
+    <div>
+        <h4>4.</h4>
+        <div class="code">
+            <pre>class <class>UnsafePublication</class> {
+    private Object <field>resource</field>; <comment>// нужен volatile что бы решить проблему</comment>
+
+    public <method>UnsafePublication</method>() {
+        new Thread(() -> {
+            resource = new Object();
+        }).start();
+    }
+
+    public Object <method>getResource</method>() {
+        return resource;
+    }
+
+    public static void <method>main</method>(String[] args) throws InterruptedException {
+        UnsafePublication unsafe = new UnsafePublication();
+        Thread.sleep(100);
+        if (unsafe.getResource() != null) {
+            System.out.println("Resource is initialized");
+        } else {
+            System.out.println("Resource is null");
+        }
+    }
+}</pre>
+        </div>
+        <p class="question">Что тут не так?</p>
+        <p class="answer no_mb">Небезопасная публикация</p>
+        <p class="example">
+            Можем отдать не полностью проинициализированный объект,
+            т.е. объект не null, но еще не все поля проинициализированы
+        </p>
+        <p><a class="link-to-source" href="https://shipilev.net/blog/archive/safe-publication/">статья на тему</a></p>
+    </div>
 
 </section>
 
