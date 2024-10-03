@@ -25,6 +25,8 @@
         <p><a href="#instanceof">instanceof</a></p>
         <p><a href="#method_overloading">Method Overloading (Перегрузка методов)</a></p>
         <p><a href="#inheritance">Inheritance (Наследование)</a></p>
+        <p><a href="#index">Index DB</a></p>
+        <p><a href="#jmm">JMM</a></p>
     </div>
 </section>
 
@@ -203,6 +205,108 @@ d1 = (DeriveOne) d2;</pre>
             т.к. d2 не является наследником DeriveOne
         </p>
     </div>
+</section>
+
+<section class="container" id="index">
+    <h1><a href="#">Index DB</a></h1>
+    <div>
+        <p class="question">Будет ли использоваться индекс в запросе?</p>
+
+        <div>
+            <h4>1.</h4>
+            <div class="code"><pre>CREATE index ON post (owner_id);
+SELECT *
+FROM post
+WHERE likes_count > ?
+  AND owner_id = ?;</pre>
+            </div>
+            <p class="answer no_mb">Да, индекс будет использоваться в запросе.</p>
+            <p class="example">
+                В данном запросе имеется условие owner_id = ?, которое соответствует индексу, созданному на owner_id.
+                <br/>Индекс на owner_id может помочь улучшить производительность запроса, делая выборку более быстрой.
+                <br/>Условие likes_count > ? может быть вторичным, но главный фильтрующий критерий здесь — это owner_id.
+            </p>
+        </div>
+
+        <div>
+            <h4>2.</h4>
+            <div class="code">
+                <pre>CREATE index ON post (owner_id, likes_count);
+SELECT *
+FROM post
+WHERE owner_id = ?;</pre>
+            </div>
+            <p class="answer no_mb">Да, индекс будет использоваться в запросе.</p>
+            <p class="example">
+                В данном запросе имеется условие owner_id = ?, которое соответствует первой колонке составного индекса (owner_id, likes_count).
+                <br/>Индексы могут использоваться даже если условие соответствует только первой колонке составного индекса.
+            </p>
+        </div>
+
+        <div>
+            <h4>3.</h4>
+            <div class="code">
+                <pre>CREATE index ON post (owner_id, likes_count);
+SELECT *
+FROM post
+WHERE likes_count = ?;</pre>
+            </div>
+            <p class="answer no_mb">Нет, индекс не будет использован в этом запросе.</p>
+            <p class="example">
+                Поскольку условие фильтрации затрагивает только likes_count, а индекс начинается с owner_id, то индекс (owner_id, likes_count) не будет полезен.
+                <br/>Составной индекс может быть использован, только если условия фильтрации затрагивают первый столбец (или первый и второй) в индексе.
+            </p>
+        </div>
+
+        <div>
+            <h4>4.</h4>
+            <div class="code">
+                <pre>CREATE index ON post (owner_id);
+CREATE index ON post (likes_count);
+SELECT *
+FROM post
+WHERE owner_id = ?
+  AND likes_count = ?;</pre>
+            </div>
+            <p class="answer no_mb">Да, индекс будет использоваться в запросе.</p>
+            <p class="example">
+                В этом случае оба индекса (owner_id и likes_count) могут быть использованы.
+                <br/>СУБД может использовать оба индекса для более эффективного выполнения запроса.
+                <br/>Например, некоторые системы управления базами данных могут выполнить пересечение индексов (bitmap index merge)
+                <br/>или выбрать наиболее селективный индекс для начала поиска и затем использовать другой индекс для дальнейшей фильтрации.
+            </p>
+        </div>
+
+        <div>
+            <h4>5.</h4>
+            <div class="code">
+                <pre>CREATE index ON post (owner_id);
+CREATE index ON post (likes_count);
+SELECT *
+FROM post
+WHERE owner_id = ?
+   OR likes_count = ?;</pre>
+            </div>
+            <p class="answer no_mb">
+                Здесь ответ может зависеть от конкретной СУБД и её возможностей оптимизации.
+                <br/>В некоторых случаях, особенно для сложных OR-условий, использование индексов может быть ограниченным.
+            </p>
+            <p class="example">
+                Обычно:
+                <br/>- Некоторые СУБД могут использовать индексы для обеих колонок при запросах с OR-условиями, выполняя два индексных поиска и объединяя результаты.
+                <br/>- Другие СУБД могут выбрать полный скан таблицы, если считают, что это будет более эффективно по времени.
+                <br/>Таким образом, хотя технически оба индекса потенциально могут быть использованы,
+                <br/>всё зависит от подсистемы оптимизации запросов конкретной СУБД.
+                <br/>В большинстве случаев конкретная база данных будет принимать решение, исходя из своих алгоритмов оптимизации.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<section class="container" id="jmm">
+    <h1><a href="#">JMM</a></h1>
+
 </section>
 
 <footer>
