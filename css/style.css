@@ -848,7 +848,7 @@ an,
     display: inline-block;
     position: relative;
     width: 30%;
-    min-width: 320px;
+    min-width: 300px;
 }
 
 .search-box:after {
