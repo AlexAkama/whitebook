@@ -717,7 +717,8 @@
                                 <li><a href="./jpa/#q37_entity_graph">EntityGraph</a></li>
                                 <li><a href="./jpa/#q37_sub_select">@Fetch<wbr>(FetchMode.SUBSELECT)</a></li>
                                 <li><a href="./jpa/#q37_batch_size">@BatchSize</a></li>
-                                <li><a href="./jpa/#q37_mapping">HibernateSpecific<wbr>Mapping, SqlResultSetMapping</a></li>
+                                <li><a href="./jpa/#q37_mapping">HibernateSpecific<wbr>Mapping, SqlResultSetMapping</a>
+                                </li>
                             </ul>
                         </li>
                     </ul>
@@ -805,11 +806,13 @@
                     <ul class="menu submenu no-display">
                         <li><a href="./docker/#docker_about">Что такое Docker и какие проблемы он решает?</a></li>
                         <li><a href="./docker/#docker_component">Расскажите про основные компоненты Docker</a></li>
-                        <li><a href="./docker/#docker_file">Что такое Dockerfile и каковы его основные инструкции?</a></li>
+                        <li><a href="./docker/#docker_file">Что такое Dockerfile и каковы его основные инструкции?</a>
+                        </li>
                         <li><a href="./docker/#docker_compose">Как работает Docker Compose и в каких случаях его удобно
                             использовать?</a>
                         </li>
-                        <li><a href="./docker/#docker_container">В чем разница между образом и контейнером в Docker?</a></li>
+                        <li><a href="./docker/#docker_container">В чем разница между образом и контейнером в Docker?</a>
+                        </li>
                     </ul>
                 </li>
                 <li>
@@ -824,6 +827,315 @@
         <li><a href="./database/">Database</a></li>
         <li><a href="./interview_tasks/">Interview Tasks</a></li>
     </ul>
+</section>
+
+<section class="container" id="screening">
+    <h1><a href="#">Вопросы со скринингов</a></h1>
+
+    <div>
+        <h4>Java Core</h4>
+        <ul>
+            <li>Каким образом можно синхронизировать доступ к общей коллекции в Java?</li>
+            <li>Какая сложность алгоритма есть в коллекциях Map?</li>
+            <li>Какой простейший код может нам выдать ошибку StackOverflow?</li>
+        </ul>
+    </div>
+
+    <div>
+        <h4>Stream API</h4>
+        <ul>
+            <li>В чем различие между методами Stream API map и flatMap?</li>
+            <li>Как можно получить уникальные элементы из коллекции с использованием Stream API?</li>
+        </ul>
+    </div>
+
+    <div>
+        <h4>Spring</h4>
+        <ul class="margined">
+            <li>
+                <p class="spoiler-string">Что такое стартеры в Spring Boot?</p>
+                <div class="spoiler">
+                    <p class="answer"></p>
+                    <p>
+                        В Spring Boot стартерами называются специальные Maven или Gradle зависимости, которые содержат в
+                        себе набор библиотек и настроек для быстрого и простого подключения функциональности к
+                        приложению.
+                        <br>Они упрощают настройку зависимости для распространённых случаев использования.
+                        <br>Например, spring-boot-starter-web включает все необходимые библиотеки для создания
+                        веб-приложения с использованием Spring MVC.
+                    </p>
+                </div>
+            </li>
+            <li>
+                <p class="spoiler-string">Какие вы знаете методы создания бинов?</p>
+                <div class="spoiler">
+                    <p class="answer"></p>
+                    <p class="mb10">Некоторые из основных методов:</p>
+                    <ol>
+                        <li>
+                            <p class="term">
+                                <span>Аннотация @Component и связанные аннотации: </span>
+                                <br><an>@Component</an>: Основная аннотация для обозначения класса как бина.
+                                <br><an>@Service</an>, <an>@Repository</an>, <an>@Controller</an>: Специализированные
+                                аннотации, основанные на @Component, используемые для логического разграничения слоев
+                                приложения (службы, слои доступа к данным, контроллеры).
+                            </p>
+                            <div class="code">
+                                <pre>   @Component
+   public class MyComponent {
+       // Bean definition
+   }</pre>
+                            </div>
+                        </li>
+                        <li>
+                            <p class="term">
+                                <span>Конфигурационные классы и аннотация @Bean:</span>
+                                <br>Бины могут быть созданы с использованием методов, аннотированных как <an>@Bean</an>
+                                в конфигурационном классе, отмеченном аннотацией <an>@Configuration</an>.
+                            </p>
+                            <div class="code">
+                                <pre>   @Configuration
+   public class AppConfig {
+       @Bean
+       public MyBean myBean() {
+           return new MyBean();
+       }
+   }</pre>
+                            </div>
+                        </li>
+                        <li>
+                            <p class="term">
+                                <span>XML-конфигурация:</span>
+                                <br>Бины также могут быть определены в XML-файлах конфигурации с использованием
+                                &lt;bean&gt; элементов.
+                            </p>
+                            <div class="code">
+                                <pre>   &lt;bean id="myBean" class="com.example.MyBean"/&gt;</pre>
+                            </div>
+                        </li>
+                    </ol>
+                </div>
+            </li>
+            <li>
+                <p class="spoiler-string">Какие вы знаете методы внедрения бинов?</p>
+                <div class="spoiler">
+                    <p class="answer"></p>
+                    <p class="mb10">В Spring есть несколько способов внедрения бинов (инъекции зависимостей):</p>
+                    <ol>
+                        <li>
+                            <p class="term">
+                                <span>Конструкторная инъекция</span>
+                                <br>Зависимости передаются через параметры конструктора.
+                                Это позволяет установить все необходимые зависимости сразу
+                                при создании экземпляра класса и делает объект неизменяемым после его создания.
+                            </p>
+                            <div class="code">
+                                <pre>   public class MyService {
+       private final Dependency dependency;
+
+       @Autowired
+       public MyService(Dependency dependency) {
+           this.dependency = dependency;
+       }
+   }</pre>
+                            </div>
+                        </li>
+                        <li>
+                            <p class="term">
+                                <span>Сеттерная инъекция</span>
+                                <br>Зависимости передаются через сеттеры (методы установки).
+                                Это позволяет изменять зависимости после создания объекта,
+                                но требует дополнительного кода для проверки, что все зависимости установлены.
+                            </p>
+                            <div class="code">
+                                <pre>   public class MyService {
+       private Dependency dependency;
+
+       @Autowired
+       public void setDependency(Dependency dependency) {
+           this.dependency = dependency;
+       }
+   }</pre>
+                            </div>
+                        </li>
+                        <li>
+                            <p class="term">
+                                <span>Инъекция через поле</span>
+                                <br>Поля зависимостей помечаются аннотацией @Autowired.
+                                Это самый простой способ внедрения, но менее предпочтительный,
+                                так как нарушает инкапсуляцию и затрудняет тестирование.
+                            </p>
+                            <div class="code">
+                                <pre>   public class MyService {
+       @Autowired
+       private Dependency dependency;
+   }</pre>
+                            </div>
+                        </li>
+                    </ol>
+                </div>
+            </li>
+            <li>
+                <p class="spoiler-string">
+                    Как вы можете использовать @Version аннотацию в Spring Data JPA для обработки конкурентного доступа?
+                </p>
+                <div class="spoiler">
+                    <p class="answer"></p>
+                    <p>
+                        <an>@Version</an> используется в Spring Data JPA для управления версионностью сущностей,
+                        что помогает в обработке конкурентного доступа и предотвращении гонок данных при обновлении
+                        сущностей.
+                    </p>
+                    <p>
+                        Только не понятно как это используется....
+                    </p>
+                </div>
+            </li>
+            <li>
+                <p class="spoiler-string">Чем отличаются стратегии @GeneratedValue JPA: SEQUENCE, IDENTITY и AUTO?</p>
+                <div class="spoiler">
+                    <p class="answer"></p>
+                    <p class="mb10"><an>@GeneratedValue</an>
+                        в JPA указывает, какая стратегия используется для генерации значений первичных ключей:</p>
+                    <p class="term mb10">
+                        <span>SEQUENCE</span>:
+                        Использует последовательность для генерации уникальных значений.
+                        Это рекомендуется использовать в базах данных, поддерживающих последовательности
+                        (например, Postgres, Oracle).
+                    </p>
+                    <p class="term mb10">
+                        <span>IDENTITY</span>:
+                        Делегирует генерацию ключей самой базе данных, обычно используется в базах данных,
+                        поддерживающих автоинкрементные столбцы (например, MySQL).
+                    </p>
+                    <p class="term">
+                        <span>AUTO</span>:
+                        Стратегия выбирается JPA провайдером автоматически, основываясь на специфике используемой базы
+                        данных.
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div>
+        <h4>Многопоточка</h4>
+        <ul>
+            <li>Что такое ThreadLocal переменная</li>
+            <li>У нас есть какая-то переменная i. Она volatile, она равняется нулю.
+                Я в двух потоках делаю инкременты этой переменной. Это будет потокобезопасно?
+            </li>
+            <li>Почему в данном случае Atomic более предпочтительно использовать для счетчиков?</li>
+        </ul>
+    </div>
+
+    <div>
+        <h4>SQL</h4>
+    </div>
+
+    <div>
+        <h4>DataBase</h4>
+    </div>
+
+    <div>
+        <h4>Тестирование</h4>
+        <ul>
+            <li>
+                <p class="spoiler-string">Что такое Testcontainers?</p>
+                <div class="spoiler">
+                    <p class="term"><span>Testcontainers</span>
+                        — это библиотека для написания тестов в Java, которая позволяет запускать тесты с использованием
+                        изолированных контейнеров Docker.
+                        Она помогает создавать тестовые среды, которые могут включать
+                        базы данных, очереди сообщений и другие сервисы, необходимые для тестирования.</p>
+                    <p>Это позволяет тестам быть более надежными и предсказуемыми, поскольку каждый тест может работать
+                        в своей изолированной и чистой среде, созданной с использованием Docker-контейнеров.</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div>
+        <h4>Kafka</h4>
+        <ul class="margined">
+            <li>
+                <p class="spoiler-string">Какие гарантии доставки есть в Kafka?</p>
+                <div class="spoiler">
+                    <p class="answer mb10"></p>
+                    <p class="term mb10">
+                        <span>at least once</span>
+                        - событие точно будет доставлено хотя бы один раз, но может и больше.
+                    </p>
+                    <p class="term mb10">
+                        <span>at most once</span>
+                        - событие будет доставлено один раз, но может не быть доставлено вообще.
+                    </p>
+                    <p class="term">
+                        <span>exactly once</span>
+                        - событие будет доставлено строго один раз.
+                    </p>
+                </div>
+            </li>
+            <li>
+                <p class="spoiler-string">
+                    Как вы можете реализовать идемпотентность при обработке сообщений в Spring Boot Kafka, и какие
+                    сложности и ограничения могут возникнуть?
+                </p>
+                <div class="spoiler">
+                    <p class="answer mb10"></p>
+                    <p class="mb10">
+                        Идемпотентность при обработке сообщений в Spring Boot Kafka
+                        можно реализовать несколькими способами:
+                    </p>
+                    <ul class="margined">
+                        <li>
+                            <p class="term">
+                                <span>Использование уникальных идентификаторов сообщений</span>
+                                <br>Включение уникальных идентификаторов в сообщения и хранение информации
+                                о уже обработанных идентификаторах, что позволяет системе обрабатывать одно
+                                и то же сообщение только один раз.
+                            </p>
+                        </li>
+                        <li>
+                            <p class="term">
+                                <span>Использование внешнего хранилища idempotent keys</span>
+                                <br>Это может быть база данных или распределенное кеширование,
+                                где хранятся идентификаторы уже обработанных сообщений.
+                            </p>
+                        </li>
+                        <li>
+                            <p class="term">
+                                <span>Транзакционная обработка</span>
+                                <br>Исполнение операций в рамках транзакций, обеспечивая,
+                                что сообщения обрабатываются только если все операции внутри транзакции успешны.
+                            </p>
+                        </li>
+                    </ul>
+                    <p class="bold">Сложности и ограничения:</p>
+                    <p>- Хранилище для отслеживания обработанных сообщений должно быть быстрым и надежным, чтобы не
+                        стать узким местом.</p>
+                    <p>- При выборе внешнего хранилища необходимо учитывать производительность и возможное время
+                        задержки.</p>
+                    <p>- Управление состоянием может быть сложным в распределенных системах, требуя дополнительного
+                        внимания к безопасности данных и устойчивости к сбоям.</p>
+                    <p>- В случае необходимого поддержания большого количества идентификаторов сообщений, это может
+                        стать проблемой в плане потребления ресурсов, например, памяти.</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+</section>
+
+<section class="container" id="back_q">
+    <h1><a href="#">Какие вопросы нужно задать на собесе?</a></h1>
+    <ul>
+        <li>Кто непосредственный руководитель и будет ли он со мной работать?</li>
+        <li>Какие задачи на первое время? (прям пример)</li>
+        <li>Какой размер команды и кто эти люди?</li>
+        <li>Каким образом происходит рост по грейду и соответственно по з/п?</li>
+    </ul>
+
 </section>
 
 <section class="container" id="video">
@@ -843,5 +1155,8 @@
 </body>
 
 <script src="../../js/submenu.js"></script>
+<script src="../../js/spoiler.js"></script>
 
 </html>
+
+

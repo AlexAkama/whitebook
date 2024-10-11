@@ -760,17 +760,13 @@ an,
     max-height: 0;
     overflow: hidden;
     transition: max-height .3s ease;
-}
-
-.spoiler p {
-    margin: 7px 0;
-    padding: 0 5px 0 30px;
+    font-size: smaller;
+    background-color: #90ee902b;
+    padding: 0 5px 0 10px;
 }
 
 .spoiler.active {
-    border: #00a82d solid 1px;
-    padding: 0 5px 5px 0;
-    background-color: lightgoldenrodyellow;
+    padding: 5px 5px 5px 10px;
 }
 
 .spoiler-button,
@@ -809,6 +805,15 @@ an,
 
 .spoiler-button.active:after {
     transform: rotate(40deg);
+}
+.spoiler-string:after {
+    content: "*";
+    color: #00a82d;
+    font-weight: bold;
+}
+
+.spoiler-string.active:after {
+    content: "";
 }
 
 .submenu-button:after,
