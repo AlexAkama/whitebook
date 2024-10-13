@@ -804,14 +804,15 @@ an,
 .spoiler {
     max-height: 0;
     overflow: hidden;
-    transition: max-height .3s ease;
+    transition: max-height, padding-top 0.3s, 0.3s ease;
     font-size: smaller;
     background-color: #90ee902b;
-    padding: 0 5px 0 10px;
+    padding: 0 5px 0 10px; /*0 что бы нормально скрывался*/
 }
 
 .spoiler.active {
-    padding: 5px 5px 5px 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 .spoiler-button:after,
@@ -841,6 +842,10 @@ an,
 
 .spoiler-button.active:after {
     transform: rotate(40deg);
+}
+
+.spoiler-string {
+    cursor: pointer;
 }
 
 .spoiler-string:after {
