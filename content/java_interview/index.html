@@ -824,7 +824,32 @@
             </ul>
         </li>
         <li><a href="./kafka/">Kafka</a></li>
-        <li><a href="./database/">Database</a></li>
+        <li>
+            <p class="mb10">
+                <a href="./database/">Database</a>
+                <span class="submenu-button"></span>
+            </p>
+            <div class="submenu no-display">
+                <ul class="menu">
+                    <li>
+                        <p class="mb10">
+                            <a href="database/#transaction">Transaction</a>
+                            <span class="submenu-button"></span>
+                        </p>
+                        <div class="submenu no-display">
+                            <ul class="menu">
+                                <li><a href="database/#acid">ACID</a></li>
+                                <li><a href="database/#isolation_levels">Уровни изоляций в SQL</a></li>
+                                <li><a href="database/#anomalies">Аномалии</a></li>
+                                <li><a href="database/#propagation">Распространение транзакций</a></li>
+                                <li><a href="database/#problem">Грабли @Transactional</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><a href="#">Index DB</a></li>
+                </ul>
+            </div>
+        </li>
         <li><a href="./interview_tasks/">Interview Tasks</a></li>
     </ul>
 </section>
@@ -1075,30 +1100,30 @@
                     </p>
                     <table class="list list--dictionary no_mb" aria-label="гарантия доставки в Kafka">
                         <thead>
-                            <th></th>
-                            <th>Дубликаты</th>
-                            <th>Потерянные сообщения</th>
-                            <th>Обработка</th>
+                        <th></th>
+                        <th>Дубликаты</th>
+                        <th>Потерянные сообщения</th>
+                        <th>Обработка</th>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>At Least Once</td>
-                                <td>да</td>
-                                <td>нет</td>
-                                <td>1 или много&nbsp;раз</td>
-                            </tr>
-                            <tr>
-                                <td>At Most Once</td>
-                                <td>нет</td>
-                                <td>да</td>
-                                <td>0 или 1&nbsp;раз</td>
-                            </tr>
-                            <tr>
-                                <td>Exactly Once</td>
-                                <td>нет</td>
-                                <td>нет</td>
-                                <td>1 раз</td>
-                            </tr>
+                        <tr>
+                            <td>At Least Once</td>
+                            <td>да</td>
+                            <td>нет</td>
+                            <td>1 или много&nbsp;раз</td>
+                        </tr>
+                        <tr>
+                            <td>At Most Once</td>
+                            <td>нет</td>
+                            <td>да</td>
+                            <td>0 или 1&nbsp;раз</td>
+                        </tr>
+                        <tr>
+                            <td>Exactly Once</td>
+                            <td>нет</td>
+                            <td>нет</td>
+                            <td>1 раз</td>
+                        </tr>
                         </tbody>
                     </table>
                 </div>

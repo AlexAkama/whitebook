@@ -366,6 +366,51 @@ img {
     font-size: small;
 }
 
+.submenu-button,
+.spoiler-button {
+    position: relative;
+    display: inline-block;
+    padding-right: 25px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.submenu {
+}
+
+.submenu-button:after,
+.submenu-button:before {
+    content: '';
+    width: 15px;
+    height: 2px;
+    background-color: #00a82d;
+    position: absolute;
+    top: 14px;
+    transition: all 0.3s ease 0s;
+}
+
+.submenu-button:before {
+    transform: rotate(90deg);
+    right: 10px;
+}
+
+.submenu-button.active:before {
+    transform: rotate(0deg);
+    right: 10px;
+}
+
+.submenu-button.active:after {
+    transform: rotate(-90deg);
+    width: 0;
+    right: 10px;
+}
+
+.submenu-total {
+    font-size: small;
+    color: #00a82d;
+    cursor: pointer;
+}
+
 /* вырезать после перехода на  breadcrumbs*/
 .button--home {
     background-color: #00a82d;
@@ -769,15 +814,6 @@ an,
     padding: 5px 5px 5px 10px;
 }
 
-.spoiler-button,
-.submenu-button {
-    position: relative;
-    display: inline-block;
-    padding-right: 25px;
-    height: 20px;
-    cursor: pointer;
-}
-
 .spoiler-button:after,
 .spoiler-button:before {
     content: '';
@@ -806,6 +842,7 @@ an,
 .spoiler-button.active:after {
     transform: rotate(40deg);
 }
+
 .spoiler-string:after {
     content: "*";
     color: #00a82d;
@@ -814,39 +851,6 @@ an,
 
 .spoiler-string.active:after {
     content: "";
-}
-
-.submenu-button:after,
-.submenu-button:before {
-    content: '';
-    width: 15px;
-    height: 2px;
-    background-color: #00a82d;
-    position: absolute;
-    top: 14px;
-    transition: all 0.3s ease 0s;
-}
-
-.submenu-button:before {
-    transform: rotate(90deg);
-    right: 10px;
-}
-
-.submenu-button.active:before {
-    transform: rotate(0deg);
-    right: 10px;
-}
-
-.submenu-button.active:after {
-    transform: rotate(-90deg);
-    width: 0;
-    right: 10px;
-}
-
-.submenu-total {
-    font-size: small;
-    color: #00a82d;
-    cursor: pointer;
 }
 
 .search-box {
