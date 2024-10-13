@@ -25,6 +25,7 @@
         <p><a href="#instanceof">instanceof</a></p>
         <p><a href="#method_overloading">Method Overloading (Перегрузка методов)</a></p>
         <p><a href="#inheritance">Inheritance (Наследование)</a></p>
+        <p><a href="#parametrized">Параметризирование</a></p>
         <p><a href="#index">Index DB</a></p>
         <p><a href="#jmm">JMM</a></p>
     </div>
@@ -205,6 +206,78 @@ d1 = (DeriveOne) d2;</pre>
             т.к. d2 не является наследником DeriveOne
         </p>
     </div>
+</section>
+
+<section class="container" id="parametrized">
+    <h1><a href="#">Параметризирование</a></h1>
+    <div>
+        <p class="no_mb">Есть класс</p>
+        <div class="code">
+            <pre>public class Sample&lt;T&gt; {
+    T data;
+    public Sample(T data) {
+        this.data = data;
+    }
+}</pre>
+        </div>
+        <p class="no_mb">Его используют так, что не так? что смущает?</p>
+        <div class="code">
+            <pre>public class App {
+        public Sample method(Integer value1, String value2) { <comment>//1</comment>
+        var sample1 = new Sample&lt;Integer&gt;(value1);
+        if (value2 != null) {
+            var sample2 = (Sample) sample1; <comment>//2</comment>
+            sample2.data = value2;
+            return sample2;
+        }
+        return sample1;
+    }
+}</pre>
+        </div>
+    </div>
+    <p class="answer"></p>
+    <p class="no_mb">Первое 1 и 2 - не параметризированны</p>
+    <p class="example">Использование сырого типа лишает вас преимуществ дженериков и типобезопасности.</p>
+    <p class="no_mb">Зачем вообще строка 2? Можно удалить</p>
+    <p class="example">
+        Если хочется поумничать про проблемы:<br>
+        Типобезопасность: Переменной типа Sample&lt;Integer&gt; присваивается значение типа Sample&lt;String&gt;,
+        что может приводить к ошибкам в runtime.
+        Дженерики в Java предназначены для обеспечения типобезопасности, и данная конструкция его нарушает.
+        <br>Неконсистентность данных: Объект Sample создается с одним типом данных (Integer),
+        но позже его содержимое перезаписывается другим типом данных (String).
+        Это может привести к путанице и сложности в поддержке кода.
+        <br>Нарушенные принципы SOLID:
+        <br>- OCP: Код не открыт для расширения и изменение поведения метода требует изменения существующего кода,
+        причём делает это небезопасно.
+        <br>- LSP: нарушен, поскольку использование объекта с различными видами данных не ведет себя предсказуемо.
+    </p>
+    <p class="no_mb">Cигнатура выглядит очень странно? Надо задать вопрос, что мы хотим?</p>
+    <p class="no_mb"> Скажут обернуть второе если есть (первое типа есть всегда)</p>
+    <p class="no_mb">Тут надо сказать "мухи отдельно", давайте оборачивать отдельно и выбирать во что обернуть то же,
+        и родить подобный код с перегрузкой метода</p>
+    <div class="code">
+        <pre>
+    public Sample&lt;Integer&gt; wrap(Integer value1) {
+        return new Sample<>(value1);
+    }
+
+    public Sample&lt;String&gt; wrap(String value2) {
+        return new Sample<>(value2);
+    }
+
+    public Sample&lt;?&gt; method(Object value1, String value2) {
+        return value2 != null ? wrap(value2) : wrap(value1);
+    }</pre>
+    </div>
+    <p class="no_mb">После это, глядя на это, можно спросить - а будут ли использоваться другие типы?</p>
+    <p class="">Если да, то можно продолжить "шалить" и написать типизированный метод с использованием дженериков</p>
+    <div class="code">
+        <pre>   public &lt;T&gt; Sample&lt;T&gt; method(T value) {
+        return new Sample<>(value);
+    }</pre>
+    </div>
+
 </section>
 
 <section class="container" id="index">
