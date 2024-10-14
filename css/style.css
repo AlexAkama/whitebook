@@ -815,6 +815,10 @@ an,
     padding-bottom: 5px;
 }
 
+.spoiler.code {
+    background-color: inherit;
+}
+
 .spoiler-button:after,
 .spoiler-button:before {
     content: '';

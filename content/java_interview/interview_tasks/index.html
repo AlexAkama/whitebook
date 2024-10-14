@@ -28,6 +28,8 @@
         <p><a href="#parametrized">Параметризирование</a></p>
         <p><a href="#index">Index DB</a></p>
         <p><a href="#jmm">JMM</a></p>
+        <p><a href="#sql">SQL</a></p>
+        <p><a href="#data">Структуры данных</a></p>
     </div>
 </section>
 
@@ -529,6 +531,105 @@ WHERE owner_id = ?
 
 </section>
 
+<section class="container" id="sql">
+    <h1><a href="#">SQL</a></h1>
+
+    <div>
+        <p class="no_mb">У нас есть следующие таблицы.<br>Требуется вывести id людей городов в которых нет мостов.</p>
+        <div class="code">
+            <pre>CREATE TABLE town
+(
+    id   bigserial PRIMARY KEY,
+    name text
+);
+
+CREATE TABLE person
+(
+    id      bigserial PRIMARY KEY,
+    name    text,
+    town_id bigint not null REFERENCES town (id)
+);
+
+CREATE TABLE bridge
+(
+    id      bigserial PRIMARY KEY,
+    name    text,
+    town_id bigint not null REFERENCES town (id)
+);</pre>
+        </div>
+        <p class="answer no_mb"></p>
+        <div class="code">
+            <pre>SELECT p.id
+FROM person p
+        LEFT JOIN bridge b on p.town_id = b.town_id
+WHERE b.id IS NULL;</pre>
+        </div>
+    </div>
+
+</section>
+
+<section class="container" id="data">
+    <h1><a href="#">Структуры данных</a></h1>
+    <div>
+        <div class="question mb10">
+            Реализовать RandomSet что бы все методы работали за O(1)
+            <br>- boolean add(el)
+            <br>- boolean contains(el)
+            <br>- boolean contains(el)
+            <br>- el getRandom()
+        </div>
+        <p class="answer"></p>
+        <p>Быстро даром не бывает - значит что тут будет использовано много памяти</p>
+        <p class="main-mind">
+            Тут надо понять что одной структурой не обойтись
+        </p>
+        <p class="no_mb">Определившись со структурами подумать или вспомнить</p>
+        <p class="main-mind">как удалить из массива за O(1)</p>
+        <p class="spoiler-string no_mb">Мой вариант кода (уже с оптимизацией и типизацией)</p>
+        <div class="spoiler">
+            <div class="code">
+<pre>Public class <class>RandomSet&lt;T&gt;</class> {
+
+    private final HashMap&lt;T, Integer&gt; <field>map</field> = new HashMap<>();
+    private final List&lt;T&gt; <field>list</field> = new ArrayList<>();
+    private final Random <field>random</field> = new Random();
+
+    public boolean <method>add</method>(T element) {
+        int size = list.size();
+        return map.computeIfAbsent(element, t -> {
+            list.add(element);
+            return list.size() - 1;
+        }) == size;
+    }
+
+    public boolean <method>contains</method>(T element) {
+        return map.containsKey(element);
+    }
+
+    public boolean <method>remove</method>(T element) {
+        Integer removeIndex = map.remove(element);
+        if (removeIndex != null) {
+            int lastIndex = list.size() - 1;
+            T lastElement = list.get(lastIndex);
+            list.set(removeIndex, lastElement);
+            if (removeIndex > 0) map.put(lastElement, removeIndex);
+            list.remove(lastIndex);
+            return true;
+        }
+        return false;
+    }
+
+    public T <method>getRandom</method>() {
+        return list.get(random.nextInt(list.size()));
+    }
+
+}</pre>
+            </div>
+        </div>
+    </div>
+
+</section>
+
 <footer>
     <div class="footer__text"><a href="https://t.me/java40plus" title="Мой блог в телеграм" target="_blank">
         Ⓒ Алексей Маслов, 2021-2024
@@ -537,5 +638,7 @@ WHERE owner_id = ?
 <a href="#" class="button button--top"></a>
 
 </body>
+
+<script src="../../../js/spoiler.js"></script>
 
 </html>
