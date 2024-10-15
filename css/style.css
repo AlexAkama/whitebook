@@ -1205,4 +1205,9 @@ input:focus {
         padding-left: 15px;
     }
 
+
+    .vertical-schema > *:last-child {
+        justify-content: left;
+    }
+
 }
