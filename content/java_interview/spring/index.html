@@ -156,7 +156,7 @@
 </section>
 
 <section class="container" id="q1">
-    <h1>Инверсия контроля (IoC) и внедрение зависимостей (DI)</h1>
+    <h1><a href="#">Инверсия контроля (IoC) и внедрение зависимостей (DI)</a></h1>
     <hr>
     <h3 id="q1_ioc">Inversion of Control (IoC)</h3>
     <p class="main-mind">Инверсия (от латинского inversio) - перестановка.</p>
@@ -246,11 +246,11 @@
         конструктор Store любую из реализаций Item.
     </p>
 
-    <a href="#" class="button button--top"></a>
+    <a href="#" class="button button--to_top_menu"></a>
 </section>
 
 <section class="container" id="q2">
-    <h1>IoC Container?</h1>
+    <h1><a href="#">IoC Container?</a></h1>
     <p>
         В Spring Framework IoC Container <strong> отвечает за создание, настройку и сборку объектов, известных как бины,
         а также за управление их жизненным циклом</strong>.
@@ -259,7 +259,7 @@
     <p>Spring Framework предоставляет несколько реализаций интерфейса ApplicationContext:</p>
     <ul class="tab-2 sparse-li">
         <li>
-            <p>ClassPathXmlApplicationContext и FileSystemXmlApplicationContext</p>
+            <p>ClassPathXmlApplication<wbr>Context и FileSystemXmlApplication<wbr>Context</p>
             <p class="example">- для автономных приложений;</p>
         </li>
         <li>
@@ -267,7 +267,7 @@
             <p class="example">- для веб-приложений;</p>
         </li>
         <li>
-            <p>AnnotationConfigApplicationContext</p>
+            <p>AnnotationConfigApplication<wbr>Context</p>
             <p class="example">
                 - для обычной Java-конфигурации,в качестве аргумента которому передается класс, либо список классов с
                 аннотацией
@@ -315,11 +315,11 @@
             </p>
         </li>
     </ul>
-    <a href="#" class="button button--top"></a>
+    <a href="#" class="button button--to_top_menu"></a>
 </section>
 
 <section class="container" id="q3">
-    <h1>Bean в Spring?</h1>
+    <h1><a href="#">Bean в Spring?</a></h1>
     <p>
         В Spring объекты, образующие основу приложения и управляемые контейнером Spring IoC, называются бинами.
     </p>
@@ -328,11 +328,11 @@
     </p>
     <p class="example">Иначе говоря, бин — это просто один из множества объектов в вашем приложении.</p>
     <p> Бины и их зависимости отражаются в метаданных конфигурации, используемых контейнером. </p>
-    <a href="#" class="button button--top"></a>
+    <a href="#" class="button button--to_top_menu"></a>
 </section>
 
 <section class="container" id="q4">
-    <h1>Аннотация @Bean</h1>
+    <h1><a href="#">Аннотация @Bean</a></h1>
     <p class="main-mind">
         @Bean - Это аннотация Spring Framework, она используется над методом для указания того, что данный метод
         создает, настраивает и инициализирует новый объект, управляемый Spring IoC контейнером.
@@ -427,11 +427,11 @@
         <p>}</p>
     </div>
 
-    <a href="#" class="button button--top"></a>
+    <a href="#" class="button button--to_top_menu"></a>
 </section>
 
 <section class="container" id="q5">
-    <h1>Аннотация @Component</h1>
+    <h1><a href="#">Аннотация @Component</a></h1>
     <p class="no_mb">Если хотим, <strong>чтобы из этого класса был создан бин</strong>, то используем
         <an>@Component</an></p>
     <p class="example"> Именно эту аннотацию ищет Spring Framework, когда сканирует наши классы.</p>
@@ -448,53 +448,56 @@
         Framework.</p>
     <p class="example">В остальных же случаях достаточно использовать аннотацию @Component.</p>
 
-    <table class="list list--dictionary" aria-label="@Component">
-        <thead>
-        <tr>
-            <th>Аннотация</th>
-            <th>Описание</th>
-        <tr>
-        </thead>
-        <tr>
-            <td>@Component</td>
-            <td>Spring определяет этот класс как кандидата для создания bean.</td>
-        </tr>
-        <tr>
-            <td>@Service</td>
-            <td>
-                <p>указывает, что класс содержит бизнес-логику и вызывает методы на уровне хранилища.</p>
-                <p class="example">Ничем не отличается от классов с @Component.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>@Repository</td>
-            <td>
-                <p>указывает, что класс выполняет роль хранилища (объект доступа к DAO).</p>
-                <p class="example">
-                    Задача @Repository заключается в том, чтобы отлавливать определенные исключения персистентности и
-                    пробрасывать их как одно непроверенное исключение Spring Framework.
-                    Для этого Spring оборачивает эти классы в прокси, и в контекст должен быть добавлен класс
-                    PersistenceExceptionTranslationPostProcessor.
-                </p>
-            </td>
-        </tr>
-        <tr>
-            <td>@Controller</td>
-            <td>
-                <p>указывает, что класс выполняет роль контроллера MVC.</p>
-                <p class="example">DispatcherServlet просматривает такие классы для поиска @RequestMapping.</p>
-            </td>
-        </tr>
-    </table>
+    <div class="scroll">
+        <table class="list list--dictionary" aria-label="@Component">
+            <thead>
+            <tr>
+                <th>Аннотация</th>
+                <th>Описание</th>
+            <tr>
+            </thead>
+            <tr>
+                <td>@Component</td>
+                <td>Spring определяет этот класс как кандидата для создания bean.</td>
+            </tr>
+            <tr>
+                <td>@Service</td>
+                <td>
+                    <p>указывает, что класс содержит бизнес-логику и вызывает методы на уровне хранилища.</p>
+                    <p class="example">Ничем не отличается от классов с @Component.</p>
+                </td>
+            </tr>
+            <tr>
+                <td>@Repository</td>
+                <td>
+                    <p>указывает, что класс выполняет роль хранилища (объект доступа к DAO).</p>
+                    <p class="example">
+                        Задача @Repository заключается в том, чтобы отлавливать определенные исключения персистентности
+                        и
+                        пробрасывать их как одно непроверенное исключение Spring Framework.
+                        Для этого Spring оборачивает эти классы в прокси, и в контекст должен быть добавлен класс
+                        Persistence<wbr>Exception<wbr>Translation<wbr>PostProcessor.
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>@Controller</td>
+                <td>
+                    <p>указывает, что класс выполняет роль контроллера MVC.</p>
+                    <p class="example">DispatcherServlet просматривает такие классы для поиска @RequestMapping.</p>
+                </td>
+            </tr>
+        </table>
+    </div>
     <p>
         <span class="bold">@RequestMapping</span> используется для мапинга (связывания) с URL для всего класса
         или для конкретного метода обработчика.
     </p>
-    <a href="#" class="button button--top"></a>
+    <a href="#" class="button button--to_top_menu"></a>
 </section>
 
 <section class="container" id="q6">
-    <h1>Отличия @Bean и @Component</h1>
+    <h1><a href="#">Отличия @Bean и @Component</a></h1>
     <p class="main-mind">
         Аннотация @Component (как и @Service и @Repository) используется для автоматического обнаружения и
         автоматической настройки бинов в ходе сканирования путей к классам.
@@ -515,11 +518,11 @@
             делая создание бина более гибким.
         </li>
     </ul>
-    <a href="#" class="button button--top"></a>
+    <a href="#" class="button button--to_top_menu"></a>
 </section>
 
 <section class="container" id="q7">
-    <h1>Отличия @Service и @Repository</h1>
+    <h1><a href="#">Отличия @Service и @Repository</a></h1>
     <p class="no_mb">
         @Service и @Repository являются частными случаями @Component.
     </p>
@@ -530,14 +533,15 @@
         Задача @Repository заключается в том, чтобы отлавливать определенные исключения персистентности и пробрасывать
         их как одно непроверенное исключение Spring Framework.
     </p>
-    <p> Для этого в контекст должен быть добавлен класс PersistenceExceptionTranslationPostProcessor. </p>
+    <p>Для этого в контекст должен быть добавлен класс Persistence<wbr>Exceptione<wbr>Translatione<wbr>PostProcessor.
+    </p>
     <p class="no_mb"> Мы помечаем бины аннотацией @Service, чтобы указать, что они содержат бизнес-логику. </p>
     <p>Так что нет никакого другого предназначения, кроме как использовать ее на уровне сервиса.</p>
-    <a href="#" class="button button--top"></a>
+    <a href="#" class="button button--to_top_menu"></a>
 </section>
 
 <section class="container" id="q8">
-    <h1>Аннотация @Autowired</h1>
+    <h1><a href="#">Аннотация @Autowired</a></h1>
     <p class="main-mind">
         Аннотация Spring Framework, которой отмечают конструктор, поле, сеттер-метод или метод конфигурации,
         указывая, что им обязательно требуется внедрение зависимостей.
@@ -633,11 +637,11 @@
         <p>}</p>
     </div>
 
-    <a href="#" class="button button--top"></a>
+    <a href="#" class="button button--to_top_menu"></a>
 </section>
 
 <section class="container" id="q9">
-    <h1>Аннотация @Resource</h1>
+    <h1><a href="#">Аннотация @Resource</a></h1>
     <p><strong>Java-аннотация</strong>@Resource может применяться к классам, полям и методам.</p>
     <p class="main-mind">
         Она пытается получить зависимость: сначала по имени, затем по типу, затем по описанию (Qualifier).
@@ -682,11 +686,11 @@
         <li>@Autowired позволяет отметить место вставки бина как необязательное @Autowired(required=false);</li>
         <li>при замене Spring Framework на другой фреймворк, менять аннотацию @Resource не нужно.</li>
     </ul>
-    <a href="#" class="button button--top"></a>
+    <a href="#" class="button button--to_top_menu"></a>
 </section>
 
 <section class="container" id="q10">
-    <h1>Аннотация @Inject</h1>
+    <h1><a href="#">Аннотация @Inject</a></h1>
     <p>
         <strong>Java-аннотация</strong>
         @Inject входит в пакет javax.inject и, чтобы её использовать, нужно добавить зависимость:
@@ -743,11 +747,11 @@
         <p><an>@Named("yetAnotherFieldInjectDependency")</an></p>
         <p>private ArbitraryDependency yetAnotherFieldInjectDependency;</p>
     </div>
-    <a href="#" class="button button--top"></a>
+    <a href="#" class="button button--to_top_menu"></a>
 </section>
 
 <section class="container" id="q11">
-    <h1>Аннотация @Lookup</h1>
+    <h1><a href="#">Аннотация @Lookup</a></h1>
     <p>
         Обычно бины в приложении Spring являтся синглтонами, и для внедрения зависимостей
         мы используем конструктор или сеттер.
@@ -809,11 +813,11 @@
         Теперь при вызове метода drive() мы можем везти каждый раз нового пассажира. Имя его передаётся в аргументе
         метода drive(), и затем задается сеттером во вновь созданном экземпляре пассажира.
     </p>
-    <a href="#" class="button button--top"></a>
+    <a href="#" class="button button--to_top_menu"></a>
 </section>
 
 <section class="container" id="q12">
-    <h1>Можно ли вставить бин в статическое поле?</h1>
+    <h1><a href="#">Можно ли вставить бин в статическое поле?</a></h1>
     <p class="main-mind">Spring не позволяет внедрять бины напрямую в статические поля.</p>
     <p>Пример:</p>
     <div class="code">
@@ -837,11 +841,11 @@
         <p class="tab-1 mb10">}</p>
         <p>}</p>
     </div>
-    <a href="#" class="button button--top"></a>
+    <a href="#" class="button button--to_top_menu"></a>
 </section>
 
 <section class="container" id="q13">
-    <h1>Аннотации @Primary и @Qualifier</h1>
+    <h1><a href="#">Аннотации @Primary и @Qualifier</a></h1>
     <p class="main-mind">
         @Primary - эта аннотация указывает, какой компонент определенного типа должен внедряться по умолчанию.
     </p>
@@ -889,11 +893,11 @@
     <p class="example no_mb">При совместном применении</p>
     <p>Аннотация @Qualifier будет иметь над @Primary приоритет.</p>
 
-    <a href="#" class="button button--top"></a>
+    <a href="#" class="button button--to_top_menu"></a>
 </section>
 
 <section class="container" id="q14">
-    <h1 class="mb10">Как заинжектить примитив?</h1>
+    <h1 class="mb10"><a href="#">Как заинжектить примитив?</a></h1>
     <div class="after-h1">
         <p class="tab-2"><a href="#q14_value">@Value</a></p>
         <p class="tab-2"><a href="#q14_spel">@Value with SpEL</a></p>
@@ -1042,11 +1046,11 @@
         <p class="tab-1 mb10">}</p>
         <p>}</p>
     </div>
-    <a href="#" class="button button--top"></a>
+    <a href="#" class="button button--to_top_menu"></a>
 </section>
 
 <section class="container" id="q15">
-    <h1 class="mb10">Как заинжектить коллекцию?</h1>
+    <h1 class="mb10"><a href="#">Как заинжектить коллекцию?</a></h1>
     <div class="after-h1">
         <p class="tab-2"><a href="#q15_array">Array Injection</a></p>
         <p class="tab-2"><a href="#q15_collection">Collections Injection</a></p>
@@ -1288,11 +1292,11 @@
         <p>}</p>
     </div>
 
-    <a href="#" class="button button--top"></a>
+    <a href="#" class="button button--to_top_menu"></a>
 </section>
 
 <section class="container" id="q16">
-    <h1>Аннотация @Conditional</h1>
+    <h1><a href="#">Аннотация @Conditional</a></h1>
     <p>
         Часто бывает полезно включить или отключить весь класс @Configuration, @Component или отдельные методы @Bean в
         зависимости от каких-либо условий.
@@ -1423,11 +1427,11 @@
         </tr>
     </table>
 
-    <a href="#" class="button button--top"></a>
+    <a href="#" class="button button--to_top_menu"></a>
 </section>
 
 <section class="container" id="q17">
-    <h1>Аннотация @ComponentScan</h1>
+    <h1><a href="#">Аннотация @ComponentScan</a></h1>
     <p class="no_mb">
         Аннотация @ComponentScan используется вместе с аннотацией @Configuration для указания пакетов, которые мы хотим
         сканировать на наличие компонентов, из которых нужно сделать бины.
@@ -1476,11 +1480,11 @@
         </an></p>
     </div>
 
-    <a href="#" class="button button--top"></a>
+    <a href="#" class="button button--to_top_menu"></a>
 </section>
 
 <section class="container" id="q18">
-    <h1>Аннотация @Profile</h1>
+    <h1><a href="#">Аннотация @Profile</a></h1>
     <p class="no_mb">
         Профили — это ключевая особенность Spring Framework, позволяющая нам относить бины к разным профилям
         (логическим группам), например, dev, test, prod.
@@ -1535,11 +1539,11 @@
         application-prod.properties, содержащие свои собственные дополнительные настройки.
     </p>
 
-    <a href="#" class="button button--top"></a>
+    <a href="#" class="button button--to_top_menu"></a>
 </section>
 
 <section class="container" id="q19">
-    <h1 class="no_mb">ApplicationContext и BeanFactory</h1>
+    <h1 class="no_mb"><a href="#">Application<wbr>Context и BeanFactory</a></h1>
     <div class="after-h1">
         <p>Чем отличаются? В каких случаях что стоит использовать?</p>
         <p class="tab-2"><a href="#q19_bf">BeanFactory</a></p>
@@ -1568,8 +1572,8 @@
         <thead>
         <tr>
             <th>Особенность</th>
-            <th>BeanFactory</th>
-            <th>ApplicationContext</th>
+            <th>Bean<wbr>Factory</th>
+            <th>Application<wbr>Context</th>
         <tr>
         </thead>
         <tr>
@@ -1638,11 +1642,11 @@
         </li>
     </ul>
 
-    <a href="#" class="button button--top"></a>
+    <a href="#" class="button button--to_top_menu"></a>
 </section>
 
 <section class="container" id="q20">
-    <h1>Жизненный цикл бина, аннотации @PostConstruct и @PreDestroy </h1>
+    <h1><a href="#">Жизненный цикл бина, аннотации @PostConstruct и @PreDestroy </a></h1>
     <div class="after-h1">
         <p class="tab-2"><a href="#q20_beans">Жизненный цикл бинов</a></p>
         <p class="tab-2"><a href="#q20_predestroy">@PreDestroy</a></p>
@@ -1815,10 +1819,10 @@
         </table>
         <p>
             При конфигурации через аннотации с указанием пакета для сканирования или JavaConfig используется класс
-            <strong>AnnotationConfigApplicationContext</strong> . Регистрируются все классы с
+            <strong>Annotation<wbr>Config<wbr>Application<wbr>Context</strong>. Регистрируются все классы с
             @Configuration для дальнейшего парсирования, затем регистрируется специальный
             BeanFactoryPostProcessor, а именно
-            <strong>BeanDefinitionRegistryPostProcessor</strong>, который при
+            <strong>Bean<wbr>Definition<wbr>Registry<wbr>PostProcessor</strong>, который при
             помощи класса <span class="accent-mono">ConfigurationClassParser</span> парсирует JavaConfig,
             загружает описания бинов (BeanDefinition), <span class="accent-mono">создаёт граф</span> зависимостей
             (между бинами) и создаёт:
@@ -1901,11 +1905,11 @@
         <p>
             Как правило, BeanPostProcessor-ы, которые
             <strong>заполняют бины через маркерные интерфейсы</strong> или тому подобное,
-            реализовывают метод <strong>postProcessBeforeInitialization()</strong>.
+            реализовывают метод <strong>postProcess<wbr>BeforeInitialization()</strong>.
         </p>
         <p>
             BeanPostProcessor-ы, которые <strong>оборачивают бины в прокси</strong>,
-            обычно реализуют <strong>postProcessAfterInitialization()</strong>.
+            обычно реализуют <strong>postProcess<wbr>AfterInitialization()</strong>.
         </p>
         <p class="main-mind">
             Прокси — это класс-декорация над бином.
@@ -1927,13 +1931,14 @@
         </div>
         <p>
             По конвенции спринга, если какой-то из BeanPostProcessor-ов меняет что-то в классе, то он должен это делать
-            на этапе postProcessAfterInitialization(). Таким образом мы уверены, что initMethod у данного бина, работает
+            на этапе postProcess<wbr>AfterInitialization(). Таким образом мы уверены, что initMethod у данного бина,
+            работает
             на оригинальный метод, до того, как на него накрутился прокси.
         </p>
 
         <p>Хронология событий:</p>
         <ol class="sparse-li">
-            <li>Сначала сработает метод postProcessBeforeInitialization() всех имеющихся BeanPostProcessor-ов.</li>
+            <li>Сначала сработает метод postProcess<wbr>BeforeInitialization() всех имеющихся BeanPostProcessor-ов.</li>
             <li>Затем, при наличии, будет вызван метод, аннотированный @PostConstruct.</li>
             <li>
                 <p>Если бин имплементирует InitializingBean, то Spring вызовет метод afterPropertiesSet()</p>
@@ -1941,7 +1946,7 @@
             </li>
             <li>При наличии, будет вызван метод, указанный в параметре initMethod аннотации @Bean.</li>
             <li>
-                <p>В конце бины пройдут через postProcessAfterInitialization().</p>
+                <p>В конце бины пройдут через postProcess<wbr>AfterInitialization().</p>
                 <p>Создадутся прокси стандартными BeanPostProcessor-ами.</p>
                 <p>Отработают кастомные BeanPostProcessor-ы и применят нашу логику к прокси-объектам.</p>
                 <p>
@@ -2022,11 +2027,11 @@
     </div>
     <a class="button button--to_content_menu" href="#q20"></a>
 
-    <a href="#" class="button button--top"></a>
+    <a href="#" class="button button--to_top_menu"></a>
 </section>
 
 <section class="container" id="q21">
-    <h1>Scope бинов</h1>
+    <h1><a href="#">Scope бинов</a></h1>
     <div class="after-h1">
         <p>Spring Framework поддерживает шесть scopes:</p>
         <ol class="tab-2 sparse-li">
@@ -2233,9 +2238,9 @@
         <h4><a href="#q21">Other custom</a></h4>
         <p>Любой другой кастомный scope создается также.</p>
         <p class="no_mb">Реализуем интерфейс:</p>
-        <p class="code-word smaller">org.springframework.beans.factory.config.Scope</p>
+        <p class="code-word smaller scroll">org.springframework.beans.factory.config.Scope</p>
         <p class="no_mb">И регистрируем в контексте:</p>
-        <p class="code-word smaller">ConfigurationBeanFactory.registerScope</p>
+        <p class="code-word smaller scroll">ConfigurationBeanFactory.registerScope</p>
 
 
     </div>
@@ -2246,11 +2251,11 @@
         В пятой версии Spring Framework не стало Global session scope.
     </p>
 
-    <a href="#" class="button button--top"></a>
+    <a href="#" class="button button--to_top_menu"></a>
 </section>
 
 <section class="container" id="q22">
-    <h1>АОП в Spring</h1>
+    <h1><a href="#">АОП в Spring</a></h1>
     <p>
         <span class="accent-mono">Аспектно-ориентированное программирование (АОП)</span>
         — это парадигма программирования, целью которой является
@@ -2270,11 +2275,11 @@
 
     <a class="link-to-source" href="https://habr.com/ru/post/428548/" target="_blank">Подробная статья</a>
 
-    <a href="#" class="button button--top"></a>
+    <a href="#" class="button button--to_top_menu"></a>
 </section>
 
 <section class="container" id="q23">
-    <h1>Транзакции и аннотация @Transactional</h1>
+    <h1><a href="#">Транзакции и аннотация @Transactional</a></h1>
     <div class="after-h1">
         <p><a href="#q23_params">Параметры аннотации @Transactional</a></p>
     </div>
@@ -2424,116 +2429,124 @@
     <hr>
     <div id="q23_params">
         <h4>Параметры аннотации @Transactional</h4>
-        <table class="list" aria-label="">
-            <thead>
-            <tr>
-                <th>Параметр</th>
-                <th>Описание</th>
-            <tr>
-            </thead>
-            <tr>
-                <td>isolation</td>
-                <td>
-                    <p>Уровень изоляции</p>
-                    <p class="code no_margin">@Transactional<wbr>(isolation=Isolation.READ_COMMITTED)
-                    </p>
-                </td>
-            </tr>
-            <tr>
-                <td>timeout</td>
-                <td>
-                    <p>
-                        Время для TransactionManager-а, чтобы дождаться простоя транзакции, прежде чем принять решение
-                        об откате не отвечающих транзакций.
-                    </p>
-                    <p class="example mb10">
-                        По умолчанию используется таймаут, установленный по умолчанию для базовой транзакционной
-                        системы.
-                    </p>
-                    <p class="code no_margin">@Transactional(timeout=60)</p>
-                </td>
-            </tr>
-            <tr>
-                <td>propagation</td>
-                <td>
-                    <p class="mb10">Схема работы с транзакциями.</p>
-                    <hr>
-                    <p class="smaller">
-                        <span class="accent-mono">REQUIRED</span>
-                        — Указывает, что целевой метод не может работать без другой транзакции. Если до вызова этого
-                        метода уже была запущена транзакция, то метод будет работать в той же транзакции, если
-                        транзакции не было, то будет создана новая.
-                    </p>
-                    <p class="accent-mono smaller">Используется по умолчанию.</p>
-                    <hr>
-                    <p class="smaller">
-                        <span class="accent-mono">REQUIRES_NEW</span>
-                        — Указывает, что новая транзакция должна запускаться каждый раз при вызове целевого метода. Если
-                        транзакция уже идет, она будет приостановлена, прежде чем будет запущена новая.
-                    </p>
-                    <hr>
-                    <p class="smaller">
-                        <span class="accent-mono">MANDATORY</span>
-                        — Указывает, что для целевого метода требуется активная транзакция. Если активной транзакции
-                        нет, метод не сработает и будет выброшено исключение.
-                    </p>
-                    <hr>
-                    <p class="smaller">
-                        <span class="accent-mono">SUPPORTS</span>
-                        — Указывает, что целевой метод может выполняться независимо от наличия транзакции. Если
-                        транзакция работает, он будет участвовать в той же транзакции. Если транзакции нет, он всё равно
-                        будет выполняться, если не будет ошибок. Методы, которые извлекают данные, являются лучшими
-                        кандидатами для этой опции.
-                    </p>
-                    <hr>
-                    <p class="smaller">
-                        <span class="accent-mono">NOT_SUPPORTED</span>
-                        — Указывает, что целевой метод не требует распространения контекста транзакции. В основном те
-                        методы, которые выполняются в транзакции, но выполняют операции с оперативной памятью, являются
-                        лучшими кандидатами для этой опции.
-                    </p>
-                    <hr>
-                    <p class="smaller">
-                        <span class="accent-mono">NEVER</span>
-                        — Указывает, что целевой метод вызовет исключение, если выполняется в транзакционном процессе.
-                        Этот вариант в большинстве случаев не используется в проектах.
-                    </p>
-                    <hr class="mb10">
-                    <p class="code no_margin">@Transactional<wbr>(propagation=Propagation.REQUIRED)
-                </td>
-            </tr>
-            <tr>
-                <td>rollbackFor</td>
-                <td>
-                    <p class="mb10">
-                        В Spring все классы API бросают RuntimeException, это означает, что если какой-либо метод не
-                        выполняется, контейнер всегда откатывает текущую транзакцию. Проблема заключается только в
-                        проверяемых исключениях. Таким образом, этот параметр можно использовать для декларативного
-                        отката транзакции, если происходит Checked Exception.
-                    </p>
-                    <p class="accent-mono mb10">
-                        Значение по умолчанию: rollbackFor=RunTimeException.class
-                    </p>
-                    <p class="code no_margin">@Transactional<wbr>(rollbackFor=Exception.class)</p>
-                </td>
-            </tr>
-            <tr>
-                <td>noRollbackFor</td>
-                <td>
-                    <p>
-                        Указывает, что откат не должен происходить, если целевой метод вызывает это исключение.
-                    </p>
-                    <p class="code no_margin">@Transactional<wbr>(noRollbackFor=IllegalStateException.class)</p>
-                </td>
-            </tr>
-        </table>
+        <div class="scroll">
+            <table class="list" aria-label="">
+                <thead>
+                <tr>
+                    <th>Параметр</th>
+                    <th>Описание</th>
+                <tr>
+                </thead>
+                <tr>
+                    <td>isolation</td>
+                    <td>
+                        <p>Уровень изоляции</p>
+                        <p class="code no_margin">@Transactional<wbr>(isolation=Isolation.READ_COMMITTED)
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>timeout</td>
+                    <td>
+                        <p>
+                            Время для TransactionManager-а, чтобы дождаться простоя транзакции, прежде чем принять
+                            решение
+                            об откате не отвечающих транзакций.
+                        </p>
+                        <p class="example mb10">
+                            По умолчанию используется таймаут, установленный по умолчанию для базовой транзакционной
+                            системы.
+                        </p>
+                        <p class="code no_margin">@Transactional(timeout=60)</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>propagation</td>
+                    <td>
+                        <p class="mb10">Схема работы с транзакциями.</p>
+                        <hr>
+                        <p class="smaller">
+                            <span class="accent-mono">REQUIRED</span>
+                            — Указывает, что целевой метод не может работать без другой транзакции. Если до вызова этого
+                            метода уже была запущена транзакция, то метод будет работать в той же транзакции, если
+                            транзакции не было, то будет создана новая.
+                        </p>
+                        <p class="accent-mono smaller">Используется по умолчанию.</p>
+                        <hr>
+                        <p class="smaller">
+                            <span class="accent-mono">REQUIRES_NEW</span>
+                            — Указывает, что новая транзакция должна запускаться каждый раз при вызове целевого метода.
+                            Если
+                            транзакция уже идет, она будет приостановлена, прежде чем будет запущена новая.
+                        </p>
+                        <hr>
+                        <p class="smaller">
+                            <span class="accent-mono">MANDATORY</span>
+                            — Указывает, что для целевого метода требуется активная транзакция. Если активной транзакции
+                            нет, метод не сработает и будет выброшено исключение.
+                        </p>
+                        <hr>
+                        <p class="smaller">
+                            <span class="accent-mono">SUPPORTS</span>
+                            — Указывает, что целевой метод может выполняться независимо от наличия транзакции. Если
+                            транзакция работает, он будет участвовать в той же транзакции. Если транзакции нет, он всё
+                            равно
+                            будет выполняться, если не будет ошибок. Методы, которые извлекают данные, являются лучшими
+                            кандидатами для этой опции.
+                        </p>
+                        <hr>
+                        <p class="smaller">
+                            <span class="accent-mono">NOT_SUPPORTED</span>
+                            — Указывает, что целевой метод не требует распространения контекста транзакции. В основном
+                            те
+                            методы, которые выполняются в транзакции, но выполняют операции с оперативной памятью,
+                            являются
+                            лучшими кандидатами для этой опции.
+                        </p>
+                        <hr>
+                        <p class="smaller">
+                            <span class="accent-mono">NEVER</span>
+                            — Указывает, что целевой метод вызовет исключение, если выполняется в транзакционном
+                            процессе.
+                            Этот вариант в большинстве случаев не используется в проектах.
+                        </p>
+                        <hr class="mb10">
+                        <p class="code no_margin">@Transactional<wbr>(propagation=Propagation.REQUIRED)
+                    </td>
+                </tr>
+                <tr>
+                    <td>rollbackFor</td>
+                    <td>
+                        <p class="mb10">
+                            В Spring все классы API бросают RuntimeException, это означает, что если какой-либо метод не
+                            выполняется, контейнер всегда откатывает текущую транзакцию. Проблема заключается только в
+                            проверяемых исключениях. Таким образом, этот параметр можно использовать для декларативного
+                            отката транзакции, если происходит Checked Exception.
+                        </p>
+                        <p class="accent-mono mb10">
+                            Значение по умолчанию: rollbackFor=RunTimeException.class
+                        </p>
+                        <p class="code no_margin">@Transactional<wbr>(rollbackFor=Exception.class)</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>noRollbackFor</td>
+                    <td>
+                        <p>
+                            Указывает, что откат не должен происходить, если целевой метод вызывает это исключение.
+                        </p>
+                        <p class="code no_margin">@Transactional<wbr>(noRollbackFor=IllegalStateException.class)</p>
+                    </td>
+                </tr>
+            </table>
+        </div>
     </div>
 
-    <a href="#" class="button button--top"></a>
+    <a href="#" class="button button--to_top_menu"></a>
 </section>
 
 <section class="container" id="q24">
-    <h1>Паттерн MVC в Spring</h1>
+    <h1><a href="#">Паттерн MVC в Spring</a></h1>
     <div id="mvc">
         <h3>MVC (Model-View-Controller)</h3>
         <p class="main-mind">
@@ -2743,21 +2756,23 @@
             <p class="tab-1 mb10">}</p>
             <p>}</p>
         </div>
-        <p>
-            Своими внутренними методами он создает два экземпляра WebApplicationContext в виде объектов класса
-            AnnotationConfigWebApplicationContext.
+        <p class="term">
+            Своими внутренними методами он создает два экземпляра
+            <span>WebApplicationContext</span> в виде объектов класса
+            <span>AnnotationConfig<wbr>WebApplicationContext</span>.
         </p>
-        <p>
-            Если же у нас только один класс конфигурации, то его нужно передать в метод getRootConfigClasses(), а
-            getServletConfigClasses() должен возвращать null.
+        <p class="term">
+            Если же у нас только один класс конфигурации, то его нужно передать в метод
+            <span>getRootConfigClasses()</span>, а
+            <span> getServletConfigClasses()</span> должен возвращать null.
         </p>
     </div>
 
-    <a href="#" class="button button--top"></a>
+    <a href="#" class="button button--to_top_menu"></a>
 </section>
 
 <section class="container" id="q25">
-    <h1>ViewResolver</h1>
+    <h1><a href="#">ViewResolver</a></h1>
     <p class="no_mb">
         Все платформы MVC предоставляют способ работы с представлениями.
     </p>
@@ -2777,11 +2792,11 @@
     <p>По умолчанию реализацией интерфейса ViewResolver является класс InternalResourceViewResolver.</p>
     <p>Любым реализациям ViewResolver желательно поддерживать интернационализацию, то есть множество языков.</p>
 
-    <a href="#" class="button button--top"></a>
+    <a href="#" class="button button--to_top_menu"></a>
 </section>
 
 <section class="container" id="q26">
-    <h1>Front Controller</h1>
+    <h1><a href="#">Front Controller</a></h1>
     <p class="main-mind">Паттерн Front Controller обеспечивает единую точку входа для всех входящих запросов.</p>
     <p>
         Все запросы обрабатываются
@@ -2875,11 +2890,11 @@
     </div>
 
 
-    <a href="#" class="button button--top"></a>
+    <a href="#" class="button button--to_top_menu"></a>
 </section>
 
 <section class="container" id="q27">
-    <h1>Отличия Model, ModelMap и ModelAndView</h1>
+    <h1><a href="#">Отличия Model, ModelMap и ModelAndView</a></h1>
     <div class="after-h1 tab-2">
         <p><a href="#model">Model</a></p>
         <p><a href="#model_map">ModelMap</a></p>
@@ -2948,11 +2963,11 @@
         <a class="button button--to_content_menu" href="#q27"></a>
     </div>
 
-    <a href="#" class="button button--top"></a>
+    <a href="#" class="button button--to_top_menu"></a>
 </section>
 
 <section class="container" id="q28">
-    <h1>Аннотации @Controller и @RestController</h1>
+    <h1><a href="#">Аннотации @Controller и @RestController</a></h1>
     <div class="after-h1 tab-2">
         <p><a href="#controller">@Controller</a></p>
         <p><a href="#rest_controller">@RestController</a></p>
@@ -3035,11 +3050,11 @@
         <a class="button button--to_content_menu" href="#q28"></a>
     </div>
 
-    <a href="#" class="button button--top"></a>
+    <a href="#" class="button button--to_top_menu"></a>
 </section>
 
 <section class="container" id="q29">
-    <h1>Filters, Listeners и Interceptors</h1>
+    <h1><a href="#">Filters, Listeners и Interceptors</a></h1>
     <div class="after-h1">
         <p><a href="#filters">Filters</a></p>
         <p><a href="#listeners">Listeners</a></p>
@@ -3157,7 +3172,7 @@
             <img class="image" src="./img/handler_interseptor.png" alt="HandlerInterceptor">
         </div>
         <p>
-            Следует знать, что HandlerInterceptor связан с бином DefaultAnnotationHandlerMapping, который
+            Следует знать, что HandlerInterceptor связан с бином DefaultAnnotationHandler<wbr>Mapping, который
             отвечает за применение перехватчиков к любому классу, помеченному аннотацией @Controller.
         </p>
         <p>
@@ -3231,7 +3246,7 @@
         <h3>Java Listener</h3>
         <p>
             <span class="accent-mono">Listener(Слушатель)</span>
-            - это класс, который реализует интерфейс javax.servlet.ServletContextListener.
+            - это класс, который реализует интерфейс javax.servlet<wbr>.ServletContextListener.
         </p>
         <p class="main-mind">
             Он инициализируется только один раз при запуске веб-приложения и уничтожается при остановке веб-приложения.
@@ -3272,11 +3287,11 @@
         <a class="button button--to_content_menu" href="#q29"></a>
     </div>
 
-    <a href="#" class="button button--top"></a>
+    <a href="#" class="button button--to_top_menu"></a>
 </section>
 
 <section class="container" id="q30">
-    <h1>Передача параметров в GET-запросе</h1>
+    <h1><a href="#">Передача параметров в GET-запросе</a></h1>
     <h4> Можно ли передать в GET-запросе один и тот же параметр несколько раз и как? </h4>
     <p class="no_mb accent-mono">Да можно.</p>
     <p>Можно принять все значения, используя массив в методе контроллера:</p>
@@ -3297,22 +3312,22 @@
         <p>}</p>
     </div>
 
-    <a href="#" class="button button--top"></a>
+    <a href="#" class="button button--to_top_menu"></a>
 </section>
 
 <section class="container" id="q31">
-    <h1>Spring Security</h1>
+    <h1><a href="#">Spring Security</a></h1>
     <div class="after-h1 tab-2">
         <p><a href="">Как работает?</a></p>
         <p><a href="">Как сконфигурировать?</a></p>
         <p><a href="">Какие интерфейсы используются?</a></p>
     </div>
 
-    <a href="#" class="button button--top"></a>
+    <a href="#" class="button button--to_top_menu"></a>
 </section>
 
 <section class="container" id="q32">
-    <h1>Spring Boot</h1>
+    <h1><a href="#">Spring Boot</a></h1>
     <div class="after-h1 tab-2">
         <p><a href="#boot_advantage">Преимущества</a></p>
         <p><a href="#boot_config">Как конфигурируется?</a></p>
@@ -3484,11 +3499,11 @@
         <a class="button button--to_content_menu" href="#q32"></a>
     </div>
 
-    <a href="#" class="button button--top"></a>
+    <a href="#" class="button button--to_top_menu"></a>
 </section>
 
 <section class="container" id="q33">
-    <h1>Нововведения Spring 5</h1>
+    <h1><a href="#">Нововведения Spring 5</a></h1>
     <ul class="sparse-li">
         <li>Используется JDK 8+ (Optional, CompletableFuture, Time API, java.util.function, default methods)</li>
         <li>Поддержка Java 9 (Automatic-Module-Name in 5.0, module-info in 6.0+, ASM 6)</li>
@@ -3500,11 +3515,11 @@
         <li>Поддержка JUnit 5 + Testing Improvements (conditional and concurrent)</li>
         <li>Удалена поддержка: Portlet, Velocity, JasperReports, XMLBeans, JDO, Guava</li>
     </ul>
-    <a href="#" class="button button--top"></a>
+    <a href="#" class="button button--to_top_menu"></a>
 </section>
 
 <section class="container" id="q34">
-    <h1>Серввлет (Setvlet)</h1>
+    <h1><a href="#">Серввлет (Setvlet)</a></h1>
     <p class="example no_mb">Определение от WiKi</p>
     <p>
         <span class="accent-mono">Сервлет</span>
@@ -3522,8 +3537,10 @@
         С помощью них строится клиент-серверная архитектура.
     </p>
 
-    <a href="#" class="button button--top"></a>
+    <a href="#" class="button button--to_top_menu"></a>
 </section>
+
+<a href="#" class="button button--top"></a>
 
 <footer>
     <div class="footer__text"><a href="https://t.me/java40plus" title="Мой блог в телеграм" target="_blank">
