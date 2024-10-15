@@ -31,20 +31,20 @@
 </section>
 
 <section class="container" id="q1">
-    <h1>Что такое исключение?</h1>
+    <h1><a href="#">Что такое исключение?</a></h1>
     <p class="main-mind">Событие, которое встречается в ходе программы и прерывает стандартный ход её выполнения.</p>
     <p class="no_mb">
         Исключение в Java – объект, экземпляр класса. Могут порождаться не только автоматически
         при возникновении исключительной ситуации, но и создаваться самим разработчиком. Все классы
         исключений наследуются от Throwable (имеют свойство – возможность быть брошенными через слово throw).
     </p>
-    <p class="example">Throwable имплементирует Serializable</p>
+    <p class="example">Throwable имплементируют Serializable</p>
 
-    <a href="#" class="button button--top"></a>
+    <a class="button button--to_top_menu" href="#"></a>
 </section>
 
 <section class="container" id="q2">
-    <h1>Иерархия исключений</h1>
+    <h1><a href="#">Иерархия исключений</a></h1>
     <div class="image-box">
         <img class="image" src="img/exceptions.png" alt="Схема исключений">
     </div>
@@ -97,7 +97,7 @@
         <li><strong>IllegalArgumentException</strong> - использование неверного аргумента при вызове метода</li>
         <li><strong>NullPointerException</strong> - использование пустой ссылки</li>
         <li><strong>NumberFormatException</strong> - ошибка преобразования строки в число</li>
-        <li><strong>ArrayIndexOutOfBoundsException</strong> - выход за пределы массива</li>
+        <li><strong>ArrayIndexOutOfBounds<wbr>Exception</strong> - выход за пределы массива</li>
         <li><strong>FileNotFoundException</strong> – не нашел файл для открытия</li>
         <li><strong>AccessDeniedException</strong></li>
         <li><strong>SocketException</strong></li>
@@ -105,11 +105,11 @@
         <li><strong>ConnectException</strong></li>
     </ul>
 
-    <a href="#" class="button button--top"></a>
+    <a class="button button--to_top_menu" href="#"></a>
 </section>
 
 <section class="container" id="q3">
-    <h1>Обработка исключений</h1>
+    <h1><a href="#">Обработка исключений</a></h1>
     <hr>
     <h4 class="no_mb">Можно ли обработать необрабатываемые исключения?</h4>
     <p>Можно, но не надо.</p>
@@ -125,7 +125,7 @@
     <hr>
     <h4 class="no_mb">Как создать собственное («пользовательское») исключение?</h4>
     <p>
-        Необходимо унаследоваться от базового класса требуемого типа исключений (например от Exception или
+        Необходимо наследоваться от базового класса требуемого типа исключений (например от Exception или
         RuntimeException).
     </p>
     <hr>
@@ -144,11 +144,11 @@
         тем самым не потерять исключение, которое впоследствии может быть перезаписано в finally другим исключением.
     </p>
 
-    <a href="#" class="button button--top"></a>
+    <a class="button button--to_top_menu" href="#"></a>
 </section>
 
 <section class="container" id="q4">
-    <h1>Механизм Try-catch-finally</h1>
+    <h1><a href="#">Механизм Try-catch-finally</a></h1>
     <p><strong>try</strong>
         — данное ключевое слово используется для отметки начала блока кода, который
         потенциально может привести к ошибке.
@@ -186,7 +186,7 @@
     <p class="no_mb">Не будет выполнен когда:</p>
     <ol class="tab-2">
         <li>Когда System.exit(0) вызывается из блока try.</li>
-        <li>Когда JVM исчерпывает память catch (OutOfMemoryError oome) { // do stuff }</li>
+        <li>Когда JVM исчерпывает память catch (OutOfMemoryError) { // do stuff }</li>
         <li>Когда ваш java-процесс принудительно убит из задачи или консоли</li>
         <li>Условие взаимоблокировки потоков в блоке try</li>
         <li>Когда ваш компьютер отключается из-за сбоя питания</li>
@@ -210,11 +210,11 @@
         смогут обработать, т.к. любое исключение будет соответствовать обработчику catch(Exception ex).
     </p>
 
-    <a href="#" class="button button--top"></a>
+    <a class="button button--to_top_menu" href="#"></a>
 </section>
 
 <section class="container" id="q5">
-    <h1>Механизм Try-With-Resources</h1>
+    <h1><a href="#">Механизм Try-With-Resources</a></h1>
     <p class="no_mb">
         Конструкцию try-with-resources ввели в Java 7. Она дает возможность объявлять
         <strong>один или несколько ресурсов</strong> в блоке try, которые
@@ -264,11 +264,11 @@
     <p>
         Если исключение будет выброшено в основном коде (в try) и в методе close(), то приоритетнее будет
         первое исключение, а второе исключение будет подавлено, но информация о нем сохранится (с
-        помощью метода Throwable.addSuppressed(Throwable exception), который вызывается неявно Java
+        помощью метода Throwable.addSuppressed<wbr>(Throwable exception), который вызывается неявно Java
         компилятором):
     </p>
 
-    <a href="#" class="button button--top"></a>
+    <a class="button button--to_top_menu" href="#"></a>
 </section>
 
 <div class="navi">
@@ -281,6 +281,8 @@
         Ⓒ Алексей Маслов, 2021-2024
     </a></div>
 </footer>
+
+<a href="#" class="button button--top"></a>
 
 </body>
 
