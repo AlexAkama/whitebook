@@ -12,26 +12,29 @@
 <body>
 
 <section class="container">
-    <h1 class="no_mb">JAVA</h1>
+    <h1 class="no_mb">Заметки по JAVA</h1>
     <div class="after-h1">Тонкости и всякие полезности</div>
     <ul class="menu">
         <li><a href="./clearcode">Оформление кода</a></li>
         <li><a href="./core">Core</a></li>
         <li><a href="#json">JSON</a></li>
+        <li><a href="#optional">Optional</a></li>
         <li><a href="#null">Почему нельзя возвращать NULL?</a></li>
     </ul>
-    <div class="back-panel">
-        <a href="../../" class="button button--home">На главную</a>
+    <div class="breadcrumbs">
+        <p><a href="../../">главная</a></p>
+        <p>заметки java</p>
     </div>
 </section>
 
 <section class="container" id="json">
-    <h1>JSON</h1>
+    <h1><a href="#">JSON</a></h1>
     <p><a href="https://jsonformatter.curiousconcept.com" target="_blank">Online валидатор JSON</a></p>
     <p>
         <a href="http://tutorials.jenkov.com/java-json/jackson-annotations.html" target="_blank">Аннотации по JSON</a>
         и то же, но <a href="https://nsergey.com/jackson-annotations/" target="_blank">на русском</a>
     </p>
+
     <hr>
     <h3>Полезные аннотации</h3>
     <p class="main-mind no_mb">@JsonPropertyOrder({"id", name"})</p>
@@ -40,6 +43,7 @@
     <p>не включать параметр если он равен null, можно для всего класса или для конкретного поля</p>
     <p class="main-mind no_mb">@JsonProperty("&lt;имя_в_json&gt;")</p>
     <p>Аннотация ставится над переменной и в json вместо имени переменной попадет указанное в аннотации значение</p>
+
     <hr>
     <h3>JsonInclude атрибуты</h3>
     <table aria-label="JSON annotation">
@@ -78,11 +82,14 @@
             <td class="tab-1">использовать значения по умолчанию либо из уровня класса, либо из уровня ObjectMapper</td>
         </tr>
     </table>
-    <a href="#" class="button button--top"></a>
+
+    <a class="button button--to_top_menu" href="#"></a>
+
 </section>
 
 <section class="container" id="optional">
-    <h1>Optional</h1>
+    <h1><a href="#">Optional</a></h1>
+
     <hr>
     <table aria-label="optional">
         <tr>
@@ -103,11 +110,12 @@
             <td class="tab-1">возвращает пустой Optional-объект</td>
         </tr>
     </table>
+
     <hr>
     <h3>Почитать</h3>
     <p><a href="https://habr.com/ru/post/346782/" target="_blank">Optional: Кот Шрёдингера в Java 8</a></p>
     <p><a href="https://vertex-academy.com/tutorials/ru/java-8-optional/" target="_blank">Java 8 Optional</a></p>
-    <a href="#" class="button button--top"></a>
+
     <hr>
     <h3>РАБОТА С OPTIONAL</h3>
     <p class="no_mb">Обычно с Optional работают так:</p>
@@ -167,6 +175,7 @@
             <p class="good"><span>GOOD:</span> Сравнивайте Optional напрямую: op1.equals(op2)</p>
         </li>
     </ol>
+
     <hr>
     <h3>5 ошибок при использовании Optional</h3>
     <p>
@@ -226,14 +235,19 @@
             </p>
         </li>
     </ol>
+
+    <a class="button button--to_top_menu" href="#"></a>
+
 </section>
 
 <section class="container" id="null">
-    <h1>Почему нельзя возвращать NULL?</h1>
+    <h1><a href="#">Почему нельзя возвращать NULL?</a></h1>
     <p>Смотрите <a href="https://youtu.be/QwycPnpp6uQ" target="_blank">видосик</a> (тут только слова)</p>
     <p>А также смотрите как с <a href="https://youtu.be/QIfIoXW1SHA" target="_blank">этим бороться</a> (Null safety)</p>
-    <a href="#" class="button button--top"></a>
+    <a class="button button--to_top_menu" href="#"></a>
 </section>
+
+<a href="#" class="button button--top"></a>
 
 <footer>
     <div class="footer__text"><a href="https://t.me/java40plus" title="Мой блог в телеграм" target="_blank">
