@@ -39,7 +39,7 @@
 </section>
 
 <section class="container" id="q1">
-    <h1>Какие примитивные типы данных есть в Java</h1>
+    <h1><a href="#">Какие примитивные типы данных есть в Java</a></h1>
     <p class="main-mind">Два основных типа: примитивы и ссылочные</p>
     <h3>Примитивы</h3>
     <table class="schema" aria-label="Primitives">
@@ -83,46 +83,48 @@
     <p class="no_mb tab-1">boolean = false</p>
     <p class="tab-1">Объекты (в том числе Sting) = null</p>
     <p class="bold center no_mb">Целочисленные типы</p>
-    <table class="list list--dictionary" aria-label="Целочисленные типы">
-        <thead>
-        <tr>
-            <th scope="col" style="width: 12%">Тип</th>
-            <th scope="col" style="width: 15%">Умолчание</th>
-            <th scope="col" style="width: 20%">Память</th>
-            <th scope="col">Допустимо</th>
-        </tr>
-        </thead>
-        <tr>
-            <td>byte</td>
-            <td>0</td>
-            <td>8 бит</td>
-            <td>от -128 до&nbsp;127</td>
-        </tr>
-        <tr>
-            <td>short</td>
-            <td>0</td>
-            <td>16 бит</td>
-            <td>от -32_768 до&nbsp;32_767</td>
-        </tr>
-        <tr>
-            <td>char</td>
-            <td>'\u0000'</td>
-            <td>16 бит</td>
-            <td>от 0 до 65_536<br>беззнаковое целое число, представляющее собой символ UTF-16 (буквы и цифры)</td>
-        </tr>
-        <tr>
-            <td>int</td>
-            <td>0</td>
-            <td>32 бита</td>
-            <td>от -2_147_483_648 до&nbsp;&nbsp;2_147_483_647</td>
-        </tr>
-        <tr>
-            <td>long</td>
-            <td>0L</td>
-            <td>64 бита</td>
-            <td>от -9_223_372_036_854_775_808L до&nbsp;&nbsp;9_223_372_036_854_775_807L</td>
-        </tr>
-    </table>
+    <div class="scroll">
+        <table class="list list--dictionary" aria-label="Целочисленные типы">
+            <thead>
+            <tr>
+                <th scope="col" style="width: 12%">Тип</th>
+                <th scope="col" style="width: 15%">Умолчание</th>
+                <th scope="col" style="width: 20%">Память</th>
+                <th scope="col">Допустимо</th>
+            </tr>
+            </thead>
+            <tr>
+                <td>byte</td>
+                <td>0</td>
+                <td>8 бит</td>
+                <td>от -128 до&nbsp;127</td>
+            </tr>
+            <tr>
+                <td>short</td>
+                <td>0</td>
+                <td>16 бит</td>
+                <td>от -32_768 до&nbsp;32_767</td>
+            </tr>
+            <tr>
+                <td>char</td>
+                <td>'\u0000'</td>
+                <td>16 бит</td>
+                <td>от 0 до 65_536<br>беззнаковое целое число, представляющее собой символ UTF-16 (буквы и цифры)</td>
+            </tr>
+            <tr>
+                <td>int</td>
+                <td>0</td>
+                <td>32 бита</td>
+                <td>от -2_147_483_648 до&nbsp;&nbsp;2_147_483_647</td>
+            </tr>
+            <tr>
+                <td>long</td>
+                <td>0L</td>
+                <td>64 бита</td>
+                <td>от -9_223_372_036_854_775_808L до&nbsp;&nbsp;9_223_372_036_854_775_807L</td>
+            </tr>
+        </table>
+    </div>
     <p class="bold center no_mb">Типы с плавающей точкой</p>
     <table class="list list--dictionary" aria-label="Типы с плавающей точкой">
         <thead>
@@ -163,17 +165,19 @@
             <td>true (истина) или false (ложь)</td>
         </tr>
     </table>
+    <a class="button button--to_top_menu" href="#"></a>
 </section>
 
 <section class="container" id="q2">
-    <h1>Что такое классы-обертки?</h1>
+    <h1><a href="#">Что такое классы-обертки?</a></h1>
     <p class="no_mb">Значение примитива становится объектом, чтобы выполнять различные операции ( .parseInt()).</p>
     <p class="no_mb">Примитивы не имеют методов. </p>
     <p>Объекты классов-оберток являются неизменяемыми (Immutable).</p>
+    <a class="button button--to_top_menu" href="#"></a>
 </section>
 
 <section class="container" id="q3">
-    <h1>Что такое автоупаковка и автораспаковка?</h1>
+    <h1><a href="#">Что такое автоупаковка и автораспаковка?</a></h1>
     <p>
         Для присваивания ссылок-примитивов объектам их классов-оберток (и наоборот) не требуется
         ничего делать, все происходит автоматически
@@ -235,10 +239,11 @@
         констант в диапазоне -128 ... +127 является то, что они кэшируются JVM. Поэтому такие обертки с
         одинаковыми значениями будут являться ссылками на один объект.
     </p>
+    <a class="button button--to_top_menu" href="#"></a>
 </section>
 
 <section class="container" id="q4">
-    <h1>Приведение типов</h1>
+    <h1><a href="#">Приведение типов</a></h1>
     <h4>Что такое явное и неявное приведение типов?<br>
         В каких случаях в JAVA нужно использовать явное приведение?</h4>
     <p class="no_mb">
@@ -255,110 +260,114 @@
         (сужающие преобразования от типа с большей разрядностью к типу с меньшей разрядностью).
         Потеря данных (старшие биты будут потеряны).
     </p>
-    <img src="img/casting.png" alt="Схема приведения типов">
-    <table class="list list--dictionary list--content-center" aria-label="Приведение типов">
-        <thead>
-        <tr>
-            <th>↓ИЗ | В→</th>
-            <th>boolean</th>
-            <th>byte</th>
-            <th>short</th>
-            <th>char</th>
-            <th>int</th>
-            <th>long</th>
-            <th>float</th>
-            <th>double</th>
-        </tr>
-        </thead>
-        <tr>
-            <td>boolean</td>
-            <td>-</td>
-            <td>N</td>
-            <td>N</td>
-            <td>N</td>
-            <td>N</td>
-            <td>N</td>
-            <td>N</td>
-            <td>N</td>
-        </tr>
-        <tr>
-            <td>byte</td>
-            <td>N</td>
-            <td>-</td>
-            <td>Y</td>
-            <td>C</td>
-            <td>Y</td>
-            <td>Y</td>
-            <td>Y</td>
-            <td>Y</td>
-        </tr>
-        <tr>
-            <td>short</td>
-            <td>N</td>
-            <td>C</td>
-            <td>-</td>
-            <td>C</td>
-            <td>Y</td>
-            <td>Y</td>
-            <td>Y</td>
-            <td>Y</td>
-        </tr>
-        <tr>
-            <td>char</td>
-            <td>N</td>
-            <td>C</td>
-            <td>C</td>
-            <td>-</td>
-            <td>Y</td>
-            <td>Y</td>
-            <td>Y</td>
-            <td>Y</td>
-        </tr>
-        <tr>
-            <td>int</td>
-            <td>N</td>
-            <td>C</td>
-            <td>C</td>
-            <td>C</td>
-            <td>-</td>
-            <td>Y</td>
-            <td>Y*</td>
-            <td>Y</td>
-        </tr>
-        <tr>
-            <td>long</td>
-            <td>N</td>
-            <td>C</td>
-            <td>C</td>
-            <td>C</td>
-            <td>C</td>
-            <td>-</td>
-            <td>Y*</td>
-            <td>Y*</td>
-        </tr>
-        <tr>
-            <td>float</td>
-            <td>N</td>
-            <td>C</td>
-            <td>C</td>
-            <td>C</td>
-            <td>C</td>
-            <td>C</td>
-            <td>-</td>
-            <td>Y</td>
-        </tr>
-        <tr>
-            <td>double</td>
-            <td>N</td>
-            <td>C</td>
-            <td>C</td>
-            <td>C</td>
-            <td>C</td>
-            <td>C</td>
-            <td>C</td>
-            <td>-</td>
-        </tr>
-    </table>
+    <div class="image-box">
+        <img class="image" src="img/casting.png" alt="Схема приведения типов">
+    </div>
+    <div class="scroll">
+        <table class="list list--dictionary list--content-center" aria-label="Приведение типов">
+            <thead>
+            <tr>
+                <th>↓ИЗ | В→</th>
+                <th>boolean</th>
+                <th>byte</th>
+                <th>short</th>
+                <th>char</th>
+                <th>int</th>
+                <th>long</th>
+                <th>float</th>
+                <th>double</th>
+            </tr>
+            </thead>
+            <tr>
+                <td>boolean</td>
+                <td>-</td>
+                <td>N</td>
+                <td>N</td>
+                <td>N</td>
+                <td>N</td>
+                <td>N</td>
+                <td>N</td>
+                <td>N</td>
+            </tr>
+            <tr>
+                <td>byte</td>
+                <td>N</td>
+                <td>-</td>
+                <td>Y</td>
+                <td>C</td>
+                <td>Y</td>
+                <td>Y</td>
+                <td>Y</td>
+                <td>Y</td>
+            </tr>
+            <tr>
+                <td>short</td>
+                <td>N</td>
+                <td>C</td>
+                <td>-</td>
+                <td>C</td>
+                <td>Y</td>
+                <td>Y</td>
+                <td>Y</td>
+                <td>Y</td>
+            </tr>
+            <tr>
+                <td>char</td>
+                <td>N</td>
+                <td>C</td>
+                <td>C</td>
+                <td>-</td>
+                <td>Y</td>
+                <td>Y</td>
+                <td>Y</td>
+                <td>Y</td>
+            </tr>
+            <tr>
+                <td>int</td>
+                <td>N</td>
+                <td>C</td>
+                <td>C</td>
+                <td>C</td>
+                <td>-</td>
+                <td>Y</td>
+                <td>Y*</td>
+                <td>Y</td>
+            </tr>
+            <tr>
+                <td>long</td>
+                <td>N</td>
+                <td>C</td>
+                <td>C</td>
+                <td>C</td>
+                <td>C</td>
+                <td>-</td>
+                <td>Y*</td>
+                <td>Y*</td>
+            </tr>
+            <tr>
+                <td>float</td>
+                <td>N</td>
+                <td>C</td>
+                <td>C</td>
+                <td>C</td>
+                <td>C</td>
+                <td>C</td>
+                <td>-</td>
+                <td>Y</td>
+            </tr>
+            <tr>
+                <td>double</td>
+                <td>N</td>
+                <td>C</td>
+                <td>C</td>
+                <td>C</td>
+                <td>C</td>
+                <td>C</td>
+                <td>C</td>
+                <td>-</td>
+            </tr>
+        </table>
+    </div>
     <p class="no_mb"><span class="bold">N</span> - невозможно</p>
     <p class="no_mb"><span class="bold">Y</span> - автоматически</p>
     <p class="no_mb"><span class="bold">C</span> - сужающее преобразование, требующее явного приведения</p>
@@ -439,10 +448,11 @@
         <p>}</p>
     </div>
 
+    <a class="button button--to_top_menu" href="#"></a>
 </section>
 
 <section class="container" id="q5">
-    <h1>Что такое пул интов?</h1>
+    <h1><a href="#">Что такое пул интов?</a></h1>
     <p class="no_mb">
         Для более эффективного использования памяти, в JAVA используются так называемые пулы.
     </p>
@@ -463,10 +473,11 @@
         <p>System.out.println(i1==i2); //true</p>
         <p> System.out.println(i3==i4); //false</p>
     </div>
+    <a class="button button--to_top_menu" href="#"></a>
 </section>
 
 <section class="container" id="q6">
-    <h1>Какие нюансы у строк в Java?</h1>
+    <h1><a href="#">Какие нюансы у строк в Java?</a></h1>
     <p class="main-mind">
         Это неизменяемый (immutable) (не&nbsp;меняется после создания) и финализированный (без&nbsp;потомков) тип
         данных;
@@ -479,10 +490,11 @@
         <li>Начиная с Java 7 строки можно использовать в конструкции switch.</li>
     </ul>
     <p>Каждый объект можно привести к строке <span class="code-word">.toString</span></p>
+    <a class="button button--to_top_menu" href="#"></a>
 </section>
 
 <section class="container" id="q7">
-    <h1>Что такое пул строк?</h1>
+    <h1><a href="#">Что такое пул строк?</a></h1>
     <p>Пул строк – это набор строк хранящийся в <a href="../base/index.html#q12">Heap</a> .</p>
     <p class="no_mb">
         Пул строк возможен благодаря неизменяемости строк в Java и реализации идеи интернирования строк;
@@ -512,10 +524,11 @@
         <p>System.out.println("q==t: " + (q==t)); //true</p>
     </div>
     <p>Пул строк является примером паттерна «Приспособленец» (Flyweight).</p>
+    <a class="button button--to_top_menu" href="#"></a>
 </section>
 
 <section class="container" id="q8">
-    <h1>Почему String неизменяемый и финализированный класс?</h1>
+    <h1><a href="#">Почему String неизменяемый и финализированный класс?</a></h1>
     <ul>
         <li>
             Пул строк возможен только потому, что строка неизменяемая, таким образом виртуальная машина
@@ -544,10 +557,11 @@
             обработка происходит быстрее.
         </li>
     </ul>
+    <a class="button button--to_top_menu" href="#"></a>
 </section>
 
 <section class="container" id="q9">
-    <h1>Что такое сигнатура метода?</h1>
+    <h1><a href="#">Что такое сигнатура метода?</a></h1>
     <div>
         <p class="no_mb">
             <span class="accent-mono">Объявление метода</span>
@@ -572,10 +586,11 @@
     <p class="example">
         Насколько я понял модификатор доступа ни куда не входит.
     </p>
+    <a class="button button--to_top_menu" href="#"></a>
 </section>
 
 <section class="container" id="q10">
-    <h1>Каким образом переменные передаются в методы, по значению или по ссылке?</h1>
+    <h1><a href="#">Каким образом переменные передаются в методы, по значению или по ссылке?</a></h1>
     <p class="main-mind">Java передает параметры по значению. Всегда.</p>
     <div class="code no_mb">
         <p>int х = 3;</p>
@@ -590,10 +605,11 @@
         Ссылка А копируется в ссылку B. К объекту это не относится — у нас по-прежнему всего один объект.
         Но теперь есть две различных ссылки, контролирующие один и тот же объект Cat.
     </p>
+    <a class="button button--to_top_menu" href="#"></a>
 </section>
 
 <section class="container" id="q11">
-    <h1>String, StringBuffer, StringBuilder и StringJoiner</h1>
+    <h1><a href="#">String, StringBuffer, StringBuilder и StringJoiner</a></h1>
     <div>
         <p>
             Класс <span class="bold">String</span> является неизменяемым (<span class="bold">immutable</span>) -
@@ -634,10 +650,11 @@
             Обработка строк в Java. Часть I: String, StringBuffer, StringBuilder
         </a>
     </p>
+    <a class="button button--to_top_menu" href="#"></a>
 </section>
 
 <section class="container" id="q12">
-    <h1><a href="#">Форматирование данных</a></h1>
+    <h1><a href="#"><a href="#">Форматирование данных</a></a></h1>
     <div>
         <p>Форматирование данных важно по нескольким причинам:</p>
         <p class="term">
@@ -740,10 +757,11 @@
             </p>
         </div>
     </div>
+    <a class="button button--to_top_menu" href="#"></a>
 </section>
 
 <section class="container" id="q13">
-    <h1><a href="#">Экранирование символов и управляющие последовательности</a></h1>
+    <h1><a href="#">Экранирование символов и управляющие последователь<wbr>ности</a></h1>
     <div>
         <h3>Экранирование символов</h3>
         <div>
@@ -815,6 +833,7 @@
         </div>
     </div>
 
+    <a class="button button--to_top_menu" href="#"></a>
 </section>
 
 <div class="navi">
@@ -831,5 +850,7 @@
 <a href="#" class="button button--top"></a>
 
 </body>
+
+<script src="../../../../js/image.js"></script>
 
 </html>
