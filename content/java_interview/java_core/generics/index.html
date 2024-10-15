@@ -30,7 +30,7 @@
 </section>
 
 <section class="container" id="generic">
-    <h1><a href="#">Generics</a>Generics</h1>
+    <h1><a href="#">Generics</a></h1>
     <div>
         <p class="main-mind"> Generics - набор свойств языка позволяющих определять и использовать обобщенные типы и
             методы.</p>
@@ -108,6 +108,7 @@
             предлагается использовать точное указание типа LinkedList&lt;String&gt;, LinkedList&lt;Integer&gt; и т.п.
         </p>
     </div>
+    <a class="button button--to_top_menu" href="#"></a>
 </section>
 
 <section class="container" id="generic_why">
@@ -141,10 +142,11 @@
             очень классный видосик
         </a>
     </div>
+    <a class="button button--to_top_menu" href="#"></a>
 </section>
 
 <section class="container" id="raw_type">
-    <h1><a href="#">Что такое сырые типы (raw type)?</a></h1>
+    <h1><a href="#">Что такое сырые типы (raw&nbsp;type)?</a></h1>
     <div>
         <p class="main-mind no_mb">
             Raw type - это имя интерфейса без указания параметризованного типа
@@ -174,10 +176,11 @@
             <p>arrayList.add(1); //unchecked call</p>
         </div>
     </div>
+    <a class="button button--to_top_menu" href="#"></a>
 </section>
 
 <section class="container" id="wild_cards">
-    <h1>Что такое вайлдкарды (Маски)</h1>
+    <h1><a href="#">Что такое вайлдкарды (Маски)</a></h1>
     <div>
         <p> Языковая конструкция внутри diamond-оператора, позволяющая сделать код более универсальным. </p>
         <p class="main-mind">Решает проблему наследования типов в дженериках.</p>
@@ -232,36 +235,39 @@
                 Если ни хрена не поняли - смотрите видосик
             </a>
         </p>
+        <div class="scroll">
 
-        <table class="list list--dictionary list--content-vertical-middle" aria-label="wildcards">
-            <thead>
-            <tr>
-                <th>Тип</th>
-                <th>Что можно присвоить =</th>
-                <th>Что можно читать get()</th>
-                <th>Что можно добавлять add()</th>
-            <tr>
-            </thead>
-            <tr>
-                <td>Инвариантный<br>List&lt;Type&gt;</td>
-                <td>Только List&lt;Type&gt;</td>
-                <td>Type и предки Type</td>
-                <td>Type и наследники Type</td>
-            </tr>
-            <tr>
-                <td>Ковариантный<br>List&lt;?&nbsp;extends&nbsp;Type&gt;</td>
-                <td>List&lt;Type&gt; и List наследников Type</td>
-                <td>Type и предки Type</td>
-                <td>Ничего</td>
-            </tr>
-            <tr>
-                <td>Контрвариантный<br>List&lt;?&nbsp;super&nbsp;Type&gt;</td>
-                <td>List&lt;Type&gt; и List предков Type</td>
-                <td>Object</td>
-                <td>Type и наследники Type</td>
-            </tr>
-        </table>
+            <table class="list list--dictionary list--content-vertical-middle" aria-label="wildcards">
+                <thead>
+                <tr>
+                    <th>Тип</th>
+                    <th>Что можно присвоить =</th>
+                    <th>Что можно читать get()</th>
+                    <th>Что можно добавлять add()</th>
+                <tr>
+                </thead>
+                <tr>
+                    <td>Инвариантный<br>List&lt;Type&gt;</td>
+                    <td>Только List&lt;Type&gt;</td>
+                    <td>Type и предки Type</td>
+                    <td>Type и наследники Type</td>
+                </tr>
+                <tr>
+                    <td>Ковариантный<br>List&lt;?&nbsp;extends&nbsp;Type&gt;</td>
+                    <td>List&lt;Type&gt; и List наследников Type</td>
+                    <td>Type и предки Type</td>
+                    <td>Ничего</td>
+                </tr>
+                <tr>
+                    <td>Контрвариантный<br>List&lt;?&nbsp;super&nbsp;Type&gt;</td>
+                    <td>List&lt;Type&gt; и List предков Type</td>
+                    <td>Object</td>
+                    <td>Type и наследники Type</td>
+                </tr>
+            </table>
+        </div>
     </div>
+    <a class="button button--to_top_menu" href="#"></a>
 </section>
 
 <div class="navi">
