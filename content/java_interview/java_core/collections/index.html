@@ -186,10 +186,11 @@
         <a class="button button--to_content_menu" href="#base_interface"></a>
     </div>
 
+    <a class="button button--to_top_menu" href="#"></a>
 </section>
 
 <section class="container" id="collection">
-    <h1>Интерфейс Collection</h1>
+    <h1><a href="#">Интерфейс Collection</a></h1>
     <div>
         <div class="image-box">
             <img class="image" src="./img/collection.png" alt="Интерфейс Collection">
@@ -277,7 +278,7 @@
             <p>
                 Важно отметить, что итераторы обеспечивают <b>fail-fast поведение</b>, что означает, что если коллекция
                 изменяется в процессе итерации (кроме использования самого метода remove()), итератор быстро завершится,
-                вызвав <b>ConcurrentModificationException</b>.
+                вызвав <b>ConcurrentModification<wbr>Exception</b>.
                 <br>Это помогает предотвратить непредсказуемое поведение, возникающее при одновременном изменении
                 коллекции во время итерации.
             </p>
@@ -366,7 +367,7 @@
                         Iterator является более безопасным, поскольку он не позволяет изменять коллекцию во время
                         обхода, кроме использования метода remove().
                         <br>Если коллекция изменяется в процессе итерации (не считая использования remove()),
-                        Iterator быстро завершится, вызвав ConcurrentModificationException.
+                        Iterator быстро завершится, вызвав ConcurrentModification<wbr>Exception.
                         <br>Enumeration не предоставляет этой защиты.
                     </p>
                 </li>
@@ -427,10 +428,11 @@
         <a class="button button--to_content_menu" href="#collection"></a>
     </div>
 
+    <a class="button button--to_top_menu" href="#"></a>
 </section>
 
 <section class="container" id="list">
-    <h1>Реализации интерфейса List</h1>
+    <h1><a href="#">Реализации интерфейса List</a></h1>
     <div>
         <div class="image-box">
             <img class="image" src="./img/list.png" alt="Интерфейс List">
@@ -496,10 +498,11 @@
         <a class="button button--to_content_menu" href="#list"></a>
     </div>
 
+    <a class="button button--to_top_menu" href="#"></a>
 </section>
 
 <section class="container" id="set">
-    <h1>Реализации интерфейса Set</h1>
+    <h1><a href="#">Реализации интерфейса Set</a></h1>
     <div>
         <div class="code">
             <img class="image" src="./img/set.png" alt="Интерфейс Set">
@@ -551,10 +554,11 @@
         <a class="button button--to_content_menu" href="#set"></a>
     </div>
 
+    <a class="button button--to_top_menu" href="#"></a>
 </section>
 
 <section class="container" id="queue">
-    <h1>Реализации интерфейса Queue</h1>
+    <h1><a href="#">Реализации интерфейса Queue</a></h1>
     <div class="image-box">
         <img class="image" src="./img/queue.png" alt="Интерфейс Queue">
     </div>
@@ -563,10 +567,11 @@
         – единственная прямая реализация интерфейса Queue (не считая LinkedList, который больше является
         списком, чем очередью).
     </p>
+    <a class="button button--to_top_menu" href="#"></a>
 </section>
 
 <section class="container" id="map">
-    <h1>Реализации интерфейса Map</h1>
+    <h1><a href="#">Реализации интерфейса Map</a></h1>
     <p>
         Интерфейс Map соотносит уникальные ключи со значениями. Ключ — это объект, который используется для
         последующего извлечения данных. Задавая ключ и значение, можно помещать значения в объект карты.
@@ -620,10 +625,11 @@
         словами, нахождение объекта представленного ключем в данной коллекции не блокирует сборщик мусора от зачистки.
         После того как ключ будет зачищен вся пара будет удалена из коллекции.
     </p>
+    <a class="button button--to_top_menu" href="#"></a>
 </section>
 
 <section class="container" id="other">
-    <h1>Другие коллекции</h1>
+    <h1><a href="#">Другие коллекции</a></h1>
     <p class="no_mb">Их еще называют "устаревшими".</p>
     <p class="example">Но нет аннотации @Deprecated или каких-либо иных, которые бы запрещали их использование в
         коде.</p>
@@ -649,17 +655,15 @@
         Добавлены методы "вталкивания" (push) и "выталкивания" (pop) элементов, так что список может трактоваться в
         терминах, принятых для описания структуры данных стека (stack).
     </p>
-    <hr>
-    <hr>
-    <h4></h4>
     <p class="main-mind">
         Все методы Hashtable, Stack, Vector являются синхронизированными, что делает их менее эффективными в
         однопоточных приложениях.
     </p>
+    <a class="button button--to_top_menu" href="#"></a>
 </section>
 
 <section class="container" id="synchronized">
-    <h1>Синхронизированные коллекции</h1>
+    <h1><a href="#">Синхронизирован<wbr>ные коллекции</a></h1>
     <p>
         Получить синхронизированные объекты коллекций можно используя <strong>статические методы класса
         Collections: </strong>
@@ -680,9 +684,10 @@
         разработчики полагают, что, раз эти коллекции синхронизированы, значит, они полностью потокобезопасны, и
         пренебрегают должной синхронизацией составных операций. В результате, хотя эти программы и работают при лёгкой
         нагрузке, но при серьёзной нагрузке они могут начать выкидывать NullPointerException или
-        ConcurrentModificationException.
+        ConcurrentModification<wbr>Exception.
     </p>
     <p>Кроме того всегда существует возможность "классической" синхронизации с помощью блока synchronized.</p>
+    <a class="button button--to_top_menu" href="#"></a>
 </section>
 
 <section class="container" id="loadFactor_capacity">
@@ -701,11 +706,13 @@
             </li>
         </ul>
     </div>
+    <a class="button button--to_top_menu" href="#"></a>
 </section>
 
 <section class="container" id="source">
     <h1><a href="#">Дополнительно</a></h1>
     <a class="link-to-source" href="https://habr.com/ru/articles/162017/" target="_blank">Можно почитать</a>
+    <a class="button button--to_top_menu" href="#"></a>
 </section>
 
 <div class="navi">
