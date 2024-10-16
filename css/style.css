@@ -312,13 +312,18 @@ img {
 }
 
 .menu li:before {
-    content: '▸';
+    content: '';
+    width: 5px;
+    height: 5px;
+    display: block;
+    background-color: black;
     position: absolute;
-    left: -12px;
+    top: 9px;
+    left: -10px;
 }
 
 .menu li:hover::before {
-    color: #00a82d;
+    background-color: #00a82d;
 }
 
 /*удалить*/
@@ -370,9 +375,10 @@ img {
 .spoiler-button {
     position: relative;
     display: inline-block;
-    padding-right: 25px;
-    height: 20px;
+    padding: 8px;
     cursor: pointer;
+    top: 3px;
+    left: -5px;
 }
 
 .submenu {
@@ -381,28 +387,26 @@ img {
 .submenu-button:after,
 .submenu-button:before {
     content: '';
-    width: 15px;
+    width: 16px;
     height: 2px;
     background-color: #00a82d;
     position: absolute;
-    top: 14px;
+    top: calc(50% - 1px);
+    right: 0;
     transition: all 0.3s ease 0s;
 }
 
 .submenu-button:before {
     transform: rotate(90deg);
-    right: 10px;
 }
 
 .submenu-button.active:before {
     transform: rotate(0deg);
-    right: 10px;
 }
 
 .submenu-button.active:after {
     transform: rotate(-90deg);
     width: 0;
-    right: 10px;
 }
 
 .submenu-total {
