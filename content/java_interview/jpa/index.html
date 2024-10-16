@@ -974,7 +974,7 @@
         </p>
         <p>
             Если мы хотим поменять имя колонки, то мы должны указать её новое имя в параметре аннотации у
-            класса-родителя: <span class="accent-mono">@DiscriminatorColumn(name=EMP_TYPE)</span> .
+            класса-родителя: <span class="accent-mono">@DiscriminatorColumn(name=EMP_TYPE)</span>.
         </p>
         <div class="code">
             <p class="annotation">@Inheritance(strategy = InheritanceType.SINGLE_TABLE)</p>
@@ -2191,7 +2191,7 @@ flushAndClear();
         <br>Hibernate может загружать данные не сразу, а при первом обращении к ним, но так как это необязательное
         требование, то Hibernate имеет право изменить это поведение и загружать их сразу.
         <br>Это поведение по умолчанию для полей, аннотированных @OneToMany, @ManyToMany
-        и @ElementCollection (все что медленно) .
+        и @ElementCollection (все что медленно).
     </p>
     <p>Раньше у Hibernate все поля были LAZY, но в последних версиях - всё как в JPA 2.0.</p>
 </section>

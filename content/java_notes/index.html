@@ -39,7 +39,7 @@
     <h3>Полезные аннотации</h3>
     <p class="main-mind no_mb">@JsonPropertyOrder({"id", name"})</p>
     <p>Для классов порядок сериализации полей объекта в JSON</p>
-    <p class="main-mind no_mb">@JsonInclude(JsonInclude. Include .NON_NULL)</p>
+    <p class="main-mind no_mb">@JsonInclude(JsonInclude<wbr>.Include.<wbr>NON_NULL)</p>
     <p>не включать параметр если он равен null, можно для всего класса или для конкретного поля</p>
     <p class="main-mind no_mb">@JsonProperty("&lt;имя_в_json&gt;")</p>
     <p>Аннотация ставится над переменной и в json вместо имени переменной попадет указанное в аннотации значение</p>
@@ -136,10 +136,10 @@
             <p class="bold no_mb">ВАЖНО!!!</p>
             <p>Используйте orElse только с константами или простыми операциями, потому что выражение в
                 orElse вычисляется всегда:</p>
-            <p class="bad no_mb"><span>BAD:</span> getFromCache(id) .orElse(getFromDB(id);</p>
+            <p class="bad no_mb"><span>BAD:</span> getFromCache(id)<wbr>.orElse(getFromDB(id);</p>
             <p>getFromDB выполнится, даже если getFromCache вернёт результат.</p>
             <p class="no_mb">Для тяжёлых операций используйте метод orElseGet:</p>
-            <p class="good no_mb"><span>GOOD:</span> getFromCache(id) .orElseGet(() → getFromDB(id));</p>
+            <p class="good no_mb"><span>GOOD:</span> getFromCache(id)<wbr>.orElseGet(() → getFromDB(id));</p>
             <p>Здесь getFromDB выполнится, только если результат getFromCache пустой.</p>
         </li>
         <li>
@@ -151,12 +151,12 @@
         <li>
             <p class="bold no_mb">Проверка условия: filter</p>
             <p class="no_mb">Вместо isPresent + get + проверка условия используйте метод filter:</p>
-            <p class="good">value.filter(v→v.length()<4) .ifPresent(…)</p>
+            <p class="good">value.filter(v→v.length()<4)<wbr>.ifPresent(…)</p>
         </li>
         <li>
             <p class="bold">Преобразования: map / flatMap</p>
             <p class="no_mb">Для манипуляций значением Optional используйте метод map:</p>
-            <p class="good">opt.map(Account::getAddress) .map(String::toUpperCase) .orElse("default");</p>
+            <p class="good">opt.map(Account::getAddress)<wbr>.map(String::toUpperCase)<wbr>.orElse("default");</p>
             <p class="no_mb">flatMap используется, если метод отображения возвращает Optional:</p>
             <p class="good no_mb">Optional&lt;String&gt; getAddress() {…}</p>
             <p class="good">opt.flatMap(Account::getAddress);</p>
@@ -164,9 +164,9 @@
         <li>
             <p class="bold">Методы для Stream API (Java 9)</p>
             <p class="no_mb">Когда в стриме один метод возвращает Optional, его часто обрабатывают так:</p>
-            <p class="bad"><span>BAD:</span> .filter(Optional::isPresent) .map(Optional::get)</p>
+            <p class="bad"><span>BAD:</span><wbr>.filter(Optional::isPresent)<wbr>.map(Optional::get)</p>
             <p class="no_mb">Метод flatMap пригодится и здесь. Все пустые значения отфильтруются:</p>
-            <p class="good"><span>GOOD:</span> .flatMap(Optional::stream)</p>
+            <p class="good"><span>GOOD:</span><wbr>.flatMap(Optional::stream)</p>
         </li>
         <li>
             <p class="bold">Сравнение Optional</p>
@@ -205,7 +205,7 @@
             <p class="bold">Усложнение кода</p>
             <p> С появлением Stream API усилился тренд на Fluent API: это когда действия соединяются в одну цепочку. Не
                 создавайте Optional только ради этого, пишите простой код.</p>
-            <p class="bad"><span>BAD:</span> return Optional.ofNullable(value) .orElse("default");</p>
+            <p class="bad"><span>BAD:</span> return Optional.ofNullable(value)<wbr>.orElse("default");</p>
             <p class="good"><span>GOOD:</span> return value == null ? "default" : value;</p>
         </li>
         <li>

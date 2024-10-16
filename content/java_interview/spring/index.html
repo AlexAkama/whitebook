@@ -273,8 +273,7 @@
                 аннотацией
                 <an>@Configuration</an>
                 , либо с любой другой аннотацией JSR-330, в том числе и
-                <an>@Component</an>
-                .
+                <an>@Component</an>.
             </p>
 
         </li>
@@ -299,8 +298,7 @@
             <p>
                 Java-код - Начиная со Spring 3.0, используя Java-код, а не файлы XML, мы можем определять настройки в
                 специальном классе, помеченном аннотацией
-                <an>@Configuration</an>
-                .
+                <an>@Configuration</an>.
             </p>
             <p class="example">
                 Появились аннотации
@@ -764,7 +762,7 @@
         экземпляр бина Passenger. То есть Car – синглтон, а Passenger – так называемый прототипный бин (prototype bean).
         Жизненные циклы бинов разные. Бин Car создается контейнером только раз, а бин Passenger создается каждый раз
         новый – допустим, это происходит каждый раз при вызове какого-то метода бина Car. Вот здесь-то и пригодится
-        <strong>внедрение бина с помощью Lookup-метода</strong> . Оно происходит не при инициализации контейнера, а
+        <strong>внедрение бина с помощью Lookup-метода</strong>. Оно происходит не при инициализации контейнера, а
         позднее: <strong>каждый раз, когда вызывается метод</strong>.
     </p>
     <p>
@@ -3180,14 +3178,13 @@
             <p class="tab-1">// This interceptor applies to URL /admin/oldLogin.</p>
             <p class="tab-1">// Using OldURLInterceptor to redirect to new URL.</p>
             <p class="tab-1 mb20">
-                registry<wbr>.addInterceptor(new&nbsp;OldLoginInterceptor())<wbr>
-                .addPathPatterns("/admin/oldLogin");
+                registry<wbr>.addInterceptor(new&nbsp;OldLoginInterceptor())<wbr>.addPathPatterns("/admin/oldLogin");
             </p>
             <p class="tab-1">// This interceptor applies to URLs like /admin/*</p>
             <p class="tab-1">// Exclude /admin/oldLogin</p>
             <p class="tab-1 mb20">
-                registry<wbr>.addInterceptor(new&nbsp;AdminInterceptor())<wbr>.addPathPatterns("/admin/*")<wbr>
-                .excludePathPatterns("/admin/oldLogin");
+                registry<wbr>.addInterceptor(new&nbsp;AdminInterceptor())<wbr>.addPathPatterns("/admin/*")
+                <wbr>.excludePathPatterns("/admin/oldLogin");
             </p>
             <p>}</p>
         </div>
@@ -3199,7 +3196,7 @@
                 <li>Фильтр зависит от контейнера сервлета, тогда как перехватчик не зависит от него.</li>
                 <li>
                     Перехватчики могут работать только с запросами к контроллерам, в то время как фильтры могут работать
-                    почти со всеми запросами (например, js, .css и т.д.).
+                    почти со всеми запросами (например, js, css и т.д.).
                 </li>
                 <li>
                     Перехватчики в отличии от фильтров могут обращаться к объектам в контейнере Spring, что даёт им
@@ -3403,7 +3400,7 @@
                 <p>
                     Каждое Spring Boot web-приложение включает встроенный web-сервер. Не нужно беспокоиться о настройке
                     контейнера сервлетов и развертывания приложения в нем. Теперь приложение может запускаться само как
-                    исполняемый .jar-файл с использованием встроенного сервера.
+                    исполняемый jar-файл с использованием встроенного сервера.
                 </p>
             </li>
             <li>
