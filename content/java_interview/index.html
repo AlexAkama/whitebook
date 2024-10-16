@@ -18,10 +18,12 @@
         <p><a href="../../">главная</a></p>
         <p>Questions</p>
     </div>
-    <h3 class="no_mt no_mb">Оглавление <span class="submenu-total">(показать все)</span></h3>
-    <div class="search-box icon-search mb20">
-        <input type="text" name="search" id="search" placeholder="Поиск..." autocomplete="off">
-        <label for="search" id="search-label">Поиск...</label>
+    <div>
+        <h3 class="no_mt no_mb">Оглавление <span class="submenu-total">(показать все)</span></h3>
+        <div class="search-box icon-search mb20">
+            <input type="text" name="search" id="search" placeholder="Поиск..." autocomplete="off">
+            <label for="search" id="search-label">Поиск...</label>
+        </div>
     </div>
     <ul class="menu">
         <li>
@@ -36,7 +38,7 @@
                         <span class="submenu-button"></span>
                     </p>
                     <ol class="menu submenu no-display">
-                        <li><a href="./java_core/oop/#q1">Что такое ООП?</a></li>
+                        <li><p class="mb10"><a href="./java_core/oop/#q1">Что такое ООП?</a></p></li>
                         <li><a href="./java_core/oop/#q2">Какие преимущества у ООП?</a></li>
                         <li><a href="./java_core/oop/#q3">Какие недостатки у ООП?</a></li>
                         <li><a href="./java_core/oop/#q4">Назовите основные принципы ООП.</a></li>
@@ -858,6 +860,34 @@
     <h1><a href="#">Вопросы со скринингов</a></h1>
 
     <div>
+        <h4>Алгосики</h4>
+        <ul class="margined">
+            <li>
+                <p class="spoiler-string">Пример для сложности O(N<sup>2</sup>)</p>
+                <div class="spoiler">
+                    <p>Цикл в цикле.</p>
+                </div>
+            </li>
+            <li>
+                <p class="spoiler-string">Как организовать рекурсию?</p>
+                <div class="spoiler">
+                    <p>Вызвать самого себя в теле.</p>
+                </div>
+            </li>
+            <li>
+                <p>Чем отличаются функциональные и нефункциональные требования.</p>
+            </li>
+        </ul>
+    </div>
+
+    <div>
+        <h4>JMM</h4>
+        <ul>
+            <li>Что такое пауза GC</li>
+        </ul>
+    </div>
+
+    <div>
         <h4>Java Core</h4>
         <ul>
             <li>Каким образом можно синхронизировать доступ к общей коллекции в Java?</li>
@@ -1041,7 +1071,8 @@
     <div>
         <h4>Многопоточка</h4>
         <ul>
-            <li>Что такое ThreadLocal переменная</li>
+            <li>Разница между потоком и процессом?</li>
+            <li>Что такое ThreadLocal переменная?</li>
             <li>У нас есть какая-то переменная i. Она volatile, она равняется нулю.
                 Я в двух потоках делаю инкременты этой переменной. Это будет потокобезопасно?
             </li>
@@ -1051,6 +1082,9 @@
 
     <div>
         <h4>SQL</h4>
+        <ul>
+            <li>Разница между TRUNCATE и DELETE</li>
+        </ul>
     </div>
 
     <div>
@@ -1168,6 +1202,9 @@
                     <p>- В случае необходимого поддержания большого количества идентификаторов сообщений, это может
                         стать проблемой в плане потребления ресурсов, например, памяти.</p>
                 </div>
+            </li>
+            <li>
+                Что такое ключ партиционирования?
             </li>
         </ul>
     </div>
