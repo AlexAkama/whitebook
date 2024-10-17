@@ -107,6 +107,17 @@ a:hover {
     text-decoration: underline;
 }
 
+h1 a:hover {
+    text-decoration: none;
+}
+
+h1 a:hover:after {
+    content: '>';
+    display: inline-block;
+    transform: rotate(-90deg);
+    margin-left: 5px;
+}
+
 ol {
     padding-left: 32px;
 }
@@ -214,6 +225,7 @@ img {
     display: flex;
     flex-wrap: wrap;
     font-size: 14px;
+    line-height: 1.6;
     font-weight: bold;
     margin-bottom: 14px;
     position: fixed;
@@ -224,7 +236,7 @@ img {
 }
 
 .breadcrumbs p {
-    padding: 3px 10px;
+    padding: 2px 10px 0;
     box-shadow: 0 0 10px 3px rgba(51, 51, 51, .08);
     text-decoration: none;
     margin: 2px 3px;
@@ -234,19 +246,20 @@ img {
     text-decoration: none;
 }
 
-.breadcrumbs p:first-child:before {
-    content: '';
-    width: 16px;
-    height: 10px;
-    display: inline-block;
-    background-image: url("img/home.png");
-    background-size: contain;
-    background-position: left;
-    background-repeat: no-repeat;
-}
-.breadcrumbs p:first-child:hover::before {
-    background-image: url("img/home-green.png");
-}
+/*.breadcrumbs p:first-child:before {*/
+/*    content: '';*/
+/*    width: 16px;*/
+/*    height: 10px;*/
+/*    display: inline-block;*/
+/*    background-image: url("img/home.png");*/
+/*    background-size: contain;*/
+/*    background-position: left;*/
+/*    background-repeat: no-repeat;*/
+/*}*/
+
+/*.breadcrumbs p:first-child:hover::before {*/
+/*    background-image: url("img/home-green.png");*/
+/*}*/
 
 .breadcrumbs p:not(:last-child) {
     margin-right: 2px;
@@ -333,9 +346,10 @@ img {
     background-color: #00a82d;
 }
 
-.menu.after-h1 li>a:hover {
+.menu.after-h1 li > a:hover {
     color: darkgreen;
 }
+
 .menu.after-h1 li:hover::before {
     background-color: darkgreen;
 }
@@ -820,6 +834,8 @@ an,
     color: darkorange;
 }
 
+/*СПОЙЛЕР и ЕГО АКТИВАЦИЯ: кнопка и строка*/
+
 .spoiler {
     max-height: 0;
     overflow: hidden;
@@ -827,6 +843,10 @@ an,
     font-size: smaller;
     background-color: #90ee902b;
     padding: 0 5px 0 10px; /*0 что бы нормально скрывался*/
+}
+
+.spoiler :last-child {
+    margin-bottom: 10px;
 }
 
 .spoiler.active {
@@ -880,6 +900,8 @@ an,
 .spoiler-string.active:after {
     content: "";
 }
+
+/* БЛОК ПОИСКА (на странице) */
 
 .search-box {
     display: inline-block;
@@ -1219,11 +1241,6 @@ input:focus {
     .list td:nth-child(2) {
         padding-left: 3px;
     }
-
-    .spoiler p {
-        padding-left: 15px;
-    }
-
 
     .vertical-schema > *:last-child {
         justify-content: left;
