@@ -236,13 +236,16 @@ img {
 
 .breadcrumbs p:first-child:before {
     content: '';
-    width: 18px;
-    height: 13px;
+    width: 16px;
+    height: 10px;
     display: inline-block;
     background-image: url("img/home.png");
     background-size: contain;
     background-position: left;
     background-repeat: no-repeat;
+}
+.breadcrumbs p:first-child:hover::before {
+    background-image: url("img/home-green.png");
 }
 
 .breadcrumbs p:not(:last-child) {
@@ -250,8 +253,11 @@ img {
 }
 
 .breadcrumbs p:after {
-    content: '▸';
+    content: '>';
     padding-left: 5px;
+}
+
+.breadcrumbs p:hover::after {
     color: #00a82d;
 }
 
@@ -319,11 +325,19 @@ img {
     background-color: black;
     position: absolute;
     top: 9px;
-    left: -10px;
+    left: -13px;
 }
 
+.menu.after-h1 li:before,
 .menu li:hover::before {
     background-color: #00a82d;
+}
+
+.menu.after-h1 li>a:hover {
+    color: darkgreen;
+}
+.menu.after-h1 li:hover::before {
+    background-color: darkgreen;
 }
 
 /*удалить*/
@@ -381,6 +395,7 @@ img {
     left: -5px;
 }
 
+/*выпилить */
 .submenu {
 }
 
