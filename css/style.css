@@ -119,13 +119,18 @@ h1 a:hover:after {
 }
 
 ol {
-    padding-left: 32px;
+    padding-left: 25px;
 }
 
 ul {
     padding-left: 20px;
 }
 
+ul ul {
+    list-style-type: square;
+}
+
+/* dash-style - проверить может можно вырезать*/
 ul.dash-style {
     padding-left: 0;
 }
@@ -545,6 +550,7 @@ img {
 .example span,
 .definition span,
 .term span,
+/* переделать на term и удалить*/
 .accent-mono {
     font-family: 'Monaco', 'Menlo', 'Consolas', 'Courier New', monospace;
     font-weight: 700;
