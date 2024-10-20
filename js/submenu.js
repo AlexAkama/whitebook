@@ -1,13 +1,9 @@
-const total = document.querySelector('.submenu-total');
-
-const searchBox = document.querySelector('.search-box')
-const search = document.querySelector('#search')
-
 const submenuButtons = document.querySelectorAll('.submenu-button');
-const submenus = document.querySelectorAll('.submenu');
-const elements = document.querySelectorAll('.menu>li');
 
-// на все
+const toggleVisibilityButtons = document.querySelector('.submenu-total');
+toggleVisibilityButtons.textContent = '(показать все)';
+
+// на все кнопки подменю
 for (let button of submenuButtons) {
     button.addEventListener('click', function () {
             let submenu = button.parentElement.nextElementSibling;
@@ -24,18 +20,19 @@ for (let button of submenuButtons) {
     );
 }
 
-total.addEventListener('click', function () {
-    if (total.classList.contains('active')) {
-        total.classList.remove('active');
-        total.textContent = '(показать все)';
+// на кнопку показать/скрыть все
+toggleVisibilityButtons.addEventListener('click', function () {
+    if (toggleVisibilityButtons.classList.contains('active')) {
+        toggleVisibilityButtons.classList.remove('active');
+        toggleVisibilityButtons.textContent = '(показать все)';
         for (let button of submenuButtons) {
             button.classList.remove('active');
             button.parentElement.nextElementSibling.classList.remove('active');
             button.parentElement.nextElementSibling.classList.add('no-display');
         }
     } else {
-        total.classList.add('active');
-        total.textContent = '(скрыть все)';
+        toggleVisibilityButtons.classList.add('active');
+        toggleVisibilityButtons.textContent = '(скрыть все)';
         for (let button of submenuButtons) {
             button.classList.add('active');
             button.parentElement.nextElementSibling.classList.add('active');
@@ -43,41 +40,3 @@ total.addEventListener('click', function () {
         }
     }
 })
-
-search.addEventListener('change', function () {
-    let needle = search.value.toLowerCase();
-    if (needle !== '') {
-        for (let button of submenuButtons) {
-            button.classList.add('active');
-            button.parentElement.nextElementSibling.classList.add('active');
-            button.parentElement.nextElementSibling.classList.remove('no-display');
-            button.classList.add('no-display');
-        }
-        for (let element of elements) {
-            element.classList.remove('no-display');
-            if (!element.innerHTML.toLowerCase().includes(needle)) {
-                element.classList.add('no-display');
-            } else {
-                console.log(element);
-            }
-        }
-        total.classList.add('no-display');
-        searchBox.classList.add('icon-cancel');
-    } else {
-        for (let button of submenuButtons) {
-            button.classList.remove('active');
-            button.parentElement.nextElementSibling.classList.remove('active');
-            button.classList.remove('no-display');
-        }
-        for (let submenu of submenus) {
-            submenu.classList.add('no-display');
-        }
-        for (let element of elements) {
-            element.classList.remove('no-display');
-        }
-        total.classList.remove('no-display');
-        searchBox.classList.remove('icon-cancel');
-    }
-
-})
-
