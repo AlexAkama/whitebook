@@ -19,7 +19,7 @@
         <p><a href="..">Questions</a></p>
         <p>SQL</p>
     </div>
-    <h3 class="no_mt">Воросы:</h3>
+    <h3 class="no_mt">Вопросы: <span class="submenu-total"></span></h3>
     <ul class="menu">
         <li><a href="#relation_db">Реляционная база данных</a></li>
         <li><a href="#sql_about">Что такое SQL</a></li>
@@ -29,10 +29,10 @@
                 <span class="submenu-button"></span>
             </p>
             <ul class="menu no-display">
-                <li><a href="#ddl">DDL<br><span class="example">Data Definition Language</span></a></li>
-                <li><a href="#dcl">DCL<br><span class="example">Data Control Language</span></a></li>
-                <li><a href="#tcl">TCL<br><span class="example">Тгаnsасtiоn Соntrol Language</span></a></li>
-                <li><a href="#dml">DML<br><span class="example">Data Manipulation Language</span></a></li>
+                <li><a href="#ddl">DDL <span class="example">(Data Definition Language)</span></a></li>
+                <li><a href="#dcl">DCL <span class="example">(Data Control Language)</span></a></li>
+                <li><a href="#tcl">TCL <span class="example">(Тгаnsасtiоn Соntrol Language)</span></a></li>
+                <li><a href="#dml">DML <span class="example">(Data Manipulation Language)</span></a></li>
             </ul>
         </li>
         <li>
@@ -49,7 +49,20 @@
         </li>
         <li><a href="#saved-triggers">Хранимы процедуры и триггеры</a></li>
         <li><a href="#view-temptable">VIEW и временные таблицы</a></li>
-        <li><a href="#transactions">Транзакции</a></li>
+        <li>
+            <p class="mb10">
+                <a href="#transactions">Транзакции</a>
+                <span class="submenu-button"></span>
+            </p>
+            <ul class="menu no-display">
+                <li><a href="#transaction">Определение</a></li>
+                <li><a href="#acid">ACID</a></li>
+                <li><a href="#anomalies">Аномалии</a></li>
+                <li><a href="#isolation_levels">Уровни изоляций в SQL</a></li>
+                <li><a href="#propagation">Распространение транзакций</a></li>
+                <li><a href="#problem">Грабли @Transactional</a></li>
+            </ul>
+        </li>
         <li><a href="#joins">Виды JOIN</a></li>
         <li><a href="#replication-sharding">Репликация и шардирование</a></li>
     </ul>
@@ -915,10 +928,12 @@
 <section class="container" id="transactions">
     <h1><a href="#">Транзакции</a></h1>
     <ul class="after-h1 menu">
-        <li><a href="#transaction">Транзакция</a></li>
+        <li><a href="#transaction">Определение</a></li>
         <li><a href="#acid">ACID</a></li>
-        <li><a href="#anomaly">Аномалии</a></li>
-        <li><a href="#isolation_level">Уровни изоляции</a></li>
+        <li><a href="#isolation_levels">Уровни изоляций в SQL</a></li>
+        <li><a href="#anomalies">Аномалии</a></li>
+        <li><a href="#propagation">Распространение транзакций</a></li>
+        <li><a href="#problem">Грабли @Transactional</a></li>
     </ul>
 
     <div id="transaction">
@@ -982,7 +997,7 @@
     </div>
 
     <hr>
-    <div id="anomaly">
+    <div id="anomalies">
         <h3><a href="#transactions">Аномалии</a></h3>
         <div>
             <p>При параллельном выполнении транзакций возможны следующие проблемы (аномалии):</p>
@@ -1023,7 +1038,7 @@
     </div>
 
     <hr>
-    <div id="isolation_level">
+    <div id="isolation_levels">
         <h3><a href="#transactions">Уровни изоляции</a></h3>
         <div>
             <p>
@@ -1088,6 +1103,105 @@
             </div>
         </div>
         <a class="button button--to_content_menu" href="#"></a>
+    </div>
+
+    <hr>
+    <div id="propagation">
+        <h3><a href="#transactions">Распространение транзакций</a></h3>
+        <div>
+            <p>Распространение транзакций (Propagation) в @Transactional</p>
+            <ul class="margined">
+                <li>
+                    <p class="term">
+                        <span>REQUIRED(0)</span><br>
+                        Если активная транзакция уже существует, метод будет выполняться в её контексте.
+                        Если транзакции нет, она будет создана. Режим по-умолчанию.
+                    </p>
+                </li>
+                <li>
+                    <p class="term">
+                        <span>SUPPORTS(1)</span><br>
+                        Если существует активная транзакция, метод будет выполнен в её контексте.
+                        Если транзакции нет, метод будет выполнен вне контекста транзакции.
+                    </p>
+                </li>
+                <li>
+                    <p class="term">
+                        <span>MANDATORY(2)</span><br>
+                        Метод требует наличия активной транзакции. Если ее нет, будет выброшено
+                        <span class="bad">исключение</span>.
+                    </p>
+                </li>
+                <li>
+                    <p class="term">
+                        <span>REQUIRES_NEW(3)</span><br>
+                        Метод всегда будет выполняться в новой транзакции.
+                        Если уже есть активная транзакция, она будет приостановлена до завершения новой транзакции.
+                    </p>
+                </li>
+                <li>
+                    <p class="term">
+                        <span>NOT_SUPPORTED(4)</span><br>
+                        Метод будет выполняться вне контекста транзакции.
+                        Если имеется активная транзакция, она будет приостановлена на время его выполнения.
+                    </p>
+                </li>
+                <li>
+                    <p class="term">
+                        <span>NEVER(5)</span><br>
+                        Метод никогда не должен быть выполнен в контексте транзакции.
+                        Если транзакция активна, будет выброшено <span class="bad">исключение</span>.
+                    </p>
+                </li>
+                <li>
+                    <p class="term">
+                        <span>NESTED(6)</span><br>
+                        Метод будет выполнен в рамках вложенной транзакции, если уже существует активная транзакция.
+                        В противном случае, будет создана новая транзакция.
+                    </p>
+                    <p class="example">
+                        Вложенные транзакции позволяют откатывать только часть операции без влияния на внешнюю
+                        транзакцию.
+                        Однако поддержка этой модели зависимости от конкретных систем управления транзакциями может
+                        отличаться.
+                    </p>
+                </li>
+            </ul>
+            <p>
+                <a class="link-to-source" href="https://youtu.be/ZVYzVqqVrms" target="_blank">
+                    интересный видосик про транзакции </a>
+            </p>
+        </div>
+        <a class="button button--to_content_menu" href="#transactions"></a>
+    </div>
+
+    <hr>
+    <div id="problem">
+        <h3><a href="#transactions">Грабли в JAVA</a></h3>
+        <div>
+            <p>
+                Грабли при использовании аннотации @Transactional:
+            </p>
+            <ul class="margined">
+                <li>Не вызывать метод, помеченный @Transactional из одного класса.</li>
+                <li>
+                    <p>
+                        @Transactional не откатит транзакцию если выброшено Exception, работает с RuntimeException.
+                    </p>
+                    <div class="example">
+                        <p>Но можно настроить</p>
+                        <div class="code" style="padding: 5px">@Transactional(rollbackFor=Exception.class)</div>
+                    </div>
+                </li>
+                <li>@Transactional работает только с public методами.</li>
+                <li>@Transactional занимает соединение с БД.</li>
+            </ul>
+            <p>
+                <a class="link-to-source" href="https://youtu.be/2E8FKi4oC0o" target="_blank">
+                    очень кратенько, но полезненько</a>
+            </p>
+        </div>
+        <a class="button button--to_content_menu" href="#transactions"></a>
     </div>
 
     <a class="button button--to_top_menu" href="#"></a>
