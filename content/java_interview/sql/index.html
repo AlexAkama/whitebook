@@ -64,6 +64,36 @@
             </ul>
         </li>
         <li class="in-progress"><a href="#joins">Виды JOIN</a></li>
+        <li>
+            <p class="mb10">
+                <a href="#add">Дополнительные вопросы</a>
+                <span class="submenu-button"></span>
+            </p>
+            <ul class="menu no-display">
+                <li><a href="#join_or_subquery">Что лучше использовать JOIN или подзапросы?</a></li>
+                <li><a href="#union">Что делает UNION?</a></li>
+                <li><a href="#having">Чем WHERE отличается от HAVING?</a></li>
+                <li><a href="#order_by">Что такое ORDER BY?</a></li>
+                <li><a href="#group_by">Что такое GROUP BY?</a></li>
+                <li><a href="#distinct">Что такое DISTINCT?</a></li>
+                <li><a href="#limit">Что такое LIMIT?</a></li>
+                <li><a href="#exist">Что такое EXISTS?</a></li>
+            </ul>
+        </li>
+        <li><a href="#aggregation">Агрегатные функции</a></li>
+        <li>
+            <p class="mb10">
+                <a href="#constraints_keys">Ограничения и ключи</a>
+                <span class="submenu-button"></span>
+            </p>
+            <ul class="menu no-display">
+                <li><a href="#constraints">Ограничения (constraints)</a></li>
+                <li><a href="#keys">Ключи</a></li>
+                <li><a href="#primary_unique_diff">Какие отличия между ограничениями PRIMARY и UNIQUE?</a></li>
+                <li><a href="#fk_null">Может FOREIGN KEY = NULL?</a></li>
+                <li><a href="#surrogate">Что такое суррогатные ключи?</a></li>
+            </ul>
+        </li>
         <li class="in-progress"><a href="#indexes">Индексы</a></li>
         <li><a href="#replication-sharding">Репликация и шардирование</a></li>
         <li class="in-progress">
@@ -72,14 +102,14 @@
                 <span class="submenu-button"></span>
             </p>
             <ul class="menu no-display">
-                <li><a href="" #1nf>Первая нормальная форма (1NF)</a></li>
-                <li><a href="" #2nf>Вторая нормальная форма (2NF)</a></li>
-                <li><a href="" #3nf>Третья нормальная форма (3NF)</a></li>
-                <li><a href="" #bcnf>Нормальная форма Бойса — Кодда (BCNF)</a></li>
-                <li><a href="" #4nf>Четвёртая нормальная форма (4NF)</a></li>
-                <li><a href="" #5nf>Пятая нормальная форма (5NF)</a></li>
-                <li><a href="" #dknf>Доменно-ключевая нормальная форма (DKNF)</a></li>
-                <li><a href="" #6nf>Шестая нормальная форма (6NF)</a></li>
+                <li><a href="#1nf">Первая нормальная форма (1NF)</a></li>
+                <li><a href="#2nf">Вторая нормальная форма (2NF)</a></li>
+                <li><a href="#3nf">Третья нормальная форма (3NF)</a></li>
+                <li><a href="#bcnf">Нормальная форма Бойса — Кодда (BCNF)</a></li>
+                <li><a href="#4nf">Четвёртая нормальная форма (4NF)</a></li>
+                <li><a href="#5nf">Пятая нормальная форма (5NF)</a></li>
+                <li><a href="#dknf">Доменно-ключевая нормальная форма (DKNF)</a></li>
+                <li><a href="#6nf">Шестая нормальная форма (6NF)</a></li>
 
             </ul>
         </li>
@@ -1265,6 +1295,478 @@
     <a class="button button--to_top_menu" href="#"></a>
 </section>
 
+<section class="container" id="add">
+    <h1><a href="#">Дополнительные вопросы</a></h1>
+    <ul class="after-h1 menu">
+        <li><a href="#join_or_subquery">Что лучше использовать JOIN или подзапросы?</a></li>
+        <li><a href="#union">Что делает UNION?</a></li>
+        <li><a href="#having">Чем WHERE отличается от HAVING?</a></li>
+        <li><a href="#order_by">Что такое ORDER BY?</a></li>
+        <li><a href="#group_by">Что такое GROUP BY?</a></li>
+        <li><a href="#distinct">Что такое DISTINCT?</a></li>
+        <li><a href="#limit">Что такое LIMIT?</a></li>
+        <li><a href="#exist">Что такое EXISTS?</a></li>
+    </ul>
+
+    <div id="join_or_subquery">
+        <h3><a href="#add">Что лучше использовать JOIN или подзапросы?</a></h3>
+        <div>
+            <p>
+                Обычно лучше использовать JOIN, поскольку в большинстве случаев он более понятен и лучше оптимизируется
+                СУБД (но 100% этого гарантировать нельзя). Так же JOIN имеет заметное преимущество над подзапросами в
+                случае, когда список выбора SELECT содержит столбцы более чем из одной таблицы.
+            </p>
+            <p>
+                Подзапросы лучше использовать в случаях, когда нужно вычислять агрегатные значения и использовать их для
+                сравнений во внешних запросах.
+            </p>
+        </div>
+        <a class="button button--to_content_menu" href="#add"></a>
+    </div>
+
+    <hr>
+    <div id="union">
+        <h3><a href="#add">Что делает UNION?</a></h3>
+        <div>
+            <p>Объединяет запросы в одну таблицу.</p>
+            <div class="code">
+                <pre>SELECT поля_таблиц FROM список_таблиц ...
+UNION [ALL]
+SELECT поля_таблиц FROM список_таблиц ... ;</pre>
+            </div>
+            <p>
+                UNION по умолчанию убирает повторения в результирующей таблице. Для отображения с повторением есть
+                необязательный параметр ALL.
+            </p>
+            <p class="main-mind no_mb">Не путайте операции объединения запросов с операциями объединения таблиц.</p>
+            <p class="example">Для этого служит оператор JOIN.</p>
+            <p class="main-mind no_mb">Не путайте операции объединения запросов с подзапросами.</p>
+            <p class="example">Подзапросы выполняются для связанных таблиц.</p>
+
+            <p class="main-mind">
+                Для того, чтобы UNION корректно сработал нужно: чтобы результирующие таблицы каждого из SQL запросов
+                имели одинаковое число столбцов, с одним и тем же типом данных и в той же самой последовательности.
+            </p>
+        </div>
+        <a class="button button--to_content_menu" href="#add"></a>
+    </div>
+
+    <hr>
+    <div id="having">
+        <h3><a href="#add">Чем WHERE отличается от HAVING?</a></h3>
+        <div>
+            <p>Отличие HAVING от WHERE:</p>
+            <p class="term mb10">
+                <span>WHERE</span><br>
+                Сначала выбираются записи по условию, а затем могут быть сгруппированы, отсортированы и т.д. Это
+                ограничивающее выражение.
+                <br>Оно выполняется до того, как будет получен результат операции.
+            </p>
+            <p class="term mb10">
+                <span>HAVING</span><br>
+                Сначала группируются записи, а затем выбираются по условию, при этом, в отличие от
+                WHERE, в нём можно использовать значения агрегатных функций
+            </p>
+            <p>
+                Выражения WHERE используются вместе с операциями SELECT, UPDATE, DELETE, в то время как HAVING только с
+                SELECT и предложением GROUP BY, т.е. использовать WHERE в запросах с агрегатными функциями нельзя,
+                для этого и был введен HAVING.
+
+            </p>
+        </div>
+        <a class="button button--to_content_menu" href="#add"></a>
+    </div>
+
+    <hr>
+    <div id="order_by">
+        <h3><a href="#add">Что такое ORDER BY?</a></h3>
+        <div>
+            <div class="code">
+                <pre>SELECT поля_таблиц FROM список_таблиц
+ORDER BY столбец_1 [ASC | DESC][, столбец_n [ASC | DESC]];</pre>
+            </div>
+            <p>
+                Правило сортировки применяется только к указанным столбцам.
+                <br>Можно указать направление сортировки.
+            </p>
+        </div>
+        <a class="button button--to_content_menu" href="#add"></a>
+    </div>
+
+    <hr>
+    <div id="group_by">
+        <h3><a href="#add">Что такое GROUP BY?</a></h3>
+        <div>
+            <p>
+                Иногда требуется узнать информацию не о самих объектах, а об определенных группах, которые они образуют.
+                Для этого используется оператор GROUP BY и <a href="#aggregation">агрегатные функции</a>.
+            </p>
+            <div class="code">
+                <pre>SELECT family_member, SUM(unit_price * amount) FROM Payments
+GROUP BY family_member;</pre>
+            </div>
+            <p>
+                При использовании GROUP BY все значения NULL считаются равными.
+                <br>Агрегатные функции применяются для значений, не равных NULL.
+                <br>Исключением является функция COUNT().
+            </p>
+            <p class="example">
+                SUM(поле_таблицы) Возвращает сумму значений
+                <br>AVG(поле_таблицы) Возвращает среднее значение
+                <br>COUNT(поле_таблицы) Возвращает количество записей
+                <br>MIN(поле_таблицы) Возвращает минимальное значение
+                <br>MAX(поле_таблицы) Возвращает максимальное значение
+            </p>
+        </div>
+        <a class="button button--to_content_menu" href="#add"></a>
+    </div>
+
+    <hr>
+    <div id="distinct">
+        <h3><a href="#add">Что такое DISTINCT?</a></h3>
+        <div>
+            <p>
+                Оператор SQL DISTINCT используется для указания на то, что следует работать только с уникальными
+                значениями столбца.
+                <br>Может использоваться с агрегатными функциями.
+            </p>
+            <div class="code">
+                <pre>SELECT COUNT(DISTINCT Singer)
+AS CountOfSingers
+FROM Artists</pre>
+            </div>
+
+        </div>
+        <a class="button button--to_content_menu" href="#add"></a>
+    </div>
+
+    <hr>
+    <div id="limit">
+        <h3><a href="#add">Что такое LIMIT?</a></h3>
+        <div>
+            <div class="code">
+                <pre>SELECT поля_выборки
+FROM список_таблиц
+LIMIT [количество_пропущенных_записей,] количество_записей_для_вывода;</pre>
+            </div>
+            <p>
+                Когда необходимо сделать отступ от начала таблицы, предназначена конструкция OFFSET FETCH.
+            </p>
+            <p class="example no_mb">Для того, чтобы вывести строки с 3 по 5, нужно использовать такой запрос:</p>
+            <div class="code">
+                <pre>SELECT * FROM Company LIMIT 2, 3;</pre>
+            </div>
+        </div>
+        <a class="button button--to_content_menu" href="#add"></a>
+    </div>
+
+    <hr>
+    <div id="exist">
+        <h3><a href="#add">Что такое EXISTS?</a></h3>
+        <div>
+            <p>
+                EXISTS берет подзапрос, как аргумент, и оценивает его как TRUE, если подзапрос возвращает какие-либо
+                записи и FALSE, если нет.
+            </p>
+            <div class="code">
+                <pre>CREATE DATABASE IF NOT EXIST имя_базы_данных;
+DROP DATABASE IF EXIST имя_базы_данных;</pre>
+            </div>
+            <p>
+                Обычно предикат EXISTS используется в зависимых (коррелирующих) подзапросах. Этот вид подзапроса имеет
+                внешнюю ссылку, связанную со значением в основном запросе. Результат подзапроса может зависеть от этого
+                значения и должен оцениваться отдельно для каждой строки запроса, в котором содержится данный подзапрос.
+                Поэтому предикат EXISTS может иметь разные значения для разных строк основного запроса.
+            </p>
+            <p class="example no_mb">
+                Найти тех производителей портативных компьютеров, которые также производят принтеры:
+            </p>
+            <div class="code">
+                <pre>SELECT DISTINCT maker
+FROM Product AS l
+WHERE l.type = 'laptop' AND
+    NOT EXISTS (SELECT р.maker
+                FROM Product r
+                WHERE r.type = 'printer' AND r.maker = l.maker);</pre>
+            </div>
+        </div>
+        <a class="button button--to_content_menu" href="#add"></a>
+    </div>
+
+    <a class="button button--to_top_menu" href="#"></a>
+</section>
+
+<section class="container" id="aggregation">
+    <h1><a href="#">Aгрегатные функции</a></h1>
+    <div>
+        <p class="term mb10">
+            <span>Агрегатных функции</span>
+            - функции, которые берут группы значений и сводят их к одиночному значению.
+        </p>
+        <p>SQL предоставляет несколько агрегатных функций:</p>
+        <table class="list list--dictionary" aria-label="aggregation">
+            <thead>
+            <tr>
+                <th>Назавание</th>
+                <th>Описание</th>
+            <tr>
+            </thead>
+            <tr>
+                <td>COUNT</td>
+                <td>Производит подсчет записей, удовлетворяющих условию запроса.</td>
+            </tr>
+            <tr>
+                <td>SUM</td>
+                <td>Вычисляет арифметическую сумму всех значений колонки.</td>
+            </tr>
+            <tr>
+                <td>AVG</td>
+                <td>вычисляет среднее арифметическое всех значений.</td>
+            </tr>
+            <tr>
+                <td>MAX</td>
+                <td>Определяет наибольшее из всех выбранных значений.</td>
+            </tr>
+            <tr>
+                <td>MIN</td>
+                <td>Определяет наименьшее из всех выбранных значений.</td>
+            </tr>
+            <tr>
+                <td>SUBSTRING</td>
+                <td>Позволяет извлечь из выражения его часть заданной длины, начиная от заданной начальной позиции.</td>
+            </tr>
+            <tr>
+                <td>STRING_AGG</td>
+                <td>Конкатенирует строки.</td>
+            </tr>
+            <tr>
+                <td>STRING_SPLIT</td>
+                <td>
+                    Выполняет операцию, обратную STRING_AGG. Она принимает на входе символьную строку и разбивает её на
+                    подстроки по
+                    заданному вторым параметром разделителю.
+                </td>
+            </tr>
+            <tr>
+                <td>LOWER</td>
+                <td>Преобразуют все символы аргумента к нижнему.</td>
+            </tr>
+            <tr>
+                <td>UPPER</td>
+                <td>Преобразуют все символы аргумента верхнему регистру.</td>
+            </tr>
+        </table>
+    </div>
+
+    <hr>
+    <div>
+        <h3>В чем разница между COUNT(*) и COUNT({column})?</h3>
+        <div>
+            <p class="term mb10">
+                <span>COUNT(*)</span><br>
+                подсчитывает количество записей в таблице, не игнорируя значение NULL, поскольку эта функция оперирует
+                записями, а не столбцами.
+            </p>
+            <p class="term mb10">
+                <span> COUNT ({column})</span><br>
+                подсчитывает количество значений в {column}. При подсчете количества значений столбца эта форма функции
+                COUNT не принимает во внимание значение NULL.
+            </p>
+        </div>
+    </div>
+
+    <a class="button button--to_top_menu" href="#"></a>
+</section>
+
+<section class="container" id="constraints_keys">
+    <h1><a href="#">Ограничения и Ключи</a></h1>
+    <ul class="after-h1 menu">
+        <li><a href="#constraints">Ограничения (constraints)</a></li>
+        <li><a href="#keys">Ключи</a></li>
+        <li><a href="#primary_unique_diff">Какие отличия между ограничениями PRIMARY и UNIQUE?</a></li>
+        <li><a href="#fk_null">Может FOREIGN KEY = NULL?</a></li>
+        <li><a href="#surrogate">Что такое суррогатные ключи?</a></li>
+    </ul>
+
+    <div id="constraints">
+        <h3><a href="#constraints_keys">Ограничения (constraints)</a></h3>
+        <div>
+            <p>
+                При создании таблицы можно установить ограничение на значения которые могут быть в нее внесены.
+            </p>
+            <ul>
+                <li>
+                    <p class="term mb10">
+                        <span>PRIMARY KEY</span><br>
+                        набор полей (1 или более), значения которых образуют уникальную комбинацию и используются для
+                        однозначной идентификации записи в таблице.
+                        <br>
+                        Для таблицы может быть создано только одно такое ограничение.
+                        <br>
+                        Данное ограничение используется для обеспечения целостности сущности, которая описана таблицей.
+                    </p>
+                    <p class="main-mind">Первичные ключи не могут позволить значений NULL.</p>
+
+                </li>
+                <li>
+                    <p class="term mb10">
+                        <span>CHECK</span><br>
+                        Позволяет установить свое условие, которому должно удовлетворять значение вводимое в таблицу,
+                        прежде чем оно будет принято.
+                    </p>
+                </li>
+                <li>
+                    <p class="term mb10">
+                        <span>UNIQUE</span><br>
+                        Обеспечивает отсутствие дубликатов в столбце или наборе столбцов.
+                    </p>
+                </li>
+                <li>
+                    <p class="term mb10">
+                        <span>FOREIGN KEY</span><br>
+                        Защищает от действий, которые могут нарушить связи между таблицами. FOREIGN KEY в одной таблице
+                        указывает на PRIMARY KEY в другой. Поэтому данное ограничение нацелено на то, чтобы не было
+                        записей FOREIGN KEY, которым не отвечают записи PRIMARY KEY.
+                    </p>
+                </li>
+            </ul>
+            <div class="code">
+                <pre>CREATE TABLE < table name >
+        (< column name > < column constraint >,
+        < column name > < data type > < column constraint > ...
+        < table constraint > ( < column name >
+        [, < column name > ])... );</pre>
+            </div>
+            <div class="code">
+                <pre>[CONSTRAINT имя_ограничения]
+FOREIGN KEY (столбец1, столбец2, ... столбецN)
+REFERENCES главная_таблица (столбец_главной_таблицы1, столбец_главной_таблицы2, ... столбец_главной_таблицыN)
+[ON DELETE действие]
+[ON UPDATE действие]</pre>
+            </div>
+        </div>
+        <a class="button button--to_content_menu" href="#constraints_keys"></a>
+    </div>
+
+    <hr>
+    <div id="keys">
+        <h3><a href="#constraints_keys">Ключи</a></h3>
+        <div>
+            <p class="term mb10">
+                <span>Простой ключ</span>
+                состоит из одного атрибута (поля).
+            </p>
+            <p class="term mb10">
+                <span>Составной ключ (composite)</span>
+                - из двух и более.
+            </p>
+            <div class="mb10">
+                <p class="term no_mb spoiler-string">
+                    <span>Потенциальный ключ (candidate)</span>
+                    - простой или составной ключ, который уникально идентифицирует каждую запись набора данных.
+                    При этом потенциальный ключ должен обладать критерием неизбыточности: при удалении любого из полей
+                    набор полей перестает уникально идентифицировать запись.
+                </p>
+                <p class="mb10 spoiler">
+                    Термин "candidate" подразумевает, что все такие ключи
+                    конкурируют за почётную роль "первичного ключа" (primary key), а оставшиеся назначаются
+                    "альтернативными ключами" (alternate keys).
+                    <br>
+                    Из множества всех потенциальных ключей набора данных выбирают первичный ключ, все остальные ключи
+                    называют альтернативными.
+                </p>
+            </div>
+            <div class="mb10">
+                <p class="term no_mb spoiler-string">
+                    <span>Первичный ключ (primary key)</span>
+                    в реляционной модели данных один из потенциальных ключей отношения, выбранный в качестве основного
+                    ключа (ключа по умолчанию).
+                </p>
+                <div class="spoiler">
+                    <p class="mb10">
+                        Если в отношении имеется единственный потенциальный ключ, он является и первичным ключом. Если
+                        потенциальных ключей несколько, один из них выбирается в качестве первичного, а другие называют
+                        «альтернативными».
+                        <br>
+                        В качестве первичного обычно выбирается тот из потенциальных ключей, который наиболее удобен.
+                        Поэтому в качестве первичного ключа, как правило, выбирают тот, который имеет наименьший размер
+                        (физического хранения) и/или включает наименьшее количество атрибутов.
+                        <br>
+                        Другой критерий выбора первичного ключа - сохранение его уникальности со временем. Поэтому в
+                        качестве первичного ключа стараются выбирать такой потенциальный ключ, который с наибольшей
+                        вероятностью никогда не утратит уникальность.
+                    </p>
+                </div>
+            </div>
+            <div>
+                <p class="term spoiler-string">
+                    <span>Внешний ключ (foreign key)</span>
+                    - это столбец (или несколько столбцов) в таблице базы данных, который используется для установления
+                    и обеспечения связи между данными в двух таблицах. Он ссылается на первичный ключ другой таблицы,
+                    обеспечивая целостность и согласованность данных.
+                </p>
+                <div class="spoiler">
+                    <p>
+                        <span class="example">если по простому ни как, то определение по-умному</span><br>
+                        - это подмножество атрибутов некоторого отношения A, значения которых должны совпадать со
+                        значениями некоторого потенциального ключа некоторого отношения B.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <a class="button button--to_content_menu" href="#constraints_keys"></a>
+    </div>
+
+    <hr>
+    <div id="primary_unique_diff">
+        <h3><a href="#constraints_keys">Какие отличия между ограничениями PRIMARY и UNIQUE?</a></h3>
+        <div>
+            <p class="no_mb">
+                По умолчанию ограничение PRIMARY создает кластерный индекс на столбце, а UNIQUE - некластерный*.
+                <br>
+                Другим отличием является то, что PRIMARY не разрешает NULL записей, в то время как UNIQUE разрешает одну
+                (а в некоторых СУБД несколько) NULL запись.
+            </p>
+            <p class="example term mb10">
+                <span>* Кластерный индекс</span>
+                - это древовидная структура данных, при которой значения индекса хранятся вместе с данными, им
+                соответствующими. И индексы, и данные при такой организации упорядочены. При добавлении новой строки в
+                таблицу, она дописывается не в конец файла, не в конец плоского списка, а в нужную ветку древовидной
+                структуры, соответствующую ей по сортировке.
+            </p>
+        </div>
+        <a class="button button--to_content_menu" href="#constraints_keys"></a>
+    </div>
+
+    <hr>
+    <div id="fk_null">
+        <h3>
+            <a href="#constraints_keys">
+                Может ли значение в столбце, на который наложено ограничение FOREIGN KEY, равняться NULL?
+            </a>
+        </h3>
+        <div>
+            <p>Может, если на данный столбец не наложено ограничение NOT NULL.</p>
+        </div>
+        <a class="button button--to_content_menu" href="#constraints_keys"></a>
+    </div>
+
+    <hr>
+    <div id="surrogate">
+        <h3><a href="#constraints_keys">Что такое суррогатные ключи?</a></h3>
+        <div>
+            <p class="term mb10">
+                <span>Суррогатный ключ</span>
+                - понятие теории реляционных баз данных. Это дополнительное служебное поле, добавленное к
+                уже имеющимся информационным полям таблицы, единственное предназначение которого — служить первичным
+                ключом.
+            </p>
+        </div>
+        <a class="button button--to_content_menu" href="#constraints_keys"></a>
+    </div>
+
+    <a class="button button--to_top_menu" href="#"></a>
+</section>
 
 <section class="container" id="replication-sharding">
     <h1><a href="#">Репликация и шардирование</a></h1>
