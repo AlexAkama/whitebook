@@ -55,10 +55,6 @@ h1 {
     position: relative;
 }
 
-h1 > a {
-    text-decoration: none;
-}
-
 .after-h1 {
     color: #00a82d;
     border-bottom: #00a82d solid 3px;
@@ -73,6 +69,7 @@ h2, h3 {
     font-size: 24px;
     margin-top: 24px;
     margin-bottom: 12px;
+    line-height: 1.0;
 }
 
 h4 {
@@ -93,6 +90,8 @@ strong {
     font-family: inherit;
 }
 
+/* ССЫЛКИ */
+
 a {
     font-family: inherit;
 }
@@ -102,13 +101,17 @@ a:visited {
     color: inherit;
 }
 
+h1 a,
+h3 a {
+    text-decoration: none;
+}
+
 a:hover {
     color: #00a82d;
-    text-decoration: underline;
 }
 
 h1 a:hover {
-    text-decoration: none;
+    color: darkgreen;
 }
 
 h1 a:hover:after,
@@ -118,6 +121,8 @@ h3 a:hover:after {
     transform: rotate(-90deg) scaleX(-1);
     margin-left: 5px;
 }
+
+/* СПИСКИ */
 
 ol {
     padding-left: 25px;
@@ -555,7 +560,7 @@ img {
 .example span,
 .definition span,
 .term span,
-/* переделать на term и удалить*/
+    /* переделать на term и удалить*/
 .accent-mono {
     font-family: 'Monaco', 'Menlo', 'Consolas', 'Courier New', monospace;
     font-weight: 700;
@@ -795,6 +800,7 @@ td .code {
     border-collapse: collapse;
     margin-bottom: 20px;
     min-width: 100%;
+    background-color: white;
 }
 
 .list,
@@ -835,6 +841,10 @@ td .code {
 
 .list--content-text-small td:not(:first-child) {
     font-size: small;
+}
+
+.list--compact {
+    min-width: auto;
 }
 
 an,
