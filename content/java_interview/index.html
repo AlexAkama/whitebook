@@ -729,13 +729,136 @@
                 </li>
             </ul>
         </li>
-        <li class="in-progress">
+        <li>
             <p class="mb10">
                 <a href="./sql/">SQL и Базы данных</a>
                 <span class="submenu-button"></span>
             </p>
             <ul class="menu submenu no-display">
-                <li class="in-progress"><a href="./jpa/#">...</a></li>
+                <li><a href="./sql/#relation_db">Реляционная база данных</a></li>
+                <li><a href="./sql/#sql_about">Что такое SQL</a></li>
+                <li>
+                    <p class="mb10">
+                        <a href="./sql/#sql_command">Команды SQL</a>
+                        <span class="submenu-button"></span>
+                    </p>
+                    <ul class="menu no-display">
+                        <li><a href="./sql/#ddl">DDL <span class="example">(Data Definition Language)</span></a></li>
+                        <li><a href="./sql/#dcl">DCL <span class="example">(Data Control Language)</span></a></li>
+                        <li><a href="./sql/#tcl">TCL <span class="example">(Тгаnsасtiоn Соntrol Language)</span></a></li>
+                        <li><a href="./sql/#dml">DML <span class="example">(Data Manipulation Language)</span></a></li>
+                    </ul>
+                </li>
+                <li>
+                    <p class="mb10">
+                        <a href="./sql/#datatype">Типы данных</a>
+                        <span class="submenu-button"></span>
+                    </p>
+                    <ul class="menu no-display">
+                        <li><a href="./sql/#string_datatype">Строковые</a></li>
+                        <li><a href="./sql/#float_integer_datatype">С плавающей точкой и целые числа</a></li>
+                        <li><a href="./sql/#datetime_datatype">Дата и время</a></li>
+                        <li><a href="./sql/#null">Нюансы работы с NULL в SQL</a></li>
+                    </ul>
+                </li>
+                <li><a href="./sql/#saved-triggers">Хранимы процедуры и триггеры</a></li>
+                <li><a href="./sql/#view-temptable">VIEW и временные таблицы</a></li>
+                <li>
+                    <p class="mb10">
+                        <a href="./sql/#transactions">Транзакции</a>
+                        <span class="submenu-button"></span>
+                    </p>
+                    <ul class="menu no-display">
+                        <li><a href="./sql/#transaction">Определение</a></li>
+                        <li><a href="./sql/#acid">ACID</a></li>
+                        <li><a href="./sql/#anomalies">Аномалии</a></li>
+                        <li><a href="./sql/#isolation_levels">Уровни изоляций в SQL</a></li>
+                        <li><a href="./sql/#propagation">Распространение транзакций</a></li>
+                        <li><a href="./sql/#problem">Грабли @Transactional</a></li>
+                    </ul>
+                </li>
+                <li class="in-progress"><a href="./sql/#joins">Виды JOIN</a></li>
+                <li>
+                    <p class="mb10">
+                        <a href="./sql/#add">Дополнительные вопросы</a>
+                        <span class="submenu-button"></span>
+                    </p>
+                    <ul class="menu no-display">
+                        <li><a href="./sql/#join_or_subquery">Что лучше использовать JOIN или подзапросы?</a></li>
+                        <li><a href="./sql/#union">Что делает UNION?</a></li>
+                        <li><a href="./sql/#having">Чем WHERE отличается от HAVING?</a></li>
+                        <li><a href="./sql/#order_by">Что такое ORDER BY?</a></li>
+                        <li><a href="./sql/#group_by">Что такое GROUP BY?</a></li>
+                        <li><a href="./sql/#distinct">Что такое DISTINCT?</a></li>
+                        <li><a href="./sql/#limit">Что такое LIMIT?</a></li>
+                        <li><a href="./sql/#exist">Что такое EXISTS?</a></li>
+                    </ul>
+                </li>
+                <li><a href="./sql/#aggregation">Агрегатные функции</a></li>
+                <li>
+                    <p class="mb10">
+                        <a href="./sql/#constraints_keys">Ограничения и ключи</a>
+                        <span class="submenu-button"></span>
+                    </p>
+                    <ul class="menu no-display">
+                        <li><a href="./sql/#constraints">Ограничения (constraints)</a></li>
+                        <li><a href="./sql/#keys">Ключи</a></li>
+                        <li><a href="./sql/#primary_unique_diff">Какие отличия между ограничениями PRIMARY и UNIQUE?</a></li>
+                        <li><a href="./sql/#fk_null">Может FOREIGN KEY = NULL?</a></li>
+                        <li><a href="./sql/#surrogate">Что такое суррогатные ключи?</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <p class="mb10">
+                        <a href="./sql/#indexes">Индексы</a>
+                        <span class="submenu-button"></span>
+                    </p>
+                    <ul class="menu no-display">
+                        <li><a href="./sql/#index">Определение</a></li>
+                        <li>
+                            <p class="mb10">
+                                <a href="./sql/#index_type">Типы индексов</a>
+                                <span class="submenu-button"></span>
+                            </p>
+                            <ul class="menu no-display">
+                                <li><a href="./sql/#by_order">По порядку сортировки</a></li>
+                                <li><a href="./sql/#by_sourse">По источнику данных</a></li>
+                                <li><a href="./sql/#by_impact">По воздействию на источник данных</a></li>
+                                <li><a href="./sql/#by_structure">По структуре</a></li>
+                                <li><a href="./sql/#by_volume">По количественному составу</a></li>
+                                <li><a href="./sql/#by_content">По характеристике содержимого</a></li>
+                                <li><a href="./sql/#by_update">По механизму обновления</a></li>
+                                <li><a href="./sql/#by_coverage">По покрытию индексируемого содержимого</a></li>
+                                <li><a href="./sql/#index_cluster_system">Индексы в кластерных системах</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="./sql/#index_cluster_diff">В чем отличие между кластерными и некластерными индексами?</a></li>
+                        <li><a href="./sql/#index_not_selectived">
+                            Имеет ли смысл индексировать данные, имеющие небольшое количество возможных значений?
+                        </a></li>
+                        <li><a href="./sql/#index_full_scan">Когда полное сканирование набора данных выгоднее доступа по индексу?</a></li>
+                        <li><a href="./sql/#index_create">Как создать индекс?</a></li>
+                    </ul>
+                </li>
+                <li><a href="./sql/#replication-sharding">Репликация и шардирование</a></li>
+                <li>
+                    <p class="mb10">
+                        <a href="./sql/#normal_form">Нормализация и нормальные формы</a>
+                        <span class="submenu-button"></span>
+                    </p>
+                    <ul class="menu no-display">
+                        <li><a href="./sql/#normalization">Нормализация</a></li>
+                        <li><a href="./sql/#nf_about">Нормальные формы</a></li>
+                        <li><a href="./sql/#1nf">Первая нормальная форма (1NF)</a></li>
+                        <li><a href="./sql/#2nf">Вторая нормальная форма (2NF)</a></li>
+                        <li><a href="./sql/#3nf">Третья нормальная форма (3NF)</a></li>
+                        <li><a href="./sql/#bcnf">Нормальная форма Бойса-Кодда (BCNF)</a></li>
+                        <li><a href="./sql/#4nf">Четвёртая нормальная форма (4NF)</a></li>
+                        <li><a href="./sql/#5nf">Пятая нормальная форма (5NF)</a></li>
+                        <li><a href="./sql/#dknf">Доменно-ключевая нормальная форма (DKNF)</a></li>
+                        <li><a href="./sql/#6nf">Шестая нормальная форма (6NF)</a></li>
+                    </ul>
+                </li>
             </ul>
         </li>
         <li>
