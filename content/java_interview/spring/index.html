@@ -257,7 +257,7 @@
     </p>
     <p>Он (контейнер) представлен интерфейсом ApplicationContext.</p>
     <p>Spring Framework предоставляет несколько реализаций интерфейса ApplicationContext:</p>
-    <ul class="tab-2 sparse-li">
+    <ul class="tab-2">
         <li>
             <p>ClassPathXmlApplication<wbr>Context и FileSystemXmlApplication<wbr>Context</p>
             <p class="example">- для автономных приложений;</p>
@@ -283,7 +283,7 @@
         Контейнер получает инструкции о том, какие объекты создавать, настраивать и собирать, через метаданные
         конфигурации, которые представлены в виде XML, Java-аннотаций или Java-кода:
     </p>
-    <ul class="tab-2 sparse-li">
+    <ul class="tab-2">
         <li>XML - Метаданные считываются из файла с расширением *.xml;</li>
         <li>
             Java-аннотации - В Spring 2.5 появилась поддержка метаданных конфигурации на основе аннотаций, которая
@@ -678,7 +678,7 @@
 
     <hr>
     <h4>Разница с @Autowired:</h4>
-    <ul class="tab-2 sparse-li">
+    <ul class="tab-2">
         <li>ищет бин сначала по имени, а потом по типу;</li>
         <li>не нужна дополнительная аннотация для указания имени конкретного бина;</li>
         <li>@Autowired позволяет отметить место вставки бина как необязательное @Autowired(required=false);</li>
@@ -1606,14 +1606,14 @@
         </tr>
     </table>
 
-    <ul class="sparse-li">
+    <ul>
         <li>ApplicationContext загружает все бины при запуске, а BeanFactory - по требованию.</li>
         <li>
             <p class="mb10">
                 ApplicationContext расширяет BeanFactory и предоставляет функции, которые подходят для корпоративных
                 приложений:
             </p>
-            <ul class="sparse-li">
+            <ul>
                 <li>поддержка внедрения зависимостей на основе аннотаций;</li>
                 <li>удобный доступ к MessageSource (для использования в интернационализации);</li>
                 <li>публикация ApplicationEvent - для бинов, реализующих интерфейс ApplicationListener, с помощью
@@ -1651,7 +1651,7 @@
         <p class="tab-2"><a href="#q20_postconstuct">@PostConstruct</a></p>
     </div>
     <h3 id="q20_beans">Жизненный цикл бинов</h3>
-    <ol class="tab-2 sparse-li">
+    <ol class="tab-2">
         <li class="no_mb"><a href="#lifecircle_1">Парсирование конфигурации и создание BeanDefinition</a></li>
         <li class="no_mb"><a href="#lifecircle_2">Настройка созданных BeanDefinition</a></li>
         <li class="no_mb"><a href="#lifecircle_3">Создание кастомных FactoryBean (только для XML-конфигурации)</a></li>
@@ -1708,7 +1708,7 @@
             Сколько бинов в программе - столько и объектов BeanDefinition, их описывающих.
         </p>
         <p>BeanDefinition содержат (среди прочего) следующие метаданные:</p>
-        <ol class="sparse-li">
+        <ol>
             <li>Имя класса с указанием пакета: обычно это фактический класс бина.</li>
             <li>
                 Элементы поведенческой конфигурации бина, которые определяют, как бин должен вести себя в контейнере
@@ -1935,7 +1935,7 @@
         </p>
 
         <p>Хронология событий:</p>
-        <ol class="sparse-li">
+        <ol>
             <li>Сначала сработает метод postProcess<wbr>BeforeInitialization() всех имеющихся BeanPostProcessor-ов.</li>
             <li>Затем, при наличии, будет вызван метод, аннотированный @PostConstruct.</li>
             <li>
@@ -2032,7 +2032,7 @@
     <h1><a href="#">Scope бинов</a></h1>
     <div class="after-h1">
         <p>Spring Framework поддерживает шесть scopes:</p>
-        <ol class="tab-2 sparse-li">
+        <ol class="tab-2">
             <li><a href="#q21_singleton">Singleton</a></li>
             <li><a href="#q21_prototype">Prototype</a></li>
             <li><a href="#q21_request">Request</a></li>
@@ -2308,7 +2308,7 @@
     <p class="accent-mono">Пример процесса <span class="spoiler-button"></span></p>
     <div id="q23_example" class="spoiler mb10">
         <p class="tab-1"> Например, при вызове метода save() произойдет примерно следующее: </p>
-        <ol class="sparse-li">
+        <ol>
             <li>
                 <p class="mb10">Вначале мы имеем:</p>
                 <ul class="mb20">
@@ -2673,7 +2673,7 @@
         <p>Пример <span class="spoiler-button"></span></p>
         <div class="spoiler">
             <p class="tab-1">Ниже приведена последовательность событий, соответствующая входящему HTTP-запросу:</p>
-            <ul class="tab-3 sparse-li">
+            <ul class="tab-3">
                 <li>
                     После получения HTTP-запроса DispatcherServlet обращается к интерфейсу HandlerMapping, который
                     определяет,
@@ -2808,7 +2808,7 @@
         маппингом "/default".
     </p>
     <p>Spring предоставляет нам такую возможность, и для начала нужно понять, что:</p>
-    <ul class="tab-2 sparse-li">
+    <ul class="tab-2">
         <li>
             Spring может иметь несколько контекстов одновременно. Одним из них будет корневой контекст, а все остальные
             контексты будут дочерними.
@@ -3121,7 +3121,7 @@
             В случае реализации HandlerInterceptor нам нужно
             переопределить 3 метода, а в случае HandlerInterceptor, только необходимые нам:
         </p>
-        <ul class="sparse-li">
+        <ul>
             <li>
                 <div class="code first-line-to-left no_mb">
                     public boolean preHandle<wbr>
@@ -3494,7 +3494,7 @@
 
 <section class="container" id="q33">
     <h1><a href="#">Нововведения Spring 5</a></h1>
-    <ul class="sparse-li">
+    <ul>
         <li>Используется JDK 8+ (Optional, CompletableFuture, Time API, java.util.function, default methods)</li>
         <li>Поддержка Java 9 (Automatic-Module-Name in 5.0, module-info in 6.0+, ASM 6)</li>
         <li>Поддержка HTTP/2 (TLS, Push), NIO/NIO.2</li>
