@@ -53,6 +53,7 @@ h1 {
     line-height: 1.0;
     color: #00a82d;
     position: relative;
+    width: 90%;
 }
 
 .after-h1 {
@@ -457,6 +458,7 @@ img {
     font-size: small;
     color: #00a82d;
     cursor: pointer;
+    white-space: nowrap;
 }
 
 /* вырезать после перехода на  breadcrumbs*/
