@@ -217,11 +217,6 @@ img {
     margin-bottom: 40px !important;
 }
 
-/*убрать*/
-.sparse-li li {
-    margin-bottom: 10px !important;
-}
-
 .no_margin {
     margin: 0 !important;
 }
@@ -674,7 +669,7 @@ td .code {
     white-space: normal;
 }
 
-.wrap-no {
+.no_wrap {
     white-space: nowrap;
 }
 
