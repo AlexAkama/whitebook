@@ -63,7 +63,33 @@
                 <li><a href="#problem">Грабли @Transactional</a></li>
             </ul>
         </li>
-        <li class="in-progress"><a href="#joins">Виды JOIN</a></li>
+        <li>
+            <p class="mb10">
+                <a href="#joins">Виды JOIN</a>
+                <span class="submenu-button"></span>
+            </p>
+            <ul class="menu no-display">
+                <li><a href="#join_about">Определение</a></li>
+                <li><a href="#join_inner">INNER JOIN</a></li>
+                <li><a href="#join_outer">OUTER JOIN</a></li>
+                <li><a href="#join_cross">CROSS JOIN</a></li>
+                <li><a href="#join_self">SELF JOIN</a></li>
+            </ul>
+        </li>
+        <li>
+            <p class="mb10">
+                <a href="#outer_joins">OUTER JOIN's</a>
+                <span class="submenu-button"></span>
+            </p>
+            <ul class="menu no-display">
+                <li><a href="#outer_left">LEFT JOIN</a></li>
+                <li><a href="#outer_right">RIGHT JOIN</a></li>
+                <li><a href="#outer_full">FULL JOIN</a></li>
+                <li><a href="#outer_left_null">LEFT JOIN c NULL</a></li>
+                <li><a href="#outer_right_null">RIGHT JOIN c NULL</a></li>
+                <li><a href="#outer_full_null">FULL JOIN c NULL</a></li>
+            </ul>
+        </li>
         <li>
             <p class="mb10">
                 <a href="#add">Дополнительные вопросы</a>
@@ -119,10 +145,11 @@
                     </ul>
                 </li>
                 <li><a href="#index_cluster_diff">В чем отличие между кластерными и некластерными индексами?</a></li>
-                <li><a href="#index_not_selectived">
+                <li><a href="#index_not_selective">
                     Имеет ли смысл индексировать данные, имеющие небольшое количество возможных значений?
                 </a></li>
-                <li><a href="#index_full_scan">Когда полное сканирование набора данных выгоднее доступа по индексу?</a></li>
+                <li><a href="#index_full_scan">Когда полное сканирование набора данных выгоднее доступа по индексу?</a>
+                </li>
                 <li><a href="#index_create">Как создать индекс?</a></li>
             </ul>
         </li>
@@ -1325,6 +1352,260 @@
 
 <section class="container" id="joins">
     <h1><a href="#">Виды JOIN</a></h1>
+    <ul class="after-h1 menu">
+        <li><a href="#join_about">Определение</a></li>
+        <li><a href="#join_inner">INNER JOIN</a></li>
+        <li><a href="#join_outer">OUTER JOIN</a></li>
+        <li><a href="#join_cross">CROSS JOIN</a></li>
+        <li><a href="#join_self">SELF JOIN</a></li>
+    </ul>
+
+    <div id="join_about">
+        <h3><a href="#joins">Определение</a></h3>
+        <div>
+            <p class="term mb10">
+                <span>JOIN</span>
+                -&nbsp;оператор языка SQL, который является реализацией операции соединения реляционной алгебры.
+                Предназначен для обеспечения выборки данных из двух таблиц и включения этих данных в один
+                результирующий набор.</p>
+            <p>Особенностями операции соединения являются следующее:
+                <br>- В схему таблицы-результата входят столбцы обеих исходных таблиц (таблиц-операндов), то есть
+                схема результата является "сцеплением" схем операндов;
+                <br>- Каждая строка таблицы-результата является "сцеплением" строки из одной таблицы-операнда со
+                строкой второй таблицы-операнда;
+                <br>- При необходимости соединения не двух, а нескольких таблиц, операция соединения применяется
+                несколько раз (последовательно).</p>
+            <div class="code">
+                <pre>SELECT &lt;поля_для_выбора&gt;
+FROM table_1
+[INNER] | [[LEFT | RIGHT | FULL][OUTER]] JOIN table_2
+    ON &lt;условие_соединения&gt;
+[[INNER] | [[LEFT | RIGHT | FULL][OUTER]] JOIN table_n
+    ON &lt;условие_соединения&gt;]</pre>
+            </div>
+        </div>
+        <a class="button button--to_content_menu" href="#joins"></a>
+    </div>
+
+    <hr>
+    <div id="join_inner">
+        <h3><a href="#joins">INNER JOIN</a></h3>
+        <div>
+            <p class="bold">Внутреннее объединение</p>
+            <p>Оператору передаются две таблицы, и он возвращает их внутреннее пересечение по какому-либо критерию.
+                Результатом будут записи, которые соответствуют обеим таблицам.</p>
+            <div class="image-box">
+                <img src="./img/inner.png" alt="inner_join">
+            </div>
+            <div class="code">
+                <pre>SELECT *
+FROM table_left
+INNER JOIN table_right
+    ON table_left.key = table_right.key;
+</pre>
+            </div>
+        </div>
+        <a class="button button--to_content_menu" href="#joins"></a>
+    </div>
+
+    <hr>
+    <div id="join_outer">
+        <h3><a href="#joins">OUTER JOIN</a></h3>
+        <div>
+            <p class="bold">Внешнее соединение</p>
+            <p class="no_mb">Возвращает не только строгое пересечение между двумя таблицами, но и отдельные элементы,
+                которые принадлежат только одному из множеств. Какому — зависит от типа.</p>
+            <p class="example">Если внутреннее объединение имеет сходство с бинарным "и", то внешнее — несколько
+                вариаций бинарного "или".</p>
+            <a class="bold" href="#outer_joins">ПОДРОБНЕЕ ДАЛЕЕ...</a>
+        </div>
+        <a class="button button--to_content_menu" href="#joins"></a>
+    </div>
+
+    <hr>
+    <div id="join_cross">
+        <h3><a href="#joins">CROSS JOIN</a></h3>
+        <div>
+            <p class="bold">Перекрестное соединение</p>
+            <p class="no_mb">Он возвращает декартово произведение — собираются все возможные пары из обеих таблиц.
+                <br>В отличие от остальных режимов, CROSS&nbsp;JOIN не требует указания дополнительной информации.</p>
+            <p class="example">В разработке Cross Join может использоваться при создании тех же фильтров в
+                интернет-магазине. Например, человек ищет обувь по характеристикам "тип" и "размер" — должны быть
+                выведены все возможные комбинации типа с размером.</p>
+            <div class="image-box">
+                <img src="./img/cross.png" alt="cross_join">
+            </div>
+            <div class="code">
+                <pre>SELECT *
+FROM table_left
+CROSS JOIN table_right;
+</pre>
+            </div>
+        </div>
+        <a class="button button--to_content_menu" href="#joins"></a>
+    </div>
+
+    <hr>
+    <div id="join_self">
+        <h3><a href="#joins">SELF JOIN</a></h3>
+        <div>
+            <p class="bold">Самосоединение</p>
+            <p>Используется тогда, когда у разных полей одной таблицы могут быть одинаковые значения.</p>
+            <p class="example">Чтобы Self Join работал правильно, могут потребоваться псевдонимы таблиц:
+                они помогают называть одну и ту же таблицу разными именами. В результате оператор "воспринимает"
+                переданные сущности как разные.</p>
+        </div>
+        <a class="button button--to_content_menu" href="#joins"></a>
+    </div>
+
+    <hr>
+    <div id="join_mode">
+        <h3><a href="#joins">Какие бывают виды join'ов?</a></h3>
+        <div>
+            <p>Чаще всего выделяют четыре режима SQL JOIN: INNER, OUTER, SELF и&nbsp;CROSS.</p>
+        </div>
+        <a class="button button--to_content_menu" href="#joins"></a>
+    </div>
+
+    <a class="button button--to_top_menu" href="#"></a>
+</section>
+
+<section class="container" id="outer_joins">
+    <h1><a href="#">OUTER JOIN's</a></h1>
+    <ul class="after-h1 menu">
+        <li><a href="#outer_left">LEFT JOIN</a></li>
+        <li><a href="#outer_right">RIGHT JOIN</a></li>
+        <li><a href="#outer_full">FULL JOIN</a></li>
+        <li><a href="#outer_left_null">LEFT JOIN c NULL</a></li>
+        <li><a href="#outer_right_null">RIGHT JOIN c NULL</a></li>
+        <li><a href="#outer_full_null">FULL JOIN c NULL</a></li>
+    </ul>
+
+    <div id="outer_left">
+        <h3><a href="#outer_joins">LEFT JOIN</a></h3>
+        <div>
+            <p>Возвращает пересечение множеств и все элементы из левой таблицы.</p>
+            <div class="image-box">
+                <img src="./img/left.png" alt="left_join">
+            </div>
+            <div class="code no_mb">
+                <pre>SELECT *
+FROM table_left
+LEFT JOIN table_right
+    ON table_left.key = table_right.key;
+</pre>
+            </div>
+            <p class="example">Если в table_right нет соответствующей строки,
+                то возвращаются NULL для столбцов из table_right.</p>
+        </div>
+        <a class="button button--to_content_menu" href="#outer_joins"></a>
+    </div>
+
+    <hr>
+    <div id="outer_right">
+        <h3><a href="#outer_joins">RIGHT JOIN</a></h3>
+        <div>
+            <p>Возвращает пересечение множеств и все элементы из правой таблицы.</p>
+            <div class="image-box">
+                <img src="./img/right.png" alt="right_join">
+            </div>
+            <div class="code no_mb">
+                <pre>SELECT *
+FROM table_left
+RIGHT JOIN table_right
+    ON table_left.key = table_right.key;</pre>
+            </div>
+            <p class="example">Если в table_left нет соответствующей строки,
+                то возвращаются NULL для столбцов из table_left.</p>
+        </div>
+        <a class="button button--to_content_menu" href="#outer_joins"></a>
+    </div>
+
+    <hr>
+    <div id="outer_full">
+        <h3><a href="#outer_joins">FULL JOIN</a></h3>
+        <div>
+            <p>Возвращает обе таблицы, объединенные в одну.</p>
+            <div class="image-box">
+                <img src="./img/full.png" alt="full_join">
+            </div>
+            <div class="code no_mb">
+                <pre>SELECT *
+FROM table_left
+FULL JOIN table_right ON table_left.key = table_right.key;
+</pre>
+            </div>
+            <p class="example">Если в table_left нет соответствующей строки,
+                то возвращаются NULL для столбцов из table_left, и наоборот,
+                если в table_right нет соответствующей строки.</p>
+        </div>
+        <a class="button button--to_content_menu" href="#outer_joins"></a>
+    </div>
+
+    <hr>
+    <div id="outer_left_null">
+        <h3><a href="#outer_joins">LEFT JOIN c NULL</a></h3>
+        <div>
+            <p>Возвращает данные из левой таблицы, но без пересечений с правой.</p>
+            <div class="image-box">
+                <img src="./img/left_null.png" alt="left_null_join">
+            </div>
+            <div class="code no_mb">
+                <pre>SELECT *
+FROM table_left
+LEFT JOIN table_right
+    ON table_left.key = table_right.key
+WHERE table_right.key IS NULL;
+</pre>
+            </div>
+            <p class="example">Этот прием полезен для поиска "несвязанных" строк в левой таблице.</p>
+        </div>
+        <a class="button button--to_content_menu" href="#outer_joins"></a>
+    </div>
+
+    <hr>
+    <div id="outer_right_null">
+        <h3><a href="#outer_joins">FIGHT JOIN с NULL</a></h3>
+        <div>
+            <p>Возвращает данные из правой таблицы, но без пересечений с левой.</p>
+            <div class="image-box">
+                <img src="./img/right_null.png" alt="right_null_join">
+            </div>
+            <div class="code no_mb">
+                <pre>SELECT *
+FROM table_left
+RIGHT JOIN table_right
+    ON table_left.key = table_right.key
+WHERE table_left.key IS NULL;
+</pre>
+            </div>
+            <p class="example">Это полезно для поиска "несвязанных" строк в правой таблице.</p>
+        </div>
+        <a class="button button--to_content_menu" href="#outer_joins"></a>
+    </div>
+
+    <hr>
+    <div id="outer_full_null">
+        <h3><a href="#outer_joins">FULL JOIN с NULL</a></h3>
+        <div>
+            <p class="no_mb">Возвращает результат из обеих таблиц, кроме пересечений.</p>
+            <p class="example">Работает как исключающее "или".</p>
+            <div class="image-box">
+                <img src="./img/full_null.png" alt="full_null_join">
+            </div>
+            <div class="code no_mb">
+                <pre>SELECT *
+FROM table_left
+FULL JOIN table_right
+    ON table_left.key = table_right.key
+WHERE table_left.key IS NULL
+    OR table_right.key IS NULL;
+</pre>
+            </div>
+            <p class="example">Запрос выбирает все "несвязанные" строки из обеих таблиц.</p>
+        </div>
+        <a class="button button--to_content_menu" href="#outer_joins"></a>
+    </div>
 
     <a class="button button--to_top_menu" href="#"></a>
 </section>
@@ -1826,7 +2107,7 @@ REFERENCES главная_таблица (столбец_главной_табл
         </li>
         <li><a href=""></a></li>
         <li><a href="#index_cluster_diff">В чем отличие между кластерными и некластерными индексами?</a></li>
-        <li><a href="#index_not_selectived">
+        <li><a href="#index_not_selective">
             Имеет ли смысл индексировать данные, имеющие небольшое количество возможных значений?
         </a></li>
         <li><a href="#index_full_scan">Когда полное сканирование набора данных выгоднее доступа по индексу?</a></li>
@@ -1887,7 +2168,7 @@ REFERENCES главная_таблица (столбец_главной_табл
                 <li>Полей, которые редко используются в запросах;</li>
                 <li>
                     Полей, которые содержат всего два или три значения, например: мужской, женский пол или значения
-                    «да», «нет».
+                    "да", "нет".
                     <p class="example">Так называемые низкоселективные поля.</p>
                 </li>
             </ul>
@@ -2272,7 +2553,7 @@ REFERENCES главная_таблица (столбец_главной_табл
     </div>
 
     <hr>
-    <div id="index_not_selectived">
+    <div id="index_not_selective">
         <h3><a href="#indexes">Имеет ли смысл индексировать данные, имеющие небольшое количество возможных значений?</a>
         </h3>
         <div>
@@ -3245,6 +3526,8 @@ REFERENCES главная_таблица (столбец_главной_табл
         Ⓒ Алексей Маслов, 2021-2024
     </a></div>
 </footer>
+
+<a href="#" class="button button--top"></a>
 
 </body>
 
