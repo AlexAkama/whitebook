@@ -48,740 +48,800 @@
 </section>
 
 <section class="container" id="q1">
-    <h1>Чем процесс отличается от потока?</h1>
-    <p>
-        Потоки выполнения процесса можно уподобить нескольким вместе работающим поварам. Все они готовят одно блюдо,
-        читают одну и ту же кулинарную книгу с одним и тем же рецептом и следуют его указаниям, причём необязательно
-        все они читают на одной и той же странице.
-    </p>
-    <table class="list" aria-label="Поток и процесс">
-        <thead>
-        <tr>
-            <th>Поток</th>
-            <th>Процесс</th>
-        <tr>
-        </thead>
-        <tr>
-            <td>Поток имеет стэк – свою память для исполнения.</td>
-            <td>Процесс – это совокупность кода и данных, финкционирующих в виртуальном (адресном) пространстве.</td>
-        </tr>
-        <tr>
-            <td>Потоки выполнения существуют как составные элементы процессов.</td>
-            <td>Процессы, как правило, независимы.</td>
-        </tr>
-        <tr>
-            <td>
-                Несколько потоков выполнения внутри процесса совместно используют информацию о состоянии, а также память
-                и другие вычислительные ресурсы.
-            </td>
-            <td>Несут значительно больше информации о состоянии.</td>
-        </tr>
-        <tr>
-            <td>Потоки выполнения совместно используют их адресное пространство.</td>
-            <td>
-                Операционная система (ОС) для каждого процесса создает своё, так называемое «виртуальное адресное
-                пространство» в памяти, к которому процесс имеет прямой доступ.
-            </td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>
-                Взаимодействуют только через предоставляемые системой механизмы связей между процессами (файлы, каналы
-                связи..)
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Переключение контекста между потоками выполнения в одном процессе, как правило, быстрее, чем
-                переключение контекста между процессами.
-            </td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>
-                Потоки расходуют существенно меньше ресурсов, чем процессы, в процессе выполнения работы выгоднее
-                создавать дополнительные потоки и избегать создания новых процессов.
-            </td>
-            <td></td>
-        </tr>
-    </table>
-    <p>
-        Когда запускается любое приложение, то начинает выполняться поток, называемый главным потоком (main).
-        От него порождаются дочерние потоки.
-    </p>
-    <p>
-        <strong>Главный поток, как правило, является последним потоком, завершающим выполнение программы.</strong>
-    </p>
-    <p>
-        Несмотря на то, что главный поток создаётся автоматически, им можно управлять через объект класса Thread. Для
-        этого нужно вызвать метод currentThread(), после чего можно управлять потоком.
-    </p>
-    <p class="no_mb">Класс Thread содержит несколько методов для управления потоками:</p>
-    <table class="list list--dictionary" aria-label="Методы Thread">
-        <thead>
-        <tr>
-            <th>Метод</th>
-            <th>Описание</th>
-        <tr>
-        </thead>
-        <tr>
-            <td>getName()</td>
-            <td>получить имя потока</td>
-        </tr>
-        <tr>
-            <td>getPriority()</td>
-            <td>получить приоритет потока</td>
-        </tr>
-        <tr>
-            <td>isAlive()</td>
-            <td>определить, выполняется ли поток</td>
-        </tr>
-        <tr>
-            <td>join()</td>
-            <td>ожидать завершение потока</td>
-        </tr>
-        <tr>
-            <td>run()*</td>
-            <td>
-                <p>запуск потока</p>
-                <p class="example">В нем пишется выполняемый код</p>
-            </td>
-        </tr>
-        <tr>
-            <td>sleep()</td>
-            <td>приостановить поток на заданное время</td>
-        </tr>
-        <tr>
-            <td>start()</td>
-            <td>
-                <p>запустить поток</p>
-                <p class="example">Запускает переопределенный метод run()</p>
-            </td>
-        </tr>
-    </table>
-    <p>
-        <strong>* Если просто запустить run() не будет параллельности выполнения - просто выполниться
-            метод&nbsp;run()</strong>.
-    </p>
+    <h1><a href="#">Чем процесс отличается от потока?</a></h1>
+    <div>
+        <p>Потоки выполнения процесса можно уподобить нескольким вместе работающим поварам. Все они готовят одно блюдо,
+            читают одну и ту же кулинарную книгу с одним и тем же рецептом и следуют его указаниям, причём необязательно
+            все они читают на одной и той же странице.</p>
+        <table class="list" aria-label="Поток и процесс">
+            <thead>
+            <tr>
+                <th>Поток</th>
+                <th>Процесс</th>
+            <tr>
+            </thead>
+            <tr>
+                <td>Поток имеет стэк – свою память для исполнения.</td>
+                <td>Процесс – это совокупность кода и данных, финкционирующих в виртуальном (адресном) пространстве.
+                </td>
+            </tr>
+            <tr>
+                <td>Потоки выполнения существуют как составные элементы процессов.</td>
+                <td>Процессы, как правило, независимы.</td>
+            </tr>
+            <tr>
+                <td>
+                    Несколько потоков выполнения внутри процесса совместно используют информацию о состоянии, а также
+                    память и другие вычислительные ресурсы.
+                </td>
+                <td>Несут значительно больше информации о состоянии.</td>
+            </tr>
+            <tr>
+                <td>Потоки выполнения совместно используют их адресное пространство.</td>
+                <td>
+                    Операционная система (ОС) для каждого процесса создает своё, так называемое "виртуальное адресное
+                    пространство" в памяти, к которому процесс имеет прямой доступ.
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    Взаимодействуют только через предоставляемые системой механизмы связей между процессами (файлы,
+                    каналы связи..)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Переключение контекста между потоками выполнения в одном процессе, как правило, быстрее, чем
+                    переключение контекста между процессами.
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    Потоки расходуют существенно меньше ресурсов, чем процессы, в процессе выполнения работы выгоднее
+                    создавать дополнительные потоки и избегать создания новых процессов.
+                </td>
+                <td></td>
+            </tr>
+        </table>
+        <p>Когда запускается любое приложение, то начинает выполняться поток, называемый главным потоком (main).
+            От него порождаются дочерние потоки.</p>
+        <p class="main-mind">
+            Главный поток, как правило, является последним потоком, завершающим выполнение программы.</p>
+        <p>Несмотря на то, что главный поток создаётся автоматически, им можно управлять через объект класса Thread.
+            Для этого нужно вызвать метод currentThread(), после чего можно управлять потоком.</p>
 
+        <hr>
+        <div>
 
-    <a href="#" class="button button--top"></a>
+            <h3 class="no_mb">Методы класса Thread</h3>
+            <p>для управления потоками:</p>
+            <table class="list list--dictionary" aria-label="Методы Thread">
+                <thead>
+                <tr>
+                    <th>Метод</th>
+                    <th>Описание</th>
+                <tr>
+                </thead>
+                <tr>
+                    <td>getName()</td>
+                    <td>получить имя потока</td>
+                </tr>
+                <tr>
+                    <td>getPriority()</td>
+                    <td>получить приоритет потока</td>
+                </tr>
+                <tr>
+                    <td>isAlive()</td>
+                    <td>определить, выполняется ли поток</td>
+                </tr>
+                <tr>
+                    <td>join()</td>
+                    <td>ожидать завершение потока</td>
+                </tr>
+                <tr>
+                    <td>run()*</td>
+                    <td>
+                        <p>запуск потока</p>
+                        <p class="example">В нем пишется выполняемый код</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>sleep()</td>
+                    <td>приостановить поток на заданное время</td>
+                </tr>
+                <tr>
+                    <td>start()</td>
+                    <td>
+                        <p>запустить поток</p>
+                        <p class="example">Запускает переопределенный метод run()</p>
+                    </td>
+                </tr>
+            </table>
+            <p class="main-mind">
+                Если просто запустить run() не будет параллельности выполнения - просто выполниться
+                метод&nbsp;run().</p>
+        </div>
+    </div>
+    <a class="button button--to_top_menu" href="#"></a>
 </section>
 
 <section class="container" id="q2">
-    <h1>Thread и Runnable</h1>
-    <div class="after-h1">
-        <p><a href="#q2_diff">Чем Thread отличается от Runnable?</a></p>
-        <p><a href="#q2_constructors">Конструкторы Thread</a></p>
-        <p><a href="#q2_methods">Методы класса Thread</a></p>
-        <p><a href="#q2_lifecircle">Жизненный цикл потока</a></p>
-    </div>
-    <table class="list" aria-label="Thread&Runnable" id="q2_diff">
-        <thead>
-        <tr>
-            <th>Thread</th>
-            <th>Runnable</th>
-        <tr>
-        </thead>
-        <tr>
-            <td>Класс</td>
-            <td>Интерфейс</td>
-        </tr>
-        <tr>
-            <td>Можно наследоваться только от одного родительского класса Thread</td>
-            <td>Можно имплементить много интерфейсов</td>
-        </tr>
-        <tr>
-            <td>Свои конструкторы и методы</td>
-            <td>Только метод run()</td>
-        </tr>
-        <tr>
-            <td>Имплементироует Runnable</td>
-            <td></td>
-        </tr>
-    </table>
-
-    <p class="no_mb">Thread:</p>
-    <div class="code">
-        <p>public class ThreadTest1 {</p>
-        <p class="tab-1">public static void main(String[] args) throws InterruptedException {</p>
-        <p class="tab-2"><strong>AnotherTask thread = new&nbsp;AnotherTask();</strong></p>
-        <p class="tab-2"><strong>thread.start();</strong></p>
-        <p class="tab-2">for (int i = 0; i < 3; i++) {</p>
-        <p class="tab-3">System.out.println("m" + i);</p>
-        <p class="tab-3">Thread.sleep(1000);</p>
-        <p class="tab-2">}</p>
-        <p class="tab-1">thread.join();</p>
-        <p class="tab-1">System.out.println("End");</p>
-        <p class="tab-1">}</p>
-        <p class="mb20">}</p>
-        <p><strong>class AnotherTask extends Thread</strong> {</p>
-        <p class="tab-1">@Override</p>
-        <p class="tab-1">public void run() {</p>
-        <p class="tab-2">for (int i = 0; i < 5; i++) {</p>
-        <p class="tab-3">System.out.println("r" + i);</p>
-        <p class="tab-3">try {</p>
-        <p class="tab-4">Thread.sleep(1000);</p>
-        <p class="tab-3">}</p>
-        <p class="tab-3">catch (InterruptedException e) {</p>
-        <p class="tab-4">System.out.println("Interrupt");</p>
-        <p class="tab-3">}</p>
-        <p class="tab-2">}</p>
-        <p class="tab-1">}</p>
-        <p>}</p>
-    </div>
-
-    <p class="no_mb">Runnable</p>
-    <div class="code">
-        <p>public class ThreadTest {</p>
-        <p class="tab-1">public static void main(String[] args) throws InterruptedException {</p>
-        <p class="tab-2"><strong>AnotherRun anotherRun = new&nbsp;AnotherRun();</strong></p>
-        <p class="tab-2"><strong>Thread childTread = new&nbsp;Thread(anotherRun);</strong></p>
-        <p class="tab-2"><strong>childTread.start();</strong></p>
-        <p class="tab-2">for (int i = 0; i < 3; i++) {</p>
-        <p class="tab-3">System.out.println("m" + i);</p>
-        <p class="tab-3">Thread.sleep(1000);</p>
-        <p class="tab-2">}</p>
-        <p class="tab-2">childTread.join();</p>
-        <p class="tab-2">System.out.println("End");</p>
-        <p class="tab-1">}</p>
-        <p class="mb20">}</p>
-        <p><strong>class AnotherRun implements Runnable</strong> {</p>
-        <p class="tab-1">@Override</p>
-        <p class="tab-1">public void run() {</p>
-        <p class="tab-2">for (int i = 0; i < 5; i++) {</p>
-        <p class="tab-3">System.out.println("r" + i);</p>
-        <p class="tab-3">try {</p>
-        <p class="tab-4">Thread.sleep(1000);</p>
-        <p class="tab-3">}</p>
-        <p class="tab-3">catch (InterruptedException e) {</p>
-        <p class="tab-4">System.out.println("Interrupt");</p>
-        <p class="tab-3">}</p>
-        <p class="tab-2">}</p>
-        <p class="tab-1">}</p>
-        <p>}</p>
-    </div>
-    <hr>
-    <h3 id="q2_constructors">Конструкторы Thread</h3>
-    <p>
-        В классе Thread определены семь перегруженных конструкторов, большое количество методов, предназначенных для
-        работы с потоками, и три константы (приоритеты выполнения потока).
-    </p>
-    <p>Конструкторы класса Thread:</p>
-    <div class="scroll">
-        <p><span class="code-word">Thread();</span></p>
-        <p><span class="code-word">Thread(Runnable&nbsp;target);</span></p>
-        <p><span class="code-word">Thread(Runnable&nbsp;target, String&nbsp;name);</span></p>
-        <p><span class="code-word">Thread(String&nbsp;name);</span></p>
-        <p><span class="code-word">Thread(ThreadGroup&nbsp;group, Runnable&nbsp;target);</span></p>
-        <p><span class="code-word">Thread(ThreadGroup&nbsp;group, Runnable&nbsp;target, String&nbsp;name);</span></p>
-        <p><span class="code-word">Thread(ThreadGroup&nbsp;group, String&nbsp;name);</span></p>
-        <p class="no_mb">где:</p>
-        <p class="no_mb tab-2">
-            <span class="accent-mono">target</span>
-            – экземпляр класса реализующего интерфейс Runnable;</p>
-        <p class="no_mb tab-2">
-            <span class="accent-mono">name</span>
-            – имя создаваемого потока;</p>
-        <p class="tab-2">
-            <span class="accent-mono">group</span>
-            – группа к которой относится поток.</p>
-    </div>
-
-    <p class="example no_mb">
-        Пример создания потока, который входит в группу, реализует интерфейс Runnable и имеет свое уникальное название:
-    </p>
-    <div class="code">
-        <p>Runnable r = new MyClassRunnable();</p>
-        <p>ThreadGroup tg = new ThreadGroup();</p>
-        <p>Thread t = new Thread(tg, r, "myThread");</p>
-    </div>
-    <p class="no_mb">
-        Группы потоков удобно использовать, когда необходимо одинаково управлять несколькими потоками.
-    </p>
-    <p class="example">
-        Например, несколько потоков выводят данные на печать и необходимо прервать печать всех документов поставленных в
-        очередь. В этом случае удобно применить команду ко всем потокам одновременно, а не к каждому потоку отдельно. Но
-        это можно сделать, если потоки отнесены к одной группе.
-    </p>
-    <p>
-        Несмотря на то, что главный поток создаётся автоматически, им можно управлять. Для этого необходимо создать
-        объект класса Thread вызовом метода currentThread().
-    </p>
-    <hr>
-    <h3 id="q2_methods">Методы класса Thread</h3>
-    <p class="no_mb">Наиболее часто используемые методы класса Thread для управления потоками:</p>
-    <table class="list list--dictionary" aria-label="">
-        <thead>
-        <tr>
-            <th>Метод</th>
-            <th>Описание</th>
-        <tr>
-        </thead>
-        <tr>
-            <td>long getId()</td>
-            <td>получение идентификатора потока</td>
-        </tr>
-        <tr>
-            <td>String getName()</td>
-            <td>получение имени потока</td>
-        </tr>
-        <tr>
-            <td>int getPriority()</td>
-            <td>получение приоритета потока</td>
-        </tr>
-        <tr>
-            <td>State getState()</td>
-            <td>определение состояния потока</td>
-        </tr>
-        <tr>
-            <td>void interrupt()</td>
-            <td>прерывание выполнения потока</td>
-        </tr>
-        <tr>
-            <td>boolean isAlive()</td>
-            <td>проверка, выполняется ли поток</td>
-        </tr>
-        <tr>
-            <td>boolean isDaemon()</td>
-            <td>проверка, является ли поток «daemon»</td>
-        </tr>
-        <tr>
-            <td>void join()</td>
-            <td>ожидание завершения потока</td>
-        </tr>
-        <tr>
-            <td>void join(millis)</td>
-            <td>ожидание millis милисекунд завершения потока</td>
-        </tr>
-        <tr>
-            <td>void notify()</td>
-            <td>«пробуждение» отдельного потока, ожидающего «сигнала»</td>
-        </tr>
-        <tr>
-            <td>void notifyAll()</td>
-            <td>«пробуждение» всех потоков, ожидающих «сигнала»</td>
-        </tr>
-        <tr>
-            <td>void run()</td>
-            <td>запуск потока</td>
-        </tr>
-        <tr>
-            <td>void setDaemon(bool)</td>
-            <td>определение «daemon» потока</td>
-        </tr>
-        <tr>
-            <td>void setPriority(int)</td>
-            <td>определение приоритета потока</td>
-        </tr>
-        <tr>
-            <td>void sleep(int)</td>
-            <td>приостановка потока на заданное время</td>
-        </tr>
-        <tr>
-            <td>void start()</td>
-            <td>запуск потока</td>
-        </tr>
-        <tr>
-            <td>void wait()</td>
-            <td>приостановка потока, пока другой поток не вызовет метод notify()</td>
-        </tr>
-        <tr>
-            <td>void wait(millis)</td>
-            <td>приостановка потока на millis милисекунд или пока другой поток не вызовет метод notify()</td>
-        </tr>
-    </table>
-
-    <hr>
-    <h3 id="q2_lifecircle">Жизненный цикл потока</h3>
-
-    <ul class="sparse-li">
-        <li>
-            <p><strong>Новый</strong> − Новый поток начинает свой жизненный цикл в состоянии нового.</p>
-            <p class="example"> Он сохраняет это состояние до тех пор, пока программа не запустит поток.</p>
-            <p class="example">Его также называют созданным потоком.</p>
-        </li>
-        <li>
-            <p><strong>Запущенный</strong> − После запуска нового потока он становится запущенным.</p>
-            <p class="example">Считается, что поток в этом состоянии выполняет свою задачу.</p>
-        </li>
-        <li>
-            <p><strong>Ожидающий</strong> − Поток приостановлен и ожидает, пока другой поток выполнит задачу.</p>
-            <p class="example">
-                Поток переходит обратно в запущенное состояние только после того, когда другой поток сигнализирует
-                ожидающему потоку продолжить выполнение.
-            </p>
-        </li>
-        <li>
-            <p><strong>Ожидающий с ограничением по времени</strong>
-                − Поток в этом состоянии переходит обратно в запущенное состояние, когда
-                истекает этот временной интервал или когда происходит событие, которого он ожидает.</p>
-        </li>
-        <li>
-            <p><strong>Остановленный</strong> − Запущенный поток переходит в остановленное состояние, когда он завершает
-                свою задачу или иным образом завершается.</p>
-        </li>
+    <h1><a href="#">Thread и Runnable</a></h1>
+    <ul class="after-h1 menu">
+        <li><a href="#q2_diff">Чем Thread отличается от Runnable?</a></li>
+        <li><a href="#q2_constructors">Конструкторы Thread</a></li>
+        <li><a href="#q2_methods">Методы класса Thread</a></li>
+        <li><a href="#q2_lifecycle">Жизненный цикл потока</a></li>
     </ul>
-    <div class="image-box">
-        <img class="image" src="img/thread.png" alt="Жизненный цикл потока">
+
+    <div id="q2_diff">
+        <h3><a href="#q2">Чем Thread отличается от Runnable?</a></h3>
+        <div>
+            <div>
+                <table class="list" aria-label="Thread&Runnable">
+                    <thead>
+                    <tr>
+                        <th>Thread</th>
+                        <th>Runnable</th>
+                    <tr>
+                    </thead>
+                    <tr>
+                        <td>Класс</td>
+                        <td>Интерфейс</td>
+                    </tr>
+                    <tr>
+                        <td>Можно наследоваться только от одного родительского класса Thread</td>
+                        <td>Можно имплементить много интерфейсов</td>
+                    </tr>
+                    <tr>
+                        <td>Свои конструкторы и методы</td>
+                        <td>Только метод run()</td>
+                    </tr>
+                    <tr>
+                        <td>Имплементируют Runnable</td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+            <div>
+                <p class="spoiler-string">Пример Thread:</p>
+                <div class="spoiler">
+                    <div class="code">
+                    <pre>public class <class>ThreadTest</class> {
+    public static void <method>main</method>(String[] args) throws InterruptedException {
+        AnotherTask thread = new AnotherTask();
+        thread.start();
+        for (int i = 0; i < 3; i++) {
+            System.out.println("m" + i);
+            Thread.sleep(1000);
+        }
+        thread.join();
+        System.out.println("End");
+    }
+}
+
+class <class>AnotherTask</class> extends <class>Thread</class> {
+    <an>@Override</an>
+    public void <method>run</method>() {
+        for (int i = 0; i < 5; i++) {
+            System.out.println("r" + i);
+            try {
+                Thread.sleep(1000);
+            }
+            catch (InterruptedException e) {
+                System.out.println("Interrupt");
+            }
+        }
+    }
+}</pre>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <p class="spoiler-string">Пример Runnable:</p>
+                <div class="spoiler">
+                    <div class="code">
+                    <pre>public class <class>ThreadTest</class> {
+    public static void <method>main</method>(String[] args) throws InterruptedException {
+        AnotherRun anotherRun = new AnotherRun();
+        Thread childTread = new Thread(anotherRun);
+        childTread.start();
+        for (int i = 0; i < 3; i++) {
+            System.out.println("m" + i);
+            Thread.sleep(1000);
+        }
+        childTread.join();
+        System.out.println("End");
+    }
+}
+
+class <class>AnotherRun</class> implements <class>Runnable</class> {
+    <an>@Override</an>
+    public void <method>run</method>() {
+        for (int i = 0; i < 5; i++) {
+            System.out.println("r" + i);
+            try {
+                Thread.sleep(1000);
+            }
+            catch (InterruptedException e) {
+                System.out.println("Interrupt");
+            }
+        }
+    }
+}</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a class="button button--to_content_menu" href="#q2"></a>
     </div>
 
-    <a href="#" class="button button--top"></a>
+    <hr>
+    <div id="q2_constructors">
+        <h3><a href="#q2">Конструкторы Thread</a></h3>
+        <div>
+            <p> В классе Thread определены семь перегруженных конструкторов, большое количество методов, предназначенных
+                для работы с потоками, и три константы (приоритеты выполнения потока).</p>
+            <p class="no_mb">Конструкторы класса Thread:</p>
+            <div class="scroll">
+                <div class="code bold no_mb">
+            <pre>Thread();
+Thread(Runnable target);
+Thread(Runnable target, String name);
+Thread(String name);
+Thread(ThreadGroup group, Runnable target);
+Thread(ThreadGroup group, Runnable target, String name);
+Thread(ThreadGroup group, String name);</pre>
+                </div>
+                <p class="no_mb">где:</p>
+                <p class="term no_mb tab-2"><span>target</span> – экземпляр класса реализующего интерфейс Runnable;</p>
+                <p class="term no_mb tab-2"><span>name</span> – имя создаваемого потока;</p>
+                <p class="term tab-2"><span>group</span> – группа к которой относится поток.</p>
+            </div>
+            <div id="thread_groups">
+                <p class="example no_mb">
+                    Пример создания потока, который входит в группу, реализует интерфейс Runnable и имеет свое
+                    уникальное название:
+                </p>
+                <div class="code">
+                    <p>Runnable r = new MyClassRunnable();</p>
+                    <p>ThreadGroup tg = new ThreadGroup();</p>
+                    <p>Thread t = new Thread(tg, r, "myThread");</p>
+                </div>
+                <p class="no_mb">
+                    Группы потоков удобно использовать, когда необходимо одинаково управлять несколькими потоками.</p>
+                <p class="example">
+                    Например, несколько потоков выводят данные на печать и необходимо прервать печать всех документов
+                    поставленных в очередь. В этом случае удобно применить команду ко всем потокам одновременно, а не к
+                    каждому потоку отдельно. Но это можно сделать, если потоки отнесены к одной группе.</p>
+                <p> Несмотря на то, что главный поток создаётся автоматически, им можно управлять. Для этого необходимо
+                    создать объект класса Thread вызовом метода currentThread().</p>
+            </div>
+        </div>
+        <a class="button button--to_content_menu" href="#q2"></a>
+    </div>
+
+    <hr>
+    <div id="q2_methods">
+        <h3><a href="#q2">Методы класса Thread</a></h3>
+        <div>
+            <p class="no_mb">Наиболее часто используемые методы класса Thread для управления потоками:</p>
+            <table class="list list--dictionary" aria-label="">
+                <thead>
+                <tr>
+                    <th>Метод</th>
+                    <th>Описание</th>
+                <tr>
+                </thead>
+                <tr>
+                    <td>long getId()</td>
+                    <td>получение идентификатора потока</td>
+                </tr>
+                <tr>
+                    <td>String getName()</td>
+                    <td>получение имени потока</td>
+                </tr>
+                <tr>
+                    <td>int getPriority()</td>
+                    <td>получение приоритета потока</td>
+                </tr>
+                <tr>
+                    <td>State getState()</td>
+                    <td>определение состояния потока</td>
+                </tr>
+                <tr>
+                    <td>void interrupt()</td>
+                    <td>прерывание выполнения потока</td>
+                </tr>
+                <tr>
+                    <td>boolean isAlive()</td>
+                    <td>проверка, выполняется ли поток</td>
+                </tr>
+                <tr>
+                    <td>boolean isDaemon()</td>
+                    <td>проверка, является ли поток "daemon"</td>
+                </tr>
+                <tr>
+                    <td>void join()</td>
+                    <td>ожидание завершения потока</td>
+                </tr>
+                <tr>
+                    <td>void join(millis)</td>
+                    <td>ожидание millis милисекунд завершения потока</td>
+                </tr>
+                <tr>
+                    <td>void notify()</td>
+                    <td>"пробуждение" отдельного потока, ожидающего "сигнала"</td>
+                </tr>
+                <tr>
+                    <td>void notifyAll()</td>
+                    <td>"пробуждение" всех потоков, ожидающих "сигнала"</td>
+                </tr>
+                <tr>
+                    <td>void run()</td>
+                    <td>запуск потока</td>
+                </tr>
+                <tr>
+                    <td>void setDaemon(bool)</td>
+                    <td>определение "daemon" потока</td>
+                </tr>
+                <tr>
+                    <td>void setPriority(int)</td>
+                    <td>определение приоритета потока</td>
+                </tr>
+                <tr>
+                    <td>void sleep(int)</td>
+                    <td>приостановка потока на заданное время</td>
+                </tr>
+                <tr>
+                    <td>void start()</td>
+                    <td>запуск потока</td>
+                </tr>
+                <tr>
+                    <td>void wait()</td>
+                    <td>приостановка потока, пока другой поток не вызовет метод notify()</td>
+                </tr>
+                <tr>
+                    <td>void wait(millis)</td>
+                    <td>приостановка потока на millis милисекунд или пока другой поток не вызовет метод notify()
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <a class="button button--to_content_menu" href="#"></a>
+    </div>
+
+    <hr>
+    <div id="q2_lifecycle">
+        <h3><a href="#q2">Жизненный цикл потока</a></h3>
+        <div>
+            <ul class="margined">
+                <li>
+                    <p><span>Новый</span> − Новый поток начинает свой жизненный цикл в состоянии нового.</p>
+                    <p class="example"> Он сохраняет это состояние до тех пор, пока программа не запустит поток.</p>
+                    <p class="example">Его также называют созданным потоком.</p>
+                </li>
+                <li>
+                    <p><span>Запущенный</span> − После запуска нового потока он становится запущенным.</p>
+                    <p class="example">Считается, что поток в этом состоянии выполняет свою задачу.</p>
+                </li>
+                <li>
+                    <p><span>Ожидающий</span> − Поток приостановлен и ожидает, пока другой поток выполнит задачу.
+                    </p>
+                    <p class="example">
+                        Поток переходит обратно в запущенное состояние только после того, когда другой поток
+                        сигнализирует
+                        ожидающему потоку продолжить выполнение.
+                    </p>
+                </li>
+                <li>
+                    <p><span>Ожидающий с ограничением по времени</span>
+                        − Поток в этом состоянии переходит обратно в запущенное состояние, когда
+                        истекает этот временной интервал или когда происходит событие, которого он ожидает.</p>
+                </li>
+                <li>
+                    <p><span>Остановленный</span> − Запущенный поток переходит в остановленное состояние, когда он
+                        завершает
+                        свою задачу или иным образом завершается.</p>
+                </li>
+            </ul>
+            <div class="image-box">
+                <img class="image" src="img/thread.png" alt="Жизненный цикл потока">
+            </div>
+        </div>
+        <a class="button button--to_content_menu" href="#q2"></a>
+    </div>
+
+    <a class="button button--to_top_menu" href="#"></a>
 </section>
 
 <section class="container" id="q3">
-    <h1>Монитор и synchronized</h1>
-    <p class="main-mind no_mb">
-        Мютекс («mutual exclusion» — «взаимное исключение») – это специальный объект для синхронизации процессов. Он
-        может принимать два состояния – занят и свободен.
-    </p>
-    <p class="example">
-        Если упростить, то мютекс – это boolean-переменная, которая
-        принимает два значения: занят(true) и свободен(false).
-    </p>
-    <p>
-        Когда процесс хочет монопольно владеть некоторым объектом, она помечает его мютекс занятым, а когда закончила
-        работу с ним – помечает его мютекс свободным.
-    </p>
-    <p class="no_mb"><strong>Мютекс прикреплен к каждому объекту в&nbsp;JAVA.</strong></p>
-    <p class="example">
-        От программиста он скрыт.
-        А работать с мютексом в&nbsp;JAVA можно посредством монитора.
-    </p>
-    <p><strong>Прямой доступ к мютексу есть только у Java-машины.</strong></p>
-    <p class="main-mind no_mb">
-        Монитор – это специальный механизм (кусок кода) котрый гарантирует, что только один поток может выполнять данный
-        раздел (или разделы) кода в любой момент времени.
-    </p>
-    <p class="example">
-        Надстройка над мютексом, который обеспечивает правильную работу с ним. Ведь мало пометить, что объект занят,
-        надо еще обеспечить, чтобы другие потоки не пробовали воспользоваться занятым объектом.
-    </p>
-    <p><strong>в&nbsp;JAVA монитор реализован с помощью ключевого слова
-        <span class="code-word">synchronized</span>.</strong></p>
-    <p>Блок synchronized, то компилятор Java заменяет его тремя кусками кода:</p>
-    <ol class="sparse-li">
-        <li>В начале блока synchronized добавляется код, который отмечает мютекс как занятый.</li>
-        <li>В конце блока synchronized добавляется код, который отмечает мютекс как свободный.</li>
-        <li>
-            Перед блоком synchronized добавляется код, который смотрит, если мютекс занят – то поток должен ждать его
-            освобождения.
-        </li>
-    </ol>
-    <p>
-        Все immutable объекты являются thread-safe. Все объекты, к которым происходит обращение из разных потоков,
-        должны быть thread-safe (безопасен).
-    </p>
-    <p>
-        Только методы и блоки могут быть синхронизированы, но не переменные и классы. Если метод, в котором содержится
-        критически важная «многопоточная» логика, статический, синхронизация будет осуществляться по классу.
-    </p>
+    <h1><a href="#">Монитор и synchronized</a></h1>
+    <ul class="after-h1 menu">
+        <li><a href="#mutex">Мьютекс и Монитор</a></li>
+        <li><a href="#static_monitor">Монитор статического синхронизированного класса</a></li>
+        <li><a href="#non_static_monitor">Монитор нестатического синхронизированного класса</a></li>
+    </ul>
+
+    <div id="mutex">
+        <h3><a href="#q3">Мьютекс и Монитор</a></h3>
+        <div>
+            <p class="main-mind no_mb">
+                Мютекс ("mutual exclusion" — "взаимное исключение") – это специальный объект для синхронизации
+                процессов. Он может принимать два состояния – занят и свободен.</p>
+            <p class="example">
+                Если упростить, то мютекс – это boolean-переменная, которая
+                принимает два значения: занят(true) и свободен(false).
+            </p>
+            <p> Когда процесс хочет монопольно владеть некоторым объектом, он помечает его мютекс занятым,
+                а когда закончил работу с ним – помечает его мютекс свободным.</p>
+            <p class="main-mind no_mb">Мютекс прикреплен к каждому объекту в&nbsp;JAVA.</p>
+            <p class="example">
+                От программиста он скрыт.
+                А работать с мютексом в&nbsp;JAVA можно посредством монитора.
+            </p>
+            <p class="main-mind">Прямой доступ к мютексу есть только у Java-машины.</p>
+            <p class="main-mind no_mb">
+                Монитор – это специальный механизм (кусок кода) который гарантирует, что только один поток может
+                выполнять
+                данный раздел (или разделы) кода в любой момент времени.</p>
+            <p class="example">
+                Надстройка над мютексом, который обеспечивает правильную работу с ним. Ведь мало пометить, что объект
+                занят,
+                надо еще обеспечить, чтобы другие потоки не пробовали воспользоваться занятым объектом.
+            </p>
+            <p>В&nbsp;JAVA монитор реализован с помощью ключевого слова
+                <span class="code-word">synchronized</span>.</p>
+            <p>Блок synchronized, то компилятор Java заменяет его тремя кусками кода:</p>
+            <ol>
+                <li>В начале блока synchronized добавляется код, который отмечает мютекс как занятый.</li>
+                <li>В конце блока synchronized добавляется код, который отмечает мютекс как свободный.</li>
+                <li>
+                    Перед блоком synchronized добавляется код, который смотрит,
+                    если мютекс занят – то поток должен ждать его освобождения.
+                </li>
+            </ol>
+            <p>
+                Все immutable объекты являются thread-safe.
+                <br>Все объекты, к которым происходит обращение из разных потоков, должны быть
+                <span class="no_wrap">thread-safe</span> (потокобезопасен).
+            </p>
+            <p>
+                Только методы и блоки могут быть синхронизированы, но не переменные и классы.
+                <br>Если метод, в котором содержится критически важная "многопоточная" логика, статический,
+                синхронизация будет осуществляться по классу.
+            </p>
+        </div>
+        <a class="button button--to_content_menu" href="#q3"></a>
+    </div>
 
     <hr>
-    <h3>Монитор статического синхронизированного класса</h3>
-    <p>
-        Монитор – это доступ к блоку кода - synchronized. Если создаем экземпляр статического вложенного класса, - все
-        что можно достать из объекта – принадлежит статическому классу.
-    </p>
-    <p>
-        Память для статического метода выделяется только один раз во время загрузки класса. Это означает, что при
-        выполнении статического метода <strong>весь класс блокируется</strong>.
-    </p>
-    <p>
-        Таким образом, <strong>другие статические синхронизированные методы также блокируются</strong>.
-    </p>
-    <p class="main-mind">
-        Если один поток выполняет статический синхронизированный метод, все остальные потоки, пытающиеся
-        выполнить любые статические синхронизированные методы, будут заблокированы.
-    </p>
+    <div id="static_monitor">
+        <h3><a href="#q3">Монитор статического синхронизированного класса</a></h3>
+        <div>
+            <p> Монитор – это доступ к блоку кода - synchronized.
+                Если создаем экземпляр статического вложенного класса,
+                то все что можно достать из объекта – принадлежит статическому классу. </p>
+            <p class="term">
+                Память для статического метода выделяется только один раз во время загрузки класса. Это означает, что
+                при выполнении статического метода <span>весь класс блокируется!</span>
+            </p>
+            <p>Таким образом, другие статические синхронизированные методы также блокируются.</p>
+            <p class="main-mind">
+                Если один поток выполняет статический синхронизированный метод, все остальные потоки, пытающиеся
+                выполнить любые статические синхронизированные методы, будут заблокированы.</p>
+        </div>
+        <a class="button button--to_content_menu" href="#q3"></a>
+    </div>
+
     <hr>
-    <h3>Монитор нестатического синхронизированного класса</h3>
-    <p>
-        Что является монитором у нестатического синхронизированного класса? –
-        <span class="accent-mono">Объект</span>.
-    </p>
-    <p>
-        В случае нестатического синхронизированного метода память выделяется многократно при каждом вызове метода.
-    </p>
-    <a href="#" class="button button--top"></a>
+    <div id="non_static_monitor">
+        <h3><a href="#q3">Монитор нестатического синхронизированного класса</a></h3>
+        <div>
+            <p class="term">
+                Что является монитором у нестатического синхронизированного класса? – <span>Объект</span>.
+            </p>
+            <p> В случае нестатического синхронизированного метода память выделяется многократно
+                при каждом вызове метода. </p>
+        </div>
+        <a class="button button--to_content_menu" href="#q3"></a>
+    </div>
+
+    <a class="button button--to_top_menu" href="#"></a>
 </section>
 
 <section class="container" id="q4">
-    <h1>Синхронизация</h1>
-    <div class="after-h1">
-        <p><a href="#q4_synchronization">Что такое синхронизация?</a></p>
-        <p><a href="#q4_ways">Какие способы синхронизации существуют в&nbsp;JAVA?</a></p>
-    </div>
-    <h3 id="q4_synchronization">Синхронизация</h3>
-    <p class="main-mind">
-        Синхронизация это механизм, позволяющий обеспечить целостность какого-либо ресурса (файл, данные в памяти),
-        когда он используется несколькими процессами или потоками в случайном порядке.
-    </p>
-    <p>Синхронизация это процесс, который позволяет выполнять потоки параллельно.</p>
-    <p>
-        в&nbsp;JAVA все объекты имеют одну блокировку, благодаря которой только один поток одновременно может получить доступ
-        к критическому коду в объекте. Такая синхронизация помогает предотвратить повреждение состояния объекта. Если
-        поток получил блокировку, ни один другой поток не может войти в синхронизированный код, пока блокировка не будет
-        снята. Когда поток, владеющий блокировкой, выходит из синхронизированного кода, блокировка снимается. Теперь
-        другой поток может получить блокировку объекта и выполнить синхронизированный код. Если поток пытается получить
-        блокировку объекта, когда другой поток владеет блокировкой, поток ждет пока блокировка не снимется.
-    </p>
-    <p>
-        Объявить метод синхронизированным можно только тогда, когда вся логика внутри него выполняется одним потоком
-        одновременно.
-    </p>
-    <table class="list" aria-label="Примеры синхронизации">
-        <thead>
-        <tr>
-            <th>Цель</th>
-            <th>Пример</th>
-        <tr>
-        </thead>
-        <tr>
-            <td>Объект</td>
-            <td>
-                <div class="code no_margin">
-                    <p>public void myMethod() {</p>
-                    <p class="tab-1">private Object <strong>key</strong> = new Object();</p>
-                    <p class="tab-1"><strong>synchronized (key)</strong> {</p>
-                    <p class="tab-2">System.out.println("Hi I'm synchronized block!");</p>
-                    <p class="tab-1">}</p>
-                    <p>}</p>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td>Метод</td>
-            <td>
-                <div class="code no_margin">
-                    <p><strong>synchronized</strong> void <strong>myMethod</strong>() {</p>
-                    <p class="tab-1">System.out.println("Hi I'm synchronized method!");</p>
-                    <p>}</p>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td>Статический метод</td>
-            <td>
-                <div class="code no_margin">
-                    <p><strong>static</strong> void myMethod() {</p>
-                    <p class="tab-1"><strong>synchronized</strong>(MyObject.class) {</p>
-                    <p class="tab-2">System.out.println("Hi I'm synchronized method!");</p>
-                    <p class="tab-1">}</p>
-                    <p>}</p>
-                </div>
-            </td>
-        </tr>
-    </table>
+    <h1><a href="#">Синхронизация</a></h1>
+    <ul class="after-h1 menu">
+        <li><a href="#q4_synchronization">Что такое синхронизация?</a></li>
+        <li><a href="#q4_ways">Какие способы синхронизации существуют в&nbsp;JAVA?</a></li>
+    </ul>
 
-    <p>
-        <strong>Недостаток</strong>
-        использования <span class="code-word">synchronized</span> является как раз то, что другие
-        <strong>потоки вынуждены ждать</strong>, пока нужный
-        объект или метод освободится. Это создает так называемый "bottle neck" ("узкое место") в программе - и скорость
-        работы может пострадать.
-    </p>
+    <div id="q4_synchronization">
+        <h3><a href="#q4">Синхронизация</a></h3>
+        <div>
+            <p class="main-mind">
+                Синхронизация это механизм, позволяющий обеспечить целостность какого-либо ресурса (файл, данные в
+                памяти), когда он используется несколькими процессами или потоками в случайном порядке.</p>
+            <p>Синхронизация это процесс, который позволяет выполнять потоки параллельно.</p>
+            <p> В&nbsp;JAVA все объекты имеют одну блокировку, благодаря которой только один поток одновременно может
+                получить доступ к критическому коду в объекте. Такая синхронизация помогает предотвратить повреждение
+                состояния объекта.
+                <br>
+                Если поток получил блокировку, ни один другой поток не может войти в синхронизированный код, пока
+                блокировка не будет снята. Когда поток, владеющий блокировкой, выходит из синхронизированного кода,
+                блокировка снимается. Теперь другой поток может получить блокировку объекта и выполнить
+                синхронизированный код. Если поток пытается получить блокировку объекта, когда другой поток владеет
+                блокировкой, поток ждет пока блокировка не снимется.</p>
+            <p> Объявить метод синхронизированным можно только тогда, когда вся логика внутри него выполняется одним
+                потоком одновременно.</p>
+            <div class="scroll">
+                <table class="list" aria-label="Примеры синхронизации">
+                    <thead>
+                    <tr>
+                        <th>Цель</th>
+                        <th>Пример</th>
+                    <tr>
+                    </thead>
+                    <tr>
+                        <td>Объект</td>
+                        <td>
+                            <div class="code no_margin">
+                                <pre>public void <method>myMethod</method>() {
+    private Object <field>key</field> = new Object();
+    <field>synchronized</field> (key) {
+        System.out.println("Hi I'm synchronized block!");
+    }
+}</pre>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Метод</td>
+                        <td>
+                            <div class="code no_margin">
+                                <pre><field>synchronized</field> void <method>myMethod</method>() {
+    System.out.println("Hi I'm synchronized method!");
+}</pre>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Статический метод</td>
+                        <td>
+                            <div class="code no_margin"><pre><field>static</field> void myMethod() {
+    <field>synchronized</field>(MyObject.class) {
+        System.out.println("Hi I'm synchronized method!");
+    }
+}</pre>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <p class="term">
+                <span>Недостаток</span>
+                использования synchronized является как раз то, что другие <span>потоки вынуждены ждать</span>,
+                пока нужный объект или метод освободится.
+                <br>
+                Это создает так называемый "bottle neck" ("узкое место") в программе - и скорость
+                работы может пострадать.
+            </p>
+        </div>
+        <a class="button button--to_content_menu" href="#q4"></a>
+    </div>
 
     <hr>
-    <h3 id="q4_ways">Способы синхронизации в&nbsp;JAVA</h3>
-    <ul class="sparse-li">
-        <li>
-            <p><strong>Системная синхронизация с использованием wait()/notify()</strong></p>
-            <p>
-                Когда мы вызываем wait() – это заставляет текущий поток ждать, пока какой-либо другой поток вызовет
-                notify() или notifyAll() для того же объекта.
-            </p>
-            <p>
-                Поток, который ждет выполнения каких-либо условий, вызывает у этого объекта метод wait(), предварительно
-                захватив его монитор, wait() освобождает монитор и переводит поток в ожидание, далее поток ждет
-                notify().
-                На этом работа потока приостанавливается. Другой поток может вызвать на этом же самом объекте метод
-                notify() (опять же, предварительно захватив монитор объекта), в результате чего, ждущий на объекте поток
-                «просыпается» и продолжает свое выполнение.
-            </p>
-            <p class="main-mind">
-                Монитор надо захватывать в явном виде, через
-                synchronized-блок, потому как методы <strong>wait()/notify() не синхронизированы!</strong>
-            </p>
-            <p>
-                notifyAll() - Этот метод просто пробуждает все потоки, которые ожидают на мониторе этого объекта.
-            </p>
-        </li>
-        <li>
-            <p><strong>Системная синхронизация с использованием join()</strong></p>
-            <p>
-                Метод join(), вызванный у экземпляра класса Thread, позволяет текущему потоку остановиться до того
-                момента, как поток, связаный с этим экземпляром, закончит работу.
-            </p>
-            <p class="main-mind">
-                Главный поток ставиться на паузу до окончания дочернего потока.
-            </p>
-        </li>
-        <li>
-            <p><strong>Использование классов из пакета java.util.concurrent</strong></p>
-            <p> Пакет предоставляет набор классов для организации межпоточного взаимодействия. </p>
-            <p>Примеры таких классов – Atomic, Lock, Semaphore, ForkJoinTask и пр.</p>
-            <p class="main-mind">
-                Концепция данного подхода заключается в использовании атомарных операций и переменных.
-            </p>
-        </li>
-    </ul>
-    <a href="#" class="button button--top"></a>
+    <div id="q4_ways">
+        <h3><a href="#q4">Способы синхронизации в&nbsp;JAVA</a></h3>
+        <div>
+            <ul class="margined">
+                <li>
+                    <p><span>Системная синхронизация с использованием wait()/notify()</span></p>
+                    <p> Когда мы вызываем wait() – это заставляет текущий поток ждать, пока какой-либо другой поток
+                        вызовет notify() или notifyAll() для того же объекта.</p>
+                    <p> Поток, который ждет выполнения каких-либо условий, вызывает у этого объекта метод wait(),
+                        предварительно захватив его монитор, wait() освобождает монитор и переводит поток в ожидание,
+                        далее поток ждет notify().
+                        <br>
+                        На этом работа потока приостанавливается. Другой поток может вызвать на этом же самом объекте
+                        метод notify() (опять же, предварительно захватив монитор объекта), в результате чего,
+                        ждущий на объекте поток "просыпается" и продолжает свое выполнение.</p>
+                    <p class="main-mind no_mb">
+                        Монитор надо захватывать в явном виде, через
+                        synchronized-блок, потому как методы wait()/notify() не синхронизированы!</p>
+                    <p> notifyAll() - Этот метод просто пробуждает все потоки, которые ожидают на мониторе этого
+                        объекта.</p>
+                </li>
+                <li>
+                    <p><span>Системная синхронизация с использованием join()</span></p>
+                    <p> Метод join(), вызванный у экземпляра класса Thread, позволяет текущему потоку остановиться до
+                        того момента, как поток, связанный с этим экземпляром, закончит работу.</p>
+                    <p class="main-mind"> Главный поток ставиться на паузу до окончания дочернего потока.</p>
+                </li>
+                <li>
+                    <p><span>Использование классов из пакета java.util.concurrent</span></p>
+                    <p>Пакет предоставляет набор классов для организации межпоточного взаимодействия.</p>
+                    <p>Примеры таких классов – Atomic, Lock, Semaphore, ForkJoinTask и пр.</p>
+                    <p class="main-mind">
+                        Концепция данного подхода заключается в использовании атомарных операций и переменных.
+                    </p>
+                </li>
+            </ul>
+        </div>
+        <a class="button button--to_content_menu" href="#q4"></a>
+    </div>
+
+    <a class="button button--to_top_menu" href="#"></a>
 </section>
 
 <section class="container" id="q5">
-    <h1>Методы wait(), notify() и notifyAll()</h1>
-    <table class="list" aria-label="">
-        <thead>
-        <tr>
-            <th>wait()</th>
-            <th>notify()</th>
-        <tr>
-        </thead>
-        <tr>
-            <td>
-                <p>Поток входит в блок Synchronized</p>
-                <p><strong>Объект-монитор − занят</strong></p>
-            </td>
-            <td rowspan="3">
-                <p class="mb10">
-                    Методы notify/notifyAll можно вызвать у объекта-монитора и только, когда этот монитор занят – т.е.
-                    внутри блока synchronized.
-                </p>
-                <p>
-                    Метод notifyAll снимает с паузы все потоки, которые стали на паузу с помощью данного
-                    объекта-монитора.
-                </p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Поток заблокировал монитор и не может работать дальше, т.к. каких-то данных еще не хватает – поток
-                останавливается и ждет их, остальные потоки, которые ждут освобождения монитора, тоже ждут – очень
-                дорого
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Поток ставиться на паузу методом wait() - освобождает монитор для других потоков
-            </td>
-        </tr>
-    </table>
-    <p>
-        «Висеть» на методе wait() одного монитора могут сразу несколько потоков. При вызове notify() только один из них
-        выходит из wait() и пытается захватить монитор, а затем продолжает работу со следующего после wait() оператора.
-        Какой из них выйдет - заранее неизвестно. А при вызове notifyAll(), все висящие на wait() потоки выходят из
-        wait(), и все они пытаются захватить монитор. Понятно, что в любой момент времени монитор может быть захвачен
-        только одним потоком, а остальные ждут своей очереди. Порядок очереди определяется планировщиком потоков&nbsp;JAVA.
-    </p>
-
-    <a href="#" class="button button--top"></a>
+    <h1><a href="#">Методы wait(), notify() и notifyAll()</a></h1>
+    <div>
+        <table class="list" aria-label="">
+            <thead>
+            <tr>
+                <th>wait()</th>
+                <th>notify()</th>
+            <tr>
+            </thead>
+            <tr>
+                <td>
+                    <p>Поток входит в блок Synchronized</p>
+                    <p class="bold">Объект-монитор − занят</p>
+                </td>
+                <td rowspan="3">
+                    <p class="mb10">
+                        Методы notify/notifyAll можно вызвать у объекта-монитора и только, когда этот монитор занят –
+                        т.е.
+                        внутри блока synchronized.
+                    </p>
+                    <p>
+                        Метод notifyAll снимает с паузы все потоки, которые стали на паузу с помощью данного
+                        объекта-монитора.
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Поток заблокировал монитор и не может работать дальше,
+                    т.к. каких-то данных еще не хватает – поток останавливается и ждет их,
+                    остальные потоки, которые ждут освобождения монитора, тоже ждут – очень дорого
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Поток ставиться на паузу методом wait() - освобождает монитор для других потоков
+                </td>
+            </tr>
+        </table>
+        <p> "Висеть" на методе wait() одного монитора могут сразу несколько потоков.
+            <br>
+            При вызове notify() только один из них выходит из wait() и пытается захватить монитор,
+            а затем продолжает работу со следующего после wait() оператора.
+            Какой из них выйдет - заранее неизвестно.
+            <br>
+            А при вызове notifyAll(), все висящие на wait() потоки выходят из
+            wait(), и все они пытаются захватить монитор. Понятно, что в любой момент времени монитор может быть
+            захвачен
+            только одним потоком, а остальные ждут своей очереди. Порядок очереди определяется планировщиком потоков&nbsp;JAVA.
+        </p>
+    </div>
+    <a class="button button--to_content_menu" href="#"></a>
 </section>
 
 <section class="container" id="q6">
-    <h1>Состояние потока</h1>
-    <table class="list" aria-label="Состояние потока">
-        <thead>
-        <tr>
-            <th></th>
-            <th></th>
-        <tr>
-        </thead>
-        <tr>
-            <td>
-                <div class="code no_margin">Thread twoThread = new&nbsp;Thread("Yulia");</div>
-            </td>
-            <td>
-                <p><strong>Новый (New)</strong></p>
-                <p>
-                    После создания экземпляра потока, он находится в состоянии "Новый" до тех пор, пока не вызван метод
-                    start(). В этом состоянии поток не считается живым.
-                </p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div class="code no_margin">twoThread.start();</div>
-            </td>
-            <td>
-                <p><strong>Работоспособный (Runnable)</strong></p>
-                <p>
-                    Поток переходит в состояние "Работоспособный", когда вызывается метод start(). Поток может перейти в
-                    это состояние также из состояния "Работающий" или из состояния "Блокирован". Когда поток находится в
-                    этом состоянии, он считается живым.
-                </p>
-            </td>
-        </tr>
-        <tr>
-            <td>Планировщик потоков выбирает поток</td>
-            <td>
-                <p><strong>Работающий (Running)</strong></p>
-                <p>
-                    Поток переходит из состояния "Работоспособный" в состояние "Работающий", когда Планировщик потоков
-                    выбирает его как работающий в данный момент.
-                </p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div class="code no_margin">
-                    <p class="mb10">wait()</p>
-                    <p class="mb10">notify()</p>
-                    <p>sleep()</p>
-                </div>
-            </td>
-            <td>
-                <p><strong>Живой, но не работоспособный (Alive, but not runnable)</strong></p>
-                <div>
-                    <p>Поток может быть живым, но не работоспособным по нескольким причинам:</p>
-                    <ul class="sparse-li">
-                        <li>
-                            <p><strong>Ожидание (Waiting)</strong></p>
-                            <p>
-                                Поток переходит в состояние "Ожидания", вызывая метод wait(). Вызов notify() или
-                                notifyAll() может перевести поток из состояния "Ожидания" в состояние "Работоспособный".
-                            </p>
-                        </li>
-                        <li>
-                            <p><strong>Сон (Sleeping)</strong></p>
-                            <p>
-                                Метод sleep() переводит поток в состояние 'Сна' на заданный промежуток времени в
-                                миллисекундах.
-                            </p>
-                        </li>
-                        <li>
-                            <p><strong>Блокировка (Blocked)</strong></p>
-                            <p>
-                                Поток может перейти в это состояние, в ожидании ресурса, такого как ввод/вывод или из-за
-                                блокировки другого объекта. В этом случае поток переходит в состояние "Работоспособный",
-                                когда ресурс становится доступен.
-                            </p>
-                        </li>
-                    </ul>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div class="code no_margin" style="text-decoration: line-through">run()</div>
-            </td>
-            <td>
-                <p><strong>Мёртвый (Dead)</strong></p>
-                <p>
-                    Поток считается мёртвым, когда его метод run() полностью выполнен. Мёртвый поток не
-                    может перейти ни в какое другое состояние, даже если для него вызван метод start().
-                </p>
-            </td>
-        </tr>
-    </table>
-    <div class="image-box">
-        <p>Не из ждавы, но написано прикольно:</p>
-        <img class="image" src="img/thread_ru.png" alt="Жизненый цикл потока">
+    <h1><a href="#">Состояние потока</a></h1>
+    <div>
+        <table class="list" aria-label="Состояние потока">
+            <thead>
+            <tr>
+                <th>Действие</th>
+                <th>Состояние</th>
+            <tr>
+            </thead>
+            <tr>
+                <td>
+                    <div class="code no_margin wrap-normal">Thread twoThread = new&nbsp;Thread("Yulia");</div>
+                </td>
+                <td>
+                    <p><span>Новый (New)</span></p>
+                    <p class="example">
+                        После создания экземпляра потока, он находится в состоянии "Новый" до тех пор, пока не вызван
+                        метод start().
+                        <br>
+                        В&nbsp;этом состоянии поток не считается живым.</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="code no_margin">twoThread.start();</div>
+                </td>
+                <td>
+                    <p><span>Работоспособный (Runnable)</span></p>
+                    <p class="example">
+                        Поток переходит в состояние "Работоспособный", когда вызывается метод start().
+                        <br>
+                        Поток может перейти в это состояние также из состояния "Работающий" или из состояния
+                        "Блокирован".
+                        <br>
+                        Когда поток находится в этом состоянии, он считается живым.</p>
+                </td>
+            </tr>
+            <tr>
+                <td>Планировщик потоков выбирает поток</td>
+                <td>
+                    <p><span>Работающий (Running)</span></p>
+                    <p class="example">
+                        Поток переходит из состояния "Работоспособный" в состояние "Работающий", когда Планировщик
+                        потоков выбирает его как работающий в данный момент.</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="code no_margin">
+                        <p class="mb10">wait()</p>
+                        <p class="mb10">notify()</p>
+                        <p>sleep()</p>
+                    </div>
+                </td>
+                <td>
+                    <p><span>Живой, но не работоспособный<br>(Alive, but not runnable)</span></p>
+                    <div class="no_margin">
+                        <p>Поток может быть живым, но не работоспособным по нескольким причинам:</p>
+                        <ul>
+                            <li>
+                                <p><span>Ожидание (Waiting)</span></p>
+                                <p class="example">
+                                    Поток переходит в состояние "Ожидания", вызывая метод wait().
+                                    <br>
+                                    Вызов notify() или notifyAll() может перевести поток из состояния "Ожидания" в
+                                    состояние "Работоспособный".</p>
+                            </li>
+                            <li>
+                                <p><span>Сон (Sleeping)</span></p>
+                                <p class="example">
+                                    Метод sleep() переводит поток в состояние 'Сна' на заданный промежуток времени в
+                                    миллисекундах.</p>
+                            </li>
+                            <li>
+                                <p><span>Блокировка (Blocked)</span></p>
+                                <p class="example">
+                                    Поток может перейти в это состояние, в ожидании ресурса, такого как ввод/вывод или
+                                    из-за блокировки другого объекта. В этом случае поток переходит в состояние
+                                    "Работоспособный", когда ресурс становится доступен.
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="code no_margin" style="text-decoration: line-through">run()</div>
+                </td>
+                <td>
+                    <p><span>Мёртвый (Dead)</span></p>
+                    <p class="example">
+                        Поток считается мёртвым, когда его метод run() полностью выполнен.
+                        <br>
+                        Мёртвый поток не может перейти ни в какое другое состояние,
+                        даже если для него вызван метод start().</p>
+                </td>
+            </tr>
+        </table>
+        <div class="image-box">
+            <p>Не из ждавы, но написано прикольно:</p>
+            <img class="image" src="img/thread_ru.png" alt="Жизненый цикл потока">
+        </div>
     </div>
-    <a href="#" class="button button--top"></a>
+    <a class="button button--to_top_menu" href="#"></a>
 </section>
 
 <section class="container" id="q7">
+    <p class="bad bold">Перенести в Concurrent</p>
     <h1>Семафор</h1>
     <p class="main-mind">
         Semaphore – это новый тип синхронизатора: семафор со счётчиком, реализующий шаблон синхронизации Семафор.
@@ -840,39 +900,34 @@
         permits.
     </p>
 
-    <a href="#" class="button button--top"></a>
+
 </section>
 
 <section class="container" id="q8">
-    <h1>Ключевое слово volatile</h1>
-    <p class="main-mind">
-        <strong>volatile</strong>
-        - этот модификатор вынуждает потоки отключить оптимизацию доступа и использовать единственный экземпляр
-        переменной.
-    </p>
-    <p> Если переменная примитивного типа – этого будет достаточно для обеспечения потокобезопасности. </p>
-    <p>
-        Если же переменная является ссылкой на объект – синхронизировано будет исключительно значение этой ссылки. Все
-        же данные, содержащиеся в объекте, синхронизированы не будут!
-    </p>
+    <h1><a href="#"></a>Ключевое слово volatile</h1>
+    <div>
+        <p class="main-mind">
+            volatile - этот модификатор вынуждает потоки отключить оптимизацию доступа
+            и использовать единственный экземпляр переменной.</p>
+        <p> Если переменная примитивного типа – этого будет достаточно для обеспечения потокобезопасности. </p>
+        <p> Если же переменная является ссылкой на объект – синхронизировано будет исключительно значение этой ссылки.
+            <br>Все же данные, содержащиеся в объекте, синхронизированы не будут!</p>
 
-    <h4>Когерентность кэшей</h4>
-    <div class="image-box">
-        <img class="image" src="./img/volatile.png" alt="Когерентность кэшей">
+        <h4>Когерентность кэшей</h4>
+        <div class="image-box">
+            <img class="image" src="./img/volatile.png" alt="Когерентность кэшей">
+        </div>
+        <p> Может случиться такое когда кэш ядра 1 (поток1) возьмет переменную и изменит её и кэш ядра 2 (поток2)
+            возьмет ту же переменную и изменит её.
+            Возможно, что она не будет равна. Тогда кэши не будут когерентны ("равны").</p>
+        <p> volotaile (изменчивый) – переменная может быть изменена, она не будет кэшироваться
+            (будет находиться в главной памяти), гарантирует когерентность кэшей.</p>
     </div>
-    <p>
-        Может случиться такое когда кэш ядра 1 (поток1) возьмет переменную и изменит её и кэш ядра 2 (поток2) возьмет ту
-        же переменную и изменит её. Возможно, что она не будет равна. Тогда кэши не будут когерентны («равны»).
-    </p>
-    <p>
-        volotaile (изменчивый) – переменная может быть изменена, она не будет кэшироваться (будет находиться в главной
-        памяти), гарантирует когерентность кэшей.
-    </p>
-
-    <a href="#" class="button button--top"></a>
+    <a class="button button--to_top_menu" href="#"></a>
 </section>
 
 <section class="container" id="q9">
+    <p class="bad bold">Перенести в Concurrent</p>
     <h1>Типы данных Atomic</h1>
     <p class="main-mind">
         Нужны что бы безопасно выполнять операции при параллельных вычислениях в нескольких потоках не используя при
@@ -903,59 +958,59 @@
         атомарные версии и для других типов данных.
     </p>
 
-    <a href="#" class="button button--top"></a>
+
 </section>
 
 <section class="container" id="q10">
-    <h1>Демон потоки</h1>
-    <p class="main-mind">
-        Потоки-демоны работают в фоновом режиме вместе с программой, но не являются неотъемлемой частью программы.
-    </p>
-    <p>
-        Если какой-либо процесс может выполняться на фоне работы основных потоков выполнения и его деятельность
-        заключается в обслуживании основных потоков приложения, то такой процесс может быть запущен как
-        <strong>поток-демон</strong> с помощью метода <strong>setDaemon(boolean value)</strong>
-        вызванного у потока до его запуска.
-    </p>
-    <p>
-        Метод boolean <strong>isDaemon()</strong> позволяет определить, является ли указанный поток
-        <strong>демон</strong>ом <strong>или нет</strong>.
-
-    </p>
-    <p class="main-mind">
-
-        Базовое свойство потоков-демонов заключается в возможности основного
-        потока приложения завершить выполнение с окончанием кода метода main(), не обращая внимания на то, что
-        поток-демон
-        еще работает.
-    </p>
-    <a href="#" class="button button--top"></a>
+    <h1><a href="#">Демон потоки</a></h1>
+    <div>
+        <p class="main-mind">
+            Потоки-демоны работают в фоновом режиме вместе с программой, но не являются неотъемлемой частью программы.
+        </p>
+        <p class="term">
+            Если какой-либо процесс может выполняться на фоне работы основных потоков выполнения и его деятельность
+            заключается в обслуживании основных потоков приложения, то такой процесс может быть запущен как
+            <span>поток-демон</span> с помощью метода <span>setDaemon(boolean&nbsp;value)</span>
+            вызванного у потока до его запуска.
+        </p>
+        <p class="term">
+            Метод <span>boolean&nbsp;isDaemon()</span> позволяет определить,
+            является ли указанный поток демоном или нет.</p>
+        <p class="main-mind">
+            Базовое свойство потоков-демонов заключается в возможности основного
+            потока приложения завершить выполнение с окончанием кода метода main(),
+            не обращая внимания на то, что поток-демон еще работает.</p>
+    </div>
+    <a class="button button--to_top_menu" href="#"></a>
 </section>
 
 <section class="container" id="q11">
-    <h1>Приоритет потока</h1>
-    <p class="main-mind no_mb">
-        Планировщик потоков использует приоритет потока для принятия решений о том, когда какому из потоков будет
-        разрешено работать.
-    </p>
-    <p class="example">
-        Теоретически высокоприоритетные потоки получают больше времени процессора, чем
-        низкоприоритетные. Практически объем времени процессора, который получает поток, часто зависит от нескольких
-        факторов помимо его приоритета.
-    </p>
-    <p class="no_mb">Чтобы <strong>установить приоритет</strong> потока, используется метод класса Thread:</p>
-    <p><span class="code-word">final void setPriority(int level)</span></p>
-    <p class="no_mb">Значение <span class="accent-mono">level</span> изменяется в пределах</p>
-    <p class="no_mb">от <span class="accent-mono">Thread.MIN_PRIORITY = 1</span></p>
-    <p class="no_mb">до <span class="accent-mono">Thread.MAX_PRIORITY = 10</span>.</p>
-    <p>Приоритет по умолчанию - <span class="accent-mono">Thread.NORM_PRlORITY = 5</span>.</p>
-    <p class="no_mb">
-        <strong>Получить</strong>
-        текущее значение приоритета потока можно вызвав у экземпляра класса Thread метод:
-    </p>
-    <p><span class="code-word">final int getPriority()</span></p>
+    <h1><a href="#">Приоритет потока</a></h1>
+    <div>
+        <p class="main-mind no_mb">
+            Планировщик потоков использует приоритет потока для принятия решений о том,
+            когда какому из потоков будет разрешено работать.</p>
+        <p class="example">
+            Теоретически высокоприоритетные потоки получают больше времени процессора, чем низкоприоритетные.
+            <br>
+            Практически объем времени процессора, который получает поток, часто зависит от нескольких
+            факторов помимо его приоритета.
+        </p>
 
-    <a href="#" class="button button--top"></a>
+        <p class="no_mb">Чтобы установить приоритет потока, используется метод класса Thread:</p>
+        <div class="code no_mb p05">final void <method>setPriority</method>(int level)</div>
+        <p class="term tab-1 example">
+            Значение <span>level</span> изменяется в пределах:
+            <br>от <span>Thread.MIN_PRIORITY = 1</span>
+            <br>до <span>Thread.MAX_PRIORITY = 10</span>.
+            <br>Приоритет по умолчанию: <span>Thread.NORM_PRlORITY = 5</span>.
+        </p>
+
+        <p class="no_mb">
+            Получить текущее значение приоритета потока можно вызвав у экземпляра класса Thread метод:</p>
+        <div class="code p05">final int <method>getPriority</method>()</div>
+    </div>
+    <a class="button button--to_top_menu" href="#"></a>
 </section>
 
 <section class="container" id="q12">
@@ -988,7 +1043,7 @@
         главный (или любой другой) поток ждёт завершения побочного потока, выполняющего ресурсоёмкие операции.
     </p>
 
-    <a href="#" class="button button--top"></a>
+
 </section>
 
 <section class="container" id="q13">
@@ -1000,54 +1055,55 @@
         <strong>sleep() может заставить планировщик приостановить выполнение</strong>
         текущего потока как минимум на указанный период времени в качестве его параметра.
     </p>
-    <table class="list" aria-label="">
-        <thead>
-        <tr>
-            <th>Код</th>
-            <th>Прогон 1</th>
-            <th>Прогон 2</th>
-        <tr>
-        </thead>
-        <tr>
-            <td>
-                <div class="code no_margin">
-                    <p>public class ThreadYield {</p>
-                    <p class="tab-1 mb10">public static void main(String[]&nbsp;args) {</p>
-                    <p class="tab-2">Runnable r =&nbsp;()&nbsp;->&nbsp;{</p>
-                    <p class="tab-3">int counter = 0;</p>
-                    <p class="tab-3">while (counter < 2) {</p>
-                    <p class="tab-4">System.out.println(Thread.currentThread().getName());</p>
-                    <p class="tab-4">counter++;</p>
-                    <p class="tab-4">Thread.yield();</p>
-                    <p class="tab-3">}</p>
-                    <p class="tab-2 mb10">};</p>
-                    <p class="tab-2">new Thread(r).start();</p>
-                    <p class="tab-2 mb10">new Thread(r).start();</p>
-                    <p class="tab-1">}</p>
-                    <p>}</p>
-                </div>
-            </td>
-            <td>
-                <p>Thread-0</p>
-                <p>Thread-1</p>
-                <p>Thread-1</p>
-                <p>Thread-0</p>
-            </td>
-            <td>
-                <p>Thread-0</p>
-                <p>Thread-0</p>
-                <p>Thread-1</p>
-                <p>Thread-1</p>
-            </td>
-        </tr>
-    </table>
-    <a href="#" class="button button--top"></a>
+    <div class="scroll">
+        <table class="list" aria-label="">
+            <thead>
+            <tr>
+                <th>Код</th>
+                <th>Прогон 1</th>
+                <th>Прогон 2</th>
+            <tr>
+            </thead>
+            <tr>
+                <td>
+                    <div class="code no_margin">
+                    <pre>public class <class>ThreadYield</class> {
+    public static void <method>main</method>(String[] args) {
+        Runnable r = () -> {
+            int counter = 0;
+                while (counter < 2) {
+                System.out.println(Thread.currentThread().getName());
+                counter++;
+                Thread.yield();
+            }
+        };
+        new Thread(r).start();
+        new Thread(r).start();
+    }
+}</pre>
+                    </div>
+                </td>
+                <td>
+                    <p class="no_wrap">Thread-0</p>
+                    <p class="no_wrap">Thread-1</p>
+                    <p class="no_wrap">Thread-1</p>
+                    <p class="no_wrap">Thread-0</p>
+                </td>
+                <td>
+                    <p class="no_wrap">Thread-0</p>
+                    <p class="no_wrap">Thread-0</p>
+                    <p class="no_wrap">Thread-1</p>
+                    <p class="no_wrap">Thread-1</p>
+                </td>
+            </tr>
+        </table>
+    </div>
 </section>
 
 <section class="container" id="q14">
     <h1>Остановка потока</h1>
     <p class="no_mb"><span class="code-word">stop()</span> - помечен как deprecated.</p>
-    <p> Потому что он просто останавливал поток без какой-либо дополнительной работы. «Не потокобезопасен». </p>
+    <p> Потому что он просто останавливал поток без какой-либо дополнительной работы. "Не потокобезопасен". </p>
     <p class="no_mb">
         <span class="code-word">Thread.interrupt()</span>
         - только сообщает потоку о необходимости остановки. Потокобезопасен.
@@ -1076,7 +1132,7 @@
         – Нестатический метод используется одним потоком для проверки статуса прерывания у другого потока,
         не изменяя флаг прерывания.
     </p>
-    <a href="#" class="button button--top"></a>
+
 </section>
 
 <section class="container" id="q15">
@@ -1118,7 +1174,7 @@
             <td>Метод call() избавляет нас от необходимости на проверяемые исключения писать try-catch блоки</td>
         </tr>
     </table>
-    <a href="#" class="button button--top"></a>
+
 </section>
 
 <section class="container" id="q16">
@@ -1138,7 +1194,7 @@
         реализует Runnable, его можно передать в Executor на выполнение.
     </p>
 
-    <a href="#" class="button button--top"></a>
+
 </section>
 
 <section class="container" id="q17">
@@ -1147,7 +1203,7 @@
         Взаимная блокировка (deadlock) - явление при котором все потоки находятся в режиме ожидания.
     </p>
     <p>Происходит, когда достигаются состояния:</p>
-    <ol class="sparse-li">
+    <ol>
         <li>
             <p class="accent-mono">Взаимного исключения:</p>
             <p>
@@ -1185,7 +1241,7 @@
         мониторы разделяемых ресурсов в определённом порядке и освобождая их в обратном порядке.
     </p>
 
-    <a href="#" class="button button--top"></a>
+
 </section>
 
 <section class="container" id="q18">
@@ -1204,59 +1260,47 @@
         направлении
     </p>
 
-    <a href="#" class="button button--top"></a>
+
 </section>
 
 <section class="container" id="q19">
-    <h1>Race Condition</h1>
-    <p class="main-mind">
-        Состояние гонки (race condition) - ошибка проектирования многопоточной системы или приложения, при которой эта
-        работа напрямую зависит от того, в каком порядке выполняются потоки.
-    </p>
-    <p>
-        Состояние гонки возникает когда поток, который должен исполнится в начале, проиграл гонку и первым
-        исполняется другой поток: поведение кода изменяется, из-за чего возникают недетерменированные
-        (непредопределенные) ошибки.
-    </p>
-    <p>Распространённые способы решения:</p>
-    <ul class="tab-2 sparse-li">
-        <li>
-            <p class="accent-mono">Использование локальной копии</p>
-            <p>
-                — копирование разделяемой переменной в локальную переменную потока.
-            </p>
-            <p>
-                Этот способ работает только тогда, когда переменная одна и копирование
-                производится атомарно (за одну машинную команду), использование
-                <span class="accent-mono">volatile</span>.
-            </p>
-        </li>
-        <li>
-            <p class="accent-mono">Синхронизация</p>
-            <p>
-                — операции над разделяемым ресурсом
-                происходят в синхронизированном блоке (при использовании ключевого слова
-                <span class="accent-mono">synchronized</span>).
-            </p>
-        </li>
-        <li>
-            <p class="accent-mono">Комбинирование методов</p>
-            <p>
-                — вышеперечисленные способы можно комбинировать, копируя «опасные» переменные в синхронизированном
-                блоке.
-            </p>
-            <p>
-                С одной стороны, это снимает ограничение на атомарность, с другой — позволяет избавиться от слишком
-                больших синхронизированных блоков.
-            </p>
-        </li>
-    </ul>
-    <p>
-        Очевидных способов выявления и исправления состояний гонки не существует.
-        Лучший способ избавиться от гонок — правильное проектирование многозадачной системы
-    </p>
+    <h1><a href="#">Race Condition</a></h1>
+    <div>
+        <p class="main-mind">
+            Состояние гонки (race condition) - ошибка проектирования многопоточной системы или приложения,
+            при которой эта работа напрямую зависит от того, в каком порядке выполняются потоки.</p>
+        <p> Состояние гонки возникает когда поток, который должен исполнится в начале, проиграл гонку и первым
+            исполняется другой поток: поведение кода изменяется, из-за чего возникают недетерменированные
+            (непредопределенные) ошибки.</p>
+        <p>Распространённые способы решения:</p>
+        <ul class="margined">
+            <li>
+                <p class="term"><span>Использование локальной копии</span><br>
+                    Копирование разделяемой переменной в локальную переменную потока.
+                    <br>
+                    Этот способ работает только тогда, когда переменная одна и копирование производится атомарно
+                    (за одну машинную команду), использование <span>volatile</span>.</p>
+            </li>
+            <li>
+                <p class="term"><span>Синхронизация</span><br>
+                    Операции над разделяемым ресурсом происходят в синхронизированном блоке
+                    (при использовании ключевого слова <span class="accent-mono">synchronized</span>).</p>
+            </li>
+            <li>
+                <p class="term"><span>Комбинирование методов</span><br>
+                    Вышеперечисленные способы можно комбинировать,
+                    копируя "опасные" переменные в синхронизированном блоке.
+                    <br>
+                    С одной стороны, это снимает ограничение на атомарность, с другой — позволяет избавиться от слишком
+                    больших синхронизированных блоков.
+                </p>
+            </li>
+        </ul>
+        <p> Очевидных способов выявления и исправления состояний гонки не существует.
+            <br>Лучший способ избавиться от гонок — правильное проектирование многозадачной системы.</p>
+    </div>
 
-    <a href="#" class="button button--top"></a>
+    <a class="button button--to_top_menu" href="#"></a>
 </section>
 
 <section class="container" id="q20">
@@ -1276,7 +1320,7 @@
     </p>
     <p class="bold no_mb">Этап Join:</p>
     <p class="tab-1">
-        далее (опционально) идёт процесс «свёртки»
+        далее (опционально) идёт процесс "свёртки"
         - решения подзадач некоторым образом объединяются пока не получится решение всей задачи.
     </p>
     <p>
@@ -1295,11 +1339,11 @@
         <strong>использует work-stealing алгоритм</strong>:
     </p>
     <p class="main-mind">
-        потоки, которые завершили выполнение собственных подзадач, могут «украсть» подзадачи у других потоков, которые
+        потоки, которые завершили выполнение собственных подзадач, могут "украсть" подзадачи у других потоков, которые
         всё ещё заняты.
     </p>
 
-    <a href="#" class="button button--top"></a>
+
 </section>
 
 <section class="container" id="q21">
@@ -1317,13 +1361,13 @@
     <p>
         <span class="accent-mono">Queues</span>
         — неблокирующие и блокирующие очереди с поддержкой многопоточности. Неблокирующие очереди заточены на скорость и
-        работу без блокирования потоков. Блокирующие очереди используются, когда нужно «притормозить» потоки «Producer»
-        или «Consumer», если не выполнены какие-либо условия, например, очередь пуста или перепонена, или же нет
-        свободного «Consumer»'a.
+        работу без блокирования потоков. Блокирующие очереди используются, когда нужно "притормозить" потоки "Producer"
+        или "Consumer", если не выполнены какие-либо условия, например, очередь пуста или перепонена, или же нет
+        свободного "Consumer"'a.
     </p>
     <p>
         <span class="accent-mono">Synchronizers</span>
-        — вспомогательные утилиты для синхронизации потоков. Представляют собой мощное оружие в «параллельных»
+        — вспомогательные утилиты для синхронизации потоков. Представляют собой мощное оружие в "параллельных"
         вычислениях.
     </p>
     <p>
@@ -1344,7 +1388,6 @@
     <a class="link-to-source" href="https://habr.com/ru/company/luxoft/blog/157273/" target="_blank">источник</a>
 
 
-    <a href="#" class="button button--top"></a>
 </section>
 
 <section class="container" id="q22">
@@ -1364,17 +1407,20 @@
         принципе, снаружи он выглядит практически как замый обычный пул потоков, и особенностей в использовании нет.
     </p>
 
-    <a href="#" class="button button--top"></a>
+
 </section>
 
 <footer>
-        <div class="footer__text"><a href="https://t.me/java40plus" title="Мой блог в телеграм" target="_blank">
+    <div class="footer__text"><a href="https://t.me/java40plus" title="Мой блог в телеграм" target="_blank">
         Ⓒ Алексей Маслов, 2021-2024
     </a></div>
 </footer>
 
+<a href="#" class="button button--top"></a>
+
 </body>
 
 <script src="../../../js/image.js"></script>
+<script src="../../../js/spoiler.js"></script>
 
 </html>

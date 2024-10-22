@@ -53,7 +53,6 @@ h1 {
     line-height: 1.0;
     color: #00a82d;
     position: relative;
-    width: 90%;
 }
 
 .after-h1 {
@@ -71,6 +70,7 @@ h2, h3 {
     margin-top: 24px;
     margin-bottom: 12px;
     line-height: 1.0;
+    max-width: 90%;
 }
 
 h4 {
@@ -84,9 +84,7 @@ span {
 }
 
 strong {
-    font-weight: 500;
-    color: darkolivegreen;
-    background-color: lightgoldenrodyellow;
+    background-color: #90ee902b;;
     border-radius: 5px;
     font-family: inherit;
 }
@@ -126,7 +124,7 @@ h3 a:hover:after {
 /* СПИСКИ */
 
 ol {
-    padding-left: 25px;
+    padding-left: 30px;
 }
 
 ul {
@@ -195,6 +193,10 @@ p {
 
 img {
     max-width: 100%;
+}
+
+.p05 {
+    padding: 5px 5px 0 !important;
 }
 
 .no_mb {
