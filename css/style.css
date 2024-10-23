@@ -195,9 +195,6 @@ img {
     max-width: 100%;
 }
 
-.p05 {
-    padding: 5px 5px 0 !important;
-}
 
 .no_mb {
     margin-bottom: 0 !important;
@@ -591,6 +588,16 @@ code,
     overflow: auto;
     white-space: nowrap;
 }
+
+.code--one-line {
+    padding: 5px !important;
+}
+
+.code.code--one-line class,
+.code.code--one-line method {
+    margin-bottom: 0;
+}
+
 
 .code pre,
 code {
