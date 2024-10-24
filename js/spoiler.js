@@ -1,9 +1,30 @@
+const spoilerButtons = document.querySelectorAll('.spoiler-button, .spoiler-string');
+
 const spoilerOpenActionText = '(раскрыть все)'
 const spoilerCloseActionText = '(закрыть все)'
-const toggleSpoilerVisibilityButton = document.querySelector('.spoiler-total');
-toggleSpoilerVisibilityButton.textContent = spoilerOpenActionText;
-
-const spoilerButtons = document.querySelectorAll('.spoiler-button, .spoiler-string');
+const toggleSpoilerVisibilityButtons = document.querySelectorAll('.spoiler-total');
+toggleSpoilerVisibilityButtons.forEach(function (toggleSpoilerVisibilityButton) {
+    toggleSpoilerVisibilityButton.textContent = spoilerOpenActionText;
+    // кнопка для всех "детей"
+    toggleSpoilerVisibilityButton.addEventListener('click', function () {
+        const childSpoilerButtons =
+            toggleSpoilerVisibilityButton.parentElement
+                .querySelectorAll('.spoiler-button, .spoiler-string');
+        if (toggleSpoilerVisibilityButton.classList.contains('active')) {
+            toggleSpoilerVisibilityButton.classList.remove('active');
+            toggleSpoilerVisibilityButton.textContent = spoilerOpenActionText;
+            for (let spoilerButton of childSpoilerButtons) {
+                closeSpoiler(spoilerButton, getSpoilerElement(spoilerButton));
+            }
+        } else {
+            toggleSpoilerVisibilityButton.classList.add('active');
+            toggleSpoilerVisibilityButton.textContent = spoilerCloseActionText;
+            for (let spoilerButton of childSpoilerButtons) {
+                openSpoiler(spoilerButton, getSpoilerElement(spoilerButton));
+            }
+        }
+    })
+})
 
 function getSpoilerElement(spoilerButton) {
     if (spoilerButton.classList.contains("spoiler-spoilerButton")) {
@@ -39,20 +60,3 @@ for (let spoilerButton of spoilerButtons) {
         }
     );
 }
-
-// кнопка для всех
-toggleSpoilerVisibilityButton.addEventListener('click', function () {
-    if (toggleSpoilerVisibilityButton.classList.contains('active')) {
-        toggleSpoilerVisibilityButton.classList.remove('active');
-        toggleSpoilerVisibilityButton.textContent = spoilerOpenActionText;
-        for (let spoilerButton of spoilerButtons) {
-            closeSpoiler(spoilerButton, getSpoilerElement(spoilerButton));
-        }
-    } else {
-        toggleSpoilerVisibilityButton.classList.add('active');
-        toggleSpoilerVisibilityButton.textContent = spoilerCloseActionText;
-        for (let spoilerButton of spoilerButtons) {
-            openSpoiler(spoilerButton, getSpoilerElement(spoilerButton));
-        }
-    }
-})
