@@ -1,7 +1,7 @@
 const submenuButtons = document.querySelectorAll('.submenu-button');
 
-const toggleVisibilityButtons = document.querySelector('.submenu-total');
-toggleVisibilityButtons.textContent = '(показать все)';
+const toggleMenuVisibilityButton = document.querySelector('.submenu-total');
+toggleMenuVisibilityButton.textContent = '(показать все)';
 
 // на все кнопки подменю
 for (let button of submenuButtons) {
@@ -21,18 +21,18 @@ for (let button of submenuButtons) {
 }
 
 // на кнопку показать/скрыть все
-toggleVisibilityButtons.addEventListener('click', function () {
-    if (toggleVisibilityButtons.classList.contains('active')) {
-        toggleVisibilityButtons.classList.remove('active');
-        toggleVisibilityButtons.textContent = '(показать все)';
+toggleMenuVisibilityButton.addEventListener('click', function () {
+    if (toggleMenuVisibilityButton.classList.contains('active')) {
+        toggleMenuVisibilityButton.classList.remove('active');
+        toggleMenuVisibilityButton.textContent = '(показать все)';
         for (let button of submenuButtons) {
             button.classList.remove('active');
             button.parentElement.nextElementSibling.classList.remove('active');
             button.parentElement.nextElementSibling.classList.add('no-display');
         }
     } else {
-        toggleVisibilityButtons.classList.add('active');
-        toggleVisibilityButtons.textContent = '(скрыть все)';
+        toggleMenuVisibilityButton.classList.add('active');
+        toggleMenuVisibilityButton.textContent = '(скрыть все)';
         for (let button of submenuButtons) {
             button.classList.add('active');
             button.parentElement.nextElementSibling.classList.add('active');

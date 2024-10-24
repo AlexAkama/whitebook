@@ -448,6 +448,7 @@ img {
     width: 0;
 }
 
+.spoiler-total,
 .submenu-total {
     font-size: small;
     color: #00a82d;

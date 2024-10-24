@@ -1,25 +1,58 @@
+const spoilerOpenActionText = '(раскрыть все)'
+const spoilerCloseActionText = '(закрыть все)'
+const toggleSpoilerVisibilityButton = document.querySelector('.spoiler-total');
+toggleSpoilerVisibilityButton.textContent = spoilerOpenActionText;
+
 const spoilerButtons = document.querySelectorAll('.spoiler-button, .spoiler-string');
 
-for (let button of spoilerButtons) {
-    let spoiler;
-    if (button.classList.contains("spoiler-button")) {
-        spoiler = button.parentElement.nextElementSibling;
-    } else if (button.classList.contains("spoiler-string")) {
-        spoiler = button.nextElementSibling;
+function getSpoilerElement(spoilerButton) {
+    if (spoilerButton.classList.contains("spoiler-spoilerButton")) {
+        return spoilerButton.parentElement.nextElementSibling;
+    } else if (spoilerButton.classList.contains("spoiler-string")) {
+        return spoilerButton.nextElementSibling;
     } else {
-        console.log("Нет класса спойлера: " + button)
-        continue;
+        console.log("Нет класса спойлера: " + spoilerButton);
+        return null;
     }
-    button.addEventListener('click', function () {
+}
+
+function openSpoiler(spoilerButton, spoiler) {
+    spoilerButton.classList.add('active');
+    spoiler.classList.add('active');
+    spoiler.style.maxHeight = spoiler.scrollHeight + 5 + 'px';
+}
+
+function closeSpoiler(spoilerButton, spoiler) {
+    spoilerButton.classList.remove('active');
+    spoiler.classList.remove('active');
+    spoiler.style.maxHeight = '0';
+}
+
+for (let spoilerButton of spoilerButtons) {
+    const spoiler = getSpoilerElement(spoilerButton);
+    spoilerButton.addEventListener('click', function () {
             if (spoiler.classList.contains('active')) {
-                button.classList.remove('active');
-                spoiler.classList.remove('active');
-                spoiler.style.maxHeight = '0';
+                closeSpoiler(spoilerButton, spoiler);
             } else {
-                button.classList.add('active');
-                spoiler.classList.add('active');
-                spoiler.style.maxHeight = spoiler.scrollHeight + 5 + 'px';
+                openSpoiler(spoilerButton, spoiler);
             }
         }
     );
 }
+
+// кнопка для всех
+toggleSpoilerVisibilityButton.addEventListener('click', function () {
+    if (toggleSpoilerVisibilityButton.classList.contains('active')) {
+        toggleSpoilerVisibilityButton.classList.remove('active');
+        toggleSpoilerVisibilityButton.textContent = spoilerOpenActionText;
+        for (let spoilerButton of spoilerButtons) {
+            closeSpoiler(spoilerButton, getSpoilerElement(spoilerButton));
+        }
+    } else {
+        toggleSpoilerVisibilityButton.classList.add('active');
+        toggleSpoilerVisibilityButton.textContent = spoilerCloseActionText;
+        for (let spoilerButton of spoilerButtons) {
+            openSpoiler(spoilerButton, getSpoilerElement(spoilerButton));
+        }
+    }
+})

@@ -20,7 +20,7 @@ search.addEventListener('change', function () {
                 console.log(element);
             }
         }
-        toggleVisibilityButtons.classList.add('no-display');
+        toggleMenuVisibilityButton.classList.add('no-display');
         searchBox.classList.add('icon-cancel');
     } else {
         for (let button of submenuButtons) {
@@ -34,7 +34,7 @@ search.addEventListener('change', function () {
         for (let element of elements) {
             element.classList.remove('no-display');
         }
-        toggleVisibilityButtons.classList.remove('no-display');
+        toggleMenuVisibilityButton.classList.remove('no-display');
         searchBox.classList.remove('icon-cancel');
     }
 
