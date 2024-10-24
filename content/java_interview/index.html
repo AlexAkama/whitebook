@@ -251,8 +251,10 @@
                     </p>
                     <ul class="menu no-display">
                         <li><a href="./multithreading/#mutex">Мьютекс и Монитор</a></li>
-                        <li><a href="./multithreading/#static_monitor">Монитор статического синхронизированного класса</a></li>
-                        <li><a href="./multithreading/#non_static_monitor">Монитор нестатического синхронизированного класса</a></li>
+                        <li><a href="./multithreading/#static_monitor">Монитор статического синхронизированного
+                            класса</a></li>
+                        <li><a href="./multithreading/#non_static_monitor">Монитор нестатического синхронизированного
+                            класса</a></li>
                     </ul>
                 </li>
                 <li>
@@ -262,7 +264,8 @@
                     </p>
                     <ul class="menu no-display">
                         <li><a href="./multithreading/#q4_synchronization">Что такое синхронизация?</a></li>
-                        <li><a href="./multithreading/#q4_ways">Какие способы синхронизации существуют в&nbsp;JAVA?</a></li>
+                        <li><a href="./multithreading/#q4_ways">Какие способы синхронизации существуют в&nbsp;JAVA?</a>
+                        </li>
                     </ul>
                 </li>
                 <li><a href="./multithreading/#q5">Методы wait(), notify() и notifyAll()</a></li>
@@ -775,7 +778,8 @@
                     <ul class="menu no-display">
                         <li><a href="./sql/#ddl">DDL <span class="example">(Data Definition Language)</span></a></li>
                         <li><a href="./sql/#dcl">DCL <span class="example">(Data Control Language)</span></a></li>
-                        <li><a href="./sql/#tcl">TCL <span class="example">(Тгаnsасtiоn Соntrol Language)</span></a></li>
+                        <li><a href="./sql/#tcl">TCL <span class="example">(Тгаnsасtiоn Соntrol Language)</span></a>
+                        </li>
                         <li><a href="./sql/#dml">DML <span class="example">(Data Manipulation Language)</span></a></li>
                     </ul>
                 </li>
@@ -859,7 +863,8 @@
                     <ul class="menu no-display">
                         <li><a href="./sql/#constraints">Ограничения (constraints)</a></li>
                         <li><a href="./sql/#keys">Ключи</a></li>
-                        <li><a href="./sql/#primary_unique_diff">Какие отличия между ограничениями PRIMARY и UNIQUE?</a></li>
+                        <li><a href="./sql/#primary_unique_diff">Какие отличия между ограничениями PRIMARY и UNIQUE?</a>
+                        </li>
                         <li><a href="./sql/#fk_null">Может FOREIGN KEY = NULL?</a></li>
                         <li><a href="./sql/#surrogate">Что такое суррогатные ключи?</a></li>
                     </ul>
@@ -888,11 +893,13 @@
                                 <li><a href="./sql/#index_cluster_system">Индексы в кластерных системах</a></li>
                             </ul>
                         </li>
-                        <li><a href="./sql/#index_cluster_diff">В чем отличие между кластерными и некластерными индексами?</a></li>
+                        <li><a href="./sql/#index_cluster_diff">В чем отличие между кластерными и некластерными
+                            индексами?</a></li>
                         <li><a href="./sql/#index_not_selectived">
                             Имеет ли смысл индексировать данные, имеющие небольшое количество возможных значений?
                         </a></li>
-                        <li><a href="./sql/#index_full_scan">Когда полное сканирование набора данных выгоднее доступа по индексу?</a></li>
+                        <li><a href="./sql/#index_full_scan">Когда полное сканирование набора данных выгоднее доступа по
+                            индексу?</a></li>
                         <li><a href="./sql/#index_create">Как создать индекс?</a></li>
                     </ul>
                 </li>
@@ -1180,8 +1187,8 @@
                                 приложения (службы, слои доступа к данным, контроллеры).
                             </p>
                             <div class="code">
-                                <pre>   @Component
-   public class MyComponent {
+                                <pre>   <an>@Component</an>
+   public class <class>MyComponent</class> {
        // Bean definition
    }</pre>
                             </div>
@@ -1193,10 +1200,10 @@
                                 в конфигурационном классе, отмеченном аннотацией <an>@Configuration</an>.
                             </p>
                             <div class="code">
-                                <pre>   @Configuration
-   public class AppConfig {
-       @Bean
-       public MyBean myBean() {
+                                <pre>   <an>@Configuration</an>
+   public class <class>AppConfig</class> {
+       <an>@Bean</an>
+       public MyBean <method>myBean</method>() {
            return new MyBean();
        }
    }</pre>
@@ -1208,7 +1215,7 @@
                                 <br>Бины также могут быть определены в XML-файлах конфигурации с использованием
                                 &lt;bean&gt; элементов.
                             </p>
-                            <div class="code">
+                            <div class="code code--one-line">
                                 <pre>   &lt;bean id="myBean" class="com.example.MyBean"/&gt;</pre>
                             </div>
                         </li>
@@ -1228,12 +1235,12 @@
                                 при создании экземпляра класса и делает объект неизменяемым после его создания.
                             </p>
                             <div class="code">
-                                <pre>   public class MyService {
-       private final Dependency dependency;
+                                <pre>   public class <class>MyService</class> {
+       private final Dependency <field>dependency</field>;
 
-       @Autowired
-       public MyService(Dependency dependency) {
-           this.dependency = dependency;
+       <an>@Autowired</an>
+       public <method>MyService</method>(Dependency dependency) {
+           this.<field>dependency</field> = dependency;
        }
    }</pre>
                             </div>
@@ -1246,12 +1253,12 @@
                                 но требует дополнительного кода для проверки, что все зависимости установлены.
                             </p>
                             <div class="code">
-                                <pre>   public class MyService {
-       private Dependency dependency;
+                                <pre>   public class <class>MyService</class> {
+       private Dependency <field>dependency</field>;
 
-       @Autowired
-       public void setDependency(Dependency dependency) {
-           this.dependency = dependency;
+       <an>@Autowired</an>
+       public void <method>setDependency</method>(Dependency dependency) {
+           this.<field>dependency</field> = dependency;
        }
    }</pre>
                             </div>
@@ -1264,9 +1271,9 @@
                                 так как нарушает инкапсуляцию и затрудняет тестирование.
                             </p>
                             <div class="code">
-                                <pre>   public class MyService {
-       @Autowired
-       private Dependency dependency;
+                                <pre>   public class <class>MyService</class> {
+       <an>@Autowired</an>
+       private Dependency <field>dependency</field>;
    }</pre>
                             </div>
                         </li>
@@ -1324,8 +1331,68 @@
     <div>
         <h4>Многопоточка</h4>
         <ul class="margined">
-            <li>Разница между потоком и процессом?</li>
-            <li>Что такое ThreadLocal переменная?</li>
+            <li>
+                <div>
+                    <p class="spoiler-string">Разница между потоком и процессом?</p>
+                    <div class="spoiler">
+                        <p class="term mb10">
+                            <span>Процесс</span>
+                            <br>Это независимая программная сущность, которая располагает своим собственным адресным
+                            пространством и системными ресурсами. Процессы изолированы друг от друга и только
+                            взаимодействуют через межпроцессное взаимодействие (IPC).
+                        </p>
+                        <p class="term mb10">
+                            <span>Поток</span>
+                            <br>Это более легковесная единица выполнения, которая существует внутри процесса и
+                            использует общее адресное пространство процесса. Потоки могут совместно использовать память
+                            и ресурсы процесса, что делает переключение контекста между потоками более быстрым по
+                            сравнению с процессами.
+                        </p>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <p class="spoiler-string">Что такое ThreadLocal переменная?</p>
+                    <div class="spoiler">
+                        <p class="term mb10">
+                            <span>ThreadLocal</span>
+                            -&nbsp;это специальный вид переменной в Java, который позволяет каждому потоку иметь
+                            собственное, независимое значение этой переменной.
+                            <br>То есть, даже если несколько потоков обращаются к одной и той же ThreadLocal переменной,
+                            на самом деле каждый поток работает со своим собственным экземпляром этой переменной.
+                        </p>
+                        <p class="bold mb10">Основные особенности ThreadLocal:</p>
+                        <ul>
+                            <li>
+                                <p class="term mb10">
+                                    <span>Изолирование данных</span>
+                                    <br>Каждый поток работает со своим значением, что устраняет необходимость в
+                                    синхронизации доступа к данным между потоками. Это делает ThreadLocal полезным для
+                                    хранения данных, связанных с текущим потоком, например, пользовательской сессии или
+                                    транзакции.
+                                </p>
+                            </li>
+                            <li>
+                                <p class="term mb10">
+                                    <span>Производительность</span>
+                                    <br>Поскольку каждый поток работает с собственным экземпляром переменной, нет
+                                    контенциональности между потоками при доступе к ThreadLocal, что может улучшить
+                                    производительность в многопоточных приложениях.
+                                </p>
+                            </li>
+                            <li>
+                                <p class="term mb10">
+                                    <span>Жизненный цикл</span>
+                                    <br>Значения, хранимые в ThreadLocal, существуют в течение всего времени жизни
+                                    потока. Это позволяет использовать ThreadLocal для хранения информации,
+                                    которая актуальна в контексте выполнения одного потока.
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
             <li>
                 <p class="spoiler-string">Каким образом можно синхронизировать доступ к общей коллекции в&nbsp;JAVA?</p>
                 <div class="spoiler">
@@ -1336,7 +1403,7 @@
                                 <span>Collections<wbr>.synchronizedList/Set/Map</span>
                                 <br>Обернуть коллекцию в синхронизированную версию
                             </p>
-                            <div class="code">
+                            <div class="code code--one-line">
                                 List&lt;Integer&gt; synchronizedList = Collections.synchronizedList(new ArrayList<>());
                             </div>
                         </li>
@@ -1353,7 +1420,8 @@
                                 Использовать блоки synchronized в коде доступа к коллекции
                             </p>
                             <div class="code">
-                                synchronized (collection) {
+                                <field>synchronized</field>
+                                (collection) {
                                 <br>&nbsp;&nbsp;// код работы с коллекцией
                                 <br>}
                             </div>
@@ -1371,10 +1439,57 @@
 
                 </div>
             </li>
-            <li>У нас есть какая-то переменная i. Она volatile, она равняется нулю.
-                Я в двух потоках делаю инкременты этой переменной. Это будет потокобезопасно?
+            <li>
+                <div>
+                    <p class="spoiler-string">У нас есть какая-то переменная i. Она volatile, она равняется нулю.
+                        Я в двух потоках делаю инкременты этой переменной. Это будет потокобезопасно?</p>
+                    <div class="spoiler">
+                        <p> Ожидается ответ - нет.
+                            <br>Но если делать инкрементацию в синхронизированном методе - то да.
+                            <br>А лучще всего использовать Atomic-классы.
+                        </p>
+                    </div>
+                </div>
             </li>
-            <li>Почему в данном случае Atomic более предпочтительно использовать для счетчиков?</li>
+            <li>
+                <div>
+                    <p class="spoiler-string">
+                        Почему в данном случае Atomic более предпочтительно использовать для счетчиков?</p>
+                    <div class="spoiler">
+                        <p class="term">Тут надо сказать - <span>в многопоточной среде.</span></p>
+                        <p class="main-mind">
+                            когда необходимо часто обновлять значение переменной
+                            (не обязательно счетчика) из разных потоков.</p>
+                        <p class="bold mb10">Причины:</p>
+                        <ul>
+                            <li>
+                                <p class="term mb10">
+                                    <span>Безопасность (в многопоточности)</span>
+                                    <br>Классы из пакета java.util.concurrent.atomic обеспечивают атомарные
+                                    операции, что означает, что операции инкрементации и декрементации
+                                    выполняются за одну неделимую операцию.
+                                    <br>Это предотвращает проблемы, такие как "гоночные" состояния, без необходимости
+                                    использовать явные блокировки (synchronized).</p>
+                            </li>
+                            <li>
+                                <p class="term mb10">
+                                    <span>Производительность</span>
+                                    <br>Использование атомарных классов может быть более производительным,
+                                    чем явные блокировки, такие как synchronized, поскольку они не блокируют потоки.
+                                    <br>Вместо этого, они полагаются на низкоуровневые атомарные инструкции процессора,
+                                    такие как <span class="no_wrap">CAS(Compare-And-Swap)</span>.</p>
+                            </li>
+                            <li>
+                                <p class="term mb10">
+                                    <span>Простота использования</span>
+                                    <br>Атомарные классы предоставляют простые методы для выполнения атомарных
+                                    операций, такие как incrementAndGet(), decrementAndGet(), и т.д.,
+                                    что делает код более читаемым и менее подверженным ошибкам.</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
         </ul>
     </div>
 
@@ -1415,7 +1530,7 @@
                             <p class="term mb10">
                                 <span>Чёткое определение логики разделения данных:</span><br>
                                 нужно четко решить по какому критерию данные будут
-                                распределены между шардамию
+                                распределены между шардами
                                 (например, по какому-то идентификатору, временному интервалу и т.д.).
                             </p>
                         </li>
@@ -1519,7 +1634,8 @@
                 ">Что такое Testcontainers?</p>
                 <div class="spoiler">
                     <p class="term"><span>Testcontainers</span>
-                        — это библиотека для написания тестов в&nbsp;JAVA, которая позволяет запускать тесты с использованием
+                        — это библиотека для написания тестов в&nbsp;JAVA, которая позволяет запускать тесты с
+                        использованием
                         изолированных контейнеров Docker.
                         Она помогает создавать тестовые среды, которые могут включать
                         базы данных, очереди сообщений и другие сервисы, необходимые для тестирования.</p>

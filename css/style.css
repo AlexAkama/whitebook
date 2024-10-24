@@ -873,7 +873,7 @@ an,
     padding: 0 5px 0 10px; /*0 что бы нормально скрывался*/
 }
 
-.spoiler :last-child {
+.spoiler>:last-child {
     margin-bottom: 10px;
 }
 
