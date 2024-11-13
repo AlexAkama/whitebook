@@ -20,63 +20,56 @@
         <p><a href="..">core</a></p>
         <p>STREAM api</p>
     </div>
-    <h4 class="no_mt">Вопросы:</h4>
-    <ol class="menu">
-        <li><a href="#q1">Что такое Stream API?</a></li>
-        <li><a href="#q2">Способы создания стрима</a></li>
-        <li><a href="#q3">Промежуточные методы</a></li>
-        <li><a href="#q4">Терминальные методы</a></li>
-        <li><a href="#q5">Класс Collectors</a></li>
-        <li><a href="#q6">Параллельная обработка</a></li>
-        <li><a href="#q7">Стримы для примитивов</a></li>
-    </ol>
+    <h3 class="no_mt">Вопросы:</h3>
+    <ul class="menu">
+        <li><a href="#about">Что такое Stream API?</a></li>
+        <li><a href="#creating">Способы создания стрима</a></li>
+        <li><a href="#intermediate">Промежуточные методы</a></li>
+        <li><a href="#terminal">Терминальные методы</a></li>
+        <li><a href="#collectors">Класс Collectors</a></li>
+        <li><a href="#parallel">Параллельная обработка</a></li>
+        <li><a href="#primitive">Стримы для примитивов</a></li>
+        <li><a href="#patterns">Какие паттерны проектирования используется для реализации?</a></li>
+    </ul>
 </section>
 
-<section class="container" id="q1">
-    <h1>Что такое Stream API?</h1>
+<section class="container" id="about">
+    <h1><a href="#">Что такое Stream API?</a></h1>
     <p class="main-mind">
         Интерфейс java.util.Stream представляет собой последовательность элементов, над которой можно
         производить различные операции.
     </p>
 
-    <h4>Для чего нужны стримы?</h4>
     <p class="main-mind">
         Нужны для упрощения работы с наборами данных, в частности, упростить операции фильтрации,
         сортировки и другие манипуляции с данными.
     </p>
-    <div class="code">
-        <p>IntStream.of(50, 60, 70, 80, 90, 100, 110, 120)</p>
-        <p class="tab-3">.filter(x -> x < 90)</p>
-        <p class="tab-3">.map(x -> x + 10)</p>
-        <p class="tab-3">.limit(3)</p>
-        <p class="tab-3">.forEach(System.out::print);</p>
-    </div>
+
     <hr>
-    <h4>Создание экземпляра Stream</h4>
-    <div class="code no_mb">
-        <p>Stream.empty() //Пустой стрим</p>
-        <p>list.stream() //Стрим из List</p>
-        <p>map.entrySet().stream() //Стрим из Map</p>
-        <p>Arrays.stream(array) //Стрим из массива</p>
-        <p>Stream.of("1", "2", "3") //Стрим из указанных элементов</p>
+    <h3>Создание экземпляра Stream</h3>
+    <div class="code no_mb"><pre>Stream.empty() <comment>//Пустой стрим</comment>
+list.stream() <comment>//Стрим из List</comment>
+map.entrySet().stream() <comment>//Стрим из Map</comment>
+Arrays.stream(array) <comment>//Стрим из массива</comment>
+Stream.of("1", "2", "3") <comment>//Стрим из указанных элементов</comment></pre>
     </div>
-    <p class="example">Стрим из BufferedReader с помощью метода lines(); нужно закрывать close().</p>
-    <a class="example" href="#q2">подробнее</a>
-    <p></p>
+    <p class="example m">Стрим из BufferedReader с помощью метода lines(); нужно закрывать close().</p>
+    <p class=""><a class="example" href="#creating">подробнее</a></p>
+
     <hr>
     <h3>Типы операций</h3>
-    <p>
-        <strong>Промежуточные</strong>
-        (“intermediate”, “lazy”) - обрабатывают поступающие элементы и возвращают стрим.
-        Может быть <strong>много или ни одной</strong>.
+    <p class="term">
+        <span>Промежуточные</span> ("intermediate", "lazy")
+        <br>Обрабатывают поступающие элементы и возвращают стрим.
+        <br>Может быть <span>много или ни одной</span>.
     </p>
-    <p>
-        <strong>Терминальные</strong>
-        (“terminal”, ещё называют “eager”) - обрабатывают элементы и завершают работу стрима,
-        может быть <strong>только один</strong>.
+    <p class="term">
+        <span>Терминальные</span> ("terminal", ещё называют "eager")
+        <br>Обрабатывают элементы и завершают работу стрима.
+        <br>Может быть <span>только один</span>.
     </p>
     <h4>Важные моменты:</h4>
-    <ul>
+    <ul class="margined">
         <li>
             <p class="main-mind no_mb">Обработка не начнётся до тех пор, пока не будет вызван терминальный оператор.</p>
             <p class="example">list.stream().filter(s - > s > 5) (не возьмёт ни единого элемента из списка);</p>
@@ -107,214 +100,217 @@
     </table>
 
     <hr>
-    <h4>Почему Stream называют ленивым?</h4>
+    <h3>Почему Stream называют ленивым?</h3>
     <p class="main-mind example">
         Ленивое программирование - технология, которая позволяет вам отсрочить вычисление кода до тех пор,
         пока не понадобится его результирующее значение.
     </p>
     <p>Блок обработки – промежуточные операции не выполняются, пока не вызовется терминальная.</p>
 
-    <a href="#" class="button button--top"></a>
+    <a class="button button--to_top_menu" href="#"></a>
 </section>
 
-<section class="container" id="q2">
-    <h1>Способы создания стрима</h1>
+<section class="container" id="creating">
+    <h1><a href="#">Способы создания стрима</a></h1>
 
-    <p class="no_mb"><strong>Из коллекции</strong>:</p>
+    <p class="term no_mb"><span>Из коллекции</span>:</p>
     <p class="code">Stream&lt;String&gt; fromCollection = Arrays.asList("x", "y", "z").stream();</p>
 
-    <p class="no_mb"><strong>Из набора значений</strong>:</p>
+    <p class="term no_mb"><span>Из набора значений</span>:</p>
     <p class="code">Stream&lt;String&gt; fromValues = Stream.of("x", "y", "z");</p>
 
-    <p class="no_mb"><strong>Из массива</strong>:</p>
+    <p class="term no_mb"><span>Из массива</span>:</p>
     <p class="code">Stream&lt;String&gt; fromArray = Arrays.stream(new String[]{"x", "y", "z"});</p>
 
-    <p class="no_mb"><strong>Из файла</strong> (каждая строка в файле будет отдельным элементом в стриме):</p>
+    <p class="term no_mb"><span>Из файла</span> (каждая строка в файле будет отдельным элементом в стриме):</p>
     <p class="code">Stream&lt;String&gt; fromFile = Files.lines(Paths.get("input.txt"));</p>
 
-    <p class="no_mb"><strong>Из строки:</strong>:</p>
+    <p class="term no_mb"><span>Из строки</span>:</p>
     <p class="code">IntStream fromString = "0123456789".chars();</p>
 
-    <p class="no_mb">С помощью <strong>Stream.builder()</strong>:</p>
+    <p class="term no_mb">С помощью <span>Stream.builder()</span>:</p>
     <p class="code">Stream&lt;String&gt; fromBuilder = Stream.builder().add("z").add("y").add("z").build();</p>
 
-    <p class="no_mb">С помощью <strong>Stream.iterate()</strong> (бесконечный):</p>
+    <p class="term no_mb">С помощью <span>Stream.iterate()</span> (бесконечный):</p>
     <p class="code">Stream&lt;Integer&gt; fromIterate = Stream.iterate(1, n -> n + 1);</p>
 
-    <p class="no_mb">С помощью <strong>Stream.generate()</strong> (бесконечный):</p>
+    <p class="term no_mb">С помощью <span>Stream.generate()</span> (бесконечный):</p>
     <p class="code">Stream&lt;String&gt; fromGenerate = Stream.generate(() -> "0");</p>
 
-    <a href="#" class="button button--top"></a>
+    <a class="button button--to_top_menu" href="#"></a>
 </section>
 
-<section class="container" id="q3">
-    <h1>Промежуточные методы</h1>
-    <table class="list list--dictionary" aria-label="Промежуточные методы">
-        <thead>
-        <tr>
-            <th>Метод</th>
-            <th>Описание</th>
-        <tr>
-        </thead>
-        <tr>
-            <td>peek()</td>
-            <td>
-                <p>Может видеть состояние данных в потоке (в основном для отладки)</p>
-                <p class="code-word example">Stream&lt;T&gt; peek(Consumer&lt;? super T&gt; action);</p>
-            </td>
-        </tr>
-        <tr>
-            <td>map()</td>
-            <td>
-                <p>Позволяет задать функцию преобразования одного объекта в другой</p>
-                <p class="code-word example">
-                    &lt;R&gt; Stream&lt;R&gt; map(Function&lt;? super T, ? extends R&gt; mapper);
-                </p>
-            </td>
-        </tr>
-        <tr>
-            <td>flatMap()</td>
-            <td>
-                <p>Можно преобразовать один элемент в ноль, один или множество других</p>
-                <p class="code-word example">
-                    &lt;R&gt; Stream&lt;R&gt; flatMap(Function&lt;? super T,
-                    ? extends Stream&lt;? extends R&gt;&gt; mapper);
-                </p>
-            </td>
-        </tr>
-        <tr>
-            <td>filter()</td>
-            <td>
-                <p>Который фильтрует все элементы, возвращая только те, что соответствуют условию</p>
-                <p class="code-word example">Stream&lt;T&gt; filter(Predicate&lt;? super T&gt; predicate);</p>
-            </td>
-        </tr>
-        <tr>
-            <td>limit()</td>
-            <td>
-                <p>Возвращает модифицированный поток, в котором не более n элементов</p>
-                <p class="code-word example">Stream&lt;T&gt; limit(long maxSize);</p>
-            </td>
-        </tr>
-        <tr>
-            <td>skip()</td>
-            <td>
-                <p>Возвращает новый поток, в котором пропущены первые n элементов</p>
-                <p class="code-word example">Stream&lt;T&gt; skip(long n);</p>
-            </td>
-        </tr>
-        <tr>
-            <td>sorted()</td>
-            <td>
-                <p>Для сортировки тех объектов, которые реализуют интерфейс Comparable</p>
-                <p class="code-word example">Stream&lt;T&gt; sorted();</p>
-                <p class="example">или</p>
-                <p>Для реализации своей логики сортировки</p>
-                <p class="code-word example">Stream&lt;T&gt; sorted(Comparator&lt;? super T&gt; comparator);</p>
-            </td>
-        </tr>
-        <tr>
-            <td>distinct()</td>
-            <td>
-                <p>Возвращает только уникальные элементы в виде потока</p>
-                <p class="code-word example">Stream&lt;T&gt; distinct();</p>
-            </td>
-        </tr>
-    </table>
-    <a href="#" class="button button--top"></a>
+<section class="container" id="intermediate">
+    <h1><a href="#">Промежуточные методы</a></h1>
+    <div class="scroll">
+        <table class="list list--dictionary" aria-label="Промежуточные методы">
+            <thead>
+            <tr>
+                <th>Метод</th>
+                <th>Описание</th>
+            <tr>
+            </thead>
+            <tr>
+                <td>peek()</td>
+                <td>
+                    <p>Может видеть состояние данных в потоке (в основном для отладки)</p>
+                    <p class="code p01">Stream&lt;T&gt; peek(Consumer&lt;? super T&gt; action);</p>
+                </td>
+            </tr>
+            <tr>
+                <td>map()</td>
+                <td>
+                    <p>Позволяет задать функцию преобразования одного объекта в другой</p>
+                    <p class="code p01">
+                        &lt;R&gt; Stream&lt;R&gt; map(Function&lt;? super T, ? extends R&gt; mapper);
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>flatMap()</td>
+                <td>
+                    <p>Можно преобразовать один элемент в ноль, один или множество других</p>
+                    <p class="code p01">
+                        &lt;R&gt; Stream&lt;R&gt; flatMap(Function&lt;? super T,
+                        ? extends Stream&lt;? extends R&gt;&gt; mapper);
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>filter()</td>
+                <td>
+                    <p>Который фильтрует все элементы, возвращая только те, что соответствуют условию</p>
+                    <p class="code p01">Stream&lt;T&gt; filter(Predicate&lt;? super T&gt; predicate);</p>
+                </td>
+            </tr>
+            <tr>
+                <td>limit()</td>
+                <td>
+                    <p>Возвращает модифицированный поток, в котором не более n элементов</p>
+                    <p class="code p01">Stream&lt;T&gt; limit(long maxSize);</p>
+                </td>
+            </tr>
+            <tr>
+                <td>skip()</td>
+                <td>
+                    <p>Возвращает новый поток, в котором пропущены первые n элементов</p>
+                    <p class="code p01">Stream&lt;T&gt; skip(long n);</p>
+                </td>
+            </tr>
+            <tr>
+                <td>sorted()</td>
+                <td>
+                    <p>Для сортировки тех объектов, которые реализуют интерфейс Comparable</p>
+                    <p class="code p01">Stream&lt;T&gt; sorted();</p>
+                    <p class="example">или</p>
+                    <p>Для реализации своей логики сортировки</p>
+                    <p class="code p01">Stream&lt;T&gt; sorted(Comparator&lt;? super T&gt; comparator);</p>
+                </td>
+            </tr>
+            <tr>
+                <td>distinct()</td>
+                <td>
+                    <p>Возвращает только уникальные элементы в виде потока</p>
+                    <p class="code p01">Stream&lt;T&gt; distinct();</p>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <a class="button button--to_top_menu" href="#"></a>
 </section>
 
-<section class="container" id="q4">
-    <h1>Терминальные методы</h1>
-    <table class="list list--dictionary" aria-label="Терминальные методы">
-        <thead>
-        <tr>
-            <th>Метод</th>
-            <th>Описание</th>
-        <tr>
-        </thead>
-        <tr>
-            <td>forEach()</td>
-            <td>
-                <p>Произведет переданное действие с каждым элементом стрима</p>
-                <p class="code-word example">void forEach(Consumer&lt;? super T&gt; action);</p>
-            </td>
-        </tr>
-        <tr>
-            <td>findFirst()</td>
-            <td>
-                <p>Первый в порядке следования элемент из стрима</p>
-                <p>Возвращает Optional т.к. элемента может не быть</p>
-                <p class="code-word example">Optional&lt;T&gt; findFirst();</p>
-            </td>
-        </tr>
-        <tr>
-            <td>allMatch()</td>
-            <td>
-                <p>Позволяет удостовериться, удовлетворяют ли все элементы стрима определенному условию</p>
-                <p class="code-word example">boolean allMatch(Predicate&lt;? super T&gt; predicate);</p>
-            </td>
-        </tr>
-        <tr>
-            <td>min()</td>
-            <td>
-                <p>Возвращает минимальный элемент из стрима</p>
-                <p class="code-word example">Optional&lt;T&gt; min(Comparator&lt;? super T&gt; comparator);</p>
-            </td>
-        </tr>
-        <tr>
-            <td>max()</td>
-            <td>
-                <p>Возвращает максимальный элемент из стрима</p>
-                <p class="code-word example">Optional&lt;T&gt; max(Comparator&lt;? super T&gt; comparator);</p>
-            </td>
-        </tr>
-        <tr>
-            <td>count()</td>
-            <td>
-                <p>Возвращает количество элементов, оставшееся в стриме</p>
-                <p class="code-word example">long count();</p>
-            </td>
-        </tr>
-        <tr>
-            <td>collect()</td>
-            <td>
-                <p style="margin-bottom: 10px">
-                    Собирает элементы стрима в новое хранилище (использует <a href="#q5">Collectors</a>)
-                </p>
-                <p class="code-word example">
-                    &lt;R&gt; R collect(Supplier&lt;R&gt; supplier,
-                    BiConsumer&lt;R, ? super T&gt; accumulator,
-                    BiConsumer&lt;R, R&gt; combiner);
-                </p>
-                <p class="example">или</p>
-                <p class="code-word example">&lt;R, A> R collect(Collector&lt;? super T, A, R&gt; collector);</p>
-            </td>
-        </tr>
-        <tr>
-            <td>reduce()</td>
-            <td>
-                <p style="margin-bottom: 10px">
-                    Позволяет выполнять какое-то действие на всей коллекции и возвращать один результат
-                </p>
-                <p class="code-word example">T reduce(T identity, BinaryOperator&lt;T&gt; accumulator);</p>
-                <p class="example">или</p>
-                <p class="code-word example">Optional&lt;T&gt; reduce(BinaryOperator&lt;T&gt; accumulator);</p>
-                <p class="example">или</p>
-                <p class="code-word example">
-                    &lt;U&gt; U reduce(U identity,
-                    BiFunction&lt;U, ? super T, U&gt; accumulator,
-                    BinaryOperator&lt;U&gt; combiner);
-                </p>
-            </td>
-        </tr>
-    </table>
-
-    <a href="#" class="button button--top"></a>
+<section class="container" id="terminal">
+    <h1><a href="#">Терминальные методы</a></h1>
+    <div class="scroll">
+        <table class="list list--dictionary" aria-label="Терминальные методы">
+            <thead>
+            <tr>
+                <th>Метод</th>
+                <th>Описание</th>
+            <tr>
+            </thead>
+            <tr>
+                <td>forEach()</td>
+                <td>
+                    <p>Произведет переданное действие с каждым элементом стрима</p>
+                    <p class="code p01">void forEach(Consumer&lt;? super T&gt; action);</p>
+                </td>
+            </tr>
+            <tr>
+                <td>findFirst()</td>
+                <td>
+                    <p>Первый в порядке следования элемент из стрима</p>
+                    <p>Возвращает Optional т.к. элемента может не быть</p>
+                    <p class="code p01">Optional&lt;T&gt; findFirst();</p>
+                </td>
+            </tr>
+            <tr>
+                <td>allMatch()</td>
+                <td>
+                    <p>Позволяет удостовериться, удовлетворяют ли все элементы стрима определенному условию</p>
+                    <p class="code p01">boolean allMatch(Predicate&lt;? super T&gt; predicate);</p>
+                </td>
+            </tr>
+            <tr>
+                <td>min()</td>
+                <td>
+                    <p>Возвращает минимальный элемент из стрима</p>
+                    <p class="code p01">Optional&lt;T&gt; min(Comparator&lt;? super T&gt; comparator);</p>
+                </td>
+            </tr>
+            <tr>
+                <td>max()</td>
+                <td>
+                    <p>Возвращает максимальный элемент из стрима</p>
+                    <p class="code p01">Optional&lt;T&gt; max(Comparator&lt;? super T&gt; comparator);</p>
+                </td>
+            </tr>
+            <tr>
+                <td>count()</td>
+                <td>
+                    <p>Возвращает количество элементов, оставшееся в стриме</p>
+                    <p class="code p01">long count();</p>
+                </td>
+            </tr>
+            <tr>
+                <td>collect()</td>
+                <td>
+                    <p style="margin-bottom: 10px">
+                        Собирает элементы стрима в новое хранилище (использует <a href="#collectors">Collectors</a>)
+                    </p>
+                    <p class="code p01">
+                        &lt;R&gt; R collect(Supplier&lt;R&gt; supplier,
+                        BiConsumer&lt;R, ? super T&gt; accumulator,
+                        BiConsumer&lt;R, R&gt; combiner);
+                    </p>
+                    <p class="example">или</p>
+                    <p class="code p01">&lt;R, A> R collect(Collector&lt;? super T, A, R&gt; collector);</p>
+                </td>
+            </tr>
+            <tr>
+                <td>reduce()</td>
+                <td>
+                    <p style="margin-bottom: 10px">
+                        Позволяет выполнять какое-то действие на всей коллекции и возвращать один результат
+                    </p>
+                    <p class="code p01">T reduce(T identity, BinaryOperator&lt;T&gt; accumulator);</p>
+                    <p class="example">или</p>
+                    <p class="code p01">Optional&lt;T&gt; reduce(BinaryOperator&lt;T&gt; accumulator);</p>
+                    <p class="example">или</p>
+                    <p class="code p01">
+                        &lt;U&gt; U reduce(U identity,
+                        BiFunction&lt;U, ? super T, U&gt; accumulator,
+                        BinaryOperator&lt;U&gt; combiner);
+                    </p>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <a class="button button--to_top_menu" href="#"></a>
 </section>
 
-<section class="container" id="q5">
-    <h1>Класс Collectors и его методы</h1>
+<section class="container" id="collectors">
+    <h1><a href="#">Класс Collectors и его методы</a></h1>
     <p class="no_mb">
         в&nbsp;JAVA&nbsp;8 в классе Collectors реализовано несколько распространённых коллекторов:
     </p>
@@ -380,80 +376,61 @@
         </tr>
     </table>
 
-    <p class="no_mb">
-        Так же существует возможность создания собственного коллектора через
-        <span class="code-word example">Collector.of()</span>:
+    <hr>
+    <h3>Как создать свой коллектор?</h3>
+    <p class="term">
+        Существует возможность создания собственного коллектора через
+        <span>Collector.of()</span>:
     </p>
-    <div class="code">
-        <p>Collector
-            &lt;String, List&lt;String&gt;, List&lt;String&gt;&gt; toList = Collector.of(
-        </p>
-        <p class="tab-3">ArrayList::new,</p>
-        <p class="tab-3">List::add,</p>
-        <p class="tab-3">(l1, l2) -> { l1.addAll(l2); return l1; }</p>
-        <p class="tab-2">);</p>
+    <div class="code"><pre>Collector &lt;String, List&lt;String&gt;, List&lt;String&gt;&gt; toList = Collector.of(
+        ArrayList::new,
+        List::add,
+        (l1, l2) -> { l1.addAll(l2); return l1; }
+    );</pre>
     </div>
-
-    <a href="#" class="button button--top"></a>
+    <a class="button button--to_top_menu" href="#"></a>
 </section>
 
-<section class="container" id="q6">
-    <h1>Параллельная обработке в&nbsp;JAVA&nbsp;8.</h1>
+<section class="container" id="parallel">
+    <h1><a href="#">Параллельная обработке в&nbsp;JAVA&nbsp;8</a></h1>
     <p>Стримы могут быть последовательными и параллельными.</p>
-    <p>
-        Операции над последовательными стримами выполняются в одном потоке процессора, над параллельными — используя
-        несколько потоков процессора.
-    </p>
-    <p>
-        Параллельные стримы используют общий ForkJoinPool доступный через статический ForkJoinPool.commonPool() метод.
-        При этом, если окружение не является многоядерным, то поток будет выполняться как последовательный.
-    </p>
-    <p>
-        Фактически применение параллельных стримов сводится к тому, что данные в стримах будут разделены на части,
+    <p> Операции над последовательными стримами выполняются в одном потоке процессора, над параллельными — используя
+        несколько потоков процессора. </p>
+    <p> Параллельные стримы используют общий ForkJoinPool доступный через статический ForkJoinPool.commonPool() метод.
+        <br>При этом, если окружение не является многоядерным, то поток будет выполняться как последовательный. </p>
+    <p> Фактически применение параллельных стримов сводится к тому, что данные в стримах будут разделены на части,
         каждая часть обрабатывается на отдельном ядре процессора, и в конце эти части соединяются,
-        и над ними выполняются конечные операции.
-    </p>
-    <p>
-        Для создания параллельного потока из коллекции можно также использовать метод
-        <span class="code-word example">parallelStream()</span> интерфейса Collection.
-    </p>
-    <p>
-        Чтобы сделать обычный последовательный стрим параллельным, надо вызвать у объекта Stream
-        метод <span class="code-word example">parallel()</span>.
-    </p>
-    <p>
-        Метод <span class="code-word example">isParallel()</span> позволяет узнать является ли стрим параллельным.
-    </p>
-    <p>
-        С помощью, методов <span class="code-word example">parallel()</span>
-        и <span class="code-word example">sequential()</span> можно определять какие операции могут быть
-        параллельными, а какие только последовательными.
-    </p>
+        и над ними выполняются конечные операции. </p>
+    <p class="term"> Для создания параллельного потока из коллекции можно также использовать метод
+        <span>parallelStream()</span> интерфейса Collection. </p>
+    <p class="term"> Чтобы сделать обычный последовательный стрим параллельным, надо вызвать у объекта Stream
+        метод <span>parallel()</span>. </p>
+    <p class="term"> Метод <span>isParallel()</span> позволяет узнать является ли стрим параллельным.</p>
+    <p class="term"> С помощью, методов <span>parallel()</span> и <span>sequential()</span>
+        можно определять какие операции могут быть параллельными, а какие только последовательными. </p>
     <p class="no_mb">Так же из любого последовательного стрима можно сделать параллельный и наоборот:</p>
-    <div class="code">
-        <p>collection</p>
-        <p class="tab-2">.stream()
-        <p class="tab-2">.peek(...) // операция последовательна</p>
-        <p class="tab-2">.parallel()</p>
-        <p class="tab-2">.map(...) // операция может выполняться параллельно</p>
-        <p class="tab-2">.sequential()</p>
-        <p class="tab-2">.reduce(...) // операция снова последовательна</p>
+    <div class="code"><pre>collection
+    .stream()
+    .peek(...) <comment>// операция последовательна</comment>
+    .parallel()
+    .map(...) <comment>// операция может выполняться параллельно</comment>
+    .sequential()
+    .reduce(...) <comment>// операция снова последовательна</comment></pre>
     </div>
 
-    <p class="no_mb"> Как правило, <strong>элементы</strong> передаются <strong>в стрим в том же порядке</strong>,
-        в котором они определены в источнике данных.</p>
-    <p class="no_mb">При работе с параллельными стримами
-        <strong>система сохраняет порядок</strong> следования элементов.</p>
-    <p>
-        <strong>Исключение</strong> составляет метод <span class="code-word example">forEach()</span>,
+    <p class="term"> Как правило, <span>элементы</span> передаются <span>в стрим в том же порядке</span>,
+        в котором они определены в источнике данных.
+        <br>При работе с параллельными стримами <span>система сохраняет порядок</span> следования элементов.
+        <br><span>Исключение</span> составляет метод <span>forEach()</span>,
         который может выводить элементы в произвольном порядке. И чтобы сохранить порядок следования,
-        необходимо применять метод <span class="code-word example">forEachOrdered()</span>.
+        необходимо применять метод <span>forEachOrdered()</span>.
     </p>
 
-    <p class="no_mb">
-        Критерии, которые могут повлиять на <strong>производительность</strong> в параллельных стримах:
-    </p>
-    <ul class="tab-2">
+    <hr>
+    <h3 class="term">
+        Критерии, которые могут повлиять на <span>производительность</span> в параллельных стримах:
+    </h3>
+    <ul class="margined">
         <li>Размер данных - чем больше данных, тем сложнее сначала разделять данные, а потом их соединять.</li>
         <li>
             Количество ядер процессора. Теоретически, чем больше ядер в компьютере, тем быстрее
@@ -479,48 +456,77 @@
             минуты;
         </li>
         <li>
-            <p>
+            <p class="term">
                 Сохранение порядка в параллельных стримах увеличивает издержки при выполнении и если
                 порядок не важен, то имеется возможность отключить его сохранение и тем самым увеличить
                 производительность, использовав промежуточную операцию
-                <span class="code-word example">unordered()</span>:
+                <span>unordered()</span>:
             </p>
-            <div class="code">
-                <p>collection.parallelStream()</p>
-                <p class="tab-2">.sorted()</p>
-                <p class="tab-2">.unordered()</p>
-                <p class="tab-2">.collect(Collectors.toList());</p>
+            <div class="code"><pre>collection.parallelStream()
+    .sorted()
+    .unordered()
+    .collect(Collectors.toList());</pre>
             </div>
 
         </li>
     </ul>
-
-    <a href="#" class="button button--top"></a>
+    <a class="button button--to_top_menu" href="#"></a>
 </section>
 
-<section class="container" id="q7">
-    <h1>Стримы для примитивов</h1>
-    <p>
-        Кроме универсальных объектных существуют особые виды стримов для работы с примитивными
-        типами данных int, long и double: <strong>IntStream, LongStream и DoubleStream</strong>.
-    </p>
-    <p class="no_mb">
-        Эти примитивные стримы работают так же, как и обычные объектные, но со следующими отличиями:
-    </p>
-    <ul class="tab-2">
+<section class="container" id="primitive">
+    <h1><a href="#">Стримы для примитивов</a></h1>
+    <p class="term"> Кроме универсальных объектных существуют особые виды стримов для работы с примитивными
+        типами данных int, long и double: <span>IntStream</span>, <span>LongStream</span>
+        и&nbsp;<span>DoubleStream</span>. </p>
+    <p> Эти примитивные стримы работают так же, как и обычные объектные, но со следующими отличиями: </p>
+    <ul class="tab-2 margined">
         <li>
-
-            <p><strong>используют специализированные лямбда-выражения;</strong></p>
+            <p class="term"><span>используют специализированные лямбда-выражения</span></p>
             <p class="example">например, IntFunction или IntPredicate вместо Function и Predicate</p>
         </li>
         <li>
-            поддерживают <strong>дополнительные конечные операции: </strong>
-            <span class="code-word example">sum()</span>,
-            <span class="code-word example">average()</span>,
-            <span class="code-word example">mapToObj()</span>.
+            <p class="term"></p>поддерживают <span>дополнительные конечные операции</span>
+            <p class="example">sum(), average(), mapToObj()</p>
         </li>
     </ul>
-    <a href="#" class="button button--top"></a>
+    <a class="button button--to_top_menu" href="#"></a>
+</section>
+
+<section class="container" id="patterns">
+    <h1><a href="#">Какие паттерны проектирования используется для реализации?</a></h1>
+    <div>
+        <p>Stream API в Java использует несколько паттернов проектирования для реализации своей функциональности.</p>
+        <p>Основные из них:</p>
+
+        <p class="term mb10">
+            <span>Шаблон "Функциональный интерфейс"</span>
+            <br>Stream API во многом опирается на лямбда-выражения и функциональные интерфейсы.
+            Функции, такие как map, filter, reduce, принимают в качестве параметров функциональные
+            интерфейсы, что позволяет использовать лямбда-выражения для их реализации.</p>
+
+        <p class="term mb10">
+            <span>Шаблон "Итератор" (Iterator)</span>
+            <br>Stream API предоставляет возможность обрабатывать элементы потока последовательно,
+            аналогично паттерну Итератор, но добавляет дополнительную гибкость благодаря ленивым
+            операциям и параллельной обработке.</p>
+
+        <p class="term mb10">
+            <span>Шаблон "Строитель" (Builder)</span>
+            <br>Операции со стримами, такие как filter, map, sorted, комбинируются для создания конвейера обработки
+            данных. Каждая из этих операций возвращает новый Stream, позволяя строить цепочку операций.</p>
+
+        <p class="term mb10">
+            <span>Шаблон "Декоратор"</span>
+            <br>Некоторые операции Stream API, такие как filter и map, можно рассматривать как декораторы,
+            поскольку они оборачивают существующий поток в новый, добавляя дополнительную функциональность
+            без изменения исходного объекта.</p>
+
+        <p class="term mb10">
+            <span>Шаблон "Команда" (Command)</span>
+            <br>Операции в Stream API, такие как forEach, reduce, выполняют действия,
+            которые представляют собой команды, применяемые к элементам потока.</p>
+    </div>
+    <a class="button button--to_top_menu" href="#"></a>
 </section>
 
 <div class="navi">
@@ -529,10 +535,12 @@
 </div>
 
 <footer>
-        <div class="footer__text"><a href="https://t.me/java40plus" title="Мой блог в телеграм" target="_blank">
+    <div class="footer__text"><a href="https://t.me/java40plus" title="Мой блог в телеграм" target="_blank">
         Ⓒ Алексей Маслов, 2021-2024
     </a></div>
 </footer>
+
+<a href="#" class="button button--top"></a>
 
 </body>
 

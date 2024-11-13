@@ -220,6 +220,10 @@ img {
     margin: 0 !important;
 }
 
+.p01 {
+    padding: 1px 1px 1px 5px !important;
+}
+
 .no_mt {
     margin-top: 0 !important;
 }
