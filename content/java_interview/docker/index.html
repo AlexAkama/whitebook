@@ -38,7 +38,13 @@
             <p><a href="#docker_command">Команды Docker</a></p>
         </li>
         <li>
-            <p><a href="#docker_file_command">Команды DockerFile</a></p>
+            <p class="mb10">
+                <a href="#docker_file_command">Команды DockerFile</a>
+                <span class="submenu-button"></span>
+            </p>
+            <ul class="menu no-display">
+                <li><a href="#from_x2">Можно ли в докер файле написать 2 команды FROM?</a></li>
+            </ul>
         </li>
     </ul>
 </section>
@@ -177,6 +183,7 @@
         <a class="button button--to_content_menu no_mb" href="#docker_base"></a>
     </div>
 
+    <a class="button button--to_top_menu " href="#"></a>
 </section>
 
 <section class="container" id="docker_command">
@@ -234,6 +241,7 @@
             </tbody>
         </table>
     </div>
+    <a class="button button--to_top_menu " href="#"></a>
 </section>
 
 <section class="container" id="docker_file_command">
@@ -364,6 +372,63 @@
             </tbody>
         </table>
     </div>
+
+    <hr>
+    <div id="from_x2">
+        <h3>Можно ли в докер файле написать 2 команды FROM?</h3>
+        <div>
+            <p class="answer">Да. можно</p>
+            <p> В Dockerfile, каждая инструкция FROM начинает новую стадию сборки, и это известный способ создания
+                многоступенчатых сборок (multi-stage builds). Каждая стадия сборки начинается с FROM, и все инструкции,
+                указанные после FROM, применяются к этой стадии до следующей инструкции FROM.</p>
+
+            <p> Использование нескольких FROM может иметь следующие последствия и преимущества: </p>
+
+            <ul>
+                <li class="term mb10">
+                    <span>Многоступенчатая сборка</span>:
+                    <br> Позволяет создавать промежуточные стадии для оптимизации конечного образа.
+                    <br>Например, вы можете использовать первый базовый образ для компиляции и сборки приложения,
+                    а вторую стадию — для создания финального, минимального образа, в который включено только
+                    необходимое для выполнения вашего приложения.
+                    <br>
+                    Это может значительно уменьшить размер финального Docker-образа, так как в конечный образ попадет
+                    только то, что необходимо для работы приложения, без лишних инструментов сборки и зависимостей.
+                </li>
+                <li class="term mb10">
+                    <span>Отдельные логические образы</span>:
+                    <br> Если в Dockerfile используется несколько FROM, это создает несколько отдельных образов.
+                    <br>Они независимы друг от друга, и ваши стадии не будут делить файлы между собой,
+                    если вы явно этого не укажете.
+                </li>
+                <li class="term">
+                    <span>Артефакты между стадиями</span>:
+                    <br>Для передачи файлов между стадиями можно использовать инструкцию
+                    <span class="code-word">COPY --from=stage_name</span> или
+                    <span class="code-word">COPY --from=stage_index</span>.
+                    <br>Это позволяет брать артефакты (например, исполняемые файлы или библиотеки)
+                    из одного образа и помещать их в другой.
+                </li>
+            </ul>
+
+            <p>Пример использования многоступенчатой сборки:</p>
+            <div class="code"><pre><comment># Стадия сборки</comment>
+FROM golang:1.20 AS builder
+WORKDIR /app
+COPY . .
+RUN go build -o myapp
+
+<comment># Финальная стадия</comment>
+FROM ubuntu:22.04
+WORKDIR /app
+COPY --from=builder /app/myapp .
+CMD ["./myapp"]
+</pre>
+            </div>
+        </div>
+    </div>
+
+    <a class="button button--to_top_menu " href="#"></a>
 </section>
 
 <a href="#" class="button button--top"></a>
