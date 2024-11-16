@@ -1478,14 +1478,14 @@
             <div class="code">
                 <pre><an>@Override</an>
 public boolean <method>equals</method>(Object obj) {
-    if (this == obj) <rem>//равен сам себе</rem>
+    if (this == obj) <comment>//равен сам себе</comment>
     return true;
-    if (obj == null) <rem>//не равен нулю</rem>
+    if (obj == null) <comment>//не равен нулю</comment>
     return false;
-    if (getClass() != obj.getClass()) <rem>//объекты одного класса</rem>
+    if (getClass() != obj.getClass()) <comment>//объекты одного класса</comment>
     return false;
-    BlackBox other = (BlackBox) obj; <rem>//приведение</rem>
-    if (varA != other.varA) <rem>//для конкретных переменных класса</rem>
+    BlackBox other = (BlackBox) obj; <comment>//приведение</comment>
+    if (varA != other.varA) <comment>//для конкретных переменных класса</comment>
     return false;
     if (varB != other.varB)
     return false;

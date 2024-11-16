@@ -644,11 +644,6 @@ code {
     color: blue;
 }
 
-.code rem {
-    font-family: inherit;
-    color: #cccccc;
-}
-
 .scroll {
     overflow: auto;
 }

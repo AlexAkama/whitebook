@@ -412,10 +412,10 @@
     public static void <method>main</method>(String[] args) {
         Insurance current = new CarInsurance();
 
-        <rem>// Динамическое связывание на основе объекта потому что метод premium() нестатический</rem>
+        <comment>// Динамическое связывание на основе объекта потому что метод premium() нестатический</comment>
         int premium = current.premium();
 
-        <rem>// Статическое связывание на основе класса, метод category() статический (принадлежит классу)</rem>
+        <comment>// Статическое связывание на основе класса, метод category() статический (принадлежит классу)</comment>
         String category = current.category();
 
         System.out.println("premium : " + premium);
