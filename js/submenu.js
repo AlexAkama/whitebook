@@ -1,9 +1,5 @@
-const submenuButtons = document.querySelectorAll('.submenu-button');
-
-const toggleMenuVisibilityButton = document.querySelector('.submenu-total');
-toggleMenuVisibilityButton.textContent = '(показать все)';
-
 // на все кнопки подменю
+const submenuButtons = document.querySelectorAll('.submenu-button');
 for (let button of submenuButtons) {
     button.addEventListener('click', function () {
             let submenu = button.parentElement.nextElementSibling;
@@ -21,22 +17,26 @@ for (let button of submenuButtons) {
 }
 
 // на кнопку показать/скрыть все
-toggleMenuVisibilityButton.addEventListener('click', function () {
-    if (toggleMenuVisibilityButton.classList.contains('active')) {
-        toggleMenuVisibilityButton.classList.remove('active');
-        toggleMenuVisibilityButton.textContent = '(показать все)';
-        for (let button of submenuButtons) {
-            button.classList.remove('active');
-            button.parentElement.nextElementSibling.classList.remove('active');
-            button.parentElement.nextElementSibling.classList.add('no-display');
+const toggleMenuVisibilityButton = document.querySelector('.submenu-total');
+if (toggleMenuVisibilityButton) {
+    toggleMenuVisibilityButton.textContent = '(показать все)';
+    toggleMenuVisibilityButton.addEventListener('click', function () {
+        if (toggleMenuVisibilityButton.classList.contains('active')) {
+            toggleMenuVisibilityButton.classList.remove('active');
+            toggleMenuVisibilityButton.textContent = '(показать все)';
+            for (let button of submenuButtons) {
+                button.classList.remove('active');
+                button.parentElement.nextElementSibling.classList.remove('active');
+                button.parentElement.nextElementSibling.classList.add('no-display');
+            }
+        } else {
+            toggleMenuVisibilityButton.classList.add('active');
+            toggleMenuVisibilityButton.textContent = '(скрыть все)';
+            for (let button of submenuButtons) {
+                button.classList.add('active');
+                button.parentElement.nextElementSibling.classList.add('active');
+                button.parentElement.nextElementSibling.classList.remove('no-display');
+            }
         }
-    } else {
-        toggleMenuVisibilityButton.classList.add('active');
-        toggleMenuVisibilityButton.textContent = '(скрыть все)';
-        for (let button of submenuButtons) {
-            button.classList.add('active');
-            button.parentElement.nextElementSibling.classList.add('active');
-            button.parentElement.nextElementSibling.classList.remove('no-display');
-        }
-    }
-})
+    })
+}
