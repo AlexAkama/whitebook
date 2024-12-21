@@ -157,16 +157,18 @@
             s<sub>0</sub>s<sub>1</sub>s<sub>2</sub>s<sub>3</sub>s<sub>4</sub>...s<sub>n</sub>
         </p>
         <p>Считаем полиномиальный хеш, где <span class="bold">p</span> - это основание хеша</p>
-        <p class="tab-1 bold no_mb">
-            h<sub>[0,n]</sub> =
-            s<sub>0</sub>p<sup>0</sup> +
-            s<sub>1</sub>p<sup>1</sup> +
-            s<sub>2</sub>p<sup>2</sup> +
-            s<sub>3</sub>p<sup>3</sup> +
-            s<sub>4</sub>p<sup>4</sup> +
-            ...
-            s<sub>n</sub>p<sup>n</sup>
-        </p>
+        <div class="scroll">
+            <p class="tab-1 bold no_wrap">
+                h<sub>[0,n]</sub> =
+                s<sub>0</sub>p<sup>0</sup> +
+                s<sub>1</sub>p<sup>1</sup> +
+                s<sub>2</sub>p<sup>2</sup> +
+                s<sub>3</sub>p<sup>3</sup> +
+                s<sub>4</sub>p<sup>4</sup> +
+                ... +
+                s<sub>n</sub>p<sup>n</sup>
+            </p>
+        </div>
         <p class="example tab-1">Это прямой полиномиальный хеш, а есть еще обратный -
             это когда идут с максимальной степени основания вниз.</p>
         <p>Далее если мы хотим посчитать хеш подстроки с индекса l до индекса r, для примера пусть l=1 и r=3,
@@ -178,20 +180,24 @@
             s<sub>3</sub>p<sup>2</sup>
         </p>
         <p>т.е. это не что иное, как этот кусок на <span class="bold">p<sup>1</sup></span></p>
-        <p class="tab-1 bold">
-            h<sub>[0,n]</sub> =
-            s<sub>0</sub>p<sup>0</sup> +
-            <span class="bad">[s<sub>1</sub>p<sup>1</sup> +
+        <div class="scroll">
+            <p class="tab-1 bold no_wrap">
+                h<sub>[0,n]</sub> =
+                s<sub>0</sub>p<sup>0</sup> +
+                <span class="bad">[s<sub>1</sub>p<sup>1</sup> +
             s<sub>2</sub>p<sup>2</sup> +
             s<sub>3</sub>p<sup>3</sup>]</span> +
-            s<sub>4</sub>p<sup>4</sup> +
-            ...
-            s<sub>n</sub>p<sup>n</sup>
-        </p>
+                s<sub>4</sub>p<sup>4</sup> +
+                ...
+                s<sub>n</sub>p<sup>n</sup>
+            </p>
+        </div>
         <p>Таким не сложным образом мы можем получить форму для вычисления хеша подстроки</p>
-        <p class="tab-1 bold mb20">
-            h<sub>[k,m]</sub> = (h<sub>[0,m]</sub> - h<sub>[0,k-1]</sub>) / p<sup>k</sup>
-        </p>
+        <div class="scroll">
+            <p class="tab-1 bold mb20 no_wrap">
+                h<sub>[k,m]</sub> = (h<sub>[0,m]</sub> - h<sub>[0,k-1]</sub>) / p<sup>k</sup>
+            </p>
+        </div>
         <p>Но как это работает при больших n?</p>
         <p> Например, если p=29, то в уже в 15й степени длинна числа будем 22 символа, а в лонге всего 19
             (если мне память не изменяет). Т.е. реализовав это в "как есть" у нас не получится полностью
