@@ -20,12 +20,13 @@
         <p>Алгоритмы</p>
     </div>
     <ol class="menu">
-        <li><a href="#q1">Алгоритм Заяц и Черепаха</a></li>
-        <li><a href="#q2">Бинарный поиск</a></li>
+        <li><a href="#fast-n-slow">Алгоритм Заяц и Черепаха</a></li>
+        <li><a href="#binary_search">Бинарный поиск</a></li>
+        <li><a href="#poly_hash">Полиномиальные хеши</a></li>
     </ol>
 </section>
 
-<section class="container" id="q1">
+<section class="container" id="fast-n-slow">
     <h1><a href="#">Алгоритм Заяц и Черепаха</a></h1>
     <p class="main-mind">
         Принцип достаточно прост - делаем два указателя и пускаем их по списку с разной скоростью.
@@ -88,7 +89,7 @@
 
 </section>
 
-<section class="container" id="q2">
+<section class="container" id="binary_search">
     <h1><a href="#">Бинарный поиск (Binary Search)</a></h1>
 
     <p>
@@ -144,6 +145,148 @@
     }</pre>
     </div>
 
+</section>
+
+<section class="container" id="poly_hash">
+    <h1><a href="#">Полиномиальные хеши</a></h1>
+    <div>
+        <h3>Теория</h3>
+        <p>Много где используются, но мне попадались в задачах на сравнение строк.</p>
+        <p>Представим, что у нас есть строка, где s<sub>i</sub> - это символ (или его код)</p>
+        <p class="tab-1 bold">
+            s<sub>0</sub>s<sub>1</sub>s<sub>2</sub>s<sub>3</sub>s<sub>4</sub>...s<sub>n</sub>
+        </p>
+        <p>Считаем полиномиальный хеш, где <span class="bold">p</span> - это основание хеша</p>
+        <p class="tab-1 bold no_mb">
+            h<sub>[0,n]</sub> =
+            s<sub>0</sub>p<sup>0</sup> +
+            s<sub>1</sub>p<sup>1</sup> +
+            s<sub>2</sub>p<sup>2</sup> +
+            s<sub>3</sub>p<sup>3</sup> +
+            s<sub>4</sub>p<sup>4</sup> +
+            ...
+            s<sub>n</sub>p<sup>n</sup>
+        </p>
+        <p class="example tab-1">Это прямой полиномиальный хеш, а есть еще обратный -
+            это когда идут с максимальной степени основания вниз.</p>
+        <p>Далее если мы хотим посчитать хеш подстроки с индекса l до индекса r, для примера пусть l=1 и r=3,
+            он будет выглядеть так:</p>
+        <p class="tab-1 bold">
+            h<sub>[1,3]</sub> =
+            s<sub>1</sub>p<sup>0</sup> +
+            s<sub>2</sub>p<sup>1</sup> +
+            s<sub>3</sub>p<sup>2</sup>
+        </p>
+        <p>т.е. это не что иное, как этот кусок на <span class="bold">p<sup>1</sup></span></p>
+        <p class="tab-1 bold">
+            h<sub>[0,n]</sub> =
+            s<sub>0</sub>p<sup>0</sup> +
+            <span class="bad">[s<sub>1</sub>p<sup>1</sup> +
+            s<sub>2</sub>p<sup>2</sup> +
+            s<sub>3</sub>p<sup>3</sup>]</span> +
+            s<sub>4</sub>p<sup>4</sup> +
+            ...
+            s<sub>n</sub>p<sup>n</sup>
+        </p>
+        <p>Таким не сложным образом мы можем получить форму для вычисления хеша подстроки</p>
+        <p class="tab-1 bold mb20">
+            h<sub>[k,m]</sub> = (h<sub>[0,m]</sub> - h<sub>[0,k-1]</sub>) / p<sup>k</sup>
+        </p>
+        <p>Но как это работает при больших n?</p>
+        <p> Например, если p=29, то в уже в 15й степени длинна числа будем 22 символа, а в лонге всего 19
+            (если мне память не изменяет). Т.е. реализовав это в "как есть" у нас не получится полностью
+            рабочий вариант для больших n.</p>
+        <p>B тут включается магия математики мы проводим операции по модулю.</p>
+    </div>
+    <div>
+        <h3>Реализация</h3>
+        <div>
+            <p>Первое что надо сдетать это определить основание P и модуль MODULE.<br>
+                Это два простых числа, первое маленькое, второе - большое.</p>
+            <div class="code">
+                <pre>private static final int <field>P</field> = 29;
+private static final long <field>MODULE</field> = 1_000_000_007L;</pre>
+            </div>
+            <p>Что бы не считать каждый раз степени модуля вычисляем их сразу столько сколько надо:</p>
+            <div class="code no_mb">
+                <pre>private static void <method>initPower</method>(int n) {
+    power = new long[n + 1];
+    power[0] = 1;
+    for (int i = 1; i < n + 1; i++) {
+        power[i] = (power[i - 1] * P) % MODULE;
+    }
+}</pre>
+            </div>
+            <p class="example">Тут уже используется модуль.</p>
+            <p>Теперь считаем и заполняем массив префиксных хэшей для того с чем будем работать:</p>
+            <div class="code no_mb">
+                <pre>private static void <method>buildPrefixHashArray</method>(String s) {
+    prefixHashArray = new long[s.length() + 1];
+    for (int i = 1; i < s.length() + 1; i++) {
+        prefixHashArray[i] = (prefixHashArray[i - 1] + (s.charAt(i - 1) - 'a' + 1) * power[i - 1]) % MODULE;
+    }
+}</pre>
+            </div>
+            <p class="example">Запись "char-'a'+1" тут использована просто для получения порядкового номера
+                символа в алфавите, т.к. в моей задаче строка состоит только из маленьких английских букв.
+                Но использование кода символа тоже работает.</p>
+            <p>Так же нам понадобится просо вычислять хеш строки:</p>
+            <div class="code">
+                <pre>private static long <method>calculateHash</method>(String s) {
+    long hash = 0;
+    int p = 0;
+    for (char c : s.toCharArray()) {
+        hash = (hash + getCharPowerValue(c) * power[p++]) % MODULE;
+    }
+    return hash;
+}</pre>
+            </div>
+            <p>И последнее - надо научится получать хеш подстроки, а это достаточно просто:</p>
+            <div class="code">
+                <pre>private static long <method>getIntervalHash</method>(int startIndex, int finishIndex) {
+    long sub = prefixHashArray[finishIndex] - prefixHashArray[startIndex];
+    return sub > -1 ? sub : sub + MODULE;
+}</pre>
+            </div>
+            <p> Обратите внимание на то, как метод <span class="bold">getIntervalHash</span>
+                возвращает ответ - это магия циклических колец. Этот момент я долго не мог понять,
+                а поэтому и не учитывал в коде.</p>
+        </div>
+
+        <p>Теперь у нас есть все инструменты, что бы сравнивать строки или подстроки.</p>
+        <a class="link-to-source" href="https://ru.algorithmica.org/cs/hashing/polynomial/"
+           target="_blank">Один из источников вдохновения.</a>
+    </div>
+    <div>
+        <h3>Краткое резюме от ИИ</h3>
+        <div>
+            <p>Преимущества использования полиномиальных хешей при сравнении строк заключаются в следующем:</p>
+
+            <p class="term mb10">
+                <span>Эффективность</span>:
+                <br>Полиномиальные хеши позволяют вычислять хеш-коды строки за линейное время и сравнивать их
+                за константное время. Это значительно ускоряет задачу сравнения строк по сравнению с посимвольным
+                сравнением, особенно для длинных строк. </p>
+            <p class="term mb10">
+                <span>Сравнение подстрок</span>:
+                <br>Полиномиальные хеши поддерживают эффективное вычисление хешей для подстрок, что
+                полезно в задачах, связанных с поиском подстрок и алгоритмами поиска шаблонов. </p>
+            <p class="term mb10">
+                <span>Устойчивость к коллизиям</span>:
+                <br>При правильно выбранных параметрах (в том числе модуле и базе) вероятность
+                коллизий хешей низка. Это делает подход надежным на практике. </p>
+            <p class="term mb10">
+                <span>Простота реализации</span>:
+                <br>Алгоритм полиномиального хеширования прост в реализации и может быть легко
+                адаптирован для различных задач, связанных с обработкой строк. </p>
+
+            <p> Эти качества делают полиномиальные хеши распространённым выбором для задач, связанных со сравнением
+                строк, таких как текстовые алгоритмы и структуры данных,
+                например, "суффиксные массивы" или "интервалные деревья". </p>
+        </div>
+    </div>
+
+    <a class="button button--to_top_menu" href="#"></a>
 </section>
 
 <a href="#" class="button button--top"></a>
