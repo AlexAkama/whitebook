@@ -134,6 +134,18 @@ WantedBy=multi-user.target</pre>
         <p class="code">sudo systemctl enable g_bot</p>
     </div>
 
+    <div>
+        <h3>Перезапуск</h3>
+        <div class="code no_mb">
+            <p>sudo systemctl daemon-reload</p>
+            <p>sudo systemctl restart g_bot</p>
+        </div>
+        <div class="example">
+            <p class="no_mb">daemon-reload — перечитывает файл /etc/systemd/system/g_bot.service</p>
+            <p class="no_mb">reload — просит само приложение g_bot обновиться</p>
+        </div>
+    </div>
+
 </section>
 
 <section class="container" id="control">
