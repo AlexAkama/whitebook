@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ручной деплой</title>
+    <link rel="stylesheet" href="../../../css/style.css">
+</head>
+
+<body>
+
+<section class="container">
+    <h1 class="no_mb">Ручной деплой</h1>
+    <div class="after-h1">Приложения на python</div>
+    <div class="breadcrumbs">
+        <p><a href="../../../">главная</a></p>
+        <p><a href="../">Рабочий опыт</a></p>
+        <p>Ручной деплой</p>
+    </div>
+    <ul class="menu tab-2">
+        <li><a href="#new_user">Новый пользователь</a></li>
+        <li><a href="#update">Обновления</a></li>
+        <li><a href="#project">Перенос проекта</a></li>
+        <li><a href="#start">Настройка запуска</a></li>
+        <li><a href="#control">Контроль</a></li>
+    </ul>
+</section>
+
+<section class="container" id="new_user">
+    <h1><a href="#">Новый пользователь</a></h1>
+    <div>
+        <p>Создаем отдельного пользователя для работы бота, типа не рекомендуется запускать процессы от root.</p>
+        <p>Пользователя называем gbotuser</p>
+        <p class="code no_mb">adduser gbotuser</p>
+        <p class="example no_mb">Надо ввести свой пароль для пользователя и не забыть его</p>
+        <p class="example">дальше параметры можно просто прощелкать</p>
+    </div>
+    <div>
+        <p>Добавляем в группу sudo</p>
+        <p class="code">usermod -aG sudo gbotuser</p>
+        <p>Проверяем через команду</p>
+        <p class="code">groups gbotuser</p>
+    </div>
+    <div>
+        <p>Переключаемся на пользователя gbotuser с полной симуляцией его входа в систему</p>
+        <p class="code">su - gbotuser</p>
+    </div>
+
+</section>
+
+<section class="container" id="update">
+    <h1 class="no_mb"><a href="#">Обновление и апдейт</a></h1>
+    <p class="smaller good mb20">а также установка python</p>
+    <div>
+        <p>Обновляем пакеты системы и базовые утилиты</p>
+        <p class="code no_mb">sudo apt update && sudo apt upgrade -y</p>
+        <p class="example no_mb">Может попросить пароль пользователя</p>
+        <p class="example">И занимает какое-то время</p>
+    </div>
+    <div>
+        <p>Устанавливаем Python</p>
+        <p class="code">sudo apt install python3 python3-pip python3-venv -y</p>
+    </div>
+
+</section>
+
+<section class="container" id="project">
+    <h1><a href="#">Перенос проекта</a></h1>
+    <div>
+        <p>Создаем папку проекта</p>
+        <p class="code">mkdir -p ~/gomeopathy_bot</p>
+        <p>и переходим в нее</p>
+        <p class="code">cd ~/gomeopathy_bot</p>
+    </div>
+    <div>
+        <p>Создаем виртуальное окружение</p>
+        <div class="code">
+            <p>python3 -m venv venv</p>
+            <p>source venv/bin/activate</p>
+        </div>
+    </div>
+    <div>
+        <p>Доступным образом копируем код проекта</p>
+        <p class="code no_mb">git clone https://url-репозитория.git</p>
+        <p class="example">Я скопировал через панель в MobaXterm</p>
+    </div>
+    <div>
+        <p>Устанавливаем необходимые библиотеки</p>
+        <p class="code">pip install -r requirements.txt</p>
+    </div>
+    <div>
+        <h2>Важно!!!</h2>
+        <p>Если у вас в проекте нет файла requirements.txt, то создайте его</p>
+        <p class="code">pip freeze > requirements.txt</p>
+    </div>
+
+</section>
+
+<section class="container" id="start">
+    <h1><a href="#">Настройка запуска</a></h1>
+    <div>
+        <h3>Создаем службу</h3>
+        <p class="code no_mb">sudo nano /etc/systemd/system/g_bot.service</p>
+        <p class="example">тут внезапно открывается редактор )))</p>
+        <p>вставляем в него</p>
+        <div class="code no_mb">
+            <pre><an>[Unit]</an>
+Description=Gomeopathy Bot Service
+After=network.target
+
+<an>[Service]</an>
+User=gbotuser
+WorkingDirectory=/home/gbotuser/gomeopathy_bot
+ExecStart=/home/gbotuser/gomeopathy_bot/venv/bin/python3 g_bot.py
+Restart=always
+RestartSec=5
+
+<an>[Install]</an>
+WantedBy=multi-user.target</pre>
+        </div>
+        <p class="example no_mb">Чтобы записать CTRL-O</p>
+        <p class="example">Чтобы выйти CTRL-X</p>
+        <p class="main-mind">Надеюсь не надо объяснять что у всех будут указаны свои пути и свое имя файла</p>
+    </div>
+    <div>
+        <h3>Запуск</h3>
+        <p>Говорим systemd перечитать все файлы конфигурации служб</p>
+        <p class="code">sudo systemctl daemon-reload</p>
+        <p>Запускаем нашу службу</p>
+        <p class="code">sudo systemctl start g_bot</p>
+        <p>Разрешаем автоматический запуск нашей службы при каждой загрузке системы</p>
+        <p class="code">sudo systemctl enable g_bot</p>
+    </div>
+
+</section>
+
+<section class="container" id="control">
+    <h1><a href="#">Статус и логи</a></h1>
+    <div>
+        Статус работы бота
+        <p class="code no_mb">sudo systemctl status g_bot</p>
+        <p class="example">выход q</p>
+    </div>
+
+    <div>
+        Живые логи (ошибки, принты)
+        <p class="code no_mb">journalctl -u g_bot -f</p>
+        <p class="example">выход CTRL-C</p>
+    </div>
+
+</section>
+
+<a href="#" class="button button--top"></a>
+
+<footer>
+    <div class="footer__text"><a href="https://t.me/java40plus" title="Мой блог в телеграм" target="_blank">
+        Ⓒ Алексей Маслов, 2021-2026
+    </a></div>
+</footer>
+
+</body>
+
+</html>
